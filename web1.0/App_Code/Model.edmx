@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TeachingCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Admin_id" />
+          </Key>
+          <Property Name="Admin_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Admin_pwd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Admin_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Develop">
+          <Key>
+            <PropertyRef Name="Develop_id" />
+          </Key>
+          <Property Name="Develop_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Develop_title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Develop_author" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Develop_time" Type="datetime" Nullable="false" />
+          <Property Name="Develop_content" Type="nvarchar(max)" />
+          <Property Name="Develop_link" Type="nvarchar(max)" />
+          <Property Name="Develop_hit" Type="int" Nullable="false" />
+          <Property Name="Develop_deleted" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Introduction">
+          <Key>
+            <PropertyRef Name="Introduction_id" />
+          </Key>
+          <Property Name="Introduction_id" Type="int" Nullable="false" />
+          <Property Name="Introduction_content" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="Picture_id" />
+          </Key>
+          <Property Name="Picture_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Picture_path" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="TeachingCenterModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Develop" EntityType="Self.Develop" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Introduction" EntityType="Self.Introduction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Picture" EntityType="Self.Picture" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TeachingCenterModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Admin_id" />
+          </Key>
+          <Property Name="Admin_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Admin_pwd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Admin_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Develop">
+          <Key>
+            <PropertyRef Name="Develop_id" />
+          </Key>
+          <Property Name="Develop_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Develop_title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Develop_author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Develop_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Develop_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Develop_link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Develop_hit" Type="Int32" Nullable="false" />
+          <Property Name="Develop_deleted" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Introduction">
+          <Key>
+            <PropertyRef Name="Introduction_id" />
+          </Key>
+          <Property Name="Introduction_id" Type="Int32" Nullable="false" />
+          <Property Name="Introduction_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="Picture_id" />
+          </Key>
+          <Property Name="Picture_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Picture_path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="TeachingCenterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admin" EntityType="Self.Admin" />
+          <EntitySet Name="Develop" EntityType="Self.Develop" />
+          <EntitySet Name="Introduction" EntityType="Self.Introduction" />
+          <EntitySet Name="Picture" EntityType="Self.Picture" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TeachingCenterModelStoreContainer" CdmEntityContainer="TeachingCenterEntities">
+          <EntitySetMapping Name="Admin">
+            <EntityTypeMapping TypeName="TeachingCenterModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Admin_id" ColumnName="Admin_id" />
+                <ScalarProperty Name="Admin_pwd" ColumnName="Admin_pwd" />
+                <ScalarProperty Name="Admin_name" ColumnName="Admin_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Develop">
+            <EntityTypeMapping TypeName="TeachingCenterModel.Develop">
+              <MappingFragment StoreEntitySet="Develop">
+                <ScalarProperty Name="Develop_deleted" ColumnName="Develop_deleted" />
+                <ScalarProperty Name="Develop_id" ColumnName="Develop_id" />
+                <ScalarProperty Name="Develop_title" ColumnName="Develop_title" />
+                <ScalarProperty Name="Develop_author" ColumnName="Develop_author" />
+                <ScalarProperty Name="Develop_time" ColumnName="Develop_time" />
+                <ScalarProperty Name="Develop_content" ColumnName="Develop_content" />
+                <ScalarProperty Name="Develop_link" ColumnName="Develop_link" />
+                <ScalarProperty Name="Develop_hit" ColumnName="Develop_hit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Introduction">
+            <EntityTypeMapping TypeName="TeachingCenterModel.Introduction">
+              <MappingFragment StoreEntitySet="Introduction">
+                <ScalarProperty Name="Introduction_id" ColumnName="Introduction_id" />
+                <ScalarProperty Name="Introduction_content" ColumnName="Introduction_content" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Picture">
+            <EntityTypeMapping TypeName="TeachingCenterModel.Picture">
+              <MappingFragment StoreEntitySet="Picture">
+                <ScalarProperty Name="Picture_id" ColumnName="Picture_id" />
+                <ScalarProperty Name="Picture_path" ColumnName="Picture_path" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
