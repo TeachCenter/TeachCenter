@@ -10,6 +10,62 @@
 using System;
 using System.Collections.Generic;
 
+public partial class Activity
+{
+    public Activity()
+    {
+        this.ActivitySummary = new HashSet<ActivitySummary>();
+        this.ActivityTeacher = new HashSet<ActivityTeacher>();
+    }
+
+    public int Activity_id { get; set; }
+    public string Activity_title { get; set; }
+    public System.DateTime Activity_time { get; set; }
+    public string Activity_content { get; set; }
+    public string Activity_place { get; set; }
+    public int Activity_nowcount { get; set; }
+    public int Activity_limitcount { get; set; }
+    public int Activity_categoryid { get; set; }
+
+    public virtual ActivityCategory ActivityCategory { get; set; }
+    public virtual ICollection<ActivitySummary> ActivitySummary { get; set; }
+    public virtual ICollection<ActivityTeacher> ActivityTeacher { get; set; }
+}
+
+public partial class ActivityCategory
+{
+    public ActivityCategory()
+    {
+        this.Activity = new HashSet<Activity>();
+    }
+
+    public int ActivityCategory_id { get; set; }
+    public string ActivityCategory_name { get; set; }
+
+    public virtual ICollection<Activity> Activity { get; set; }
+}
+
+public partial class ActivitySummary
+{
+    public int ActivitySummary_id { get; set; }
+    public int Activity_id { get; set; }
+    public string ActivitySummary_title { get; set; }
+    public System.DateTime ActivitySummary_time { get; set; }
+    public string ActivitySummary_content { get; set; }
+
+    public virtual Activity Activity { get; set; }
+}
+
+public partial class ActivityTeacher
+{
+    public int id { get; set; }
+    public int activity_id { get; set; }
+    public int teacher_id { get; set; }
+
+    public virtual Activity Activity { get; set; }
+    public virtual Teacher Teacher { get; set; }
+}
+
 public partial class Admin
 {
     public string Admin_id { get; set; }
@@ -39,4 +95,135 @@ public partial class Picture
 {
     public int Picture_id { get; set; }
     public string Picture_path { get; set; }
+}
+
+public partial class Project
+{
+    public Project()
+    {
+        this.ProjectJudge = new HashSet<ProjectJudge>();
+        this.ProjectStage = new HashSet<ProjectStage>();
+    }
+
+    public int project_id { get; set; }
+    public string name { get; set; }
+    public int category { get; set; }
+    public int teacher_id { get; set; }
+    public string submit_time { get; set; }
+
+    public virtual ProjectCategory ProjectCategory { get; set; }
+    public virtual Teacher Teacher { get; set; }
+    public virtual ICollection<ProjectJudge> ProjectJudge { get; set; }
+    public virtual ICollection<ProjectStage> ProjectStage { get; set; }
+}
+
+public partial class ProjectCategory
+{
+    public ProjectCategory()
+    {
+        this.Project = new HashSet<Project>();
+    }
+
+    public int id { get; set; }
+    public string name { get; set; }
+    public string project_content { get; set; }
+    public int stage { get; set; }
+    public string end_time { get; set; }
+
+    public virtual ICollection<Project> Project { get; set; }
+}
+
+public partial class ProjectJudge
+{
+    public int id { get; set; }
+    public int project_id { get; set; }
+    public int category { get; set; }
+    public int teacher_id { get; set; }
+    public int judge_id { get; set; }
+    public string judge_name { get; set; }
+    public int stage { get; set; }
+    public string comment { get; set; }
+    public int is_pass { get; set; }
+
+    public virtual Project Project { get; set; }
+}
+
+public partial class ProjectStage
+{
+    public int id { get; set; }
+    public int project_id { get; set; }
+    public string project_content { get; set; }
+    public int stage { get; set; }
+    public string time { get; set; }
+    public int is_pass { get; set; }
+
+    public virtual Project Project { get; set; }
+}
+
+public partial class Service
+{
+    public int Service_id { get; set; }
+    public int Service_teacher { get; set; }
+    public System.DateTime Service_time { get; set; }
+    public string Service_phone { get; set; }
+    public string Service_email { get; set; }
+    public string Service_remarks { get; set; }
+    public int Service_category { get; set; }
+
+    public virtual ServiceCategory ServiceCategory { get; set; }
+    public virtual Teacher Teacher { get; set; }
+}
+
+public partial class ServiceCategory
+{
+    public ServiceCategory()
+    {
+        this.Service = new HashSet<Service>();
+    }
+
+    public int ServiceCategory_id { get; set; }
+    public string ServiceCategory_name { get; set; }
+
+    public virtual ICollection<Service> Service { get; set; }
+}
+
+public partial class Teacher
+{
+    public Teacher()
+    {
+        this.Project = new HashSet<Project>();
+        this.ActivityTeacher = new HashSet<ActivityTeacher>();
+        this.Service = new HashSet<Service>();
+    }
+
+    public int id { get; set; }
+    public string name { get; set; }
+    public string password { get; set; }
+    public string image { get; set; }
+    public int gender { get; set; }
+    public string email { get; set; }
+    public string number { get; set; }
+    public string phone_number { get; set; }
+    public string department { get; set; }
+    public string rank { get; set; }
+    public int is_judge { get; set; }
+
+    public virtual ICollection<Project> Project { get; set; }
+    public virtual ICollection<ActivityTeacher> ActivityTeacher { get; set; }
+    public virtual ICollection<Service> Service { get; set; }
+}
+
+public partial class sp_helpdiagramdefinition_Result
+{
+    public Nullable<int> version { get; set; }
+    public byte[] definition { get; set; }
+}
+
+public partial class sp_helpdiagrams_Result
+{
+    public string Database { get; set; }
+    public string Name { get; set; }
+    public int ID { get; set; }
+    public string Owner { get; set; }
+    public int OwnerID { get; set; }
 }
