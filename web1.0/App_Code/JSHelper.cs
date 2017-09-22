@@ -68,7 +68,7 @@ public static  class JSHelper
     {
         Response.Write("<script type=\"text/javascript\">" + js + "</script>");
     }
-	
+
 
     /// <summary>
     /// 将客户端重定向到新的 URL (首先将 URL 转换为在请求客户端可用的 URL)
@@ -76,30 +76,9 @@ public static  class JSHelper
     /// </summary>
     /// <param name="url">目标位置</param>
     /// <param name="message">弹出的对话框中显示的纯文本</param>
-    /// <param name="endResponse">如果为 true，则终止当前进程</param>
-    public static void RedirectThenAlert(string url, string message, bool endResponse = false)
+    public static void AlertThenRedirect(string message, string url)
     {
-        message = message.Replace('#', '_');
-        url = string.Format("{0}#alert-{1}", url, message);
-        Redirect(url, endResponse);
-    }
-
-    /// <summary>
-    /// 将客户端重定向到新的 URL (首先将 URL 转换为在请求客户端可用的 URL)
-    /// </summary>
-    /// <param name="url">目标位置</param>
-    public static void Redirect(string url, bool endResponse = false)
-    {
-        Response.Redirect(Page.ResolveUrl(url), endResponse);
-        
-    }
-    /// <summary>
-    /// 刷新页面，然后显示带有一段消息和一个确认按钮的警告框
-    /// </summary>
-    /// <param name="message">弹出的对话框中显示的纯文本</param>
-    /// <param name="endResponse">如果为 true，则终止当前进程</param>
-    public static void RefreshThenAlert(string message, bool endResponse = false)
-    {
-        RedirectThenAlert(Request.RawUrl, message, endResponse);
+        message = message.Replace("'", "\\'");
+        Response.Write("<script type=\"text/javascript\">alert('" + message + "');location='" + url + "'</script>");
     }
 }

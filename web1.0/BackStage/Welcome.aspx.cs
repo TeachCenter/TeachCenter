@@ -9,6 +9,13 @@ public partial class BackStage_Welcome : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        try
+        {
+            string teacher = Session["AdminID"].ToString();
+        }
+        catch
+        {
+            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+        }
     }
 }

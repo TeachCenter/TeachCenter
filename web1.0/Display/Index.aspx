@@ -10,7 +10,9 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    
+        
+        <asp:LinkButton runat="server" Text="服务" PostBackUrl="~/Display/Service.aspx?Type=1"></asp:LinkButton>
+        <asp:LinkButton ID="lbtLogin" runat="server" PostBackUrl="~/Display/Login.aspx" Text="用户登陆"></asp:LinkButton>
     </div>
     </form>
 </body>

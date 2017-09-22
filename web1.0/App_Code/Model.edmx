@@ -17,6 +17,7 @@
           <Property Name="Activity_nowcount" Type="int" Nullable="false" />
           <Property Name="Activity_limitcount" Type="int" Nullable="false" />
           <Property Name="Activity_categoryid" Type="int" Nullable="false" />
+          <Property Name="Activity_isdeleted" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="ActivityCategory">
           <Key>
@@ -34,6 +35,7 @@
           <Property Name="ActivitySummary_title" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ActivitySummary_time" Type="datetime" Nullable="false" />
           <Property Name="ActivitySummary_content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ActivitySummary_isdeleted" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="ActivityTeacher">
           <Key>
@@ -131,9 +133,10 @@
           <Property Name="Service_teacher" Type="int" Nullable="false" />
           <Property Name="Service_time" Type="datetime" Nullable="false" />
           <Property Name="Service_phone" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="Service_email" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="Service_remarks" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Service_remarks" Type="nvarchar(max)" />
           <Property Name="Service_category" Type="int" Nullable="false" />
+          <Property Name="Service_isdeal" Type="int" Nullable="false" />
+          <Property Name="Service_isdeleted" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="ServiceCategory">
           <Key>
@@ -141,6 +144,16 @@
           </Key>
           <Property Name="ServiceCategory_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ServiceCategory_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Teacher">
           <Key>
@@ -344,6 +357,7 @@
           <EntitySet Name="ProjectStage" EntityType="Self.ProjectStage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServiceCategory" EntityType="Self.ServiceCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Activity_ActivityCategory" Association="Self.FK_Activity_ActivityCategory">
             <End Role="ActivityCategory" EntitySet="ActivityCategory" />
@@ -511,6 +525,7 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="sysdiagrams" EntityType="TeachingCenterModel.sysdiagrams" />
         </EntityContainer>
         <EntityType Name="Project">
           <Key>
@@ -654,6 +669,7 @@
           <NavigationProperty Name="ActivityCategory" Relationship="TeachingCenterModel.FK_Activity_ActivityCategory" FromRole="Activity" ToRole="ActivityCategory" />
           <NavigationProperty Name="ActivitySummary" Relationship="TeachingCenterModel.FK_ActivitySummary_Activity" FromRole="Activity" ToRole="ActivitySummary" />
           <NavigationProperty Name="ActivityTeacher" Relationship="TeachingCenterModel.FK_ActivityTeacher_Activity" FromRole="Activity" ToRole="ActivityTeacher" />
+          <Property Name="Activity_isdeleted" Type="Int64" Nullable="false" />
         </EntityType>
         <EntityType Name="ActivityCategory">
           <Key>
@@ -673,6 +689,7 @@
           <Property Name="ActivitySummary_time" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ActivitySummary_content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Activity" Relationship="TeachingCenterModel.FK_ActivitySummary_Activity" FromRole="ActivitySummary" ToRole="Activity" />
+          <Property Name="ActivitySummary_isdeleted" Type="Int64" Nullable="false" />
         </EntityType>
         <EntityType Name="ActivityTeacher">
           <Key>
@@ -692,11 +709,11 @@
           <Property Name="Service_teacher" Type="Int32" Nullable="false" />
           <Property Name="Service_time" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Service_phone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Service_email" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Service_remarks" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Service_remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Service_category" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ServiceCategory" Relationship="TeachingCenterModel.FK_Service_ServiceCategory" FromRole="Service" ToRole="ServiceCategory" />
           <NavigationProperty Name="Teacher" Relationship="TeachingCenterModel.FK_Service_Teacher" FromRole="Service" ToRole="Teacher" />
+          <Property Name="Service_isdeleted" Type="Int64" Nullable="false" />
         </EntityType>
         <EntityType Name="ServiceCategory">
           <Key>
@@ -801,6 +818,16 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -915,6 +942,7 @@
           <EntitySetMapping Name="Activity">
             <EntityTypeMapping TypeName="TeachingCenterModel.Activity">
               <MappingFragment StoreEntitySet="Activity">
+                <ScalarProperty Name="Activity_isdeleted" ColumnName="Activity_isdeleted" />
                 <ScalarProperty Name="Activity_categoryid" ColumnName="Activity_categoryid" />
                 <ScalarProperty Name="Activity_limitcount" ColumnName="Activity_limitcount" />
                 <ScalarProperty Name="Activity_nowcount" ColumnName="Activity_nowcount" />
@@ -937,6 +965,7 @@
           <EntitySetMapping Name="ActivitySummary">
             <EntityTypeMapping TypeName="TeachingCenterModel.ActivitySummary">
               <MappingFragment StoreEntitySet="ActivitySummary">
+                <ScalarProperty Name="ActivitySummary_isdeleted" ColumnName="ActivitySummary_isdeleted" />
                 <ScalarProperty Name="ActivitySummary_content" ColumnName="ActivitySummary_content" />
                 <ScalarProperty Name="ActivitySummary_time" ColumnName="ActivitySummary_time" />
                 <ScalarProperty Name="ActivitySummary_title" ColumnName="ActivitySummary_title" />
@@ -957,9 +986,9 @@
           <EntitySetMapping Name="Service">
             <EntityTypeMapping TypeName="TeachingCenterModel.Service">
               <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="Service_isdeleted" ColumnName="Service_isdeleted" />
                 <ScalarProperty Name="Service_category" ColumnName="Service_category" />
                 <ScalarProperty Name="Service_remarks" ColumnName="Service_remarks" />
-                <ScalarProperty Name="Service_email" ColumnName="Service_email" />
                 <ScalarProperty Name="Service_phone" ColumnName="Service_phone" />
                 <ScalarProperty Name="Service_time" ColumnName="Service_time" />
                 <ScalarProperty Name="Service_teacher" ColumnName="Service_teacher" />
@@ -999,6 +1028,17 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="TeachingCenterModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="TeachingCenterModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TeachingCenterModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

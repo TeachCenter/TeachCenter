@@ -26,6 +26,7 @@ public partial class Activity
     public int Activity_nowcount { get; set; }
     public int Activity_limitcount { get; set; }
     public int Activity_categoryid { get; set; }
+    public long Activity_isdeleted { get; set; }
 
     public virtual ActivityCategory ActivityCategory { get; set; }
     public virtual ICollection<ActivitySummary> ActivitySummary { get; set; }
@@ -52,6 +53,7 @@ public partial class ActivitySummary
     public string ActivitySummary_title { get; set; }
     public System.DateTime ActivitySummary_time { get; set; }
     public string ActivitySummary_content { get; set; }
+    public long ActivitySummary_isdeleted { get; set; }
 
     public virtual Activity Activity { get; set; }
 }
@@ -166,9 +168,9 @@ public partial class Service
     public int Service_teacher { get; set; }
     public System.DateTime Service_time { get; set; }
     public string Service_phone { get; set; }
-    public string Service_email { get; set; }
     public string Service_remarks { get; set; }
     public int Service_category { get; set; }
+    public long Service_isdeleted { get; set; }
 
     public virtual ServiceCategory ServiceCategory { get; set; }
     public virtual Teacher Teacher { get; set; }
@@ -185,6 +187,15 @@ public partial class ServiceCategory
     public string ServiceCategory_name { get; set; }
 
     public virtual ICollection<Service> Service { get; set; }
+}
+
+public partial class sysdiagrams
+{
+    public string name { get; set; }
+    public int principal_id { get; set; }
+    public int diagram_id { get; set; }
+    public Nullable<int> version { get; set; }
+    public byte[] definition { get; set; }
 }
 
 public partial class Teacher

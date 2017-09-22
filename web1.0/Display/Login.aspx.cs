@@ -11,7 +11,7 @@ public partial class Display_Login : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            string id = CookieHelper.GetCookieValue("TeacherID");
+            string id = CookieHelper.GetCookieValue("TeacherNumber");
             string pwd = CookieHelper.GetCookieValue("TeacherPwd");
             if (id != null && pwd != null)
             {
@@ -43,11 +43,11 @@ public partial class Display_Login : System.Web.UI.Page
                     {
                         if (cbxRemeberUser.Checked == true)
                         {
-                            CookieHelper.SetCookie("TeacherID", txtID.Text, DateTime.Now.AddDays(30));
+                            CookieHelper.SetCookie("TeacherNumber", txtID.Text, DateTime.Now.AddDays(30));
                             CookieHelper.SetCookie("TeacherPwd", txtPwd.Text, DateTime.Now.AddDays(30));
                         }
                         JSHelper.ShowAlert("登陆成功");
-                        Session["TeacherID"] = id;
+                        Session["TeacherNumber"] = id;
                         Server.Transfer("Index.aspx");
                     }
 

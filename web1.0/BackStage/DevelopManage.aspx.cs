@@ -9,13 +9,22 @@ public partial class BackStage_DevelopManage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        using (var db = new TeachingCenterEntities())
+        try
         {
-            var dev = from it in db.Develop where it.Develop_deleted == 0 orderby it.Develop_id descending select it;
-            ltSum.Text = dev.Count().ToString();
-            rptDev.DataSource = dev.ToList().Take(10);
-            rptDev.DataBind();
+            string teacher = Session["AdminID"].ToString();
+            using (var db = new TeachingCenterEntities())
+            {
+                var dev = from it in db.Develop where it.Develop_deleted == 0 orderby it.Develop_id descending select it;
+                ltSum.Text = dev.Count().ToString();
+                rptDev.DataSource = dev.ToList().Take(10);
+                rptDev.DataBind();
+            }
         }
+        catch
+        {
+            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+        }
+
     }
 
     protected void rptDev_ItemCommand(object source, RepeaterCommandEventArgs e)

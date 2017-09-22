@@ -41,6 +41,7 @@ public partial class TeachingCenterEntities : DbContext
     public DbSet<ActivityTeacher> ActivityTeacher { get; set; }
     public DbSet<Service> Service { get; set; }
     public DbSet<ServiceCategory> ServiceCategory { get; set; }
+    public DbSet<sysdiagrams> sysdiagrams { get; set; }
 
     public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
     {
