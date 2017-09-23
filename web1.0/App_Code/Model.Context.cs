@@ -26,6 +26,10 @@ public partial class TeachingCenterEntities : DbContext
         throw new UnintentionalCodeFirstException();
     }
 
+    public DbSet<Activity> Activity { get; set; }
+    public DbSet<ActivityCategory> ActivityCategory { get; set; }
+    public DbSet<ActivitySummary> ActivitySummary { get; set; }
+    public DbSet<ActivityTeacher> ActivityTeacher { get; set; }
     public DbSet<Admin> Admin { get; set; }
     public DbSet<Develop> Develop { get; set; }
     public DbSet<Introduction> Introduction { get; set; }
@@ -34,14 +38,10 @@ public partial class TeachingCenterEntities : DbContext
     public DbSet<ProjectCategory> ProjectCategory { get; set; }
     public DbSet<ProjectJudge> ProjectJudge { get; set; }
     public DbSet<ProjectStage> ProjectStage { get; set; }
-    public DbSet<Teacher> Teacher { get; set; }
-    public DbSet<Activity> Activity { get; set; }
-    public DbSet<ActivityCategory> ActivityCategory { get; set; }
-    public DbSet<ActivitySummary> ActivitySummary { get; set; }
-    public DbSet<ActivityTeacher> ActivityTeacher { get; set; }
     public DbSet<Service> Service { get; set; }
     public DbSet<ServiceCategory> ServiceCategory { get; set; }
     public DbSet<sysdiagrams> sysdiagrams { get; set; }
+    public DbSet<Teacher> Teacher { get; set; }
 
     public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
     {

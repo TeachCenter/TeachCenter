@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TeachingCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+      <Schema Namespace="TeachingCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityType Name="Activity">
           <Key>
             <PropertyRef Name="Activity_id" />
@@ -400,10 +400,58 @@
             <End Role="Service" EntitySet="Service" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TeachingCenterModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityType Name="Activity">
+          <Key>
+            <PropertyRef Name="Activity_id" />
+          </Key>
+          <Property Name="Activity_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Activity_title" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Activity_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Activity_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Activity_place" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Activity_nowcount" Type="Int32" Nullable="false" />
+          <Property Name="Activity_limitcount" Type="Int32" Nullable="false" />
+          <Property Name="Activity_categoryid" Type="Int32" Nullable="false" />
+          <Property Name="Activity_isdeleted" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="ActivityCategory" Relationship="Self.FK_Activity_ActivityCategory" FromRole="Activity" ToRole="ActivityCategory" />
+          <NavigationProperty Name="ActivitySummary" Relationship="Self.FK_ActivitySummary_Activity" FromRole="Activity" ToRole="ActivitySummary" />
+          <NavigationProperty Name="ActivityTeacher" Relationship="Self.FK_ActivityTeacher_Activity" FromRole="Activity" ToRole="ActivityTeacher" />
+        </EntityType>
+        <EntityType Name="ActivityCategory">
+          <Key>
+            <PropertyRef Name="ActivityCategory_id" />
+          </Key>
+          <Property Name="ActivityCategory_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActivityCategory_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_ActivityCategory" FromRole="ActivityCategory" ToRole="Activity" />
+        </EntityType>
+        <EntityType Name="ActivitySummary">
+          <Key>
+            <PropertyRef Name="ActivitySummary_id" />
+          </Key>
+          <Property Name="ActivitySummary_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Activity_id" Type="Int32" Nullable="false" />
+          <Property Name="ActivitySummary_title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ActivitySummary_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ActivitySummary_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ActivitySummary_isdeleted" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Activity" Relationship="Self.FK_ActivitySummary_Activity" FromRole="ActivitySummary" ToRole="Activity" />
+        </EntityType>
+        <EntityType Name="ActivityTeacher">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="activity_id" Type="Int32" Nullable="false" />
+          <Property Name="teacher_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Activity" Relationship="Self.FK_ActivityTeacher_Activity" FromRole="ActivityTeacher" ToRole="Activity" />
+          <NavigationProperty Name="Teacher" Relationship="Self.FK_ActivityTeacher_Teacher" FromRole="ActivityTeacher" ToRole="Teacher" />
+        </EntityType>
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="Admin_id" />
@@ -439,59 +487,304 @@
           <Property Name="Picture_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Picture_path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="project_id" />
+          </Key>
+          <Property Name="project_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="category" Type="Int32" Nullable="false" />
+          <Property Name="teacher_id" Type="Int32" Nullable="false" />
+          <Property Name="submit_time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ProjectCategory" Relationship="Self.FK_Project_ProjectCategory" FromRole="Project" ToRole="ProjectCategory" />
+          <NavigationProperty Name="Teacher" Relationship="Self.FK_Project_Teacher" FromRole="Project" ToRole="Teacher" />
+          <NavigationProperty Name="ProjectJudge" Relationship="Self.FK_ProjectJudge_Project" FromRole="Project" ToRole="ProjectJudge" />
+          <NavigationProperty Name="ProjectStage" Relationship="Self.FK_ProjectStage_Project" FromRole="Project" ToRole="ProjectStage" />
+        </EntityType>
+        <EntityType Name="ProjectCategory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="project_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="stage" Type="Int32" Nullable="false" />
+          <Property Name="end_time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Project" Relationship="Self.FK_Project_ProjectCategory" FromRole="ProjectCategory" ToRole="Project" />
+        </EntityType>
+        <EntityType Name="ProjectJudge">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="project_id" Type="Int32" Nullable="false" />
+          <Property Name="category" Type="Int32" Nullable="false" />
+          <Property Name="teacher_id" Type="Int32" Nullable="false" />
+          <Property Name="judge_id" Type="Int32" Nullable="false" />
+          <Property Name="judge_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="stage" Type="Int32" Nullable="false" />
+          <Property Name="comment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="is_pass" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Project" Relationship="Self.FK_ProjectJudge_Project" FromRole="ProjectJudge" ToRole="Project" />
+        </EntityType>
+        <EntityType Name="ProjectStage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="project_id" Type="Int32" Nullable="false" />
+          <Property Name="project_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="stage" Type="Int32" Nullable="false" />
+          <Property Name="time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="is_pass" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Project" Relationship="Self.FK_ProjectStage_Project" FromRole="ProjectStage" ToRole="Project" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="Service_id" />
+          </Key>
+          <Property Name="Service_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Service_teacher" Type="Int32" Nullable="false" />
+          <Property Name="Service_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Service_phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Service_remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Service_category" Type="Int32" Nullable="false" />
+          <Property Name="Service_isdeal" Type="Int32" Nullable="false" />
+          <Property Name="Service_isdeleted" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="ServiceCategory" Relationship="Self.FK_Service_ServiceCategory" FromRole="Service" ToRole="ServiceCategory" />
+          <NavigationProperty Name="Teacher" Relationship="Self.FK_Service_Teacher" FromRole="Service" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="ServiceCategory">
+          <Key>
+            <PropertyRef Name="ServiceCategory_id" />
+          </Key>
+          <Property Name="ServiceCategory_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceCategory_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Service" Relationship="Self.FK_Service_ServiceCategory" FromRole="ServiceCategory" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="gender" Type="Int32" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="number" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phone_number" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="department" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="rank" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="is_judge" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ActivityTeacher" Relationship="Self.FK_ActivityTeacher_Teacher" FromRole="Teacher" ToRole="ActivityTeacher" />
+          <NavigationProperty Name="Project" Relationship="Self.FK_Project_Teacher" FromRole="Teacher" ToRole="Project" />
+          <NavigationProperty Name="Service" Relationship="Self.FK_Service_Teacher" FromRole="Teacher" ToRole="Service" />
+        </EntityType>
+        <Association Name="FK_Activity_ActivityCategory">
+          <End Role="ActivityCategory" Type="Self.ActivityCategory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivityCategory">
+              <PropertyRef Name="ActivityCategory_id" />
+            </Principal>
+            <Dependent Role="Activity">
+              <PropertyRef Name="Activity_categoryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActivitySummary_Activity">
+          <End Role="Activity" Type="Self.Activity" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ActivitySummary" Type="Self.ActivitySummary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity">
+              <PropertyRef Name="Activity_id" />
+            </Principal>
+            <Dependent Role="ActivitySummary">
+              <PropertyRef Name="Activity_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActivityTeacher_Activity">
+          <End Role="Activity" Type="Self.Activity" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ActivityTeacher" Type="Self.ActivityTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity">
+              <PropertyRef Name="Activity_id" />
+            </Principal>
+            <Dependent Role="ActivityTeacher">
+              <PropertyRef Name="activity_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActivityTeacher_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ActivityTeacher" Type="Self.ActivityTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ActivityTeacher">
+              <PropertyRef Name="teacher_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_ProjectCategory">
+          <End Role="ProjectCategory" Type="Self.ProjectCategory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectCategory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="teacher_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectJudge_Project">
+          <End Role="Project" Type="Self.Project" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProjectJudge" Type="Self.ProjectJudge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="project_id" />
+            </Principal>
+            <Dependent Role="ProjectJudge">
+              <PropertyRef Name="project_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectStage_Project">
+          <End Role="Project" Type="Self.Project" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProjectStage" Type="Self.ProjectStage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="project_id" />
+            </Principal>
+            <Dependent Role="ProjectStage">
+              <PropertyRef Name="project_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Service_ServiceCategory">
+          <End Role="ServiceCategory" Type="Self.ServiceCategory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Service" Type="Self.Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceCategory">
+              <PropertyRef Name="ServiceCategory_id" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="Service_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Service_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Service" Type="Self.Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="Service_teacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="TeachingCenterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Activity" EntityType="Self.Activity" />
+          <EntitySet Name="ActivityCategory" EntityType="Self.ActivityCategory" />
+          <EntitySet Name="ActivitySummary" EntityType="Self.ActivitySummary" />
+          <EntitySet Name="ActivityTeacher" EntityType="Self.ActivityTeacher" />
           <EntitySet Name="Admin" EntityType="Self.Admin" />
           <EntitySet Name="Develop" EntityType="Self.Develop" />
           <EntitySet Name="Introduction" EntityType="Self.Introduction" />
           <EntitySet Name="Picture" EntityType="Self.Picture" />
-          <EntitySet Name="Project" EntityType="TeachingCenterModel.Project" />
-          <EntitySet Name="ProjectCategory" EntityType="TeachingCenterModel.ProjectCategory" />
-          <EntitySet Name="ProjectJudge" EntityType="TeachingCenterModel.ProjectJudge" />
-          <EntitySet Name="ProjectStage" EntityType="TeachingCenterModel.ProjectStage" />
-          <EntitySet Name="Teacher" EntityType="TeachingCenterModel.Teacher" />
-          <AssociationSet Name="FK_Project_ProjectCategory" Association="TeachingCenterModel.FK_Project_ProjectCategory">
-            <End Role="ProjectCategory" EntitySet="ProjectCategory" />
-            <End Role="Project" EntitySet="Project" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Project_Teacher" Association="TeachingCenterModel.FK_Project_Teacher">
-            <End Role="Teacher" EntitySet="Teacher" />
-            <End Role="Project" EntitySet="Project" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProjectJudge_Project" Association="TeachingCenterModel.FK_ProjectJudge_Project">
-            <End Role="Project" EntitySet="Project" />
-            <End Role="ProjectJudge" EntitySet="ProjectJudge" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProjectStage_Project" Association="TeachingCenterModel.FK_ProjectStage_Project">
-            <End Role="Project" EntitySet="Project" />
-            <End Role="ProjectStage" EntitySet="ProjectStage" />
-          </AssociationSet>
-          <EntitySet Name="Activity" EntityType="TeachingCenterModel.Activity" />
-          <EntitySet Name="ActivityCategory" EntityType="TeachingCenterModel.ActivityCategory" />
-          <EntitySet Name="ActivitySummary" EntityType="TeachingCenterModel.ActivitySummary" />
-          <EntitySet Name="ActivityTeacher" EntityType="TeachingCenterModel.ActivityTeacher" />
-          <EntitySet Name="Service" EntityType="TeachingCenterModel.Service" />
-          <EntitySet Name="ServiceCategory" EntityType="TeachingCenterModel.ServiceCategory" />
-          <AssociationSet Name="FK_Activity_ActivityCategory" Association="TeachingCenterModel.FK_Activity_ActivityCategory">
+          <EntitySet Name="Project" EntityType="Self.Project" />
+          <EntitySet Name="ProjectCategory" EntityType="Self.ProjectCategory" />
+          <EntitySet Name="ProjectJudge" EntityType="Self.ProjectJudge" />
+          <EntitySet Name="ProjectStage" EntityType="Self.ProjectStage" />
+          <EntitySet Name="Service" EntityType="Self.Service" />
+          <EntitySet Name="ServiceCategory" EntityType="Self.ServiceCategory" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Teacher" EntityType="Self.Teacher" />
+          <AssociationSet Name="FK_Activity_ActivityCategory" Association="Self.FK_Activity_ActivityCategory">
             <End Role="ActivityCategory" EntitySet="ActivityCategory" />
             <End Role="Activity" EntitySet="Activity" />
           </AssociationSet>
-          <AssociationSet Name="FK_ActivitySummary_Activity" Association="TeachingCenterModel.FK_ActivitySummary_Activity">
+          <AssociationSet Name="FK_ActivitySummary_Activity" Association="Self.FK_ActivitySummary_Activity">
             <End Role="Activity" EntitySet="Activity" />
             <End Role="ActivitySummary" EntitySet="ActivitySummary" />
           </AssociationSet>
-          <AssociationSet Name="FK_ActivityTeacher_Activity" Association="TeachingCenterModel.FK_ActivityTeacher_Activity">
+          <AssociationSet Name="FK_ActivityTeacher_Activity" Association="Self.FK_ActivityTeacher_Activity">
             <End Role="Activity" EntitySet="Activity" />
             <End Role="ActivityTeacher" EntitySet="ActivityTeacher" />
           </AssociationSet>
-          <AssociationSet Name="FK_ActivityTeacher_Teacher" Association="TeachingCenterModel.FK_ActivityTeacher_Teacher">
+          <AssociationSet Name="FK_ActivityTeacher_Teacher" Association="Self.FK_ActivityTeacher_Teacher">
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="ActivityTeacher" EntitySet="ActivityTeacher" />
           </AssociationSet>
-          <AssociationSet Name="FK_Service_ServiceCategory" Association="TeachingCenterModel.FK_Service_ServiceCategory">
+          <AssociationSet Name="FK_Project_ProjectCategory" Association="Self.FK_Project_ProjectCategory">
+            <End Role="ProjectCategory" EntitySet="ProjectCategory" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Teacher" Association="Self.FK_Project_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectJudge_Project" Association="Self.FK_ProjectJudge_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ProjectJudge" EntitySet="ProjectJudge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectStage_Project" Association="Self.FK_ProjectStage_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ProjectStage" EntitySet="ProjectStage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Service_ServiceCategory" Association="Self.FK_Service_ServiceCategory">
             <End Role="ServiceCategory" EntitySet="ServiceCategory" />
             <End Role="Service" EntitySet="Service" />
           </AssociationSet>
-          <AssociationSet Name="FK_Service_Teacher" Association="TeachingCenterModel.FK_Service_Teacher">
+          <AssociationSet Name="FK_Service_Teacher" Association="Self.FK_Service_Teacher">
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="Service" EntitySet="Service" />
           </AssociationSet>
@@ -525,288 +818,7 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="sysdiagrams" EntityType="TeachingCenterModel.sysdiagrams" />
         </EntityContainer>
-        <EntityType Name="Project">
-          <Key>
-            <PropertyRef Name="project_id" />
-          </Key>
-          <Property Name="project_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="category" Type="Int32" Nullable="false" />
-          <Property Name="teacher_id" Type="Int32" Nullable="false" />
-          <Property Name="submit_time" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ProjectCategory" Relationship="TeachingCenterModel.FK_Project_ProjectCategory" FromRole="Project" ToRole="ProjectCategory" />
-          <NavigationProperty Name="Teacher" Relationship="TeachingCenterModel.FK_Project_Teacher" FromRole="Project" ToRole="Teacher" />
-          <NavigationProperty Name="ProjectJudge" Relationship="TeachingCenterModel.FK_ProjectJudge_Project" FromRole="Project" ToRole="ProjectJudge" />
-          <NavigationProperty Name="ProjectStage" Relationship="TeachingCenterModel.FK_ProjectStage_Project" FromRole="Project" ToRole="ProjectStage" />
-        </EntityType>
-        <EntityType Name="ProjectCategory">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="project_content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="stage" Type="Int32" Nullable="false" />
-          <Property Name="end_time" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Project" Relationship="TeachingCenterModel.FK_Project_ProjectCategory" FromRole="ProjectCategory" ToRole="Project" />
-        </EntityType>
-        <EntityType Name="ProjectJudge">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="project_id" Type="Int32" Nullable="false" />
-          <Property Name="category" Type="Int32" Nullable="false" />
-          <Property Name="teacher_id" Type="Int32" Nullable="false" />
-          <Property Name="judge_id" Type="Int32" Nullable="false" />
-          <Property Name="judge_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="stage" Type="Int32" Nullable="false" />
-          <Property Name="comment" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="is_pass" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Project" Relationship="TeachingCenterModel.FK_ProjectJudge_Project" FromRole="ProjectJudge" ToRole="Project" />
-        </EntityType>
-        <EntityType Name="ProjectStage">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="project_id" Type="Int32" Nullable="false" />
-          <Property Name="project_content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="stage" Type="Int32" Nullable="false" />
-          <Property Name="time" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="is_pass" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Project" Relationship="TeachingCenterModel.FK_ProjectStage_Project" FromRole="ProjectStage" ToRole="Project" />
-        </EntityType>
-        <EntityType Name="Teacher">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="image" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="gender" Type="Int32" Nullable="false" />
-          <Property Name="email" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="number" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="phone_number" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="department" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="rank" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="is_judge" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Project" Relationship="TeachingCenterModel.FK_Project_Teacher" FromRole="Teacher" ToRole="Project" />
-          <NavigationProperty Name="ActivityTeacher" Relationship="TeachingCenterModel.FK_ActivityTeacher_Teacher" FromRole="Teacher" ToRole="ActivityTeacher" />
-          <NavigationProperty Name="Service" Relationship="TeachingCenterModel.FK_Service_Teacher" FromRole="Teacher" ToRole="Service" />
-        </EntityType>
-        <Association Name="FK_Project_ProjectCategory">
-          <End Type="TeachingCenterModel.ProjectCategory" Role="ProjectCategory" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="TeachingCenterModel.Project" Role="Project" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProjectCategory">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Project">
-              <PropertyRef Name="category" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Project_Teacher">
-          <End Type="TeachingCenterModel.Teacher" Role="Teacher" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="TeachingCenterModel.Project" Role="Project" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Teacher">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Project">
-              <PropertyRef Name="teacher_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProjectJudge_Project">
-          <End Type="TeachingCenterModel.Project" Role="Project" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="TeachingCenterModel.ProjectJudge" Role="ProjectJudge" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Project">
-              <PropertyRef Name="project_id" />
-            </Principal>
-            <Dependent Role="ProjectJudge">
-              <PropertyRef Name="project_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProjectStage_Project">
-          <End Type="TeachingCenterModel.Project" Role="Project" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="TeachingCenterModel.ProjectStage" Role="ProjectStage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Project">
-              <PropertyRef Name="project_id" />
-            </Principal>
-            <Dependent Role="ProjectStage">
-              <PropertyRef Name="project_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Activity">
-          <Key>
-            <PropertyRef Name="Activity_id" />
-          </Key>
-          <Property Name="Activity_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Activity_title" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Activity_time" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Activity_content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Activity_place" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Activity_nowcount" Type="Int32" Nullable="false" />
-          <Property Name="Activity_limitcount" Type="Int32" Nullable="false" />
-          <Property Name="Activity_categoryid" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ActivityCategory" Relationship="TeachingCenterModel.FK_Activity_ActivityCategory" FromRole="Activity" ToRole="ActivityCategory" />
-          <NavigationProperty Name="ActivitySummary" Relationship="TeachingCenterModel.FK_ActivitySummary_Activity" FromRole="Activity" ToRole="ActivitySummary" />
-          <NavigationProperty Name="ActivityTeacher" Relationship="TeachingCenterModel.FK_ActivityTeacher_Activity" FromRole="Activity" ToRole="ActivityTeacher" />
-          <Property Name="Activity_isdeleted" Type="Int64" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ActivityCategory">
-          <Key>
-            <PropertyRef Name="ActivityCategory_id" />
-          </Key>
-          <Property Name="ActivityCategory_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ActivityCategory_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Activity" Relationship="TeachingCenterModel.FK_Activity_ActivityCategory" FromRole="ActivityCategory" ToRole="Activity" />
-        </EntityType>
-        <EntityType Name="ActivitySummary">
-          <Key>
-            <PropertyRef Name="ActivitySummary_id" />
-          </Key>
-          <Property Name="ActivitySummary_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Activity_id" Type="Int32" Nullable="false" />
-          <Property Name="ActivitySummary_title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ActivitySummary_time" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ActivitySummary_content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Activity" Relationship="TeachingCenterModel.FK_ActivitySummary_Activity" FromRole="ActivitySummary" ToRole="Activity" />
-          <Property Name="ActivitySummary_isdeleted" Type="Int64" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ActivityTeacher">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="activity_id" Type="Int32" Nullable="false" />
-          <Property Name="teacher_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Activity" Relationship="TeachingCenterModel.FK_ActivityTeacher_Activity" FromRole="ActivityTeacher" ToRole="Activity" />
-          <NavigationProperty Name="Teacher" Relationship="TeachingCenterModel.FK_ActivityTeacher_Teacher" FromRole="ActivityTeacher" ToRole="Teacher" />
-        </EntityType>
-        <EntityType Name="Service">
-          <Key>
-            <PropertyRef Name="Service_id" />
-          </Key>
-          <Property Name="Service_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Service_teacher" Type="Int32" Nullable="false" />
-          <Property Name="Service_time" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Service_phone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Service_remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Service_category" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ServiceCategory" Relationship="TeachingCenterModel.FK_Service_ServiceCategory" FromRole="Service" ToRole="ServiceCategory" />
-          <NavigationProperty Name="Teacher" Relationship="TeachingCenterModel.FK_Service_Teacher" FromRole="Service" ToRole="Teacher" />
-          <Property Name="Service_isdeleted" Type="Int64" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ServiceCategory">
-          <Key>
-            <PropertyRef Name="ServiceCategory_id" />
-          </Key>
-          <Property Name="ServiceCategory_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ServiceCategory_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Service" Relationship="TeachingCenterModel.FK_Service_ServiceCategory" FromRole="ServiceCategory" ToRole="Service" />
-        </EntityType>
-        <Association Name="FK_Activity_ActivityCategory">
-          <End Type="TeachingCenterModel.ActivityCategory" Role="ActivityCategory" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="TeachingCenterModel.Activity" Role="Activity" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ActivityCategory">
-              <PropertyRef Name="ActivityCategory_id" />
-            </Principal>
-            <Dependent Role="Activity">
-              <PropertyRef Name="Activity_categoryid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ActivitySummary_Activity">
-          <End Type="TeachingCenterModel.Activity" Role="Activity" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="TeachingCenterModel.ActivitySummary" Role="ActivitySummary" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Activity">
-              <PropertyRef Name="Activity_id" />
-            </Principal>
-            <Dependent Role="ActivitySummary">
-              <PropertyRef Name="Activity_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ActivityTeacher_Activity">
-          <End Type="TeachingCenterModel.Activity" Role="Activity" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="TeachingCenterModel.ActivityTeacher" Role="ActivityTeacher" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Activity">
-              <PropertyRef Name="Activity_id" />
-            </Principal>
-            <Dependent Role="ActivityTeacher">
-              <PropertyRef Name="activity_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ActivityTeacher_Teacher">
-          <End Type="TeachingCenterModel.Teacher" Role="Teacher" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="TeachingCenterModel.ActivityTeacher" Role="ActivityTeacher" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Teacher">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ActivityTeacher">
-              <PropertyRef Name="teacher_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Service_ServiceCategory">
-          <End Type="TeachingCenterModel.ServiceCategory" Role="ServiceCategory" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="TeachingCenterModel.Service" Role="Service" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ServiceCategory">
-              <PropertyRef Name="ServiceCategory_id" />
-            </Principal>
-            <Dependent Role="Service">
-              <PropertyRef Name="Service_category" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Service_Teacher">
-          <End Type="TeachingCenterModel.Teacher" Role="Teacher" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="TeachingCenterModel.Service" Role="Service" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Teacher">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Service">
-              <PropertyRef Name="Service_teacher" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
           <Property Type="Binary" Name="definition" Nullable="true" />
@@ -818,22 +830,56 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="TeachingCenterModelStoreContainer" CdmEntityContainer="TeachingCenterEntities">
+          <EntitySetMapping Name="Activity">
+            <EntityTypeMapping TypeName="TeachingCenterModel.Activity">
+              <MappingFragment StoreEntitySet="Activity">
+                <ScalarProperty Name="Activity_id" ColumnName="Activity_id" />
+                <ScalarProperty Name="Activity_title" ColumnName="Activity_title" />
+                <ScalarProperty Name="Activity_time" ColumnName="Activity_time" />
+                <ScalarProperty Name="Activity_content" ColumnName="Activity_content" />
+                <ScalarProperty Name="Activity_place" ColumnName="Activity_place" />
+                <ScalarProperty Name="Activity_nowcount" ColumnName="Activity_nowcount" />
+                <ScalarProperty Name="Activity_limitcount" ColumnName="Activity_limitcount" />
+                <ScalarProperty Name="Activity_categoryid" ColumnName="Activity_categoryid" />
+                <ScalarProperty Name="Activity_isdeleted" ColumnName="Activity_isdeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivityCategory">
+            <EntityTypeMapping TypeName="TeachingCenterModel.ActivityCategory">
+              <MappingFragment StoreEntitySet="ActivityCategory">
+                <ScalarProperty Name="ActivityCategory_id" ColumnName="ActivityCategory_id" />
+                <ScalarProperty Name="ActivityCategory_name" ColumnName="ActivityCategory_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivitySummary">
+            <EntityTypeMapping TypeName="TeachingCenterModel.ActivitySummary">
+              <MappingFragment StoreEntitySet="ActivitySummary">
+                <ScalarProperty Name="ActivitySummary_id" ColumnName="ActivitySummary_id" />
+                <ScalarProperty Name="Activity_id" ColumnName="Activity_id" />
+                <ScalarProperty Name="ActivitySummary_title" ColumnName="ActivitySummary_title" />
+                <ScalarProperty Name="ActivitySummary_time" ColumnName="ActivitySummary_time" />
+                <ScalarProperty Name="ActivitySummary_content" ColumnName="ActivitySummary_content" />
+                <ScalarProperty Name="ActivitySummary_isdeleted" ColumnName="ActivitySummary_isdeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivityTeacher">
+            <EntityTypeMapping TypeName="TeachingCenterModel.ActivityTeacher">
+              <MappingFragment StoreEntitySet="ActivityTeacher">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="activity_id" ColumnName="activity_id" />
+                <ScalarProperty Name="teacher_id" ColumnName="teacher_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Admin">
             <EntityTypeMapping TypeName="TeachingCenterModel.Admin">
               <MappingFragment StoreEntitySet="Admin">
@@ -846,7 +892,6 @@
           <EntitySetMapping Name="Develop">
             <EntityTypeMapping TypeName="TeachingCenterModel.Develop">
               <MappingFragment StoreEntitySet="Develop">
-                <ScalarProperty Name="Develop_deleted" ColumnName="Develop_deleted" />
                 <ScalarProperty Name="Develop_id" ColumnName="Develop_id" />
                 <ScalarProperty Name="Develop_title" ColumnName="Develop_title" />
                 <ScalarProperty Name="Develop_author" ColumnName="Develop_author" />
@@ -854,6 +899,7 @@
                 <ScalarProperty Name="Develop_content" ColumnName="Develop_content" />
                 <ScalarProperty Name="Develop_link" ColumnName="Develop_link" />
                 <ScalarProperty Name="Develop_hit" ColumnName="Develop_hit" />
+                <ScalarProperty Name="Develop_deleted" ColumnName="Develop_deleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -876,131 +922,99 @@
           <EntitySetMapping Name="Project">
             <EntityTypeMapping TypeName="TeachingCenterModel.Project">
               <MappingFragment StoreEntitySet="Project">
-                <ScalarProperty Name="submit_time" ColumnName="submit_time" />
-                <ScalarProperty Name="teacher_id" ColumnName="teacher_id" />
-                <ScalarProperty Name="category" ColumnName="category" />
-                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="project_id" ColumnName="project_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="teacher_id" ColumnName="teacher_id" />
+                <ScalarProperty Name="submit_time" ColumnName="submit_time" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProjectCategory">
             <EntityTypeMapping TypeName="TeachingCenterModel.ProjectCategory">
               <MappingFragment StoreEntitySet="ProjectCategory">
-                <ScalarProperty Name="end_time" ColumnName="end_time" />
-                <ScalarProperty Name="stage" ColumnName="stage" />
-                <ScalarProperty Name="project_content" ColumnName="project_content" />
-                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="project_content" ColumnName="project_content" />
+                <ScalarProperty Name="stage" ColumnName="stage" />
+                <ScalarProperty Name="end_time" ColumnName="end_time" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProjectJudge">
             <EntityTypeMapping TypeName="TeachingCenterModel.ProjectJudge">
               <MappingFragment StoreEntitySet="ProjectJudge">
-                <ScalarProperty Name="is_pass" ColumnName="is_pass" />
-                <ScalarProperty Name="comment" ColumnName="comment" />
-                <ScalarProperty Name="stage" ColumnName="stage" />
-                <ScalarProperty Name="judge_name" ColumnName="judge_name" />
-                <ScalarProperty Name="judge_id" ColumnName="judge_id" />
-                <ScalarProperty Name="teacher_id" ColumnName="teacher_id" />
-                <ScalarProperty Name="category" ColumnName="category" />
-                <ScalarProperty Name="project_id" ColumnName="project_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="project_id" ColumnName="project_id" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="teacher_id" ColumnName="teacher_id" />
+                <ScalarProperty Name="judge_id" ColumnName="judge_id" />
+                <ScalarProperty Name="judge_name" ColumnName="judge_name" />
+                <ScalarProperty Name="stage" ColumnName="stage" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="is_pass" ColumnName="is_pass" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProjectStage">
             <EntityTypeMapping TypeName="TeachingCenterModel.ProjectStage">
               <MappingFragment StoreEntitySet="ProjectStage">
-                <ScalarProperty Name="is_pass" ColumnName="is_pass" />
-                <ScalarProperty Name="time" ColumnName="time" />
-                <ScalarProperty Name="stage" ColumnName="stage" />
-                <ScalarProperty Name="project_content" ColumnName="project_content" />
+                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="project_id" ColumnName="project_id" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Teacher">
-            <EntityTypeMapping TypeName="TeachingCenterModel.Teacher">
-              <MappingFragment StoreEntitySet="Teacher">
-                <ScalarProperty Name="is_judge" ColumnName="is_judge" />
-                <ScalarProperty Name="rank" ColumnName="rank" />
-                <ScalarProperty Name="department" ColumnName="department" />
-                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
-                <ScalarProperty Name="number" ColumnName="number" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="gender" ColumnName="gender" />
-                <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Activity">
-            <EntityTypeMapping TypeName="TeachingCenterModel.Activity">
-              <MappingFragment StoreEntitySet="Activity">
-                <ScalarProperty Name="Activity_isdeleted" ColumnName="Activity_isdeleted" />
-                <ScalarProperty Name="Activity_categoryid" ColumnName="Activity_categoryid" />
-                <ScalarProperty Name="Activity_limitcount" ColumnName="Activity_limitcount" />
-                <ScalarProperty Name="Activity_nowcount" ColumnName="Activity_nowcount" />
-                <ScalarProperty Name="Activity_place" ColumnName="Activity_place" />
-                <ScalarProperty Name="Activity_content" ColumnName="Activity_content" />
-                <ScalarProperty Name="Activity_time" ColumnName="Activity_time" />
-                <ScalarProperty Name="Activity_title" ColumnName="Activity_title" />
-                <ScalarProperty Name="Activity_id" ColumnName="Activity_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ActivityCategory">
-            <EntityTypeMapping TypeName="TeachingCenterModel.ActivityCategory">
-              <MappingFragment StoreEntitySet="ActivityCategory">
-                <ScalarProperty Name="ActivityCategory_name" ColumnName="ActivityCategory_name" />
-                <ScalarProperty Name="ActivityCategory_id" ColumnName="ActivityCategory_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ActivitySummary">
-            <EntityTypeMapping TypeName="TeachingCenterModel.ActivitySummary">
-              <MappingFragment StoreEntitySet="ActivitySummary">
-                <ScalarProperty Name="ActivitySummary_isdeleted" ColumnName="ActivitySummary_isdeleted" />
-                <ScalarProperty Name="ActivitySummary_content" ColumnName="ActivitySummary_content" />
-                <ScalarProperty Name="ActivitySummary_time" ColumnName="ActivitySummary_time" />
-                <ScalarProperty Name="ActivitySummary_title" ColumnName="ActivitySummary_title" />
-                <ScalarProperty Name="Activity_id" ColumnName="Activity_id" />
-                <ScalarProperty Name="ActivitySummary_id" ColumnName="ActivitySummary_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ActivityTeacher">
-            <EntityTypeMapping TypeName="TeachingCenterModel.ActivityTeacher">
-              <MappingFragment StoreEntitySet="ActivityTeacher">
-                <ScalarProperty Name="teacher_id" ColumnName="teacher_id" />
-                <ScalarProperty Name="activity_id" ColumnName="activity_id" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="project_content" ColumnName="project_content" />
+                <ScalarProperty Name="stage" ColumnName="stage" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="is_pass" ColumnName="is_pass" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Service">
             <EntityTypeMapping TypeName="TeachingCenterModel.Service">
               <MappingFragment StoreEntitySet="Service">
-                <ScalarProperty Name="Service_isdeleted" ColumnName="Service_isdeleted" />
-                <ScalarProperty Name="Service_category" ColumnName="Service_category" />
-                <ScalarProperty Name="Service_remarks" ColumnName="Service_remarks" />
-                <ScalarProperty Name="Service_phone" ColumnName="Service_phone" />
-                <ScalarProperty Name="Service_time" ColumnName="Service_time" />
-                <ScalarProperty Name="Service_teacher" ColumnName="Service_teacher" />
                 <ScalarProperty Name="Service_id" ColumnName="Service_id" />
+                <ScalarProperty Name="Service_teacher" ColumnName="Service_teacher" />
+                <ScalarProperty Name="Service_time" ColumnName="Service_time" />
+                <ScalarProperty Name="Service_phone" ColumnName="Service_phone" />
+                <ScalarProperty Name="Service_remarks" ColumnName="Service_remarks" />
+                <ScalarProperty Name="Service_category" ColumnName="Service_category" />
+                <ScalarProperty Name="Service_isdeal" ColumnName="Service_isdeal" />
+                <ScalarProperty Name="Service_isdeleted" ColumnName="Service_isdeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ServiceCategory">
             <EntityTypeMapping TypeName="TeachingCenterModel.ServiceCategory">
               <MappingFragment StoreEntitySet="ServiceCategory">
-                <ScalarProperty Name="ServiceCategory_name" ColumnName="ServiceCategory_name" />
                 <ScalarProperty Name="ServiceCategory_id" ColumnName="ServiceCategory_id" />
+                <ScalarProperty Name="ServiceCategory_name" ColumnName="ServiceCategory_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TeachingCenterModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teacher">
+            <EntityTypeMapping TypeName="TeachingCenterModel.Teacher">
+              <MappingFragment StoreEntitySet="Teacher">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="department" ColumnName="department" />
+                <ScalarProperty Name="rank" ColumnName="rank" />
+                <ScalarProperty Name="is_judge" ColumnName="is_judge" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1028,17 +1042,6 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="TeachingCenterModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="TeachingCenterModel.Store.sp_upgraddiagrams" />
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="TeachingCenterModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

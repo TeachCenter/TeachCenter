@@ -4,32 +4,33 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="199076f86bd949f89776998affdc0698" Name="Diagram1" ZoomLevel="83">
-        <EntityTypeShape EntityType="TeachingCenterModel.Admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachingCenterModel.Develop" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachingCenterModel.Introduction" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachingCenterModel.Picture" Width="1.5" PointX="7" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachingCenterModel.Project" Width="1.5" PointX="3" PointY="6.75" />
-        <EntityTypeShape EntityType="TeachingCenterModel.ProjectCategory" Width="1.5" PointX="0.75" PointY="7" />
-        <EntityTypeShape EntityType="TeachingCenterModel.ProjectJudge" Width="1.5" PointX="5.25" PointY="5.125" />
-        <EntityTypeShape EntityType="TeachingCenterModel.ProjectStage" Width="1.5" PointX="5.25" PointY="8.75" />
-        <EntityTypeShape EntityType="TeachingCenterModel.Teacher" Width="1.5" PointX="0.75" PointY="10.5" />
-        <AssociationConnector Association="TeachingCenterModel.FK_Project_ProjectCategory" />
-        <AssociationConnector Association="TeachingCenterModel.FK_Project_Teacher" />
-        <AssociationConnector Association="TeachingCenterModel.FK_ProjectJudge_Project" />
-        <AssociationConnector Association="TeachingCenterModel.FK_ProjectStage_Project" />
-        <EntityTypeShape EntityType="TeachingCenterModel.Activity" Width="1.5" PointX="9.625" PointY="7.875" />
-        <EntityTypeShape EntityType="TeachingCenterModel.ActivityCategory" Width="1.5" PointX="7.375" PointY="8.625" />
-        <EntityTypeShape EntityType="TeachingCenterModel.ActivitySummary" Width="1.5" PointX="11.875" PointY="8.375" />
-        <EntityTypeShape EntityType="TeachingCenterModel.ActivityTeacher" Width="1.5" PointX="11.875" PointY="12" />
-        <EntityTypeShape EntityType="TeachingCenterModel.Service" Width="1.5" PointX="3" PointY="11" />
-        <EntityTypeShape EntityType="TeachingCenterModel.ServiceCategory" Width="1.5" PointX="0.75" PointY="15.5" />
-        <AssociationConnector Association="TeachingCenterModel.FK_Activity_ActivityCategory" />
-        <AssociationConnector Association="TeachingCenterModel.FK_ActivitySummary_Activity" />
-        <AssociationConnector Association="TeachingCenterModel.FK_ActivityTeacher_Activity" />
-        <AssociationConnector Association="TeachingCenterModel.FK_ActivityTeacher_Teacher" />
-        <AssociationConnector Association="TeachingCenterModel.FK_Service_ServiceCategory" />
-        <AssociationConnector Association="TeachingCenterModel.FK_Service_Teacher" />
+      <Diagram DiagramId="1d91992fdf8d4e98a7a2185509a38a48" Name="Diagram1">
+        <EntityTypeShape EntityType="TeachingCenterModel.Activity" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.ActivityCategory" Width="1.5" PointX="1.5" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.ActivitySummary" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.ActivityTeacher" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.Admin" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.Develop" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.Introduction" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.Picture" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.Project" Width="1.5" PointX="6" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.ProjectCategory" Width="1.5" PointX="3.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.ProjectJudge" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.ProjectStage" Width="1.5" PointX="8.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.Service" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.ServiceCategory" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.sysdiagrams" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.Teacher" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="TeachingCenterModel.FK_Activity_ActivityCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="TeachingCenterModel.FK_ActivitySummary_Activity" ManuallyRouted="false" />
+        <AssociationConnector Association="TeachingCenterModel.FK_ActivityTeacher_Activity" ManuallyRouted="false" />
+        <AssociationConnector Association="TeachingCenterModel.FK_ActivityTeacher_Teacher" ManuallyRouted="false" />
+        <AssociationConnector Association="TeachingCenterModel.FK_Project_ProjectCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="TeachingCenterModel.FK_Project_Teacher" ManuallyRouted="false" />
+        <AssociationConnector Association="TeachingCenterModel.FK_ProjectJudge_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="TeachingCenterModel.FK_ProjectStage_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="TeachingCenterModel.FK_Service_ServiceCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="TeachingCenterModel.FK_Service_Teacher" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

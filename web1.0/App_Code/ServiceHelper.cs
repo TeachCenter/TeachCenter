@@ -23,4 +23,16 @@ public class ServiceHelper
             return sc.ServiceCategory_name;
         }
     }
+
+    static public bool checkCategoryNameExit(string name)
+    {
+        using (var db = new TeachingCenterEntities())
+        {
+            var sc = from it in db.ServiceCategory where it.ServiceCategory_name == name select it;
+            if (sc.Count() == 0)
+                return false;
+            else
+                return true;
+        }
+    }
 }

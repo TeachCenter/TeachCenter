@@ -170,6 +170,7 @@ public partial class Service
     public string Service_phone { get; set; }
     public string Service_remarks { get; set; }
     public int Service_category { get; set; }
+    public int Service_isdeal { get; set; }
     public long Service_isdeleted { get; set; }
 
     public virtual ServiceCategory ServiceCategory { get; set; }
@@ -202,8 +203,8 @@ public partial class Teacher
 {
     public Teacher()
     {
-        this.Project = new HashSet<Project>();
         this.ActivityTeacher = new HashSet<ActivityTeacher>();
+        this.Project = new HashSet<Project>();
         this.Service = new HashSet<Service>();
     }
 
@@ -219,8 +220,8 @@ public partial class Teacher
     public string rank { get; set; }
     public int is_judge { get; set; }
 
-    public virtual ICollection<Project> Project { get; set; }
     public virtual ICollection<ActivityTeacher> ActivityTeacher { get; set; }
+    public virtual ICollection<Project> Project { get; set; }
     public virtual ICollection<Service> Service { get; set; }
 }
 

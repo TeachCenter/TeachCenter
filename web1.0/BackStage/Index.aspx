@@ -103,17 +103,20 @@
 			<dt><i class="Hui-iconfont">&#xe620;</i> 服务管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="product-brand.html" data-title="服务分类管理" href="ServiceCategoryManage.aspx">服务分类管理</a></li>
-					<li><a data-href="product-category.html" data-title="服务申请管理" href="ServiceManage.aspx">服务申请管理</a></li>
+					<li><a data-href="ServiceCategoryManage.aspx" data-title="服务分类管理" href="javascript:void(0)">服务分类管理</a></li>
+					<li><a data-href="ServiceManage.aspx" data-title="服务申请管理" href="javascript:void(0)">服务申请管理</a></li>
 			</ul>
 		</dd>
 	</dl>
 		<dl id="menu-comments">
-			<dt><i class="Hui-iconfont">&#xe622;</i> 评论管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dt><i class="Hui-iconfont">&#xe622;</i> 活动管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="http://h-ui.duoshuo.com/admin/" data-title="评论列表" href="javascript:;">评论列表</a></li>
-					<li><a data-href="feedback-list.html" data-title="意见反馈" href="javascript:void(0)">意见反馈</a></li>
+					<li><a data-href="ActivityCatagoryManage.aspx" data-title="活动分类管理" href="javascript:;">活动分类管理</a></li>
+					<li><a data-href="ActivityManage.aspx" data-title="活动信息管理" href="javascript:void(0)">活动信息管理</a></li>
+                    <li><a data-href="ActivityAdd.aspx" data-title="添加活动" href="javascript:;">添加活动</a></li>
+					<li><a data-href="ActivitySummaryManage.aspx" data-title="活动总结管理" href="javascript:void(0)">活动总结管理</a></li>
+                    <li><a data-href="ActivitySummaryAdd.aspx" data-title="添加活动总结" href="javascript:;">添加活动总结</a></li>
 			</ul>
 		</dd>
 	</dl>
