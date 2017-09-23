@@ -32,4 +32,13 @@ public class TeacherHelper
             return teacher.id;
         }
     }
+
+    static public string getTeacherNameByID(int id)
+    {
+        using (var db = new TeachingCenterEntities())
+        {
+            Teacher teacher = db.Teacher.Single(a => a.id == id);
+            return teacher.name;
+        }
+    }
 }

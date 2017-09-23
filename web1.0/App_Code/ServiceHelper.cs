@@ -24,6 +24,15 @@ public class ServiceHelper
         }
     }
 
+    static public int getCategoryID(string name)
+    {
+        using (var db = new TeachingCenterEntities())
+        {
+            ServiceCategory sc = db.ServiceCategory.SingleOrDefault(a => a.ServiceCategory_name == name);
+            return sc.ServiceCategory_id;
+        }
+    }
+
     static public bool checkCategoryNameExit(string name)
     {
         using (var db = new TeachingCenterEntities())
