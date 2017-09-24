@@ -26,4 +26,22 @@ public class ActivityHelper
                 return true;
         }
     }
+
+    static public int getCategoryId(string name)
+    {
+        using (var db = new TeachingCenterEntities())
+        {
+            ActivityCategory ac = db.ActivityCategory.Single(a => a.ActivityCategory_name == name);
+            return ac.ActivityCategory_id;
+        }
+    }
+
+    static public string getCategoryName(int id)
+    {
+        using (var db = new TeachingCenterEntities())
+        {
+            ActivityCategory ac = db.ActivityCategory.Single(a => a.ActivityCategory_id == id);
+            return ac.ActivityCategory_name;
+        }
+    }
 }

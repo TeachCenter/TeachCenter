@@ -103,8 +103,7 @@ public partial class BackStage_ServiceManage : System.Web.UI.Page
             else
                 service = db.Service.Where(a => a.Service_isdeleted == 0).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
 
-            rptService.DataSource = service.ToList();
-            rptService.DataBind();
+            
 
             ltCount.Text = service.Count().ToString();
 

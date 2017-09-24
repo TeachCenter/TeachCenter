@@ -14,7 +14,6 @@ public partial class Activity
 {
     public Activity()
     {
-        this.ActivitySummary = new HashSet<ActivitySummary>();
         this.ActivityTeacher = new HashSet<ActivityTeacher>();
     }
 
@@ -27,9 +26,10 @@ public partial class Activity
     public int Activity_limitcount { get; set; }
     public int Activity_categoryid { get; set; }
     public long Activity_isdeleted { get; set; }
+    public string Activity_author { get; set; }
 
     public virtual ActivityCategory ActivityCategory { get; set; }
-    public virtual ICollection<ActivitySummary> ActivitySummary { get; set; }
+    public virtual Admin Admin { get; set; }
     public virtual ICollection<ActivityTeacher> ActivityTeacher { get; set; }
 }
 
@@ -49,13 +49,12 @@ public partial class ActivityCategory
 public partial class ActivitySummary
 {
     public int ActivitySummary_id { get; set; }
-    public int Activity_id { get; set; }
     public string ActivitySummary_title { get; set; }
     public System.DateTime ActivitySummary_time { get; set; }
     public string ActivitySummary_content { get; set; }
     public long ActivitySummary_isdeleted { get; set; }
-
-    public virtual Activity Activity { get; set; }
+    public string ActivitySummary_author { get; set; }
+    public string ActivitySummary_cover { get; set; }
 }
 
 public partial class ActivityTeacher
@@ -70,9 +69,16 @@ public partial class ActivityTeacher
 
 public partial class Admin
 {
+    public Admin()
+    {
+        this.Activity = new HashSet<Activity>();
+    }
+
     public string Admin_id { get; set; }
     public string Admin_pwd { get; set; }
     public string Admin_name { get; set; }
+
+    public virtual ICollection<Activity> Activity { get; set; }
 }
 
 public partial class Develop

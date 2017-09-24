@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ActivityAdd.aspx.cs" Inherits="BackStage_ActivityAdd" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ActivitySummaryEditor.aspx.cs" Inherits="BackStage_ActivitySummaryEditor" %>
 
-<!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
 <html>
 <head>
+<!--_meta 作为公共模版分离出去-->
 <meta charset="utf-8">
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -11,10 +11,7 @@
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <link rel="Bookmark" href="/favicon.ico" >
 <link rel="Shortcut Icon" href="/favicon.ico" />
-<!--[if lt IE 9]>
-<script type="text/javascript" src="lib/html5shiv.js"></script>
-<script type="text/javascript" src="lib/respond.min.js"></script>
-<![endif]-->
+
 <link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
 <link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
@@ -42,40 +39,12 @@
 <article class="page-container">
 	<form runat="server" class="form form-horizontal">
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>活动标题：</label>
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>活动总结标题：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<asp:TextBox ID="txtTitle" runat="server" CssClass="input-text"></asp:TextBox>
 			</div>
 		</div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>活动时间：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                
-                <input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'logmax\')||\'%y-%M-%d\'}' })" id="logmin" class="input-text Wdate" style="width:120px;" runat="server">
-		        <input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'logmin\')}',maxDate:'%y-%M-%d' })" id="logmax" class="input-text Wdate" style="width:120px;display:none;" runat="server">
-	            <asp:TextBox ID="txtHour" onkeyup="this.value=this.value.replace(/\D/g,'')" style="width:80px;" runat="server" CssClass="input-text"></asp:TextBox> :
-                <asp:TextBox ID="txtMinute" onkeyup="this.value=this.value.replace(/\D/g,'')" style="width:80px;" runat="server" CssClass="input-text"></asp:TextBox>
-            </div>
-        </div>
-        <div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>活动地点：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<asp:TextBox ID="txtPlace" runat="server" CssClass="input-text"></asp:TextBox>
-			</div>
-		</div>
-        <div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>活动限制人数：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<asp:TextBox ID="txtLimit" runat="server" CssClass="input-text"  onkeyup="this.value=this.value.replace(/\D/g,'')"></asp:TextBox>
-			</div>
-		</div>
-        <div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>活动类型：</label>
-			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-                <asp:DropDownList runat="server" ID="dropCategory" CssClass="select">
-                </asp:DropDownList></span>
-			</div>
-		</div>
+
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章内容：</label>
 			<div class="formControls col-xs-8 col-sm-9"> 
@@ -93,8 +62,33 @@
 			</div>
 		</div>
 		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>发布者：</label>
+			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+                <asp:DropDownList runat="server" ID="dropAuthor" CssClass="select">
+                    <asp:ListItem Value="0" >本人</asp:ListItem>
+                    <asp:ListItem Value="1">匿名</asp:ListItem>
+                    <asp:ListItem Value="2">未知</asp:ListItem>
+                </asp:DropDownList></span>
+				</div>
+		</div>
+
+		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-                <asp:Button ID="btnSub" runat="server" CssClass="btn btn-primary radius" OnClick="btnSub_Click" Text="发布" />
+                <asp:Button ID="btnSub" runat="server" CssClass="btn btn-primary radius" OnClick="btnSub_Click" Text="修改" />
+				
+			</div>
+		</div>
+
+        <div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <asp:FileUpload ID="fup" runat="server" />
+                <asp:Label ID="lblInfo" runat="server"></asp:Label>
+			</div>
+		</div>
+
+        <div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <asp:Button ID="btnFup" runat="server" CssClass="btn btn-primary radius" OnClick="btnFup_Click" Text="修改封面" />
 				
 			</div>
 		</div>
