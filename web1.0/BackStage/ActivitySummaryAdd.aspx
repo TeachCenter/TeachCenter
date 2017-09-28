@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DevelopAdd.aspx.cs" Inherits="BackStage_DevelopAdd" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ActivitySummaryAdd.aspx.cs" Inherits="BackStage_ActivitySummaryAdd" %>
 
-<!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
 <html>
 <head>
+<!--_meta 作为公共模版分离出去-->
 <meta charset="utf-8">
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -11,10 +11,7 @@
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <link rel="Bookmark" href="/favicon.ico" >
 <link rel="Shortcut Icon" href="/favicon.ico" />
-<!--[if lt IE 9]>
-<script type="text/javascript" src="lib/html5shiv.js"></script>
-<script type="text/javascript" src="lib/respond.min.js"></script>
-<![endif]-->
+
 <link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
 <link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
@@ -25,6 +22,8 @@
     <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.all.min.js"> </script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/lang/zh-cn/zh-cn.js"></script>
+
+
     <script type="text/javascript">
         $(document).ready(function () {
             //$("#link").css("display", "none");
@@ -40,37 +39,12 @@
 <article class="page-container">
 	<form runat="server" class="form form-horizontal">
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章标题：</label>
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>活动总结标题：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<asp:TextBox ID="txtTitle" runat="server" CssClass="input-text"></asp:TextBox>
 			</div>
 		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>发布者：</label>
-			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-                <asp:DropDownList runat="server" ID="dropAuthor" CssClass="select">
-                    <asp:ListItem Value="0" >本人</asp:ListItem>
-                    <asp:ListItem Value="1">匿名</asp:ListItem>
-                    <asp:ListItem Value="2">未知</asp:ListItem>
-                </asp:DropDownList></span>
-				</div>
-		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">使用外部链接：</label>
-			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
-				<div class="check-box">
-					<%--<input type="checkbox" id="checkbox-moban">--%>
-                    <asp:CheckBox ID="cbxLink" runat="server" />
-					<label for="checkbox-moban">&nbsp;</label>
-				</div>
-			</div>
-		</div>
-		<div id="link" class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章链接：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-                <asp:TextBox ID="txtLink" runat="server" CssClass="input-text"></asp:TextBox>
-			</div>
-		</div>
+
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章内容：</label>
 			<div class="formControls col-xs-8 col-sm-9"> 
@@ -85,6 +59,22 @@
                      myEditor11.value = editor.getContent();//把得到的值给textarea
                      }
                  </script>
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>发布者：</label>
+			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+                <asp:DropDownList runat="server" ID="dropAuthor" CssClass="select">
+                    <asp:ListItem Value="0" >本人</asp:ListItem>
+                    <asp:ListItem Value="1">匿名</asp:ListItem>
+                    <asp:ListItem Value="2">未知</asp:ListItem>
+                </asp:DropDownList></span>
+				</div>
+		</div>
+        <div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <asp:FileUpload ID="fup" runat="server" />
+                <asp:Label ID="lblInfo" runat="server"></asp:Label>
 			</div>
 		</div>
 		<div class="row cl">
@@ -107,17 +97,6 @@
                     $("#btnSub").attr("disabled", false);
                 }
             });
-            //判断是否使用外部链接
-            //$("#cbxLink").change(function () {
-            //    var check = $("#cbxLink");
-            //    alert("44");
-            //    if (check.is(':checked'))
-            //        alert("55");
-            //    else
-            //        alert("66");
-            //});
-            
-                //
         </script>
 	</form>
 </article>
@@ -130,6 +109,8 @@
 
 <!--请在下方写此页面业务相关的脚本-->
 <script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
 <script type="text/javascript" src="lib/jquery.validation/1.14.0/jquery.validate.js"></script> 
 <script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script> 
 <script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script>

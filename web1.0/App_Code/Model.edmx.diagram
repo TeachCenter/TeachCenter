@@ -18,6 +18,7 @@
         <EntityTypeShape EntityType="TeachingCenterModel.ApplicationInfo" Width="1.5" PointX="7.375" PointY="0.75" />
         <EntityTypeShape EntityType="TeachingCenterModel.JudgeApplication" Width="1.5" PointX="3" PointY="1.5" />
         <AssociationConnector Association="TeachingCenterModel.FK_JudgeApplication_Teacher" />
+
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -9,7 +9,14 @@ public partial class BackStage_DevelopAdd : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        try
+        {
+            string teacher = Session["AdminID"].ToString();
+        }
+        catch
+        {
+            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+        }
     }
 
     protected void btnSub_Click(object sender, EventArgs e)
@@ -44,7 +51,8 @@ public partial class BackStage_DevelopAdd : System.Web.UI.Page
                 db.Develop.Add(dev);
                 db.SaveChanges();
                 JSHelper.ShowAlert("发布成功！");
-                JSHelper.Redirect("DevelopManage.aspx");
+                //JSHelper.Redirect("DevelopManage.aspx");
+                Server.Transfer("DevelopManage.aspx");
             }
     }
 }

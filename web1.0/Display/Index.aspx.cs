@@ -5,17 +5,21 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class BackStage_Welcome : System.Web.UI.Page
+public partial class Display_Index : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         try
         {
-            string teacher = Session["AdminID"].ToString();
+            string teacher = Session["TeacherNumber"].ToString();
+            if (teacher != null)
+                lbtLogin.Visible = false;
         }
         catch
         {
-            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+            //lbtLogin.Visible = false;
         }
     }
+
+
 }
