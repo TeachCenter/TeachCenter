@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DevelopAdd.aspx.cs" Inherits="BackStage_DevelopAdd" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DevelopEditor.aspx.cs" Inherits="BackStage_DevelopEditor" %>
 <!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
 <html>

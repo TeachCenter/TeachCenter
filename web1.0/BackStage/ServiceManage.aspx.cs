@@ -9,6 +9,14 @@ public partial class BackStage_ServiceManage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        try
+        {
+            string teacher = Session["AdminID"].ToString();
+        }
+        catch
+        {
+            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+        }
         if (!IsPostBack)
         {
             using (var db = new TeachingCenterEntities())
@@ -38,7 +46,8 @@ public partial class BackStage_ServiceManage : System.Web.UI.Page
             }
         }
 
-    }
+
+     }
 
     protected void dropCategory_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -52,8 +61,15 @@ public partial class BackStage_ServiceManage : System.Web.UI.Page
             Literal literal = (Literal)e.Item.FindControl("ltNumber");
             literal.Text = (e.Item.ItemIndex + 1).ToString();
             //绑定申请人
-            literal = (Literal)e.Item.FindControl("ltTeacher");
-            literal.Text =TeacherHelper.getTeacherNameByID(Convert.ToInt32(literal.Text));
+            try
+            {
+                literal = (Literal)e.Item.FindControl("ltTeacher");
+                literal.Text = TeacherHelper.getTeacherNameByID(Convert.ToInt32(literal.Text));
+            }
+            catch
+            {
+                literal.Text = "";
+            }
             //绑定是否审核
             //if()
         }
@@ -88,22 +104,29 @@ public partial class BackStage_ServiceManage : System.Web.UI.Page
         }
     }
 
-    //分页
+    //列表绑定与分页
     void DataBindToRepeater(int currentPage)
     {
 
         using (var db = new TeachingCenterEntities())
         {
             List<Service> service;
+            DateTime min = new DateTime(1900,1,1);
+            DateTime max = new DateTime(2300, 12, 31);
+            if (logmin.Value != "")
+                min = Convert.ToDateTime(logmin.Value);
+            if (logmax.Value != "")
+                max = Convert.ToDateTime(logmax.Value).AddDays(1);
             if (dropCategory.SelectedValue != "全部分类")
             {
-                int category = ServiceHelper.getCategoryID(dropCategory.SelectedValue);
-                service = db.Service.Where(a => a.Service_isdeleted == 0 && a.Service_category == category).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList(); 
+                 int category = ServiceHelper.getCategoryID(dropCategory.SelectedValue);
+                service = db.Service.Where(a => a.Service_isdeleted == 0 && a.Service_category == category && a.Service_time >= min && a.Service_time < max).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
             }
             else
-                service = db.Service.Where(a => a.Service_isdeleted == 0).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
+                 service = db.Service.Where(a => a.Service_isdeleted == 0 && a.Service_time >= min && a.Service_time < max).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
 
-            
+
+
 
             ltCount.Text = service.Count().ToString();
 
@@ -189,5 +212,10 @@ public partial class BackStage_ServiceManage : System.Web.UI.Page
                 }
         }
         JSHelper.AlertThenRedirect("处理成功！", "ServiceManage.aspx");
+    }
+
+    protected void ltbSearch_Click(object sender, EventArgs e)
+    {
+        DataBindToRepeater(1);
     }
 }

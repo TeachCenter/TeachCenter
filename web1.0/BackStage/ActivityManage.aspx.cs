@@ -9,6 +9,14 @@ public partial class BackStage_ActivityManage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        try
+        {
+            string teacher = Session["AdminID"].ToString();
+        }
+        catch
+        {
+            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+        }
         if (!IsPostBack)
         {
             using (var db = new TeachingCenterEntities())
@@ -37,6 +45,7 @@ public partial class BackStage_ActivityManage : System.Web.UI.Page
                 DataBindToRepeater(1);
             }
         }
+
     }
 
     protected void dropCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -55,7 +64,7 @@ public partial class BackStage_ActivityManage : System.Web.UI.Page
                 Activity service = db.Activity.Single(a => a.Activity_id == id);
                 service.Activity_isdeleted = 1;
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("删除成功！", "ServiceManage.aspx");
+                JSHelper.AlertThenRedirect("删除成功！", "ActivityManage.aspx");
             }
         }
     }
@@ -67,10 +76,22 @@ public partial class BackStage_ActivityManage : System.Web.UI.Page
             //绑定序号
             Literal literal = (Literal)e.Item.FindControl("ltNumber");
             literal.Text = (e.Item.ItemIndex + 1).ToString();
-
+            //绑定分类
+            try
+            {
+                literal = (Literal)e.Item.FindControl("ltCategory");
+                literal.Text = ActivityHelper.getCategoryName(Convert.ToInt32(literal.Text));
+            }
+            catch
+            {
+                literal.Text = "";
+            }
+            //绑定内容
+            literal = (Literal)e.Item.FindControl("ltContent");
+            string content = MyHtmlHelper.RemoveTags(Server.HtmlDecode(literal.Text));
+            literal.Text = content.Length > 20 ? content.Substring(0, 20) + "..." : content;
         }
     }
-
     //分页
     void DataBindToRepeater(int currentPage)
     {
@@ -79,13 +100,35 @@ public partial class BackStage_ActivityManage : System.Web.UI.Page
         {
 
             List<Activity> acsu;
-            if (dropCategory.SelectedValue != "全部分类")
+            DateTime min = new DateTime(1900, 1, 1);
+            DateTime max = new DateTime(2300, 12, 31);
+            if (logmin.Value != "")
+                min = Convert.ToDateTime(logmin.Value);
+            if (logmax.Value != "")
+                max = Convert.ToDateTime(logmax.Value).AddDays(1);
+
+
+            if(txtSearch.Text == "")
             {
-                int category = ActivityHelper.getCategoryId(dropCategory.SelectedValue);
-                acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_categoryid== category).OrderByDescending(a => a.Activity_time).ToList();
+                if (dropCategory.SelectedValue != "全部分类")
+                {
+                    int category = ActivityHelper.getCategoryId(dropCategory.SelectedValue);
+                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_categoryid == category && a.Activity_time >= min && a.Activity_time < max).OrderByDescending(a => a.Activity_time).ToList();
+                }
+                else
+                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_time >= min && a.Activity_time < max).OrderByDescending(a => a.Activity_time).ToList();
             }
             else
-                acsu = db.Activity.Where(a => a.Activity_isdeleted == 0).OrderByDescending(a => a.Activity_time).ToList();
+            {
+                if (dropCategory.SelectedValue != "全部分类")
+                {
+                    int category = ActivityHelper.getCategoryId(dropCategory.SelectedValue);
+                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_categoryid == category && a.Activity_time >= min && a.Activity_time < max && a.Activity_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Activity_time).ToList();
+                }
+                else
+                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_time >= min && a.Activity_time < max && a.Activity_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Activity_time).ToList();
+
+            }
 
             ltCount.Text = acsu.Count().ToString();
 
@@ -151,5 +194,10 @@ public partial class BackStage_ActivityManage : System.Web.UI.Page
                 }
         }
         JSHelper.AlertThenRedirect("删除成功！", "ActivityManage.aspx");
+    }
+
+    protected void ltbSearch_Click(object sender, EventArgs e)
+    {
+        DataBindToRepeater(1);
     }
 }

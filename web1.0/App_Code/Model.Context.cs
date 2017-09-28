@@ -32,6 +32,7 @@ public partial class TeachingCenterEntities : DbContext
     public DbSet<ActivityTeacher> ActivityTeacher { get; set; }
     public DbSet<Admin> Admin { get; set; }
     public DbSet<Develop> Develop { get; set; }
+    public DbSet<DevelopCategory> DevelopCategory { get; set; }
     public DbSet<Introduction> Introduction { get; set; }
     public DbSet<Picture> Picture { get; set; }
     public DbSet<Project> Project { get; set; }

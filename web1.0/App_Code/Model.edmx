@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TeachingCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+      <Schema Namespace="TeachingCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityType Name="Activity">
           <Key>
             <PropertyRef Name="Activity_id" />
@@ -19,6 +19,7 @@
           <Property Name="Activity_categoryid" Type="int" Nullable="false" />
           <Property Name="Activity_isdeleted" Type="bigint" Nullable="false" />
           <Property Name="Activity_author" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activity_hit" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ActivityCategory">
           <Key>
@@ -38,6 +39,7 @@
           <Property Name="ActivitySummary_isdeleted" Type="bigint" Nullable="false" />
           <Property Name="ActivitySummary_author" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ActivitySummary_cover" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ActivitySummary_hit" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ActivityTeacher">
           <Key>
@@ -67,6 +69,14 @@
           <Property Name="Develop_link" Type="nvarchar(max)" />
           <Property Name="Develop_hit" Type="int" Nullable="false" />
           <Property Name="Develop_deleted" Type="bigint" Nullable="false" />
+          <Property Name="Develop_category" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DevelopCategory">
+          <Key>
+            <PropertyRef Name="DevelopCategory_id" />
+          </Key>
+          <Property Name="DevelopCategory_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DevelopCategory_name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Introduction">
           <Key>
@@ -139,6 +149,7 @@
           <Property Name="Service_category" Type="int" Nullable="false" />
           <Property Name="Service_isdeal" Type="int" Nullable="false" />
           <Property Name="Service_isdeleted" Type="bigint" Nullable="false" />
+          <Property Name="Service_hit" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ServiceCategory">
           <Key>
@@ -212,6 +223,20 @@
             </Principal>
             <Dependent Role="ActivityTeacher">
               <PropertyRef Name="teacher_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Develop_DevelopCategory">
+          <End Role="DevelopCategory" Type="Self.DevelopCategory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Develop" Type="Self.Develop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DevelopCategory">
+              <PropertyRef Name="DevelopCategory_id" />
+            </Principal>
+            <Dependent Role="Develop">
+              <PropertyRef Name="Develop_category" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -337,6 +362,7 @@
           <EntitySet Name="ActivityTeacher" EntityType="Self.ActivityTeacher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Develop" EntityType="Self.Develop" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DevelopCategory" EntityType="Self.DevelopCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Introduction" EntityType="Self.Introduction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Picture" EntityType="Self.Picture" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
@@ -358,6 +384,10 @@
           <AssociationSet Name="FK_ActivityTeacher_Teacher" Association="Self.FK_ActivityTeacher_Teacher">
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="ActivityTeacher" EntitySet="ActivityTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Develop_DevelopCategory" Association="Self.FK_Develop_DevelopCategory">
+            <End Role="DevelopCategory" EntitySet="DevelopCategory" />
+            <End Role="Develop" EntitySet="Develop" />
           </AssociationSet>
           <AssociationSet Name="FK_Project_ProjectCategory" Association="Self.FK_Project_ProjectCategory">
             <End Role="ProjectCategory" EntitySet="ProjectCategory" />
@@ -384,7 +414,8 @@
             <End Role="Service" EntitySet="Service" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TeachingCenterModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -402,8 +433,8 @@
           <Property Name="Activity_categoryid" Type="Int32" Nullable="false" />
           <Property Name="Activity_isdeleted" Type="Int64" Nullable="false" />
           <Property Name="Activity_author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Activity_hit" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ActivityCategory" Relationship="Self.FK_Activity_ActivityCategory" FromRole="Activity" ToRole="ActivityCategory" />
-          <NavigationProperty Name="Admin" Relationship="Self.FK_Activity_Admin" FromRole="Activity" ToRole="Admin" />
           <NavigationProperty Name="ActivityTeacher" Relationship="Self.FK_ActivityTeacher_Activity" FromRole="Activity" ToRole="ActivityTeacher" />
         </EntityType>
         <EntityType Name="ActivityCategory">
@@ -424,7 +455,8 @@
           <Property Name="ActivitySummary_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ActivitySummary_isdeleted" Type="Int64" Nullable="false" />
           <Property Name="ActivitySummary_author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ActivitySummary_cover" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActivitySummary_cover" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ActivitySummary_hit" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="ActivityTeacher">
           <Key>
@@ -443,7 +475,6 @@
           <Property Name="Admin_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Admin_pwd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Admin_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_Admin" FromRole="Admin" ToRole="Activity" />
         </EntityType>
         <EntityType Name="Develop">
           <Key>
@@ -457,6 +488,16 @@
           <Property Name="Develop_link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Develop_hit" Type="Int32" Nullable="false" />
           <Property Name="Develop_deleted" Type="Int64" Nullable="false" />
+          <Property Name="Develop_category" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DevelopCategory" Relationship="Self.FK_Develop_DevelopCategory" FromRole="Develop" ToRole="DevelopCategory" />
+        </EntityType>
+        <EntityType Name="DevelopCategory">
+          <Key>
+            <PropertyRef Name="DevelopCategory_id" />
+          </Key>
+          <Property Name="DevelopCategory_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DevelopCategory_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Develop" Relationship="Self.FK_Develop_DevelopCategory" FromRole="DevelopCategory" ToRole="Develop" />
         </EntityType>
         <EntityType Name="Introduction">
           <Key>
@@ -536,6 +577,7 @@
           <Property Name="Service_category" Type="Int32" Nullable="false" />
           <Property Name="Service_isdeal" Type="Int32" Nullable="false" />
           <Property Name="Service_isdeleted" Type="Int64" Nullable="false" />
+          <Property Name="Service_hit" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ServiceCategory" Relationship="Self.FK_Service_ServiceCategory" FromRole="Service" ToRole="ServiceCategory" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_Service_Teacher" FromRole="Service" ToRole="Teacher" />
         </EntityType>
@@ -590,20 +632,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Activity_Admin">
-          <End Role="Admin" Type="Self.Admin" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Admin">
-              <PropertyRef Name="Admin_id" />
-            </Principal>
-            <Dependent Role="Activity">
-              <PropertyRef Name="Activity_author" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ActivityTeacher_Activity">
           <End Role="Activity" Type="Self.Activity" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -629,6 +657,20 @@
             </Principal>
             <Dependent Role="ActivityTeacher">
               <PropertyRef Name="teacher_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Develop_DevelopCategory">
+          <End Role="DevelopCategory" Type="Self.DevelopCategory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Develop" Type="Self.Develop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DevelopCategory">
+              <PropertyRef Name="DevelopCategory_id" />
+            </Principal>
+            <Dependent Role="Develop">
+              <PropertyRef Name="Develop_category" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -723,6 +765,7 @@
           <EntitySet Name="ActivityTeacher" EntityType="Self.ActivityTeacher" />
           <EntitySet Name="Admin" EntityType="Self.Admin" />
           <EntitySet Name="Develop" EntityType="Self.Develop" />
+          <EntitySet Name="DevelopCategory" EntityType="Self.DevelopCategory" />
           <EntitySet Name="Introduction" EntityType="Self.Introduction" />
           <EntitySet Name="Picture" EntityType="Self.Picture" />
           <EntitySet Name="Project" EntityType="Self.Project" />
@@ -737,10 +780,6 @@
             <End Role="ActivityCategory" EntitySet="ActivityCategory" />
             <End Role="Activity" EntitySet="Activity" />
           </AssociationSet>
-          <AssociationSet Name="FK_Activity_Admin" Association="Self.FK_Activity_Admin">
-            <End Role="Admin" EntitySet="Admin" />
-            <End Role="Activity" EntitySet="Activity" />
-          </AssociationSet>
           <AssociationSet Name="FK_ActivityTeacher_Activity" Association="Self.FK_ActivityTeacher_Activity">
             <End Role="Activity" EntitySet="Activity" />
             <End Role="ActivityTeacher" EntitySet="ActivityTeacher" />
@@ -748,6 +787,10 @@
           <AssociationSet Name="FK_ActivityTeacher_Teacher" Association="Self.FK_ActivityTeacher_Teacher">
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="ActivityTeacher" EntitySet="ActivityTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Develop_DevelopCategory" Association="Self.FK_Develop_DevelopCategory">
+            <End Role="DevelopCategory" EntitySet="DevelopCategory" />
+            <End Role="Develop" EntitySet="Develop" />
           </AssociationSet>
           <AssociationSet Name="FK_Project_ProjectCategory" Association="Self.FK_Project_ProjectCategory">
             <End Role="ProjectCategory" EntitySet="ProjectCategory" />
@@ -834,6 +877,7 @@
                 <ScalarProperty Name="Activity_categoryid" ColumnName="Activity_categoryid" />
                 <ScalarProperty Name="Activity_isdeleted" ColumnName="Activity_isdeleted" />
                 <ScalarProperty Name="Activity_author" ColumnName="Activity_author" />
+                <ScalarProperty Name="Activity_hit" ColumnName="Activity_hit" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -848,13 +892,14 @@
           <EntitySetMapping Name="ActivitySummary">
             <EntityTypeMapping TypeName="TeachingCenterModel.ActivitySummary">
               <MappingFragment StoreEntitySet="ActivitySummary">
-                <ScalarProperty Name="ActivitySummary_cover" ColumnName="ActivitySummary_cover" />
                 <ScalarProperty Name="ActivitySummary_id" ColumnName="ActivitySummary_id" />
                 <ScalarProperty Name="ActivitySummary_title" ColumnName="ActivitySummary_title" />
                 <ScalarProperty Name="ActivitySummary_time" ColumnName="ActivitySummary_time" />
                 <ScalarProperty Name="ActivitySummary_content" ColumnName="ActivitySummary_content" />
                 <ScalarProperty Name="ActivitySummary_isdeleted" ColumnName="ActivitySummary_isdeleted" />
                 <ScalarProperty Name="ActivitySummary_author" ColumnName="ActivitySummary_author" />
+                <ScalarProperty Name="ActivitySummary_cover" ColumnName="ActivitySummary_cover" />
+                <ScalarProperty Name="ActivitySummary_hit" ColumnName="ActivitySummary_hit" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -887,6 +932,15 @@
                 <ScalarProperty Name="Develop_link" ColumnName="Develop_link" />
                 <ScalarProperty Name="Develop_hit" ColumnName="Develop_hit" />
                 <ScalarProperty Name="Develop_deleted" ColumnName="Develop_deleted" />
+                <ScalarProperty Name="Develop_category" ColumnName="Develop_category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DevelopCategory">
+            <EntityTypeMapping TypeName="TeachingCenterModel.DevelopCategory">
+              <MappingFragment StoreEntitySet="DevelopCategory">
+                <ScalarProperty Name="DevelopCategory_id" ColumnName="DevelopCategory_id" />
+                <ScalarProperty Name="DevelopCategory_name" ColumnName="DevelopCategory_name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -966,6 +1020,7 @@
                 <ScalarProperty Name="Service_category" ColumnName="Service_category" />
                 <ScalarProperty Name="Service_isdeal" ColumnName="Service_isdeal" />
                 <ScalarProperty Name="Service_isdeleted" ColumnName="Service_isdeleted" />
+                <ScalarProperty Name="Service_hit" ColumnName="Service_hit" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

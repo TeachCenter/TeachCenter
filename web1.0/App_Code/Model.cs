@@ -27,9 +27,9 @@ public partial class Activity
     public int Activity_categoryid { get; set; }
     public long Activity_isdeleted { get; set; }
     public string Activity_author { get; set; }
+    public int Activity_hit { get; set; }
 
     public virtual ActivityCategory ActivityCategory { get; set; }
-    public virtual Admin Admin { get; set; }
     public virtual ICollection<ActivityTeacher> ActivityTeacher { get; set; }
 }
 
@@ -55,6 +55,7 @@ public partial class ActivitySummary
     public long ActivitySummary_isdeleted { get; set; }
     public string ActivitySummary_author { get; set; }
     public string ActivitySummary_cover { get; set; }
+    public int ActivitySummary_hit { get; set; }
 }
 
 public partial class ActivityTeacher
@@ -69,16 +70,9 @@ public partial class ActivityTeacher
 
 public partial class Admin
 {
-    public Admin()
-    {
-        this.Activity = new HashSet<Activity>();
-    }
-
     public string Admin_id { get; set; }
     public string Admin_pwd { get; set; }
     public string Admin_name { get; set; }
-
-    public virtual ICollection<Activity> Activity { get; set; }
 }
 
 public partial class Develop
@@ -91,6 +85,22 @@ public partial class Develop
     public string Develop_link { get; set; }
     public int Develop_hit { get; set; }
     public long Develop_deleted { get; set; }
+    public int Develop_category { get; set; }
+
+    public virtual DevelopCategory DevelopCategory { get; set; }
+}
+
+public partial class DevelopCategory
+{
+    public DevelopCategory()
+    {
+        this.Develop = new HashSet<Develop>();
+    }
+
+    public int DevelopCategory_id { get; set; }
+    public string DevelopCategory_name { get; set; }
+
+    public virtual ICollection<Develop> Develop { get; set; }
 }
 
 public partial class Introduction
@@ -178,6 +188,7 @@ public partial class Service
     public int Service_category { get; set; }
     public int Service_isdeal { get; set; }
     public long Service_isdeleted { get; set; }
+    public int Service_hit { get; set; }
 
     public virtual ServiceCategory ServiceCategory { get; set; }
     public virtual Teacher Teacher { get; set; }

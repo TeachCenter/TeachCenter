@@ -96,7 +96,8 @@
 				<ul>
 					<li><a data-href="DevelopManage.aspx" data-title="教学发展管理" href="javascript:void(0)">教学发展管理</a></li>
                     <li><a data-href="DevelopAdd.aspx" data-title="教学发展添加" href="javascript:void(0)">教学发展添加</a></li>
-			</ul>
+			        <li><a data-href="DevelopCategoryManage.aspx" data-title="教学发展分类管理" href="javascript:void(0)">教学发展分类管理</a></li>
+                </ul>
 		</dd>
 	</dl>
 		<dl id="menu-product">
