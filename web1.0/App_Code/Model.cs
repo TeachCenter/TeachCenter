@@ -75,6 +75,17 @@ public partial class Admin
     public string Admin_name { get; set; }
 }
 
+public partial class ApplicationInfo
+{
+    public int id { get; set; }
+    public string name { get; set; }
+    public int gender { get; set; }
+    public string department { get; set; }
+    public string rank { get; set; }
+    public string message { get; set; }
+    public string submit_time { get; set; }
+}
+
 public partial class Develop
 {
     public int Develop_id { get; set; }
@@ -107,6 +118,16 @@ public partial class Introduction
 {
     public int Introduction_id { get; set; }
     public string Introduction_content { get; set; }
+}
+
+public partial class JudgeApplication
+{
+    public int id { get; set; }
+    public int teacher_id { get; set; }
+    public string message { get; set; }
+    public string submit_time { get; set; }
+
+    public virtual Teacher Teacher { get; set; }
 }
 
 public partial class Picture
@@ -144,11 +165,23 @@ public partial class ProjectCategory
 
     public int id { get; set; }
     public string name { get; set; }
+    public string project_file { get; set; }
     public string project_content { get; set; }
     public int stage { get; set; }
     public string end_time { get; set; }
+    public string judge_end_time { get; set; }
 
     public virtual ICollection<Project> Project { get; set; }
+}
+
+public partial class ProjectInfo
+{
+    public int project_id { get; set; }
+    public string name { get; set; }
+    public string category_name { get; set; }
+    public string teacher_name { get; set; }
+    public string submit_time { get; set; }
+    public int category { get; set; }
 }
 
 public partial class ProjectJudge
@@ -170,6 +203,7 @@ public partial class ProjectStage
 {
     public int id { get; set; }
     public int project_id { get; set; }
+    public string project_file { get; set; }
     public string project_content { get; set; }
     public int stage { get; set; }
     public string time { get; set; }
@@ -221,6 +255,7 @@ public partial class Teacher
     public Teacher()
     {
         this.ActivityTeacher = new HashSet<ActivityTeacher>();
+        this.JudgeApplication = new HashSet<JudgeApplication>();
         this.Project = new HashSet<Project>();
         this.Service = new HashSet<Service>();
     }
@@ -238,6 +273,7 @@ public partial class Teacher
     public int is_judge { get; set; }
 
     public virtual ICollection<ActivityTeacher> ActivityTeacher { get; set; }
+    public virtual ICollection<JudgeApplication> JudgeApplication { get; set; }
     public virtual ICollection<Project> Project { get; set; }
     public virtual ICollection<Service> Service { get; set; }
 }
