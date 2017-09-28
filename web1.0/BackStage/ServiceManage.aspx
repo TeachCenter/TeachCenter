@@ -15,10 +15,17 @@
 <link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
-<!--[if IE 6]>
-<script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
-<script>DD_belatedPNG.fix('*');</script>
-<![endif]-->
+<style type="text/css">
+    #page{
+            width: 200px;
+            float: left;
+            margin-top: 20px;
+            margin-left: 20px;
+    }
+</style>
+
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="manage.js"></script> 
 <title>资讯列表</title>
 </head>
 <body><form id="form1" runat="server">
@@ -36,8 +43,8 @@
 		<input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'logmax\')||\'%y-%M-%d\'}' })" id="logmin" class="input-text Wdate" style="width:120px;" runat="server">
 		-
 		<input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'logmin\')}',maxDate:'%y-%M-%d' })" id="logmax" class="input-text Wdate" style="width:120px;" runat="server">
-		<input type="text" name="" id="" placeholder=" 资讯名称" style="width:250px" class="input-text">
-		<button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜资讯</button>
+        <asp:LinkButton ID="ltbSearch" runat="server" OnClick="ltbSearch_Click" CssClass="btn btn-success"><i class="Hui-iconfont">&#xe665;</i> 搜索</asp:LinkButton>
+		
 	</div>
 	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><asp:LinkButton ID="ltnDelete" runat="server" CssClass="btn btn-danger radius" OnClick="ltnDelete_Click" OnClientClick="del()"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</asp:LinkButton>
         <asp:LinkButton ID="lbtSet" runat="server" CssClass="btn btn-primary radius" OnClick="lbtSet_Click" OnClientClick="set()"><i class="Hui-iconfont">&#xe600;</i> 批量处理</asp:LinkButton></span> <span class="r">共有数据：<strong><asp:Literal ID="ltCount" runat="server"></asp:Literal></strong> 条</span> </div>
@@ -73,18 +80,20 @@
                             </tr>
                     </ItemTemplate>
                 </asp:Repeater>
-				<div id="page">
-                    <asp:Button ID="btnLast" runat="server" Text="上一页" Enabled="false" OnClick="btnLast_Click" CssClass="btn btn-primary radius" />
-                    <asp:Literal ID="ltNow" runat="server" Text="1"></asp:Literal>/
-                    <asp:Literal ID="ltTotal" runat="server"></asp:Literal>
-				    <asp:Button ID="btnNext" runat="server" Text="下一页" OnClick="btnNext_Click" CssClass="btn btn-primary radius" />
-                </div>
+
 			</tbody>
 		</table>
+        		<div id="page">
+                    <asp:Button ID="btnLast" runat="server" Text="上一页" Enabled="false" OnClick="btnLast_Click" CssClass="btn btn-primary radius" />
+                    <%--<div class="btn btn-primary radius"">--%>
+                    <asp:Literal ID="ltNow" runat="server" Text="1"></asp:Literal>/
+                    <asp:Literal ID="ltTotal" runat="server"></asp:Literal><%--</div>--%>
+				    <asp:Button ID="btnNext" runat="server" Text="下一页" OnClick="btnNext_Click" CssClass="btn btn-primary radius" />
+                </div>
 	</div>
 </div>
 <!--_footer 作为公共模版分离出去-->
-<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
+
 <script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
 <script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script> 
 <script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->

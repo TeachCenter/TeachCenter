@@ -11,16 +11,15 @@ public partial class BackStage_ServiceCategoryManage : System.Web.UI.Page
     {
         try
         {
-            if (!IsPostBack)
-            {
-                string teacher = Session["AdminID"].ToString();
-                DataBindToRepeater(1);
-            }
-
+            string teacher = Session["AdminID"].ToString();
         }
         catch
         {
             JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+        }
+        if (!IsPostBack)
+        {
+            DataBindToRepeater(1);
         }
     }
 
@@ -35,7 +34,7 @@ public partial class BackStage_ServiceCategoryManage : System.Web.UI.Page
     //添加分类
     protected void ltbAdd_Click(object sender, EventArgs e)
     {
-
+        divAdd.Visible = true;
     }
 
     //添加分类
@@ -100,6 +99,7 @@ public partial class BackStage_ServiceCategoryManage : System.Web.UI.Page
                 ServiceCategory sc = db.ServiceCategory.Single(a => a.ServiceCategory_id == id);
                 txtChange.Text = sc.ServiceCategory_name;
             }
+            divEditor.Visible = true;
         }
     }
 

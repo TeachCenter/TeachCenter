@@ -9,10 +9,19 @@ public partial class BackStage_ActivitySummaryManage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        try
+        {
+            string teacher = Session["AdminID"].ToString();
+        }
+        catch
+        {
+            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+        }
         if (!IsPostBack)
         {
             DataBindToRepeater(1);
         }
+
     }
 
     protected void rptActivitySummary_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -73,8 +82,17 @@ public partial class BackStage_ActivitySummaryManage : System.Web.UI.Page
         using (var db = new TeachingCenterEntities())
         {
 
-            var acsu = db.ActivitySummary.Where(a => a.ActivitySummary_isdeleted == 0).OrderByDescending(a => a.ActivitySummary_time).ToList();
-
+            List<ActivitySummary> acsu;
+            DateTime min = new DateTime(1900, 1, 1);
+            DateTime max = new DateTime(2300, 12, 31);
+            if (logmin.Value != "")
+                min = Convert.ToDateTime(logmin.Value);
+            if (logmax.Value != "")
+                max = Convert.ToDateTime(logmax.Value).AddDays(1);
+            if(txtSearch.Text == "")
+                acsu = db.ActivitySummary.Where(a => a.ActivitySummary_isdeleted == 0 && a.ActivitySummary_time < max && a.ActivitySummary_time >= min).OrderByDescending(a => a.ActivitySummary_time).ToList();
+            else
+                acsu = db.ActivitySummary.Where(a => a.ActivitySummary_isdeleted == 0 && a.ActivitySummary_time < max && a.ActivitySummary_time >= min && a.ActivitySummary_title.Contains(txtSearch.Text)).OrderByDescending(a => a.ActivitySummary_time).ToList();
             ltCount.Text = acsu.Count().ToString();
 
             PagedDataSource pds = new PagedDataSource();
@@ -118,5 +136,10 @@ public partial class BackStage_ActivitySummaryManage : System.Web.UI.Page
     {
         ltNow.Text = Convert.ToString(Convert.ToInt32(ltNow.Text) + 1);
         DataBindToRepeater(Convert.ToInt32(ltNow.Text));
+    }
+
+    protected void ltbSearch_Click(object sender, EventArgs e)
+    {
+        DataBindToRepeater(1);
     }
 }

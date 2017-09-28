@@ -15,15 +15,18 @@
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
 
-    <style type="text/css">
+<style type="text/css">
         #table {
             width:auto;
             margin:0 auto;
         }
         #page{
-
+            width: 200px;
+            float: left;
+            margin-top: 20px;
+            margin-left: 20px;
         }
-    </style>
+</style>
 <title>资讯列表</title>
 </head>
 <body><form id="form1" runat="server">
@@ -58,28 +61,30 @@
 				        </tr>
                     </ItemTemplate>
                 </asp:Repeater>
-				
+
+			</tbody>
+		</table>
+        				
                 <div id="page">
                     <asp:Button ID="btnLast" runat="server" Text="上一页" Enabled="false" OnClick="btnLast_Click" CssClass="btn btn-primary radius" />
                     <asp:Literal ID="ltNow" runat="server" Text="1"></asp:Literal>/
                     <asp:Literal ID="ltTotal" runat="server"></asp:Literal>
 				    <asp:Button ID="btnNext" runat="server" Text="下一页" OnClick="btnNext_Click" CssClass="btn btn-primary radius" />
                 </div>
-			</tbody>
-		</table>
 	</div>
     <br />
     <br />
-    <div>
-            分类名称:  <asp:TextBox ID="txtCategory" runat="server"></asp:TextBox>
-            <asp:Button ID="btnSubAdd" runat="server" OnClick="btnSubAdd_Click" Text="添加分类" />
+    <div id="divAdd" runat="server" visible="false" style="width:500px;margin:0 auto;margin-top:70px">
+        
+            分类名称:  <asp:TextBox ID="txtCategory"  CssClass="input-text" Width="200" runat="server"></asp:TextBox>
+            <asp:Button ID="btnSubAdd" runat="server" OnClick="btnSubAdd_Click"  CssClass="btn btn-primary radius" Text="添加分类" />
     </div>
     <br />
     <br />
-    <div>
+    <div id="divEditor" runat="server" visible="false" style="width:500px;margin:0 auto;margin-top:70px">
             <asp:Label ID="lbID" runat="server" Visible="false"></asp:Label>
-            分类名称:  <asp:TextBox ID="txtChange" runat="server"></asp:TextBox>
-            <asp:Button ID="btnChange" runat="server" OnClick="btnChange_Click" Text="修改分类" />
+            分类名称:  <asp:TextBox ID="txtChange" runat="server" CssClass="input-text" Width="200"></asp:TextBox>
+            <asp:Button ID="btnChange" runat="server" OnClick="btnChange_Click"  CssClass="btn btn-primary radius" Text="修改分类" />
     </div>
 </div>
 <!--_footer 作为公共模版分离出去-->

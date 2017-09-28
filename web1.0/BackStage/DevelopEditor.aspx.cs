@@ -5,13 +5,15 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class BackStage_DevelopAdd : System.Web.UI.Page
+public partial class BackStage_DevelopEditor : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        int id = 1;
         try
         {
             string teacher = Session["AdminID"].ToString();
+            id = Convert.ToInt32(Request.QueryString["id"].ToString());
         }
         catch
         {
@@ -26,7 +28,13 @@ public partial class BackStage_DevelopAdd : System.Web.UI.Page
             dropCategory.DataTextField = "DevelopCategory_name";
 
             dropCategory.DataBind();
+
+            Develop dev = db.Develop.Single(a => a.Develop_id == id);
+            txtTitle.Text = dev.Develop_title;
+            txtLink.Text = dev.Develop_link;
+            myEditor11.InnerHtml = Server.HtmlDecode(dev.Develop_content);
         }
+
     }
 
     protected void btnSub_Click(object sender, EventArgs e)
@@ -38,7 +46,7 @@ public partial class BackStage_DevelopAdd : System.Web.UI.Page
             JSHelper.ShowAlert("输入不能为空！");
         else if (cbxLink.Checked && link.Length == 0)
             JSHelper.ShowAlert("输入不能为空！");
-        else if (!cbxLink.Checked && content.Length == 0) 
+        else if (!cbxLink.Checked && content.Length == 0)
             JSHelper.ShowAlert("输入不能为空！");
         else
             using (var db = new TeachingCenterEntities())
@@ -56,12 +64,12 @@ public partial class BackStage_DevelopAdd : System.Web.UI.Page
                 dev.Develop_time = DateTime.Now;
                 dev.Develop_content = content;
                 dev.Develop_link = link;
-                dev.Develop_category = DevelopHelper.getCategoryId(dropCategory.SelectedValue); 
+                dev.Develop_category = DevelopHelper.getCategoryId(dropCategory.SelectedValue);
                 dev.Develop_hit = 0;
                 dev.Develop_deleted = 0;
                 db.Develop.Add(dev);
                 db.SaveChanges();
-                JSHelper.ShowAlert("发布成功！");
+                JSHelper.ShowAlert("修改成功！");
                 //JSHelper.Redirect("DevelopManage.aspx");
                 Server.Transfer("DevelopManage.aspx");
             }

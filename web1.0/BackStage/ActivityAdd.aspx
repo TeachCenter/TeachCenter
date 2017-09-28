@@ -48,13 +48,19 @@
 			</div>
 		</div>
         <div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>发布者：</label>
+			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+                <asp:DropDownList runat="server" ID="dropAuthor" CssClass="select">
+                    <asp:ListItem Value="0" >本人</asp:ListItem>
+                    <asp:ListItem Value="1">匿名</asp:ListItem>
+                    <asp:ListItem Value="2">未知</asp:ListItem>
+                </asp:DropDownList></span>
+				</div>
+		</div>
+        <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>活动时间：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                
-                <input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'logmax\')||\'%y-%M-%d\'}' })" id="logmin" class="input-text Wdate" style="width:120px;" runat="server">
-		        <input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'logmin\')}',maxDate:'%y-%M-%d' })" id="logmax" class="input-text Wdate" style="width:120px;display:none;" runat="server">
-	            <asp:TextBox ID="txtHour" onkeyup="this.value=this.value.replace(/\D/g,'')" style="width:80px;" runat="server" CssClass="input-text"></asp:TextBox> :
-                <asp:TextBox ID="txtMinute" onkeyup="this.value=this.value.replace(/\D/g,'')" style="width:80px;" runat="server" CssClass="input-text"></asp:TextBox>
+                <input type="text" id="logmin" runat="server" class="input-text" onclick="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
             </div>
         </div>
         <div class="row cl">

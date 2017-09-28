@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class BackStage_ActivityCatagoryManage : System.Web.UI.Page
+public partial class BackStage_DevelopCategoryManage : System.Web.UI.Page
 {
-   
+
     protected void Page_Load(object sender, EventArgs e)
     {
         try
@@ -19,7 +19,9 @@ public partial class BackStage_ActivityCatagoryManage : System.Web.UI.Page
             JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
         }
         if (!IsPostBack)
+        {
             DataBindToRepeater(1);
+        }
     }
 
     protected void rptCategory_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -42,16 +44,16 @@ public partial class BackStage_ActivityCatagoryManage : System.Web.UI.Page
         string category = txtCategory.Text;
         if (category.Length == 0)
             JSHelper.ShowAlert("输入不能为空！");
-        else if (ActivityHelper.checkCategoryNameExit(category))
+        else if (DevelopHelper.checkCategoryNameExit(category))
             JSHelper.ShowAlert("该分类已存在！");
         else
             using (var db = new TeachingCenterEntities())
             {
-                var cate = new ActivityCategory();
-                cate.ActivityCategory_name = category;
-                db.ActivityCategory.Add(cate);
+                var cate = new DevelopCategory();
+                cate.DevelopCategory_name = category;
+                db.DevelopCategory.Add(cate);
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("添加成功！", "ActivityCategoryManage.aspx");
+                JSHelper.AlertThenRedirect("添加成功！", "DevelopCategoryManage.aspx");
             }
     }
 
@@ -61,16 +63,16 @@ public partial class BackStage_ActivityCatagoryManage : System.Web.UI.Page
     {
         if (txtChange.Text.Length == 0)
             JSHelper.ShowAlert("输入不能为空！");
-        else if (ActivityHelper.checkCategoryNameExit(txtChange.Text))
+        else if (DevelopHelper.checkCategoryNameExit(txtChange.Text))
             JSHelper.ShowAlert("该分类已存在！");
         else
             using (var db = new TeachingCenterEntities())
             {
                 int id = Convert.ToInt32(lbID.Text);
-                ActivityCategory sc = db.ActivityCategory.Single(a => a.ActivityCategory_id == id);
-                sc.ActivityCategory_name = txtChange.Text;
+                DevelopCategory sc = db.DevelopCategory.Single(a => a.DevelopCategory_id == id);
+                sc.DevelopCategory_name = txtChange.Text;
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("修改成功！", "ActivityCategoryManage.aspx");
+                JSHelper.AlertThenRedirect("修改成功！", "DevelopCategoryManage.aspx");
             }
     }
 
@@ -82,10 +84,10 @@ public partial class BackStage_ActivityCatagoryManage : System.Web.UI.Page
             int id = Convert.ToInt32(e.CommandArgument.ToString());
             using (var db = new TeachingCenterEntities())
             {
-                ActivityCategory sc = db.ActivityCategory.Single(a => a.ActivityCategory_id == id);
-                db.ActivityCategory.Remove(sc);
+                DevelopCategory sc = db.DevelopCategory.Single(a => a.DevelopCategory_id == id);
+                db.DevelopCategory.Remove(sc);
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("删除成功！", "ActivityCategoryManage.aspx");
+                JSHelper.AlertThenRedirect("删除成功！", "DevelopCategoryManage.aspx");
             }
         }
         //修改分类
@@ -95,9 +97,9 @@ public partial class BackStage_ActivityCatagoryManage : System.Web.UI.Page
             lbID.Text = id.ToString();
             using (var db = new TeachingCenterEntities())
             {
-                ActivityCategory sc = db.ActivityCategory.Single(a => a.ActivityCategory_id == id);
-                txtChange.Text = sc.ActivityCategory_name;
-                
+                DevelopCategory sc = db.DevelopCategory.Single(a => a.DevelopCategory_id == id);
+                txtChange.Text = sc.DevelopCategory_name;
+
             }
             divEditor.Visible = true;
         }
@@ -116,13 +118,13 @@ public partial class BackStage_ActivityCatagoryManage : System.Web.UI.Page
                     using (var db = new TeachingCenterEntities())
                     {
 
-                        ActivityCategory sc = db.ActivityCategory.Single(a => a.ActivityCategory_name == name);
-                        db.ActivityCategory.Remove(sc);
+                        DevelopCategory sc = db.DevelopCategory.Single(a => a.DevelopCategory_name == name);
+                        db.DevelopCategory.Remove(sc);
                         db.SaveChanges();
-                     }
+                    }
                 }
         }
-        JSHelper.AlertThenRedirect("删除成功！", "ActivityCategoryManage.aspx");
+        JSHelper.AlertThenRedirect("删除成功！", "DevelopCategoryManage.aspx");
     }
 
     //分页
@@ -133,7 +135,7 @@ public partial class BackStage_ActivityCatagoryManage : System.Web.UI.Page
 
         using (var db = new TeachingCenterEntities())
         {
-            var catagory = from it in db.ActivityCategory select it;
+            var catagory = from it in db.DevelopCategory select it;
 
             rptCategory.DataSource = catagory.ToList();
 

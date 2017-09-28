@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ServiceCategoryManage.aspx.cs" Inherits="BackStage_ServiceCategoryManage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DevelopCategoryManage.aspx.cs" Inherits="BackStage_DevelopCategoryManage" %>
+
 
 <!DOCTYPE HTML>
 <html>
@@ -26,11 +27,11 @@
             margin-top: 20px;
             margin-left: 20px;
         }
-    </style>
+</style>
 <title>资讯列表</title>
 </head>
 <body><form id="form1" runat="server">
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>服务分类管理<span class="c-gray en">&gt;</span>服务分类列表<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>活动分类管理<span class="c-gray en">&gt;</span>活动分类列表<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
 
 	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l">
@@ -43,7 +44,7 @@
 				<tr class="text-c">
 					<th width="25"><input type="checkbox" name="" value=""></th>
 					<th width="80">序号</th>
-					<th width="300">服务分类名称</th>
+					<th width="300">活动分类名称</th>
 					<th width="120">操作</th>
 				</tr>
 			</thead>
@@ -53,19 +54,19 @@
                         <tr class="text-c">
 					        <td><asp:CheckBox  ID="chbCheck" runat="server" /></td>
 					        <td><asp:Literal runat="server" ID="ltNumber" Text=""></asp:Literal></td>
-                            <td><asp:Literal ID="ltName" runat="server" Text=<%# Eval("ServiceCategory_name") %>></asp:Literal></td>
+                            <td><asp:Literal ID="ltName" runat="server" Text=<%# Eval("DevelopCategory_name") %>></asp:Literal></td>
 					        <td class="f-14 td-manage"> 
-                              <asp:LinkButton runat="server" CssClass="ml-5" CommandName="Editor" CommandArgument='<%# Eval("ServiceCategory_id") %>'><i class="Hui-iconfont">&#xe6df;</i></asp:LinkButton>
-                              <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Delete" CommandArgument='<%#Eval("ServiceCategory_id") %>' OnClientClick="del()"><i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton>
+                              <asp:LinkButton runat="server" CssClass="ml-5" CommandName="Editor" CommandArgument='<%# Eval("DevelopCategory_id") %>'><i class="Hui-iconfont">&#xe6df;</i></asp:LinkButton>
+                              <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Delete" CommandArgument='<%#Eval("DevelopCategory_id") %>' OnClientClick="del()"><i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton>
                             </td>
 				        </tr>
                     </ItemTemplate>
                 </asp:Repeater>
-				
 
 			</tbody>
 		</table>
-                        <div id="page">
+        				
+                <div id="page">
                     <asp:Button ID="btnLast" runat="server" Text="上一页" Enabled="false" OnClick="btnLast_Click" CssClass="btn btn-primary radius" />
                     <asp:Literal ID="ltNow" runat="server" Text="1"></asp:Literal>/
                     <asp:Literal ID="ltTotal" runat="server"></asp:Literal>

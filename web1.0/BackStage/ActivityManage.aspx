@@ -17,6 +17,17 @@
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
 
 <title>活动总结列表</title>
+<style type="text/css">
+    #page{
+            width: 200px;
+            float: left;
+            margin-top: 20px;
+            margin-left: 20px;
+    }
+</style>
+
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="manage.js"></script> 
 </head>
 <body><form id="form1" runat="server">
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 活动信息管理 <span class="c-gray en">&gt;</span> 活动信息列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
@@ -31,11 +42,12 @@
 		<input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'logmax\')||\'%y-%M-%d\'}' })" id="logmin" class="input-text Wdate" style="width:120px;" runat="server">
 		-
 		<input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'logmin\')}',maxDate:'%y-%M-%d' })" id="logmax" class="input-text Wdate" style="width:120px;" runat="server">
-		<input type="text" name="" id="" placeholder=" 资讯名称" style="width:250px" class="input-text">
-		<button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜资讯</button>
+		<asp:TextBox ID="txtSearch" runat="server"  style="width:250px" class="input-text"></asp:TextBox>
+        <asp:LinkButton ID="ltbSearch" runat="server" OnClick="ltbSearch_Click" CssClass="btn btn-success"><i class="Hui-iconfont">&#xe665;</i> 搜索</asp:LinkButton>
+
 	</div>
 	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><asp:LinkButton ID="ltnDelete" runat="server" CssClass="btn btn-danger radius" OnClick="ltnDelete_Click" OnClientClick="del()"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</asp:LinkButton>
-        <asp:LinkButton ID="lbtSet" runat="server" CssClass="btn btn-primary radius" PostBackUrl="~/BackStage/ActivitySummaryAdd.aspx"><i class="Hui-iconfont">&#xe600;</i> 添加活动总结</asp:LinkButton></span> <span class="r">共有数据：<strong><asp:Literal ID="ltCount" runat="server"></asp:Literal></strong> 条</span> </div>
+        <asp:LinkButton ID="lbtSet" runat="server" CssClass="btn btn-primary radius" PostBackUrl="~/BackStage/ActivityAdd.aspx"><i class="Hui-iconfont">&#xe600;</i> 添加活动总结</asp:LinkButton></span> <span class="r">共有数据：<strong><asp:Literal ID="ltCount" runat="server"></asp:Literal></strong> 条</span> </div>
 	<div class="mt-20">
 		<table class="table table-border table-bordered table-bg table-hover table-responsive" style="table-layout: fixed;">
 			<thead>
@@ -76,18 +88,17 @@
                             </tr>
                     </ItemTemplate>
                 </asp:Repeater>
-				<div id="page">
+			</tbody>
+		</table>
+        		<div id="page">
                     <asp:Button ID="btnLast" runat="server" Text="上一页" Enabled="false" OnClick="btnLast_Click" CssClass="btn btn-primary radius" />
                     <asp:Literal ID="ltNow" runat="server" Text="1"></asp:Literal>/
                     <asp:Literal ID="ltTotal" runat="server"></asp:Literal>
 				    <asp:Button ID="btnNext" runat="server" Text="下一页" OnClick="btnNext_Click" CssClass="btn btn-primary radius" />
                 </div>
-			</tbody>
-		</table>
 	</div>
 </div>
 <!--_footer 作为公共模版分离出去-->
-<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
 <script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
 <script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script> 
 <script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
