@@ -23,8 +23,12 @@ public partial class TeachingCenterEntities : DbContext
         throw new UnintentionalCodeFirstException();
     }
 
-    public DbSet<Admin> Admin { get; set; }
-    public DbSet<Develop> Develop { get; set; }
-    public DbSet<Introduction> Introduction { get; set; }
-    public DbSet<Picture> Picture { get; set; }
+    public DbSet<Project> Project { get; set; }
+    public DbSet<ProjectCategory> ProjectCategory { get; set; }
+    public DbSet<ProjectJudge> ProjectJudge { get; set; }
+    public DbSet<ProjectStage> ProjectStage { get; set; }
+    public DbSet<Teacher> Teacher { get; set; }
+    public DbSet<ProjectInfo> ProjectInfo { get; set; }
+    public DbSet<ApplicationInfo> ApplicationInfo { get; set; }
+    public DbSet<JudgeApplication> JudgeApplication { get; set; }
 }

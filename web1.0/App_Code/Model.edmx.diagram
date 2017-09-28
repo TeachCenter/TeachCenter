@@ -4,11 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="199076f86bd949f89776998affdc0698" Name="Diagram1">
-        <EntityTypeShape EntityType="TeachingCenterModel.Admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachingCenterModel.Develop" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachingCenterModel.Introduction" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachingCenterModel.Picture" Width="1.5" PointX="7" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="87a127752dbe47fe89958c75be1be21d" Name="Diagram1">
+        <EntityTypeShape EntityType="TeachingCenterModel.Project" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.ProjectCategory" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.ProjectJudge" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.ProjectStage" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.Teacher" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.ProjectInfo" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <AssociationConnector Association="TeachingCenterModel.FK_Project_ProjectCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="TeachingCenterModel.FK_Project_Teacher" ManuallyRouted="false" />
+        <AssociationConnector Association="TeachingCenterModel.FK_ProjectJudge_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="TeachingCenterModel.FK_ProjectStage_Project" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TeachingCenterModel.ApplicationInfo" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="TeachingCenterModel.JudgeApplication" Width="1.5" PointX="3" PointY="1.5" />
+        <AssociationConnector Association="TeachingCenterModel.FK_JudgeApplication_Teacher" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

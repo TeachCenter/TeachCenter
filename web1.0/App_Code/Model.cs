@@ -10,33 +10,123 @@
 using System;
 using System.Collections.Generic;
 
-public partial class Admin
+public partial class ApplicationInfo
 {
-    public string Admin_id { get; set; }
-    public string Admin_pwd { get; set; }
-    public string Admin_name { get; set; }
+    public int id { get; set; }
+    public string name { get; set; }
+    public int gender { get; set; }
+    public string department { get; set; }
+    public string rank { get; set; }
+    public string message { get; set; }
+    public string submit_time { get; set; }
 }
 
-public partial class Develop
+public partial class JudgeApplication
 {
-    public int Develop_id { get; set; }
-    public string Develop_title { get; set; }
-    public string Develop_author { get; set; }
-    public System.DateTime Develop_time { get; set; }
-    public string Develop_content { get; set; }
-    public string Develop_link { get; set; }
-    public int Develop_hit { get; set; }
-    public long Develop_deleted { get; set; }
+    public int id { get; set; }
+    public int teacher_id { get; set; }
+    public string message { get; set; }
+    public string submit_time { get; set; }
+
+    public virtual Teacher Teacher { get; set; }
 }
 
-public partial class Introduction
+public partial class Project
 {
-    public int Introduction_id { get; set; }
-    public string Introduction_content { get; set; }
+    public Project()
+    {
+        this.ProjectJudge = new HashSet<ProjectJudge>();
+        this.ProjectStage = new HashSet<ProjectStage>();
+    }
+
+    public int project_id { get; set; }
+    public string name { get; set; }
+    public int category { get; set; }
+    public int teacher_id { get; set; }
+    public string submit_time { get; set; }
+
+    public virtual ProjectCategory ProjectCategory { get; set; }
+    public virtual Teacher Teacher { get; set; }
+    public virtual ICollection<ProjectJudge> ProjectJudge { get; set; }
+    public virtual ICollection<ProjectStage> ProjectStage { get; set; }
 }
 
-public partial class Picture
+public partial class ProjectCategory
 {
-    public int Picture_id { get; set; }
-    public string Picture_path { get; set; }
+    public ProjectCategory()
+    {
+        this.Project = new HashSet<Project>();
+    }
+
+    public int id { get; set; }
+    public string name { get; set; }
+    public string project_content { get; set; }
+    public int stage { get; set; }
+    public string end_time { get; set; }
+    public string project_file { get; set; }
+    public string judge_end_time { get; set; }
+
+    public virtual ICollection<Project> Project { get; set; }
+}
+
+public partial class ProjectInfo
+{
+    public int project_id { get; set; }
+    public string name { get; set; }
+    public string category_name { get; set; }
+    public string teacher_name { get; set; }
+    public string submit_time { get; set; }
+    public int category { get; set; }
+}
+
+public partial class ProjectJudge
+{
+    public int id { get; set; }
+    public int project_id { get; set; }
+    public int category { get; set; }
+    public int teacher_id { get; set; }
+    public int judge_id { get; set; }
+    public string judge_name { get; set; }
+    public int stage { get; set; }
+    public string comment { get; set; }
+    public int is_pass { get; set; }
+
+    public virtual Project Project { get; set; }
+}
+
+public partial class ProjectStage
+{
+    public int id { get; set; }
+    public int project_id { get; set; }
+    public string project_content { get; set; }
+    public int stage { get; set; }
+    public string time { get; set; }
+    public int is_pass { get; set; }
+    public string project_file { get; set; }
+
+    public virtual Project Project { get; set; }
+}
+
+public partial class Teacher
+{
+    public Teacher()
+    {
+        this.Project = new HashSet<Project>();
+        this.JudgeApplication = new HashSet<JudgeApplication>();
+    }
+
+    public int id { get; set; }
+    public string name { get; set; }
+    public string password { get; set; }
+    public string image { get; set; }
+    public int gender { get; set; }
+    public string email { get; set; }
+    public string number { get; set; }
+    public string phone_number { get; set; }
+    public string department { get; set; }
+    public string rank { get; set; }
+    public int is_judge { get; set; }
+
+    public virtual ICollection<Project> Project { get; set; }
+    public virtual ICollection<JudgeApplication> JudgeApplication { get; set; }
 }
