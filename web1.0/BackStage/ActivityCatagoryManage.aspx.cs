@@ -13,13 +13,14 @@ public partial class BackStage_ActivityCatagoryManage : System.Web.UI.Page
         try
         {
             string teacher = Session["AdminID"].ToString();
+            if (!IsPostBack)
+                DataBindToRepeater(1);
         }
         catch
         {
             JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
         }
-        if (!IsPostBack)
-            DataBindToRepeater(1);
+        
     }
 
     protected void rptCategory_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -51,7 +52,7 @@ public partial class BackStage_ActivityCatagoryManage : System.Web.UI.Page
                 cate.ActivityCategory_name = category;
                 db.ActivityCategory.Add(cate);
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("添加成功！", "ActivityCategoryManage.aspx");
+                JSHelper.AlertThenRedirect("添加成功！", "ActivityCatagoryManage.aspx");
             }
     }
 
@@ -70,7 +71,7 @@ public partial class BackStage_ActivityCatagoryManage : System.Web.UI.Page
                 ActivityCategory sc = db.ActivityCategory.Single(a => a.ActivityCategory_id == id);
                 sc.ActivityCategory_name = txtChange.Text;
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("修改成功！", "ActivityCategoryManage.aspx");
+                JSHelper.AlertThenRedirect("修改成功！", "ActivityCatagoryManage.aspx");
             }
     }
 
@@ -85,7 +86,7 @@ public partial class BackStage_ActivityCatagoryManage : System.Web.UI.Page
                 ActivityCategory sc = db.ActivityCategory.Single(a => a.ActivityCategory_id == id);
                 db.ActivityCategory.Remove(sc);
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("删除成功！", "ActivityCategoryManage.aspx");
+                JSHelper.AlertThenRedirect("删除成功！", "ActivityCatagoryManage.aspx");
             }
         }
         //修改分类
@@ -122,7 +123,7 @@ public partial class BackStage_ActivityCatagoryManage : System.Web.UI.Page
                      }
                 }
         }
-        JSHelper.AlertThenRedirect("删除成功！", "ActivityCategoryManage.aspx");
+        JSHelper.AlertThenRedirect("删除成功！", "ActivityCatagoryManage.aspx");
     }
 
     //分页

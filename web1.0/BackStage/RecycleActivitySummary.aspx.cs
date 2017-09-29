@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class BackStage_ActivitySummaryManage : System.Web.UI.Page
+public partial class BackStage_RecycleActivitySummary : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -34,9 +34,20 @@ public partial class BackStage_ActivitySummaryManage : System.Web.UI.Page
             using (var db = new TeachingCenterEntities())
             {
                 ActivitySummary asu = db.ActivitySummary.Single(a => a.ActivitySummary_id == id);
-                asu.ActivitySummary_isdeleted = 1;
-                db.SaveChanges();
+                
+                db.ActivitySummary.Remove(asu);
                 JSHelper.AlertThenRedirect("删除成功！", "ActivitySummaryManage.aspx");
+            }
+        }
+        if (e.CommandName == "Recycle")
+        {
+            int id = Convert.ToInt32(e.CommandArgument.ToString());
+            using (var db = new TeachingCenterEntities())
+            {
+                ActivitySummary asu = db.ActivitySummary.Single(a => a.ActivitySummary_id == id);
+                asu.ActivitySummary_isdeleted = 1;
+                
+                JSHelper.AlertThenRedirect("恢复成功！", "ActivitySummaryManage.aspx");
             }
         }
     }
@@ -50,8 +61,8 @@ public partial class BackStage_ActivitySummaryManage : System.Web.UI.Page
             literal.Text = (e.Item.ItemIndex + 1).ToString();
             //绑定内容
             literal = (Literal)e.Item.FindControl("ltContent");
-            string content = MyHtmlHelper.RemoveTags(Server.HtmlDecode( literal.Text));
-            literal.Text = content.Length > 40 ? content.Substring(0, 40) + "..." : content ;
+            string content = MyHtmlHelper.RemoveTags(Server.HtmlDecode(literal.Text));
+            literal.Text = content.Length > 40 ? content.Substring(0, 40) + "..." : content;
         }
     }
 
@@ -67,7 +78,7 @@ public partial class BackStage_ActivitySummaryManage : System.Web.UI.Page
                     using (var db = new TeachingCenterEntities())
                     {
                         ActivitySummary sc = db.ActivitySummary.Single(a => a.ActivitySummary_id == id);
-                        sc.ActivitySummary_isdeleted = 1;
+                        db.ActivitySummary.Remove(sc);
                         db.SaveChanges();
                     }
                 }
@@ -90,10 +101,10 @@ public partial class BackStage_ActivitySummaryManage : System.Web.UI.Page
                 min = Convert.ToDateTime(logmin.Value);
             if (logmax.Value != "")
                 max = Convert.ToDateTime(logmax.Value).AddDays(1);
-            if(txtSearch.Text == "")
-                acsu = db.ActivitySummary.Where(a => a.ActivitySummary_isdeleted == 0 && a.ActivitySummary_time < max && a.ActivitySummary_time >= min).OrderByDescending(a => a.ActivitySummary_time).ToList();
+            if (txtSearch.Text == "")
+                acsu = db.ActivitySummary.Where(a => a.ActivitySummary_isdeleted == 1 && a.ActivitySummary_time < max && a.ActivitySummary_time >= min).OrderByDescending(a => a.ActivitySummary_time).ToList();
             else
-                acsu = db.ActivitySummary.Where(a => a.ActivitySummary_isdeleted == 0 && a.ActivitySummary_time < max && a.ActivitySummary_time >= min && a.ActivitySummary_title.Contains(txtSearch.Text)).OrderByDescending(a => a.ActivitySummary_time).ToList();
+                acsu = db.ActivitySummary.Where(a => a.ActivitySummary_isdeleted == 1 && a.ActivitySummary_time < max && a.ActivitySummary_time >= min && a.ActivitySummary_title.Contains(txtSearch.Text)).OrderByDescending(a => a.ActivitySummary_time).ToList();
             ltCount.Text = acsu.Count().ToString();
 
             PagedDataSource pds = new PagedDataSource();
@@ -142,5 +153,25 @@ public partial class BackStage_ActivitySummaryManage : System.Web.UI.Page
     protected void ltbSearch_Click(object sender, EventArgs e)
     {
         DataBindToRepeater(1);
+    }
+
+    protected void ltbRecycle_Click(object sender, EventArgs e)
+    {
+        for (int i = 0; i < this.rptActivitySummary.Items.Count; i++)
+        {
+            CheckBox cbx = (CheckBox)rptActivitySummary.Items[i].FindControl("checkbox");
+            int id = Convert.ToInt32(((Label)rptActivitySummary.Items[i].FindControl("lbID")).Text);
+            if (cbx != null)
+                if (cbx.Checked == true)
+                {
+                    using (var db = new TeachingCenterEntities())
+                    {
+                        ActivitySummary sc = db.ActivitySummary.Single(a => a.ActivitySummary_id == id);
+                        sc.ActivitySummary_isdeleted = 0;
+                        db.SaveChanges();
+                    }
+                }
+        }
+        JSHelper.AlertThenRedirect("恢复成功！", "RecycleActivitySummary.aspx");
     }
 }

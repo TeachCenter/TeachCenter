@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class BackStage_ActivityManage : System.Web.UI.Page
+public partial class BackStage_RecycleActivity : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -56,16 +56,28 @@ public partial class BackStage_ActivityManage : System.Web.UI.Page
 
     protected void rptActivity_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
-        //删除专题分类
+        //删除
         if (e.CommandName == "Delete")
         {
             int id = Convert.ToInt32(e.CommandArgument.ToString());
             using (var db = new TeachingCenterEntities())
             {
                 Activity service = db.Activity.Single(a => a.Activity_id == id);
-                service.Activity_isdeleted = 1;
+                db.Activity.Remove(service);
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("删除成功！", "ActivityManage.aspx");
+                JSHelper.AlertThenRedirect("删除成功！", "RecycleActivity.aspx");
+            }
+        }
+        //恢复
+        if (e.CommandName == "Recycle")
+        {
+            int id = Convert.ToInt32(e.CommandArgument.ToString());
+            using (var db = new TeachingCenterEntities())
+            {
+                Activity service = db.Activity.Single(a => a.Activity_id == id);
+                service.Activity_isdeleted = 0;
+                db.SaveChanges();
+                JSHelper.AlertThenRedirect("恢复成功！", "RecycleActivity.aspx");
             }
         }
     }
@@ -109,25 +121,25 @@ public partial class BackStage_ActivityManage : System.Web.UI.Page
                 max = Convert.ToDateTime(logmax.Value).AddDays(1);
 
 
-            if(txtSearch.Text == "")
+            if (txtSearch.Text == "")
             {
                 if (dropCategory.SelectedValue != "全部分类")
                 {
                     int category = ActivityHelper.getCategoryId(dropCategory.SelectedValue);
-                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_categoryid == category && a.Activity_time >= min && a.Activity_time < max).OrderByDescending(a => a.Activity_time).ToList();
+                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 1 && a.Activity_categoryid == category && a.Activity_time >= min && a.Activity_time < max).OrderByDescending(a => a.Activity_time).ToList();
                 }
                 else
-                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_time >= min && a.Activity_time < max).OrderByDescending(a => a.Activity_time).ToList();
+                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 1 && a.Activity_time >= min && a.Activity_time < max).OrderByDescending(a => a.Activity_time).ToList();
             }
             else
             {
                 if (dropCategory.SelectedValue != "全部分类")
                 {
                     int category = ActivityHelper.getCategoryId(dropCategory.SelectedValue);
-                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_categoryid == category && a.Activity_time >= min && a.Activity_time < max && a.Activity_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Activity_time).ToList();
+                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 1 && a.Activity_categoryid == category && a.Activity_time >= min && a.Activity_time < max && a.Activity_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Activity_time).ToList();
                 }
                 else
-                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_time >= min && a.Activity_time < max && a.Activity_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Activity_time).ToList();
+                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 1 && a.Activity_time >= min && a.Activity_time < max && a.Activity_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Activity_time).ToList();
 
             }
 
@@ -189,16 +201,36 @@ public partial class BackStage_ActivityManage : System.Web.UI.Page
                     using (var db = new TeachingCenterEntities())
                     {
                         Activity sc = db.Activity.Single(a => a.Activity_id == id);
-                        sc.Activity_isdeleted = 1;
+                        db.Activity.Remove(sc);
                         db.SaveChanges();
                     }
                 }
         }
-        JSHelper.AlertThenRedirect("删除成功！", "ActivityManage.aspx");
+        JSHelper.AlertThenRedirect("删除成功！", "RecycleActivity.aspx");
     }
 
     protected void ltbSearch_Click(object sender, EventArgs e)
     {
         DataBindToRepeater(1);
+    }
+
+    protected void ltbRecycle_Click(object sender, EventArgs e)
+    {
+        for (int i = 0; i < this.rptActivity.Items.Count; i++)
+        {
+            CheckBox cbx = (CheckBox)rptActivity.Items[i].FindControl("checkbox");
+            int id = Convert.ToInt32(((Label)rptActivity.Items[i].FindControl("lbID")).Text);
+            if (cbx != null)
+                if (cbx.Checked == true)
+                {
+                    using (var db = new TeachingCenterEntities())
+                    {
+                        Activity sc = db.Activity.Single(a => a.Activity_id == id);
+                        sc.Activity_isdeleted = 0;
+                        db.SaveChanges();
+                    }
+                }
+        }
+        JSHelper.AlertThenRedirect("恢复成功！", "RecycleActivity.aspx");
     }
 }

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class BackStage_DevelopManage : System.Web.UI.Page
+public partial class BackStage_RecycleDevelop : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -40,41 +40,13 @@ public partial class BackStage_DevelopManage : System.Web.UI.Page
                     DataBindToRepeater(1);
                 }
             }
-            if (!IsPostBack)
-            {
-                using (var db = new TeachingCenterEntities())
-                {
-
-                    //绑定下拉框
-                    var category = from it in db.DevelopCategory select it;
-
-                    List<DevelopCategory> cate = category.ToList();
-
-                    DevelopCategory all = new DevelopCategory();
-
-                    cate.Insert(0, all);
-
-                    all.DevelopCategory_id = 0;
-
-                    all.DevelopCategory_name = "全部分类";
-
-                    dropCategory.DataSource = cate;
-
-                    dropCategory.DataTextField = "DevelopCategory_name";
-
-                    dropCategory.DataBind();
-
-                    //绑定列表信息
-                    DataBindToRepeater(1);
-                }
-            }
         }
         catch
         {
             JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
         }
 
-     }
+    }
 
     protected void dropCategory_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -113,9 +85,20 @@ public partial class BackStage_DevelopManage : System.Web.UI.Page
             using (var db = new TeachingCenterEntities())
             {
                 Develop service = db.Develop.Single(a => a.Develop_id == id);
-                service.Develop_deleted = 1;
+                db.Develop.Remove(service);
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("删除成功！", "DevelopManage.aspx");
+                JSHelper.AlertThenRedirect("删除成功！", "RecycleDevelop.aspx");
+            }
+        }
+        if (e.CommandName == "Recycle")
+        {
+            int id = Convert.ToInt32(e.CommandArgument.ToString());
+            using (var db = new TeachingCenterEntities())
+            {
+                Develop service = db.Develop.Single(a => a.Develop_id == id);
+                service.Develop_deleted = 0;
+                db.SaveChanges();
+                JSHelper.AlertThenRedirect("恢复成功！", "RecycleDevelop.aspx");
             }
         }
     }
@@ -134,25 +117,25 @@ public partial class BackStage_DevelopManage : System.Web.UI.Page
             if (logmax.Value != "")
                 max = Convert.ToDateTime(logmax.Value).AddDays(1);
 
-            if(txtSearch.Text == "")
+            if (txtSearch.Text == "")
             {
                 if (dropCategory.SelectedValue != "全部分类")
                 {
                     int category = DevelopHelper.getCategoryId(dropCategory.SelectedValue);
-                    service = db.Develop.Where(a => a.Develop_deleted == 0 && a.Develop_category == category && a.Develop_time >= min && a.Develop_time < max).OrderByDescending(a => a.Develop_time).ToList();
+                    service = db.Develop.Where(a => a.Develop_deleted == 1 && a.Develop_category == category && a.Develop_time >= min && a.Develop_time < max).OrderByDescending(a => a.Develop_time).ToList();
                 }
                 else
-                    service = db.Develop.Where(a => a.Develop_deleted == 0 && a.Develop_time >= min && a.Develop_time < max).OrderByDescending(a => a.Develop_time).ToList();
+                    service = db.Develop.Where(a => a.Develop_deleted == 1 && a.Develop_time >= min && a.Develop_time < max).OrderByDescending(a => a.Develop_time).ToList();
             }
             else
             {
                 if (dropCategory.SelectedValue != "全部分类")
                 {
                     int category = DevelopHelper.getCategoryId(dropCategory.SelectedValue);
-                    service = db.Develop.Where(a => a.Develop_deleted == 0 && a.Develop_category == category && a.Develop_time >= min && a.Develop_time < max && a.Develop_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Develop_time).ToList();
+                    service = db.Develop.Where(a => a.Develop_deleted == 1 && a.Develop_category == category && a.Develop_time >= min && a.Develop_time < max && a.Develop_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Develop_time).ToList();
                 }
                 else
-                    service = db.Develop.Where(a => a.Develop_deleted == 0 && a.Develop_time >= min && a.Develop_time < max && a.Develop_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Develop_time).ToList();
+                    service = db.Develop.Where(a => a.Develop_deleted == 1 && a.Develop_time >= min && a.Develop_time < max && a.Develop_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Develop_time).ToList();
 
 
             }
@@ -215,16 +198,36 @@ public partial class BackStage_DevelopManage : System.Web.UI.Page
                     using (var db = new TeachingCenterEntities())
                     {
                         Develop sc = db.Develop.Single(a => a.Develop_id == id);
-                        sc.Develop_deleted = 1;
+                        db.Develop.Remove(sc);
                         db.SaveChanges();
                     }
                 }
         }
-        JSHelper.AlertThenRedirect("删除成功！", "DevelopManage.aspx");
+        JSHelper.AlertThenRedirect("删除成功！", "RecycleDevelop.aspx");
     }
 
     protected void ltbSearch_Click(object sender, EventArgs e)
     {
         DataBindToRepeater(1);
+    }
+
+    protected void ltbRecycle_Click(object sender, EventArgs e)
+    {
+        for (int i = 0; i < this.rptService.Items.Count; i++)
+        {
+            CheckBox cbx = (CheckBox)rptService.Items[i].FindControl("checkbox");
+            int id = Convert.ToInt32(((Label)rptService.Items[i].FindControl("lbID")).Text);
+            if (cbx != null)
+                if (cbx.Checked == true)
+                {
+                    using (var db = new TeachingCenterEntities())
+                    {
+                        Develop sc = db.Develop.Single(a => a.Develop_id == id);
+                        sc.Develop_deleted = 0;
+                        db.SaveChanges();
+                    }
+                }
+        }
+        JSHelper.AlertThenRedirect("恢复成功！", "RecycleDevelop.aspx");
     }
 }

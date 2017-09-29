@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class BackStage_DevelopManage : System.Web.UI.Page
+public partial class BackStage_RecycleService : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -18,49 +18,21 @@ public partial class BackStage_DevelopManage : System.Web.UI.Page
                 {
 
                     //绑定下拉框
-                    var category = from it in db.DevelopCategory select it;
+                    var category = from it in db.ServiceCategory select it;
 
-                    List<DevelopCategory> cate = category.ToList();
+                    List<ServiceCategory> cate = category.ToList();
 
-                    DevelopCategory all = new DevelopCategory();
-
-                    cate.Insert(0, all);
-
-                    all.DevelopCategory_id = 0;
-
-                    all.DevelopCategory_name = "全部分类";
-
-                    dropCategory.DataSource = cate;
-
-                    dropCategory.DataTextField = "DevelopCategory_name";
-
-                    dropCategory.DataBind();
-
-                    //绑定列表信息
-                    DataBindToRepeater(1);
-                }
-            }
-            if (!IsPostBack)
-            {
-                using (var db = new TeachingCenterEntities())
-                {
-
-                    //绑定下拉框
-                    var category = from it in db.DevelopCategory select it;
-
-                    List<DevelopCategory> cate = category.ToList();
-
-                    DevelopCategory all = new DevelopCategory();
+                    ServiceCategory all = new ServiceCategory();
 
                     cate.Insert(0, all);
 
-                    all.DevelopCategory_id = 0;
+                    all.ServiceCategory_id = 0;
 
-                    all.DevelopCategory_name = "全部分类";
+                    all.ServiceCategory_name = "全部分类";
 
                     dropCategory.DataSource = cate;
 
-                    dropCategory.DataTextField = "DevelopCategory_name";
+                    dropCategory.DataTextField = "ServiceCategory_name";
 
                     dropCategory.DataBind();
 
@@ -74,7 +46,9 @@ public partial class BackStage_DevelopManage : System.Web.UI.Page
             JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
         }
 
-     }
+
+
+    }
 
     protected void dropCategory_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -87,20 +61,18 @@ public partial class BackStage_DevelopManage : System.Web.UI.Page
             //绑定序号
             Literal literal = (Literal)e.Item.FindControl("ltNumber");
             literal.Text = (e.Item.ItemIndex + 1).ToString();
-            //绑定分类
+            //绑定申请人
             try
             {
-                literal = (Literal)e.Item.FindControl("ltCategory");
-                literal.Text = DevelopHelper.getCategoryName(Convert.ToInt32(literal.Text));
+                literal = (Literal)e.Item.FindControl("ltTeacher");
+                literal.Text = TeacherHelper.getTeacherNameByID(Convert.ToInt32(literal.Text));
             }
             catch
             {
                 literal.Text = "";
             }
-            //绑定内容
-            literal = (Literal)e.Item.FindControl("ltContent");
-            string content = MyHtmlHelper.RemoveTags(Server.HtmlDecode(literal.Text));
-            literal.Text = content.Length > 40 ? content.Substring(0, 40) + "..." : content;
+            //绑定是否审核
+            //if()
         }
     }
 
@@ -112,50 +84,50 @@ public partial class BackStage_DevelopManage : System.Web.UI.Page
             int id = Convert.ToInt32(e.CommandArgument.ToString());
             using (var db = new TeachingCenterEntities())
             {
-                Develop service = db.Develop.Single(a => a.Develop_id == id);
-                service.Develop_deleted = 1;
+                Service service = db.Service.Single(a => a.Service_id == id);
+                service.Service_isdeleted = 1;
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("删除成功！", "DevelopManage.aspx");
+                JSHelper.AlertThenRedirect("删除成功！", "ServiceManage.aspx");
+            }
+        }
+        //修改分类
+        if (e.CommandName == "Set")
+        {
+            int id = Convert.ToInt32(e.CommandArgument.ToString());
+            using (var db = new TeachingCenterEntities())
+            {
+                Service sc = db.Service.Single(a => a.Service_id == id);
+                sc.Service_isdeal = 1;
+                db.SaveChanges();
+                JSHelper.AlertThenRedirect("处理成功！", "ServiceManage.aspx");
+                //.Text = sc.ServiceCategory_name;
             }
         }
     }
 
-    //分页
+    //列表绑定与分页
     void DataBindToRepeater(int currentPage)
     {
 
         using (var db = new TeachingCenterEntities())
         {
-            List<Develop> service;
+            List<Service> service;
             DateTime min = new DateTime(1900, 1, 1);
             DateTime max = new DateTime(2300, 12, 31);
             if (logmin.Value != "")
                 min = Convert.ToDateTime(logmin.Value);
             if (logmax.Value != "")
                 max = Convert.ToDateTime(logmax.Value).AddDays(1);
-
-            if(txtSearch.Text == "")
+            if (dropCategory.SelectedValue != "全部分类")
             {
-                if (dropCategory.SelectedValue != "全部分类")
-                {
-                    int category = DevelopHelper.getCategoryId(dropCategory.SelectedValue);
-                    service = db.Develop.Where(a => a.Develop_deleted == 0 && a.Develop_category == category && a.Develop_time >= min && a.Develop_time < max).OrderByDescending(a => a.Develop_time).ToList();
-                }
-                else
-                    service = db.Develop.Where(a => a.Develop_deleted == 0 && a.Develop_time >= min && a.Develop_time < max).OrderByDescending(a => a.Develop_time).ToList();
+                int category = ServiceHelper.getCategoryID(dropCategory.SelectedValue);
+                service = db.Service.Where(a => a.Service_isdeleted == 0 && a.Service_category == category && a.Service_time >= min && a.Service_time < max).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
             }
             else
-            {
-                if (dropCategory.SelectedValue != "全部分类")
-                {
-                    int category = DevelopHelper.getCategoryId(dropCategory.SelectedValue);
-                    service = db.Develop.Where(a => a.Develop_deleted == 0 && a.Develop_category == category && a.Develop_time >= min && a.Develop_time < max && a.Develop_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Develop_time).ToList();
-                }
-                else
-                    service = db.Develop.Where(a => a.Develop_deleted == 0 && a.Develop_time >= min && a.Develop_time < max && a.Develop_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Develop_time).ToList();
+                service = db.Service.Where(a => a.Service_isdeleted == 0 && a.Service_time >= min && a.Service_time < max).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
 
 
-            }
+
 
             ltCount.Text = service.Count().ToString();
 
@@ -214,17 +186,42 @@ public partial class BackStage_DevelopManage : System.Web.UI.Page
                 {
                     using (var db = new TeachingCenterEntities())
                     {
-                        Develop sc = db.Develop.Single(a => a.Develop_id == id);
-                        sc.Develop_deleted = 1;
+                        Service sc = db.Service.Single(a => a.Service_id == id);
+                        sc.Service_isdeleted = 1;
                         db.SaveChanges();
                     }
                 }
         }
-        JSHelper.AlertThenRedirect("删除成功！", "DevelopManage.aspx");
+        JSHelper.AlertThenRedirect("删除成功！", "ServiceManage.aspx");
+    }
+    //批量处理
+    protected void lbtSet_Click(object sender, EventArgs e)
+    {
+        for (int i = 0; i < this.rptService.Items.Count; i++)
+        {
+            CheckBox cbx = (CheckBox)rptService.Items[i].FindControl("checkbox");
+            int id = Convert.ToInt32(((Label)rptService.Items[i].FindControl("lbID")).Text);
+            if (cbx != null)
+                if (cbx.Checked == true)
+                {
+                    using (var db = new TeachingCenterEntities())
+                    {
+                        Service sc = db.Service.Single(a => a.Service_id == id);
+                        sc.Service_isdeal = 1;
+                        db.SaveChanges();
+                    }
+                }
+        }
+        JSHelper.AlertThenRedirect("处理成功！", "ServiceManage.aspx");
     }
 
     protected void ltbSearch_Click(object sender, EventArgs e)
     {
         DataBindToRepeater(1);
+    }
+
+    protected void ltbRecycle_Click(object sender, EventArgs e)
+    {
+
     }
 }

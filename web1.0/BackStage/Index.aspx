@@ -100,6 +100,15 @@
                 </ul>
 		</dd>
 	</dl>
+        <dl id="menu-article">
+			<dt><i class="Hui-iconfont">&#xe616;</i> 服务管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="ServiceManage.aspx" data-title="服务管理" href="javascript:void(0)">服务管理</a></li>
+                    <li><a data-href="ServiceCategoryManage.aspx" data-title="服务分类管理" href="javascript:void(0)">服务分类管理</a></li>
+                </ul>
+		</dd>
+	</dl>
 		<dl id="menu-product">
 			<dt><i class="Hui-iconfont">&#xe620;</i> 项目管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
@@ -133,6 +142,7 @@
 					<li><a data-href="member-record-share.html" data-title="分享记录" href="javascript:void(0)">分享记录</a></li>
 			</ul>
 		</dd>
+           
 	</dl>
 		<dl id="menu-admin">
 			<dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
@@ -144,29 +154,16 @@
 			</ul>
 		</dd>
 	</dl>
-		<dl id="menu-tongji">
-			<dt><i class="Hui-iconfont">&#xe61a;</i> 系统统计<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+    <dl id="menu-admin">
+			<dt><i class="Hui-iconfont"> &#xe6e2;</i> 回收站<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="charts-1.html" data-title="折线图" href="javascript:void(0)">折线图</a></li>
-					<li><a data-href="charts-2.html" data-title="时间轴折线图" href="javascript:void(0)">时间轴折线图</a></li>
-					<li><a data-href="charts-3.html" data-title="区域图" href="javascript:void(0)">区域图</a></li>
-					<li><a data-href="charts-4.html" data-title="柱状图" href="javascript:void(0)">柱状图</a></li>
-					<li><a data-href="charts-5.html" data-title="饼状图" href="javascript:void(0)">饼状图</a></li>
-					<li><a data-href="charts-6.html" data-title="3D柱状图" href="javascript:void(0)">3D柱状图</a></li>
-					<li><a data-href="charts-7.html" data-title="3D饼状图" href="javascript:void(0)">3D饼状图</a></li>
-			</ul>
-		</dd>
-	</dl>
-		<dl id="menu-system">
-			<dt><i class="Hui-iconfont">&#xe62e;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-			<dd>
-				<ul>
-					<li><a data-href="system-base.html" data-title="系统设置" href="javascript:void(0)">系统设置</a></li>
-					<li><a data-href="system-category.html" data-title="栏目管理" href="javascript:void(0)">栏目管理</a></li>
-					<li><a data-href="system-data.html" data-title="数据字典" href="javascript:void(0)">数据字典</a></li>
-					<li><a data-href="system-shielding.html" data-title="屏蔽词" href="javascript:void(0)">屏蔽词</a></li>
-					<li><a data-href="system-log.html" data-title="系统日志" href="javascript:void(0)">系统日志</a></li>
+					<li><a data-href="RecycleDevelop.aspx" data-title="教学发展" href="javascript:void(0)">教学发展</a></li>
+					<li><a data-href="RecycleService.aspx" data-title="服务申请" href="javascript:void(0)">服务申请</a></li>
+                    <li><a data-href="RecycleActivity.aspx" data-title="活动信息" href="javascript:void(0)">活动信息</a></li>
+					<li><a data-href="RecycleActivitySummary.aspx" data-title="活动总结" href="javascript:void(0)">活动总结</a></li>
+                    <li><a data-href="admin-list.html" data-title="项目信息" href="javascript:void(0)">项目信息</a></li>
+                    <li><a data-href="admin-list.html" data-title="教学资源" href="javascript:void(0)">教学资源</a></li>
 			</ul>
 		</dd>
 	</dl>
@@ -204,82 +201,14 @@
 <script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
 <script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
 
-<!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" src="lib/jquery.contextmenu/jquery.contextmenu.r2.js"></script>
-<script type="text/javascript">
-$(function(){
-	/*$("#min_title_list li").contextMenu('Huiadminmenu', {
-		bindings: {
-			'closethis': function(t) {
-				console.log(t);
-				if(t.find("i")){
-					t.find("i").trigger("click");
-				}		
-			},
-			'closeall': function(t) {
-				alert('Trigger was '+t.id+'\nAction was Email');
-			},
-		}
-	});*/
-});
-/*个人信息*/
-function myselfinfo(){
-	layer.open({
-		type: 1,
-		area: ['300px','200px'],
-		fix: false, //不固定
-		maxmin: true,
-		shade:0.4,
-		title: '查看信息',
-		content: '<div>管理员信息</div>'
-	});
-}
-
-/*资讯-添加*/
-function article_add(title,url){
-	var index = layer.open({
-		type: 2,
-		title: title,
-		content: url
-	});
-	layer.full(index);
-}
-/*图片-添加*/
-function picture_add(title,url){
-	var index = layer.open({
-		type: 2,
-		title: title,
-		content: url
-	});
-	layer.full(index);
-}
-/*产品-添加*/
-function product_add(title,url){
-	var index = layer.open({
-		type: 2,
-		title: title,
-		content: url
-	});
-	layer.full(index);
-}
-/*用户-添加*/
-function member_add(title,url,w,h){
-	layer_show(title,url,w,h);
-}
-
-
-</script> 
-
-<!--此乃百度统计代码，请自行删除-->
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?080836300300be57b7f34f4b3e97d911";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
+    function del() {
+        return confirm('确认彻底删除?');
+    }
+    function recycle() {
+        return confirm('确认恢复?');
+    }
 </script>
-<!--/此乃百度统计代码，请自行删除--></form>
+</form>
 </body>
 </html>

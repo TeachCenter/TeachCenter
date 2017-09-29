@@ -101,7 +101,7 @@
 
 function del()
     {
-        return confirm('确认删除?');
+        return confirm('删除分类后改分类的文章也会删除,确认删除?');
     }
 
 

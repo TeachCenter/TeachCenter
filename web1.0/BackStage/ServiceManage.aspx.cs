@@ -12,39 +12,40 @@ public partial class BackStage_ServiceManage : System.Web.UI.Page
         try
         {
             string teacher = Session["AdminID"].ToString();
+            if (!IsPostBack)
+            {
+                using (var db = new TeachingCenterEntities())
+                {
+
+                    //绑定下拉框
+                    var category = from it in db.ServiceCategory select it;
+
+                    List<ServiceCategory> cate = category.ToList();
+
+                    ServiceCategory all = new ServiceCategory();
+
+                    cate.Insert(0, all);
+
+                    all.ServiceCategory_id = 0;
+
+                    all.ServiceCategory_name = "全部分类";
+
+                    dropCategory.DataSource = cate;
+
+                    dropCategory.DataTextField = "ServiceCategory_name";
+
+                    dropCategory.DataBind();
+
+                    //绑定列表信息
+                    DataBindToRepeater(1);
+                }
+            }
         }
         catch
         {
             JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
         }
-        if (!IsPostBack)
-        {
-            using (var db = new TeachingCenterEntities())
-            {
 
-                //绑定下拉框
-                var category = from it in db.ServiceCategory select it;
-
-                List<ServiceCategory> cate = category.ToList();
-
-                ServiceCategory all = new ServiceCategory();
-
-                cate.Insert(0, all);
-
-                all.ServiceCategory_id = 0;
-
-                all.ServiceCategory_name = "全部分类";
-
-                dropCategory.DataSource = cate;
-
-                dropCategory.DataTextField = "ServiceCategory_name";
-
-                dropCategory.DataBind();
-
-                //绑定列表信息
-                DataBindToRepeater(1);
-            }
-        }
 
 
      }
