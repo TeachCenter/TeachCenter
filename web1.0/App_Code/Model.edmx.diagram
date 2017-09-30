@@ -36,6 +36,7 @@
         <AssociationConnector Association="TeachingCenterModel.FK_ProjectStage_Project" ManuallyRouted="false" />
         <AssociationConnector Association="TeachingCenterModel.FK_Service_ServiceCategory" ManuallyRouted="false" />
         <AssociationConnector Association="TeachingCenterModel.FK_Service_Teacher" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TeachingCenterModel.EducateSource" Width="1.5" PointX="5.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

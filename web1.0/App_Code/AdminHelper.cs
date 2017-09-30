@@ -15,14 +15,14 @@ public class AdminHelper
         //
     }
 
-    /*static public string getNameByID(string ID)
+    static public string getNameByID(string ID)
     {
         using (var db = new TeachingCenterEntities())
         {
             Admin ad = db.Admin.SingleOrDefault(a => a.Admin_id == ID);
             return ad.Admin_name;
         }
-    }*/
+    }
 
     static public string judgeStage(int number)
     {

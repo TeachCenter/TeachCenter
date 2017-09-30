@@ -67,7 +67,7 @@ public partial class BackStage_ProjectAdd : System.Web.UI.Page
         int teacher = Convert.ToInt32(ddlTeacher.SelectedValue);
         int stage = Convert.ToInt32(ddlStage.SelectedValue);
         string project_file = myFileUpload.PostedFile.FileName;
-        string project_content = myEditor11.InnerHtml;
+        string project_content = UeditorHelper.Change(myEditor11.InnerHtml);
         if (project_name.Length == 0)
             Response.Write("<script>alert('项目名称不能为空！');</script>");
         else if (category == 0)
@@ -85,6 +85,7 @@ public partial class BackStage_ProjectAdd : System.Web.UI.Page
                 project.category = category;
                 project.teacher_id = teacher;
                 project.submit_time = DateTime.Now.ToString("yyyy-MM-dd");
+                project.is_deleted = 0;
                 db.Project.Add(project);
                 db.SaveChanges();
                 ProjectStage project_stage = new ProjectStage();
