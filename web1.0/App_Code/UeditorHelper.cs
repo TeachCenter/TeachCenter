@@ -16,34 +16,27 @@ public class UeditorHelper
         //
     }
 
-    public static string NoHTML(string Htmlstring)//把文本中的html标签全部去掉
+    public static string NoHTML(string strHtml)//把文本中的html标签全部去掉
     {
-        //删除脚本   
-        Htmlstring = Regex.Replace(Htmlstring, @"<script[^>]*?>.*?</script>", "", RegexOptions.IgnoreCase);
-        //删除HTML   
-        Htmlstring = Regex.Replace(Htmlstring, @"<(.[^>]*)>", "", RegexOptions.IgnoreCase);
-        Htmlstring = Regex.Replace(Htmlstring, @"([\r\n])[\s]+", "", RegexOptions.IgnoreCase);
-        Htmlstring = Regex.Replace(Htmlstring, @"-->", "", RegexOptions.IgnoreCase);
-        Htmlstring = Regex.Replace(Htmlstring, @"<!--.*", "", RegexOptions.IgnoreCase);
+        Regex regex = new Regex(@"<.+?>", RegexOptions.IgnoreCase);
+        string strOutput = regex.Replace(strHtml, "");//替换掉"<"和">"之间的内容
+        strOutput = strOutput.Replace("<", "");
+        strOutput = strOutput.Replace(">", "");
+        strOutput = strOutput.Replace("&nbsp;", "");
+        return strOutput;
+    }
 
-        Htmlstring = Regex.Replace(Htmlstring, @"<p[^>]*?>.*?</p>", "", RegexOptions.IgnoreCase);
-        Htmlstring = Regex.Replace(Htmlstring, @"<img[^>]*?>.*?</img>", "", RegexOptions.IgnoreCase);
-        Htmlstring = Regex.Replace(Htmlstring, @"&(quot|#34);", "\"", RegexOptions.IgnoreCase);
-        Htmlstring = Regex.Replace(Htmlstring, @"&(amp|#38);", "&", RegexOptions.IgnoreCase);
-        Htmlstring = Regex.Replace(Htmlstring, @"&(lt|#60);", "<", RegexOptions.IgnoreCase);
-        Htmlstring = Regex.Replace(Htmlstring, @"&(gt|#62);", ">", RegexOptions.IgnoreCase);
-        Htmlstring = Regex.Replace(Htmlstring, @"&(nbsp|#160);", "   ", RegexOptions.IgnoreCase);
-        Htmlstring = Regex.Replace(Htmlstring, @"&(iexcl|#161);", "\xa1", RegexOptions.IgnoreCase);
-        Htmlstring = Regex.Replace(Htmlstring, @"&(cent|#162);", "\xa2", RegexOptions.IgnoreCase);
-        Htmlstring = Regex.Replace(Htmlstring, @"&(pound|#163);", "\xa3", RegexOptions.IgnoreCase);
-        Htmlstring = Regex.Replace(Htmlstring, @"&(copy|#169);", "\xa9", RegexOptions.IgnoreCase);
-        Htmlstring = Regex.Replace(Htmlstring, @"&#(\d+);", "", RegexOptions.IgnoreCase);
+    public static string Change(string x)//对富文本编辑器中获取的内容 html标签进行处理，避免它存到数据库的时候被转义
+    {
+        x = x.Replace("&lt;", "<");//对一些特殊字符进行替换
+        x = x.Replace("&gt;", ">");
+        x = x.Replace("&quot;", "\"");
+        //x = x.Replace("&#39;", """ );
+        x = x.Replace("&nbsp;", " ");
+        //  x = x.Replace("&ldquo;", """);
+        //  x = x.Replace("&rdquo;", """);
+        x = x.Replace("&amp;", "&");
 
-        Htmlstring.Replace("<", "");
-        Htmlstring.Replace(">", "");
-        Htmlstring.Replace("\r\n", "");
-        Htmlstring = HttpContext.Current.Server.HtmlEncode(Htmlstring).Trim();
-
-        return Htmlstring;
+        return x;
     }
 }

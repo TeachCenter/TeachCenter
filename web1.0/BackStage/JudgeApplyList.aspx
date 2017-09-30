@@ -43,17 +43,17 @@
 				    </tr>
 			    </thead>
 			    <tbody>
-                    <asp:Repeater ID="rptApplication" runat="server" OnItemCommand="rptApplication_ItemCommand" ItemType="ApplicationInfo">
+                    <asp:Repeater ID="rptApplication" runat="server" OnItemCommand="rptApplication_ItemCommand">
                         <ItemTemplate>
 				            <tr class="text-c">
 					            <td><input type="checkbox" runat="server" id="isPass"></td>					
-					            <td><%# Item.name %><input type="hidden" runat="server" id="id" value=<%#Item.id %> /></td>
-                                <td><%# Item.gender == 1?"男":"女" %></td>
-					            <td><%# Item.department%></td>
-                                <td><%# Item.rank%></td>
-                                <td><%# Item.message%></td>
-					            <td><%# Item.submit_time %></td>
-                                <td class="f-14 td-manage"><asp:LinkButton ID="lbtPass" runat="server" CssClass="ml-5" CommandName="Pass" CommandArgument='<%#Item.id %>' OnClientClick="return confirm('确定通过该教师的申请?')">通过<i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton></td>
+					            <td><%# Eval("name") %><input type="hidden" runat="server" id="id" value=<%# Eval("id") %> /></td>
+                                <td><%# Convert.ToInt32(Eval("gender").ToString()) == 1?"男":"女" %></td>
+					            <td><%# Eval("department")%></td>
+                                <td><%# Eval("rank")%></td>
+                                <td><%# Eval("message")%></td>
+					            <td><%# Eval("submit_time") %></td>
+                                <td class="f-14 td-manage"><asp:LinkButton ID="lbtPass" runat="server" CssClass="ml-5" CommandName="Pass" CommandArgument='<%# Eval("id") %>' OnClientClick="return confirm('确定通过该教师的申请?')">通过<i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton></td>
 				            </tr>
                         </ItemTemplate>
                     </asp:Repeater>

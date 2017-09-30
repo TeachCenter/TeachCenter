@@ -16,7 +16,7 @@ public partial class BackStage_ProjectList : System.Web.UI.Page
             using (var db = new TeachingCenterEntities())
             {
                 // 绑定项目列表
-                var project = from it in db.ProjectInfo orderby it.submit_time descending select it ;
+                var project = from it in db.ProjectInfo where it.is_deleted == 0 orderby it.submit_time descending select it ;
                 ltSum.Text = project.Count().ToString();
                 TotalPage.Text = Math.Ceiling(project.Count() / 10.0).ToString();
                 currentPage.Text = "1";
@@ -25,7 +25,7 @@ public partial class BackStage_ProjectList : System.Web.UI.Page
                 Session["ds"] = project.ToList();
 
                 // 绑定项目分类下拉框
-                var category = from it in db.ProjectCategory select it;
+                var category = from it in db.ProjectCategory where it.is_deleted == 0 select it;
                 this.DropDownList.DataSource = category.ToList();
                 this.DropDownList.DataValueField = "id";
                 this.DropDownList.DataTextField = "name";
@@ -47,7 +47,7 @@ public partial class BackStage_ProjectList : System.Web.UI.Page
             using (var db = new TeachingCenterEntities())
             {
                 var project = db.Project.SingleOrDefault(a => a.project_id == id);
-                db.Project.Remove(project);
+                project.is_deleted = 1;
                 db.SaveChanges();
                 Response.Write("<script>alert('删除成功！');location.href='ProjectList.aspx';</script>");
             }
@@ -67,7 +67,7 @@ public partial class BackStage_ProjectList : System.Web.UI.Page
                 using (var db = new TeachingCenterEntities())
                 {
                     var project = db.Project.SingleOrDefault(a => a.project_id == project_id);
-                    db.Project.Remove(project);
+                    project.is_deleted = 1;
                     db.SaveChanges();                    
                 }
             }
@@ -81,9 +81,9 @@ public partial class BackStage_ProjectList : System.Web.UI.Page
         int category = Convert.ToInt32(DropDownList.SelectedValue);
         using (var db = new TeachingCenterEntities())
         {
-            var project = from it in db.ProjectInfo where it.category == category orderby it.submit_time descending select it;
+            var project = from it in db.ProjectInfo where it.category == category  && it.is_deleted == 0 orderby it.submit_time descending select it;
             if(category == 0)
-                project = from it in db.ProjectInfo orderby it.submit_time descending select it;
+                project = from it in db.ProjectInfo where it.is_deleted == 0 orderby it.submit_time descending select it;
             ltSum.Text = project.Count().ToString();
             currentPage.Text = "1";
             TotalPage.Text = Math.Ceiling(project.Count() / 10.0).ToString();
@@ -111,16 +111,16 @@ public partial class BackStage_ProjectList : System.Web.UI.Page
             List<ProjectInfo> result = new List<ProjectInfo>();           
             using (var db = new TeachingCenterEntities())
             {
-                var project = from it in db.ProjectInfo orderby it.submit_time descending select it;
+                var project = from it in db.ProjectInfo where it.is_deleted == 0 orderby it.submit_time descending select it;
                 if (category == 0 && project_name != "")
                 {
-                    project = from it in db.ProjectInfo where it.name.IndexOf(project_name) >= 0 orderby it.submit_time descending select it;
+                    project = from it in db.ProjectInfo where it.name.IndexOf(project_name) >= 0 && it.is_deleted == 0 orderby it.submit_time descending select it;
                 }
                 if (category != 0)
                 {
-                    project = from it in db.ProjectInfo where it.category == category orderby it.submit_time descending select it;
+                    project = from it in db.ProjectInfo where it.category == category && it.is_deleted == 0 orderby it.submit_time descending select it;
                     if (project_name != "")
-                        project = from it in db.ProjectInfo where it.category == category && it.name.IndexOf(project_name) >= 0 orderby it.submit_time descending select it;
+                        project = from it in db.ProjectInfo where it.category == category && it.name.IndexOf(project_name) >= 0 && it.is_deleted == 0 orderby it.submit_time descending select it;
                 }
                 if (logmin.Text != "" && logmax.Text != "")
                 {

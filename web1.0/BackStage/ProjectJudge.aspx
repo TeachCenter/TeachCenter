@@ -37,12 +37,12 @@
 				    </tr>
 			    </thead>
 			    <tbody>
-                    <asp:Repeater ID="rptResult" runat="server" ItemType="ProjectJudge">
+                    <asp:Repeater ID="rptResult" runat="server">
                         <ItemTemplate>
 				            <tr class="text-c">				
-					            <td><%# Item.judge_name %></td>
-                                <td><%# Item.comment.Length == 0?"无":Item.comment %></td>
-					            <td><%# Item.is_pass == 1?"是":"否"%></td>                              
+					            <td><%# Eval("judge_name") %></td>
+                                <td><%# Eval("comment").ToString().Length == 0?"无":Eval("comment") %></td>
+					            <td><%# Convert.ToInt32(Eval("is_pass").ToString()) == 1?"是":"否"%></td>                              
 				            </tr>
                         </ItemTemplate>
                     </asp:Repeater>

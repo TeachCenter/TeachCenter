@@ -38,7 +38,7 @@ public partial class BackStage_ProCategoryAdd : System.Web.UI.Page
     {
         string name = txtName.Text;
         string project_file = myFileUpload.PostedFile.FileName;
-        string project_content = myEditor11.InnerHtml;
+        string project_content = UeditorHelper.Change(myEditor11.InnerHtml);
         string time = txtTime.Text;
         string judge_time = txtJudgeTime.Text;
         if (name.Length == 0)
@@ -58,6 +58,7 @@ public partial class BackStage_ProCategoryAdd : System.Web.UI.Page
                 pro_category.stage = 0;
                 pro_category.end_time = time;
                 pro_category.judge_end_time = judge_time;
+                pro_category.is_deleted = 0;
                 db.ProjectCategory.Add(pro_category);
                 db.SaveChanges();
                 Response.Write("<script>alert('提交成功！');location.href='ProCategoryList.aspx';</script>");

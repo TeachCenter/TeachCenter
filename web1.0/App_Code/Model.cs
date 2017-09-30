@@ -114,6 +114,17 @@ public partial class DevelopCategory
     public virtual ICollection<Develop> Develop { get; set; }
 }
 
+public partial class EducateSource
+{
+    public int id { get; set; }
+    public string title { get; set; }
+    public string body { get; set; }
+    public string publisher { get; set; }
+    public string publish_time { get; set; }
+    public int view_times { get; set; }
+    public Nullable<int> is_deleted { get; set; }
+}
+
 public partial class Introduction
 {
     public int Introduction_id { get; set; }
@@ -149,6 +160,7 @@ public partial class Project
     public int category { get; set; }
     public int teacher_id { get; set; }
     public string submit_time { get; set; }
+    public Nullable<int> is_deleted { get; set; }
 
     public virtual ProjectCategory ProjectCategory { get; set; }
     public virtual Teacher Teacher { get; set; }
@@ -170,6 +182,7 @@ public partial class ProjectCategory
     public int stage { get; set; }
     public string end_time { get; set; }
     public string judge_end_time { get; set; }
+    public Nullable<int> is_deleted { get; set; }
 
     public virtual ICollection<Project> Project { get; set; }
 }
@@ -182,6 +195,7 @@ public partial class ProjectInfo
     public string teacher_name { get; set; }
     public string submit_time { get; set; }
     public int category { get; set; }
+    public Nullable<int> is_deleted { get; set; }
 }
 
 public partial class ProjectJudge

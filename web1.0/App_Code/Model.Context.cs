@@ -46,6 +46,7 @@ public partial class TeachingCenterEntities : DbContext
     public DbSet<Teacher> Teacher { get; set; }
     public DbSet<ApplicationInfo> ApplicationInfo { get; set; }
     public DbSet<ProjectInfo> ProjectInfo { get; set; }
+    public DbSet<EducateSource> EducateSource { get; set; }
 
     public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
     {
