@@ -93,10 +93,20 @@
                     $("#btnSub").attr("disabled", true);
                 }
                 else {
-                    txtTitle.css("color", "#333");
                     $("#btnSub").attr("disabled", false);
                 }
+                
             });
+            $("#txtTitle").focus(function () {
+                var txtTitle = $("#txtTitle");
+                if (txtTitle.val() == "输入不能为空") {
+                    txtTitle.val("");
+                    txtTitle.css("color", "#333");
+                    
+                }
+                
+            });
+           
         </script>
 	</form>
 </article>

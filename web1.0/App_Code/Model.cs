@@ -97,6 +97,7 @@ public partial class Develop
     public int Develop_hit { get; set; }
     public long Develop_deleted { get; set; }
     public int Develop_category { get; set; }
+    public string Develop_path { get; set; }
 
     public virtual DevelopCategory DevelopCategory { get; set; }
 }
@@ -145,6 +146,7 @@ public partial class Picture
 {
     public int Picture_id { get; set; }
     public string Picture_path { get; set; }
+    public int is_top { get; set; }
 }
 
 public partial class Project
@@ -160,7 +162,7 @@ public partial class Project
     public int category { get; set; }
     public int teacher_id { get; set; }
     public string submit_time { get; set; }
-    public Nullable<int> is_deleted { get; set; }
+    public int is_deleted { get; set; }
 
     public virtual ProjectCategory ProjectCategory { get; set; }
     public virtual Teacher Teacher { get; set; }
@@ -182,7 +184,8 @@ public partial class ProjectCategory
     public int stage { get; set; }
     public string end_time { get; set; }
     public string judge_end_time { get; set; }
-    public Nullable<int> is_deleted { get; set; }
+    public int is_deleted { get; set; }
+    public string publish_time { get; set; }
 
     public virtual ICollection<Project> Project { get; set; }
 }
@@ -195,7 +198,7 @@ public partial class ProjectInfo
     public string teacher_name { get; set; }
     public string submit_time { get; set; }
     public int category { get; set; }
-    public Nullable<int> is_deleted { get; set; }
+    public int is_deleted { get; set; }
 }
 
 public partial class ProjectJudge
@@ -237,6 +240,7 @@ public partial class Service
     public int Service_isdeal { get; set; }
     public long Service_isdeleted { get; set; }
     public int Service_hit { get; set; }
+    public string Service_author { get; set; }
 
     public virtual ServiceCategory ServiceCategory { get; set; }
     public virtual Teacher Teacher { get; set; }

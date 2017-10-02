@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TeachingCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+      <Schema Namespace="TeachingCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityType Name="Activity">
           <Key>
             <PropertyRef Name="Activity_id" />
@@ -70,6 +70,7 @@
           <Property Name="Develop_hit" Type="int" Nullable="false" />
           <Property Name="Develop_deleted" Type="bigint" Nullable="false" />
           <Property Name="Develop_category" Type="int" Nullable="false" />
+          <Property Name="Develop_path" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="DevelopCategory">
           <Key>
@@ -111,7 +112,8 @@
             <PropertyRef Name="Picture_id" />
           </Key>
           <Property Name="Picture_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Picture_path" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Picture_path" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="is_top" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
@@ -122,7 +124,7 @@
           <Property Name="category" Type="int" Nullable="false" />
           <Property Name="teacher_id" Type="int" Nullable="false" />
           <Property Name="submit_time" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="is_deleted" Type="int" />
+          <Property Name="is_deleted" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ProjectCategory">
           <Key>
@@ -130,12 +132,13 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="project_file" Type="nvarchar(max)" />
+          <Property Name="project_file" Type="nvarchar(max)" Nullable="false" />
           <Property Name="project_content" Type="nvarchar(max)" Nullable="false" />
           <Property Name="stage" Type="int" Nullable="false" />
           <Property Name="end_time" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="judge_end_time" Type="nvarchar" MaxLength="50" />
-          <Property Name="is_deleted" Type="int" />
+          <Property Name="judge_end_time" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="is_deleted" Type="int" Nullable="false" />
+          <Property Name="publish_time" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ProjectJudge">
           <Key>
@@ -176,6 +179,7 @@
           <Property Name="Service_isdeal" Type="int" Nullable="false" />
           <Property Name="Service_isdeleted" Type="bigint" Nullable="false" />
           <Property Name="Service_hit" Type="int" Nullable="false" />
+          <Property Name="Service_author" Type="nchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="ServiceCategory">
           <Key>
@@ -198,7 +202,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="image" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -240,6 +244,7 @@
             <PropertyRef Name="teacher_name" />
             <PropertyRef Name="submit_time" />
             <PropertyRef Name="category" />
+            <PropertyRef Name="is_deleted" />
           </Key>
           <Property Name="project_id" Type="int" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -247,7 +252,7 @@
           <Property Name="teacher_name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="submit_time" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="category" Type="int" Nullable="false" />
-          <Property Name="is_deleted" Type="int" />
+          <Property Name="is_deleted" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Activity_ActivityCategory">
           <End Role="ActivityCategory" Type="Self.ActivityCategory" Multiplicity="1">
@@ -521,7 +526,8 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
             <End Role="Service" EntitySet="Service" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TeachingCenterModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -595,6 +601,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="Develop_hit" Type="Int32" Nullable="false" />
           <Property Name="Develop_deleted" Type="Int64" Nullable="false" />
           <Property Name="Develop_category" Type="Int32" Nullable="false" />
+          <Property Name="Develop_path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="DevelopCategory" Relationship="Self.FK_Develop_DevelopCategory" FromRole="Develop" ToRole="DevelopCategory" />
         </EntityType>
         <EntityType Name="DevelopCategory">
@@ -604,6 +611,18 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="DevelopCategory_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DevelopCategory_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Develop" Relationship="Self.FK_Develop_DevelopCategory" FromRole="DevelopCategory" ToRole="Develop" />
+        </EntityType>
+        <EntityType Name="EducateSource">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="publisher" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="publish_time" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="view_times" Type="Int32" Nullable="false" />
+          <Property Name="is_deleted" Type="Int32" />
         </EntityType>
         <EntityType Name="Introduction">
           <Key>
@@ -627,7 +646,8 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
             <PropertyRef Name="Picture_id" />
           </Key>
           <Property Name="Picture_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Picture_path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Picture_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="is_top" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
@@ -638,11 +658,11 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="category" Type="Int32" Nullable="false" />
           <Property Name="teacher_id" Type="Int32" Nullable="false" />
           <Property Name="submit_time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="is_deleted" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ProjectCategory" Relationship="Self.FK_Project_ProjectCategory" FromRole="Project" ToRole="ProjectCategory" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_Project_Teacher" FromRole="Project" ToRole="Teacher" />
           <NavigationProperty Name="ProjectJudge" Relationship="Self.FK_ProjectJudge_Project" FromRole="Project" ToRole="ProjectJudge" />
           <NavigationProperty Name="ProjectStage" Relationship="Self.FK_ProjectStage_Project" FromRole="Project" ToRole="ProjectStage" />
-          <Property Name="is_deleted" Type="Int32" />
         </EntityType>
         <EntityType Name="ProjectCategory">
           <Key>
@@ -650,13 +670,14 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="project_file" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="project_file" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="project_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="stage" Type="Int32" Nullable="false" />
           <Property Name="end_time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="judge_end_time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="judge_end_time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="is_deleted" Type="Int32" Nullable="false" />
+          <Property Name="publish_time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Project" Relationship="Self.FK_Project_ProjectCategory" FromRole="ProjectCategory" ToRole="Project" />
-          <Property Name="is_deleted" Type="Int32" />
         </EntityType>
         <EntityType Name="ProjectJudge">
           <Key>
@@ -699,6 +720,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="Service_isdeal" Type="Int32" Nullable="false" />
           <Property Name="Service_isdeleted" Type="Int64" Nullable="false" />
           <Property Name="Service_hit" Type="Int32" Nullable="false" />
+          <Property Name="Service_author" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="ServiceCategory" Relationship="Self.FK_Service_ServiceCategory" FromRole="Service" ToRole="ServiceCategory" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_Service_Teacher" FromRole="Service" ToRole="Teacher" />
         </EntityType>
@@ -724,7 +746,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -766,6 +788,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
             <PropertyRef Name="teacher_name" />
             <PropertyRef Name="submit_time" />
             <PropertyRef Name="category" />
+            <PropertyRef Name="is_deleted" />
           </Key>
           <Property Name="project_id" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -773,7 +796,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="teacher_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="submit_time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="category" Type="Int32" Nullable="false" />
-          <Property Name="is_deleted" Type="Int32" />
+          <Property Name="is_deleted" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_Activity_ActivityCategory">
           <End Role="ActivityCategory" Type="Self.ActivityCategory" Multiplicity="1">
@@ -937,6 +960,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <EntitySet Name="Admin" EntityType="Self.Admin" />
           <EntitySet Name="Develop" EntityType="Self.Develop" />
           <EntitySet Name="DevelopCategory" EntityType="Self.DevelopCategory" />
+          <EntitySet Name="EducateSource" EntityType="Self.EducateSource" />
           <EntitySet Name="Introduction" EntityType="Self.Introduction" />
           <EntitySet Name="JudgeApplication" EntityType="Self.JudgeApplication" />
           <EntitySet Name="Picture" EntityType="Self.Picture" />
@@ -1024,7 +1048,6 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="EducateSource" EntityType="TeachingCenterModel.EducateSource" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1037,18 +1060,6 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <EntityType Name="EducateSource">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="body" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="publisher" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="publish_time" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="view_times" Type="Int32" Nullable="false" />
-          <Property Name="is_deleted" Type="Int32" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1124,6 +1135,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
                 <ScalarProperty Name="Develop_hit" ColumnName="Develop_hit" />
                 <ScalarProperty Name="Develop_deleted" ColumnName="Develop_deleted" />
                 <ScalarProperty Name="Develop_category" ColumnName="Develop_category" />
+                <ScalarProperty Name="Develop_path" ColumnName="Develop_path" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1132,6 +1144,19 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
               <MappingFragment StoreEntitySet="DevelopCategory">
                 <ScalarProperty Name="DevelopCategory_id" ColumnName="DevelopCategory_id" />
                 <ScalarProperty Name="DevelopCategory_name" ColumnName="DevelopCategory_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EducateSource">
+            <EntityTypeMapping TypeName="TeachingCenterModel.EducateSource">
+              <MappingFragment StoreEntitySet="EducateSource">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="body" ColumnName="body" />
+                <ScalarProperty Name="publisher" ColumnName="publisher" />
+                <ScalarProperty Name="publish_time" ColumnName="publish_time" />
+                <ScalarProperty Name="view_times" ColumnName="view_times" />
+                <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1158,25 +1183,25 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
               <MappingFragment StoreEntitySet="Picture">
                 <ScalarProperty Name="Picture_id" ColumnName="Picture_id" />
                 <ScalarProperty Name="Picture_path" ColumnName="Picture_path" />
+                <ScalarProperty Name="is_top" ColumnName="is_top" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Project">
             <EntityTypeMapping TypeName="TeachingCenterModel.Project">
               <MappingFragment StoreEntitySet="Project">
-                <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
                 <ScalarProperty Name="project_id" ColumnName="project_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="category" ColumnName="category" />
                 <ScalarProperty Name="teacher_id" ColumnName="teacher_id" />
                 <ScalarProperty Name="submit_time" ColumnName="submit_time" />
+                <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProjectCategory">
             <EntityTypeMapping TypeName="TeachingCenterModel.ProjectCategory">
               <MappingFragment StoreEntitySet="ProjectCategory">
-                <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="project_file" ColumnName="project_file" />
@@ -1184,6 +1209,8 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
                 <ScalarProperty Name="stage" ColumnName="stage" />
                 <ScalarProperty Name="end_time" ColumnName="end_time" />
                 <ScalarProperty Name="judge_end_time" ColumnName="judge_end_time" />
+                <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+                <ScalarProperty Name="publish_time" ColumnName="publish_time" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1227,6 +1254,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
                 <ScalarProperty Name="Service_isdeal" ColumnName="Service_isdeal" />
                 <ScalarProperty Name="Service_isdeleted" ColumnName="Service_isdeleted" />
                 <ScalarProperty Name="Service_hit" ColumnName="Service_hit" />
+                <ScalarProperty Name="Service_author" ColumnName="Service_author" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1282,13 +1310,13 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <EntitySetMapping Name="ProjectInfo">
             <EntityTypeMapping TypeName="TeachingCenterModel.ProjectInfo">
               <MappingFragment StoreEntitySet="ProjectInfo">
-                <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
                 <ScalarProperty Name="project_id" ColumnName="project_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="category_name" ColumnName="category_name" />
                 <ScalarProperty Name="teacher_name" ColumnName="teacher_name" />
                 <ScalarProperty Name="submit_time" ColumnName="submit_time" />
                 <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1316,19 +1344,6 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="TeachingCenterModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="TeachingCenterModel.Store.sp_upgraddiagrams" />
-          <EntitySetMapping Name="EducateSource">
-            <EntityTypeMapping TypeName="TeachingCenterModel.EducateSource">
-              <MappingFragment StoreEntitySet="EducateSource">
-                <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
-                <ScalarProperty Name="view_times" ColumnName="view_times" />
-                <ScalarProperty Name="publish_time" ColumnName="publish_time" />
-                <ScalarProperty Name="publisher" ColumnName="publisher" />
-                <ScalarProperty Name="body" ColumnName="body" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
