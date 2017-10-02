@@ -32,11 +32,13 @@ public partial class BackStage_ProjectContent : System.Web.UI.Page
                 lbName.Text = project.name;
                 lbCategory.Text = project.category_name;
                 lbTeacher.Text = project.teacher_name;
+                content_id.Value = id.ToString();              
                 var project_stage = (from it in db.ProjectStage where it.project_id == id orderby it.stage descending select it).FirstOrDefault();
                 int now_stage = project_stage.stage;
                 int now_status = project_stage.is_pass;
                 lbStage.Text = stage[now_stage];
                 lbStatus.Text = status[now_status];
+                lbContent.Text = Server.HtmlDecode(project_stage.project_content);
                 if (now_status == -2)
                     btnDeliver.Visible = true;
                 if (now_status == -1)
