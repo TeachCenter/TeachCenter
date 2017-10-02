@@ -20,18 +20,20 @@
 <link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+<link rel="stylesheet" href="css/init.css">
+<link rel="stylesheet" href="css/progect-pdf.css">
 
-    <script src="jquery-3.2.1.min.js" type="text/javascript"></script>
-    <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.all.min.js"> </script>
-    <script type="text/javascript" charset="utf-8" src="../ueditor/lang/zh-cn/zh-cn.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            //$("#link").css("display", "none");
-            //if ($("#checkbox-moban").is(':checked'))
-            //    alert("666");
-        });
-    </script>
+<script src="jquery-3.2.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.all.min.js"> </script>
+<script type="text/javascript" charset="utf-8" src="../ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //$("#link").css("display", "none");
+        //if ($("#checkbox-moban").is(':checked'))
+        //    alert("666");
+    });
+</script>
 <title>项目类型内容页</title>
 <meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
 <meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
@@ -46,7 +48,21 @@
 			</div>
 		</div>
         <div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">项目内容：</label>
+			<label class="form-label col-xs-4 col-sm-2">项目类型文件：</label>
+            <div id="divPdf" class="formControls col-xs-8 col-sm-9"> 
+                <asp:Literal ID="Literal1" runat="server" ></asp:Literal> 
+                <input type="hidden" runat="server" id="content_id" />
+			</div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                var id = window.location.search.substr(4);
+                var content_id = $("#content_id").val();
+                $("<iframe>").addClass("pdf").attr("src", "pdfJs/generic/web/viewer.html?id=" + content_id).appendTo("#divPdf");
+            })       
+        </script>
+        <div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">项目类型内容：</label>
 			<div class="formControls col-xs-8 col-sm-9"> 
                 <asp:Literal ID="ltlContent" runat="server"></asp:Literal>
 			</div>

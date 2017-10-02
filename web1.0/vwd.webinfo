@@ -72,8 +72,11 @@
   
     
   
-    
-  
     <Service ID="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}"/>
   </StartupServices>
+
+  <comReferences>
+    <reference Name="interop.office" ID="{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}\99.1\0"/>
+    <reference Name="interop.addindesignerobjects" ID="{A537E638-AB2A-4308-A502-2EFF280C6E98}\1.0\0"/>
+  </comReferences>
 </VisualWebDeveloper>

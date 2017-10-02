@@ -16,6 +16,7 @@ public partial class BackStage_ProCategoryContent : System.Web.UI.Page
                 id = Convert.ToInt32(Request.QueryString["id"]);
             else
                 Response.Redirect("ProjectList.aspx");
+            content_id.Value = id.ToString();
             using (var db = new TeachingCenterEntities())
             {
                 var pro_category = db.ProjectCategory.SingleOrDefault(a => a.id == id);

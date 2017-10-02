@@ -20,6 +20,8 @@
 <link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+<link rel="stylesheet" href="css/init.css">
+<link rel="stylesheet" href="css/progect-pdf.css">
 
     <script src="jquery-3.2.1.min.js" type="text/javascript"></script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.config.js"></script>
@@ -67,6 +69,26 @@
 			<label class="form-label col-xs-4 col-sm-2">当前状态：</label>
 			<div class="formControls col-xs-8 col-sm-9"> 
                 <asp:Literal ID="lbStatus" runat="server" ></asp:Literal> 
+			</div>
+		</div>
+        <div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">项目文件：</label>
+            <div id="divPdf" class="formControls col-xs-8 col-sm-9"> 
+                <asp:Literal ID="Literal1" runat="server" ></asp:Literal> 
+                <input type="hidden" runat="server" id="content_id" />
+			</div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                var id = window.location.search.substr(4);
+                var content_id = $("#content_id").val();
+                $("<iframe>").addClass("pdf").attr("src", "pdfJs/generic/web/viewer.html?id=" + content_id).appendTo("#divPdf");
+            })       
+        </script>
+        <div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">项目内容：</label>
+			<div class="formControls col-xs-8 col-sm-9"> 
+                <asp:Literal ID="lbContent" runat="server" ></asp:Literal> 
 			</div>
 		</div>
 		<div class="row cl">
