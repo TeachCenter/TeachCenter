@@ -1,0 +1,146 @@
+.left-content{
+	margin-top: 32px;
+	width: 250px;
+	height: 250px;
+	float: left;
+}
+.left-content-nav{
+	line-height: 70px;
+	font-size: 28px;
+	color: white;
+	background-color: #132840;
+	display: block;
+	text-align: center;
+	width: 100%;
+	height: 70px;
+}
+.left-content-nav-content{
+	cursor: pointer;
+	font-size: 20px;
+	line-height: 60px;
+	background-color: #FFFFFF;
+	display: block;
+	text-align: center;
+	width: 100%;
+	height: 60px;
+}
+.left-content-nav-content:hover{
+	color: #D6000F;
+	background-color: #F3F3F3;
+}
+.right-content{
+	margin-top: 32px;
+	height: 1336px!important;
+	width: 920px;
+	background-color: #FFFFFF;
+	float: right;
+}
+.right-content h1{
+	display: block;
+	text-align: center;
+	width: 100%;
+	line-height: 60px;
+	height: 60px;
+	font-size: 28px;
+}
+.passage{
+	width: 100%;
+	height: 228px;
+}
+.passage:hover{
+	background-color: #F3F3F3;
+}
+.passage:hover h2{
+	color: #D6000F;
+}
+.passage h2{
+	padding-top: 32px;
+	margin-left: 32px;
+	margin-bottom: 16px;
+	font-size: 28px;
+
+}
+.passage div{
+	text-overflow:ellipsis;
+	overflow: hidden;
+	margin-left: 32px;
+	width: 854px;
+	height: 74px;
+
+}
+.passage p{
+	color: #808080;
+	font-size: 20px;
+	text-align: justify;
+    text-justify: inter-ideograph;
+}
+.passage h3{
+	color: #808080;
+	font-size: 20px;
+	margin-left: 32px;
+	margin-top: 20px;
+	float: left;
+}
+.passage a{
+	background-image: url(../images/more.png);
+	background-repeat: no-repeat;
+	background-position: 100%;
+	color: #808080;
+	margin-right: 32px;
+	margin-top: 20px;
+	font-size: 20px;
+	display: block;
+	width: 100px;
+	float: right;
+}
+.buttons a{
+	display: block;
+	line-height: 40px;
+	font-size: 20px;
+	text-align: center;
+	width: 38px;
+	height: 38px;
+	float: left;
+	border: 1px solid #808080;
+	color: #808080;
+}
+.buttons{
+	margin-top: 32px;
+	margin-bottom: 64px;
+}
+.lleft-button{
+	border-width: 0px!important;
+	width: 40px!important;
+	height: 40px!important;
+	background-image: url(../images/lleft-button.png);
+	margin-left: 220px;
+}
+.left-button{
+
+	border-width: 0px!important;
+	width: 40px!important;
+	height: 40px!important;
+	background-image: url(../images/left-button.png);
+	margin-left: 30px;
+}
+.right-button{
+
+	border-width: 0px!important;
+	width: 40px!important;
+	height: 40px!important;
+	background-image: url(../images/right-button.png);
+}
+.rright-button
+{	
+
+	border-width: 0px!important;
+	width: 40px!important;
+	height: 40px!important;
+	background-image: url(../images/rright-button.png);
+	margin-left: 30px;
+	float: right!important;
+	margin-right: 220px;
+}
+.passage-content{
+	height: 1140px;
+}
