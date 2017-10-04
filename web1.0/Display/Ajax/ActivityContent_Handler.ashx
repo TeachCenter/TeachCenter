@@ -27,7 +27,8 @@ public class ActivityContent : IHttpHandler {
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/plain";
 
-        int id = Convert.ToInt32( context.Request.Form["Activity_id"]);
+        //int id = Convert.ToInt32( context.Request.Form["Activity_id"]);
+        int id = 1;
         using (var db = new TeachingCenterEntities())
         {
             var ac = from it in db.Activity
@@ -45,13 +46,20 @@ public class ActivityContent : IHttpHandler {
                          Activity_hit = it.Activity_hit,
                          Activity_categoryid = it.Activity_categoryid
                      };
-            foreach(var i in ac)
+            List<Ac> acs = new List<Ac>();
+            acs = ac.ToList();
+            foreach(var i in acs)
             {
                 i.Activity_category = ActivityHelper.getCategoryName(Convert.ToInt16( i.Activity_categoryid));
+                i.Activity_hit = i.Activity_hit + 1;
+                Activity activity = db.Activity.Single(a => a.Activity_id == id);
+                activity.Activity_hit = i.Activity_hit;
+                db.SaveChanges();
             }
-            string final = JsonConvert.SerializeObject(ac);
+
+            string final = JsonConvert.SerializeObject(acs);
             context.Response.Write(final);
-            
+
         }
     }
 

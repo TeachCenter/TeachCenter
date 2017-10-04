@@ -73,6 +73,10 @@ public partial class Admin
     public string Admin_id { get; set; }
     public string Admin_pwd { get; set; }
     public string Admin_name { get; set; }
+    public string Admin_emai { get; set; }
+    public string Admin_phone { get; set; }
+    public Nullable<System.DateTime> Admin_birthday { get; set; }
+    public long Admin_emai_check { get; set; }
 }
 
 public partial class ApplicationInfo

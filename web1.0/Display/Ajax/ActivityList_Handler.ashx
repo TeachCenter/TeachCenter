@@ -47,9 +47,9 @@ public class ActivityList : IHttpHandler {
 
 
             //活动列表
-            //int categoryid =Convert.ToInt32( context.Request.Form["Activity_categoryid"]);
-            int categoryid = 0,page = 1;
-            //int page = Convert.ToInt32( context.Request.Form["page"]);
+            int categoryid =Convert.ToInt32( context.Request.Form["Activity_categoryid"]);
+            //int categoryid = 0,page = 1;
+            int page = Convert.ToInt32( context.Request.Form["page"]);
             var  ac = (from it in db.Activity
                        where it.Activity_isdeleted == 0
                        orderby it.Activity_time descending

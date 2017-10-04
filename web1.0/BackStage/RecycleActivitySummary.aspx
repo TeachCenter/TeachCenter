@@ -27,10 +27,10 @@
 <script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
 <script type="text/javascript" src="manage.js"></script> 
 
-<title>活动总结列表</title>
+<title>回收站--活动总结</title>
 </head>
 <body><form id="form1" runat="server">
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 活动总结管理 <span class="c-gray en">&gt;</span> 活动总结列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 回收站 <span class="c-gray en">&gt;</span> 活动总结列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
 	<div class="text-c">
 		<button onclick="removeIframe()" class="btn btn-primary radius">关闭选项卡</button>

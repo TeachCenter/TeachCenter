@@ -16,7 +16,7 @@
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
 
-<title>活动总结列表</title>
+<title>活动信息列表</title>
 <style type="text/css">
     #page{
             width: 200px;

@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <script src="jquery-3.2.1.min.js" type="text/javascript"></script>
+
     <script type="text/javascript">
         //点击切换验证码
         function f_refreshtype()
@@ -16,7 +17,10 @@
             {
                 Image1.src = Image1.src + "?";
             }
-        } 
+        }
+        if (self.frameElement && self.frameElement.tagName == "IFRAME") {
+            window.top.location = 'Login.aspx';
+        }
     </script>
     <style type="text/css">
         #login{

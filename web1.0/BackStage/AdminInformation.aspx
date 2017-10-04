@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DevelopEditor.aspx.cs" Inherits="BackStage_DevelopEditor" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AdminInformation.aspx.cs" Inherits="BackStage_AdminInformation" %>
+
 <!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
 <html>
@@ -24,6 +25,8 @@
     <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.all.min.js"> </script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/lang/zh-cn/zh-cn.js"></script>
+
+
     <script type="text/javascript">
         $(document).ready(function () {
             //$("#link").css("display", "none");
@@ -31,7 +34,23 @@
             //    alert("666");
         });
     </script>
-<title>教学发展编辑</title>
+    <style type="text/css">
+        .lbCheck{
+            color:brown;
+        }
+        #lbID,#lbName,#lbEmail,#lbCheck,#lbPwd{
+            text-align: left;
+            width: 250px;
+            font-size: 20px;
+        }
+        #size{
+            font-size:20px;
+        }
+        #btnCheck,#txtPwd,#btnNewPwd{
+            margin-top:5px;
+        }
+    </style>
+<title>管理员个人信息</title>
 <meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
 <meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
 </head>
@@ -39,63 +58,56 @@
 <article class="page-container">
 	<form runat="server" class="form form-horizontal">
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章标题：</label>
+			<label id="size" class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>账号：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<asp:TextBox ID="txtTitle" runat="server" CssClass="input-text"></asp:TextBox>
-			</div>
+				
+                <asp:Label ID="lbID" runat="server" CssClass="form-label col-xs-4 col-sm-2 left"></asp:Label>
+			    <asp:LinkButton ID="lbPwd" runat="server" CssClass="form-label col-xs-4 col-sm-2" OnClick="lbPwd_Click"> 修改密码 >></asp:LinkButton>
+            </div>
 		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>发布者：</label>
-			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-                <asp:DropDownList runat="server" ID="dropAuthor" CssClass="select">
-                    <asp:ListItem Value="0" >本人</asp:ListItem>
-                    <asp:ListItem Value="1">匿名</asp:ListItem>
-                    <asp:ListItem Value="2">未知</asp:ListItem>
-                </asp:DropDownList></span>
-				</div>
-		</div>
-         <div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>活动类型：</label>
-			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-                <asp:DropDownList runat="server" ID="dropCategory" CssClass="select">
-                </asp:DropDownList></span>
-			</div>
-		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">使用外部链接：</label>
-			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
-				<div class="check-box">
-					<%--<input type="checkbox" id="checkbox-moban">--%>
-                    <asp:CheckBox ID="cbxLink" runat="server" />
-					<label for="checkbox-moban">&nbsp;</label>
-				</div>
-			</div>
-		</div>
-		<div id="link" class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章链接：</label>
+            <div runat="server" id="divPwd" class="row cl" visible="false">
+			<label id="size" class="form-label col-xs-4 col-sm-2" style="width:250px"><span class="c-red"></span>验证码已发送至邮箱,请输入验证码</label>
 			<div class="formControls col-xs-8 col-sm-9">
-                <asp:TextBox ID="txtLink" runat="server" CssClass="input-text"></asp:TextBox>
+				<asp:TextBox ID="txtCheckPwd" runat="server" CssClass="input-text"></asp:TextBox>
+                <asp:Button ID="txtPwd" runat="server" CssClass="btn btn-primary radius" Text="验证" OnClick="txtPwd_Click" />
+            </div>
+		</div>
+           <div runat="server" id="divEditor" class="row cl" visible="false">
+			<label id="size" class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>请输入新密码</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<asp:TextBox ID="txtNewPwd" TextMode="Password" runat="server" CssClass="input-text"></asp:TextBox>
+                <asp:Button ID="btnNewPwd" runat="server" CssClass="btn btn-primary radius" Text="提交" OnClick="btnNewPwd_Click"  />
+            </div>
+		</div>
+
+                <div class="row cl">
+			<label id="size" class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>名字：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<asp:TextBox ID="txtName" runat="server" CssClass="input-text" Visible="false"></asp:TextBox>
+                <asp:Label ID="lbName" runat="server" CssClass="form-label col-xs-4 col-sm-2 left"></asp:Label>
+               
 			</div>
 		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章内容：</label>
-			<div class="formControls col-xs-8 col-sm-9"> 
-				<textarea id="myEditor11" name="myEditor11" runat="server" onblur="setUeditor()" style="width: 1030px; height: 250px;"></textarea>
-                <script type="text/javascript">
-                    var editor = new baidu.editor.ui.Editor();
-                    editor.render("<%=myEditor11.ClientID%>");
-                </script>
-                <script type="text/javascript">
-                     function setUeditor() {
-                     var myEditor11 = document.getElementById("myEditor11");
-                     myEditor11.value = editor.getContent();//把得到的值给textarea
-                     }
-                 </script>
-			</div>
+        <div class="row cl">
+			<label id="size" class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>邮箱：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<asp:TextBox ID="txtEmail" runat="server" CssClass="input-text" Visible="false"></asp:TextBox>
+                <asp:Label ID="lbEmail" runat="server" CssClass="form-label col-xs-4 col-sm-2 left"></asp:Label>
+			    <asp:LinkButton ID="lbCheck" runat="server" CssClass="form-label col-xs-4 col-sm-2" Enabled="false" OnClick="lbCheck_Click"></asp:LinkButton>
+            </div>
 		</div>
-		<div class="row cl">
+        <div runat="server" id="divCheck" class="row cl" visible="false">
+			<label id="size" class="form-label col-xs-4 col-sm-2" style="width:250px"><span class="c-red"></span>验证码已发送至邮箱,请输入验证码</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<asp:TextBox ID="txtCheck" runat="server" CssClass="input-text"></asp:TextBox>
+                <asp:Button ID="btnCheck" runat="server" CssClass="btn btn-primary radius" Text="验证" OnClick="btnCheck_Click" />
+            </div>
+		</div>
+
+		<div class="row cl" style="margin-top:20px;">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-                <asp:Button ID="btnSub" runat="server" CssClass="btn btn-primary radius" OnClick="btnSub_Click" Text="发布" />
+                <asp:Button ID="btnSub" runat="server" CssClass="btn btn-primary radius" OnClick="btnSub_Click" Visible="false" Text="提交" />
+                <asp:Button ID="btnEditor" runat="server" CssClass="btn btn-primary radius" OnClick="btnEditor_Click" Text="修改" />
 				
 			</div>
 		</div>
@@ -113,17 +125,6 @@
                     $("#btnSub").attr("disabled", false);
                 }
             });
-            //判断是否使用外部链接
-            //$("#cbxLink").change(function () {
-            //    var check = $("#cbxLink");
-            //    alert("44");
-            //    if (check.is(':checked'))
-            //        alert("55");
-            //    else
-            //        alert("66");
-            //});
-            
-                //
         </script>
 	</form>
 </article>
@@ -136,6 +137,8 @@
 
 <!--请在下方写此页面业务相关的脚本-->
 <script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
 <script type="text/javascript" src="lib/jquery.validation/1.14.0/jquery.validate.js"></script> 
 <script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script> 
 <script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script>
@@ -143,17 +146,8 @@
 <script type="text/javascript" src="lib/ueditor/1.4.3/ueditor.config.js"></script> 
 <script type="text/javascript" src="lib/ueditor/1.4.3/ueditor.all.min.js"> </script> 
 <script type="text/javascript" src="lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
-<script type="text/javascript">
-    
-    $(function(){
-        $('.skin-minimal input').iCheck({
-            checkboxClass: 'icheckbox-blue',
-            radioClass: 'iradio-blue',
-            increaseArea: '20%'
-        });
-	
-    })
-</script>
+
 <!--/请在上方写此页面业务相关的脚本-->
 </body>
 </html>
+
