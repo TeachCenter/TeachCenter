@@ -14,7 +14,8 @@
 <link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
-
+    <script src="jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="manage.js" type="text/javascript"></script>
 <style type="text/css">
         #table {
             width:auto;
@@ -27,6 +28,7 @@
             margin-left: 20px;
         }
 </style>
+
 <title>活动分类管理</title>
 </head>
 <body><form id="form1" runat="server">

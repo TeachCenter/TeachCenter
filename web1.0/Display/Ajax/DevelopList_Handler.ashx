@@ -12,8 +12,8 @@ public class Develop_Handler : IHttpHandler {
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/plain";
         //context.Response.Write("Hello World");
-        int page = Convert.ToInt32( context.Request.Form["page"]);
-        //int page = 2;
+        //int page = Convert.ToInt32( context.Request.Form["page"]);
+        int page = 2;
         using (var db = new TeachingCenterEntities())
         {
             var dev = from it in db.Develop

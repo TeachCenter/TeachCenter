@@ -20,8 +20,8 @@
 <link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
-
     <script src="jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="manage.js" type="text/javascript"></script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.all.min.js"> </script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/lang/zh-cn/zh-cn.js"></script>
@@ -126,17 +126,7 @@
                     $("#btnSub").attr("disabled", false);
                 }
             });
-            //判断是否使用外部链接
-            //$("#cbxLink").change(function () {
-            //    var check = $("#cbxLink");
-            //    alert("44");
-            //    if (check.is(':checked'))
-            //        alert("55");
-            //    else
-            //        alert("66");
-            //});
-            
-                //
+
         </script>
 	</form>
 </article>

@@ -89,6 +89,7 @@
                     <asp:Literal ID="ltNow" runat="server" Text="1"></asp:Literal>/
                     <asp:Literal ID="ltTotal" runat="server"></asp:Literal><%--</div>--%>
 				    <asp:Button ID="btnNext" runat="server" Text="下一页" OnClick="btnNext_Click" CssClass="btn btn-primary radius" />
+                    <asp:Button ID="btnExport" runat="server" Text="导出Excel" OnClick="btnExport_Click" CssClass="btn btn-primary radius" style="margin-top: 15px;"  />
                 </div>
 	</div>
 </div>

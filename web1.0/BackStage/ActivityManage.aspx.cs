@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -200,5 +201,84 @@ public partial class BackStage_ActivityManage : System.Web.UI.Page
     protected void ltbSearch_Click(object sender, EventArgs e)
     {
         DataBindToRepeater(1);
+    }
+
+    protected void btnExport_Click(object sender, EventArgs e)
+    {
+        DataTable dt = new DataTable();
+
+        using (var db = new TeachingCenterEntities())
+        {
+            List<Activity> acsu;
+            DateTime min = new DateTime(1900, 1, 1);
+            DateTime max = new DateTime(2300, 12, 31);
+            if (logmin.Value != "")
+                min = Convert.ToDateTime(logmin.Value);
+            if (logmax.Value != "")
+                max = Convert.ToDateTime(logmax.Value).AddDays(1);
+
+
+            if (txtSearch.Text == "")
+            {
+                if (dropCategory.SelectedValue != "全部分类")
+                {
+                    int category = ActivityHelper.getCategoryId(dropCategory.SelectedValue);
+                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_categoryid == category && a.Activity_time >= min && a.Activity_time < max).OrderByDescending(a => a.Activity_time).ToList();
+                }
+                else
+                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_time >= min && a.Activity_time < max).OrderByDescending(a => a.Activity_time).ToList();
+            }
+            else
+            {
+                if (dropCategory.SelectedValue != "全部分类")
+                {
+                    int category = ActivityHelper.getCategoryId(dropCategory.SelectedValue);
+                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_categoryid == category && a.Activity_time >= min && a.Activity_time < max && a.Activity_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Activity_time).ToList();
+                }
+                else
+                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_time >= min && a.Activity_time < max && a.Activity_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Activity_time).ToList();
+
+            }
+
+
+
+
+
+            DataColumn dc1 = new DataColumn("序号", System.Type.GetType("System.String"));
+            DataColumn dc2 = new DataColumn("标题", System.Type.GetType("System.String"));
+            DataColumn dc3 = new DataColumn("发布人", System.Type.GetType("System.String"));
+            DataColumn dc4 = new DataColumn("活动时间", System.Type.GetType("System.DateTime"));
+            DataColumn dcx = new DataColumn("活动地点", System.Type.GetType("System.String"));
+
+            DataColumn dc5 = new DataColumn("人数", System.Type.GetType("System.String"));
+            DataColumn dc6 = new DataColumn("活动类型", System.Type.GetType("System.String"));
+            DataColumn dc7 = new DataColumn("参与名单", System.Type.GetType("System.String"));
+
+            dt.Columns.Add(dc1);
+            dt.Columns.Add(dc2);
+            dt.Columns.Add(dc3);
+            dt.Columns.Add(dc4);
+            dt.Columns.Add(dcx);
+            dt.Columns.Add(dc5);
+            dt.Columns.Add(dc6);
+            dt.Columns.Add(dc7);
+            int count = 1;
+            foreach (var i in acsu)
+            {
+                DataRow row = dt.NewRow();
+
+                row["序号"] = count.ToString();
+                row["标题"] = i.Activity_title;
+                row["活动地点"] = i.Activity_place;
+                row["发布人"] = i.Activity_author;
+                row["活动时间"] = i.Activity_time.ToString();
+                row["人数"] = i.Activity_nowcount.ToString() + " / " + i.Activity_limitcount.ToString();
+                row["活动类型"] = ActivityHelper.getCategoryName(i.Activity_categoryid);
+                row["参与名单"] = ActivityHelper.getTeacherList(i.Activity_id);
+                
+                dt.Rows.Add(row);
+            }
+        }
+        ExcleHelper.ExportDataGrid(dt, "application/ms-excel", "活动信息.xlsx");
     }
 }

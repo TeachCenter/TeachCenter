@@ -27,8 +27,8 @@ public class ActivityContent : IHttpHandler {
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/plain";
 
-        //int id = Convert.ToInt32( context.Request.Form["Activity_id"]);
-        int id = 1;
+        int id = Convert.ToInt32( context.Request.Form["Activity_id"]);
+        //int id = 1;
         using (var db = new TeachingCenterEntities())
         {
             var ac = from it in db.Activity

@@ -118,11 +118,11 @@
 			<dt><i class="Hui-iconfont">&#xe620;</i> 项目管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="ProCategoryList.aspx" data-title="项目管理" href="javascript:void(0)">项目管理</a></li>
-                    <li><a data-href="ProCategoryAdd.aspx" data-title="添加项目" href="javascript:void(0)">添加项目</a></li>
-                    <li><a data-href="ProjectContent.aspx" data-title="项目分配评审" href="javascript:void(0)">项目分配评审</a></li>
-                    <li><a data-href="ProjectJudge.aspx" data-title="评审结果" href="javascript:void(0)">评审结果</a></li>
-                    
+					<li><a data-href="ProCategoryList.aspx" data-title="项目分类管理" href="javascript:void(0)">项目分类管理</a></li>
+                    <li><a data-href="ProCategoryAdd.aspx" data-title="添加项目分类" href="javascript:void(0)">添加项目分类</a></li>
+                    <li><a data-href="ProjectList.aspx" data-title="项目管理" href="javascript:void(0)">项目管理</a></li>
+                   <%-- <li><a data-href="ProjectJudge.aspx" data-title="评审结果" href="javascript:void(0)">评审结果</a></li>
+                    --%>
                 
                 </ul>
 		</dd>

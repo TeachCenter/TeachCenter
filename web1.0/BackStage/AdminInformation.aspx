@@ -11,10 +11,7 @@
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <link rel="Bookmark" href="/favicon.ico" >
 <link rel="Shortcut Icon" href="/favicon.ico" />
-<!--[if lt IE 9]>
-<script type="text/javascript" src="lib/html5shiv.js"></script>
-<script type="text/javascript" src="lib/respond.min.js"></script>
-<![endif]-->
+
 <link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
 <link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
@@ -27,13 +24,8 @@
     <script type="text/javascript" charset="utf-8" src="../ueditor/lang/zh-cn/zh-cn.js"></script>
 
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            //$("#link").css("display", "none");
-            //if ($("#checkbox-moban").is(':checked'))
-            //    alert("666");
-        });
-    </script>
+    <script src="manage.js" type="text/javascript"></script>
+    
     <style type="text/css">
         .lbCheck{
             color:brown;

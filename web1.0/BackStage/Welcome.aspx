@@ -34,9 +34,10 @@
     <p class="f-20 text-success" style="font-size:30px">欢迎登陆， <span class="f-14"></span><asp:Literal ID="ltName" runat="server"></asp:Literal></p>
     <div></div>
     <p>用户类型：管理员</p>
+    <p id="email" runat="server">您的邮箱尚未验证！<a href="AdminInformation.aspx">前去验证>></a></p>
     <div></div>
-    <p>当前有<asp:Label ID="ltServese" runat="server"></asp:Label>条<span>服务申请</span>尚未处理<a href="ServiceManage.aspx">前去处理>></a></p>
-    <p>当前有<asp:Label ID="ltApply" runat="server"></asp:Label>条<span>评审申请</span>尚未处理<a href="ServiceCategoryManage.aspx">前去处理>></a></p>
+    <p id="services" runat="server">当前有<asp:Label ID="ltServese" runat="server"></asp:Label>条<span>服务申请</span>尚未处理<a href="ServiceManage.aspx">前去处理>></a></p>
+    <p id="applys" runat="server">当前有<asp:Label ID="ltApply" runat="server"></asp:Label>条<span>评审申请</span>尚未处理<a href="ServiceCategoryManage.aspx">前去处理>></a></p>
 </div>
 
 <script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 

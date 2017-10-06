@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -157,12 +157,12 @@
 		</form>
 
 	</div>
-	<script type="text/javascript"  src="./js/pop.js"></script>
+	<script type="text/javascript"  src="js/pop.js"></script>
 	<script>
 	 var id = window.location.search.substr(4);
 		$.ajax({ 
-          type: "GET",    
-          url: "../../ActivityList_Handler.ashx",
+          type: "POST",    
+          url: "Ajax/ActivityList_Handler.ashx",
           dataType: "JSON",
           async: true,
           data: { "ActivityCategory_id":0,"page":1},

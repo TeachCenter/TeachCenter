@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -126,7 +128,7 @@ public partial class BackStage_ServiceManage : System.Web.UI.Page
             else
                  service = db.Service.Where(a => a.Service_isdeleted == 0 && a.Service_time >= min && a.Service_time < max).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
 
-
+            //Session["service"] = service;
 
 
             ltCount.Text = service.Count().ToString();
@@ -218,5 +220,58 @@ public partial class BackStage_ServiceManage : System.Web.UI.Page
     protected void ltbSearch_Click(object sender, EventArgs e)
     {
         DataBindToRepeater(1);
+    }
+
+    protected void btnExport_Click(object sender, EventArgs e)
+    {
+        DataTable dt = new DataTable();
+
+        using (var db = new TeachingCenterEntities())
+        {
+            List<Service> service;
+            DateTime min = new DateTime(1900, 1, 1);
+            DateTime max = new DateTime(2300, 12, 31);
+            if (logmin.Value != "")
+                min = Convert.ToDateTime(logmin.Value);
+            if (logmax.Value != "")
+                max = Convert.ToDateTime(logmax.Value).AddDays(1);
+            if (dropCategory.SelectedValue != "全部分类")
+            {
+                int category = ServiceHelper.getCategoryID(dropCategory.SelectedValue);
+                service = db.Service.Where(a => a.Service_isdeleted == 0 && a.Service_category == category && a.Service_time >= min && a.Service_time < max).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
+            }
+            else
+                service = db.Service.Where(a => a.Service_isdeleted == 0 && a.Service_time >= min && a.Service_time < max).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
+
+            DataColumn dc1 = new DataColumn("序号", System.Type.GetType("System.String"));
+            DataColumn dc2 = new DataColumn("申请人", System.Type.GetType("System.String"));
+            DataColumn dc3 = new DataColumn("申请时间", System.Type.GetType("System.DateTime"));
+            DataColumn dc4 = new DataColumn("联系方式", System.Type.GetType("System.String"));
+            DataColumn dc5 = new DataColumn("备注", System.Type.GetType("System.String"));
+            DataColumn dc6 = new DataColumn("审核状态", System.Type.GetType("System.String"));
+
+            dt.Columns.Add(dc1);
+            dt.Columns.Add(dc2);
+            dt.Columns.Add(dc3);
+            dt.Columns.Add(dc4);
+            dt.Columns.Add(dc5);
+            dt.Columns.Add(dc6);
+            int count = 1;
+            foreach (var i in service)
+            {
+                DataRow row = dt.NewRow();
+
+                row["序号"] = count.ToString();
+                row["申请人"] = TeacherHelper.getTeacherNameByID( i.Service_teacher);
+                row["申请时间"] = i.Service_time.ToString();
+                row["联系方式"] = i.Service_phone.ToString();
+                row["备注"] = i.Service_remarks.ToString();
+                row["审核状态"] = i.Service_isdeal == 0 ? "未处理" : "已处理";
+                dt.Rows.Add(row);
+            }
+        }
+        ExcleHelper.ExportDataGrid(dt, "application/ms-excel", "教师服务申请.xlsx");
+
+
     }
 }
