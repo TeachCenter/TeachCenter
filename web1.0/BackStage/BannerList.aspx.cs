@@ -27,7 +27,6 @@ public partial class BackStage_BannerList : System.Web.UI.Page
         }
     }
 
-    
     protected void rptBanner_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
         // 列表中删除一行
@@ -203,7 +202,7 @@ public partial class BackStage_BannerList : System.Web.UI.Page
         using (var db = new TeachingCenterEntities())
         {
             var banners = (from it in db.Picture orderby it.is_top descending select it).Take(4);
-            for(int i = 0; i < banners.Count(); i++)
+            for (int i = 0; i < banners.Count(); i++)
             {
                 if (banners.ToList()[i].Picture_id == id)
                     return true;
