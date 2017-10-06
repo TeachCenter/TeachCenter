@@ -2,11 +2,8 @@
 
 using System;
 using System.Web;
-using System.Linq;
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using System.Data.Objects;
-using System.Web.UI.WebControls;
+using System.Linq;
 
 public class Handler : IHttpHandler {
 

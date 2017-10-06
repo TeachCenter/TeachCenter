@@ -11,19 +11,27 @@ public partial class BackStage_BannerList : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
+        try
         {
-            using (var db = new TeachingCenterEntities())
+            string teacher = Session["AdminID"].ToString();
+            if (!IsPostBack)
             {
-                // 绑定轮播图列表
-                var banner = from it in db.Picture orderby it.is_top descending select it;
-                ltSum.Text = banner.Count().ToString();
-                TotalPage.Text = Math.Ceiling(banner.Count() / 10.0).ToString();
-                currentPage.Text = "1";
-                rptBanner.DataSource = banner.ToList().Take(10);
-                rptBanner.DataBind();
-                Session["ds"] = banner.ToList();
+                using (var db = new TeachingCenterEntities())
+                {
+                    // 绑定轮播图列表
+                    var banner = from it in db.Picture orderby it.is_top descending select it;
+                    ltSum.Text = banner.Count().ToString();
+                    TotalPage.Text = Math.Ceiling(banner.Count() / 10.0).ToString();
+                    currentPage.Text = "1";
+                    rptBanner.DataSource = banner.ToList().Take(10);
+                    rptBanner.DataBind();
+                    Session["ds"] = banner.ToList();
+                }
             }
+        }
+        catch
+        {
+            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
         }
     }
 
