@@ -10,32 +10,40 @@ public partial class BackStage_ProjectAdd : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
+        try
         {
-            using (var db = new TeachingCenterEntities())
+            string admin = Session["AdminID"].ToString();
+            if (!IsPostBack)
             {
-                // 绑定项目分类下拉框
-                var category = from it in db.ProjectCategory select it;
-                this.ddlCategory.DataSource = category.ToList();
-                this.ddlCategory.DataValueField = "id";
-                this.ddlCategory.DataTextField = "name";
-                this.ddlCategory.DataBind();
-                ListItem category_item = new ListItem();
-                category_item.Text = "请选择项目分类";
-                category_item.Value = "0";
-                this.ddlCategory.Items.Insert(0, category_item);
+                using (var db = new TeachingCenterEntities())
+                {
+                    // 绑定项目分类下拉框
+                    var category = from it in db.ProjectCategory select it;
+                    this.ddlCategory.DataSource = category.ToList();
+                    this.ddlCategory.DataValueField = "id";
+                    this.ddlCategory.DataTextField = "name";
+                    this.ddlCategory.DataBind();
+                    ListItem category_item = new ListItem();
+                    category_item.Text = "请选择项目分类";
+                    category_item.Value = "0";
+                    this.ddlCategory.Items.Insert(0, category_item);
 
-                // 绑定提交者下拉框
-                var teacher = from it in db.Teacher select it;
-                this.ddlTeacher.DataSource = teacher.ToList();
-                this.ddlTeacher.DataValueField = "id";
-                this.ddlTeacher.DataTextField = "name";
-                this.ddlTeacher.DataBind();
-                ListItem teacher_item = new ListItem();
-                teacher_item.Text = "请选择提交者";
-                teacher_item.Value = "0";
-                this.ddlTeacher.Items.Insert(0, teacher_item);
+                    // 绑定提交者下拉框
+                    var teacher = from it in db.Teacher select it;
+                    this.ddlTeacher.DataSource = teacher.ToList();
+                    this.ddlTeacher.DataValueField = "id";
+                    this.ddlTeacher.DataTextField = "name";
+                    this.ddlTeacher.DataBind();
+                    ListItem teacher_item = new ListItem();
+                    teacher_item.Text = "请选择提交者";
+                    teacher_item.Value = "0";
+                    this.ddlTeacher.Items.Insert(0, teacher_item);
+                }
             }
+        }
+        catch
+        {
+            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
         }
     }
 

@@ -10,46 +10,54 @@ public partial class BackStage_ProjectContent : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
+        try
         {
-            int id = 0;
-            if (Request.QueryString["id"] != null)
-                id = Convert.ToInt32(Request.QueryString["id"]);
-            else
-                Response.Redirect("ProjectList.aspx");
-            Dictionary<int,string> stage = new Dictionary<int, string>();
-            stage.Add(0, "初审");
-            stage.Add(1, "中期");
-            stage.Add(2, "结题");
-            Dictionary<int, string> status = new Dictionary<int, string>();
-            status.Add(-2, "未分配至评审");
-            status.Add(-1, "未评判结果");
-            status.Add(1, "已通过当前阶段");
-            status.Add(0, "未通过");
-            using (var db = new TeachingCenterEntities())
+            string teacher = Session["AdminID"].ToString();
+            if (!IsPostBack)
             {
-                var project = db.ProjectInfo.SingleOrDefault(a => a.project_id == id);
-                lbName.Text = project.name;
-                lbCategory.Text = project.category_name;
-                lbTeacher.Text = project.teacher_name;
-                content_id.Value = id.ToString();              
-                var project_stage = (from it in db.ProjectStage where it.project_id == id orderby it.stage descending select it).FirstOrDefault();
-                int now_stage = project_stage.stage;
-                int now_status = project_stage.is_pass;
-                lbStage.Text = stage[now_stage];
-                lbStatus.Text = status[now_status];
-                lbContent.Text = Server.HtmlDecode(project_stage.project_content);
-                if (now_status == -2)
-                    btnDeliver.Visible = true;
-                if (now_status == -1)
-                    btnJudge.Visible = true;
+                int id = 0;
+                if (Request.QueryString["id"] != null)
+                    id = Convert.ToInt32(Request.QueryString["id"]);
+                else
+                    Response.Redirect("ProjectList.aspx");
+                Dictionary<int, string> stage = new Dictionary<int, string>();
+                stage.Add(0, "初审");
+                stage.Add(1, "中期");
+                stage.Add(2, "结题");
+                Dictionary<int, string> status = new Dictionary<int, string>();
+                status.Add(-2, "未分配至评审");
+                status.Add(-1, "未评判结果");
+                status.Add(1, "已通过当前阶段");
+                status.Add(0, "未通过");
+                using (var db = new TeachingCenterEntities())
+                {
+                    var project = db.ProjectInfo.SingleOrDefault(a => a.project_id == id);
+                    lbName.Text = project.name;
+                    lbCategory.Text = project.category_name;
+                    lbTeacher.Text = project.teacher_name;
+                    content_id.Value = id.ToString();
+                    var project_stage = (from it in db.ProjectStage where it.project_id == id orderby it.stage descending select it).FirstOrDefault();
+                    int now_stage = project_stage.stage;
+                    int now_status = project_stage.is_pass;
+                    lbStage.Text = stage[now_stage];
+                    lbStatus.Text = status[now_status];
+                    lbContent.Text = Server.HtmlDecode(project_stage.project_content);
+                    if (now_status == -2)
+                        btnDeliver.Visible = true;
+                    if (now_status == -1)
+                        btnJudge.Visible = true;
 
-                // 绑定评审列表
-                var judge = from it in db.Teacher where it.is_judge == 1 select it;
-                rptJudge.DataSource = judge.ToList();
-                rptJudge.DataBind();
+                    // 绑定评审列表
+                    var judge = from it in db.Teacher where it.is_judge == 1 select it;
+                    rptJudge.DataSource = judge.ToList();
+                    rptJudge.DataBind();
+                }
             }
         }
+        catch
+        {
+            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+        }        
     }
 
     protected void btnDeliver_Click(object sender, EventArgs e)

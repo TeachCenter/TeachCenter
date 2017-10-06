@@ -76,6 +76,7 @@
 				转 <asp:TextBox ID="turnTopage" runat ="server" MaxLength ="5" onkeyup="this.value=this.value.replace(/\D/g,'')" style="width:30px" class="input-text"></asp:TextBox>
                 <asp:LinkButton ID ="Jump" runat ="server" Text ="Go" onclick="Jump_Click" CssClass="btn btn-primary radius"></asp:LinkButton>                                       
 			</div>
+            <asp:Button ID="btnExport" runat="server" Text="导出Excel" OnClick="btnExport_Click" CssClass="btn btn-primary radius" style="margin-top: 15px;"  />
 </div>
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 

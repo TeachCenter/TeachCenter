@@ -20,16 +20,28 @@
 <link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
-
     <script src="jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="manage.js" type="text/javascript"></script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.all.min.js"> </script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/lang/zh-cn/zh-cn.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            //$("#link").css("display", "none");
-            //if ($("#checkbox-moban").is(':checked'))
-            //    alert("666");
+            var flag = false;
+            $(".iCheck-helper").click(function () {
+                if (flag == false) {
+                    $(".content").css({ "display": "none" })
+                    $(".link").css({ "display": "block" })
+                    flag = true;
+                }
+                else{
+                    $(".content").css({ "display": "block" })
+                    $(".link").css({ "display": "none" })
+                    flag = false;
+                }
+               
+            });
+            
         });
     </script>
 <title>新增教学发展</title>
@@ -72,13 +84,13 @@
 				</div>
 			</div>
 		</div>
-		<div id="link" class="row cl">
+		<div id="link" class="row cl link" style="display:none;">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章链接：</label>
 			<div class="formControls col-xs-8 col-sm-9">
                 <asp:TextBox ID="txtLink" runat="server" CssClass="input-text"></asp:TextBox>
 			</div>
 		</div>
-		<div class="row cl">
+		<div class="row cl content">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章内容：</label>
 			<div class="formControls col-xs-8 col-sm-9"> 
 				<textarea id="myEditor11" name="myEditor11" runat="server" onblur="setUeditor()" style="width: 1030px; height: 250px;"></textarea>
@@ -114,17 +126,7 @@
                     $("#btnSub").attr("disabled", false);
                 }
             });
-            //判断是否使用外部链接
-            //$("#cbxLink").change(function () {
-            //    var check = $("#cbxLink");
-            //    alert("44");
-            //    if (check.is(':checked'))
-            //        alert("55");
-            //    else
-            //        alert("66");
-            //});
-            
-                //
+
         </script>
 	</form>
 </article>
