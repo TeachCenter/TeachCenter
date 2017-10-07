@@ -34,20 +34,20 @@ public class ActivityList : IHttpHandler {
             foreach(var i in catacorys)
             {
                 Category x = new Category();
-                x.ActivityCategory_href = i.ActivityCategory_href + i.ActivityCategory_id.ToString() + "&page=1";
+                x.ActivityCategory_href = i.ActivityCategory_href + i.ActivityCategory_id.ToString() + "&&page=1";
                 x.ActivityCategory_name = i.ActivityCategory_name;
                 x.ActivityCategory_id = i.ActivityCategory_id;
                 cat.Add(x);
             }
             Category category = new Category();
-            category.ActivityCategory_id = 0;
+            category.ActivityCategory_id = -1;
             category.ActivityCategory_name = "活动总结";
             category.ActivityCategory_href = "ActivitySummaryList.html?page=1";
             cat.Add(category);
 
 
             //活动列表
-            int categoryid =Convert.ToInt32( context.Request.Form["Activity_categoryid"]);
+            int categoryid =Convert.ToInt32( context.Request.Form["ActivityCategory_id"]);
             //int categoryid = 0,page = 1;
             int page = Convert.ToInt32( context.Request.Form["page"]);
             var  ac = (from it in db.Activity
@@ -61,7 +61,7 @@ public class ActivityList : IHttpHandler {
                            Activity_author = it.Activity_author,
                            Activity_hit = it.Activity_hit,
                            Activity_time = it.Activity_time,
-                           Activity_href = "Activity?id=" + it.Activity_id.ToString()
+                           Activity_href = "ActivityContent.aspx?id="
                        });
             if(categoryid!=0)
             {
@@ -76,26 +76,31 @@ public class ActivityList : IHttpHandler {
                          Activity_author = it.Activity_author,
                          Activity_hit = it.Activity_hit,
                          Activity_time = it.Activity_time,
-                         Activity_href = "Activity?id=" + it.Activity_id.ToString()
-            };
+                         Activity_href = "ActivityContent.aspx?id="
+                     };
+            }
+            int count = ac.ToList().Count();
+            string name;
+            if (categoryid != 0)
+                name = ActivityHelper.getCategoryName(categoryid);
+            else
+                name = "全部活动";
+            ac = ac.Skip((page-1) * 5).Take(5);
+            ArrayList all = new ArrayList();
+            all.Add(cat);
+            all.Add(count);
+            all.Add(ac);
+            all.Add(name);
+            string final = JsonConvert.SerializeObject(all);
+            context.Response.Write(final);
+
         }
-        int count = ac.Count();
-        ac = ac.Skip((page-1) * 5).Take(5);
-        ArrayList all = new ArrayList();
-        all.Add(cat);
-        all.Add(count);
-        all.Add(ac);
-
-        string final = JsonConvert.SerializeObject(all);
-        context.Response.Write(final);
-
     }
-}
 
-public bool IsReusable {
-    get {
-        return false;
+    public bool IsReusable {
+        get {
+            return false;
+        }
     }
-}
 
 }

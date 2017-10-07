@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ActivityContent.aspx.cs" Inherits="Display_ActivityContent" %>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -7,7 +9,7 @@
 	<link rel="stylesheet" href="css/intro.css">
 	<script type="text/javascript"  src="./js/jquery-3.1.1.min.js"></script>
 </head>
-<body>
+<body><form runat="server">
 	<div class="container">
 		<div class="header">
 			<div>
@@ -44,11 +46,12 @@
 		<div class="main">
 			<div class="center">
 				<div class="brief-intro-box">
-					<h1 class="brief-intro">教学支持中心简介</h1>
+					<h1 class="brief-intro"></h1>
 					<span class="brief-intro-line"></span>
-					<h2 class="publish">发布人：常顺 发布时间：2013-06-09 浏览次数：999</h2>
+					<h2 class="publish"></h2>
+                    <asp:LinkButton ID="lbtAdd" runat="server" OnClick="lbtAdd_Click" Text="添加活动"></asp:LinkButton>
 					<div class="p-box">
-
+						
 					</div>
 				</div>
 			</div>
@@ -60,7 +63,7 @@
 			</div>
 		</div>
 		<div class="mask"></div>
-		<form class="log-box-form clearfix">
+		<div class="log-box-form clearfix">
 			<div class="log-box">
 				<h1>登陆</h1>
 				<input type="text" value="工号" class="number gray-box">
@@ -72,8 +75,8 @@
 				<a  class="turn-right">立即注册</a>
 				<a class="log-submit">立即登录</a>
 			</div>
-		</form>
-		<form  class="sign-box-form clearfix">
+		</div>
+		<div  class="sign-box-form clearfix">
 			<div class="sign-box">
 				<h1>注册</h1>
 				<div class="left-box">
@@ -97,28 +100,55 @@
 				<a  class="turn-left">登陆已有账号</a>
 				<a class="sign-submit">立即注册</a>
 			</div>
-		</form>
+		</div>
 	</div>
 	<script type="text/javascript"  src="./js/pop.js"></script>
 	<script>
-	$(document).ready(function(){
-		$.ajax({ 
-          type: "POST",    
-          url: ".Ajax/Introduction_Handler.ashx",
-          dataType: "JSON",
-          async: true,
-          // data: { "id": id },
-    
-          success: function(data) {
-          	$(data.Introduction_content).appendTo($(".p-box"))
-                    
-          }
+        $(document).ready(function () {
+            var id = window.location.search.substr(4);
+            $.ajax({
+                url: "./Ajax/ActivityContent_Handler.ashx",
+                type: 'POST',
+                dataType: "JSON",
+                async: true,
+                data: { "Activity_id": id },
+
+                success: function (data) {
+                    $(".brief-intro").text(data[0].Activity_title)
+                    $(".publish").text("发布人：" + data[0].Activity_author + "  发布时间：" + data[0].Activity_time + "  举办地：" + data[0].Activity_place + "  活动人数：" + data[0].Activity_nowcount + "  限制人数：" + data[0].Activity_limitcount + "  浏览次数：" + data[0].Activity_hit);
+
+                    //$("<a>").addClass("add").text("添加活动").appendTo($(".publish"));
+                    $(data[0].Activity_content).appendTo($(".p-box"))
+                    //$(".add").on("click", function () {
+                    //    var id = window.location.search.substr(4);
+                    //    console.log(id)
+                    //    $.ajax({
+
+                    //        url: "./Ajax/ActivityAdd_Handler.ashx",
+                    //        dataType: "JSON",
+                    //        async: true,
+                    //        type: "POST",
+                    //        data: { "Activity_id": id},
+
+                    //        success: function (data) {
+                    //            alert(data)
+
+                    //        }
 
 
-      }); 
+                    //    });
 
-	})
+                    //})
+
+                }
+
+
+            });
+
+
+        })
+
 		
-	</script>
+	</script></form>
 </body>
 </html>
