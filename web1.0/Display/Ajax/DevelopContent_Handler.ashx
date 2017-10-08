@@ -22,14 +22,23 @@ public class DevelopContent_Handler : IHttpHandler {
         public DateTime Develop_time;
     }
 
+    private class Category {
+        public int DevelopCategory_id;
+        public string DevelopCategory_name;
+        public string DevelopCategory_href;
+    }
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/plain";
 
 
-        //int id = Convert.ToInt32( context.Request.Form["Develop_id"]);
-        int id = 1;
+        int id = Convert.ToInt32( context.Request.Form["Develop_id"]);
+        //int id = 1;
         using (var db = new TeachingCenterEntities())
         {
+
+
+
+
             var dev = from it in db.Develop
                       where it.Develop_id == id
                       select new Dev

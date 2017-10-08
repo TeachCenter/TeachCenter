@@ -44,11 +44,11 @@
 		<div class="main">
 			<div class="center">
 				<div class="brief-intro-box">
-					<h1 class="brief-intro">教学支持中心简介</h1>
+					<h1 class="brief-intro"></h1>
 					<span class="brief-intro-line"></span>
-					<h2 class="publish">发布人：常顺 发布时间：2013-06-09 浏览次数：999</h2>
+					<h2 class="publish"></h2>
 					<div class="p-box">
-
+						
 					</div>
 				</div>
 			</div>
@@ -101,23 +101,50 @@
 	</div>
 	<script type="text/javascript"  src="./js/pop.js"></script>
 	<script>
-	$(document).ready(function(){
-		$.ajax({ 
-          type: "POST",    
-          url: ".Ajax/Introduction_Handler.ashx",
-          dataType: "JSON",
-          async: true,
-          // data: { "id": id },
-    
-          success: function(data) {
-          	$(data.Introduction_content).appendTo($(".p-box"))
-                    
-          }
+        $(document).ready(function () {
+            var id = window.location.search.substr(4);
+            $.ajax({
+                url: "./Ajax/ActivityContent_Handler.ashx",
+                type: 'POST',
+                dataType: "JSON",
+                async: true,
+                data: { "Activity_id": id },
+
+                success: function (data) {
+                    $(".brief-intro").text(data[0].Activity_title)
+                    $(".publish").text("发布人：" + data[0].Activity_author + "  发布时间：" + data[0].Activity_time + "  举办地：" + data[0].Activity_place + "  活动人数：" + data[0].Activity_nowcount + "  限制人数：" + data[0].Activity_limitcount + "  浏览次数：" + data[0].Activity_hit);
+
+                    $("<a>").addClass("add").text("添加活动").appendTo($(".publish"));
+                    $(data[0].Activity_content).appendTo($(".p-box"))
+                    $(".add").on("click", function () {
+                        var id = window.location.search.substr(4);
+                        console.log(id)
+                        $.ajax({
+
+                            url: "./Ajax/ActivityAdd_Handler.ashx",
+                            dataType: "JSON",
+                            async: true,
+                            type: "POST",
+                            data: { "Activity_id": id},
+
+                            success: function (data) {
+                                alert(data)
+
+                            }
 
 
-      }); 
+                        });
 
-	})
+                    })
+
+                }
+
+
+            });
+
+
+        })
+
 		
 	</script>
 </body>

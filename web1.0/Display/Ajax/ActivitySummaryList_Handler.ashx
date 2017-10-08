@@ -29,10 +29,10 @@ public class ActivitySummaryList : IHttpHandler {
 
             List<Category> cat = new List<Category>();
 
-            foreach(var i in catacorys)
+            foreach (var i in catacorys)
             {
                 Category x = new Category();
-                x.ActivityCategory_href = i.ActivityCategory_href;
+                x.ActivityCategory_href = i.ActivityCategory_href + i.ActivityCategory_id.ToString() + "&&page=1";
                 x.ActivityCategory_name = i.ActivityCategory_name;
                 x.ActivityCategory_id = i.ActivityCategory_id;
                 cat.Add(x);
@@ -40,7 +40,7 @@ public class ActivitySummaryList : IHttpHandler {
             Category category = new Category();
             category.ActivityCategory_id = 0;
             category.ActivityCategory_name = "活动总结";
-            category.ActivityCategory_href = "ActivitySummaryList.html";
+            category.ActivityCategory_href = "ActivitySummaryList.html?page=1";
             cat.Add(category);
 
             //活动总结列表
@@ -56,7 +56,7 @@ public class ActivitySummaryList : IHttpHandler {
                           ActivitySummary_author = it.ActivitySummary_author,
                           ActivitySummary_time = it.ActivitySummary_time,
                           ActivitySummary_hit = it.ActivitySummary_hit,
-                          ActivitySummary_href = "ActivitySummary?id="
+                          ActivitySummary_href = "ActivitySummaryContent.html?id="
                       };
             int count = asu.Count();
             asu = asu.Skip((page-1) * 5).Take(5);
