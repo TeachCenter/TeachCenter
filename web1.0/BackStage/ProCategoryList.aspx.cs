@@ -10,27 +10,19 @@ public partial class BackStage_ProCategoryList : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        try
+        if (!IsPostBack)
         {
-            string teacher = Session["AdminID"].ToString();
-            if (!IsPostBack)
+            using (var db = new TeachingCenterEntities())
             {
-                using (var db = new TeachingCenterEntities())
-                {
-                    // 绑定项目列表
-                    var pro_category = from it in db.ProjectCategory where it.is_deleted == 0 orderby it.end_time select it;
-                    ltSum.Text = pro_category.Count().ToString();
-                    TotalPage.Text = Math.Ceiling(pro_category.Count() / 10.0).ToString();
-                    currentPage.Text = "1";
-                    rptCategory.DataSource = pro_category.ToList().Take(10);
-                    rptCategory.DataBind();
-                    Session["ds"] = pro_category.ToList();
-                }
+                // 绑定项目列表
+                var pro_category = from it in db.ProjectCategory where it.is_deleted == 0 orderby it.end_time select it;
+                ltSum.Text = pro_category.Count().ToString();
+                TotalPage.Text = Math.Ceiling(pro_category.Count() / 10.0).ToString();
+                currentPage.Text = "1";
+                rptCategory.DataSource = pro_category.ToList().Take(10);
+                rptCategory.DataBind();
+                Session["ds"] = pro_category.ToList();
             }
-        }
-        catch
-        {
-            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
         }
     }
 

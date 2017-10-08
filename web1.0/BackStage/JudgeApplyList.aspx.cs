@@ -10,27 +10,19 @@ public partial class BackStage_JudgeApplyList : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        try
+        if (!IsPostBack)
         {
-            string admin = Session["AdminID"].ToString();
-            if (!IsPostBack)
+            using (var db = new TeachingCenterEntities())
             {
-                using (var db = new TeachingCenterEntities())
-                {
-                    // 绑定项目列表
-                    var teacher = from it in db.ApplicationInfo orderby it.submit_time descending select it;
-                    ltSum.Text = teacher.Count().ToString();
-                    TotalPage.Text = Math.Ceiling(teacher.Count() / 10.0).ToString();
-                    currentPage.Text = "1";
-                    rptApplication.DataSource = teacher.ToList().Take(10);
-                    rptApplication.DataBind();
-                    Session["ds"] = teacher.ToList();
-                }
+                // 绑定项目列表
+                var teacher = from it in db.ApplicationInfo orderby it.submit_time descending select it;
+                ltSum.Text = teacher.Count().ToString();
+                TotalPage.Text = Math.Ceiling(teacher.Count() / 10.0).ToString();
+                currentPage.Text = "1";
+                rptApplication.DataSource = teacher.ToList().Take(10);
+                rptApplication.DataBind();
+                Session["ds"] = teacher.ToList();
             }
-        }
-        catch
-        {
-            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
         }
     }
 

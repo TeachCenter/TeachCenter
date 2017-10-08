@@ -44,18 +44,4 @@ public class ActivityHelper
             return ac.ActivityCategory_name;
         }
     }
-
-    static public string getTeacherList(int id)
-    {
-        using (var db = new TeachingCenterEntities())
-        {
-            string list = "";
-            var at = from it in db.ActivityTeacher where it.activity_id == id select it;
-            foreach(var i in at)
-            {
-                list += TeacherHelper.getTeacherNameByID(i.teacher_id) + " , ";
-            }
-            return list.Substring(0, list.Length - 2);
-        }
-    }
 }

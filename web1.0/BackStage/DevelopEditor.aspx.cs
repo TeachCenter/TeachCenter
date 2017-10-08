@@ -14,27 +14,26 @@ public partial class BackStage_DevelopEditor : System.Web.UI.Page
         {
             string teacher = Session["AdminID"].ToString();
             id = Convert.ToInt32(Request.QueryString["id"].ToString());
-            using (var db = new TeachingCenterEntities())
-            {
-                var cate = from it in db.DevelopCategory select it;
-
-                dropCategory.DataSource = cate.ToList();
-
-                dropCategory.DataTextField = "DevelopCategory_name";
-
-                dropCategory.DataBind();
-
-                Develop dev = db.Develop.Single(a => a.Develop_id == id);
-                txtTitle.Text = dev.Develop_title;
-                txtLink.Text = dev.Develop_link;
-                myEditor11.InnerHtml = Server.HtmlDecode(dev.Develop_content);
-            }
         }
         catch
         {
             JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
         }
+        using (var db = new TeachingCenterEntities())
+        {
+            var cate = from it in db.DevelopCategory select it;
 
+            dropCategory.DataSource = cate.ToList();
+
+            dropCategory.DataTextField = "DevelopCategory_name";
+
+            dropCategory.DataBind();
+
+            Develop dev = db.Develop.Single(a => a.Develop_id == id);
+            txtTitle.Text = dev.Develop_title;
+            txtLink.Text = dev.Develop_link;
+            myEditor11.InnerHtml = Server.HtmlDecode(dev.Develop_content);
+        }
 
     }
 

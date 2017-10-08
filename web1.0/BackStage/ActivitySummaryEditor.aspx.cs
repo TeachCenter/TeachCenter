@@ -12,24 +12,23 @@ public partial class BackStage_ActivitySummaryEditor : System.Web.UI.Page
         try
         {
             string teacher = Session["AdminID"].ToString();
-            if (!IsPostBack)
-            {
-
-                int id = Convert.ToInt32(Request.QueryString["id"]);
-                using (var db = new TeachingCenterEntities())
-                {
-                    ActivitySummary asu = db.ActivitySummary.Single(a => a.ActivitySummary_id == id);
-                    txtTitle.Text = asu.ActivitySummary_title;
-                    myEditor11.InnerText = Server.HtmlDecode(asu.ActivitySummary_content);
-                }
-            }
-
         }
         catch
         {
             JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
         }
-        
+        if (!IsPostBack)
+        {
+
+            int id = Convert.ToInt32(Request.QueryString["id"]);
+            using (var db = new TeachingCenterEntities())
+            {
+                ActivitySummary asu = db.ActivitySummary.Single(a => a.ActivitySummary_id == id);
+                txtTitle.Text = asu.ActivitySummary_title;
+                myEditor11.InnerText = Server.HtmlDecode(asu.ActivitySummary_content);
+            }
+        }
+
     }
 
 

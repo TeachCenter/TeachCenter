@@ -13,16 +13,15 @@ public partial class BackStage_DevelopCategoryManage : System.Web.UI.Page
         try
         {
             string teacher = Session["AdminID"].ToString();
-            if (!IsPostBack)
-            {
-                DataBindToRepeater(1);
-            }
         }
         catch
         {
             JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
         }
-
+        if (!IsPostBack)
+        {
+            DataBindToRepeater(1);
+        }
     }
 
     protected void rptCategory_ItemDataBound(object sender, RepeaterItemEventArgs e)

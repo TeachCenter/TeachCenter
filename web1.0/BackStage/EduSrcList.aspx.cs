@@ -11,27 +11,19 @@ public partial class BackStage_EduSrcList : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        try
+        if (!IsPostBack)
         {
-            string teacher = Session["AdminID"].ToString();
-            if (!IsPostBack)
+            using (var db = new TeachingCenterEntities())
             {
-                using (var db = new TeachingCenterEntities())
-                {
-                    // 绑定教学资源列表
-                    var src = from it in db.EducateSource where it.is_deleted == 0 orderby it.publish_time descending select it;
-                    ltSum.Text = src.Count().ToString();
-                    TotalPage.Text = Math.Ceiling(src.Count() / 10.0).ToString();
-                    currentPage.Text = "1";
-                    rptSource.DataSource = src.ToList().Take(10);
-                    rptSource.DataBind();
-                    Session["ds"] = src.ToList();
-                }
+                // 绑定教学资源列表
+                var src = from it in db.EducateSource where it.is_deleted == 0 orderby it.publish_time descending select it;
+                ltSum.Text = src.Count().ToString();
+                TotalPage.Text = Math.Ceiling(src.Count() / 10.0).ToString();
+                currentPage.Text = "1";
+                rptSource.DataSource = src.ToList().Take(10);
+                rptSource.DataBind();
+                Session["ds"] = src.ToList();
             }
-        }
-        catch
-        {
-            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
         }
     }
 

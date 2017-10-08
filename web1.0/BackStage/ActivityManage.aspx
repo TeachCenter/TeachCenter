@@ -8,8 +8,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <script src="jquery-3.2.1.min.js" type="text/javascript"></script>
-    <script src="manage.js" type="text/javascript"></script>
 
 
 <link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
@@ -18,7 +16,7 @@
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
 
-<title>活动信息列表</title>
+<title>活动总结列表</title>
 <style type="text/css">
     #page{
             width: 200px;
@@ -29,7 +27,7 @@
 </style>
 
 <script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
-
+<script type="text/javascript" src="manage.js"></script> 
 </head>
 <body><form id="form1" runat="server">
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 活动信息管理 <span class="c-gray en">&gt;</span> 活动信息列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
@@ -79,7 +77,7 @@
 					        <td><%# Eval("Activity_author") %></td>
 					        <td><%# Eval("Activity_time") %></td>
                             <td><%# Eval("Activity_place") %></td>
-                            <td><a href='<%# "ActivityTeacher.aspx?id="+ Eval("Activity_id")  %>'><%# Eval("Activity_nowcount") %></a></td>
+                            <td><%# Eval("Activity_nowcount") %></td>
                             <td><%# Eval("Activity_limitcount") %></td>
                             <td><asp:Literal ID="ltCategory" runat="server" Text='<%# Eval("Activity_categoryid") %>'></asp:Literal></td>
 					        <td class="td-status"><a href='<%#"../Display/Activity.aspx?id="+ Eval("Activity_id") %>'><asp:Literal ID="ltContent" runat="server" Text=<%# Eval("Activity_content") %>></asp:Literal></a></td>
@@ -97,8 +95,6 @@
                     <asp:Literal ID="ltNow" runat="server" Text="1"></asp:Literal>/
                     <asp:Literal ID="ltTotal" runat="server"></asp:Literal>
 				    <asp:Button ID="btnNext" runat="server" Text="下一页" OnClick="btnNext_Click" CssClass="btn btn-primary radius" />
-                    <asp:Button ID="btnExport" runat="server" Text="导出Excel" OnClick="btnExport_Click" CssClass="btn btn-primary radius" style="margin-top: 15px;"  />
-                
                 </div>
 	</div>
 </div>

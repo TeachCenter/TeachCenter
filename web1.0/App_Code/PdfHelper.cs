@@ -30,7 +30,7 @@ public class PdfHelper
         string result = pSavePdf;
 
         // 若pdf文件已存在则返回pdf文件名
-        if (File.Exists(System.Web.HttpContext.Current.Server.MapPath("~/BackStage/"+ pSavePdf)))
+        if (File.Exists(System.Web.HttpContext.Current.Server.MapPath("/BackStage/"+ pSavePdf)))
             return result;
 
         // 获取word文件和pdf文件的物理路径

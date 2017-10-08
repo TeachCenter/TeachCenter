@@ -23,10 +23,15 @@
     <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.all.min.js"> </script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/lang/zh-cn/zh-cn.js"></script>
 
-    <script src="manage.js" type="text/javascript"></script>
 
-
-<title>新增活动总结</title>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //$("#link").css("display", "none");
+            //if ($("#checkbox-moban").is(':checked'))
+            //    alert("666");
+        });
+    </script>
+<title>新增教学发展</title>
 <meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
 <meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
 </head>
@@ -78,7 +83,21 @@
 				
 			</div>
 		</div>
-
+        <script type="text/javascript">
+            //判断标题不能为空
+            $("#txtTitle").focusout(function () {
+                var txtTitle = $("#txtTitle");
+                if (txtTitle.val().length == 0) {
+                    txtTitle.val("输入不能为空");
+                    txtTitle.css("color", "red");
+                    $("#btnSub").attr("disabled", true);
+                }
+                else {
+                    txtTitle.css("color", "#333");
+                    $("#btnSub").attr("disabled", false);
+                }
+            });
+        </script>
 	</form>
 </article>
 

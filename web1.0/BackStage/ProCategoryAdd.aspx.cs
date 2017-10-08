@@ -10,8 +10,7 @@ public partial class BackStage_ProCategoryAdd : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(Session["AdminID"].ToString() == null)
-            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+
     }
 
     protected bool UpLoadFile()
@@ -60,7 +59,6 @@ public partial class BackStage_ProCategoryAdd : System.Web.UI.Page
                 pro_category.end_time = time;
                 pro_category.judge_end_time = judge_time;
                 pro_category.is_deleted = 0;
-                pro_category.publish_time = DateTime.Now.ToString("yyyy-MM-dd"); 
                 db.ProjectCategory.Add(pro_category);
                 db.SaveChanges();
                 Response.Write("<script>alert('提交成功！');location.href='ProCategoryList.aspx';</script>");

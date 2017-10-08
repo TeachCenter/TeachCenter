@@ -44,13 +44,4 @@ public class ServiceHelper
                 return true;
         }
     }
-
-    static public bool serviceChecked(int id)
-    {
-        using (var db = new TeachingCenterEntities())
-        {
-            Service ser = db.Service.Single(a => a.Service_id == id);
-            return ser.Service_isdeal == 0 ? false : true;
-        }
-    }
 }

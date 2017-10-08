@@ -16,30 +16,30 @@ public partial class BackStage_ActivityEditor : System.Web.UI.Page
             {
                 id = Convert.ToInt32(Request.QueryString["id"].ToString());
                 string teacher = Session["AdminID"].ToString();
-                using (var db = new TeachingCenterEntities())
-                {
-                    Activity ac = db.Activity.Single(a => a.Activity_id == id);
-                    txtTitle.Text = ac.Activity_title;
-                    txtLimit.Text = ac.Activity_limitcount.ToString();
-                    txtPlace.Text = ac.Activity_place;
-                    myEditor11.InnerHtml = Server.HtmlDecode(ac.Activity_content);
-                    logmin.Value = ac.Activity_time.Date.ToString();
-
-
-                    var cate = from it in db.ActivityCategory select it;
-
-                    dropCategory.DataSource = cate.ToList();
-
-                    dropCategory.DataTextField = "ActivityCategory_name";
-
-                    dropCategory.DataBind();
-                }
             }
             catch
             {
                 JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
             }
+            using (var db = new TeachingCenterEntities())
+            {
+                Activity ac = db.Activity.Single(a => a.Activity_id == id);
+                txtTitle.Text = ac.Activity_title;
+                txtLimit.Text = ac.Activity_limitcount.ToString();
+                txtPlace.Text = ac.Activity_place;
+                myEditor11.InnerHtml = Server.HtmlDecode(ac.Activity_content);
+                logmin.Value = ac.Activity_time.Date.ToString();
 
+
+
+                var cate = from it in db.ActivityCategory select it;
+
+                dropCategory.DataSource = cate.ToList();
+
+                dropCategory.DataTextField = "ActivityCategory_name";
+
+                dropCategory.DataBind();
+            }
         }
         
     }

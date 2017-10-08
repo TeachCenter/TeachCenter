@@ -54,7 +54,7 @@
                         <ItemTemplate>
 				            <tr class="text-c">
 					            <td><input type="checkbox" runat="server" id="isDelete"></td>					
-					            <td class="text-l"><u style="cursor:pointer" class="text-primary")" title="查看"><a href="/Display/SrcContent.html?id=<%# Eval("id")%>" target="_blank"><%# Eval("title") %></a></u></td>	
+					            <td class="text-l"><u style="cursor:pointer" class="text-primary")" title="查看"><a href="EduSrcContent.aspx?id=<%# Eval("id")%>"><%# Eval("title") %></a></u></td>	
                                 <td><%# UeditorHelper.NoHTML(Eval("body").ToString()) %></td>
 					            <td><%# Eval("publish_time")%><input type="hidden" runat="server" id="id" value=<%# Eval("id")%> /></td>
 					            <td><%# Eval("view_times") %></td>

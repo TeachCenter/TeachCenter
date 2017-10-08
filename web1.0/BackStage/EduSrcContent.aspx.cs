@@ -9,30 +9,22 @@ public partial class BackStage_EduSrcContent : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        try
+        if (!IsPostBack)
         {
-            string teacher = Session["AdminID"].ToString();
-            if (!IsPostBack)
+            int id = 0;
+            if (Request.QueryString["id"] != null)
+                id = Convert.ToInt32(Request.QueryString["id"]);
+            else
+                Response.Redirect("EduSrcList.aspx");
+            using (var db = new TeachingCenterEntities())
             {
-                int id = 0;
-                if (Request.QueryString["id"] != null)
-                    id = Convert.ToInt32(Request.QueryString["id"]);
-                else
-                    Response.Redirect("EduSrcList.aspx");
-                using (var db = new TeachingCenterEntities())
-                {
-                    var src = db.EducateSource.SingleOrDefault(a => a.id == id);
-                    lbTitle.Text = src.title;
-                    lbPublisher.Text = src.publisher;
-                    lbTime.Text = src.publish_time;
-                    lbViewTimes.Text = src.view_times.ToString();
-                    lbBody.Text = Server.HtmlDecode(src.body);
-                }
+                var src = db.EducateSource.SingleOrDefault(a => a.id == id);
+                lbTitle.Text = src.title;
+                lbPublisher.Text = src.publisher;
+                lbTime.Text = src.publish_time;
+                lbViewTimes.Text = src.view_times.ToString();
+                lbBody.Text = Server.HtmlDecode(src.body);
             }
-        }
-        catch
-        {
-            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
         }
     }
 }

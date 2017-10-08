@@ -35,7 +35,7 @@
         <asp:TextBox ID="txtName" runat="server" placeholder=" 项目类型名称" style="width:250px" class="input-text"></asp:TextBox>
         <asp:LinkButton ID="lbtSearch" runat="server" class="btn btn-success" OnClick="lbtSearch_Click"><i class="Hui-iconfont">&#xe665;</i> 搜资讯</asp:LinkButton>
 	</div>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><asp:LinkButton ID="lbtDeleteMore" runat="server" class="btn btn-danger radius" OnClick="lbtDeleteMore_Click" OnClientClick="return confirm('确定删除?')"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</asp:LinkButton> <a class="btn btn-primary radius" data-title="添加项目类型" data-href="ProCategoryAdd.aspx" onclick="Hui_admin_tab(this)" href="ProCategoryAdd.aspx"><i class="Hui-iconfont">&#xe600;</i> 添加项目类型</a></span> <span class="r">共有数据：<strong><asp:Literal ID="ltSum" runat="server"></asp:Literal></strong> 条</span> </div>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><asp:LinkButton ID="lbtDeleteMore" runat="server" class="btn btn-danger radius" OnClick="lbtDeleteMore_Click" OnClientClick="return confirm('确定删除?')"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</asp:LinkButton> <a class="btn btn-primary radius" data-title="添加项目类型" data-href="ProjectAdd.aspx" onclick="Hui_admin_tab(this)" href="ProCategoryAdd.aspx"><i class="Hui-iconfont">&#xe600;</i> 添加项目类型</a></span> <span class="r">共有数据：<strong><asp:Literal ID="ltSum" runat="server"></asp:Literal></strong> 条</span> </div>
         <div class="mt-20">
 		    <table class="table table-border table-bordered table-bg table-hover table-responsive">
 			    <thead>
@@ -53,7 +53,7 @@
                         <ItemTemplate>
 				            <tr class="text-c">
 					            <td><input type="checkbox" runat="server" id="isDelete"></td>					
-					            <td class="text-l"><u style="cursor:pointer" class="text-primary")" title="查看"><a href="ProgectContent.html?id=<%# Eval("id")%>" target="_blank"><%# Eval("name")%></a></u></td>	
+					            <td class="text-l"><u style="cursor:pointer" class="text-primary")" title="查看"><a href="ProCategoryContent.aspx?id=<%# Eval("id")%>"><%# Eval("name")%></a></u></td>	
                                 <td><%# UeditorHelper.NoHTML(Server.HtmlDecode(Eval("project_content").ToString())) %><input type="hidden" runat="server" id="id" value=<%# Eval("id")%> /></td>
 					            <td><%# AdminHelper.judgeStage(Convert.ToInt32(Eval("stage")))%></td>
 					            <td><%# Eval("end_time") %></td>

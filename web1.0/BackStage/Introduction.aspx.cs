@@ -13,23 +13,22 @@ public partial class BackStage_Introduction : System.Web.UI.Page
         try
         {
             string teacher = Session["AdminID"].ToString();
-            if (!IsPostBack)
-            {
-                using (var db = new TeachingCenterEntities())
-                {
-                    Introduction intro = db.Introduction.First();
-                    lbContent.Text = intro.Introduction_content;
-                    myEditor11.InnerText = intro.Introduction_content;
-                    myEditor11.Visible = false;
-                    btnSub.Visible = false;
-                }
-            }
         }
         catch
         {
             JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
         }
-
+        if (!IsPostBack)
+        {
+            using (var db = new TeachingCenterEntities())
+            {
+                Introduction intro = db.Introduction.First();
+                lbContent.Text = intro.Introduction_content;
+                myEditor11.InnerText = intro.Introduction_content;
+                myEditor11.Visible = false;
+                btnSub.Visible = false;
+            }
+        }
 
     }
 

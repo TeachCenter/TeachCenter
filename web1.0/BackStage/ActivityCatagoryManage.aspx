@@ -14,8 +14,7 @@
 <link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
-    <script src="jquery-3.2.1.min.js" type="text/javascript"></script>
-    <script src="manage.js" type="text/javascript"></script>
+
 <style type="text/css">
         #table {
             width:auto;
@@ -28,11 +27,10 @@
             margin-left: 20px;
         }
 </style>
-
-<title>活动分类管理</title>
+<title>资讯列表</title>
 </head>
 <body><form id="form1" runat="server">
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>活动分类管理<span class="c-gray en">&gt;</span>活动分类管理<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>活动分类管理<span class="c-gray en">&gt;</span>活动分类列表<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
 
 	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l">
@@ -103,7 +101,7 @@
 
 function del()
     {
-        return confirm('删除分类后改分类的文章也会删除,确认删除?');
+        return confirm('确认删除?');
     }
 
 

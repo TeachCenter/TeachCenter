@@ -30,38 +30,33 @@
 <body><form id="form1" runat="server">
 <header class="navbar-wrapper">
 	<div class="navbar navbar-fixed-top">
-		<div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" data-href="Welcome.aspx">教育支持中心后台</a> <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a> 
+		<div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="">教育支持中心后台</a> <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a> 
 			<span class="logo navbar-slogan f-l mr-10 hidden-xs"></span> 
 			<a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
 			<nav class="nav navbar-nav">
 				<ul class="cl">
 					<li class="dropDown dropDown_hover"><a href="javascript:;" class="dropDown_A"><i class="Hui-iconfont">&#xe600;</i> 新增 <i class="Hui-iconfont">&#xe6d5;</i></a>
 						<ul class="dropDown-menu menu radius box-shadow">
-                            <li><a data-href="DevelopAdd.aspx" data-title="教学发展添加" href="javascript:void(0)"><i class="Hui-iconfont">&#xe6d5;</i> 教学发展添加</a></li>
-                            <li><a href="javascript:window.location.href=ProCategoryAdd.aspx;"><i class="Hui-iconfont">&#xe6d5;</i> 添加项目</a></li>
-                            <li><a href="ActivityAdd.aspx"><i class="Hui-iconfont">&#xe6d5;</i> 添加活动</a></li>
-                            <li><a target="_self" href="ActivitySummaryAdd.aspx"><i class="Hui-iconfont">&#xe616;</i> 添加活动总结</a></li>
-                            <li><a href="EduSrcAdd.aspx"><i class="Hui-iconfont">&#xe616;</i> 添加教学资源</a></li>
+							<li><a href="javascript:;" onclick="article_add('添加资讯','article-add.html')"><i class="Hui-iconfont">&#xe616;</i> 资讯</a></li>
+							<li><a href="javascript:;" onclick="picture_add('添加资讯','picture-add.html')"><i class="Hui-iconfont">&#xe613;</i> 图片</a></li>
+							<li><a href="javascript:;" onclick="product_add('添加资讯','product-add.html')"><i class="Hui-iconfont">&#xe620;</i> 产品</a></li>
+							<li><a href="javascript:;" onclick="member_add('添加用户','member-add.html','','510')"><i class="Hui-iconfont">&#xe60d;</i> 用户</a></li>
 					</ul>
 				</li>
 			</ul>
-            
 		</nav>
-<%--            <nav class="nav navbar-nav">
-                <a href="Welcome.aspx">我的桌面</a>
-            </nav>--%>
 		<nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
 			<ul class="cl">
-				<li>管理员</li>
+				<li>超级管理员</li>
 				<li class="dropDown dropDown_hover">
 					<a href="#" class="dropDown_A">admin <i class="Hui-iconfont">&#xe6d5;</i></a>
 					<ul class="dropDown-menu menu radius box-shadow">
 						<li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
-						<li><asp:LinkButton ID="lbtChange" runat="server" OnClick="lbtChange_Click" OnClientClick="return confirm('确认退出?')">切换账户</asp:LinkButton></li>
-						<li><asp:LinkButton ID="lbtExit" runat="server" OnClick="lbtExit_Click"  OnClientClick="return confirm('确认退出?')">退出</asp:LinkButton></li>
+						<li><a href="#">切换账户</a></li>
+						<li><a href="#">退出</a></li>
 				</ul>
-                
 			</li>
+				<li id="Hui-msg"> <a href="#" title="消息"><span class="badge badge-danger">1</span><i class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a> </li>
 				<li id="Hui-skin" class="dropDown right dropDown_hover"> <a href="javascript:;" class="dropDown_A" title="换肤"><i class="Hui-iconfont" style="font-size:18px">&#xe62a;</i></a>
 					<ul class="dropDown-menu menu radius box-shadow">
 						<li><a href="javascript:;" data-val="default" title="默认（黑色）">默认（黑色）</a></li>
@@ -83,7 +78,7 @@
 			<dt><i class="Hui-iconfont">&#xe613;</i>滚动图片管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="BannerList.aspx" data-title="滚动图片管理" href="javascript:void(0)">滚动图片管理</a></li>
+					<li><a data-href="BannerManage.aspx" data-title="滚动图片管理" href="javascript:void(0)">滚动图片管理</a></li>
 			</ul>
 		</dd>
 	</dl>
@@ -105,26 +100,12 @@
                 </ul>
 		</dd>
 	</dl>
-        <dl id="menu-article">
-			<dt><i class="Hui-iconfont">&#xe616;</i> 服务管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-			<dd>
-				<ul>
-					<li><a data-href="ServiceManage.aspx" data-title="服务管理" href="javascript:void(0)">服务管理</a></li>
-                    <li><a data-href="ServiceCategoryManage.aspx" data-title="服务分类管理" href="javascript:void(0)">服务分类管理</a></li>
-                </ul>
-		</dd>
-	</dl>
 		<dl id="menu-product">
 			<dt><i class="Hui-iconfont">&#xe620;</i> 项目管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="ProCategoryList.aspx" data-title="项目分类管理" href="javascript:void(0)">项目分类管理</a></li>
-                    <li><a data-href="ProCategoryAdd.aspx" data-title="添加项目分类" href="javascript:void(0)">添加项目分类</a></li>
-                    <li><a data-href="ProjectList.aspx" data-title="项目管理" href="javascript:void(0)">项目管理</a></li>
-                   <%-- <li><a data-href="ProjectJudge.aspx" data-title="评审结果" href="javascript:void(0)">评审结果</a></li>
-                    --%>
-                
-                </ul>
+					<li><a data-href="ProjectManage.aspx" data-title="项目管理" href="javascript:void(0)">项目管理</a></li>
+			</ul>
 		</dd>
 	</dl>
 		<dl id="menu-comments">
@@ -140,49 +121,55 @@
 		</dd>
 	</dl>
 		<dl id="menu-member">
-			<dt><i class="Hui-iconfont">&#xe616;</i> 教学资源管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dt><i class="Hui-iconfont">&#xe60d;</i> 会员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="EduSrcList.aspx" data-title="教学资源管理" href="javascript:;">教学资源管理</a></li>
-					<li><a data-href="EduSrcAdd.aspx" data-title="添加教学资源" href="javascript:;">添加教学资源</a></li>
-					
+					<li><a data-href="member-list.html" data-title="会员列表" href="javascript:;">会员列表</a></li>
+					<li><a data-href="member-del.html" data-title="删除的会员" href="javascript:;">删除的会员</a></li>
+					<li><a data-href="member-level.html" data-title="等级管理" href="javascript:;">等级管理</a></li>
+					<li><a data-href="member-scoreoperation.html" data-title="积分管理" href="javascript:;">积分管理</a></li>
+					<li><a data-href="member-record-browse.html" data-title="浏览记录" href="javascript:void(0)">浏览记录</a></li>
+					<li><a data-href="member-record-download.html" data-title="下载记录" href="javascript:void(0)">下载记录</a></li>
+					<li><a data-href="member-record-share.html" data-title="分享记录" href="javascript:void(0)">分享记录</a></li>
 			</ul>
 		</dd>
-           
 	</dl>
 		<dl id="menu-admin">
-			<dt><i class="Hui-iconfont">&#xe62d;</i> 评审申请管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="JudgeApplyList.aspx" data-title="评审申请管理" href="javascript:void(0)">评审申请管理</a></li>
+					<li><a data-href="admin-role.html" data-title="角色管理" href="javascript:void(0)">角色管理</a></li>
+					<li><a data-href="admin-permission.html" data-title="权限管理" href="javascript:void(0)">权限管理</a></li>
+					<li><a data-href="admin-list.html" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li>
 			</ul>
 		</dd>
 	</dl>
-
-
-
-    <dl id="menu-admin">
-			<dt><i class="Hui-iconfont"> &#xe6e2;</i> 回收站<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+		<dl id="menu-tongji">
+			<dt><i class="Hui-iconfont">&#xe61a;</i> 系统统计<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="RecycleDevelop.aspx" data-title="教学发展" href="javascript:void(0)">教学发展</a></li>
-					<li><a data-href="RecycleService.aspx" data-title="服务申请" href="javascript:void(0)">服务申请</a></li>
-                    <li><a data-href="RecycleActivity.aspx" data-title="活动信息" href="javascript:void(0)">活动信息</a></li>
-					<li><a data-href="RecycleActivitySummary.aspx" data-title="活动总结" href="javascript:void(0)">活动总结</a></li>
-                    <li><a data-href="admin-list.html" data-title="项目信息" href="javascript:void(0)">项目信息</a></li>
-                    <li><a data-href="RecycleEducationSourse.aspx" data-title="教学资源" href="javascript:void(0)">教学资源</a></li>
+					<li><a data-href="charts-1.html" data-title="折线图" href="javascript:void(0)">折线图</a></li>
+					<li><a data-href="charts-2.html" data-title="时间轴折线图" href="javascript:void(0)">时间轴折线图</a></li>
+					<li><a data-href="charts-3.html" data-title="区域图" href="javascript:void(0)">区域图</a></li>
+					<li><a data-href="charts-4.html" data-title="柱状图" href="javascript:void(0)">柱状图</a></li>
+					<li><a data-href="charts-5.html" data-title="饼状图" href="javascript:void(0)">饼状图</a></li>
+					<li><a data-href="charts-6.html" data-title="3D柱状图" href="javascript:void(0)">3D柱状图</a></li>
+					<li><a data-href="charts-7.html" data-title="3D饼状图" href="javascript:void(0)">3D饼状图</a></li>
 			</ul>
 		</dd>
 	</dl>
-    
 		<dl id="menu-system">
-			<dt><i class="Hui-iconfont">&#xe62e;</i> 个人信息管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dt><i class="Hui-iconfont">&#xe62e;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="AdminInformation.aspx" data-title="修改个人信息" href="javascript:void(0)">个人信息管理</a></li>
-				</ul>
-			</dd>
-		</dl>
+					<li><a data-href="system-base.html" data-title="系统设置" href="javascript:void(0)">系统设置</a></li>
+					<li><a data-href="system-category.html" data-title="栏目管理" href="javascript:void(0)">栏目管理</a></li>
+					<li><a data-href="system-data.html" data-title="数据字典" href="javascript:void(0)">数据字典</a></li>
+					<li><a data-href="system-shielding.html" data-title="屏蔽词" href="javascript:void(0)">屏蔽词</a></li>
+					<li><a data-href="system-log.html" data-title="系统日志" href="javascript:void(0)">系统日志</a></li>
+			</ul>
+		</dd>
+	</dl>
 </div>
 </aside>
 <div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
@@ -217,14 +204,82 @@
 <script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
 <script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
 
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="lib/jquery.contextmenu/jquery.contextmenu.r2.js"></script>
+<script type="text/javascript">
+$(function(){
+	/*$("#min_title_list li").contextMenu('Huiadminmenu', {
+		bindings: {
+			'closethis': function(t) {
+				console.log(t);
+				if(t.find("i")){
+					t.find("i").trigger("click");
+				}		
+			},
+			'closeall': function(t) {
+				alert('Trigger was '+t.id+'\nAction was Email');
+			},
+		}
+	});*/
+});
+/*个人信息*/
+function myselfinfo(){
+	layer.open({
+		type: 1,
+		area: ['300px','200px'],
+		fix: false, //不固定
+		maxmin: true,
+		shade:0.4,
+		title: '查看信息',
+		content: '<div>管理员信息</div>'
+	});
+}
+
+/*资讯-添加*/
+function article_add(title,url){
+	var index = layer.open({
+		type: 2,
+		title: title,
+		content: url
+	});
+	layer.full(index);
+}
+/*图片-添加*/
+function picture_add(title,url){
+	var index = layer.open({
+		type: 2,
+		title: title,
+		content: url
+	});
+	layer.full(index);
+}
+/*产品-添加*/
+function product_add(title,url){
+	var index = layer.open({
+		type: 2,
+		title: title,
+		content: url
+	});
+	layer.full(index);
+}
+/*用户-添加*/
+function member_add(title,url,w,h){
+	layer_show(title,url,w,h);
+}
+
+
+</script> 
+
+<!--此乃百度统计代码，请自行删除-->
 <script>
-    function del() {
-        return confirm('确认彻底删除?');
-    }
-    function recycle() {
-        return confirm('确认恢复?');
-    }
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?080836300300be57b7f34f4b3e97d911";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
 </script>
-</form>
+<!--/此乃百度统计代码，请自行删除--></form>
 </body>
 </html>

@@ -18,15 +18,4 @@ public partial class BackStage_Index : System.Web.UI.Page
             JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
         }
     }
-
-    protected void lbtChange_Click(object sender, EventArgs e)
-    {
-        Session.Clear();
-        JSHelper.js("window.top.location='Login.aspx';");
-    }
-
-    protected void lbtExit_Click(object sender, EventArgs e)
-    {
-        Session.Clear();
-    }
 }
