@@ -25,7 +25,7 @@
 <div class="page-container">
 	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><asp:LinkButton ID="lbtDeleteMore" runat="server" class="btn btn-danger radius" OnClick="lbtDeleteMore_Click" OnClientClick="return confirm('确定删除?')"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</asp:LinkButton> <asp:LinkButton ID="lbtAdd" runat="server" CssClass="btn btn-primary radius" OnClick="lbtAdd_Click" ><i class="Hui-iconfont">&#xe6e2;</i> 添加轮播图</asp:LinkButton>  <span class="r">共有数据：<strong><asp:Literal ID="ltSum" runat="server"></asp:Literal></strong> 条</span> </div>
     <asp:Panel id="panelUpload" runat="server" visible="false">
-        <asp:FileUpload ID="myFileUpload" runat="server" CssClass="input-text" />
+        <asp:FileUpload ID="myFileUpload" runat="server" CssClass="input-text" style="border:none;" />
         <asp:Button ID="btnSub" runat="server" CssClass="btn btn-primary radius" OnClick="btnSub_Click" Text="提交" />
     </asp:Panel>  
     <div class="mt-20">

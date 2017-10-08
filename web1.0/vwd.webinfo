@@ -77,6 +77,6 @@
 
   <comReferences>
     <reference Name="interop.office" ID="{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}\99.1\0"/>
-    <reference Name="interop.addindesignerobjects" ID="{A537E638-AB2A-4308-A502-2EFF280C6E98}\1.0\0"/>
+    <reference Name="interop.word" ID="{00020905-0000-4B30-A977-D214852036FF}\3.0\0"/>
   </comReferences>
 </VisualWebDeveloper>
