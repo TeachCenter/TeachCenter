@@ -74,7 +74,7 @@
           <Property Name="Develop_hit" Type="int" Nullable="false" />
           <Property Name="Develop_deleted" Type="bigint" Nullable="false" />
           <Property Name="Develop_category" Type="int" Nullable="false" />
-          <Property Name="Develop_path" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Develop_path" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="DevelopCategory">
           <Key>
@@ -638,7 +638,6 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <NavigationProperty Name="Teacher" Relationship="Self.FK_Project_Teacher" FromRole="Project" ToRole="Teacher" />
           <NavigationProperty Name="ProjectJudge" Relationship="Self.FK_ProjectJudge_Project" FromRole="Project" ToRole="ProjectJudge" />
           <NavigationProperty Name="ProjectStage" Relationship="Self.FK_ProjectStage_Project" FromRole="Project" ToRole="ProjectStage" />
-          <Property Name="is_deleted" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="ProjectCategory">
           <Key>
@@ -1140,8 +1139,6 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <EntitySetMapping Name="ProjectCategory">
             <EntityTypeMapping TypeName="TeachingCenterModel.ProjectCategory">
               <MappingFragment StoreEntitySet="ProjectCategory">
-                <ScalarProperty Name="publish_time" ColumnName="publish_time" />
-                <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="project_file" ColumnName="project_file" />
