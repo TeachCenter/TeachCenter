@@ -1,23 +1,26 @@
-﻿<%@ WebHandler Language="C#" Class="ActivityAdd_Handler" %>
-
-using System.Web;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Newtonsoft.Json;
-using System.Collections;
-using System;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
-public class ActivityAdd_Handler : IHttpHandler {
+public partial class Display_ActivityContent : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
 
-    public void ProcessRequest (HttpContext context) {
-        context.Response.ContentType = "text/plain";
+    }
+
+    protected void lbtAdd_Click(object sender, EventArgs e)
+    {
 
         try
         {
             string alert;
-            int teacher = TeacherHelper.getTeacherIDByNumber(context.Session["TeacherNumber"].ToString());
-            //int teacher = 3;
-            int id = Convert.ToInt32(context.Request.Form["Activity_id"]);
+            //int teacher = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
+            int teacher = 1;
+            int id = Convert.ToInt32(Request.QueryString["id"].ToString());
             //int teacher = 1, id = 3;
             using (var db = new TeachingCenterEntities())
             {
@@ -35,6 +38,7 @@ public class ActivityAdd_Handler : IHttpHandler {
                     else
                     {
                         ac.Activity_nowcount++;
+                        //db.SaveChanges();
                         ActivityTeacher at = new ActivityTeacher();
                         at.activity_id = id;
                         at.teacher_id = teacher;
@@ -45,19 +49,11 @@ public class ActivityAdd_Handler : IHttpHandler {
 
                 }
             }
-            string final = JsonConvert.SerializeObject(alert);
-            context.Response.Write(final);
+            JSHelper.ShowAlert(alert);
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx" + e.Message);
+            JSHelper.AlertThenRedirect("请先登陆！" + ex.Message, "Login.aspx");
         }
     }
-
-    public bool IsReusable {
-        get {
-            return false;
-        }
-    }
-
 }

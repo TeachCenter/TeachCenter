@@ -45,14 +45,14 @@ public class IndexNotice_Handler : IHttpHandler {
                            it=> new Notice
                            {
                                noticeTitle = it.name,
-                               noticeHref = "Project.html?id=" ,
+                               noticeHref = it.id.ToString(),
                                noticeTime = Convert.ToDateTime( it.publish_time)
                            });
             List<Notice> notice = new List<Notice>();
             foreach(var i in activity)
             {
                 Notice x = new Notice();
-                x.noticeHref ="Activity.html?id=" + i.noticeHref;
+                x.noticeHref ="ActivityContent.aspx?id=" + i.noticeHref;
                 x.noticeTime = i.noticeTime;
                 x.noticeTitle = i.noticeTitle;
                 notice.Add(x);
@@ -60,7 +60,7 @@ public class IndexNotice_Handler : IHttpHandler {
             foreach(var i in sourse)
             {
                 Notice x = new Notice();
-                x.noticeHref ="EducationSourse.html?id=" + i.noticeHref;
+                x.noticeHref ="EducationSourceContent.html?id=" + i.noticeHref;
                 x.noticeTime = i.noticeTime;
                 x.noticeTitle = i.noticeTitle;
                 notice.Add(x);
@@ -68,7 +68,7 @@ public class IndexNotice_Handler : IHttpHandler {
             foreach(var i in project)
             {
                 Notice x = new Notice();
-                x.noticeHref = i.noticeHref;
+                x.noticeHref = "ProjectContent.html?id=" + i.noticeHref;
                 x.noticeTime = i.noticeTime;
                 x.noticeTitle = i.noticeTitle;
                 notice.Add(x);
@@ -85,7 +85,7 @@ public class IndexNotice_Handler : IHttpHandler {
                            ActivitySummary_id = it.ActivitySummary_id,
                            ActivitySummary_cover = it.ActivitySummary_cover,
                            ActivitySummary_title = it.ActivitySummary_title,
-                           ActivitySummary_href = "it.ActivitySummary.html?id=" 
+                           ActivitySummary_href = "ActivitySummaryContent.html?id=" 
                        }).ToList().Take(3);
             //banner
             var intro = (from it in db.Picture orderby it.is_top descending select it).ToList().Take(4);
@@ -98,7 +98,7 @@ public class IndexNotice_Handler : IHttpHandler {
                            Develop_id = it.Develop_id,
                            Develop_title = it.Develop_title,
                            Develop_path = it.Develop_path,
-                           Develop_href = it.Develop_link==""? "Develop?id=":it.Develop_link
+                           Develop_href = it.Develop_link==""? "":it.Develop_link
                    }).ToList().Take(3);
 
 

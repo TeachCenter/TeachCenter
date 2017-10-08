@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MyService.aspx.cs" Inherits="Display_MyService" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MyService.aspx.cs"  Inherits="Display_MyService" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +39,7 @@
 				        <h3>联系方式：<%# Eval("Service_phone") %></h3>
 				        <h3>备注：<%# Eval("Service_remarks") %></h3>
                         <h3>处理状态：<asp:Literal ID="ltDeal" runat="server" Text=<%# Eval("Service_isdeal") %>></asp:Literal></h3>
-			            <h3><asp:LinkButton ID="ltEditor" runat="server" Text=<%# Eval("Service_id") %> PostBackUrl=<%# "MyServiceEditor?id="+Eval("Service_id") %> ></asp:LinkButton></h3>
+			            <h3><asp:LinkButton ID="ltEditor" runat="server" Text=<%# Eval("Service_id") %> PostBackUrl=<%# "MyServiceEditor.aspx?id="+Eval("Service_id") %> ></asp:LinkButton></h3>
                     </div>
 		        </div>
             </ItemTemplate>
