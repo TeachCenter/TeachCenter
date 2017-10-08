@@ -4,8 +4,16 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<link rel="stylesheet" href="css/init.css">
-	<link rel="stylesheet" href="css/intro.css">
+	<link rel="stylesheet" href="css/progect-pdf.css">
 	<script type="text/javascript"  src="./js/jquery-3.1.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var id = window.location.search.substr(4);
+            $("<iframe>").addClass("pdf").attr("src", "pdfJs/generic/web/viewer.html?id=" + id).appendTo($(".content"));
+        })
+        
+    </script>
+
 </head>
 <body>
 	<div class="container">
@@ -42,14 +50,9 @@
 			</div>
 		</div>
 		<div class="main">
-			<div class="center">
-				<div class="brief-intro-box">
-					<h1 class="brief-intro"></h1>
-					<span class="brief-intro-line"></span>
-					<h2 class="publish"></h2>
-					<div class="p-box">
-						
-					</div>
+			<div class="center clearfix">
+				<div class="content">
+					
 				</div>
 			</div>
 		</div>
@@ -98,48 +101,8 @@
 				<a class="sign-submit">立即注册</a>
 			</div>
 		</form>
+
 	</div>
 	<script type="text/javascript"  src="./js/pop.js"></script>
-	<script>
-        $(document).ready(function () {
-            var id = window.location.search.substr(4);
-		$.ajax({   
-          url: "./Ajax/SrcContentHandler.ashx",
-          type: 'POST',
-          dataType: "JSON",
-          async: true,
-           data: { "id": id },
-    
-          success: function(data) {
-          	$(".brief-intro").text(data.title)
-          	$(".publish").text("发布人："+data.publisher+"  发布时间："+data.publish_time+"  浏览次数："+data.view_times);
-          	$(data.body).appendTo($(".p-box"))
-                    
-          }
-
-
-      }); 
-		$(".add").on(click,function(){
-			$.ajax({ 
-	             
-	          url: "./Ajax/ActivityAdd_Handler.ashx",
-	          dataType: "JSON",
-	          async: true,
-	          type: "POST", 
-	           data: { "Activity_id": 1 },
-	    
-	          success: function(data) {
-	          	alert("添加成功")
-	                    
-	          }
-
-
-	      });
-
-		})
-
-	})
-		
-	</script>
 </body>
 </html>
