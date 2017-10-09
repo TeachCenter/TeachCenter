@@ -169,7 +169,8 @@
 					<li><a data-href="RecycleService.aspx" data-title="服务申请" href="javascript:void(0)">服务申请</a></li>
                     <li><a data-href="RecycleActivity.aspx" data-title="活动信息" href="javascript:void(0)">活动信息</a></li>
 					<li><a data-href="RecycleActivitySummary.aspx" data-title="活动总结" href="javascript:void(0)">活动总结</a></li>
-                    <li><a data-href="admin-list.html" data-title="项目信息" href="javascript:void(0)">项目信息</a></li>
+                    <li><a data-href="RecycleProjectCategory.aspx" data-title="项目信息" href="javascript:void(0)">项目信息</a></li>
+                    <li><a data-href="RecycleProject.aspx" data-title="项目" href="javascript:void(0)">项目</a></li>
                     <li><a data-href="RecycleEducationSourse.aspx" data-title="教学资源" href="javascript:void(0)">教学资源</a></li>
 			</ul>
 		</dd>

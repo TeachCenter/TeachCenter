@@ -23,7 +23,7 @@ public class Develop_Handler : IHttpHandler {
                             {
                                 DevelopCategory_id = it.DevelopCategory_id,
                                 DevelopyCategory_name = it.DevelopCategory_name,
-                                DevelopCategory_href = "DevelopList.html?type="
+                                DevelopCategory_href = "DevelopList.aspx?type="
                             };
 
             var dev = from it in db.Develop
@@ -37,7 +37,7 @@ public class Develop_Handler : IHttpHandler {
                           Develop_author = it.Develop_author,
                           Develop_hit = it.Develop_hit,
                           Develop_link = it.Develop_link,
-                          Develop_href = it.Develop_link=="" ? "DevelopContent.html?id=" : it.Develop_link,
+                          Develop_href = it.Develop_link=="" ? "DevelopContent.aspx?id=" : it.Develop_link,
                           Develop_time = it.Develop_time
                       };
             if (category != 0)
@@ -53,7 +53,7 @@ public class Develop_Handler : IHttpHandler {
                           Develop_author = it.Develop_author,
                           Develop_hit = it.Develop_hit,
                           Develop_link = it.Develop_link,
-                          Develop_href = it.Develop_link=="" ? "DevelopContent.html?id=" : it.Develop_link,
+                          Develop_href = it.Develop_link=="" ? "DevelopContent.aspx?id=" : it.Develop_link,
                           Develop_time = it.Develop_time
                       };
             }

@@ -1,0 +1,105 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="Display_MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>教学基础支持中心</title>
+	<link rel="stylesheet" href="css/init.css" />
+	<script type="text/javascript"  src="./js/jquery-3.1.1.min.js"></script>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body><form id="form1" runat="server">
+<div class="container">
+		<div class="header">
+			<div>
+				<div class="enter">
+					<div class="center">
+						<a class="sign">
+							立即注册
+						</a>
+						<span class="enter-line"></span>
+						<a class="log">
+							您好，请登陆
+						</a>
+					</div>					
+				</div>
+
+				<div class="goto">
+					<div class="center">
+						<a href="" class="logo"></a>
+						<input value="请输入关键字" type="text" class="search">
+						<a href="" class="search-button"></a>
+					</div>
+				</div>
+				<div class="nav">
+					<div class="center">
+						<a href="main-index.html">首页</a>
+						<a href="Introduction.html">关于</a>
+						<a href="ProgectList.html">项目</a>
+						<a href="Service.aspx">服务</a>
+						<a href="EducationSourceList.html">资源</a>
+						<a href="ActivityList.html?type=0&&page=1">活动</a>
+					</div>
+				</div>
+			</div>
+		</div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+		<div class="footer">
+			<div class="footer-infor-box">
+				<p>校址：青岛市崂山区松岭路238号 ·邮编：266100 ·电话：0532-66782193 ·Email：jxdd@ouc.edu.cn </p>
+				<p class="Copyright">Copyright © 2004-2008 Ocean University of China. All rights reserved.</p>
+			</div>
+		</div>
+		<div class="mask"></div>
+		<div class="log-box-form clearfix">
+			<div class="log-box">
+				<h1>登陆</h1>
+				<input type="text" value="工号" class="number gray-box">
+				<p class="number-error error"></p>
+				<input type="text" value="密码" class="show-password gray-box">
+				<input type="password" class="hide-password gray-box">
+				<p class="password-error error"></p>
+				<a href="" class="forget-password">忘记密码？</a>
+				<a  class="turn-right">立即注册</a>
+				<a class="log-submit">立即登录</a>
+			</div>
+		</div>
+		<div  class="sign-box-form clearfix">
+			<div class="sign-box">
+				<h1>注册</h1>
+				<div class="left-box">
+					<input type="text" value="姓名" class="name gray-box">
+					<p class="name-error error"></p>
+					<input type="text" value="密码" class="show-sign-box-password gray-box">
+					<input type="password" class="hide-sign-box-password gray-box">
+					<p class="sign-box-password-error error"></p>
+					<input type="text" value="确认密码" class="show-sign-box-verify-password gray-box">
+					<input type="password"  class="hide-sign-box-verify-password gray-box">
+					<p class="sign-box-verify-password-error error"></p>
+				</div>
+				<div class="right-box">
+					<input type="text" value="工号" class="sign-box-number gray-box">
+					<p class="sign-box-number-error error"></p>
+					<input type="text" value="手机" class="sign-box-phone gray-box">
+					<p class="sign-box-phone-error error"></p>
+					<input type="text" value="电子邮箱" class="email gray-box">
+					<p class="email-error error"></p>
+				</div>
+				<a  class="turn-left">登陆已有账号</a>
+				<a class="sign-submit">立即注册</a>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript"  src="./js/pop.js"></script>
+       <asp:ContentPlaceHolder id="ContentPlaceHolder2" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>
