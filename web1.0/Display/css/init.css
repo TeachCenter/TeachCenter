@@ -123,6 +123,14 @@ ul li{
     color: #FFFFFF;
     float: right;
 }
+.person{
+
+    cursor: pointer;
+    height: 42px;
+    line-height: 42px;
+    color: #FFFFFF;
+    float: right;
+}
 .enter-line{
     width: 1px;
     height:16px;

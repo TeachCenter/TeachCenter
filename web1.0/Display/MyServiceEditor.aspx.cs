@@ -13,10 +13,10 @@ public partial class Display_MyServiceEditor : System.Web.UI.Page
         {
             //int teacher = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
             int teacher = 2;
-            if(!IsPostBack)
+            if (!IsPostBack)
                 using (var db = new TeachingCenterEntities())
                 {
-                    int id =Convert.ToInt32( Request.QueryString["id"].ToString());
+                    int id = Convert.ToInt32(Request.QueryString["id"].ToString());
                     Service ser = db.Service.Single(a => a.Service_id == id);
                     ltType.Text = ServiceHelper.getCategoryName(ser.Service_category);
                     ltTeacher.Text = TeacherHelper.getTeacherNameByID(teacher);
@@ -27,7 +27,7 @@ public partial class Display_MyServiceEditor : System.Web.UI.Page
         }
         catch
         {
-            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+            JSHelper.AlertThenRedirect("请先登陆！", "main-index.aspx");
         }
     }
 

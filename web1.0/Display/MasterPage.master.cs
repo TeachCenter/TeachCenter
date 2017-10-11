@@ -9,6 +9,97 @@ public partial class Display_MasterPage : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["TeacherNumber"] == null)
+        {
+            divEnter.Visible = true;
+            divPerson.Visible = false;
+        }
+        else
+        {
+            divPerson.Visible = true;
+            divEnter.Visible = false;
+        }
+        if (!IsPostBack)
+        {
+            string id = CookieHelper.GetCookieValue("TeacherNumber");
+            string pwd = CookieHelper.GetCookieValue("TeacherPwd");
+            if (id != null && pwd != null)
+            {
+                txtID.Text = id;
+                txtPwd.Attributes["value"] = pwd;
+                cbxRemeberUser.Checked = true;
 
+            }
+            
+        }
+    }
+
+    protected void ltbLogin_Click(object sender, EventArgs e)
+    {
+        string id = txtID.Text;
+        string pwd = txtPwd.Text;
+        if (id.Length == 0 || pwd.Length == 0)
+            JSHelper.ShowAlert("输入不能为空！");
+        else
+        {
+
+            using (var db = new TeachingCenterEntities())
+            {
+                Teacher ad = db.Teacher.Single(a => a.number == id);
+                if (ad.password == PwdHelper.MD5(pwd))
+                {
+                    if (cbxRemeberUser.Checked == true)
+                    {
+                        CookieHelper.SetCookie("TeacherNumber", txtID.Text, DateTime.Now.AddDays(30));
+                        CookieHelper.SetCookie("TeacherPwd", txtPwd.Text, DateTime.Now.AddDays(30));
+                    }
+                    JSHelper.AlertThenRedirect("登陆成功", "main-index.aspx");
+                    Session["TeacherNumber"] = id;
+                    //Server.Transfer("Index.aspx");
+                    //JSHelper.js("window.history.go(0);");
+                }
+
+            }
+
+
+
+        }
+    }
+
+    protected void lbtRegister_Click(object sender, EventArgs e)
+    {
+        string name = txtName.Text;
+        string pwd = txtNewPwd.Value;
+        string repwd = txtCheckPwd.Value;
+        string number = txtNumber.Text;
+        string phone = txtPhone.Text;
+        string email = txtEmail.Text;
+        if (name == "" || pwd == "" || repwd == "" || number == "" || phone == "" || email == "")
+            JSHelper.ShowAlert("输入不能为空！");
+        else if (pwd != repwd)
+            JSHelper.ShowAlert("前后密码不一致！");
+        else
+        {
+            using (var db = new TeachingCenterEntities())
+            {
+                Teacher teacher = new Teacher();
+
+                teacher.name = name;
+                teacher.password = PwdHelper.MD5(pwd);
+                teacher.image = "";
+                teacher.gender = 0;
+                teacher.email = email;
+                teacher.number = number;
+                teacher.phone_number = phone;
+                teacher.department = "";
+                teacher.rank = "";
+                teacher.is_judge = 0;
+
+                db.Teacher.Add(teacher);
+                db.SaveChanges();
+                JSHelper.ShowAlert("注册成功！");
+                JSHelper.js("window.location.reload();");
+            }
+        }
     }
 }

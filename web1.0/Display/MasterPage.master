@@ -16,7 +16,7 @@
 		<div class="header">
 			<div>
 				<div class="enter">
-					<div class="center">
+					<div class="center"  id="divEnter" runat="server">
 						<a class="sign">
 							立即注册
 						</a>
@@ -24,7 +24,12 @@
 						<a class="log">
 							您好，请登陆
 						</a>
-					</div>					
+					</div>
+                    <div id="divPerson" runat="server" visible="false" class="center">
+						<a class="person" href="Person-index.aspx">
+							个人中心
+						</a>	
+                        </div>		
 				</div>
 
 				<div class="goto">
@@ -36,16 +41,17 @@
 				</div>
 				<div class="nav">
 					<div class="center">
-						<a href="main-index.html">首页</a>
-						<a href="Introduction.html">关于</a>
-						<a href="ProgectList.html">项目</a>
+						<a href="main-index.aspx">首页</a>
+						<a href="Introduction.aspx">关于</a>
+						<a href="ProgectList.aspx">项目</a>
 						<a href="Service.aspx">服务</a>
-						<a href="EducationSourceList.html">资源</a>
-						<a href="ActivityList.html?type=0&&page=1">活动</a>
+						<a href="EducationSourceList.aspx">资源</a>
+						<a href="ActivityList.aspx?type=0&&page=1">活动</a>
 					</div>
 				</div>
 			</div>
 		</div>
+        </div>
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         
         </asp:ContentPlaceHolder>
@@ -59,47 +65,66 @@
 		<div class="log-box-form clearfix">
 			<div class="log-box">
 				<h1>登陆</h1>
-				<input type="text" value="工号" class="number gray-box">
+				<%--<input type="text" value="工号" class="number gray-box">--%>
+                <asp:TextBox ID="txtID" runat="server" CssClass="number gray-box"></asp:TextBox>
 				<p class="number-error error"></p>
 				<input type="text" value="密码" class="show-password gray-box">
-				<input type="password" class="hide-password gray-box">
+				<%--<input type="password" class="hide-password gray-box">--%>
+                <asp:TextBox ID="txtPwd" runat="server" TextMode="Password" CssClass="hide-password gray-box"></asp:TextBox>
 				<p class="password-error error"></p>
-				<a href="" class="forget-password">忘记密码？</a>
+				
+                <asp:CheckBox ID="cbxRemeberUser" runat="server" Text="记住用户名" ForeColor="gray"/>
+                
+                <a href="" class="forget-password">忘记密码？</a>
 				<a  class="turn-right">立即注册</a>
-				<a class="log-submit">立即登录</a>
+				<%--<a class="">立即登录</a>--%>
+                <asp:LinkButton ID="ltbLogin" runat="server" Text="立即登陆" CssClass="log-submit" OnClick="ltbLogin_Click"></asp:LinkButton>
 			</div>
 		</div>
 		<div  class="sign-box-form clearfix">
 			<div class="sign-box">
 				<h1>注册</h1>
 				<div class="left-box">
-					<input type="text" value="姓名" class="name gray-box">
+					<%--<input type="text" value="姓名" class="name gray-box">--%>
+                    <asp:TextBox ID="txtName" runat="server" CssClass="name gray-box"></asp:TextBox>
 					<p class="name-error error"></p>
-					<input type="text" value="密码" class="show-sign-box-password gray-box">
-					<input type="password" class="hide-sign-box-password gray-box">
+					<input type="text" runat="server" id="txtNewPwd" class="show-sign-box-password gray-box" />
+                    <input type="password" class="hide-sign-box-password gray-box" />
 					<p class="sign-box-password-error error"></p>
-					<input type="text" value="确认密码" class="show-sign-box-verify-password gray-box">
-					<input type="password"  class="hide-sign-box-verify-password gray-box">
+					<input runat="server" id="txtCheckPwd" type="text" class="show-sign-box-verify-password gray-box" />
+                    <input type="password"  class="hide-sign-box-verify-password gray-box" />
 					<p class="sign-box-verify-password-error error"></p>
 				</div>
 				<div class="right-box">
-					<input type="text" value="工号" class="sign-box-number gray-box">
+					<%--<input type="text" value="工号" class="sign-box-number gray-box">--%>
+                    <asp:TextBox ID="txtNumber" runat="server" CssClass="sign-box-number gray-box"></asp:TextBox>
 					<p class="sign-box-number-error error"></p>
-					<input type="text" value="手机" class="sign-box-phone gray-box">
+					<%--<input type="text" value="手机" class="sign-box-phone gray-box">--%>
+                    <asp:TextBox ID="txtPhone" runat="server" CssClass="sign-box-phone gray-box"></asp:TextBox>
 					<p class="sign-box-phone-error error"></p>
-					<input type="text" value="电子邮箱" class="email gray-box">
+					<%--<input type="text" value="电子邮箱" class="email gray-box">--%>
+                    <asp:TextBox ID="txtEmail" runat="server" CssClass="email gray-box"></asp:TextBox>
 					<p class="email-error error"></p>
 				</div>
 				<a  class="turn-left">登陆已有账号</a>
-				<a class="sign-submit">立即注册</a>
+				<%--<a class="sign-submit">立即注册</a>--%>
+                <asp:LinkButton ID="lbtRegister" runat="server" Text="立即注册" CssClass="sign-submit" OnClick="lbtRegister_Click"></asp:LinkButton>
 			</div>
 		</div>
-	</div>
+	<%--</div>--%>
 	
 	<script type="text/javascript"  src="./js/pop.js"></script>
+    <script type="text/javascript">
+        $("#txtName").val("姓名");
+        $("#txtNumber").val("工号");
+        $("#txtPhone").val("手机");
+        $("#txtEmail").val("电子邮箱");
+        $("#txtNewPwd").attr("placeholder", "密码");
+        $("#txtCheckPwd").attr("placeholder", "确认密码");
+    </script>
        <asp:ContentPlaceHolder id="ContentPlaceHolder2" runat="server">
         
         </asp:ContentPlaceHolder>
-    </form>
+  <%--</div> --%> </form>
 </body>
 </html>

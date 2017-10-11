@@ -1,33 +1,16 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MyServiceEditor.aspx.cs" Inherits="Display_MyServiceEditor" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Display/Person.master" AutoEventWireup="true" CodeFile="MyServiceEditor.aspx.cs" Inherits="Display_MyServiceEditor" %>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" href="css/personal-center-init.css">
-	<link rel="stylesheet" href="css/personal-center-creatProgect.css">
-	<script type="text/javascript"  src="./js/jquery-3.1.1.min.js"></script>
-
-</head>
-<body>
-	<div class="left-nav">
-		<img src="./images/logo-big.png" alt="">
-		<ul>
-			<li class="dif-li"><a href="	">个人主页</a></li>
-			<li><a href="	">修改信息</a></li>
-			<li><a href="	">项目管理</a></li>
-			<li><a href="	">服务管理</a></li>
-			<li><a href="	">活动管理</a></li>
-			<li><a href="	">评审服务</a></li>
-		</ul>
-	</div>
-	<div class="right-content">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <link rel="stylesheet" href="css/personal-center-creatProgect.css" />
+    <script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    	<div class="right-content">
 		<div class="clearfix">
 			<h1>修改服务</h1>
 		</div>
 		<span class="cut"></span>
-		<form runat="server" action="" class="form">
+		<div runat="server" action="" class="form">
 			<div class="clearfix">
 				<h2 class="name-h2">服务类型:</h2>
 				<%--<input class="name" type="text" value="项目名称">--%>
@@ -55,9 +38,9 @@
             <asp:LinkButton ID="ltbChange" runat="server" OnClick="ltbChange_Click" CssClass="submit" Text="修改服务"></asp:LinkButton>
 			<%--<a href="" class="">修改服务
 			</a>--%>
-		</form>
+		</div>
 	</div>
-	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
-	<script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script>
-</body>
-</html>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
+</asp:Content>
+
