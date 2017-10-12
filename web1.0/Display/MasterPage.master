@@ -49,8 +49,8 @@
 				<div class="goto">
 					<div class="center">
 						<a href="" class="logo"></a>
-						<input value="请输入关键字" type="text" class="search">
-						<a href="" class="search-button"></a>
+						<input id="search" value="请输入关键字" type="text" class="search">
+						<a href="" class="search-button" onclick="search()"></a>
 					</div>
 				</div>
 				<div class="nav">
@@ -138,6 +138,9 @@
         $("#txtEmail").attr("placeholder", "电子邮箱");
         //$("#txtNewPwd").attr("placeholder", "密码");
         //$("#txtCheckPwd").attr("placeholder", "确认密码");
+        function search() {
+            window.location.href = "Search.aspx?key=" + $("#search").val();
+        }
     </script>
        <asp:ContentPlaceHolder id="ContentPlaceHolder2" runat="server">
         

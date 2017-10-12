@@ -55,10 +55,10 @@ public partial class Display_MasterPage : System.Web.UI.MasterPage
                         if (ad.password == PwdHelper.MD5(pwd))
                         {
                             //if (cbxRemeberUser.Checked == true)
-                            //{
-                            //    CookieHelper.SetCookie("TeacherNumber", txtID.Text, DateTime.Now.AddDays(30));
-                            //    CookieHelper.SetCookie("TeacherPwd", txtPwd.Text, DateTime.Now.AddDays(30));
-                            //}
+                            {
+                                CookieHelper.SetCookie("TeacherNumber", txtID.Text, DateTime.Now.AddDays(30));
+                                CookieHelper.SetCookie("TeacherPwd", txtPwd.Text, DateTime.Now.AddDays(30));
+                            }
                             JSHelper.AlertThenRedirect("登陆成功！", "main-index.aspx");
                             Session["TeacherNumber"] = id;
                             //Server.Transfer("Index.aspx");

@@ -9,19 +9,26 @@ public partial class Display_MyActivityList : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        using (var db = new TeachingCenterEntities())
+        try
         {
-            //int teacher = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
-            int teacher = 1;
-            var at = from it in db.ActivityTeacher where it.teacher_id == teacher select it;
-            List<Activity> ac = new List<Activity>();
-            foreach (var i in at)
+            using (var db = new TeachingCenterEntities())
             {
-                Activity activity = db.Activity.Single(a => a.Activity_id == i.activity_id);
-                ac.Add(activity);
+                int teacher = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
+                //int teacher = 1;
+                var at = from it in db.ActivityTeacher where it.teacher_id == teacher select it;
+                List<Activity> ac = new List<Activity>();
+                foreach (var i in at)
+                {
+                    Activity activity = db.Activity.Single(a => a.Activity_id == i.activity_id);
+                    ac.Add(activity);
+                }
+                rptActivity.DataSource = ac;
+                rptActivity.DataBind();
             }
-            rptActivity.DataSource = ac;
-            rptActivity.DataBind();
+        }
+        catch
+        {
+            JSHelper.AlertThenRedirect("请先登录！", "main-index.aspx");
         }
     }
 

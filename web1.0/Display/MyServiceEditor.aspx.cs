@@ -11,8 +11,7 @@ public partial class Display_MyServiceEditor : System.Web.UI.Page
     {
         try
         {
-            //int teacher = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
-            int teacher = 2;
+            int teacher = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
             if (!IsPostBack)
                 using (var db = new TeachingCenterEntities())
                 {

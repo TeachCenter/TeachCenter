@@ -155,7 +155,7 @@
 			<dd>
 				<ul>
 					<li><a data-href="JudgeApplyList.aspx" data-title="评审申请管理" href="javascript:void(0)">评审申请管理</a></li>
-			        <li><a data-href="JudgeApplyList.aspx" data-title="重置教师密码" href="javascript:void(0)">重置教师密码</a></li>
+			        <li><a data-href="ResetPwd.aspx" data-title="重置教师密码" href="javascript:void(0)">重置教师密码</a></li>
                 </ul>
 		</dd>
 	</dl>

@@ -11,8 +11,8 @@ public partial class Display_Service : System.Web.UI.Page
     {
         try
         {
-            //string teacher = Session["TeacherNumber"].ToString();
-            string teacher = "1234567";
+            string teacher = Session["TeacherNumber"].ToString();
+            //string teacher = "1234567";
             int category;
             try
             {
@@ -34,7 +34,7 @@ public partial class Display_Service : System.Web.UI.Page
         }
         catch
         {
-            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+            JSHelper.AlertThenRedirect("请先登陆！", "main-index.aspx");
         }
 
     }
@@ -51,9 +51,9 @@ public partial class Display_Service : System.Web.UI.Page
             category = 1;
         }
         DateTime now = DateTime.Now;
-        //int teacher = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
+        int teacher = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
         //string teacher = "1234567";
-        int teacher = 0;
+        //int teacher = 0;
         string phone = txtPhone.Value;
         string remarks = txtRemarks.Value;
         if (phone.Length == 0)

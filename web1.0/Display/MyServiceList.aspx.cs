@@ -11,8 +11,8 @@ public partial class Display_MyServiceList : System.Web.UI.Page
     {
         try
         {
-            //int teacher = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
-            int teacher = 2;
+            int teacher = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
+            //int teacher = 2;
             using (var db = new TeachingCenterEntities())
             {
                 var myService = from it in db.Service

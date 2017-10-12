@@ -17,29 +17,30 @@
     <script src="jquery-3.2.1.min.js" type="text/javascript"></script>
     <script src="manage.js" type="text/javascript"></script>
 <style type="text/css">
-        #table {
-            width:auto;
-            margin:0 auto;
+        .container{
+
         }
-        #page{
-            width: 200px;
-            float: left;
-            margin-top: 20px;
-            margin-left: 20px;
-        }
+
     </style>
 <title>重置密码</title>
 </head>
 <body><form id="form1" runat="server">
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>教师管理<span class="c-gray en">&gt;</span>服务分类列表<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
-<div class="page-container">
-    <span>请输入教师工号:</span>
-    <asp:TextBox ID="txtNumber" runat="server"></asp:TextBox>
-    <asp:Button ID="btnSub" runat="server" Text="搜索" OnClick="btnSub_Click" />
-    <div id="divTeacher" runat="server">
-    <span>教师姓名 :<asp:Literal ID="ltName" runat="server"></asp:Literal> </span>
-    <span>工号 : <asp:Literal ID="ltNumber" runat="server"></asp:Literal> </span>
-    <asp:Button ID="BtnReset" runat="server" Text="重置" OnClick="BtnReset_Click" />
+<div class="page-container" style="width: 1000px;position: absolute;right:0;margin-top:115px;">
+    <div>
+        <span class="form-label col-xs-4 col-sm-2" style="width:180px;">请输入教师工号:</span>
+        <asp:TextBox ID="txtNumber" CssClass="input-text" style="width:250px;" runat="server"></asp:TextBox>
+        <asp:Button ID="btnSub" runat="server" Text="搜索" style="margin-left:20px;" CssClass="btn btn-primary radius" OnClick="btnSub_Click" />
+    </div>
+    
+    <div id="divTeacher" style="margin-top: 30px;" runat="server">
+        <span class="form-label col-xs-4 col-sm-2">教师姓名 :<asp:Literal ID="ltName" runat="server"></asp:Literal> </span>
+        <br />
+        <br />
+        <span class="form-label col-xs-4 col-sm-2">工号 : <asp:Literal ID="ltNumber" runat="server"></asp:Literal> </span>
+        <br />
+        <br />
+        <asp:Button ID="BtnReset" style="margin-left:16px;" runat="server" Text="重置" CssClass="btn btn-primary radius" OnClick="BtnReset_Click" />
     </div>
 </div>
 <!--_footer 作为公共模版分离出去-->

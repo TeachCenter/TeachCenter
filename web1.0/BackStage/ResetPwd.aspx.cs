@@ -9,7 +9,16 @@ public partial class BackStage_ResetPwd : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        divTeacher.Visible = false;
+        try
+        {
+            string teacher = Session["AdminID"].ToString();
+            divTeacher.Visible = false;
+        }
+        catch
+        {
+            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+        }
+        
     }
 
     protected void btnSub_Click(object sender, EventArgs e)
@@ -26,6 +35,7 @@ public partial class BackStage_ResetPwd : System.Web.UI.Page
                 ltNumber.Text = te.number;
                 
             }
+            divTeacher.Visible = true;
         }
     }
 
