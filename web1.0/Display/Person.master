@@ -18,11 +18,11 @@
         <div class="left-nav">
 		<img src="./images/logo-big.png" alt="">
 		<ul>
-			<li class="dif-li"><a href="	">个人主页</a></li>
+			<li class="dif-li"><a href="Person-index.aspx">个人主页</a></li>
 			<li><a href="	">修改信息</a></li>
 			<li><a href="	">项目管理</a></li>
-			<li><a href="	">服务管理</a></li>
-			<li><a href="	">活动管理</a></li>
+			<li><a href="MyServiceList.aspx">服务管理</a></li>
+			<li><a href="MyActivityList.aspx">活动管理</a></li>
 			<li><a href="	">评审服务</a></li>
 		</ul>
 	</div>
