@@ -1,41 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
-using System.Globalization;
+using System.Data;
 
 public partial class BackStage_ProjectList : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
+        try
         {
-            using (var db = new TeachingCenterEntities())
+            string teacher = Session["AdminID"].ToString();
+            if (!IsPostBack)
             {
-                // 绑定项目列表
-                var project = from it in db.ProjectInfo where it.is_deleted == 0 orderby it.submit_time descending select it ;
-                ltSum.Text = project.Count().ToString();
-                TotalPage.Text = Math.Ceiling(project.Count() / 10.0).ToString();
-                currentPage.Text = "1";
-                rptProject.DataSource = project.ToList().Take(10);
-                rptProject.DataBind();
-                Session["ds"] = project.ToList();
+                using (var db = new TeachingCenterEntities())
+                {
+                    // 绑定项目列表
+                    var project = from it in db.ProjectInfo where it.is_deleted == 0 orderby it.submit_time descending select it;
+                    ltSum.Text = project.Count().ToString();
+                    TotalPage.Text = Math.Ceiling(project.Count() / 10.0).ToString();
+                    currentPage.Text = "1";
+                    rptProject.DataSource = project.ToList().Take(10);
+                    rptProject.DataBind();
+                    Session["ds"] = project.ToList();
 
-                // 绑定项目分类下拉框
-                var category = from it in db.ProjectCategory where it.is_deleted == 0 select it;
-                this.DropDownList.DataSource = category.ToList();
-                this.DropDownList.DataValueField = "id";
-                this.DropDownList.DataTextField = "name";
-                this.DropDownList.DataBind();
-                ListItem item = new ListItem();
-                item.Text = "全部分类";
-                item.Value = "0";
-                this.DropDownList.Items.Insert(0, item);
+                    // 绑定项目分类下拉框
+                    var category = from it in db.ProjectCategory where it.is_deleted == 0 select it;
+                    this.DropDownList.DataSource = category.ToList();
+                    this.DropDownList.DataValueField = "id";
+                    this.DropDownList.DataTextField = "name";
+                    this.DropDownList.DataBind();
+                    ListItem item = new ListItem();
+                    item.Text = "全部分类";
+                    item.Value = "0";
+                    this.DropDownList.Items.Insert(0, item);
+                }
             }
-        }       
+        }
+        catch
+        {
+            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+        }         
     }
 
     // 列表中删除一行
@@ -154,6 +160,32 @@ public partial class BackStage_ProjectList : System.Web.UI.Page
         }       
     }
 
+    protected void btnExport_Click(object sender, EventArgs e)
+    {
+        List<ProjectInfo> ls = new List<ProjectInfo>();
+        if (Session["ds"] != null)
+            ls = (List<ProjectInfo>)Session["ds"];
+        DataTable dt = new DataTable();
+        DataColumn dc1 = new DataColumn("项目名称", System.Type.GetType("System.String"));
+        DataColumn dc2 = new DataColumn("项目类型", System.Type.GetType("System.String"));
+        DataColumn dc3 = new DataColumn("提交者", System.Type.GetType("System.String"));
+        DataColumn dc4 = new DataColumn("提交时间", System.Type.GetType("System.String"));
+        dt.Columns.Add(dc1);
+        dt.Columns.Add(dc2);
+        dt.Columns.Add(dc3);
+        dt.Columns.Add(dc4);
+        foreach(ProjectInfo item in ls)
+        {
+            DataRow row = dt.NewRow();
+            row["项目名称"] = item.name;
+            row["项目类型"] = item.category_name;
+            row["提交者"] = item.teacher_name;
+            row["提交时间"] = item.submit_time;
+            dt.Rows.Add(row);
+        }
+        ExcleHelper.ExportDataGrid(dt, "application/ms-excel", "项目列表.xlsx");
+    }
+
     protected void Prev_Click(object sender, EventArgs e)
     {
         List<ProjectInfo> ls = new List<ProjectInfo>();
@@ -223,4 +255,5 @@ public partial class BackStage_ProjectList : System.Web.UI.Page
         rptProject.DataSource = ls.Skip(10 * (page - 1)).Take(10);
         rptProject.DataBind();
     }
+
 }

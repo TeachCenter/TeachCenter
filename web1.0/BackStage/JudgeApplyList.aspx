@@ -33,11 +33,11 @@
 			    <thead>
 				    <tr class="text-c">
 					    <th width="25"><input type="checkbox" runat="server" id="isPass"></th>
-					    <th width="300">教师姓名</th>
-                        <th width="200">性别</th>
-					    <th width="80">院系</th>
+					    <th width="120">教师姓名</th>
+                        <th width="80">性别</th>
+					    <th width="240">院系</th>
 					    <th width="120">职称</th>
-                        <th width="120">留言</th>
+                        <th width="">留言</th>
                         <th width="120">申请时间</th>
                         <th width="120">操作</th>
 				    </tr>

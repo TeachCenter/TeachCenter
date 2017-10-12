@@ -46,9 +46,8 @@ public partial class Display_Login : System.Web.UI.Page
                             CookieHelper.SetCookie("TeacherNumber", txtID.Text, DateTime.Now.AddDays(30));
                             CookieHelper.SetCookie("TeacherPwd", txtPwd.Text, DateTime.Now.AddDays(30));
                         }
-                        JSHelper.ShowAlert("登陆成功");
                         Session["TeacherNumber"] = id;
-                        Server.Transfer("Index.aspx");
+                        JSHelper.AlertThenRedirect("登陆成功！", "ImprovePro.aspx?id=5&&stage=1");
                     }
 
                 }

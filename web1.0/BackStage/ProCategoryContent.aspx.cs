@@ -9,27 +9,36 @@ public partial class BackStage_ProCategoryContent : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
+        try
         {
-            int id = 0;
-            if (Request.QueryString["id"] != null)
-                id = Convert.ToInt32(Request.QueryString["id"]);
-            else
-                Response.Redirect("ProjectList.aspx");
-            using (var db = new TeachingCenterEntities())
+            string teacher = Session["AdminID"].ToString();
+            if (!IsPostBack)
             {
-                var pro_category = db.ProjectCategory.SingleOrDefault(a => a.id == id);
-                lbName.Text = pro_category.name;
-                ltlContent.Text = Server.HtmlDecode(pro_category.project_content);
-                lbStage.Text = AdminHelper.judgeStage(pro_category.stage);
-                lbTime.Text = pro_category.end_time;
-                if (pro_category.stage == 0)
-                    btnOpen.Text = "开放中期";
-                else if (pro_category.stage == 1)
-                    btnOpen.Text = "开放结题";
+                int id = 0;
+                if (Request.QueryString["id"] != null)
+                    id = Convert.ToInt32(Request.QueryString["id"]);
                 else
-                    btnOpen.Visible = false;
+                    Response.Redirect("ProjectList.aspx");
+                content_id.Value = id.ToString();
+                using (var db = new TeachingCenterEntities())
+                {
+                    var pro_category = db.ProjectCategory.SingleOrDefault(a => a.id == id);
+                    lbName.Text = pro_category.name;
+                    ltlContent.Text = Server.HtmlDecode(pro_category.project_content);
+                    lbStage.Text = AdminHelper.judgeStage(pro_category.stage);
+                    lbTime.Text = pro_category.end_time;
+                    if (pro_category.stage == 0)
+                        btnOpen.Text = "开放中期";
+                    else if (pro_category.stage == 1)
+                        btnOpen.Text = "开放结题";
+                    else
+                        btnOpen.Visible = false;
+                }
             }
+        }
+        catch
+        {
+            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
         }
     }
 

@@ -12,21 +12,22 @@ public partial class BackStage_ActivityAdd : System.Web.UI.Page
         try
         {
             string teacher = Session["AdminID"].ToString();
+            using (var db = new TeachingCenterEntities())
+            {
+                var cate = from it in db.ActivityCategory select it;
+
+                dropCategory.DataSource = cate.ToList();
+
+                dropCategory.DataTextField = "ActivityCategory_name";
+
+                dropCategory.DataBind();
+            }
         }
         catch
         {
             JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
         }
-        using (var db = new TeachingCenterEntities())
-        {
-            var cate = from it in db.ActivityCategory select it;
 
-            dropCategory.DataSource = cate.ToList();
-
-            dropCategory.DataTextField = "ActivityCategory_name";
-
-            dropCategory.DataBind();
-        }
 
     }
 

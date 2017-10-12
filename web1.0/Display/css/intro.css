@@ -1,0 +1,55 @@
+
+.brief-intro-box{
+    background-color: #FFFFFF;
+    margin-top: 32px;
+    margin-bottom: 64px;
+}
+.brief-intro{
+    font-size: 28px;
+    color: #132840;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 15px;
+    font-weight: 600;
+}
+.brief-intro-line
+{
+
+    display: block;
+    margin:0 auto;
+    width: 442px;
+    height: 2px;
+    background-color: #808080;
+}
+.publish{
+    padding-top: 15px;
+    color:#808080;
+    text-align:center;
+}
+.p-box{
+    width: 1134px;
+    margin: 0 auto;
+    margin-top: 44px;
+}
+.p-box p{
+    font-size: 20px;
+    line-height: 30px;
+    padding-bottom: 26px;
+    color: #4C4C4C;
+    text-align: justify;
+    text-justify: inter-ideograph;
+}
+.p-box pre{
+    overflow: hidden;
+    font-size: 20px;
+    line-height: 30px;
+    padding-bottom: 26px;
+    color: #4C4C4C;
+    text-align: justify;
+    text-justify: inter-ideograph;
+}
+.gap{
+    padding-bottom: 60px;
+}
+
+

@@ -73,6 +73,10 @@ public partial class Admin
     public string Admin_id { get; set; }
     public string Admin_pwd { get; set; }
     public string Admin_name { get; set; }
+    public string Admin_phone { get; set; }
+    public System.DateTime Admin_birthday { get; set; }
+    public long Admin_emai_check { get; set; }
+    public string Admin_emai { get; set; }
 }
 
 public partial class ApplicationInfo
@@ -123,7 +127,7 @@ public partial class EducateSource
     public string publisher { get; set; }
     public string publish_time { get; set; }
     public int view_times { get; set; }
-    public Nullable<int> is_deleted { get; set; }
+    public int is_deleted { get; set; }
 }
 
 public partial class Introduction
@@ -136,7 +140,6 @@ public partial class JudgeApplication
 {
     public int id { get; set; }
     public int teacher_id { get; set; }
-    public string message { get; set; }
     public string submit_time { get; set; }
 
     public virtual Teacher Teacher { get; set; }
@@ -163,6 +166,7 @@ public partial class Project
     public int teacher_id { get; set; }
     public string submit_time { get; set; }
     public int is_deleted { get; set; }
+    public string fund { get; set; }
 
     public virtual ProjectCategory ProjectCategory { get; set; }
     public virtual Teacher Teacher { get; set; }
@@ -198,7 +202,7 @@ public partial class ProjectInfo
     public string teacher_name { get; set; }
     public string submit_time { get; set; }
     public int category { get; set; }
-    public int is_deleted { get; set; }
+    public Nullable<int> is_deleted { get; set; }
 }
 
 public partial class ProjectJudge
@@ -281,7 +285,6 @@ public partial class Teacher
     public int id { get; set; }
     public string name { get; set; }
     public string password { get; set; }
-    public string image { get; set; }
     public int gender { get; set; }
     public string email { get; set; }
     public string number { get; set; }
@@ -294,19 +297,4 @@ public partial class Teacher
     public virtual ICollection<JudgeApplication> JudgeApplication { get; set; }
     public virtual ICollection<Project> Project { get; set; }
     public virtual ICollection<Service> Service { get; set; }
-}
-
-public partial class sp_helpdiagramdefinition_Result
-{
-    public Nullable<int> version { get; set; }
-    public byte[] definition { get; set; }
-}
-
-public partial class sp_helpdiagrams_Result
-{
-    public string Database { get; set; }
-    public string Name { get; set; }
-    public int ID { get; set; }
-    public string Owner { get; set; }
-    public int OwnerID { get; set; }
 }

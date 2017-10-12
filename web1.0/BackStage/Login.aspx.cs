@@ -50,7 +50,8 @@ public partial class BackStage_Login : System.Web.UI.Page
                         Session["AdminID"] = id;
                         Server.Transfer("Index.aspx");
                     }
-                        
+                    else
+                        JSHelper.ShowAlert("密码错误！");   
                 }
             }
 
