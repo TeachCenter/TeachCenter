@@ -132,7 +132,7 @@ function log(){
 		   }
 		}
 	})
-	$(".log-submit").click(function(){
+	$(".log-submit1").click(function(){
 	if(flag1[0]==true&&flag1[1]==true)
 	{
 	} 
@@ -217,26 +217,27 @@ function sign(){
 		}
 	})
 	$(".hide-sign-box-verify-password").on({
-		focus:function(){
-			if(!flag2[2]){
-		    $(".sign-box-verify-password-error").text("");
-			}
-		},
-		blur:function(){
-		   if($(".hide-sign-box-password").val()!=$(".hide-sign-box-verify-password").val()||$(".hide-sign-box-verify-password").val()==""){
-		    $(".sign-box-verify-password-error").text("*两次输入的密码不一致");
-		    flag2[2]=false;
-		   }
-		   else if($(".show-sign-box-password").css("display")=="inline-block")
-		   {
-		   	$(".sign-box-verify-password-error").text("*请输入密码");
-		     flag2[2]=false;
-		   }
-		   else{
-		    flag2[2]=true;
-		   }
-		}
+	    focus: function () {
+	        if (!flag2[2]) {
+	            $(".sign-box-verify-password-error").text("");
+	        }
+	    },
+	    blur: function () {
+	        if ($(".hide-sign-box-password").val() != $(".hide-sign-box-verify-password").val() || $(".hide-sign-box-verify-password").val() == "") {
+	            $(".sign-box-verify-password-error").text("*两次输入的密码不一致");
+	            flag2[2] = false;
+	        }
+	        else if ($(".show-sign-box-password").css("display") == "inline-block") {
+	            $(".sign-box-verify-password-error").text("*请输入密码");
+	            flag2[2] = false;
+	        }
+	        else {
+	            flag2[1] = true;
+	            flag2[2] = true;
+	        }
+	    }
 	})
+
 	$(".sign-box-number").on({
 		focus:function(){
 			if(!flag2[3]){
@@ -304,11 +305,15 @@ function sign(){
 		   }
 		}
 	})
-	$(".sign-submit").click(function(){
+	$(".sign-submit2").click(function(){
 	if(flag2[0]==true&&flag2[1]==true&&flag2[2]==true&&flag2[3]==true&&flag2[4]==true&&flag2[5]==true)
 	{
 	} 
-	else{
+	else {
+	    for (i = 0;i < 6;i++) {
+	        console.log(flag2[i])
+	    }
+	    console.log(flag2[i])
 		alert("注册信息填写不完全")
 	}
 	});

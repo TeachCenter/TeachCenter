@@ -151,11 +151,12 @@
            
 	</dl>
 		<dl id="menu-admin">
-			<dt><i class="Hui-iconfont">&#xe62d;</i> 评审申请管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dt><i class="Hui-iconfont">&#xe62d;</i> 教师管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
 					<li><a data-href="JudgeApplyList.aspx" data-title="评审申请管理" href="javascript:void(0)">评审申请管理</a></li>
-			</ul>
+			        <li><a data-href="JudgeApplyList.aspx" data-title="重置教师密码" href="javascript:void(0)">重置教师密码</a></li>
+                </ul>
 		</dd>
 	</dl>
 

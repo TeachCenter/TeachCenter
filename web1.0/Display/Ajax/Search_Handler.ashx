@@ -24,10 +24,20 @@ public class Search_Handler : IHttpHandler {
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/plain";
         //context.Response.Write("Hello World");
+
         try
         {
             //string key = context.Request.QueryString["key"].ToString();
             string key = "1";
+            int page = 1;
+            try
+            {
+                page = Convert.ToInt32(context.Request.QueryString["page"].ToString());
+            }
+            catch
+            {
+
+            }
             using (var db = new TeachingCenterEntities())
             {
                 var ac = from it in db.Activity
@@ -77,7 +87,7 @@ public class Search_Handler : IHttpHandler {
                     ar.id = i.id;
                     ar.time = i.time;
                     ar.title = i.title;
-                    ar.content = i.content;
+                    ar.content = MyHtmlHelper.RemoveTags( context.Server.HtmlDecode( i.content));
                     ar.href = i.href + i.id;
                     article.Add(ar);
                 }
@@ -87,7 +97,7 @@ public class Search_Handler : IHttpHandler {
                     ar.id = i.id;
                     ar.time = i.time;
                     ar.title = i.title;
-                    ar.content = i.content;
+                    ar.content = MyHtmlHelper.RemoveTags( context.Server.HtmlDecode( i.content));
                     ar.href = i.href + i.id;
                     article.Add(ar);
                 }
@@ -97,7 +107,7 @@ public class Search_Handler : IHttpHandler {
                     ar.id = i.id;
                     ar.time = i.time;
                     ar.title = i.title;
-                    ar.content = i.content;
+                    ar.content = MyHtmlHelper.RemoveTags(context.Server.HtmlDecode( i.content));
                     ar.href = i.href + i.id;
                     article.Add(ar);
                 }
@@ -107,15 +117,17 @@ public class Search_Handler : IHttpHandler {
                     ar.id = i.id;
                     ar.time = Convert.ToDateTime(i.time);
                     ar.title = i.title;
-                    ar.content = i.content;
+                    ar.content = MyHtmlHelper.RemoveTags( context.Server.HtmlDecode( i.content));
                     ar.href = i.href + i.id;
                     article.Add(ar);
                 }
                 int count = article.Count;
+
                 article.Sort(SortList);
+                //article =(List<Article>) article.Skip((page - 1) * 10).Take(10);
                 ArrayList all = new ArrayList();
                 all.Add(count);
-                all.Add(article);
+                all.Add(article.Skip((page - 1) * 10).Take(10));
                 string final = JsonConvert.SerializeObject(all);
                 context.Response.Write(final);
             }

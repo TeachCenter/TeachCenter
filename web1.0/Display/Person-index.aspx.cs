@@ -9,6 +9,16 @@ public partial class Display_Person_index : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        try
+        {
+            string teacher = Session["TeacherNumber"].ToString();
 
+
+
+        }
+        catch
+        {
+            JSHelper.AlertThenRedirect("请先登录！", "main-index.aspx");
+        }
     }
 }

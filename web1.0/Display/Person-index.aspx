@@ -6,15 +6,15 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="right-content">
 		<div class="clearfix">
-			<h1>你好，用户名</h1>
+			<h1>你好，<asp:Literal ID="ltName" runat="server"></asp:Literal></h1>
 		</div>
 		
 		<div class="clearfix">
-			<h2>用户类型：教师</h2>
+			<h2>用户类型：<asp:Literal ID="ltType" runat="server"></asp:Literal></h2>
 		</div>
 		
 		<span class="cut"></span>
-		<div class="clearfix">
+		<div runat="server" id="divInformation" class="clearfix">
 			<h2>您的个人信息尚未填写完整，</h2>
 			<a href="">前去完善个人信息>></a>
 		</div>

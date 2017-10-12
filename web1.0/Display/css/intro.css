@@ -26,6 +26,16 @@
     color:#808080;
     text-align:center;
 }
+.add{
+    color:#808080;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.add:hover{
+     color: #D6000F;
+     text-decoration: underline;
+    cursor: pointer;
+}
 .p-box{
     width: 1134px;
     margin: 0 auto;
@@ -51,5 +61,12 @@
 .gap{
     padding-bottom: 60px;
 }
-
+.search1{
+    width:1168px;
+    height:50px;
+    display:block;
+     margin-top:32px;
+    background-color:#E6E6E6;
+    padding-left: 32px;
+}
 

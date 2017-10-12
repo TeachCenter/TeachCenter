@@ -123,14 +123,6 @@ ul li{
     color: #FFFFFF;
     float: right;
 }
-.person{
-
-    cursor: pointer;
-    height: 42px;
-    line-height: 42px;
-    color: #FFFFFF;
-    float: right;
-}
 .enter-line{
     width: 1px;
     height:16px;
@@ -348,6 +340,10 @@ ul li{
     width: 920px;
     height: 1000px;
     margin-bottom: 32px;
+    margin:0 auto;
+    position:absolute;
+    left:140px;
+    top:200px;
 }
 @media (min-width:0px) and (max-width:1200px)
 {

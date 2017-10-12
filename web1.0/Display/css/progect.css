@@ -30,7 +30,7 @@
 }
 .right-content{
 	margin-top: 32px;
-	height: 1336px!important;
+	margin-bottom:32px;
 	width: 920px;
 	background-color: #FFFFFF;
 	float: right;
@@ -46,9 +46,10 @@
 .passage{
 	width: 100%;
 	height: 228px;
+	background-color: #FFFFFF!important;
 }
 .passage:hover{
-	background-color: #F3F3F3;
+	background-color: #F3F3F3!important;
 }
 .passage:hover h2{
 	color: #D6000F;
@@ -143,4 +144,40 @@
 }
 .passage-content{
 	height: 1140px;
+}
+.content{
+	margin-top: 32px;
+	height: 1336px!important;
+	width: 1200px;
+	background-color: #FFFFFF;
+	float: right;
+}
+.content h1{
+	display: block;
+	text-align: center;
+	width: 100%;
+	line-height: 60px;
+	height: 60px;
+	font-size: 28px;
+}
+.content h1{
+	display: block;
+	text-align: center;
+	width: 100%;
+	line-height: 60px;
+	height: 60px;
+	font-size: 28px;
+}
+.content .passage div{
+	width: 1146px;
+}
+.Search{
+	width: 100%;
+	height: 60px;
+	margin-top: 32px;
+	background-color: #FFFFFF;
+	line-height: 60px;
+	text-align: center;
+	font-size: 28px;
+	color: #132840;
 }
