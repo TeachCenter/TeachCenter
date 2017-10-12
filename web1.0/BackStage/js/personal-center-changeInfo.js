@@ -114,23 +114,7 @@ function log(){
 		   }
 		}
 	})
-	$(".down").click(function(){
-		if((!$(this).is(':animated')))
-		{
-			if(flagUpDown==false)
-		{
-			$(".down").animate({"height":200},400)
-		 		flagUpDown=true;
-			}
-			else
-			{
-				$(".down").animate({"height":50},400)
-			 	flagUpDown=false;
-			}
-		}
-		
-		
-	})
+	
 	$(".select").hover(
         function() {
             $(this).css("background", '#FFFFFF');

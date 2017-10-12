@@ -113,7 +113,7 @@
 	border-width: 0px!important;
 	width: 40px!important;
 	height: 40px!important;
-	background-image: url(../images/lleft-button.png);
+	background-image: url(../imageseft-button.png);
 	margin-left: 220px;
 }
 .left-button{
@@ -170,14 +170,4 @@
 }
 .content .passage div{
 	width: 1146px;
-}
-.Search{
-	width: 100%;
-	height: 60px;
-	margin-top: 32px;
-	background-color: #FFFFFF;
-	line-height: 60px;
-	text-align: center;
-	font-size: 28px;
-	color: #132840;
 }

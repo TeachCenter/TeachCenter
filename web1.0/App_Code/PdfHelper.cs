@@ -22,7 +22,7 @@ public class PdfHelper
     /// <summary>
     /// 调用WPS将Word转换为Pdf
     /// </summary>
-    public static string WordToPdfWithWPS(string pWordFile)
+    public static string WordToPdfWithWPS(string pWordFile, string localPath)
     {
         // 生成同名pdf文件名称
         int index = pWordFile.LastIndexOf(".");
@@ -34,8 +34,6 @@ public class PdfHelper
             return result;
 
         // 获取word文件和pdf文件的物理路径
-        var localPath = System.Web.HttpContext.Current.Server.MapPath("./");
-        localPath = localPath.Replace("\\", "/");
         pWordFile = localPath + "/BackStage/" + pWordFile;
         pSavePdf = localPath + "/BackStage/" + pSavePdf;
         

@@ -25,9 +25,8 @@ function log(){
 			}
 		},
 		blur:function(){
-		   reg=/^[\u4e00-\u9fa5]{2,50}$/;
-		   if(!reg.test($(".name").val())){
-		    $(".name-error").text("未填写项目名称或项目名称过长");
+		   if($(".name").val()==""){
+		    $(".name-error").text("未填写项目名称");
 		    flag[0]=false;
 		   }
 		   else{
@@ -196,3 +195,9 @@ function log(){
 	});
 }
 log();
+
+function Check_FilePath() {
+    var FilePath = document.getElementById("FileUp");
+    var FileNewName = document.getElementById("txtFileName");
+    FileNewName.value = FilePath.value;
+}

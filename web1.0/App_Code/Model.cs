@@ -140,7 +140,6 @@ public partial class JudgeApplication
 {
     public int id { get; set; }
     public int teacher_id { get; set; }
-    public string message { get; set; }
     public string submit_time { get; set; }
 
     public virtual Teacher Teacher { get; set; }
@@ -167,6 +166,7 @@ public partial class Project
     public int teacher_id { get; set; }
     public string submit_time { get; set; }
     public int is_deleted { get; set; }
+    public string fund { get; set; }
 
     public virtual ProjectCategory ProjectCategory { get; set; }
     public virtual Teacher Teacher { get; set; }
@@ -285,7 +285,6 @@ public partial class Teacher
     public int id { get; set; }
     public string name { get; set; }
     public string password { get; set; }
-    public string image { get; set; }
     public int gender { get; set; }
     public string email { get; set; }
     public string number { get; set; }

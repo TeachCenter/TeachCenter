@@ -55,7 +55,7 @@ legend {
 body {
     font: 16px/1.231 'DengXian-Regular','微软雅黑',arial,helvetica,sans-serif;
     }
-select, input, button, textarea {
+select, input, button, textarea{
     font: 99% arial,helvetica,clean,sans-serif;
     }
 table {
@@ -141,20 +141,24 @@ ul li{
 .left-nav li:hover{
     background-color: rgba(255,255,255,0.2)!important;
 }
-.down{
+.down {
+    text-align:center;
     float: left;
     color: #808080;
     line-height: 50px;
     margin-bottom: 20px;
-    margin-left: 27px;
+    margin-left:27px;
     font-size: 20px;
     text-align: center;
     display: block;
     height:50px; 
     width: 300px;
     background: #E6E6E6;
-    overflow: hidden;
+    overflow-x:hidden;
+    overflow-y:auto;
     cursor: pointer;
+    position:relative;
+    margin-top:8px!important;
     }
 .select{
     float: left;
@@ -167,4 +171,33 @@ ul li{
     width: 300px;
     background: #E6E6E6;
     z-index: 10;
+    position:relative;
+   
+}
+#lbSelected{
+     width:250px;
+}
+.select a{
+    color: #808080;
+}
+#txtFileName{
+    background-color:white;
+    width:1000px;
+}
+#ddlResult option{
+    display:block;
+    float: left;
+    color: #808080;
+    line-height: 50px;
+    font-size: 20px;
+    text-align: center;
+    display: block;
+    height:50px; 
+    width: 300px;
+    background: #E6E6E6;
+    z-index: 10;
+}
+#lbSelected{
+    margin:0px 0px!important;
+
 }

@@ -42,6 +42,8 @@ public partial class BackStage_ProjectContent : System.Web.UI.Page
                     lbStage.Text = stage[now_stage];
                     lbStatus.Text = status[now_status];
                     lbContent.Text = Server.HtmlDecode(project_stage.project_content);
+                    string fund = (from it in db.Project where it.project_id == id select it).FirstOrDefault().fund;
+                    lbFund.Text = fund;
                     if (now_status == -2)
                         btnDeliver.Visible = true;
                     if (now_status == -1)

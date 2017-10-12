@@ -23,62 +23,59 @@
 	</div>
 	<div class="right-content">
 		<div class="clearfix">
-			<h1>< 项目名称项目名称</h1>
+			<h1>项目信息</h1>
 		</div>
 		<span class="cut"></span>
-		<form action="" runat ="server">
+		<form action="" runat="server">
 			<div class="clearfix">
 				<h2>项目名称:</h2>
-				<input class="name" type="text" value="项目名称" readonly="readonly">
+                <asp:TextBox ID="txtName" runat="server" class="name" ReadOnly="true"></asp:TextBox>
 			</div>
 			<div class="clearfix">
 				<h2>项目类型:</h2>
-				<input class="type" type="text" value="项目类型" readonly="readonly">
+                <asp:TextBox ID="txtCategory" runat="server" class="type" ReadOnly="true"></asp:TextBox>
+			</div>
+            <div class="clearfix">
+				<h2>当前阶段:</h2>
+                <asp:TextBox ID="txtStage" runat="server" ReadOnly="true"></asp:TextBox>
 			</div>
 			<div class="clearfix">
 				<h2>负责人:</h2>
-				<input class="duty" type="text" value="王小明" readonly="readonly">
+                <asp:TextBox ID="txtDuty" runat="server" class="duty" ReadOnly="true"></asp:TextBox>
 			</div>
 			<div class="clearfix">
 				<h2>单位:</h2>
-				<input class="organization" type="text" value="信息科学与工程学院" readonly="readonly">
+                <asp:TextBox ID="txtDepartment" runat="server" class="organization" ReadOnly="true"></asp:TextBox>
 			</div>
 			<div class="clearfix">
 				<h2>申报日期:</h2>
-				<input class="year" type="text" value="2017" readonly="readonly">
+                <asp:TextBox ID="txtYear" runat="server" class="year" ReadOnly="true"></asp:TextBox>
 				<h2 class="dif-h2">年</h2>
-				<input class="month" type="text" value="9" readonly="readonly">
+                <asp:TextBox ID="txtMonth" runat="server" class="month" ReadOnly="true"></asp:TextBox>
 				<h2 class="dif-h2">月</h2>
-				<input class="day" type="text" value="23" readonly="readonly">
+                <asp:TextBox ID="txtDay" runat="server" class="day" ReadOnly="true"></asp:TextBox>
 				<h2 class="dif-h2">日</h2>
 			</div>
 			<div class="clearfix">
 				<h2>资助额度:</h2>
-				<input class="money" type="text" value="200000" readonly="readonly">
+                <asp:TextBox ID="txtMoney" runat="server" class="money" ReadOnly="true"></asp:TextBox>
 			</div>
 			<div class="clearfix">
 				<h2>项目内容:</h2>
-				<textarea name="txtIntroduction" type="text" class="content" readonly="readonly" >项目内容</textarea>
+                <asp:Literal ID="Content" runat="server"></asp:Literal>
 			</div>
 			<div class="clearfix">
 				<h2>项目文件:</h2>
-				<a class="redA" href="" class="submit" >项目附件文件名项目附件文件名.pdf</a>
+				<a class="redA" class="submit" href="../BackStage/<%= getFileName() %>"><asp:Label ID="lbFileName" runat="server"></asp:Label></a>
 			</div>
-			<div class="clearfix">
-				<h2>评审意见:</h2>
-				<textarea name="txtIntroduction" type="text" class="content" readonly="readonly" >评审意见</textarea>
+            <div class="clearfix">
+				<h2>是否通过当前阶段:</h2>
+                <asp:TextBox ID="txtReslut" runat="server" ReadOnly="true"></asp:TextBox>
 			</div>
-			<div class="clearfix">
-				<h2>上传文件:</h2>
-                <asp:FileUpload ID="myFileUpload" runat="server" CssClass="input-text" style="border:none;" />
-				<%--<a class="choose" href="	">选择文件</a>
-				
-				<h3>仅支持.pdf .doc 格式文件</h3>--%>
-			</div>
-			<a href="" class="submit">提交项目</a>
 		</form>
 	</div>
 	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
 	<script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script>
 </body>
 </html>
+

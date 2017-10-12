@@ -94,6 +94,20 @@ function log(){
 		   }
 		}
 	})
+	$(".down").click(function () {
+	    if ((!$(this).is(':animated'))) {
+	        if (flagUpDown == false) {
+	            $(this).animate({ "height": 200 }, 400)
+	            flagUpDown = true;
+	        }
+	        else {
+	            $(this).animate({ "height": 50 }, 400)
+	            flagUpDown = false;
+	        }
+	    }
+
+
+	})
 	$(".position").on({
 		focus:function(){
 			if(!flag[5]){
@@ -114,23 +128,7 @@ function log(){
 		   }
 		}
 	})
-	$(".down").click(function(){
-		if((!$(this).is(':animated')))
-		{
-			if(flagUpDown==false)
-		{
-			$(".down").animate({"height":200},400)
-		 		flagUpDown=true;
-			}
-			else
-			{
-				$(".down").animate({"height":50},400)
-			 	flagUpDown=false;
-			}
-		}
-		
-		
-	})
+
 	$(".select").hover(
         function() {
             $(this).css("background", '#FFFFFF');

@@ -9,29 +9,12 @@
   
     
   
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
 
     <Service ID="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}"/>
   </StartupServices>
 
   <comReferences>
+    <reference Name="interop.vbide" ID="{0002E157-0000-0000-C000-000000000046}\5.3\0"/>
     <reference Name="interop.office" ID="{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}\99.1\0"/>
     <reference Name="interop.word" ID="{00020905-0000-4B30-A977-D214852036FF}\3.0\0"/>
   </comReferences>

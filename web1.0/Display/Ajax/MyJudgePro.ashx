@@ -36,6 +36,7 @@ public class MyJudgePro : IHttpHandler {
                 dt.Columns.Add("submit_time");
                 dt.Columns.Add("teacher_name");
                 dt.Columns.Add("department");
+                dt.Columns.Add("stage");
                 foreach(var item in project)
                 {
                     DataRow newRow = dt.NewRow();
@@ -44,6 +45,7 @@ public class MyJudgePro : IHttpHandler {
                     newRow["submit_time"] = getProTime(item.project_id);
                     newRow["teacher_name"] = getName(item.teacher_id);
                     newRow["department"] = getDepartment(item.teacher_id);
+                    newRow["stage"] = item.stage;
                     dt.Rows.Add(newRow);
                 }
                 string json = JsonConvert.SerializeObject(dt);
