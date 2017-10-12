@@ -37,7 +37,7 @@ public partial class png : System.Web.UI.Page
             number = random.Next(10);
             checkCode += number.ToString();
         }
-        Session["Png"] = checkCode;
+        Session["PngLogin"] = checkCode;
         return checkCode;
     }
 

@@ -5,14 +5,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Display_MyService : System.Web.UI.Page
+public partial class Display_MyServiceList : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         try
         {
-            //int teacher = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
-            int teacher = 2;
+            int teacher = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
+            //int teacher = 2;
             using (var db = new TeachingCenterEntities())
             {
                 var myService = from it in db.Service
@@ -25,9 +25,8 @@ public partial class Display_MyService : System.Web.UI.Page
         }
         catch
         {
-            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+            JSHelper.AlertThenRedirect("请先登陆！", "main-index.aspx");
         }
-
     }
 
     protected void rptService_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -37,10 +36,10 @@ public partial class Display_MyService : System.Web.UI.Page
             //绑定序号
             Literal literal = (Literal)e.Item.FindControl("ltCategory");
             literal.Text = ServiceHelper.getCategoryName(Convert.ToInt32(literal.Text));
-            literal = (Literal)e.Item.FindControl("ltDeal"); 
-            literal.Text =Convert.ToInt32( literal.Text) != 0 ? "已处理" : "未处理";
+            literal = (Literal)e.Item.FindControl("ltDeal");
+            literal.Text = Convert.ToInt32(literal.Text) != 0 ? "已处理" : "未处理";
             LinkButton lbt = (LinkButton)e.Item.FindControl("ltEditor");
-            lbt.Text =ServiceHelper.serviceChecked( Convert.ToInt32(lbt.Text))  ? "" : "编辑";
+            lbt.Text = ServiceHelper.serviceChecked(Convert.ToInt32(lbt.Text)) ? "" : "编辑";
         }
     }
 }

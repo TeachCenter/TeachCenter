@@ -60,7 +60,7 @@ public class IndexNotice_Handler : IHttpHandler {
             foreach(var i in sourse)
             {
                 Notice x = new Notice();
-                x.noticeHref ="EducationSourceContent.html?id=" + i.noticeHref;
+                x.noticeHref ="EducationSourceContent.aspx?id=" + i.noticeHref;
                 x.noticeTime = i.noticeTime;
                 x.noticeTitle = i.noticeTitle;
                 notice.Add(x);
@@ -68,7 +68,7 @@ public class IndexNotice_Handler : IHttpHandler {
             foreach(var i in project)
             {
                 Notice x = new Notice();
-                x.noticeHref = "ProjectContent.html?id=" + i.noticeHref;
+                x.noticeHref = "ProjectContent.aspx?id=" + i.noticeHref;
                 x.noticeTime = i.noticeTime;
                 x.noticeTitle = i.noticeTitle;
                 notice.Add(x);
@@ -85,7 +85,7 @@ public class IndexNotice_Handler : IHttpHandler {
                            ActivitySummary_id = it.ActivitySummary_id,
                            ActivitySummary_cover = it.ActivitySummary_cover,
                            ActivitySummary_title = it.ActivitySummary_title,
-                           ActivitySummary_href = "ActivitySummaryContent.html?id=" 
+                           ActivitySummary_href = "ActivitySummaryContent.aspx?id=" 
                        }).ToList().Take(3);
             //banner
             var intro = (from it in db.Picture orderby it.is_top descending select it).ToList().Take(4);

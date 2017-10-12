@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Display_ActivityContent : System.Web.UI.Page
+public partial class Display_js_ActivityContent : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {

@@ -88,10 +88,10 @@ public partial class BackStage_RecycleEducationSourse : System.Web.UI.Page
             List<EducateSource> result = new List<EducateSource>();
             using (var db = new TeachingCenterEntities())
             {
-                var src = from it in db.EducateSource where it.is_deleted == 0 orderby it.publish_time descending select it;
+                var src = from it in db.EducateSource where it.is_deleted == 1 orderby it.publish_time descending select it;
                 if (title != "")
                 {
-                    src = from it in db.EducateSource where it.title.IndexOf(title) >= 0 && it.is_deleted == 0 orderby it.publish_time descending select it;
+                    src = from it in db.EducateSource where it.title.IndexOf(title) >= 0 && it.is_deleted == 1 orderby it.publish_time descending select it;
                 }
                 if (logmin.Text != "" && logmax.Text != "")
                 {

@@ -5,13 +5,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Display_Server : System.Web.UI.Page
+public partial class Display_Service : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         try
         {
             string teacher = Session["TeacherNumber"].ToString();
+            //string teacher = "1234567";
             int category;
             try
             {
@@ -21,7 +22,7 @@ public partial class Display_Server : System.Web.UI.Page
             {
                 category = 1;
             }
-            ltType.Text = ServiceHelper.getCategoryName(category);
+            ltType.Value = ServiceHelper.getCategoryName(category);
             //绑定服务类型
             using (var db = new TeachingCenterEntities())
             {
@@ -29,11 +30,11 @@ public partial class Display_Server : System.Web.UI.Page
                 rptCategory.DataSource = categoryList.ToList();
                 rptCategory.DataBind();
             }
-            ltTeacher.Text = TeacherHelper.getTeacherNameByNumber(teacher);
+            ltTeacher.Value = TeacherHelper.getTeacherNameByNumber(teacher);
         }
         catch
         {
-            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+            JSHelper.AlertThenRedirect("请先登陆！", "main-index.aspx");
         }
 
     }
@@ -51,9 +52,11 @@ public partial class Display_Server : System.Web.UI.Page
         }
         DateTime now = DateTime.Now;
         int teacher = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
-        string phone = txtPhone.Text;
-        string remarks = txtRemarks.Text;
-        if (phone.Length == 0 )
+        //string teacher = "1234567";
+        //int teacher = 0;
+        string phone = txtPhone.Value;
+        string remarks = txtRemarks.Value;
+        if (phone.Length == 0)
             JSHelper.ShowAlert("联系方式不能为空！");
         else
             using (var db = new TeachingCenterEntities())

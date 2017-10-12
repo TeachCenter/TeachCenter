@@ -24,7 +24,7 @@ public class ActivitySummaryList : IHttpHandler {
                             {
                                 ActivityCategory_id = it.ActivityCategory_id,
                                 ActivityCategory_name = it.ActivityCategory_name,
-                                ActivityCategory_href = "ActivityList.html?type="
+                                ActivityCategory_href = "ActivityList.aspx?type="
                             };
 
             List<Category> cat = new List<Category>();
@@ -40,7 +40,7 @@ public class ActivitySummaryList : IHttpHandler {
             Category category = new Category();
             category.ActivityCategory_id = 0;
             category.ActivityCategory_name = "活动总结";
-            category.ActivityCategory_href = "ActivitySummaryList.html?page=1";
+            category.ActivityCategory_href = "ActivitySummaryList.aspx?page=1";
             cat.Add(category);
 
             //活动总结列表
@@ -56,7 +56,7 @@ public class ActivitySummaryList : IHttpHandler {
                           ActivitySummary_author = it.ActivitySummary_author,
                           ActivitySummary_time = it.ActivitySummary_time,
                           ActivitySummary_hit = it.ActivitySummary_hit,
-                          ActivitySummary_href = "ActivitySummaryContent.html?id="
+                          ActivitySummary_href = "ActivitySummaryContent.aspx?id="
                       };
             int count = asu.Count();
             asu = asu.Skip((page-1) * 5).Take(5);

@@ -109,6 +109,14 @@ ul li{
     height: 42px;
     background-color: #000000;
 }
+.person{
+    
+    cursor: pointer;
+    height: 42px;
+    line-height: 42px;
+    color: #FFFFFF;
+    float: right;
+}
 .goto{
     position: relative;
     width: 100%;
@@ -340,6 +348,10 @@ ul li{
     width: 920px;
     height: 1000px;
     margin-bottom: 32px;
+    margin:0 auto;
+    position:absolute;
+    left:140px;
+    top:200px;
 }
 @media (min-width:0px) and (max-width:1200px)
 {

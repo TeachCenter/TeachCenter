@@ -37,7 +37,7 @@
 	<div class="text-c">
 		<button onclick="removeIframe()" class="btn btn-primary radius">关闭选项卡</button>
 	 <span class="select-box inline">
-                  <asp:DropDownList ID="dropCategory" CssClass="select" runat="server" AutoPostBack="true" OnSelectedIndexChanged="dropCategory_SelectedIndexChanged">
+              <asp:DropDownList ID="dropCategory" CssClass="select" runat="server" AutoPostBack="true" OnSelectedIndexChanged="dropCategory_SelectedIndexChanged">
              <asp:ListItem>全部分类</asp:ListItem>
          </asp:DropDownList>
 		</span> 日期范围：

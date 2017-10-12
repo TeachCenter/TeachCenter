@@ -26,7 +26,7 @@ public class ActivityList : IHttpHandler {
                             {
                                 ActivityCategory_id = it.ActivityCategory_id,
                                 ActivityCategory_name = it.ActivityCategory_name,
-                                ActivityCategory_href = "ActivityList.html?type="
+                                ActivityCategory_href = "ActivityList.aspx?type="
                             };
 
             List<Category> cat = new List<Category>();
@@ -42,7 +42,7 @@ public class ActivityList : IHttpHandler {
             Category category = new Category();
             category.ActivityCategory_id = -1;
             category.ActivityCategory_name = "活动总结";
-            category.ActivityCategory_href = "ActivitySummaryList.html?page=1";
+            category.ActivityCategory_href = "ActivitySummaryList.aspx?page=1";
             cat.Add(category);
 
 
