@@ -8,6 +8,22 @@
 	<link rel="stylesheet" href="css/personal-center-init.css">
 	<link rel="stylesheet" href="css/personal-center-checkProgect.css">
 	<script type="text/javascript"  src="./js/jquery-3.1.1.min.js"></script>
+    <style>
+        .Content {
+                font-size: 20px;
+                color: #808080;
+                padding-left: 27px;
+                padding-right: 27px;
+                height: 300px;
+                overflow:scroll;
+                width:600px;
+                margin-top: 20px;
+                margin-left: 28px;
+                float: left;
+                border: 1px solid #E6E6E6;
+                overflow-x:hidden;
+        }
+    </style>
 </head>
 <body>
 	<div class="left-nav">
@@ -62,20 +78,31 @@
 			</div>
 			<div class="clearfix">
 				<h2>项目内容:</h2>
-                <asp:Literal ID="Content" runat="server"></asp:Literal>
+                <div class="Content">
+                    <asp:Literal ID="Content" runat="server"></asp:Literal>
+                </div>
 			</div>
 			<div class="clearfix">
 				<h2>项目文件:</h2>
 				<a class="redA" class="submit" href="../BackStage/<%= getFileName() %>"><asp:Label ID="lbFileName" runat="server"></asp:Label></a>
 			</div>
             <div class="clearfix">
-				<h2>是否通过当前阶段:</h2>
+				<h2>是否通过:</h2>
                 <asp:TextBox ID="txtReslut" runat="server" ReadOnly="true"></asp:TextBox>
 			</div>
 		</form>
 	</div>
 	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
 	<script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script>
+    <script>
+        var w = $(window).width();
+        $(".Content").css({ "width": w - 520 })
+
+        $(window).resize(function () {
+            w = $(window).width();
+            $(".Content").css({ "width": w - 520 })
+        })
+    </script>
 </body>
 </html>
 

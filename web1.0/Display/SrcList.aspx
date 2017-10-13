@@ -56,7 +56,7 @@
           		var pContent=$("<div>").appendTo(content);
           		$("<p>").text(data[i].body).appendTo(pContent);
           		$("<h3>").text("发布人：" + data[i].publisher + " 发布时间：" + data[i].publish_time.substr(0, 10)).appendTo(content);
-          		$("<a>").attr( "href", "SrcContent.html?id=" + data[i].id).text("查看文章").appendTo(content);
+          		$("<a>").attr( "href", "SrcContent.aspx?id=" + data[i].id).text("查看文章").appendTo(content);
           	}
 
                     

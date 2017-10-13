@@ -11,6 +11,42 @@
     <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.all.min.js"> </script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/lang/zh-cn/zh-cn.js"></script>
+    <style>
+        #txtFileName {
+            border:none;
+        }
+         #edui1_toolbarbox{
+        position:relative!important;
+        }
+        #edui1 {
+            top: 30px;
+            left:155px;
+
+        }
+        #edui2 {
+           left:-120px;
+        }
+        #edui1_bottombar {
+            display;none;
+        }
+        #edui1_iframeholder {
+            left: 6px;
+            top: -20px;
+            width:500px!important;
+            height:260px!important;
+           
+        }
+        .edui-dialog-caption {
+             color: black!important;
+            padding-left: 0px!important;
+            display:inline!important;
+            height:20px!important;
+            background-color:transparent;
+            margin-top:-1px;
+
+        }
+
+    </style>
 </head>
 <body>
 	<div class="left-nav">
@@ -73,7 +109,7 @@
                      }
                  </script>
 			</div>
-            <div class="clearfix">
+            <div class="clearfix" style="margin-top:50px;">
 				<h2>上传文件:</h2>				
                 <asp:FileUpload ID="FileUp" runat="server" style="display:none" />  
                 <asp:Button id="btnBrowse" runat="server" OnClientClick="return ShowBrowse()" Text="选择文件" class="choose"/>
@@ -105,5 +141,16 @@
      </script>
 	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
 	<script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script>
+     <script>
+         $(document).ready(function () {
+             timer = setTimeout(function () {
+                 $("#edui1_bottombar").remove();
+                 for (i = 3; i < 175; i++) { $("#edui" + i).remove() }; for (i = 176; i < 301; i++) { $("#edui" + i).remove() }
+                 $("#edui1").css({ "width": 500, "height": 300 })
+             }, 100);
+
+
+         });
+      </script>
 </body>
 </html>
