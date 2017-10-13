@@ -107,9 +107,9 @@ public partial class BackStage_ActivityCatagoryManage : System.Web.UI.Page
     //批量删除
     protected void btnDelete_Click(object sender, EventArgs e)
     {
-        for (int i = 0; i < this.rptCategory.Items.Count; i++)
+        for (int i = 0; i < rptCategory.Items.Count; i++)
         {
-            CheckBox cbx = (CheckBox)rptCategory.Items[i].FindControl("checkbox");
+            CheckBox cbx = (CheckBox)rptCategory.Items[i].FindControl("chbCheck");
             string name = ((Literal)rptCategory.Items[i].FindControl("ltName")).Text;
             if (cbx != null)
                 if (cbx.Checked == true)

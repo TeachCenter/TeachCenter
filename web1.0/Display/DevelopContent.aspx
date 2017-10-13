@@ -19,13 +19,14 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
     <script>
-	$(document).ready(function(){
+        $(document).ready(function () {
+        var id = window.location.search.substr(4);
 		$.ajax({    
 		    url: "./Ajax/DevelopContent_Handler.ashx",
           dataType: "JSON",
           type: "POST",
           async: true,
-          //data: { "Develop_id": 1},
+          data: { "Develop_id": id},
     
           success: function(data) {
           	$(".brief-intro").text(data.Develop_title)

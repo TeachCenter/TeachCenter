@@ -73,7 +73,7 @@
 					        <td><asp:CheckBox ID="checkbox" runat="server" /></td>
 					        <td><asp:Literal ID="ltNumber" runat="server"></asp:Literal></td>
                             <td style="width:100px"><img  width="100" src='<%#"picture/" + Eval("Develop_path") %>' /></td>
-                            <td><a href='<%# "../Display/DevelopContent.aspx?id="+ Eval("Develop_id")  %>' target="_blank"><%# Eval("Develop_title") %></a></td>
+                            <td><a href='<%# Eval("Develop_link").ToString()==""? "../Display/DevelopContent.aspx?id="+ Eval("Develop_id"):Eval("Develop_link")  %>' target="_blank"><%# Eval("Develop_title") %></a></td>
 					        <td><asp:Literal ID="ltTeacher" runat="server" Text=<%# Eval("Develop_author") %>></asp:Literal></td>
 					        <td><%# Eval("Develop_time") %></td>
 					        <td class="td-status"><a href='<%#"../Display/DevelopConetent.aspx?id="+ Eval("Develop_id") %>'><asp:Literal ID="ltContent" runat="server" Text=<%# Eval("Develop_content") %>></asp:Literal></a></td>

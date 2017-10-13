@@ -59,7 +59,7 @@
 						<a href="Introduction.aspx">关于</a>
 						<a href="ProgectList.aspx">项目</a>
 						<a href="Service.aspx">服务</a>
-						<a href="EducationSourceList.aspx">资源</a>
+						<a href="SrcList.aspx">资源</a>
 						<a href="ActivityList.aspx?type=0&&page=1">活动</a>
 					</div>
 				</div>

@@ -109,7 +109,7 @@ public partial class BackStage_ServiceCategoryManage : System.Web.UI.Page
     {
         for (int i = 0; i < this.rptCategory.Items.Count; i++)
         {
-            CheckBox cbx = (CheckBox)rptCategory.Items[i].FindControl("checkbox");
+            CheckBox cbx = (CheckBox)rptCategory.Items[i].FindControl("chbCheck");
             string name =((Literal) rptCategory.Items[i].FindControl("ltName")).Text;
             if (cbx!=null)
                 if (cbx.Checked == true)

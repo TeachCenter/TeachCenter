@@ -33,7 +33,7 @@
 			    <thead>
 				    <tr class="text-c">
 					    <th width="25"><input type="checkbox" runat="server" id="isDelete"></th>
-					    <th width="300">图片</th>
+					    <th style="width:100px">图片</th>
                         <th width="200">当前状态</th>
                         <th width="120">删除</th>
                         <th width="120">置顶</th>
@@ -44,7 +44,7 @@
                         <ItemTemplate>
 				            <tr class="text-c">
 					            <td><input type="checkbox" runat="server" id="isDelete"></td>					
-					            <td><a href="javascript:;" onClick="picture_edit('图库编辑','picture-show.html','10001')"><img width="210" class="picture-thumb" src=<%#Eval("Picture_path") %>></a></td>
+					            <td style="width:100px"><a href="javascript:;" onClick="picture_edit('图库编辑','picture-show.html','10001')"><img width="100" class="picture-thumb" src=<%#Eval("Picture_path") %>></a></td>
 					            <td><%# judgeDisplay(Convert.ToInt32(Eval("Picture_id").ToString())) == true?"展示中":"未展示"%><input type="hidden" runat="server" id="id" value=<%# Eval("Picture_id")%> /></td>
                                 <td class="f-14 td-manage"><asp:LinkButton ID="lbtDelete" runat="server" CssClass="ml-5" CommandName="Delete" CommandArgument='<%#Eval("Picture_id") %>' OnClientClick="return confirm('确定删除?')">删除<i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton></td>
                                 <td class="f-14 td-manage"><asp:LinkButton ID="lbtOnTop" runat="server" CssClass="ml-5" CommandName="OnTop" CommandArgument='<%#Eval("Picture_id") %>' >置顶</asp:LinkButton></td>

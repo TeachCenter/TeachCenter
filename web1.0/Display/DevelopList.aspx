@@ -7,7 +7,7 @@
     <div class="main">
 			<div class="center clearfix">
 				<div class="left-content">
-					<a class="left-content-nav">发展</a>
+					<a class="left-content-nav">教学发展</a>
 					
 				</div>
 				<div class="right-content">
