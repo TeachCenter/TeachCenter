@@ -58,7 +58,7 @@
                             <td><asp:Literal ID="ltName" runat="server" Text=<%# Eval("DevelopCategory_name") %>></asp:Literal></td>
 					        <td class="f-14 td-manage"> 
                               <asp:LinkButton runat="server" CssClass="ml-5" CommandName="Editor" CommandArgument='<%# Eval("DevelopCategory_id") %>'><i class="Hui-iconfont">&#xe6df;</i></asp:LinkButton>
-                              <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Delete" CommandArgument='<%#Eval("DevelopCategory_id") %>' OnClientClick="del()"><i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton>
+                              <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Delete" CommandArgument='<%#Eval("DevelopCategory_id") %>' OnClientClick="return confirm('确定删除?')"><i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton>
                             </td>
 				        </tr>
                     </ItemTemplate>

@@ -48,7 +48,7 @@
         <asp:LinkButton ID="ltbSearch" runat="server" OnClick="ltbSearch_Click" CssClass="btn btn-success"><i class="Hui-iconfont">&#xe665;</i> 搜索</asp:LinkButton>
 
 	</div>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><asp:LinkButton ID="ltnDelete" runat="server" CssClass="btn btn-danger radius" OnClick="ltnDelete_Click" OnClientClick="del()"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</asp:LinkButton>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><asp:LinkButton ID="ltnDelete" runat="server" CssClass="btn btn-danger radius" OnClick="ltnDelete_Click" OnClientClick="return confirm('确定删除?')"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</asp:LinkButton>
         <asp:LinkButton ID="lbtSet" runat="server" CssClass="btn btn-primary radius" PostBackUrl="~/BackStage/ActivityAdd.aspx"><i class="Hui-iconfont">&#xe600;</i> 添加活动总结</asp:LinkButton></span> <span class="r">共有数据：<strong><asp:Literal ID="ltCount" runat="server"></asp:Literal></strong> 条</span> </div>
 	<div class="mt-20">
 		<table class="table table-border table-bordered table-bg table-hover table-responsive" style="table-layout: fixed;">
@@ -75,18 +75,18 @@
 					        <td><asp:CheckBox ID="checkbox" runat="server" /></td>
 					        <td><asp:Literal ID="ltNumber" runat="server"></asp:Literal></td>
 					        
-					        <td style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;"><a href='<%#"../Display/Activity.aspx?id="+ Eval("Activity_id") %>'><%# Eval("Activity_title") %></a></td>
+					        <td style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;"><a href='<%#"../Display/ActivityContent.aspx?id="+ Eval("Activity_id") %>' target="_blank"><%# Eval("Activity_title") %></a></td>
 					        <td><%# Eval("Activity_author") %></td>
 					        <td><%# Eval("Activity_time") %></td>
                             <td><%# Eval("Activity_place") %></td>
                             <td><a href='<%# "ActivityTeacher.aspx?id="+ Eval("Activity_id")  %>'><%# Eval("Activity_nowcount") %></a></td>
                             <td><%# Eval("Activity_limitcount") %></td>
                             <td><asp:Literal ID="ltCategory" runat="server" Text='<%# Eval("Activity_categoryid") %>'></asp:Literal></td>
-					        <td class="td-status"><a href='<%#"../Display/Activity.aspx?id="+ Eval("Activity_id") %>'><asp:Literal ID="ltContent" runat="server" Text=<%# Eval("Activity_content") %>></asp:Literal></a></td>
+					        <td class="td-status"><a href='<%#"../Display/ActivityContent.aspx?id="+ Eval("Activity_id") %>' target="_blank"><asp:Literal ID="ltContent" runat="server" Text=<%# Eval("Activity_content") %>></asp:Literal></a></td>
 					        <td class="f-14 td-manage">
                                 <asp:Label ID="lbID" Visible="false" runat="server" Text=<%# Eval("Activity_id") %>></asp:Label>
                                 <a style="text-decoration:none" class="ml-5" href='<%#"ActivityEditor.aspx?id="+ Eval("Activity_id") %>' title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>
-                                <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Delete" CommandArgument='<%#Eval("Activity_id") %>' OnClientClick="del()"><i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton>
+                                <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Delete" CommandArgument='<%#Eval("Activity_id") %>' OnClientClick="return confirm('确定删除?')"><i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton>
                             </tr>
                     </ItemTemplate>
                 </asp:Repeater>

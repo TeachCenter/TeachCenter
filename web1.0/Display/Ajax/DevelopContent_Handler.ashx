@@ -31,8 +31,18 @@ public class DevelopContent_Handler : IHttpHandler {
         context.Response.ContentType = "text/plain";
 
 
-        int id = Convert.ToInt32( context.Request.Form["Develop_id"]);
-        //int id = 1;
+        //int id = Convert.ToInt32( context.Request.Form["Develop_id"]);
+        int id = 1;
+        try
+        {
+            id = Convert.ToInt32(context.Request.QueryString["id"].ToString());
+
+        }
+        catch
+        {
+
+        }
+
         using (var db = new TeachingCenterEntities())
         {
 

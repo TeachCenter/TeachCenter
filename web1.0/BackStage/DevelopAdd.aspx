@@ -90,6 +90,13 @@
                 <asp:TextBox ID="txtLink" runat="server" CssClass="input-text"></asp:TextBox>
 			</div>
 		</div>
+       <div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>上传封面：</label>
+                <asp:FileUpload ID="fup" runat="server" />
+                <asp:Label ID="lblInfo" runat="server"></asp:Label>
+			</div>
+		</div>
 		<div class="row cl content">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章内容：</label>
 			<div class="formControls col-xs-8 col-sm-9"> 
