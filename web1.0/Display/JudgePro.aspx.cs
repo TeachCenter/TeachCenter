@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 public partial class Display_JudgePro : System.Web.UI.Page
@@ -16,7 +17,7 @@ public partial class Display_JudgePro : System.Web.UI.Page
             if (Session["TeacherNumber"] != null)
                 judge_id = Convert.ToInt32(Session["TeacherNumber"].ToString());
             else
-                Response.Redirect("main-index.html");
+                Response.Redirect("main-index.aspx");
             int project_id = 5;
             int stage = 0;
             if(Request.QueryString["id"] != null && Request.QueryString["stage"] != null)
@@ -25,7 +26,7 @@ public partial class Display_JudgePro : System.Web.UI.Page
                 stage = Convert.ToInt32(Request.QueryString["stage"]);
             }
             else
-                Response.Redirect("main-index.html");
+                Response.Redirect("main-index.aspx");
             using (var db = new TeachingCenterEntities())
             {
                 var projectinfo = (from it in db.ProjectInfo where it.project_id == project_id select it).FirstOrDefault();
@@ -55,17 +56,20 @@ public partial class Display_JudgePro : System.Web.UI.Page
         int project_id = Convert.ToInt32(Request.QueryString["id"]);
         int stage = Convert.ToInt32(Request.QueryString["stage"]);
         int is_pass = 0;
-        if (Session["result"] == null)
+        ContentPlaceHolder ContentPlaceHolder1 = Master.FindControl("ContentPlaceHolder1") as ContentPlaceHolder;
+        HtmlInputHidden result = ContentPlaceHolder1.FindControl("result") as HtmlInputHidden;
+        if (result.Value == "")
             Response.Write("<script>alert('请选择是否通过！');</script>");
         else
         {
-            is_pass = Convert.ToInt32(Session["result"].ToString());
+            is_pass = Convert.ToInt32(result.Value);
             using (var db = new TeachingCenterEntities())
             {
                 var record = (from it in db.ProjectJudge where it.judge_id == judge_id && it.project_id == project_id && it.stage == stage select it).FirstOrDefault();
                 record.comment = message;
                 record.is_pass = is_pass;
                 db.SaveChanges();
+                Response.Write("<script>alert('提交评审结果成功！');location.href='MyJudgePro.aspx';</script>");
             }
         }
     }
@@ -78,15 +82,5 @@ public partial class Display_JudgePro : System.Web.UI.Page
             var project_stage = (from it in db.ProjectStage where it.project_id == project_id select it).FirstOrDefault();
             return project_stage.project_file;
         }          
-    }
-
-    protected void yes_Click(object sender, EventArgs e)
-    {
-        Session["result"] = 1;
-    }
-
-    protected void no_Click(object sender, EventArgs e)
-    {
-        Session["result"] = 0;
     }
 }

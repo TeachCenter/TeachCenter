@@ -84,7 +84,7 @@ public partial class Display_EditInfo : System.Web.UI.Page
         string name = txtName.Text;
         ContentPlaceHolder ContentPlaceHolder1 = Master.FindControl("ContentPlaceHolder1") as ContentPlaceHolder;
         HtmlInputHidden gender = ContentPlaceHolder1.FindControl("gender") as HtmlInputHidden;
-        HtmlInputHidden depart = ContentPlaceHolder1.FindControl("lbSelected") as HtmlInputHidden;
+        HtmlInputHidden depart = ContentPlaceHolder1.FindControl("Selected") as HtmlInputHidden;
         string sex = gender.Value;
         string number = txtNumber.Text;
         string email = txtEmail.Text;
