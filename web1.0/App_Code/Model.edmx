@@ -74,7 +74,7 @@
           <Property Name="Develop_hit" Type="int" Nullable="false" />
           <Property Name="Develop_deleted" Type="bigint" Nullable="false" />
           <Property Name="Develop_category" Type="int" Nullable="false" />
-          <Property Name="Develop_path" Type="nvarchar" MaxLength="50" />
+          <Property Name="Develop_path" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="DevelopCategory">
           <Key>
@@ -108,6 +108,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="teacher_id" Type="int" Nullable="false" />
+          <Property Name="message" Type="nvarchar(max)" Nullable="false" />
           <Property Name="submit_time" Type="nchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="Picture">
@@ -127,7 +128,7 @@
           <Property Name="category" Type="int" Nullable="false" />
           <Property Name="teacher_id" Type="int" Nullable="false" />
           <Property Name="submit_time" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="fund" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="fund" Type="nchar" MaxLength="10" />
           <Property Name="is_deleted" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ProjectCategory">
@@ -209,6 +210,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="image" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="gender" Type="int" Nullable="false" />
           <Property Name="email" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="number" Type="nvarchar" MaxLength="20" Nullable="false" />
@@ -645,6 +647,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="teacher_id" Type="Int32" Nullable="false" />
           <Property Name="submit_time" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_JudgeApplication_Teacher" FromRole="JudgeApplication" ToRole="Teacher" />
+          <Property Name="message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Picture">
           <Key>
@@ -668,7 +671,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <NavigationProperty Name="Teacher" Relationship="Self.FK_Project_Teacher" FromRole="Project" ToRole="Teacher" />
           <NavigationProperty Name="ProjectJudge" Relationship="Self.FK_ProjectJudge_Project" FromRole="Project" ToRole="ProjectJudge" />
           <NavigationProperty Name="ProjectStage" Relationship="Self.FK_ProjectStage_Project" FromRole="Project" ToRole="ProjectStage" />
-          <Property Name="fund" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="fund" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="ProjectCategory">
           <Key>
@@ -766,6 +769,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <NavigationProperty Name="JudgeApplication" Relationship="Self.FK_JudgeApplication_Teacher" FromRole="Teacher" ToRole="JudgeApplication" />
           <NavigationProperty Name="Project" Relationship="Self.FK_Project_Teacher" FromRole="Teacher" ToRole="Project" />
           <NavigationProperty Name="Service" Relationship="Self.FK_Service_Teacher" FromRole="Teacher" ToRole="Service" />
+          <Property Name="image" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ApplicationInfo">
           <Key>
@@ -1180,6 +1184,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <EntitySetMapping Name="JudgeApplication">
             <EntityTypeMapping TypeName="TeachingCenterModel.JudgeApplication">
               <MappingFragment StoreEntitySet="JudgeApplication">
+                <ScalarProperty Name="message" ColumnName="message" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="teacher_id" ColumnName="teacher_id" />
                 <ScalarProperty Name="submit_time" ColumnName="submit_time" />
@@ -1289,6 +1294,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <EntitySetMapping Name="Teacher">
             <EntityTypeMapping TypeName="TeachingCenterModel.Teacher">
               <MappingFragment StoreEntitySet="Teacher">
+                <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="password" ColumnName="password" />

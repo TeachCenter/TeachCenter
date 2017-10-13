@@ -7,7 +7,7 @@
     	<div class="right-content">
 		<div class="clearfix">
 			<h1>我的服务</h1>
-			<a href="" class="creat">+新建服务</a>
+			<a href="Service.aspx" class="creat">+新建服务</a>
 		</div>
         <asp:Repeater ID="rptService" runat="server" OnItemDataBound="rptService_ItemDataBound">
             <ItemTemplate>

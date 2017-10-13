@@ -71,7 +71,7 @@
                         <tr class="text-c">
 					        <td><asp:CheckBox ID="checkbox" runat="server" /></td>
 					        <td><asp:Literal ID="ltNumber" runat="server"></asp:Literal></td>
-                            <td><%# Eval("Develop_title") %></td>
+                            <td><a href='<%# "../Display/DevelopContent.aspx?id="+ Eval("Develop_id")  %>'><%# Eval("Develop_title") %></a></td>
 					        <td><asp:Literal ID="ltTeacher" runat="server" Text=<%# Eval("Develop_author") %>></asp:Literal></td>
 					        <td><%# Eval("Develop_time") %></td>
 					        <td class="td-status"><a href='<%#"../Display/Develop.aspx?id="+ Eval("Develop_id") %>'><asp:Literal ID="ltContent" runat="server" Text=<%# Eval("Develop_content") %>></asp:Literal></a></td>

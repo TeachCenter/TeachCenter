@@ -141,6 +141,7 @@ public partial class JudgeApplication
     public int id { get; set; }
     public int teacher_id { get; set; }
     public string submit_time { get; set; }
+    public string message { get; set; }
 
     public virtual Teacher Teacher { get; set; }
 }
@@ -292,6 +293,7 @@ public partial class Teacher
     public string department { get; set; }
     public string rank { get; set; }
     public int is_judge { get; set; }
+    public string image { get; set; }
 
     public virtual ICollection<ActivityTeacher> ActivityTeacher { get; set; }
     public virtual ICollection<JudgeApplication> JudgeApplication { get; set; }
