@@ -173,9 +173,7 @@ function log() {
 	$(".select").click(function() {
 		var this_=$(this);
 		$(".select-true").text(this_.text())
-	    //$(".lbSelected").val(this_.text())
-		$("#lbSelected").val(this_.text())
-
+	    $(".Selected").val(this_.text())
 	flag[6]=true;
 	})
 	

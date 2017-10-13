@@ -1,32 +1,46 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="JudgePro.aspx.cs" Inherits="Display_JudgePro" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="JudgePro.aspx.cs" Inherits="Display_JudgePro" MasterPageFile="~/Display/Person.master" %>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" href="css/personal-center-init.css">
-	<link rel="stylesheet" href="css/personal-center-checkProgect.css">
-	<script type="text/javascript"  src="./js/jquery-3.1.1.min.js"></script>
-</head>
-<body>
-	<div class="left-nav">
-		<img src="./images/logo-big.png" alt="">
-		<ul>
-			<li class="dif-li"><a href="	">个人主页</a></li>
-			<li><a href="	">修改信息</a></li>
-			<li><a href="	">项目管理</a></li>
-			<li><a href="	">服务管理</a></li>
-			<li><a href="	">活动管理</a></li>
-			<li><a href="	">评审服务</a></li>
-		</ul>
-	</div>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <link rel="stylesheet" href="css/personal-center-checkProgect.css">
+    <style>
+        .Content {
+                font-size: 20px;
+                color: #808080;
+                padding-left: 27px;
+                padding-right: 27px;
+                height: 300px;
+                overflow:scroll;
+                width:600px;
+                margin-top: 20px;
+                margin-left: 28px;
+                float: left;
+                border: 1px solid #E6E6E6;
+                overflow-x:hidden;
+        }
+        .choice {
+                display: block;
+                width: 140px;
+                height: 50px;
+                float: left;
+                text-align: center;
+                line-height: 50px;
+                background-color: #E6E6E6;
+                margin-left: 28px;
+                color: #808080;
+                border: 1px solid #E6E6E6;
+                margin-top:20px;
+        }   
+
+    </style>
+    <script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 	<div class="right-content">
 		<div class="clearfix">
 			<h1>项目信息</h1>
 		</div>
 		<span class="cut"></span>
-		<form action="" runat="server">
 			<div class="clearfix">
 				<h2>项目名称:</h2>
                 <asp:TextBox ID="txtName" runat="server" class="name" ReadOnly="true"></asp:TextBox>
@@ -58,7 +72,9 @@
 			</div>
 			<div class="clearfix">
 				<h2>项目内容:</h2>
-                <asp:Literal ID="Content" runat="server"></asp:Literal>
+                <div class="Content">
+                    <asp:Literal ID="Content" runat="server"></asp:Literal>
+                </div>
 			</div>
 			<div class="clearfix">
 				<h2>项目文件:</h2>
@@ -70,13 +86,29 @@
 			</div>
             <div class="clearfix">
 				<h2>是否通过:</h2>
-                <a  class="yes">是<asp:LinkButton ID="yes" runat="server" OnClick="yes_Click"></asp:LinkButton></a>               
-				<a  class="no">否<asp:LinkButton ID="no" runat="server" OnClick="no_Click"></asp:LinkButton></a>
+                <a  class="choice yes">是<asp:LinkButton ID="yes" runat="server"></asp:LinkButton></a>               
+				<a  class="choice no">否<asp:LinkButton ID="no" runat="server"></asp:LinkButton></a>
+                <input type="hidden" id="result" runat="server" value=""/>
 			</div>
-			<a href="" class="submit">提交评审结果<asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" class="submit"></asp:LinkButton></a>
-		</form>
+			<asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" class="submit" Text="提交评审结果"></asp:LinkButton>
 	</div>
-	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
-	<script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script>
-</body>
-</html>
+    <script>
+        var w = $(window).width();
+        $(".Content").css({ "width": w - 520 })
+
+        $(window).resize(function () {
+            w = $(window).width();
+            $(".Content").css({ "width": w - 520 })
+        })
+        $(".yes").click(function () {
+            $(this).css({ "background-color": "#FFFFFF" })
+            $(".no").css({ "background-color": "#E6E6E6" })
+            $("#ContentPlaceHolder1_result").val("1");
+        })
+        $(".no").click(function () {
+            $(this).css({ "background-color": "#FFFFFF" })
+            $(".yes").css({ "background-color": "#E6E6E6" })
+            $("#ContentPlaceHolder1_result").val("0");
+        })
+    </script>
+</asp:Content>
