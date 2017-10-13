@@ -7,6 +7,39 @@
     <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.all.min.js"> </script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/lang/zh-cn/zh-cn.js"></script>
     <script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script>
+    <style>
+     #edui1_toolbarbox{
+        position:relative!important;
+        }
+        #edui1 {
+            left:155px;
+
+        }
+        #edui2 {
+           left:-120px;
+        }
+        #edui1_bottombar {
+            display;none;
+        }
+        #edui1_iframeholder {
+            left: 6px;
+            top: -20px;
+            width:500px!important;
+            height:260px!important;
+           
+        }
+        .edui-dialog-caption {
+             color: black!important;
+            padding-left: 0px!important;
+            display:inline!important;
+            height:20px!important;
+            background-color:transparent;
+            margin-top:-1px;
+
+        }
+
+           
+    </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -22,18 +55,23 @@
 			</div>
 			<div class="clearfix">
 				<h2>项目类型:</h2>
-				<ul class="down clearfix">
-					<li class="select-true1">
-                        <asp:Label ID="lbSelected" runat="server" Text="请选择项目类型"></asp:Label>	
-					</li>
-					<ul class="select-box clearfix">
-                        <asp:Repeater ID="rptSelect1" runat="server" OnItemCommand="rptSelect1_ItemCommand">
+				<div class="aA" style="width:30px;height:50px;position:absolute;left: 623px;top: 8px;background-color:#E6E6E6;z-index:10;"> <img src="./images/bottom.png" alt="Alternate Text" style="position:absolute;top:23px;" /></div>
+				<ul class="down clearfix" style="width:500px;">                                     
+                     <li class="select-true" style="position:relative">
+                         <asp:Label id="depart" runat="server"></asp:Label>
+                         <input type="hidden" id="Selected" runat="server" class="Selected" value="" />
+                     </li>
+                     <ul class="select-box clearfix">
+                         <asp:Repeater ID="rptSelect" runat="server">
                             <ItemTemplate>
-                                <li class="select select1"><asp:LinkButton ID="lbtnSelect" runat="server" Text=<%#Eval("name") %> CommandName="selected"></asp:LinkButton></li>
-                                <input type="hidden" id="Category" value=<%#Eval("id") %> runat="server" />
+                                <li class="select select">
+                                    <asp:Label ID="lbSelect" runat="server" Text='<%#Eval("name") %>'></asp:Label>
+                                    <input type="hidden" id="selectID" runat="server" Text='<%#Eval("id") %>' />
+                                </li>
+                              
                             </ItemTemplate>
                         </asp:Repeater>
-					</ul>
+					 </ul>						
 				</ul>
 				<p class="error organization-error"></p>
 			</div>
@@ -66,10 +104,11 @@
 			</div>
             <asp:LinkButton ID="btnSubmit" runat="server" Text="提交项目" class="submit" OnClick="btnSubmit_Click" />
 	</div>
-    <script language="javascript" type="text/javascript">
+    <script type="text/javascript"  src="./js/personal-center-changeInfo.js"></script>
+    <script >
         function ShowBrowse()  
         {  
-            var file1=document.getElementById("FileUp");  
+            var file1 = document.getElementById("ContentPlaceHolder1_FileUp");
             if(file1)  
             { 
                 file1.click();  
@@ -80,10 +119,12 @@
      </script>
     <script>
 	    $(document).ready(function() { 
-		      timer = setTimeout(function () {
+	        timer = setTimeout(function () {
+	                $("#edui1_bottombar").remove();
                     for(i=3;i<175;i++){$("#edui"+i).remove()};for(i=176;i<301;i++){$("#edui"+i).remove()}
                 	    $("#edui1").css({"width":500,"height":300})
-                     },100);
+		      }, 100);
+		
 		
 	    });
       </script>

@@ -13,18 +13,21 @@ public partial class Display_AddProject : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Session["TeacherNumber"] = 1;
-        if (Session["TeacherNumber"] == null)
-            Response.Redirect("Login.aspx");
-        else
+        this.FileUp.Attributes.Add("onchange", "javascript:return Check_FilePath();");
+        if (!IsPostBack)
         {
-            this.FileUp.Attributes.Add("onchange", "javascript:return Check_FilePath();");
-            if (!IsPostBack)
-            {
-                using (var db = new TeachingCenterEntities())
+            if (Session["TeacherNumber"] == null)
+                Response.Redirect("Login.aspx");
+            else
+            {              
+                if (!IsPostBack)
                 {
-                    var category = from it in db.ProjectCategory where it.is_deleted == 0 select it;
-                    rptSelect1.DataSource = category.ToList();
-                    rptSelect1.DataBind();
+                    using (var db = new TeachingCenterEntities())
+                    {
+                        var category = from it in db.ProjectCategory where it.is_deleted == 0 select it;
+                        rptSelect.DataSource = category.ToList();
+                        rptSelect.DataBind();
+                    }
                 }
             }
         }       
@@ -38,24 +41,26 @@ public partial class Display_AddProject : System.Web.UI.Page
             LinkButton lbtnSelect = (LinkButton)e.Item.FindControl("lbtnSelect");
             HtmlInputHidden category = (HtmlInputHidden)e.Item.FindControl("Category");
             Session["category"] = category.Value;
-            lbSelected.Text = lbtnSelect.Text;
+            depart.Text = lbtnSelect.Text;
         }
     }
 
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
-        string name = txtName.Text;       
+        string name = txtName.Text;
         int teacher_id = Convert.ToInt32(Session["TeacherNumber"].ToString());
         string submit_time = DateTime.Now.ToString("yyyy-MM-dd");
         string fund = txtMoney.Text;
         string filePath = FileUp.PostedFile.FileName;
-        if(Session["category"] == null)
+        ContentPlaceHolder ContentPlaceHolder1 = Master.FindControl("ContentPlaceHolder1") as ContentPlaceHolder;
+        HtmlInputHidden category = ContentPlaceHolder1.FindControl("Selected") as HtmlInputHidden;
+        if (category.Value == "")
             Response.Write("<script>alert('项目类型不能为空！');</script>");
-        else if(name.Length == 0)
+        else if (name.Length == 0)
             Response.Write("<script>alert('项目名称不能为空！');</script>");
-        else if(fund.Length == 0)
+        else if (fund.Length == 0)
             Response.Write("<script>alert('资助金额不能为空！');</script>");
-        else if(UpLoadFile() == false)
+        else if (UpLoadFile() == false)
             Response.Write("<script>alert('请上传项目文件！');</script>");
         else
         {
@@ -63,7 +68,7 @@ public partial class Display_AddProject : System.Web.UI.Page
             {
                 Project project = new Project();
                 project.name = name;
-                project.category = Convert.ToInt32(Session["category"].ToString());
+                project.category = Convert.ToInt32(category.Value);
                 project.teacher_id = Convert.ToInt32(Session["TeacherNumber"].ToString());
                 project.submit_time = DateTime.Now.ToString("yyyy-MM-dd");
                 project.fund = fund;

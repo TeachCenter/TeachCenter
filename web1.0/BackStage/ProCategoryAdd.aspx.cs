@@ -24,7 +24,7 @@ public partial class BackStage_ProCategoryAdd : System.Web.UI.Page
             FileInfo file = new FileInfo(FullName);
             string name = file.Name;
             string type = file.Extension;
-            if (type == ".pdf" || type == ".doc")
+            if (type == ".pdf" || type == ".doc" || type == ".docx")
             {
                 string SavePath = Server.MapPath("~\\BackStage\\file");
                 this.myFileUpload.PostedFile.SaveAs(SavePath + "\\" + name);

@@ -16,11 +16,11 @@
     <script>
         $(document).ready(function () {
             $.ajax({
-                url: "../ProContentHandler.ashx",
+                url: "./Ajax/ProContentHandler.ashx",
                 dataType: "JSON",
                 type: "POST",
                 async: true,
-                data: { "Develop_id": 1 },
+                data: { "Develop_id": id },
 
                 success: function (data) {
                     $(".brief-intro").text(data.Develop_title)
@@ -34,5 +34,12 @@
 
         })
 
+    </script>
+    <script>
+        $(document).ready(function () {
+            var id = window.location.search.substr(4);
+            $("<iframe>").addClass("pdf").attr("src", "pdfJs/generic/web/viewer.html?id=" + id).appendTo($(".content"));
+        })
+        
     </script>
 </asp:Content>

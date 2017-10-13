@@ -183,7 +183,7 @@ function log(){
 log();
 
 function Check_FilePath() {
-    var FilePath = document.getElementById("FileUp");
-    var FileNewName = document.getElementById("txtFileName");
+    var FilePath = document.getElementById("ContentPlaceHolder1_FileUp");
+    var FileNewName = document.getElementById("ContentPlaceHolder1_txtFileName");
     FileNewName.value = FilePath.value;
 }
