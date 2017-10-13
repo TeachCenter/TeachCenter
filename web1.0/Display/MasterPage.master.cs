@@ -97,7 +97,6 @@ public partial class Display_MasterPage : System.Web.UI.MasterPage
 
                     teacher.name = name;
                     teacher.password = PwdHelper.MD5(pwd);
-                    //teacher.image = "";
                     teacher.gender = 0;
                     teacher.email = email;
                     teacher.number = number;

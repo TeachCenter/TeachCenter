@@ -47,7 +47,11 @@ public partial class Display_Login : System.Web.UI.Page
                             CookieHelper.SetCookie("TeacherPwd", txtPwd.Text, DateTime.Now.AddDays(30));
                         }
                         Session["TeacherNumber"] = id;
+<<<<<<< HEAD:web1.0/Display/Login.aspx.cs.exclude
                         JSHelper.AlertThenRedirect("登陆成功！", "AddProject.aspx");
+=======
+                        JSHelper.AlertThenRedirect("登陆成功！", "EditInfo.aspx");
+>>>>>>> lyfdev:web1.0/Display/Login.aspx.cs
                     }
 
                 }

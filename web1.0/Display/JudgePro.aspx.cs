@@ -9,6 +9,7 @@ public partial class Display_JudgePro : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Session["TeacherNumber"] = 1;
         if (!IsPostBack)
         {
             int judge_id = 1;
