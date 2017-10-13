@@ -19,11 +19,11 @@
 		<img src="./images/logo-big.png" alt="">
 		<ul>
 			<li class="dif-li"><a href="	">个人主页</a></li>
-			<li><a href="	">修改信息</a></li>
-			<li><a href="	">项目管理</a></li>
+			<li><a href="EditInfo.aspx">修改信息</a></li>
+			<li><a href="MyProject.aspx">项目管理</a></li>
 			<li><a href="	">服务管理</a></li>
 			<li><a href="	">活动管理</a></li>
-			<li><a href="	">评审服务</a></li>
+			<li><a href="MyJudgePro.aspx">评审服务</a></li>
 		</ul>
 	</div>
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">

@@ -132,22 +132,7 @@ function log(){
 		   }
 		}
 	})
-	$(".log-submit1").click(function(){
-	if(flag1[0]==true&&flag1[1]==true)
-	{
-	} 
-	else{
-		alert("登录失败")
-	}
-	});
-	$(".log-box-form").submit(function () {
-	    if (flag1[0] == true && flag1[1] == true) {
-	        return true;
-	    }
-	    else {
-	        return false;
-	    }
-	});
+	
 }
 
 function sign(){
@@ -305,26 +290,7 @@ function sign(){
 		   }
 		}
 	})
-	$(".sign-submit2").click(function(){
-	if(flag2[0]==true&&flag2[1]==true&&flag2[2]==true&&flag2[3]==true&&flag2[4]==true&&flag2[5]==true)
-	{
-	} 
-	else {
-	    for (i = 0;i < 6;i++) {
-	        console.log(flag2[i])
-	    }
-	    console.log(flag2[i])
-		alert("注册信息填写不完全")
-	}
-	});
-	$(".log-box-form").submit(function () {
-	    if(flag2[0]==true&&flag2[1]==true&&flag2[2]==true&&flag2[3]==true&&flag2[4]==true&&flag2[5]==true) {
-	        return true;
-	    }
-	    else {
-	        return false;
-	    }
-	});
+	
 
 
 }

@@ -4,11 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
+using System.Data;
+using System.IO;
 
 public partial class Display_ImprovePro : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Session["TeacherNumber"] = 1;
         int project_id = 5;
         int stage = 0;
         if (Request.QueryString["id"] != null && Request.QueryString["stage"] != null)

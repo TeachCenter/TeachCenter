@@ -30,7 +30,7 @@ public class MyProject : IHttpHandler {
             int size = Convert.ToInt32(pageSize);
             using (var db = new TeachingCenterEntities())
             {
-                var project = (from it in db.Project where it.teacher_id == teacher_id orderby it.submit_time descending select it).Take(size * index).Skip(size * (index - 1));
+                var project = (from it in db.Project where it.teacher_id == teacher_id where it.is_deleted == 0 orderby it.submit_time descending select it).Take(size * index).Skip(size * (index - 1));
                 DataTable dt = new DataTable();
                 dt.Columns.Add("id");
                 dt.Columns.Add("title");

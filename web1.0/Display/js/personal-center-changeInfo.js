@@ -1,5 +1,14 @@
 
-function log(){
+function log() {
+    if ($("#gender").val() == 0)
+    {
+        $(".male").css({ "background-color": "#E6E6E6" })
+        $(".female").css({ "background-color": "#FFFFFF" })
+    }
+    if ($("#gender").val() == 1) {
+        $(".male").css({ "background-color": "#FFFFFF" })
+        $(".female").css({ "background-color": "#E6E6E6" })
+    }
 	var reg;
 	var flag=[false,false,false,false,false,false,false];
 	var flagUpDown=false;
@@ -26,12 +35,14 @@ function log(){
 	$(".male").click(function() {
 	$(this).css({"background-color":"#FFFFFF"})
 	$(".female").css({"background-color":"#E6E6E6"})
-	flag[1]=true;
+	flag[1] = true;
+	$("#gender").val("1");
 	})
 	$(".female").click(function() {
 	$(this).css({"background-color":"#FFFFFF"})
 	$(".male").css({"background-color":"#E6E6E6"})
-	flag[1]=true;
+	flag[1] = true;
+	$("#gender").val("0");
 
 	})
 	$(".num").on({
@@ -97,11 +108,33 @@ function log(){
 	$(".down").click(function () {
 	    if ((!$(this).is(':animated'))) {
 	        if (flagUpDown == false) {
+	            $(".aA").css({ "display": "none" })
+	            $(".select-box").css({ "display": "block" })
 	            $(this).animate({ "height": 200 }, 400)
 	            flagUpDown = true;
 	        }
 	        else {
+	            $(".aA").css({ "display": "block" })
+	            $(".select-box").css({ "display": "none" })
 	            $(this).animate({ "height": 50 }, 400)
+	            flagUpDown = false;
+	        }
+	    }
+
+
+	})
+	$(".aA").click(function () {
+	    if ((!$(".down").is(':animated'))) {
+	        if (flagUpDown == false) {
+	            $(".aA").css({ "display": "none" })
+	            $(".select-box").css({ "display": "block" })
+	            $(".down").animate({ "height": 200 }, 400)
+	            flagUpDown = true;
+	        }
+	        else {
+	            $(".aA").css({ "display": "block" })
+	            $(".select-box").css({ "display": "none" })
+	            $(".down").animate({ "height": 50 }, 400)
 	            flagUpDown = false;
 	        }
 	    }
@@ -139,28 +172,12 @@ function log(){
     );
 	$(".select").click(function() {
 		var this_=$(this);
-	$(".select-true").text(this_.text())
+		$(".select-true").text(this_.text())
+	    //$(".lbSelected").val(this_.text())
+		$("#lbSelected").val(this_.text())
+
 	flag[6]=true;
 	})
-	$(".submit").click(function(){
-	if(flag[0]==true&&flag[1]==true&&flag[2]==true&&flag[3]==true&&flag[4]==true&&flag[5]==true&&flag[6]==true)
-	{
-	} 
-	else{
-		for(i=0;i<7;i++){
-			console.log(flag[i])
-		}
-		alert("登录失败")
-	}
-	});
-	$("form").submit(function () {
-	    if (flag[0]==true&&flag[1]==true&&flag[2]==true&&flag[3]==true&&flag[4]==true&&flag[5]==true&&flag[6]==true)
-	    {
-	        return true;
-	    }
-	    else {
-	        return false;
-	    }
-	});
+	
 }
 log();

@@ -12,6 +12,7 @@ public partial class Display_AddProject : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Session["TeacherNumber"] = 1;
         if (Session["TeacherNumber"] == null)
             Response.Redirect("Login.aspx");
         else
@@ -33,6 +34,7 @@ public partial class Display_AddProject : System.Web.UI.Page
     {
         if (e.CommandName == "selected")
         {
+            ContentPlaceHolder ContentPlaceHolder1 = Master.FindControl("ContentPlaceHolder1") as ContentPlaceHolder;
             LinkButton lbtnSelect = (LinkButton)e.Item.FindControl("lbtnSelect");
             HtmlInputHidden category = (HtmlInputHidden)e.Item.FindControl("Category");
             Session["category"] = category.Value;

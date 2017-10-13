@@ -73,7 +73,7 @@
                 <a  class="yes">是<asp:LinkButton ID="yes" runat="server" OnClick="yes_Click"></asp:LinkButton></a>               
 				<a  class="no">否<asp:LinkButton ID="no" runat="server" OnClick="no_Click"></asp:LinkButton></a>
 			</div>
-			<a href="" class="submit">提交评审结果<asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click"></asp:LinkButton></a>
+			<a href="" class="submit">提交评审结果<asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" class="submit"></asp:LinkButton></a>
 		</form>
 	</div>
 	<script type="text/javascript"  src="./js/personal-center-init.js"></script>

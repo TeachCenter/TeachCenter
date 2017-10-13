@@ -177,22 +177,8 @@ function log(){
 		}
 	})
 
-	$(".submit").click(function(){
-	if(flag[0]==true&&flag[1]==true&&flag[2]==true&&flag[3]==true&&flag[4]==true&&flag[5]==true&&flag[6]==true&&flag[7]==true)
-	{
-	} 
-	else{
-		alert("登录失败")
-	}
-	});
-	$(".form").submit(function () {
-	    if (flag[0]==true&&flag[1]==true&&flag[2]==true&&flag[3]==true&&flag[4]==true&&flag[5]==true&&flag[6]==true&&flag[7]==true) {
-	        return true;
-	    }
-	    else {
-	        return false;
-	    }
-	});
+
+	
 }
 log();
 

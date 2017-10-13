@@ -1,36 +1,20 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AddProject.aspx.cs" Inherits="Display_AddProject" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AddProject.aspx.cs" Inherits="Display_AddProject" MasterPageFile="~/Display/Person.master" %>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" href="css/personal-center-init.css">
-	<link rel="stylesheet" href="css/personal-center-creatProgect.css">
-	<script type="text/javascript"  src="./js/jquery-3.1.1.min.js"></script>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <link rel="stylesheet" href="css/personal-center-creatProgect.css">
     <script src="jquery-3.2.1.min.js" type="text/javascript"></script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.all.min.js"> </script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/lang/zh-cn/zh-cn.js"></script>
-</head>
-<body>
-	<div class="left-nav">
-		<img src="./images/logo-big.png" alt="">
-		<ul>
-			<li class="dif-li"><a href="	">个人主页</a></li>
-			<li><a href="	">修改信息</a></li>
-			<li><a href="	">项目管理</a></li>
-			<li><a href="	">服务管理</a></li>
-			<li><a href="	">活动管理</a></li>
-			<li><a href="	">评审服务</a></li>
-		</ul>
-	</div>
-	<div class="right-content">
+    <script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    	<div class="right-content">
 		<div class="clearfix">
 			<h1>新建项目</h1>
 		</div>
 		<span class="cut"></span>
-		<form action="" class="form" runat="server">
 			<div class="clearfix">
 				<h2 class="name-h2">项目名称:</h2>
                 <asp:TextBox ID="txtName" runat="server" class="name" ></asp:TextBox>
@@ -81,7 +65,6 @@
                  
 			</div>
             <asp:LinkButton ID="btnSubmit" runat="server" Text="提交项目" class="submit" OnClick="btnSubmit_Click" />
-		</form>
 	</div>
     <script language="javascript" type="text/javascript">
         function ShowBrowse()  
@@ -95,7 +78,7 @@
             }  
         }   
      </script>
-      <script>
+    <script>
 	    $(document).ready(function() { 
 		      timer = setTimeout(function () {
                     for(i=3;i<175;i++){$("#edui"+i).remove()};for(i=176;i<301;i++){$("#edui"+i).remove()}
@@ -103,9 +86,6 @@
                      },100);
 		
 	    });
-    </script>
+      </script>
+</asp:Content>
 
-	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
-	<script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script>
-</body>
-</html>

@@ -1,38 +1,61 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="EditInfo.aspx.cs" Inherits="Display_EditInfo" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="EditInfo.aspx.cs" Inherits="Display_EditInfo" MasterPageFile="~/Display/Person.master" %>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" href="css/personal-center-init.css">
-	<link rel="stylesheet" href="css/personal-center-changeInfo.css">
-	<script type="text/javascript"  src="./js/jquery-3.1.1.min.js"></script>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <link rel="stylesheet" href="css/personal-center-changeInfo.css">
     <style type="text/css">
         #txtFileName{
             background:inherit;
         }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none !important;
+        }                
     </style>
-</head>
-<body>
-	<div class="left-nav">
-		<img src="./images/logo-big.png" alt="">
-		<ul>
-			<li class="dif-li"><a href="	">个人主页</a></li>
-			<li><a href="	">修改信息</a></li>
-			<li><a href="	">项目管理</a></li>
-			<li><a href="	">服务管理</a></li>
-			<li><a href="	">活动管理</a></li>
-			<li><a href="	">评审服务</a></li>
-		</ul>
-	</div>
-	<div class="right-content">
+    <script></script>
+ <script type="text/javascript">
+
+        $(document).ready(function () {
+    
+		
+            $("#form1").submit(function (e) {
+                alert('llll');
+                //验证密码长度
+                var ss = $(".select-true").text();
+                var id = '<% =lbSelected.ClientID%>';
+
+                $('#' + id).text(ss);
+                alert(ss+'</br>'+$('#' + id).text());
+            });
+            
+            ////取出有clear类的input域
+            ////(注: "clear once" 是两个class clear 和 once)
+            //$('.txtfield').each(function () {
+            //    //使用data方法存储数据
+            //    $(this).data("txt", $.trim($(this).val()));
+            //}).focus(function () {
+            //    // 获得焦点时判断域内的值是否和默认值相同，如果相同则清空
+            //    if ($.trim($(this).val()) === $(this).data("txt")) {
+            //        $(this).val("");
+            //    }
+            //}).blur(function () {
+            //    // 为有class clear的域添加blur时间来恢复默认值
+            //    // 但如果class是once则忽略
+            //    if ($.trim($(this).val()) === "" && !$(this).hasClass("once")) {
+            //        //Restore saved data
+            //        $(this).val($(this).data("txt"));
+            //    }
+            //});
+            
+        });
+    </script>
+
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    	<div class="right-content">
 		<div class="clearfix">
 			<h1>修改信息</h1>
 		</div>
 		<span class="cut"></span>
-
-		<form action="" class="form" runat="server">
 			<div class="clearfix">
 				<h2 class="name-h2">姓名:</h2>
                 <asp:TextBox ID="txtName" runat="server" class="same name"></asp:TextBox>
@@ -43,7 +66,7 @@
                 <%----%>
                 <a  class="sex male">男<asp:LinkButton ID="man" runat="server" OnClick="man_Click"></asp:LinkButton></a>               
 				<a  class="sex female">女<asp:LinkButton ID="woman" runat="server" OnClick="woman_Click"></asp:LinkButton></a>
-                <input type="hidden" id="gender" runat="server" value="0"/>
+                <input type="hidden" id="gender" runat="server"/>
 				<p class="error sex-error"></p>
 			</div>
 			<div class="clearfix">
@@ -66,16 +89,20 @@
 				<asp:TextBox ID="txtRank" runat="server" class="same position"></asp:TextBox>
 				<p class="error position-error"></p>
 			</div>
-			<div class="clearfix">
+			<div class="clearfix" style="position:relative;">
 				<h2>院系:</h2>
-				<ul class="down clearfix">
-                     <li class="select-true">
-                         <asp:Label ID="lbSelected" runat="server" Text="请选择院系"></asp:Label>
+                 <div class="aA" style="width:30px;height:50px;position:absolute;left: 623px;top: 8px;background-color:#E6E6E6;z-index:10;"> <img src="./images/bottom.png" alt="Alternate Text" style="position:absolute;top:23px;" /></div>
+				<ul class="down clearfix" style="width:500px;">
+                   
+                   
+                     <li class="select-true" style="position:relative">
+                         <asp:Literal id="depart" runat="server" Text="请选择院系"></asp:Literal>
+                         <input type="hidden" id="lbSelected" runat="server" />
                      </li>
                      <ul class="select-box clearfix">
-                         <asp:Repeater ID="rptSelect" runat="server" OnItemCommand="rptSelect_ItemCommand">
+                         <asp:Repeater ID="rptSelect" runat="server">
                             <ItemTemplate>
-                                <li class="select select"><asp:LinkButton ID="lbtnSelect" runat="server" Text=<%#Eval("department") %> CommandName="selected"></asp:LinkButton></li>
+                                <li class="select select"><asp:Label ID="lbSelect" runat="server" Text='<%#Eval("department") %>'></asp:Label></li>
                             </ItemTemplate>
                         </asp:Repeater>
 					 </ul>				
@@ -87,10 +114,10 @@
 				<h2 class="userType">用户类型: <asp:Label ID="lbType" runat="server"></asp:Label></h2>
                 <asp:LinkButton ID="applyJudge" runat="server" Text="申请成为评委>>" OnClick="applyJudge_Click" class="redA"></asp:LinkButton>
 			</div>
-            <a class="submit">提交项目<asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click"></asp:LinkButton></a>
-		</form>
+            <asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" Text="提交项目" class="submit"></asp:LinkButton>
 	</div>
-	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
-	<script type="text/javascript"  src="./js/personal-center-changeInfo.js"></script>
-</body>
-</html>
+    <script type="text/javascript"  src="./js/personal-center-changeInfo.js"></script>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
+</asp:Content>
+
