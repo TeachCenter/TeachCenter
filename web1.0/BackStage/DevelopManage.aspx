@@ -48,7 +48,7 @@
 		<asp:TextBox ID="txtSearch" runat="server"  style="width:250px" class="input-text"></asp:TextBox>
         <asp:LinkButton ID="ltbSearch" runat="server" OnClick="ltbSearch_Click" CssClass="btn btn-success"><i class="Hui-iconfont">&#xe665;</i> 搜索</asp:LinkButton>
     </div>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><asp:LinkButton ID="ltnDelete" runat="server" CssClass="btn btn-danger radius" OnClick="ltnDelete_Click" OnClientClick="del()"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</asp:LinkButton>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><asp:LinkButton ID="ltnDelete" runat="server" CssClass="btn btn-danger radius" OnClick="ltnDelete_Click" OnClientClick="return confirm('确定删除?')"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</asp:LinkButton>
         <asp:LinkButton ID="lbtSet" runat="server" CssClass="btn btn-primary radius" PostBackUrl="~/BackStage/DevelopAdd.aspx"><i class="Hui-iconfont">&#xe600;</i> 添加教学发展</asp:LinkButton></span> <span class="r">共有数据：<strong><asp:Literal ID="ltCount" runat="server"></asp:Literal></strong> 条</span> </div>
 	<div class="mt-20">
 		<table class="table table-border table-bordered table-bg table-hover table-responsive">
@@ -56,6 +56,7 @@
 				<tr class="text-c">
 					<th width="25"><input type="checkbox" name="" value=""></th>
 					<th width="80">序号</th>
+                    <th>封面</th>
                     <th width="120">标题</th>
 					<th width="80">发布人</th>
 					<th width="120">发布时间</th>
@@ -71,16 +72,17 @@
                         <tr class="text-c">
 					        <td><asp:CheckBox ID="checkbox" runat="server" /></td>
 					        <td><asp:Literal ID="ltNumber" runat="server"></asp:Literal></td>
-                            <td><a href='<%# "../Display/DevelopContent.aspx?id="+ Eval("Develop_id")  %>'><%# Eval("Develop_title") %></a></td>
+                            <td style="width:100px"><img  width="100" src='<%#"picture/" + Eval("Develop_path") %>' /></td>
+                            <td><a href='<%# Eval("Develop_link").ToString()==""? "../Display/DevelopContent.aspx?id="+ Eval("Develop_id"):Eval("Develop_link")  %>' target="_blank"><%# Eval("Develop_title") %></a></td>
 					        <td><asp:Literal ID="ltTeacher" runat="server" Text=<%# Eval("Develop_author") %>></asp:Literal></td>
 					        <td><%# Eval("Develop_time") %></td>
-					        <td class="td-status"><a href='<%#"../Display/Develop.aspx?id="+ Eval("Develop_id") %>'><asp:Literal ID="ltContent" runat="server" Text=<%# Eval("Develop_content") %>></asp:Literal></a></td>
+					        <td class="td-status"><a href='<%#"../Display/DevelopConetent.aspx?id="+ Eval("Develop_id") %>'><asp:Literal ID="ltContent" runat="server" Text=<%# Eval("Develop_content") %>></asp:Literal></a></td>
                             <td><asp:Literal ID="ltCategory" runat="server" Text='<%# Eval("Develop_category") %>'></asp:Literal></td>
 					        <td class="td-status"><span class="label label-success radius">已发布</span></td>
 					        <td class="f-14 td-manage">
                                 <asp:Label ID="lbID" Visible="false" runat="server" Text=<%# Eval("Develop_id") %>></asp:Label>
                                 <a style="text-decoration:none" class="ml-5" href='<%#"DevelopEditor.aspx?id="+ Eval("Develop_id") %>' title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>
-                                <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Delete" CommandArgument='<%#Eval("Develop_id") %>' OnClientClick="del()"><i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton>
+                                <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Delete" CommandArgument='<%#Eval("Develop_id") %>' OnClientClick="return confirm('确定删除?')"><i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton>
                             </tr>
                     </ItemTemplate>
                 </asp:Repeater>

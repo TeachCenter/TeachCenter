@@ -42,7 +42,7 @@
 		<asp:TextBox ID="txtSearch" runat="server"  style="width:250px" class="input-text"></asp:TextBox>
         <asp:LinkButton ID="ltbSearch" runat="server" OnClick="ltbSearch_Click" CssClass="btn btn-success"><i class="Hui-iconfont">&#xe665;</i> 搜索</asp:LinkButton>
     </div>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><asp:LinkButton ID="ltnDelete" runat="server" CssClass="btn btn-danger radius" OnClick="ltnDelete_Click" OnClientClick="del()"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</asp:LinkButton>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><asp:LinkButton ID="ltnDelete" runat="server" CssClass="btn btn-danger radius" OnClick="ltnDelete_Click" OnClientClick="return confirm('确定删除?')"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</asp:LinkButton>
         <asp:LinkButton ID="lbtSet" runat="server" CssClass="btn btn-primary radius" PostBackUrl="~/BackStage/ActivitySummaryAdd.aspx"><i class="Hui-iconfont">&#xe600;</i> 添加活动总结</asp:LinkButton></span> <span class="r">共有数据：<strong><asp:Literal ID="ltCount" runat="server"></asp:Literal></strong> 条</span> </div>
 	<div class="mt-20">
 		<table class="table table-border table-bordered table-bg table-hover table-responsive" style="table-layout: fixed;">
@@ -74,7 +74,7 @@
                                 <asp:Label ID="lbID" Visible="false" runat="server" Text=<%# Eval("ActivitySummary_id") %>></asp:Label>
                                 <a style="text-decoration:none" class="ml-5" href='<%#"ActivitySummaryEditor.aspx?id="+ Eval("ActivitySummary_id") %>' title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>
                      
-                                <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Delete" CommandArgument='<%#Eval("ActivitySummary_id") %>' OnClientClick="del()"><i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton>
+                                <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Delete" CommandArgument='<%#Eval("ActivitySummary_id") %>' OnClientClick="return confirm('确定删除?')"><i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton>
                             </tr>
                     </ItemTemplate>
                 </asp:Repeater>

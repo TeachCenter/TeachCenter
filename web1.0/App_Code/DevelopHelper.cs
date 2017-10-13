@@ -44,4 +44,15 @@ public class DevelopHelper
             return ac.DevelopCategory_name;
         }
     }
+
+    static public bool checkID(int id)
+    {
+        using (var db = new TeachingCenterEntities())
+        {
+            var dev = from it in db.Develop where it.Develop_id == id select it;
+
+            return dev.ToList().Count == 0 ? false : true;
+
+        }
+    }
 }

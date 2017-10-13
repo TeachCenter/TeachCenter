@@ -46,8 +46,8 @@
         <asp:LinkButton ID="ltbSearch" runat="server" OnClick="ltbSearch_Click" CssClass="btn btn-success"><i class="Hui-iconfont">&#xe665;</i> 搜索</asp:LinkButton>
 		
 	</div>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><asp:LinkButton ID="ltnDelete" runat="server" CssClass="btn btn-danger radius" OnClick="ltnDelete_Click" OnClientClick="del()"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</asp:LinkButton>
-        <asp:LinkButton ID="lbtSet" runat="server" CssClass="btn btn-primary radius" OnClick="lbtSet_Click" OnClientClick="set()"><i class="Hui-iconfont">&#xe600;</i> 批量处理</asp:LinkButton></span> <span class="r">共有数据：<strong><asp:Literal ID="ltCount" runat="server"></asp:Literal></strong> 条</span> </div>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><asp:LinkButton ID="ltnDelete" runat="server" CssClass="btn btn-danger radius" OnClick="ltnDelete_Click" OnClientClick="return confirm('确定删除?')"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</asp:LinkButton>
+        <asp:LinkButton ID="lbtSet" runat="server" CssClass="btn btn-primary radius" OnClick="lbtSet_Click" OnClientClick="return confirm('确定处理?')"><i class="Hui-iconfont">&#xe600;</i> 批量处理</asp:LinkButton></span> <span class="r">共有数据：<strong><asp:Literal ID="ltCount" runat="server"></asp:Literal></strong> 条</span> </div>
 	<div class="mt-20">
 		<table class="table table-border table-bordered table-bg table-hover table-responsive">
 			<thead>
@@ -76,7 +76,7 @@
 					        <td class="f-14 td-manage">
                                 <asp:Label ID="lbID" Visible="false" runat="server" Text=<%# Eval("Service_id") %>></asp:Label>
                                 <asp:LinkButton runat="server" CommandName="Set" CommandArgument='<%# Eval("Service_id") %>' Text="处理"></asp:LinkButton>
-                                <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Delete" CommandArgument='<%#Eval("Service_id") %>' OnClientClick="del()"><i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton>
+                                <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Delete" CommandArgument='<%#Eval("Service_id") %>' OnClientClick="return confirm('确定删除?')"><i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton>
                             </tr>
                     </ItemTemplate>
                 </asp:Repeater>

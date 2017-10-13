@@ -47,8 +47,8 @@
         <asp:LinkButton ID="ltbSearch" runat="server" OnClick="ltbSearch_Click" CssClass="btn btn-success"><i class="Hui-iconfont">&#xe665;</i> 搜索</asp:LinkButton>
 
 	</div>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><asp:LinkButton ID="ltnDelete" runat="server" CssClass="btn btn-danger radius" OnClick="ltnDelete_Click" OnClientClick="del()"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</asp:LinkButton>
-    <asp:LinkButton ID="ltbRecycle" runat="server" CssClass="btn radius btn-default" OnClick="ltbRecycle_Click" OnClientClick="recycle()">批量恢复</asp:LinkButton>    
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><asp:LinkButton ID="ltnDelete" runat="server" CssClass="btn btn-danger radius" OnClick="ltnDelete_Click" OnClientClick="return confirm('确定彻底删除?')"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</asp:LinkButton>
+    <asp:LinkButton ID="ltbRecycle" runat="server" CssClass="btn radius btn-default" OnClick="ltbRecycle_Click" OnClientClick="return confirm('确定恢复?')">批量恢复</asp:LinkButton>    
     </span> <span class="r">共有数据：<strong><asp:Literal ID="ltCount" runat="server"></asp:Literal></strong> 条</span> </div>
 	<div class="mt-20">
 		<table class="table table-border table-bordered table-bg table-hover table-responsive" style="table-layout: fixed;">
@@ -87,8 +87,8 @@
 					        <td class="td-status"><a href='<%#"../Display/Activity.aspx?id="+ Eval("Activity_id") %>'><asp:Literal ID="ltContent" runat="server" Text=<%# Eval("Activity_content") %>></asp:Literal></a></td>
 					        <td class="f-14 td-manage">
                                 <asp:Label ID="lbID" Visible="false" runat="server" Text=<%# Eval("Activity_id") %>></asp:Label>
-                                  <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Recycle" CommandArgument='<%#Eval("Activity_id") %>' OnClientClick="recycle()">恢复</asp:LinkButton>
-                                <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Delete" CommandArgument='<%#Eval("Activity_id") %>' OnClientClick="del()"><i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton>
+                                  <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Recycle" CommandArgument='<%#Eval("Activity_id") %>' OnClientClick="return confirm('确定恢复?')">恢复</asp:LinkButton>
+                                <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Delete" CommandArgument='<%#Eval("Activity_id") %>' OnClientClick="return confirm('确定彻底删除?')"><i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton>
                             </tr>
                     </ItemTemplate>
                 </asp:Repeater>

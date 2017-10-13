@@ -36,7 +36,7 @@
 <div class="page-container">
 
 	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l">
-        <asp:LinkButton ID="btnDelete" runat="server" OnClick="btnDelete_Click" CssClass="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i>批量删除</asp:LinkButton>
+        <asp:LinkButton ID="btnDelete" runat="server" OnClick="btnDelete_Click" CssClass="btn btn-danger radius" OnClientClick="return confirm('确定删除?')"><i class="Hui-iconfont">&#xe6e2;</i>批量删除</asp:LinkButton>
         <asp:LinkButton ID="ltbAdd" runat="server" CssClass="btn btn-primary radius" OnClick="ltbAdd_Click" Text="添加分类"></asp:LinkButton></span> 
         <span class="r">共有数据：<strong><asp:Literal ID="ltCount" runat="server"></asp:Literal></strong> 条</span> </div>
 	<div class="mt-20">
@@ -58,7 +58,7 @@
                             <td><asp:Literal ID="ltName" runat="server" Text=<%# Eval("DevelopCategory_name") %>></asp:Literal></td>
 					        <td class="f-14 td-manage"> 
                               <asp:LinkButton runat="server" CssClass="ml-5" CommandName="Editor" CommandArgument='<%# Eval("DevelopCategory_id") %>'><i class="Hui-iconfont">&#xe6df;</i></asp:LinkButton>
-                              <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Delete" CommandArgument='<%#Eval("DevelopCategory_id") %>' OnClientClick="del()"><i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton>
+                              <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Delete" CommandArgument='<%#Eval("DevelopCategory_id") %>' OnClientClick="return confirm('确定删除?')"><i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton>
                             </td>
 				        </tr>
                     </ItemTemplate>

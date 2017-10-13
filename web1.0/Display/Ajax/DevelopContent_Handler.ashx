@@ -29,14 +29,23 @@ public class DevelopContent_Handler : IHttpHandler {
     }
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/plain";
+        int id;
 
+        //int id = Convert.ToInt32( context.Request.Form["Develop_id"]);
 
-        int id = Convert.ToInt32( context.Request.Form["Develop_id"]);
-        //int id = 1;
+        try
+        {
+            id =  Convert.ToInt32( context.Request.Form["Develop_id"]);
+            if (!DevelopHelper.checkID(id))         //确认id是否存在
+                id = 5;
+        }
+        catch
+        {
+            id = 5;
+        }
+
         using (var db = new TeachingCenterEntities())
         {
-
-
 
 
             var dev = from it in db.Develop
