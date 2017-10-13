@@ -86,7 +86,14 @@
 
 5. Service
 
-   这个页面用绑代码
+   参数
+
+   ```
+   phone
+   remarks//备注
+   ```
+
+   ​
 
 6. EducateSourceList
 
@@ -198,25 +205,80 @@
 
 10. ActivitySummaryContent
 
-   请求URL:Ajax/ActivitySummaryContent_Handler.ashx
+  请求URL:Ajax/ActivitySummaryContent_Handler.ashx
 
-   参数 ActivitySummary_id
+  参数 ActivitySummary_id
 
-   后台返回数据
+  后台返回数据
+
+  ```
+  //中间列表部分  活动总结
+  data{
+    "ActivitySummary_id":"1"
+    "ActivitySummary_title" : "这是一个标题"
+    "ActivitySummary_content" : "文章内容"
+    "ActivitySummary_author":"发布者"
+    "ActivitySummary_time":"2017-09-18 15:26:09.000"
+    "ActivitySummary_hit":"12"//阅览量
+  }
+  ```
+
+  ​
+
+11. DevelopList
 
    ```
-   //中间列表部分  活动总结
-   data{
-     "ActivitySummary_id":"1"
-     "ActivitySummary_title" : "这是一个标题"
-     "ActivitySummary_content" : "文章内容"
-     "ActivitySummary_author":"发布者"
-     "ActivitySummary_time":"2017-09-18 15:26:09.000"
-     "ActivitySummary_hit":"12"//阅览量
-   }
+   Develop_id 
+   Develop_title
+   Develop_content
+   Develop_author
+   Develop_hit
+   Develop_href
+   Develop_time
    ```
 
-   ​
+12. Login
+
+   参数
+
+   ```
+   id
+   pwd
+   remember
+   ```
+
+13. DevelopContent
+
+   ```
+   Develop_id;
+   Develop_title;
+   Develop_content;
+   Develop_author;
+   Develop_hit;
+   Develop_link;
+   Develop_category;
+   Develop_categoryid;
+   Develop_time;
+   ```
+
+14. ActivityAdd
+
+   参数 Activity_id
+
+15. MyActivity
+
+   ```
+   Activity_id
+   Activity_title
+   Activity_time
+   Activity_place
+   Activity_category
+   Activity_href
+   ```
+
+16. MyActivityDelete
+
+   参数 Activity_id
 
 ==========================个人中心==========================
 
