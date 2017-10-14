@@ -8,8 +8,8 @@
     <div class="main">
 
 			<div class="center" style="background-color: #FFFFFF;margin-bottom: 32px;">
-				<div class="Search search1">搜索结果</div>
-                <a href="" class="search-button" style="background-image:url(./images/search1.png);top: 14px;right: 18px;"></a>
+				<input class="Search search1" value="搜索结果"></input>
+                <a  class="search-button" style="background-image:url(./images/search1.png);top: 14px;right: 18px;"></a>
 				<div class="passage-content1" ></div>
 				<div class="buttons clearfix">
             <a class="lleft-button"></a>
@@ -107,7 +107,20 @@
 		}
 		turnPage();
 		
+		$(".Search").on({
+		    focus: function () {
+		        $(".Search").val("");
+		    },
+		    blur: function () {
 
+		    }
+		})
+
+		$(".search-button").click(function () {
+		    console.log('66');
+		    window.location.href = 'Search.aspx?key=' + $(".Search").val();
+
+		})
 	})
 		
 	</script>
