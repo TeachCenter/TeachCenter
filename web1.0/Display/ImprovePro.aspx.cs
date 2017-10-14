@@ -21,7 +21,7 @@ public partial class Display_ImprovePro : System.Web.UI.Page
             stage = Convert.ToInt32(Request.QueryString["stage"]);
         }
         else
-            Response.Redirect("main-index.html");
+            Response.Redirect("main-index.aspx");
         if (Session["TeacherNumber"] == null)
             Response.Redirect("Login.aspx");
         else
@@ -69,7 +69,7 @@ public partial class Display_ImprovePro : System.Web.UI.Page
                 newStage.is_pass = -2;
                 db.ProjectStage.Add(newStage);
                 db.SaveChanges();
-                Response.Write("<script>alert('完善项目成功！');</script>");
+                Response.Write("<script>alert('完善项目成功！');location.href='MyProject.aspx';</script>");
             }
         }
     }

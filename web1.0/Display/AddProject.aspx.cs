@@ -37,7 +37,6 @@ public partial class Display_AddProject : System.Web.UI.Page
     {
         if (e.CommandName == "selected")
         {
-            ContentPlaceHolder ContentPlaceHolder1 = Master.FindControl("ContentPlaceHolder1") as ContentPlaceHolder;
             LinkButton lbtnSelect = (LinkButton)e.Item.FindControl("lbtnSelect");
             HtmlInputHidden category = (HtmlInputHidden)e.Item.FindControl("Category");
             Session["category"] = category.Value;
@@ -52,8 +51,7 @@ public partial class Display_AddProject : System.Web.UI.Page
         string submit_time = DateTime.Now.ToString("yyyy-MM-dd");
         string fund = txtMoney.Text;
         string filePath = FileUp.PostedFile.FileName;
-        ContentPlaceHolder ContentPlaceHolder1 = Master.FindControl("ContentPlaceHolder1") as ContentPlaceHolder;
-        HtmlInputHidden category = ContentPlaceHolder1.FindControl("Selected") as HtmlInputHidden;
+        HtmlInputHidden category = FindControl("Selected") as HtmlInputHidden;
         if (category.Value == "")
             Response.Write("<script>alert('项目类型不能为空！');</script>");
         else if (name.Length == 0)

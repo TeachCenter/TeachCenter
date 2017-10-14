@@ -56,8 +56,7 @@ public partial class Display_JudgePro : System.Web.UI.Page
         int project_id = Convert.ToInt32(Request.QueryString["id"]);
         int stage = Convert.ToInt32(Request.QueryString["stage"]);
         int is_pass = 0;
-        ContentPlaceHolder ContentPlaceHolder1 = Master.FindControl("ContentPlaceHolder1") as ContentPlaceHolder;
-        HtmlInputHidden result = ContentPlaceHolder1.FindControl("result") as HtmlInputHidden;
+        HtmlInputHidden result = FindControl("result") as HtmlInputHidden;
         if (result.Value == "")
             Response.Write("<script>alert('请选择是否通过！');</script>");
         else

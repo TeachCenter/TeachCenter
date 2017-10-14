@@ -32,20 +32,20 @@ function log() {
         }
     })
     $(".male").click(function () {
-        $("#ContentPlaceHolder1_gender").val("1");
+        $("#gender").val("1");
         $(this).css({ "background-color": "#FFFFFF" })
         $(".female").css({ "background-color": "#E6E6E6" })
         flag[1] = true;
         
-        console.log($("#ContentPlaceHolder1_gender").val())
+        console.log($("#gender").val())
     })
     $(".female").click(function () {
-        $("#ContentPlaceHolder1_gender").val("0");
+        $("#gender").val("0");
         $(this).css({ "background-color": "#FFFFFF" })
         $(".male").css({ "background-color": "#E6E6E6" })
         flag[1] = true;
         
-        console.log($("#ContentPlaceHolder1_gender").val())
+        console.log($("#gender").val())
 
     })
     $(".num").on({
@@ -182,10 +182,10 @@ function log() {
         $(".select-true").text(this_.text())
         //$(".lbSelected").val(this_.text())
         $("#lbSelected").val(this_.text())
-        $("#ContentPlaceHolder1_lbSelected").val(this_.text());
-        $("#ContentPlaceHolder1_selectID").val(this_.text());
-        console.log($("#ContentPlaceHolder1_lbSelected").val())
-        console.log($("#ContentPlaceHolder1_selectID").val())
+        $("#lbSelected").val(this_.text());
+        $("#selectID").val(this_.text());
+        console.log($("#lbSelected").val())
+        console.log($("#selectID").val())
 
 
         flag[6] = true;
