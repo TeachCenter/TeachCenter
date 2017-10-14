@@ -60,7 +60,7 @@ public class IndexNotice_Handler : IHttpHandler {
             foreach(var i in sourse)
             {
                 Notice x = new Notice();
-                x.noticeHref ="EducationSourceContent.aspx?id=" + i.noticeHref;
+                x.noticeHref ="SrcContent.aspx?id=" + i.noticeHref;
                 x.noticeTime = i.noticeTime;
                 x.noticeTitle = i.noticeTitle;
                 notice.Add(x);
@@ -68,7 +68,7 @@ public class IndexNotice_Handler : IHttpHandler {
             foreach(var i in project)
             {
                 Notice x = new Notice();
-                x.noticeHref = "ProjectContent.aspx?id=" + i.noticeHref;
+                x.noticeHref = "ProgectContent.aspx?id=" + i.noticeHref;
                 x.noticeTime = i.noticeTime;
                 x.noticeTitle = i.noticeTitle;
                 notice.Add(x);

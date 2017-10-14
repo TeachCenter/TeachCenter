@@ -86,9 +86,9 @@
 				<%--<input type="password" class="hide-password gray-box">--%>
                 <asp:TextBox ID="txtPwd" runat="server" TextMode="Password" CssClass="hide-password gray-box"></asp:TextBox>
 				<p class="password-error error"></p>
-				<input type="text" placeholder="验证码" class="gray-box code" style="width: 176px;float: left;" >
+				<input runat="server" id="TextBox1" type="text" placeholder="验证码" class="gray-box code" style="width: 176px;float: left;" />
                 <img src="png.aspx" id="img" onclick="f_refreshtype()" style="float:left;margin-left:72px;display:block;width:80px;height:60px;" />
-                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                <%--<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>--%>
                 
 				<p class="code-error error" style="float: left;"></p>
                 <%--<asp:CheckBox ID="cbxRemeberUser" runat="server" Text="记住用户名" ForeColor="gray"/>--%>
@@ -139,8 +139,8 @@
         $("#txtNumber").attr("placeholder", "工号");
         $("#txtPhone").attr("placeholder", "手机");
         $("#txtEmail").attr("placeholder", "电子邮箱");
-        //$("#txtNewPwd").attr("placeholder", "密码");
-        //$("#txtCheckPwd").attr("placeholder", "确认密码");
+        $("#txtNewPwd").attr("placeholder", "密码");
+        $("#txtCheckPwd").attr("placeholder", "确认密码");
         function search() {
             window.location.href = "Search.aspx?key=" + $("#search").val();
         }

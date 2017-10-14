@@ -46,7 +46,7 @@ public partial class Display_MasterPage : System.Web.UI.MasterPage
         {
             if (Session["PngLogin"] != null)
             {
-                if (TextBox1.Text != Session["PngLogin"].ToString())
+                if (TextBox1.Value != Session["PngLogin"].ToString())
                     JSHelper.AlertThenRedirect("验证码错误！", "main-index.aspx");
                 else
                     using (var db = new TeachingCenterEntities())
