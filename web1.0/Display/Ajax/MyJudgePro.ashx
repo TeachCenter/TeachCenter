@@ -4,7 +4,7 @@ using System;
 using System.Web;
 using System.Linq;
 using Newtonsoft.Json;
-using System.Collections.Generic;
+using System.Collections;
 using System.Data;
 using System.Web.SessionState;
 
@@ -18,7 +18,7 @@ public class MyJudgePro : IHttpHandler {
         //if (HttpContext.Current.Session["TeacherNumber"] != null)
         //    judge_id = Convert.ToInt32(HttpContext.Current.Session["TeacherNumber"].ToString());
         //else
-        //    HttpContext.Current.Response.Redirect("~/Display/index.aspx");
+        //    HttpContext.Current.Response.Redirect("~/Display/main-index.aspx");
         if (string.IsNullOrEmpty(pageSize) || string.IsNullOrEmpty(pageIndex))
         {
             context.Response.Write("");
@@ -29,7 +29,17 @@ public class MyJudgePro : IHttpHandler {
             int size = Convert.ToInt32(pageSize);
             using (var db = new TeachingCenterEntities())
             {
-                var project = (from it in db.ProjectJudge where it.judge_id == judge_id && it.is_pass == -1 orderby it.project_id descending select it).Take(size * index).Skip(size * (index - 1));
+                var project = from it in db.ProjectJudge
+                              where it.judge_id == judge_id && it.is_pass == -1
+                              orderby it.project_id descending
+                              select new
+                              {
+                                  it.project_id,
+                                  it.teacher_id,
+                                  it.stage
+                              };
+                int count = project.Count();
+                project = project.Take(size * index).Skip(size * (index - 1));
                 DataTable dt = new DataTable();
                 dt.Columns.Add("id");
                 dt.Columns.Add("title");
@@ -48,7 +58,10 @@ public class MyJudgePro : IHttpHandler {
                     newRow["stage"] = item.stage;
                     dt.Rows.Add(newRow);
                 }
-                string json = JsonConvert.SerializeObject(dt);
+                ArrayList all = new ArrayList();
+                all.Add(dt);
+                all.Add(count);
+                string json = JsonConvert.SerializeObject(all);
                 context.Response.Write(json);
             }
         }
