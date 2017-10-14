@@ -57,7 +57,7 @@
 					<div class="center">
 						<a href="main-index.aspx">首页</a>
 						<a href="Introduction.aspx">关于</a>
-						<a href="ProjectList.aspx">项目</a>
+						<a href="ProgectList.aspx">项目</a>
 						<a href="Service.aspx">服务</a>
 						<a href="SrcList.aspx">资源</a>
 						<a href="ActivityList.aspx?type=0&&page=1">活动</a>
@@ -86,10 +86,13 @@
 				<%--<input type="password" class="hide-password gray-box">--%>
                 <asp:TextBox ID="txtPwd" runat="server" TextMode="Password" CssClass="hide-password gray-box"></asp:TextBox>
 				<p class="password-error error"></p>
-				
+				<input type="text" value="验证码" class="gray-box code" style="width: 176px;float: left;" >
+                <img src="png.aspx" id="img" onclick="f_refreshtype()" style="float:left;margin-left:72px;display:block;width:80px;height:60px;" />
+                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                
+				<p class="code-error error" style="float: left;"></p>
                 <%--<asp:CheckBox ID="cbxRemeberUser" runat="server" Text="记住用户名" ForeColor="gray"/>--%>
-                请输入验证码：<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                <img src="png.aspx" id="img" onclick="f_refreshtype()" />
+                
                 <%--<a href="" class="forget-password">忘记密码？</a>--%>
 				<a  class="turn-right">立即注册</a>
 				<%--<a class="">立即登录</a>--%>
