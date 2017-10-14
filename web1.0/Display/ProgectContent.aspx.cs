@@ -9,6 +9,7 @@ public partial class Display_ProgectContent : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Request.QueryString["id"] == null)
+            Response.Redirect("main-index.aspx");
     }
 }

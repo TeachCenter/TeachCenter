@@ -96,7 +96,7 @@
           	}
           	for(i=0;i<data.length ;i++)
           	{
-          	    var content = $("<a>").attr("href", "ProjectContent.aspx?id=" + data[i].id).addClass("passage").addClass("clearfix").appendTo($(".passage-content"));
+          	    var content = $("<a>").attr("href", "ProgectContent.aspx?id=" + data[i].id).addClass("passage").addClass("clearfix").appendTo($(".passage-content"));
           		$("<h2>").text(data[i].title).appendTo(content);
           		var pContent=$("<div>").appendTo(content);
           		$("<p>").text(data[i].content).appendTo(pContent);
