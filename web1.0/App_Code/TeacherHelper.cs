@@ -54,4 +54,14 @@ public class TeacherHelper
                 return false;
         }
     }
+
+    //判断是不是评审
+    static public bool isJudge(string number)
+    {
+        using (var db = new TeachingCenterEntities())
+        {
+            Teacher t = db.Teacher.Single(a => a.number == number);
+            return t.is_judge == 0 ? false : true;
+        }
+    }
 }

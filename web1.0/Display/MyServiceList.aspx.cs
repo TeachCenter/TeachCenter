@@ -22,6 +22,9 @@ public partial class Display_MyServiceList : System.Web.UI.Page
                 rptService.DataSource = myService.ToList();
                 rptService.DataBind();
             }
+            //判断是不是评审
+            if (!TeacherHelper.isJudge(Session["TeacherNumber"].ToString()))
+                liJudge.Visible = false;
         }
         catch
         {

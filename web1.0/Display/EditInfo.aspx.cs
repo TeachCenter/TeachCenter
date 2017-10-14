@@ -13,7 +13,13 @@ public partial class Display_EditInfo : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session["TeacherNumber"] = 1;
+        try
+        {
+            //判断是不是评审
+            if (!TeacherHelper.isJudge(Session["TeacherNumber"].ToString()))
+                liJudge.Visible = false;
+
+        //Session["TeacherNumber"] = 1;
         if (!IsPostBack)
         {
             DataTable dt = DepartmentHelper.getDepartment();
@@ -42,7 +48,12 @@ public partial class Display_EditInfo : System.Web.UI.Page
                 HtmlInputHidden department = FindControl("lbSelected") as HtmlInputHidden;
                 department.Value = teacher.department;
             }
-        }       
+        }
+        }
+        catch
+        {
+            JSHelper.AlertThenRedirect("请先登录！", "main-index.aspx");
+        }
     }
 
     protected void applyJudge_Click(object sender, EventArgs e)

@@ -24,6 +24,9 @@ public partial class Display_MyActivityList : System.Web.UI.Page
                 }
                 rptActivity.DataSource = ac;
                 rptActivity.DataBind();
+                //判断是不是评审
+                if (!TeacherHelper.isJudge(Session["TeacherNumber"].ToString()))
+                    liJudge.Visible = false;
             }
         }
         catch

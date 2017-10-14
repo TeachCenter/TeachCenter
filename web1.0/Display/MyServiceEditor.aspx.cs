@@ -23,6 +23,9 @@ public partial class Display_MyServiceEditor : System.Web.UI.Page
                     txtIntroduction.Value = ser.Service_remarks;
 
                 }
+            //判断是不是评审
+            if (!TeacherHelper.isJudge(Session["TeacherNumber"].ToString()))
+                liJudge.Visible = false;
         }
         catch
         {
