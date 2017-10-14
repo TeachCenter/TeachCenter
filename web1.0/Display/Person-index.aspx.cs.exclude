@@ -12,10 +12,7 @@ public partial class Display_Person_index : System.Web.UI.Page
         try
         {
             string teacher = Session["TeacherNumber"].ToString();
-            using (var db = new TeachingCenterEntities())
-            {
-                Teacher te = from it in
-            }
+
 
 
         }

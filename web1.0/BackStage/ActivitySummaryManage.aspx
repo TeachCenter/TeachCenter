@@ -65,11 +65,11 @@
                             
 					        <td><asp:CheckBox ID="checkbox" runat="server" /></td>
 					        <td><asp:Literal ID="ltNumber" runat="server"></asp:Literal></td>
-					        <td><img width="85px" src='<%# Eval("ActivitySummary_cover") %>' /></td>
-					        <td style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;"><a href='<%#"../Display/ActivitySummary.aspx?id="+ Eval("ActivitySummary_id") %>'><%# Eval("ActivitySummary_title") %></a></td>
+					        <td><img width="85px" src='<%#"picture/" + Eval("ActivitySummary_cover") %>' /></td>
+					        <td style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;"><a target="_blank" href='<%#"../Display/ActivitySummaryContent.aspx?id="+ Eval("ActivitySummary_id") %>'><%# Eval("ActivitySummary_title") %></a></td>
 					        <td><%# Eval("ActivitySummary_author") %></td>
 					        <td><%# Eval("ActivitySummary_time") %></td>
-					        <td class="td-status"><a href='<%#"../Display/ActivitySummary.aspx?id="+ Eval("ActivitySummary_id") %>'><asp:Literal ID="ltContent" runat="server" Text=<%# Eval("ActivitySummary_content") %>></asp:Literal></a></td>
+					        <td class="td-status"><a target="_blank" href='<%#"../Display/ActivitySummaryContent.aspx?id="+ Eval("ActivitySummary_id") %>'><asp:Literal ID="ltContent" runat="server" Text=<%# Eval("ActivitySummary_content") %>></asp:Literal></a></td>
 					        <td class="f-14 td-manage">
                                 <asp:Label ID="lbID" Visible="false" runat="server" Text=<%# Eval("ActivitySummary_id") %>></asp:Label>
                                 <a style="text-decoration:none" class="ml-5" href='<%#"ActivitySummaryEditor.aspx?id="+ Eval("ActivitySummary_id") %>' title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>

@@ -76,7 +76,7 @@
                             <td><a href='<%# Eval("Develop_link").ToString()==""? "../Display/DevelopContent.aspx?id="+ Eval("Develop_id"):Eval("Develop_link")  %>' target="_blank"><%# Eval("Develop_title") %></a></td>
 					        <td><asp:Literal ID="ltTeacher" runat="server" Text=<%# Eval("Develop_author") %>></asp:Literal></td>
 					        <td><%# Eval("Develop_time") %></td>
-					        <td class="td-status"><a href='<%#"../Display/DevelopConetent.aspx?id="+ Eval("Develop_id") %>'><asp:Literal ID="ltContent" runat="server" Text=<%# Eval("Develop_content") %>></asp:Literal></a></td>
+					        <td class="td-status"><a href='<%# Eval("Develop_link").ToString()==""? "../Display/DevelopContent.aspx?id="+ Eval("Develop_id"):Eval("Develop_link")  %>' target="_blank"><asp:Literal ID="ltContent" runat="server" Text=<%# Eval("Develop_content") %>></asp:Literal></a></td>
                             <td><asp:Literal ID="ltCategory" runat="server" Text='<%# Eval("Develop_category") %>'></asp:Literal></td>
 					        <td class="td-status"><span class="label label-success radius">已发布</span></td>
 					        <td class="f-14 td-manage">

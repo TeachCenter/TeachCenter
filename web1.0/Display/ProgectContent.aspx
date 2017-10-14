@@ -16,6 +16,7 @@
     <script>
         $(document).ready(function () {
             $.ajax({
+
                 url: "./Ajax/ProContentHandler.ashx",
                 dataType: "JSON",
                 type: "POST",
@@ -35,6 +36,7 @@
         })
 
     </script>
+
     <script>
         $(document).ready(function () {
             var id = window.location.search.substr(4);
@@ -42,4 +44,6 @@
         })
         
     </script>
+
+>>>>>>> gxyDev
 </asp:Content>

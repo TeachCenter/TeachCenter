@@ -227,7 +227,7 @@ ul li{
     width: 450px;
     height: 600px;
     left: -150%;
-    z-index: 3;
+    z-index: 10;
     margin-left: -225px;
     display: none;
    
@@ -238,7 +238,7 @@ ul li{
     width: 870px;
     height: 500px;
     left: 150%;
-    z-index: 3;
+    z-index: 10;
     margin-left: -435px;
     display: none;
 }

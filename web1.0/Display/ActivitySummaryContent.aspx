@@ -65,16 +65,20 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
 <script>
-	$(document).ready(function(){
-		$.ajax({  
+    $(document).ready(function () {
+        var id = window.location.search.substr(4);
+	    $.ajax({
+
           url: "./Ajax/ActivitySummaryContent_Handler.ashx",
           dataType: "JSON",
           type: "POST",
           async: true,
-          // data: { "Activity_id": id },
+          data: { "Activity_id": id },
     
           success: function(data) {
-          	$(".brief-intro").text(data.ActivitySummary_title)
+              $(".brief-intro").text(data.ActivitySummary_title)
+              var time = data.ActivitySummary_time;
+              //console.log( time.time)
           	$(".publish").text("发布人："+data.ActivitySummary_author+"  发布时间："+data.ActivitySummary_time+"  浏览次数："+data.ActivitySummary_hit);
 
           	$(data.ActivitySummary_content).appendTo($(".p-box"))
