@@ -6,6 +6,7 @@ using System.Linq;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Data;
+using System.Collections;
 
 public class ProListHandler : IHttpHandler {
 
@@ -23,7 +24,7 @@ public class ProListHandler : IHttpHandler {
             int size = Convert.ToInt32(pageSize);
             using (var db = new TeachingCenterEntities())
             {
-                var pro_category = (from it in db.ProjectCategory
+                var pro_category = from it in db.ProjectCategory
                                    where it.is_deleted == 0
                                    orderby it.publish_time descending
                                    select new
@@ -33,7 +34,9 @@ public class ProListHandler : IHttpHandler {
                                        project_content = it.project_content,
                                        publisher = "系统管理员",
                                        publish_time = it.publish_time,
-                                   }).Take(size * index).Skip(size * (index - 1));
+                                   };
+                int count = pro_category.Count();
+                pro_category = pro_category.Take(size * index).Skip(size * (index - 1));
                 DataTable dt = new DataTable();
                 dt.Columns.Add("id");
                 dt.Columns.Add("title");
@@ -50,7 +53,10 @@ public class ProListHandler : IHttpHandler {
                     newRow["publish_time"] = item.publish_time;
                     dt.Rows.Add(newRow);
                 }
-                string json = JsonConvert.SerializeObject(dt);
+                ArrayList all = new ArrayList();
+                all.Add(dt);
+                all.Add(count);
+                string json = JsonConvert.SerializeObject(all);
                 context.Response.Write(json);
             }
         }

@@ -4,6 +4,8 @@ using System;
 using System.Web;
 using System.Linq;
 using Newtonsoft.Json;
+using System.Data;
+using System.Collections;
 
 public class EduSrcHandler : IHttpHandler {
 
@@ -21,12 +23,45 @@ public class EduSrcHandler : IHttpHandler {
             int size = Convert.ToInt32(pageSize);
             using (var db = new TeachingCenterEntities())
             {
-                var src = (from it in db.EducateSource where it.is_deleted == 0 orderby it.publish_time descending select it).Take(size * index).Skip(size * (index - 1));
+                var src = from it in db.EducateSource
+                          where it.is_deleted == 0
+                          orderby it.publish_time descending
+                          select new
+                          {
+                              it.id,
+                              it.title,
+                              it.body,
+                              it.publisher,
+                              it.publish_time,
+                              it.view_times,
+                              it.is_deleted
+                          };
+                int count = src.Count();
+                src = src.Take(size * index).Skip(size * (index - 1));
+                DataTable dt = new DataTable();
+                dt.Columns.Add("id");
+                dt.Columns.Add("title");
+                dt.Columns.Add("body");
+                dt.Columns.Add("publisher");
+                dt.Columns.Add("publish_time");
+                dt.Columns.Add("view_times");
+                dt.Columns.Add("is_deleted");
                 foreach(var item in src)
                 {
-                    item.body = UeditorHelper.NoHTML(item.body);
+                    DataRow newRow = dt.NewRow();
+                    newRow["id"] = item.id;
+                    newRow["title"] = item.title;
+                    newRow["body"] = UeditorHelper.NoHTML(item.body);
+                    newRow["publisher"] = item.publisher;
+                    newRow["publish_time"] = item.publish_time;
+                    newRow["view_times"] = item.view_times;
+                    newRow["is_deleted"] = item.is_deleted;
+                    dt.Rows.Add(newRow);
                 }
-                string json = JsonConvert.SerializeObject(src);
+                ArrayList all = new ArrayList();
+                all.Add(dt);
+                all.Add(count);
+                string json = JsonConvert.SerializeObject(all);
                 context.Response.Write(json);
             }
         }

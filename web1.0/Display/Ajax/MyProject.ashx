@@ -4,7 +4,7 @@ using System;
 using System.Web;
 using System.Linq;
 using Newtonsoft.Json;
-using System.Collections.Generic;
+using System.Collections;
 using System.Data;
 using System.Web.SessionState;
 
@@ -19,7 +19,7 @@ public class MyProject : IHttpHandler {
         //if (HttpContext.Current.Session["TeacherNumber"] != null)
         //    teacher_id = Convert.ToInt32(HttpContext.Current.Session["TeacherNumber"].ToString());
         //else
-        //    HttpContext.Current.Response.Redirect("~/Display/index.aspx");
+        //    HttpContext.Current.Response.Redirect("~/Display/main-index.aspx");
         if (string.IsNullOrEmpty(pageSize) || string.IsNullOrEmpty(pageIndex))
         {
             context.Response.Write("");
@@ -30,7 +30,19 @@ public class MyProject : IHttpHandler {
             int size = Convert.ToInt32(pageSize);
             using (var db = new TeachingCenterEntities())
             {
-                var project = (from it in db.Project where it.teacher_id == teacher_id where it.is_deleted == 0 orderby it.submit_time descending select it).Take(size * index).Skip(size * (index - 1));
+                var project = from it in db.Project
+                              where it.teacher_id == teacher_id
+                              where it.is_deleted == 0
+                              orderby it.submit_time descending
+                              select new
+                              {
+                                  it.project_id,
+                                  it.name,
+                                  it.submit_time,
+                                  it.teacher_id
+                              };
+                int count = project.Count();
+                project = project.Take(size * index).Skip(size * (index - 1));
                 DataTable dt = new DataTable();
                 dt.Columns.Add("id");
                 dt.Columns.Add("title");
@@ -47,7 +59,10 @@ public class MyProject : IHttpHandler {
                     newRow["department"] = getDepartment(item.teacher_id);
                     dt.Rows.Add(newRow);
                 }
-                string json = JsonConvert.SerializeObject(dt);
+                ArrayList all = new ArrayList();
+                all.Add(dt);
+                all.Add(count);
+                string json = JsonConvert.SerializeObject(all);
                 context.Response.Write(json);
             }
         }
