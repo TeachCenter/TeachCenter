@@ -18,10 +18,18 @@ public partial class Display_js_ActivityContent : System.Web.UI.Page
         try
         {
             string alert;
-            //int teacher = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
-            int teacher = 1;
-            int id = Convert.ToInt32(Request.QueryString["id"].ToString());
+            int teacher = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
+            //int teacher = 1;
+            int id;
             //int teacher = 1, id = 3;
+            try
+            {
+                id = Convert.ToInt32(Request.QueryString["id"].ToString());
+            }
+            catch
+            {
+                id = 1;
+            }
             using (var db = new TeachingCenterEntities())
             {
                 Activity ac = db.Activity.Single(a => a.Activity_id == id);
@@ -51,9 +59,9 @@ public partial class Display_js_ActivityContent : System.Web.UI.Page
             }
             JSHelper.ShowAlert(alert);
         }
-        catch (Exception ex)
+        catch
         {
-            JSHelper.AlertThenRedirect("请先登陆！" + ex.Message, "Login.aspx");
+            JSHelper.ShowAlert("请先登录！");
         }
     }
 }

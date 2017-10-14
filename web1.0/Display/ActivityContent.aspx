@@ -33,7 +33,7 @@
 
                 success: function (data) {
                     $(".brief-intro").text(data[0].Activity_title)
-                    $(".publish").text("发布人：" + data[0].Activity_author + "  发布时间：" + data[0].Activity_time.substr(0, 10) + "  举办地：" + data[0].Activity_place + "  活动人数：" + data[0].Activity_nowcount + "  限制人数：" + data[0].Activity_limitcount + "  浏览次数：" + data[0].Activity_hit);
+                    $(".publish").text("发布人：" + data[0].Activity_author + "  发布时间：" + data[0].Activity_time + "  举办地：" + data[0].Activity_place + "  活动人数：" + data[0].Activity_nowcount + "  限制人数：" + data[0].Activity_limitcount + "  浏览次数：" + data[0].Activity_hit);
 
                     //$("<a>").addClass("add").text("添加活动").appendTo($(".publish"));
                     $(data[0].Activity_content).appendTo($(".p-box"))

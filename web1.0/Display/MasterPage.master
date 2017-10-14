@@ -86,7 +86,7 @@
 				<%--<input type="password" class="hide-password gray-box">--%>
                 <asp:TextBox ID="txtPwd" runat="server" TextMode="Password" CssClass="hide-password gray-box"></asp:TextBox>
 				<p class="password-error error"></p>
-				<input type="text" value="验证码" class="gray-box code" style="width: 176px;float: left;" >
+				<input type="text" placeholder="验证码" class="gray-box code" style="width: 176px;float: left;" >
                 <img src="png.aspx" id="img" onclick="f_refreshtype()" style="float:left;margin-left:72px;display:block;width:80px;height:60px;" />
                 <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
                 

@@ -27,8 +27,15 @@ public class ActivityContent : IHttpHandler {
     }
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/plain";
-
-        int id = Convert.ToInt32( context.Request.Form["Activity_id"]);
+        int id;
+        try
+        {
+            id = Convert.ToInt32( context.Request.Form["Activity_id"]);
+        }
+        catch
+        {
+            id = 3;
+        }
         //int id = 3;
         using (var db = new TeachingCenterEntities())
         {
@@ -58,6 +65,7 @@ public class ActivityContent : IHttpHandler {
                 db.SaveChanges();
             }
             acs[0].Activity_time = acs[0].Activity_times.Date.ToString().Substring(0, 9) + " " + acs[0].Activity_times.TimeOfDay.ToString().Substring(0, 8);
+            acs[0].Activity_content = context.Server.HtmlDecode(acs[0].Activity_content);
             string final = JsonConvert.SerializeObject(acs);
             context.Response.Write(final);
 

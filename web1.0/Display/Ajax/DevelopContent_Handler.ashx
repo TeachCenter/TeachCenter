@@ -73,6 +73,7 @@ public class DevelopContent_Handler : IHttpHandler {
                 db.SaveChanges();
             }
             develop[0].Develop_time = develop[0].Develop_times.Date.ToString().Substring(0, 9) + " " + develop[0].Develop_times.TimeOfDay.ToString().Substring(0, 8);
+            develop[0].Develop_content = context.Server.HtmlDecode(develop[0].Develop_content);
             string final = JsonConvert.SerializeObject(develop[0]);
             context.Response.Write(final);
         }

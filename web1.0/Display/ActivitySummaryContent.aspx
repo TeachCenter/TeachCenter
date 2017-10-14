@@ -65,13 +65,14 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
 <script>
-	$(document).ready(function(){
+    $(document).ready(function () {
+        var id = window.location.search.substr(4);
 		$.ajax({  
           url: "./Ajax/ActivitySummaryContent_Handler.ashx",
           dataType: "JSON",
           type: "POST",
           async: true,
-          // data: { "Activity_id": id },
+          data: { "Activity_id": id },
     
           success: function(data) {
           	$(".brief-intro").text(data.ActivitySummary_title)

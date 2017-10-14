@@ -18,7 +18,7 @@ public class ActivitySummaryContent_Handler : IHttpHandler {
             ActivitySummary asu = db.ActivitySummary.SingleOrDefault(a => a.ActivitySummary_id == id);
             asu.ActivitySummary_hit = asu.ActivitySummary_hit + 1;
             db.SaveChanges();
-            
+            asu.ActivitySummary_content = context.Server.HtmlDecode(asu.ActivitySummary_content);
             string final = JsonConvert.SerializeObject(asu);
             context.Response.Write(final);
         }

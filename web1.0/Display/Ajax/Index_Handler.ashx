@@ -106,7 +106,7 @@ public class IndexNotice_Handler : IHttpHandler {
         all.Add(intro);
         all.Add(dev);
         all.Add(asu);
-        all.Add(notice);
+        all.Add(notice.Take(8));
         string final = JsonConvert.SerializeObject(all);
         context.Response.Write(final);
 
