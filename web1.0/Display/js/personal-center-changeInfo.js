@@ -109,6 +109,7 @@ function log() {
         }
     })
     $(".down").click(function () {
+        console.log("666")
         if ((!$(this).is(':animated'))) {
             if (flagUpDown == false) {
                 $(".aA").css({ "display": "none" })
@@ -183,9 +184,11 @@ function log() {
         //$(".lbSelected").val(this_.text())
         $("#lbSelected").val(this_.text())
         $("#lbSelected").val(this_.text());
-        $("#selectID").val(this_.text());
+        $("#Selected").val($("#selectID").val());
+
         console.log($("#lbSelected").val())
         console.log($("#selectID").val())
+        console.log($("#Selected").val())
 
 
         flag[6] = true;

@@ -41,8 +41,6 @@ public partial class Display_Person_index : System.Web.UI.Page
                 if (getJudgeNumber() == 0)
                     divJudge.Visible = false;
             }
-
-
         }
         catch
         {

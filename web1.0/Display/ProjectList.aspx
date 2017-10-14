@@ -68,13 +68,16 @@
 		</div>
 	<script type="text/javascript"  src="./js/pop.js"></script>
 	<script>
-	 var page;
+	    var page;
+	    var str = window.location.search;
+	    var pageSize = str.substr(str.indexOf("type") + 11, str.indexOf("&&") - 10);
+	    var pageNumber = str.substr(str.indexOf("pageNumber") + 11);
 		$.ajax({   
           url: "./Ajax/ProListHandler.ashx",
           dataType: "JSON",
           type: "POST", 
           async: true,
-          data: { "pageSize": 6, "pageNumber": 1},
+          data: { "pageSize": 6, "pageNumber": pageNumber },
 
           // data: { "id": id },
     
@@ -101,7 +104,7 @@
           		var pContent=$("<div>").appendTo(content);
           		$("<p>").text(data[i].content).appendTo(pContent);
           		$("<h3>").text("发布人：" + data[i].publisher + " 发布时间：" + data[i].publish_time).appendTo(content);
-          		$("<a>").attr("href", "ProjectContent.aspx?id=" + data[i].id).text("查看项目").appendTo(content);
+          		$("<a>").attr("href", "ProgectContent.aspx?id=" + data[i].id).text("查看项目").appendTo(content);
           	}
 
                     
