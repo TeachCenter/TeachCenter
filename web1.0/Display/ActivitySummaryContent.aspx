@@ -67,7 +67,8 @@
 <script>
     $(document).ready(function () {
         var id = window.location.search.substr(4);
-		$.ajax({  
+	    $.ajax({
+
           url: "./Ajax/ActivitySummaryContent_Handler.ashx",
           dataType: "JSON",
           type: "POST",
@@ -75,8 +76,10 @@
           data: { "Activity_id": id },
     
           success: function(data) {
-          	$(".brief-intro").text(data.ActivitySummary_title)
-          	$(".publish").text("发布人："+data.ActivitySummary_author+"  发布时间："+data.ActivitySummary_time.substr(0,10)+"  浏览次数："+data.ActivitySummary_hit);
+              $(".brief-intro").text(data.ActivitySummary_title)
+              var time = data.ActivitySummary_time;
+              //console.log( time.time)
+          	$(".publish").text("发布人："+data.ActivitySummary_author+"  发布时间："+data.ActivitySummary_time+"  浏览次数："+data.ActivitySummary_hit);
 
           	$(data.ActivitySummary_content).appendTo($(".p-box"))
                     
