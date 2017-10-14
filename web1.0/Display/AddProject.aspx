@@ -1,20 +1,20 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AddProject.aspx.cs" Inherits="Display_AddProject" %>
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" href="css/personal-center-init.css">
-	<link rel="stylesheet" href="css/personal-center-creatProgect.css">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Document</title>
+	<link rel="stylesheet" href="css/personal-center-init.css" />
 	<script type="text/javascript"  src="./js/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
-	<script src="jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript"  src="./js/personal-center-init.js"></script>
+    <link rel="stylesheet" href="css/personal-center-creatProgect.css">
+    <script src="jquery-3.2.1.min.js" type="text/javascript"></script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.all.min.js"> </script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/lang/zh-cn/zh-cn.js"></script>
     <script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script>
-	<script type="text/javascript"  src="./js/personal-center-changeInfo.js"></script>
     <style>
      #edui1_toolbarbox{
         position:relative!important;
@@ -48,11 +48,15 @@
         #ContentPlaceHolder1_txtFileName {
 
              background: transparent;
-        }          
+        }
+
+           
     </style>
 </head>
 <body>
-	<div class="left-nav">
+    <form id="form1" runat="server">
+    <div>
+        <div class="left-nav">
 		<img src="./images/logo-big.png" alt="">
 		<ul>
 			<li class="dif-li"><a href="Person-index.aspx">个人主页</a></li>
@@ -62,9 +66,8 @@
 			<li><a href="MyActivityList.aspx">活动管理</a></li>
 			<li><a href="MyJudgePro.aspx">评审服务</a></li>
 		</ul>
-	</div>   
-	<div class="right-content">
-        <form runat="server">
+	</div>
+           	<div class="right-content">
 		<div class="clearfix">
 			<h1>新建项目</h1>
 		</div>
@@ -74,19 +77,21 @@
                 <asp:TextBox ID="txtName" runat="server" class="name" ></asp:TextBox>
 				<p class="name-error"></p>
 			</div>
-            <input type="hidden" id="selectID" runat="server" Text='<%#Eval("id") %>' />
+            
 			<div class="clearfix" style="position:relative;">
 				<h2>项目类型:</h2>
 				<div class="aA" style="width:30px;height:50px;position:absolute;left: 623px;top: 8px;background-color:#E6E6E6;z-index:10;"> <img src="./images/bottom.png" alt="Alternate Text" style="position:absolute;top:23px;" /></div>
 				<ul class="down clearfix" style="width:500px;">                                     
                      <li class="select-true" style="position:relative">
-                         <asp:Label id="depart" runat="server"></asp:Label>
+                         请选择项目类型
                          <input type="hidden" id="Selected" runat="server" class="Selected" value="" />
                      </li>
                      <ul class="select-box clearfix">
                          <asp:Repeater ID="rptSelect" runat="server">
                             <ItemTemplate>
+                               
                                 <li class="select select">
+                                     <input type="hidden" id="selectID" runat="server" value='<%#Eval("id") %>' />
                                     <asp:Label ID="lbSelect" runat="server" Text='<%#Eval("name") %>'></asp:Label>
                                     
                                 </li>
@@ -125,13 +130,13 @@
                  
 			</div>
             <asp:LinkButton ID="btnSubmit" runat="server" Text="提交项目" class="submit" OnClick="btnSubmit_Click" />
-	</form>
-</div>
-
-	<script >
+	</div>
+    <script type="text/javascript"  src="./js/personal-center-init.js"></script>
+    <script type="text/javascript"  src="./js/personal-center-changeInfo.js"></script>
+    <script >
         function ShowBrowse()  
         {  
-            var file1 = document.getElementById("FileUp");
+            var file1 = document.getElementById("ContentPlaceHolder1_FileUp");
             if(file1)  
             { 
                 file1.click();  
@@ -151,5 +156,8 @@
 		
 	    });
       </script>
+    </div>
+    </form>
 </body>
 </html>
+

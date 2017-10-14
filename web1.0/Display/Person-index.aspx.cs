@@ -43,8 +43,6 @@ public partial class Display_Person_index : System.Web.UI.Page
                 if (teacher.is_judge == 0)
                     liJudge.Visible = false;
             }
-
-
         }
         catch
         {

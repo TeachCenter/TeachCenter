@@ -33,17 +33,6 @@ public partial class Display_AddProject : System.Web.UI.Page
         }       
     }
 
-    protected void rptSelect1_ItemCommand(object source, RepeaterCommandEventArgs e)
-    {
-        if (e.CommandName == "selected")
-        {
-            LinkButton lbtnSelect = (LinkButton)e.Item.FindControl("lbtnSelect");
-            HtmlInputHidden category = (HtmlInputHidden)e.Item.FindControl("Category");
-            Session["category"] = category.Value;
-            depart.Text = lbtnSelect.Text;
-        }
-    }
-
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
         string name = txtName.Text;
