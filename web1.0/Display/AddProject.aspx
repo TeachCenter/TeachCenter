@@ -37,6 +37,10 @@
             margin-top:-1px;
 
         }
+        #ContentPlaceHolder1_txtFileName {
+
+             background: transparent;
+        }
 
            
     </style>
@@ -53,7 +57,8 @@
                 <asp:TextBox ID="txtName" runat="server" class="name" ></asp:TextBox>
 				<p class="name-error"></p>
 			</div>
-			<div class="clearfix">
+            <input type="hidden" id="selectID" runat="server" Text='<%#Eval("id") %>' />
+			<div class="clearfix" style="position:relative;">
 				<h2>项目类型:</h2>
 				<div class="aA" style="width:30px;height:50px;position:absolute;left: 623px;top: 8px;background-color:#E6E6E6;z-index:10;"> <img src="./images/bottom.png" alt="Alternate Text" style="position:absolute;top:23px;" /></div>
 				<ul class="down clearfix" style="width:500px;">                                     
@@ -66,7 +71,7 @@
                             <ItemTemplate>
                                 <li class="select select">
                                     <asp:Label ID="lbSelect" runat="server" Text='<%#Eval("name") %>'></asp:Label>
-                                    <input type="hidden" id="selectID" runat="server" Text='<%#Eval("id") %>' />
+                                    
                                 </li>
                               
                             </ItemTemplate>
@@ -104,6 +109,7 @@
 			</div>
             <asp:LinkButton ID="btnSubmit" runat="server" Text="提交项目" class="submit" OnClick="btnSubmit_Click" />
 	</div>
+    <script type="text/javascript"  src="./js/personal-center-init.js"></script>
     <script type="text/javascript"  src="./js/personal-center-changeInfo.js"></script>
     <script >
         function ShowBrowse()  

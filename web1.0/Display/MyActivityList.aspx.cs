@@ -44,7 +44,7 @@ public partial class Display_MyActivityList : System.Web.UI.Page
                 ActivityTeacher at = db.ActivityTeacher.Single(a => a.activity_id == id && a.teacher_id == teacher);
                 db.ActivityTeacher.Remove(at);
                 Activity ac = db.Activity.Single(a => a.Activity_id == id);
-
+                
                 ac.Activity_nowcount--;
                 db.SaveChanges();
                 JSHelper.ShowAlert("取消成功！");
@@ -64,7 +64,7 @@ public partial class Display_MyActivityList : System.Web.UI.Page
                 Activity ac = db.Activity.Single(a => a.Activity_id == id);
                 linkbuttom.Text = ac.Activity_time < DateTime.Now ? "" : "取消参与该活动";
             }
-
+            
         }
-    }
+     }
 }

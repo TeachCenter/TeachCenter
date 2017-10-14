@@ -113,7 +113,7 @@
 	border-width: 0px!important;
 	width: 40px!important;
 	height: 40px!important;
-	background-image: url(../imageseft-button.png);
+	background-image: url(../images/lleft-button.png);
 	margin-left: 220px;
 }
 .left-button{
@@ -142,12 +142,8 @@
 	float: right!important;
 	margin-right: 220px;
 }
-.passage-content{
-	height: 1140px;
-}
 .content{
 	margin-top: 32px;
-	height: 1336px!important;
 	width: 1200px;
 	background-color: #FFFFFF;
 	float: right;

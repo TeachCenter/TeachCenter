@@ -1,6 +1,51 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="BackStage_Login" %>
 
+<%--<!DOCTYPE html>
 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="manage.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        //点击切换验证码
+        function f_refreshtype()
+        {
+            var Image1 = document.getElementById("img");
+            if (Image1 != null)
+            {
+                Image1.src = Image1.src + "?";
+            }
+        }
+        if (self.frameElement && self.frameElement.tagName == "IFRAME") {
+            window.top.location = 'Login.aspx';
+        }
+    </script>
+    <style type="text/css">
+        #login{
+            height: 500px;
+            width: 500px;
+            margin: 0 auto;
+            margin-top: 200px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="login">
+        账号: <asp:TextBox ID="txtID" runat="server"></asp:TextBox><br /><br />
+        密码: <asp:TextBox ID="txtPwd" runat="server" TextMode="Password"></asp:TextBox><br /><br />
+
+        请输入验证码：<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <img src="png.aspx" id="img" onclick="f_refreshtype()" /><br /><br />
+        <%--<asp:CheckBox ID="cbxRemeberUser" runat="server" Text="记住用户名" ForeColor="gray"/>--%>
+<%--        <asp:Button ID="btnSub" Text="登陆" OnClick="btnSub_Click" runat="server"/>
+
+    </div>
+    </form>
+</body>
+</html>--%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,8 +90,8 @@
 				<%--<input type="text" id="TextBox1" runat="server" placeholder="验证码" class="gray-box code" style="width: 176px;float: left;" >
                 --%>
                 <asp:TextBox ID="TextBox1" runat="server" class="gray-box code" style="width: 176px;float: left;"></asp:TextBox>
-                <img src="png.aspx" id="img" onclick="f_refreshtype()" />
-				<p class="code-error error" style="float: left;"></p>
+                <img src="png.aspx" id="img" onclick="f_refreshtype()" style="float:left;margin-left:72px;display:block;width:80px;height:60px;"/>
+				<p class="code-error error" ></p>
 				<asp:LinkButton ID="btnSub" runat="server" OnClick="btnSub_Click" Text="立即登录" class="log-submit" style="background-color: #5A99DF;margin-bottom: 32px; margin-top: 170px;"></asp:LinkButton>
 			</div>
 		</div>
@@ -158,7 +203,7 @@
 			{
 			} 
 			else{
-				alert("登录失败")
+				
 			}
 			});
 			$(".log-box-form").submit(function () {

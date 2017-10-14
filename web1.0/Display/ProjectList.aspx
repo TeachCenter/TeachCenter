@@ -7,9 +7,7 @@
 		<div class="main">
 			<div class="center clearfix">
 				<div class="content">
-
 					<h1>项目列表</h1>
-
 					<div class="passage-content" style="height: 1340px;"></div>
 					<!-- <div class="passage">
 						<h2>这里是文章标题</h2>
@@ -85,19 +83,25 @@
           	var j=0;
           	page = Math.floor(data.length / 6 + 1);
           
-          	for(i=0;i<page;i++)
-          	{
-          		$("<a>").attr("href","ActivityList.html?type="+window.location.search.substr(6)+"&&page="+(i+1)).text(i+1).appendTo($(".midButton"));
+          	for (i = 0; i < page; i++) {
+          	    $("<a>").attr("href", "ProjectList.aspx?pageSize=6" + "&&pageNumber=" + (i + 1)).text(i + 1).appendTo($(".midButton"));
           	}
-          	$(".midButtonBox").css({"width":page*40})
-          	$(".left-button").css({"margin-left":(680-40*(page+2))/2})
+          	if (page < 6) {
+          	    $(".midButtonBox").css({ "width": page * 40 })
+          	    $(".left-button").css({ "margin-left": (680 - 40 * (page + 2)) / 2 })
+          	}
+          	else {
+          	    $(".midButtonBox").css({ "width": 6 * 40 })
+          	    $(".left-button").css({ "margin-left": (680 - 40 * (6 + 2)) / 2 })
+          	}
           	for(i=0;i<data.length ;i++)
           	{
-          		var content= $("<div>").addClass("passage").appendTo($(".passage-content"));
+          	    var content = $("<a>").attr("href", "ProjectContent.aspx?id=" + data[i].id).addClass("passage").addClass("clearfix").appendTo($(".passage-content"));
           		$("<h2>").text(data[i].title).appendTo(content);
           		var pContent=$("<div>").appendTo(content);
           		$("<p>").text(data[i].content).appendTo(pContent);
-          		$("<h3>").text("发布人："+data[i].publisher+" 发布时间："+data[i].publish_time).appendTo(content);
+          		$("<h3>").text("发布人：" + data[i].publisher + " 发布时间：" + data[i].publish_time).appendTo(content);
+          		$("<a>").attr("href", "ProjectContent.aspx?id=" + data[i].id).text("查看项目").appendTo(content);
           	}
 
                     
@@ -105,38 +109,36 @@
 
 
       });
-		function turnPage(){
+		function turnPage() {
 
-	     	var position=0;
-	      	$(".lleft-button").on('click', function() {
-	      		position=0;
-				$(".midButton").css({"top":position})
-			        
-			  	})
-			$(".left-button").on('click', function() {
-				if(position!=0)
-				{
-					position+=40;
-					$(".midButton").css({"top":position})
-					
-				}
-			        
-			  	})
-			$(".right-button").on('click', function() {
-				if(position!=-40*(page-1))
-				{
-					position-=40;
-					$(".midButton").css({"top":position})
-					
-				}
-			        
-			  	})
-			$(".rright-button").on('click', function() {
-				position=-40*(page-1);
-				$(".midButton").css({"top":position})
-			        
-			  	})
-		
+		    var position = 0;
+		    $(".lleft-button").on('click', function () {
+		        position = 0;
+		        $(".midButton").css({ "top": position })
+
+		    })
+		    $(".left-button").on('click', function () {
+		        if (position != 0) {
+		            position += 40;
+		            $(".midButton").css({ "top": position })
+
+		        }
+
+		    })
+		    $(".right-button").on('click', function () {
+		        if (position != -40 * (Math.ceil(page / 6) - 1)) {
+		            position -= 40;
+		            $(".midButton").css({ "top": position })
+
+		        }
+
+		    })
+		    $(".rright-button").on('click', function () {
+		        position = -40 * (Math.ceil(page / 6) - 1);
+		        $(".midButton").css({ "top": position })
+
+		    })
+
 		}
 		turnPage();
 	

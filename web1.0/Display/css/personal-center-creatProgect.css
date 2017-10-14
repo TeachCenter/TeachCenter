@@ -122,3 +122,10 @@
 	margin-left: 32px;
 	font-size: 20px;
 }
+.select span{
+    margin:0!important;
+    padding:0!important;
+    background: transparent!important;
+    width: 485px!important;
+    text-align: center!important;
+}

@@ -1,27 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MyServiceEditor.aspx.cs" Inherits="Display_MyServiceEditor" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Display/Person.master" AutoEventWireup="true" CodeFile="MyServiceEditor.aspx.cs" Inherits="Display_MyServiceEditor" %>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" href="css/personal-center-init.css">
-	<link rel="stylesheet" href="css/personal-center-creatProgect.css">
-	<script type="text/javascript"  src="./js/jquery-3.1.1.min.js"></script>
-
-</head>
-<body><form runat="server">
-	<div class="left-nav">
-		<img src="./images/logo-big.png" alt="">
-		<ul>
-			<li><a href="Person-index.aspx">个人主页</a></li>
-			<li><a href="EditInfo.aspx">修改信息</a></li>
-			<li><a href="MyProject.aspx">项目管理</a></li>
-			<li class="dif-li"><a href="MyServiceList.aspx">服务管理</a></li>
-			<li><a href="MyActivityList.aspx">活动管理</a></li>
-			<li><a href="MyJudgePro.aspx">评审服务</a></li>
-		</ul>
-	</div>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <link rel="stylesheet" href="css/personal-center-creatProgect.css" />
+    <script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     	<div class="right-content">
 		<div class="clearfix">
 			<h1>修改服务</h1>
@@ -57,7 +40,7 @@
 			</a>--%>
 		</div>
 	</div>
-	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
-	<script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script></form>
-</body>
-</html>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
+</asp:Content>
+

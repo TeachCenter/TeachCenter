@@ -11,6 +11,43 @@
             -webkit-appearance: none !important;
         }                
     </style>
+    <script></script>
+ <script type="text/javascript">
+
+     $(document).ready(function () {
+
+
+         $("#form1").submit(function (e) {
+             alert('llll');
+             //验证密码长度
+             var ss = $(".select-true").text();
+             var id = '<% =lbSelected.ClientID%>';
+
+                $('#' + id).text(ss);
+                alert(ss + '</br>' + $('#' + id).text());
+            });
+
+            ////取出有clear类的input域
+            ////(注: "clear once" 是两个class clear 和 once)
+            //$('.txtfield').each(function () {
+            //    //使用data方法存储数据
+            //    $(this).data("txt", $.trim($(this).val()));
+            //}).focus(function () {
+            //    // 获得焦点时判断域内的值是否和默认值相同，如果相同则清空
+            //    if ($.trim($(this).val()) === $(this).data("txt")) {
+            //        $(this).val("");
+            //    }
+            //}).blur(function () {
+            //    // 为有class clear的域添加blur时间来恢复默认值
+            //    // 但如果class是once则忽略
+            //    if ($.trim($(this).val()) === "" && !$(this).hasClass("once")) {
+            //        //Restore saved data
+            //        $(this).val($(this).data("txt"));
+            //    }
+            //});
+
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     	<div class="right-content">
@@ -51,13 +88,16 @@
 				<asp:TextBox ID="txtRank" runat="server" class="same position"></asp:TextBox>
 				<p class="error position-error"></p>
 			</div>
+             <input type="hidden" id="lbSelected" runat="server"  value="" />
 			<div class="clearfix" style="position:relative;">
 				<h2>院系:</h2>
                  <div class="aA" style="width:30px;height:50px;position:absolute;left: 623px;top: 8px;background-color:#E6E6E6;z-index:10;"> <img src="./images/bottom.png" alt="Alternate Text" style="position:absolute;top:23px;" /></div>
-				<ul class="down clearfix" style="width:500px;">                                   
+				<ul class="down clearfix" style="width:500px;">
+                   
+                   
                      <li class="select-true" style="position:relative">
-                         <asp:Label id="depart" runat="server" Text="请选择院系"></asp:Label>
-                         <input type="hidden" id="Selected" runat="server" class="Selected" />
+                         <asp:Literal id="depart" runat="server" Text="请选择院系"></asp:Literal>
+                        
                      </li>
                      <ul class="select-box clearfix">
                          <asp:Repeater ID="rptSelect" runat="server">
@@ -74,9 +114,19 @@
 				<h2 class="userType">用户类型: <asp:Label ID="lbType" runat="server"></asp:Label></h2>
                 <asp:LinkButton ID="applyJudge" runat="server" Text="申请成为评委>>" OnClick="applyJudge_Click" class="redA"></asp:LinkButton>
 			</div>
-            <asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" Text="确认修改" class="submit"></asp:LinkButton>
+            <asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" Text="提交项目" class="submit"></asp:LinkButton>
 	</div>
     <script type="text/javascript"  src="./js/personal-center-changeInfo.js"></script>
+     <script>
+         $(document).ready(function () {
+             if ($("#ContentPlaceHolder1_gender").val() == 1) {
+                 $(".male").css({ "background-color": "#FFFFFF" })
+             }
+             else {
+                 $(".female").css({ "background-color": "#FFFFFF" })
+             }
+         })
+    </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
 </asp:Content>

@@ -8,7 +8,9 @@
 			<div class="center clearfix">
 				<div class="content">
 					<h1>教学资源</h1>
-					<div class="passage-content" style="height: 1140px;"></div>					
+					<div class="passage-content" style="height: 1340px;">
+                        
+					</div>					
 					<div class="buttons clearfix">
 						<a  class="lleft-button"></a>
 						
@@ -45,13 +47,21 @@
           
           	for(i=0;i<page;i++)
           	{
-          		$("<a>").attr("href","ActivityList.html?type="+window.location.search.substr(6)+"&&page="+(i+1)).text(i+1).appendTo($(".midButton"));
+          	    $("<a>").attr("href", "SrcList.aspx?pageSize=6" + "&&pageNumber=" + (i+1)).text(i + 1).appendTo($(".midButton"));
           	}
-          	$(".midButtonBox").css({"width":page*40})
-          	$(".left-button").css({"margin-left":(680-40*(page+2))/2})
+          	if (page < 6)
+          	{
+          	    $(".midButtonBox").css({ "width": page * 40 })
+          	    $(".left-button").css({ "margin-left": (680 - 40 * (page + 2)) / 2 })
+          	}
+          	else {
+          	    $(".midButtonBox").css({ "width": 6* 40 })
+          	    $(".left-button").css({ "margin-left": (680 - 40 * (6 + 2)) / 2 })
+          	}
+          	
           	for(i=0;i<data.length ;i++)
           	{
-          	    var content = $("<a>").attr("href", "SrcContent.aspx?id=" + data[i].id).addClass("passage").appendTo($(".passage-content"));
+          	    var content = $("<a>").attr("href", "SrcContent.aspx?id=" + data[i].id).addClass("passage").addClass("clearfix").appendTo($(".passage-content"));
           		$("<h2>").text(data[i].title).appendTo(content);
           		var pContent=$("<div>").appendTo(content);
           		$("<p>").text(data[i].body).appendTo(pContent);
@@ -82,7 +92,7 @@
 			        
 			  	})
 			$(".right-button").on('click', function() {
-				if(position!=-40*(page-1))
+			    if (position != -40 * (Math.ceil(page/ 6) - 1))
 				{
 					position-=40;
 					$(".midButton").css({"top":position})
@@ -91,7 +101,7 @@
 			        
 			  	})
 			$(".rright-button").on('click', function() {
-				position=-40*(page-1);
+			    position = -40 * (Math.ceil(page / 6) - 1);
 				$(".midButton").css({"top":position})
 			        
 			  	})

@@ -100,8 +100,14 @@
           	    $("<a>").attr("href", "DevelopList.html?type=" + window.location.search.substr(6) + "&&page=" + (i + 1)).text(i + 1).appendTo($(".midButton"));
           		
           	}
-          	$(".midButtonBox").css({"width":page*40})
-          	$(".left-button").css({"margin-left":(400-40*(page+2))/2})
+          	if (page < 6) {
+          	    $(".midButtonBox").css({ "width": page * 40 })
+          	    $(".left-button").css({ "margin-left": (400 - 40 * (page + 2)) / 2 })
+          	}
+          	else {
+          	    $(".midButtonBox").css({ "width": 6 * 40 })
+          	    $(".left-button").css({ "margin-left": (400 - 40 * (6 + 2)) / 2 })
+          	}
           	for(i=0;i<data[2].length;i++)
           	{
           		var content= $("<div>").addClass("passage").appendTo($(".passage-content"));
@@ -119,38 +125,36 @@
 
 
       });
-		function turnPage(){
+		function turnPage() {
 
-	     	var position=0;
-	      	$(".lleft-button").on('click', function() {
-	      		position=0;
-				$(".midButton").css({"top":position})
-			        
-			  	})
-			$(".left-button").on('click', function() {
-				if(position!=0)
-				{
-					position+=40;
-					$(".midButton").css({"top":position})
-					
-				}
-			        
-			  	})
-			$(".right-button").on('click', function() {
-				if(position!=-40*(page-1))
-				{
-					position-=40;
-					$(".midButton").css({"top":position})
-					
-				}
-			        
-			  	})
-			$(".rright-button").on('click', function() {
-				position=-40*(page-1);
-				$(".midButton").css({"top":position})
-			        
-			  	})
-		
+		    var position = 0;
+		    $(".lleft-button").on('click', function () {
+		        position = 0;
+		        $(".midButton").css({ "top": position })
+
+		    })
+		    $(".left-button").on('click', function () {
+		        if (position != 0) {
+		            position += 40;
+		            $(".midButton").css({ "top": position })
+
+		        }
+
+		    })
+		    $(".right-button").on('click', function () {
+		        if (position != -40 * (Math.ceil(page / 6) - 1)) {
+		            position -= 40;
+		            $(".midButton").css({ "top": position })
+
+		        }
+
+		    })
+		    $(".rright-button").on('click', function () {
+		        position = -40 * (Math.ceil(page / 6) - 1);
+		        $(".midButton").css({ "top": position })
+
+		    })
+
 		}
 		turnPage();
 	

@@ -29,3 +29,6 @@
 	color: #D6000F;
 	background-color: white!important;
 }
+.project-box:hover .project-box h1 {
+    color:rgb(214, 0, 15);
+}

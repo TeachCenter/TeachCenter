@@ -30,7 +30,7 @@
     
           success: function(data) {
           	$(".brief-intro").text(data.Develop_title)
-          	$(".publish").text("发布人："+data.Develop_author+"  发布时间："+data.Develop_time+" 类型："+data.Develop_category+"  浏览次数："+data.Develop_hit);
+          	$(".publish").text("发布人：" + data.Develop_author + "  发布时间：" + data.Develop_time.substr(0,10)+ " 类型：" + data.Develop_category + "  浏览次数：" + data.Develop_hit);
           	$(data.Develop_content).appendTo($(".p-box"))
                     
           }

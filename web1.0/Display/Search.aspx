@@ -8,8 +8,8 @@
     <div class="main">
 
 			<div class="center" style="background-color: #FFFFFF;margin-bottom: 32px;">
-				<div class="Search">搜索结果</div>
-
+				<div class="Search search1">搜索结果</div>
+                <a href="" class="search-button" style="background-image:url(./images/search1.png);top: 14px;right: 18px;"></a>
 				<div class="passage-content1" ></div>
 				<div class="buttons clearfix">
             <a class="lleft-button"></a>
@@ -74,40 +74,38 @@
 
 
       }); 
-	function turnPage(){
+		function turnPage() {
 
-     	var position=0;
-      	$(".lleft-button").on('click', function() {
-      		position=0;
-			$(".midButton").css({"top":position})
-		        
-		  	})
-		$(".left-button").on('click', function() {
-			if(position!=0)
-			{
-				position+=40;
-				$(".midButton").css({"top":position})
-				
-			}
-		        
-		  	})
-		$(".right-button").on('click', function() {
-			if(position!=-40*(Math.floor(page / 6 + 1)-1))
-			{
-				position-=40;
-				$(".midButton").css({"top":position})
-				
-			}
-		        
-		  	})
-		$(".rright-button").on('click', function() {
-			position=-40*(Math.floor(page / 6 + 1)-1);
-			$(".midButton").css({"top":position})
-		        
-		  	})
-	
-	}
-	turnPage();
+		    var position = 0;
+		    $(".lleft-button").on('click', function () {
+		        position = 0;
+		        $(".midButton").css({ "top": position })
+
+		    })
+		    $(".left-button").on('click', function () {
+		        if (position != 0) {
+		            position += 40;
+		            $(".midButton").css({ "top": position })
+
+		        }
+
+		    })
+		    $(".right-button").on('click', function () {
+		        if (position != -40 * (Math.ceil(page / 6) - 1)) {
+		            position -= 40;
+		            $(".midButton").css({ "top": position })
+
+		        }
+
+		    })
+		    $(".rright-button").on('click', function () {
+		        position = -40 * (Math.ceil(page / 6) - 1);
+		        $(".midButton").css({ "top": position })
+
+		    })
+
+		}
+		turnPage();
 		
 
 	})

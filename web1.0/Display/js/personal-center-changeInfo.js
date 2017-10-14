@@ -32,16 +32,20 @@ function log() {
         }
     })
     $(".male").click(function () {
+        $("#ContentPlaceHolder1_gender").val("1");
         $(this).css({ "background-color": "#FFFFFF" })
         $(".female").css({ "background-color": "#E6E6E6" })
         flag[1] = true;
-        $("#gender").val("1");
+        
+        console.log($("#ContentPlaceHolder1_gender").val())
     })
     $(".female").click(function () {
+        $("#ContentPlaceHolder1_gender").val("0");
         $(this).css({ "background-color": "#FFFFFF" })
         $(".male").css({ "background-color": "#E6E6E6" })
         flag[1] = true;
-        $("#gender").val("0");
+        
+        console.log($("#ContentPlaceHolder1_gender").val())
 
     })
     $(".num").on({
@@ -174,10 +178,14 @@ function log() {
     );
     $(".select").click(function () {
         var this_ = $(this);
+        
         $(".select-true").text(this_.text())
         //$(".lbSelected").val(this_.text())
         $("#lbSelected").val(this_.text())
-        $("#ContentPlaceHolder1_lbSelected").val(this_.text())
+        $("#ContentPlaceHolder1_lbSelected").val(this_.text());
+        $("#ContentPlaceHolder1_selectID").val(this_.text());
+        console.log($("#ContentPlaceHolder1_lbSelected").val())
+        console.log($("#ContentPlaceHolder1_selectID").val())
 
 
         flag[6] = true;

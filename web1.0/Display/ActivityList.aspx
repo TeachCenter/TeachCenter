@@ -50,27 +50,30 @@
 
             success: function (data) {
                 var i = 0;
-                var j = 0;
                 page = Math.floor(data[1] / 6 + 1);
                 for (i = 0; i < data[0].length; i++) {
                     $("<a>").addClass("left-content-nav-content").attr("href", data[0][i].ActivityCategory_href).text(data[0][i].ActivityCategory_name).appendTo($(".left-content"));
 
                 }
                 for (i = 0; i < page; i++) {
-                    $("<a>").attr("href", "ActivityList.html?type=" + window.location.search.substr(6) + "&&page=" + (i + 1)).text(i + 1).appendTo($(".midButton"));
-                    j = i + 1;
-                    if (j > 6) {
-                        j = j % 6;
-                    }
+                    $("<a>").attr("href", "ActivityList.aspx?type=" + window.location.search.substr(6) ).text(i + 1).appendTo($(".midButton"));
+               
                 }
-                $(".midButtonBox").css({ "width": j * 40 })
-                $(".left-button").css({ "margin-left": (400 - 40 * (j + 2)) / 2 })
+              
+                if (page <= 6) {
+                    $(".midButtonBox").css({ "width": page * 40 })
+                    $(".left-button").css({ "margin-left": (400 - 40 * (page + 2)) / 2 })
+                }
+                else {
+                    $(".midButtonBox").css({ "width": 6 * 40 })
+                    $(".left-button").css({ "margin-left": (400 - 40 * (6 + 2)) / 2 })
+                }
                 for (i = 0; i < data[2].length; i++) {
                     var content = $("<div>").addClass("passage").appendTo($(".passage-content"));
                     $("<h2>").text(data[2][i].Activity_title).appendTo(content);
                     var pContent = $("<div>").appendTo(content);
                     $("<p>").text(data[2][i].Activity_content).appendTo(pContent);
-                    $("<h3>").text("发布人：" + data[2][i].Activity_author + " 发布时间：" + data[2][i].Activity_time + " 浏览次数：" + data[2][i].Activity_hit).appendTo(content);
+                    $("<h3>").text("发布人：" + data[2][i].Activity_author + " 发布时间：" + data[2][i].Activity_time.substr(0, 10) + " 浏览次数：" + data[2][i].Activity_hit).appendTo(content);
                     $("<a>").attr("href", (data[2][i].Activity_href + data[2][i].Activity_id)).text("查看文章").appendTo(content);
 
                 }
@@ -98,7 +101,7 @@
 
             })
             $(".right-button").on('click', function () {
-                if (position != -40 * (page - 1)) {
+                if (position != -40 * (Math.ceil(page / 6) - 1)) {
                     position -= 40;
                     $(".midButton").css({ "top": position })
 
@@ -106,7 +109,7 @@
 
             })
             $(".rright-button").on('click', function () {
-                position = -40 * (page - 1);
+                position = -40 * (Math.ceil(page / 6) - 1);
                 $(".midButton").css({ "top": position })
 
             })
