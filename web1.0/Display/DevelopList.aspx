@@ -92,7 +92,14 @@
           	page=Math.floor(data[1]/6+1);
           	for(i=0;i<data[0].length;i++)
           	{
-          	    $("<a>").addClass("left-content-nav-content").attr("href", (data[0][i].DevelopCategory_href + data[0][i].DevelopCategory_id + "&&page=1")).text(data[0][i].DevelopyCategory_name).appendTo($(".left-content"));
+          	    if (type == data[0][i].DevelopyCategory_id) {
+          	        $("<a>").addClass("left-content-nav-content-select").attr("href", (data[0][i].DevelopCategory_href + data[0][i].DevelopCategory_id + "&&page=1")).text(data[0][i].DevelopyCategory_name).appendTo($(".left-content"));
+          	    }
+          	    else {
+
+          	        $("<a>").addClass("left-content-nav-content").attr("href", (data[0][i].DevelopCategory_href + data[0][i].DevelopCategory_id + "&&page=1")).text(data[0][i].DevelopyCategory_name).appendTo($(".left-content"));
+
+          	    }
           	    //console.log(data[0][i].DevelopyCategory_href);
           	}
           	for(i=0;i<page;i++)

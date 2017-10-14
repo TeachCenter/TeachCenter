@@ -20,7 +20,8 @@ $(".turn-left").click(function(){
 })
 $(".mask").click(function(){
 		shut();
-	})
+})
+
 function pop(argument,position) {
 	$(".mask").css("display","block")
 	argument.css("left",50+"%");
@@ -61,10 +62,15 @@ function search(){
 			$(".search").val("");
 		},
 		blur:function(){
-		   $(".search").val("请输入关键字");
+		  
 		}
 	})
 }
+$(".search-button").click(function () {
+    console.log('66');
+    window.location.href = 'Search.aspx?key=' + $("#search").val();
+
+})
 function init(){
 	$(".number").val("工号");
 	$(".name").val("姓名");

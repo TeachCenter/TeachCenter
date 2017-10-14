@@ -11,7 +11,15 @@ public class ActivitySummaryContent_Handler : IHttpHandler {
 
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/plain";
-        int id = Convert.ToInt32( context.Request.Form["Activity_id"]);
+        int id = 1;
+        try
+        {
+            id    = Convert.ToInt32( context.Request.Form["Activity_id"]);
+        }
+        catch
+        {
+
+        }
         //int id = 1;
         using (var db = new TeachingCenterEntities())
         {

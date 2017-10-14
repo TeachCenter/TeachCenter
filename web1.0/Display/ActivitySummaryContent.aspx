@@ -79,7 +79,7 @@
               $(".brief-intro").text(data.ActivitySummary_title)
               var time = data.ActivitySummary_time;
               //console.log( time.time)
-          	$(".publish").text("发布人："+data.ActivitySummary_author+"  发布时间："+data.ActivitySummary_time+"  浏览次数："+data.ActivitySummary_hit);
+              $(".publish").text("发布人：" + data.ActivitySummary_author + "  发布时间：" + data.ActivitySummary_time.substr(0, 10) + ' ' + data.ActivitySummary_time.substr(11, 8) + "  浏览次数：" + data.ActivitySummary_hit);
 
           	$(data.ActivitySummary_content).appendTo($(".p-box"))
                     

@@ -52,7 +52,14 @@
                 var i = 0;
                 page = Math.floor(data[1] / 6 + 1);
                 for (i = 0; i < data[0].length; i++) {
-                    $("<a>").addClass("left-content-nav-content").attr("href", data[0][i].ActivityCategory_href).text(data[0][i].ActivityCategory_name).appendTo($(".left-content"));
+                    if (type == data[0][i].ActivityCategory_id) {
+                        $("<a>").addClass("left-content-nav-content-select").attr("href", data[0][i].ActivityCategory_href).text(data[0][i].ActivityCategory_name).appendTo($(".left-content"));
+                    }
+                    else {
+
+                        $("<a>").addClass("left-content-nav-content").attr("href", data[0][i].ActivityCategory_href).text(data[0][i].ActivityCategory_name).appendTo($(".left-content"));
+
+                    }
 
                 }
                 for (i = 0; i < page; i++) {
