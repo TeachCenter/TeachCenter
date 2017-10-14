@@ -37,9 +37,10 @@ public partial class Display_EditInfo : System.Web.UI.Page
                 lbType.Text = teacher.is_judge == 0 ? "教师" : "评委";
                 if (teacher.is_judge == 1)
                     applyJudge.Visible = false;
-                ContentPlaceHolder ContentPlaceHolder1 = Master.FindControl("ContentPlaceHolder1") as ContentPlaceHolder;
-                HtmlInputHidden gender = ContentPlaceHolder1.FindControl("gender") as HtmlInputHidden;
+                HtmlInputHidden gender = FindControl("gender") as HtmlInputHidden;
                 gender.Value = teacher.gender.ToString();
+                HtmlInputHidden department = FindControl("lbSelected") as HtmlInputHidden;
+                department.Value = teacher.department;
             }
         }       
     }
@@ -67,43 +68,57 @@ public partial class Display_EditInfo : System.Web.UI.Page
 
     protected void woman_Click(object sender, EventArgs e)
     {
-        ContentPlaceHolder ContentPlaceHolder1 = Master.FindControl("ContentPlaceHolder1") as ContentPlaceHolder;
-        HtmlInputHidden gender = ContentPlaceHolder1.FindControl("gender") as HtmlInputHidden;
+        HtmlInputHidden gender = FindControl("gender") as HtmlInputHidden;
         gender.Value = "0";
     }
 
     protected void man_Click(object sender, EventArgs e)
     {
-        ContentPlaceHolder ContentPlaceHolder1 = Master.FindControl("ContentPlaceHolder1") as ContentPlaceHolder;
-        HtmlInputHidden gender = ContentPlaceHolder1.FindControl("gender") as HtmlInputHidden;
+        HtmlInputHidden gender = FindControl("gender") as HtmlInputHidden;
         gender.Value = "1";
     }
 
     protected void lbtnSubmit_Click(object sender, EventArgs e)
     {
         string name = txtName.Text;
-        ContentPlaceHolder ContentPlaceHolder1 = Master.FindControl("ContentPlaceHolder1") as ContentPlaceHolder;
-        HtmlInputHidden gender = ContentPlaceHolder1.FindControl("gender") as HtmlInputHidden;
-        HtmlInputHidden depart = ContentPlaceHolder1.FindControl("Selected") as HtmlInputHidden;
+        HtmlInputHidden gender = FindControl("gender") as HtmlInputHidden;
+        HtmlInputHidden depart = FindControl("lbSelected") as HtmlInputHidden;
         string sex = gender.Value;
         string number = txtNumber.Text;
         string email = txtEmail.Text;
         string phone = txtPhone.Text;
         string rank = txtRank.Text;
         string department = depart.Value;
-        using (var db = new TeachingCenterEntities())
+        if(name.Length == 0)
+            Response.Write("<script>alert('姓名不能为空！');</script>");
+        else if(sex == "")
+            Response.Write("<script>alert('请选择性别！');</script>");
+        else if(number.Length == 0)
+            Response.Write("<script>alert('工号不能为空！');</script>");
+        else if (email.Length == 0)
+            Response.Write("<script>alert('邮箱不能为空！');</script>");
+        else if (phone.Length == 0)
+            Response.Write("<script>alert('手机不能为空！');</script>");
+        else if (rank.Length == 0)
+            Response.Write("<script>alert('职称不能为空！');</script>");
+        else if (department == "")
+            Response.Write("<script>alert('院系不能为空！');</script>");
+        else
         {
-            int teacher_id = Convert.ToInt32(Session["TeacherNumber"].ToString());
-            var teacher = (from it in db.Teacher where it.id == teacher_id select it).FirstOrDefault();
-            teacher.name = name;
-            teacher.gender = Convert.ToInt32(sex);
-            teacher.email = email;
-            teacher.number = number;
-            teacher.phone_number = phone;
-            teacher.department = department;
-            teacher.rank = rank;
-            db.SaveChanges();
-            Response.Write("<script>alert('修改成功！');location.href='EditInfo.aspx';</script>");
-        }
+            using (var db = new TeachingCenterEntities())
+            {
+                int teacher_id = Convert.ToInt32(Session["TeacherNumber"].ToString());
+                var teacher = (from it in db.Teacher where it.id == teacher_id select it).FirstOrDefault();
+                teacher.name = name;
+                teacher.gender = Convert.ToInt32(sex);
+                teacher.email = email;
+                teacher.number = number;
+                teacher.phone_number = phone;
+                teacher.department = department;
+                teacher.rank = rank;
+                db.SaveChanges();
+                Response.Write("<script>alert('修改成功！');location.href='EditInfo.aspx';</script>");
+            }
+        }       
     }
 }

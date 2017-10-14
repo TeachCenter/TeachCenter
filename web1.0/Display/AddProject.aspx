@@ -1,12 +1,20 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AddProject.aspx.cs" Inherits="Display_AddProject" MasterPageFile="~/Display/Person.master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AddProject.aspx.cs" Inherits="Display_AddProject" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <link rel="stylesheet" href="css/personal-center-creatProgect.css">
-    <script src="jquery-3.2.1.min.js" type="text/javascript"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/personal-center-init.css">
+	<link rel="stylesheet" href="css/personal-center-creatProgect.css">
+	<script type="text/javascript"  src="./js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
+	<script src="jquery-3.2.1.min.js" type="text/javascript"></script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.all.min.js"> </script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/lang/zh-cn/zh-cn.js"></script>
     <script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script>
+	<script type="text/javascript"  src="./js/personal-center-changeInfo.js"></script>
     <style>
      #edui1_toolbarbox{
         position:relative!important;
@@ -40,14 +48,23 @@
         #ContentPlaceHolder1_txtFileName {
 
              background: transparent;
-        }
-
-           
+        }          
     </style>
-</asp:Content>
-
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    	<div class="right-content">
+</head>
+<body>
+	<div class="left-nav">
+		<img src="./images/logo-big.png" alt="">
+		<ul>
+			<li class="dif-li"><a href="Person-index.aspx">个人主页</a></li>
+			<li><a href="EditInfo.aspx">修改信息</a></li>
+			<li><a href="MyProject.aspx">项目管理</a></li>
+			<li><a href="MyServiceList.aspx">服务管理</a></li>
+			<li><a href="MyActivityList.aspx">活动管理</a></li>
+			<li><a href="MyJudgePro.aspx">评审服务</a></li>
+		</ul>
+	</div>   
+	<div class="right-content">
+        <form runat="server">
 		<div class="clearfix">
 			<h1>新建项目</h1>
 		</div>
@@ -108,13 +125,13 @@
                  
 			</div>
             <asp:LinkButton ID="btnSubmit" runat="server" Text="提交项目" class="submit" OnClick="btnSubmit_Click" />
-	</div>
-    <script type="text/javascript"  src="./js/personal-center-init.js"></script>
-    <script type="text/javascript"  src="./js/personal-center-changeInfo.js"></script>
-    <script >
+	</form>
+</div>
+
+	<script >
         function ShowBrowse()  
         {  
-            var file1 = document.getElementById("ContentPlaceHolder1_FileUp");
+            var file1 = document.getElementById("FileUp");
             if(file1)  
             { 
                 file1.click();  
@@ -134,5 +151,5 @@
 		
 	    });
       </script>
-</asp:Content>
-
+</body>
+</html>

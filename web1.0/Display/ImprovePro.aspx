@@ -52,12 +52,12 @@
 	<div class="left-nav">
 		<img src="./images/logo-big.png" alt="">
 		<ul>
-			<li class="dif-li"><a href="	">个人主页</a></li>
-			<li><a href="	">修改信息</a></li>
-			<li><a href="	">项目管理</a></li>
-			<li><a href="	">服务管理</a></li>
-			<li><a href="	">活动管理</a></li>
-			<li><a href="	">评审服务</a></li>
+			<li class="dif-li"><a href="Person-index.aspx">个人主页</a></li>
+			<li><a href="EditInfo.aspx">修改信息</a></li>
+			<li><a href="MyProject.aspx">项目管理</a></li>
+			<li><a href="MyServiceList.aspx">服务管理</a></li>
+			<li><a href="MyActivityList.aspx">活动管理</a></li>
+			<li><a href="MyJudgePro.aspx">评审服务</a></li>
 		</ul>
 	</div>
 	<div class="right-content">
@@ -115,7 +115,7 @@
                 <asp:Button id="btnBrowse" runat="server" OnClientClick="return ShowBrowse()" Text="选择文件" class="choose"/>
                 <h3 style="margin-top:0px;"><asp:TextBox ID="txtFileName" runat="server" value="支持pdf、doc、docx格式的文件"></asp:TextBox> </h3>                
 			</div>
-			<a href="" class="submit">完善项目<asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click"></asp:LinkButton></a>
+			<asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" Text="完善项目" class="submit"></asp:LinkButton>
 		</form>
 	</div>
     <script>

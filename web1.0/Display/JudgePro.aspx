@@ -1,7 +1,13 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="JudgePro.aspx.cs" Inherits="Display_JudgePro" MasterPageFile="~/Display/Person.master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="JudgePro.aspx.cs" Inherits="Display_JudgePro" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <link rel="stylesheet" href="css/personal-center-checkProgect.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/personal-center-init.css">
+	<link rel="stylesheet" href="css/personal-center-checkProgect.css">
+	<script type="text/javascript"  src="./js/jquery-3.1.1.min.js"></script>
     <style>
         .Content {
                 font-size: 20px;
@@ -32,11 +38,21 @@
         }   
 
     </style>
-    <script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script>
-</asp:Content>
-
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+</head>
+<body>
+	<div class="left-nav">
+		<img src="./images/logo-big.png" alt="">
+		<ul>
+			<li class="dif-li"><a href="Person-index.aspx">个人主页</a></li>
+			<li><a href="EditInfo.aspx">修改信息</a></li>
+			<li><a href="MyProject.aspx">项目管理</a></li>
+			<li><a href="MyServiceList.aspx">服务管理</a></li>
+			<li><a href="MyActivityList.aspx">活动管理</a></li>
+			<li><a href="MyJudgePro.aspx">评审服务</a></li>
+		</ul>
+	</div>
 	<div class="right-content">
+        <form runat="server">
 		<div class="clearfix">
 			<h1>项目信息</h1>
 		</div>
@@ -91,8 +107,9 @@
                 <input type="hidden" id="result" runat="server" value=""/>
 			</div>
 			<asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" class="submit" Text="提交评审结果"></asp:LinkButton>
+            </form>
 	</div>
-    <script>
+	<script>
         var w = $(window).width();
         $(".Content").css({ "width": w - 520 })
 
@@ -103,12 +120,15 @@
         $(".yes").click(function () {
             $(this).css({ "background-color": "#FFFFFF" })
             $(".no").css({ "background-color": "#E6E6E6" })
-            $("#ContentPlaceHolder1_result").val("1");
+            $("#result").val("1");
         })
         $(".no").click(function () {
             $(this).css({ "background-color": "#FFFFFF" })
             $(".yes").css({ "background-color": "#E6E6E6" })
-            $("#ContentPlaceHolder1_result").val("0");
+            $("#result").val("0");
         })
     </script>
-</asp:Content>
+	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
+	<script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script>
+</body>
+</html>
