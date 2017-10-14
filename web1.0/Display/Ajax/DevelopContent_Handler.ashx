@@ -19,7 +19,8 @@ public class DevelopContent_Handler : IHttpHandler {
         public string Develop_link;
         public string Develop_category;
         public int Develop_categoryid;
-        public DateTime Develop_time;
+        public DateTime Develop_times;
+        public string Develop_time;
     }
 
     private class Category {
@@ -58,7 +59,7 @@ public class DevelopContent_Handler : IHttpHandler {
                           Develop_author = it.Develop_author,
                           Develop_hit = it.Develop_hit,
                           Develop_link = it.Develop_link,
-                          Develop_time = it.Develop_time,
+                          Develop_times = it.Develop_time,
                           Develop_categoryid = it.Develop_category
                       };
             List<Dev> develop = new List<Dev>();
@@ -71,6 +72,7 @@ public class DevelopContent_Handler : IHttpHandler {
                 deve.Develop_hit = i.Develop_hit;
                 db.SaveChanges();
             }
+            develop[0].Develop_time = develop[0].Develop_times.Date.ToString().Substring(0, 9) + " " + develop[0].Develop_times.TimeOfDay.ToString().Substring(0, 8);
             string final = JsonConvert.SerializeObject(develop[0]);
             context.Response.Write(final);
         }

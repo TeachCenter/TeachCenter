@@ -16,7 +16,8 @@ public class ActivityContent : IHttpHandler {
         public string Activity_title;
         public string Activity_content;
         public string Activity_author;
-        public DateTime Activity_time;
+        public DateTime Activity_times;
+        public string Activity_time;
         public string Activity_place;
         public int Activity_nowcount;
         public int Activity_categoryid;
@@ -39,7 +40,7 @@ public class ActivityContent : IHttpHandler {
                          Activity_title = it.Activity_title,
                          Activity_content = it.Activity_content,
                          Activity_author = it.Activity_author,
-                         Activity_time = it.Activity_time,
+                         Activity_times = it.Activity_time,
                          Activity_place = it.Activity_place,
                          Activity_nowcount = it.Activity_nowcount,
                          Activity_limitcount = it.Activity_limitcount,
@@ -56,7 +57,7 @@ public class ActivityContent : IHttpHandler {
                 activity.Activity_hit = i.Activity_hit;
                 db.SaveChanges();
             }
-
+            acs[0].Activity_time = acs[0].Activity_times.Date.ToString().Substring(0, 9) + " " + acs[0].Activity_times.TimeOfDay.ToString().Substring(0, 8);
             string final = JsonConvert.SerializeObject(acs);
             context.Response.Write(final);
 

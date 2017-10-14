@@ -14,7 +14,16 @@ public class ActivityList : IHttpHandler {
         public string ActivityCategory_name;
         public string ActivityCategory_href;
     }
-
+    private class Ac {
+        public int Activity_id;
+        public string Activity_title;
+        public string Activity_content;
+        public string Activity_author;
+        public int Activity_hit;
+        public DateTime Activity_times;
+        public string Activity_time;
+        public string Activity_href;
+    }
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/plain";
         //context.Response.Write("Hello World");
@@ -53,14 +62,14 @@ public class ActivityList : IHttpHandler {
             var  ac = (from it in db.Activity
                        where it.Activity_isdeleted == 0
                        orderby it.Activity_time descending
-                       select new
+                       select new Ac
                        {
                            Activity_id = it.Activity_id,
                            Activity_title = it.Activity_title,
                            Activity_content = it.Activity_content,
                            Activity_author = it.Activity_author,
                            Activity_hit = it.Activity_hit,
-                           Activity_time = it.Activity_time,
+                           Activity_times = it.Activity_time,
                            Activity_href = "ActivityContent.aspx?id="
                        });
             if(categoryid!=0)
@@ -68,14 +77,14 @@ public class ActivityList : IHttpHandler {
                 ac = from it in db.Activity
                      where it.Activity_isdeleted == 0 && it.Activity_categoryid == categoryid
                      orderby it.Activity_time descending
-                     select new
+                     select new Ac
                      {
                          Activity_id = it.Activity_id,
                          Activity_title = it.Activity_title,
                          Activity_content = it.Activity_content,
                          Activity_author = it.Activity_author,
                          Activity_hit = it.Activity_hit,
-                         Activity_time = it.Activity_time,
+                         Activity_times = it.Activity_time,
                          Activity_href = "ActivityContent.aspx?id="
                      };
             }
@@ -86,10 +95,23 @@ public class ActivityList : IHttpHandler {
             else
                 name = "全部活动";
             ac = ac.Skip((page-1) * 5).Take(5);
+            List<Ac> list = new List<Ac>();
+            foreach(var i in ac)
+            {
+                Ac a = new Ac();
+                a.Activity_id = i.Activity_id;
+                a.Activity_title = i.Activity_title;
+                a.Activity_content = MyHtmlHelper.RemoveTags( context.Server.HtmlDecode( i.Activity_content));
+                a.Activity_author = i.Activity_author;
+                a.Activity_hit = i.Activity_hit;
+                a.Activity_time = i.Activity_times.Date.ToShortDateString() + " " + i.Activity_times.TimeOfDay;
+                a.Activity_href = i.Activity_href;
+                list.Add(a);
+            }
             ArrayList all = new ArrayList();
             all.Add(cat);
             all.Add(count);
-            all.Add(ac);
+            all.Add(list);
             all.Add(name);
             string final = JsonConvert.SerializeObject(all);
             context.Response.Write(final);

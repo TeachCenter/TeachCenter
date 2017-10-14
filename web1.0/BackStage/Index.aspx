@@ -37,7 +37,7 @@
 				<ul class="cl">
 					<li class="dropDown dropDown_hover"><a href="javascript:;" class="dropDown_A"><i class="Hui-iconfont">&#xe600;</i> 新增 <i class="Hui-iconfont">&#xe6d5;</i></a>
 						<ul class="dropDown-menu menu radius box-shadow">
-                            <li><a data-href="DevelopAdd.aspx" data-title="教学发展添加" href="javascript:void(0)"><i class="Hui-iconfont">&#xe6d5;</i> 教学发展添加</a></li>
+                            <li><a target="_blank" data-href="DevelopAdd.aspx" data-title="教学发展添加" href="javascript:void(0)"><i class="Hui-iconfont">&#xe6d5;</i> 教学发展添加</a></li>
                             <li><a href="javascript:window.location.href=ProCategoryAdd.aspx;"><i class="Hui-iconfont">&#xe6d5;</i> 添加项目</a></li>
                             <li><a href="ActivityAdd.aspx"><i class="Hui-iconfont">&#xe6d5;</i> 添加活动</a></li>
                             <li><a target="_self" href="ActivitySummaryAdd.aspx"><i class="Hui-iconfont">&#xe616;</i> 添加活动总结</a></li>
