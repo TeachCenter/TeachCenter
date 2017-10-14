@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 public partial class Display_MyServiceList : System.Web.UI.Page
@@ -11,6 +12,15 @@ public partial class Display_MyServiceList : System.Web.UI.Page
     {
         try
         {
+            int page = 1;
+            try
+            {
+                page = Convert.ToInt16(Request.QueryString["page"].ToString());
+            }
+            catch
+            {
+
+            }
             int teacher = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
             //int teacher = 2;
             using (var db = new TeachingCenterEntities())
@@ -19,12 +29,16 @@ public partial class Display_MyServiceList : System.Web.UI.Page
                                 where it.Service_teacher == teacher && it.Service_isdeleted == 0
                                 orderby it.Service_time descending
                                 select it;
-                rptService.DataSource = myService.ToList();
+                HtmlInputHidden count = FindControl("count") as HtmlInputHidden;
+                count.Value = myService.Count().ToString();
+                rptService.DataSource = myService.ToList().Skip((page-1)*5).Take(5);
                 rptService.DataBind();
+                
             }
             //判断是不是评审
             if (!TeacherHelper.isJudge(Session["TeacherNumber"].ToString()))
                 liJudge.Visible = false;
+             
         }
         catch
         {

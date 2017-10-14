@@ -43,7 +43,7 @@
 		        </div>
             </ItemTemplate>
         </asp:Repeater>
-
+            <input type="hidden" id="count" runat="server" value=""/>
 
 	</div>
 	<script type="text/javascript"  src="./js/personal-center-init.js"></script></form>
