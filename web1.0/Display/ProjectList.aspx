@@ -74,7 +74,7 @@
           dataType: "JSON",
           type: "POST", 
           async: true,
-          data: { "pageSize":6,"pageNumber":1},
+          data: { "pageSize": 6, "pageNumber": 1},
 
           // data: { "id": id },
     
