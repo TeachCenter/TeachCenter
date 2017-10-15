@@ -24,7 +24,7 @@ public class Notice_Handler : IHttpHandler
         int page;
         try
         {
-            page = Convert.ToInt32(context.Request.QueryString["page"].ToString());
+            page = Convert.ToInt32( context.Request.Form["page"]);
         }
         catch
         {
