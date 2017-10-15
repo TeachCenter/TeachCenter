@@ -2,12 +2,23 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <link rel="stylesheet" href="css/progect.css">
+    <style>
+        .hhh{
+            margin-top:32px;
+	        display: block;
+	        text-align: center;
+	        width: 100%;
+	        line-height: 60px;
+	        height: 60px;
+	        font-size: 28px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 		<div class="main">
 			<div class="center clearfix">
 				<div class="content">
-					<h1>教学资源</h1>
+					<h1 class="hhh">教学资源</h1>
 					<div class="passage-content" style="height: 1340px;">
                         
 					</div>					
@@ -30,13 +41,16 @@
 		</div>
 	<script type="text/javascript"  src="./js/pop.js"></script>
 	<script>
-	 var page;
+	    var page;
+	    var str = window.location.search;
+	    var pageSize = str.substr(str.indexOf("type") + 11, str.indexOf("&&") - 10);
+	    var pageNumber = str.substr(str.indexOf("pageNumber") + 11);
 		$.ajax({   
 		    url: "./Ajax/EduSrcHandler.ashx",
           dataType: "JSON",
           type: "POST", 
           async: true,
-          data: { "pageSize":6,"pageNumber":1},
+          data: { "pageSize": 6, "pageNumber": pageNumber },
 
           // data: { "id": id },
     

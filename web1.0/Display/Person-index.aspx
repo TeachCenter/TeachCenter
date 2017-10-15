@@ -30,8 +30,8 @@
 			<h2>用户类型：<asp:Label ID="lbType" runat="server"></asp:Label></h2>
 		</div>
 		
-		<span class="cut"></span>
-		<div class="clearfix">
+		<span class="cut completed"></span>
+		<div class="clearfix completed">
 			<h2>您的个人信息尚未填写完整，</h2>
 			<a href="EditInfo.aspx">前去完善个人信息>></a>
 		</div>
@@ -51,5 +51,11 @@
 		</div>
 	</div>
 	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
+    <script>
+        if($("#isCompleted").val()==1)
+        {
+            $(".completed").css({ "display": "none" });
+        }
+    </script>
 </body>
 </html>

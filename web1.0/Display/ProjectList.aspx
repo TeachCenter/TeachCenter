@@ -2,12 +2,23 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <link rel="stylesheet" href="css/progect.css">
+    <style>
+        .hhh{
+            margin-top:32px;
+	        display: block;
+	        text-align: center;
+	        width: 100%;
+	        line-height: 60px;
+	        height: 60px;
+	        font-size: 28px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 		<div class="main">
 			<div class="center clearfix">
 				<div class="content">
-					<h1>项目列表</h1>
+					<h1 class="hhh">项目列表</h1>
 					<div class="passage-content" style="height: 1340px;"></div>
 					<!-- <div class="passage">
 						<h2>这里是文章标题</h2>
