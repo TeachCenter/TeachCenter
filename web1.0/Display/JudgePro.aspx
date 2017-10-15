@@ -48,7 +48,7 @@
 			<li><a href="MyProject.aspx?pageNumber=1">项目管理</a></li>
 			<li><a href="MyServiceList.aspx">服务管理</a></li>
 			<li><a href="MyActivityList.aspx">活动管理</a></li>
-			<li class="dif-li"><a href="MyJudgePro.aspx?pageNumber=1">评审服务</a></li>
+			<li class="dif-li" id="liJudge" runat="server"><a href="MyJudgePro.aspx?pageNumber=1">评审服务</a></li>
 		</ul>
 	</div>
 	<div class="right-content">

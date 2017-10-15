@@ -33,14 +33,14 @@ $(function(){
 
   $.ajax({ 
           type: "GET",    
-          url: "../../../Ajax/PdfHandler.ashx",
+          url: "../../../Ajax/ProContentHandler.ashx",
           dataType: "JSON",
           async : false,
           data: { "id": id },
     
-          success: function(data) {
-            DEFAULT_URL=data;
-                    
+          success: function (data) {
+              DEFAULT_URL = data.file_path;
+
           }
 
 

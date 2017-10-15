@@ -75,7 +75,7 @@ public partial class Admin
     public string Admin_name { get; set; }
     public string Admin_emai { get; set; }
     public string Admin_phone { get; set; }
-    public Nullable<System.DateTime> Admin_birthday { get; set; }
+    public System.DateTime Admin_birthday { get; set; }
     public long Admin_emai_check { get; set; }
 }
 
@@ -127,7 +127,7 @@ public partial class EducateSource
     public string publisher { get; set; }
     public string publish_time { get; set; }
     public int view_times { get; set; }
-    public Nullable<int> is_deleted { get; set; }
+    public int is_deleted { get; set; }
 }
 
 public partial class Introduction
@@ -141,7 +141,6 @@ public partial class JudgeApplication
     public int id { get; set; }
     public int teacher_id { get; set; }
     public string submit_time { get; set; }
-    public string message { get; set; }
 
     public virtual Teacher Teacher { get; set; }
 }
@@ -203,7 +202,7 @@ public partial class ProjectInfo
     public string teacher_name { get; set; }
     public string submit_time { get; set; }
     public int category { get; set; }
-    public int is_deleted { get; set; }
+    public Nullable<int> is_deleted { get; set; }
 }
 
 public partial class ProjectJudge
@@ -293,7 +292,6 @@ public partial class Teacher
     public string department { get; set; }
     public string rank { get; set; }
     public int is_judge { get; set; }
-    public string image { get; set; }
 
     public virtual ICollection<ActivityTeacher> ActivityTeacher { get; set; }
     public virtual ICollection<JudgeApplication> JudgeApplication { get; set; }

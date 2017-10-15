@@ -52,9 +52,9 @@
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">项目内容：</label>
+			<label class="form-label col-xs-4 col-sm-2">项目附件：</label>
 			<div class="formControls col-xs-8 col-sm-9"> 
-				<textarea id="myEditor11" name="myEditor11" runat="server" onblur="setUeditor()" style="width: 1030px; height: 250px;"></textarea>
+				<textarea id="myEditor11" name="myEditor11" runat="server" onblur="setUeditor()" style="width:100px;"></textarea>
                 <script type="text/javascript">
                     var editor = new baidu.editor.ui.Editor();
                     editor.render("<%=myEditor11.ClientID%>");
@@ -65,6 +65,7 @@
                      myEditor11.value = editor.getContent();//把得到的值给textarea
                      }
                  </script>
+				<p></p>
 			</div>
 		</div>
         <div class="row cl">
@@ -110,6 +111,17 @@
             
                 //
         </script>
+        <script>
+	    $(document).ready(function() { 
+	        timer = setTimeout(function () {
+	                $("#edui1_bottombar").remove();
+                    for(i=3;i<175;i++){$("#edui"+i).remove()};for(i=176;i<301;i++){$("#edui"+i).remove()}
+                	    $("#edui1").css({"width":500,"height":300})
+		      }, 100);
+		
+		
+	    });
+      </script>
 	</form>
 </article>
 

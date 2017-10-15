@@ -47,7 +47,7 @@
 		</div>
 		<div class="clearfix" id="divJudge" runat="server">
 			<h2>您的<span><%= getJudgeNumber() %></span>个项目信息等待评审，</h2>
-			<a href="MyJudgePro.aspx">前去评审>></a>
+			<a href="MyJudgePro.aspx?pageNumber=1">前去评审>></a>
 		</div>
 	</div>
 	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
