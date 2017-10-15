@@ -9,9 +9,10 @@
 			<div class="center clearfix">
 				<div class="left-content">
 					<a class="left-content-nav">服务</a>
-                    <asp:Repeater ID="rptCategory" runat="server">
+                    <asp:Repeater ID="rptCategory" runat="server" OnItemDataBound="rptCategory_ItemDataBound">
                         <ItemTemplate>
-                            <a class="left-content-nav-content" href='<%#"Service.aspx?id="+Eval("ServiceCategory_id") %>'><%# Eval("ServiceCategory_name") %></a>
+                            <%--<a class="left-content-nav-content" href='<%#"Service.aspx?id="+Eval("ServiceCategory_id") %>'><%# Eval("ServiceCategory_name") %></a>--%>
+                            <asp:LinkButton ID="lbtType" runat="server" CssClass="left-content-nav-content" PostBackUrl='<%#"Service.aspx?id="+Eval("ServiceCategory_id") %>' Text='<%# Eval("ServiceCategory_name") %>'></asp:LinkButton>
                         </ItemTemplate>
                     </asp:Repeater>
 				</div>

@@ -34,7 +34,7 @@ public partial class Display_Service : System.Web.UI.Page
         }
         catch
         {
-            JSHelper.ShowAlert("请先登陆！");
+            JSHelper.ShowAlert("请先登陆！" );
             JSHelper.js("window.history.go(-1);");
         }
 
@@ -73,5 +73,31 @@ public partial class Display_Service : System.Web.UI.Page
                 JSHelper.ShowAlert("申请成功！");
             }
         // = ServiceHelper.getCategoryName(type);
+    }
+
+    protected void rptCategory_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+        int category;
+        try
+        {
+            category = Convert.ToInt32(Request.QueryString["id"].ToString());
+        }
+        catch
+        {
+            category = 1;
+        }
+        
+        if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+        {
+            if (category != 0)
+            {
+                string name = ServiceHelper.getCategoryName(category);
+                //绑定序号
+                LinkButton type = (LinkButton)e.Item.FindControl("lbtType");
+                if (name == type.Text)
+                    type.CssClass = "left-content-nav-content-select";
+            }
+            
+        }
     }
 }
