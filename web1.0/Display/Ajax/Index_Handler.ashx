@@ -20,16 +20,7 @@ public class IndexNotice_Handler : IHttpHandler {
         //context.Response.Write("Hello World");
         using (var db = new TeachingCenterEntities())
         {
-            //通知公告
-            var activity = (from it in db.Activity
-                            where it.Activity_isdeleted == 0
-                            orderby it.Activity_time descending select it).ToList().Take(8).Select( it=>
-                            new
-                            {
-                                noticeTitle = it.Activity_title,
-                                noticeHref = it.Activity_id.ToString(),
-                                noticeTime = it.Activity_time
-                            });
+         
             var sourse = (from it in db.EducateSource
                           where it.is_deleted == 0
                           orderby it.publish_time descending select it).ToList().Take(8).Select(

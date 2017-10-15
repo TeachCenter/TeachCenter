@@ -19,7 +19,7 @@ public partial class Display_EditInfo : System.Web.UI.Page
             if (!TeacherHelper.isJudge(Session["TeacherNumber"].ToString()))
                 liJudge.Visible = false;
 
-        //Session["TeacherNumber"] = 1;
+            Session["TeacherNumber"] = 1;
         if (!IsPostBack)
         {
             DataTable dt = DepartmentHelper.getDepartment();
