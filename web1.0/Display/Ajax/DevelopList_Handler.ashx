@@ -23,10 +23,26 @@ public class Develop_Handler : IHttpHandler {
 
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/plain";
-        //context.Response.Write("Hello World");
-        int page = Convert.ToInt32( context.Request.Form["page"]);
-        //int page = 1, category = 0;
-        int category = Convert.ToInt32( context.Request.Form["category"]);
+            int category = 0;
+            try
+            {
+                category = Convert.ToInt32(context.Request.Form["ActivityCategory_id"]);
+            }
+            catch
+            {
+
+            }
+
+            //int categoryid = 0,page = 1;
+            int page = 1;
+            try
+            {
+                page = Convert.ToInt32( context.Request.Form["page"]);
+            }
+            catch
+            {
+
+            }
         using (var db = new TeachingCenterEntities())
         {
             var categorys = from it in db.DevelopCategory
