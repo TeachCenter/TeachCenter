@@ -84,7 +84,7 @@
           success: function(data) {
           	var i=0;
           	var j=0;
-          	page = Math.floor(data.length / 6 + 1);
+          	page = Math.floor(data[1]/ 6 + 1);
           
           	for (i = 0; i < page; i++) {
           	    $("<a>").attr("href", "ProjectList.aspx?pageSize=6" + "&&pageNumber=" + (i + 1)).text(i + 1).appendTo($(".midButton"));
@@ -97,14 +97,14 @@
           	    $(".midButtonBox").css({ "width": 6 * 40 })
           	    $(".left-button").css({ "margin-left": (680 - 40 * (6 + 2)) / 2 })
           	}
-          	for(i=0;i<data.length ;i++)
+          	for(i=0;i<data[0].length ;i++)
           	{
-          	    var content = $("<a>").attr("href", "ProgectContent.aspx?id=" + data[i].id).addClass("passage").addClass("clearfix").appendTo($(".passage-content"));
-          		$("<h2>").text(data[i].title).appendTo(content);
+          	    var content = $("<a>").attr("href", "ProgectContent.aspx?id=" + data[0][i].id).addClass("passage").addClass("clearfix").appendTo($(".passage-content"));
+          	    $("<h2>").text(data[0][i].title).appendTo(content);
           		var pContent=$("<div>").appendTo(content);
-          		$("<p>").text(data[i].content).appendTo(pContent);
-          		$("<h3>").text("发布人：" + data[i].publisher + " 发布时间：" + data[i].publish_time).appendTo(content);
-          		$("<a>").attr("href", "ProgectContent.aspx?id=" + data[i].id).text("查看项目").appendTo(content);
+          		$("<p>").text(data[0][i].content).appendTo(pContent);
+          		$("<h3>").text("发布人：" + data[0][i].publisher + " 发布时间：" + data[0][i].publish_time).appendTo(content);
+          		$("<a>").attr("href", "ProgectContent.aspx?id=" + data[0][i].id).text("查看项目").appendTo(content);
           	}
 
                     

@@ -34,7 +34,8 @@ public partial class Display_Service : System.Web.UI.Page
         }
         catch
         {
-            JSHelper.AlertThenRedirect("请先登陆！", "main-index.aspx");
+            JSHelper.ShowAlert("请先登陆！");
+            JSHelper.js("window.history.go(-1);");
         }
 
     }

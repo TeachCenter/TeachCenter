@@ -1,12 +1,24 @@
-var w=$(window).width();
-$(".name").css({"width":w-520})
+var w = $(window).width();
+if ($(window).width() > 1200) {
+    w = $(window).width();
+}
+else {
+    w = 1200;
+}
+$(".name").css({ "width": w - 600 })
 $(".content").css({"width":w-520})
-$(".submit").css({"width":w-344})
+$(".submit").css({"width":w-444})
 $(window).resize(function(){
-	 w=$(window).width();2
-	$(".name").css({"width":w-520})
+    w = $(window).width();
+    if ($(window).width() > 1200) {
+        w = $(window).width();
+    }
+    else {
+        w = 1200;
+    }
+	$(".name").css({"width":w-600})
 	$(".content").css({"width":w-520})
-	$(".submit").css({"width":w-344})
+	$(".submit").css({"width":w-444})
 })
 
 function log(){
