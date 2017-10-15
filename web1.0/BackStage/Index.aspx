@@ -34,17 +34,7 @@
 			<span class="logo navbar-slogan f-l mr-10 hidden-xs"></span> 
 			<a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
 			<nav class="nav navbar-nav">
-				<ul class="cl">
-					<li class="dropDown dropDown_hover"><a href="javascript:;" class="dropDown_A"><i class="Hui-iconfont">&#xe600;</i> 新增 <i class="Hui-iconfont">&#xe6d5;</i></a>
-						<ul class="dropDown-menu menu radius box-shadow">
-                            <li><a target="_blank" data-href="DevelopAdd.aspx" data-title="教学发展添加" href="javascript:void(0)"><i class="Hui-iconfont">&#xe6d5;</i> 教学发展添加</a></li>
-                            <li><a href="javascript:window.location.href=ProCategoryAdd.aspx;"><i class="Hui-iconfont">&#xe6d5;</i> 添加项目</a></li>
-                            <li><a href="ActivityAdd.aspx"><i class="Hui-iconfont">&#xe6d5;</i> 添加活动</a></li>
-                            <li><a target="_self" href="ActivitySummaryAdd.aspx"><i class="Hui-iconfont">&#xe616;</i> 添加活动总结</a></li>
-                            <li><a href="EduSrcAdd.aspx"><i class="Hui-iconfont">&#xe616;</i> 添加教学资源</a></li>
-					</ul>
-				</li>
-			</ul>
+				
             
 		</nav>
 <%--            <nav class="nav navbar-nav">
@@ -79,6 +69,24 @@
 </header>
 <aside class="Hui-aside">
 	<div class="menu_dropdown bk_2">
+        <dl id="menu-add">
+					<li class="dropDown dropDown_hover" style="width:100%;"><dt><i class="Hui-iconfont dropDown_A">&#xe600;</i> 新增 <i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+						
+				
+		
+			
+			<dd>
+				<ul class="dropDown-menu menu radius box-shadow" style="width:100%; background-color:rgba(238,238,238,0.98);">
+                            <li><a data-title="教学发展添加" data-href="DevelopAdd.aspx" href="javascript:void(0)"><i class="Hui-iconfont">&#xe6d5;</i> 教学发展添加</a></li>
+                            <li><a data-title="添加项目" data-href="javascript:window.location.href=ProCategoryAdd.aspx;"  href="javascript:void(0)"><i class="Hui-iconfont">&#xe6d5;</i> 添加项目</a></li>
+                            <li><a data-title="添加活动" data-href="ActivityAdd.aspx" href="javascript:void(0)"><i class="Hui-iconfont">&#xe6d5;</i> 添加活动</a></li>
+                            <li><a data-title="添加活动总结" data-href="ActivitySummaryAdd.aspx"  href="javascript:void(0)"><i class="Hui-iconfont">&#xe616;</i> 添加活动总结</a></li>
+                            <li><a data-title="添加教学资源" data-href="EduSrcAdd.aspx" href="javascript:void(0)"><i class="Hui-iconfont">&#xe616;</i> 添加教学资源</a></li>
+			</ul>
+		</dd>
+            </li>
+	</dl>
+        
 		<dl id="menu-picture">
 			<dt><i class="Hui-iconfont">&#xe613;</i>滚动图片管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>

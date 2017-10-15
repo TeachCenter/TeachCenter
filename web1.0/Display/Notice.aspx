@@ -8,8 +8,7 @@
     <div class="main">
 
 			<div class="center" style="background-color: #FFFFFF;margin-bottom: 32px;">
-				<input class="Search search1" value="搜索结果"></input>
-                <a  class="search-button" style="background-image:url(./images/search1.png);top: 14px;right: 18px;"></a>
+                <h1 style="margin-top:32px; display: block;text-align: center;width: 100%;line-height: 60px; height: 60px;font-size: 28px;">通知公告</h1>
 				<div class="passage-content1" ></div>
 				<div class="buttons clearfix">
             <a class="lleft-button"></a>
@@ -31,10 +30,9 @@
     <script>
 	var page;
 	var i=0;
-	$(document).ready(function () {
-	    var searchwords = window.location.search.substr(5);
+	$(document).ready(function(){
 		$.ajax({   
-          url: "./Ajax/Search_Handler.ashx",
+		    url: "./Ajax/Notice_Handler.ashx",
           type: 'POST',
           dataType: "JSON",
           async: true,
@@ -44,7 +42,7 @@
           	page = Math.floor(data[0] / 6 + 1);
           	for(i=0;i<page;i++)
           	{
-          		$("<a>").attr("href","ActivityList.html?type="+window.location.search.substr(6)+"&&page="+(i+1)).text(i+1).appendTo($(".midButton"));
+          	    $("<a>").attr("href", "Notice.aspx?page=" + (i + 1)).text(i + 1).appendTo($(".midButton"));
           		
           	}
           	if(page<=6)
@@ -59,14 +57,12 @@
           	
           	for(i=0;i<data[1].length;i++)
           	{
-          	    var content = $("<div>").addClass("passage").appendTo($(".passage-content1"));
-          	    var replacetext = "<span style='color:" + "#D6000F" + ";'>" + searchwords + "</span>"
-          	    var objects = data[1][i].title.replace(searchwords, replacetext);
-          	    $("<h2>").html(objects).appendTo(content);
+          	    var content = $("<a>").attr("href", data[1][i].noticeHref).addClass("passage clearfix").appendTo($(".passage-content1"));
+          		$("<h2>").text(data[1][i].noticeTitle).appendTo(content);
           		var pContent=$("<div>").appendTo(content);
-          		$("<p>").text(data[1][i].content).appendTo(pContent);
-          		$("<h3>").text(" 发布时间："+data[1][i].time.substr(0,10)).appendTo(content);
-          		$("<a>").attr("href",data[1][i].href).text("查看文章").appendTo(content);
+          		$("<p>").text(data[1][i].noticeContent).appendTo(pContent);
+          		$("<h3>").text(" 发布时间：" + data[1][i].noticeTime.substr(0, 10)).appendTo(content);
+          		$("<a>").attr("href", data[1][i].noticeHref).text("查看通知").appendTo(content);
           	}
           	
           	
@@ -110,20 +106,7 @@
 		}
 		turnPage();
 		
-		$(".Search").on({
-		    focus: function () {
-		        $(".Search").val("");
-		    },
-		    blur: function () {
 
-		    }
-		})
-
-		$(".search-button").click(function () {
-		    console.log('66');
-		    window.location.href = 'Search.aspx?key=' + $(".Search").val();
-
-		})
 	})
 		
 	</script>

@@ -353,6 +353,10 @@ ul li{
     left:140px;
     top:200px;
 }
+.hei {
+    height:600px;
+}
+
 @media (min-width:0px) and (max-width:1200px)
 {
     body{

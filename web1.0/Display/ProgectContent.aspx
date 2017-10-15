@@ -51,7 +51,7 @@
             </div>
         </div>
         <div class="main">
-            <div class="center clearfix">
+            <div class="center clearfix ">
                 <div class="content">
                     <div class="brief-intro-box" style="height:1350px;">
 

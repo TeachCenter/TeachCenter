@@ -77,14 +77,14 @@
                 <asp:TextBox ID="txtName" runat="server" class="name" ></asp:TextBox>
 				<p class="name-error"></p>
 			</div>
-            
+             <input type="hidden"  id="Selected" runat="server" class="Selected" value="" />
 			<div class="clearfix" style="position:relative;">
 				<h2>项目类型:</h2>
 				<div class="aA" style="width:30px;height:50px;position:absolute;left: 623px;top: 8px;background-color:#E6E6E6;z-index:10;"> <img src="./images/bottom.png" alt="Alternate Text" style="position:absolute;top:23px;" /></div>
 				<ul class="down clearfix" style="width:500px;">                                     
                      <li class="select-true" style="position:relative">
                          请选择项目类型
-                         <input type="hidden" id="Selected" runat="server" class="Selected" value="" />
+                        
                      </li>
                      <ul class="select-box clearfix">
                          <asp:Repeater ID="rptSelect" runat="server">

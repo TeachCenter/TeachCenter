@@ -43,9 +43,73 @@
 		       </div>
             </ItemTemplate>
         </asp:Repeater>
+<<<<<<< HEAD
+=======
+        <div class="buttons clearfix">
+            <a class="lleft-button"></a>
+
+            <a class="left-button"></a>
+            <div class="midButtonBox" style="position: relative;height: 40px;float: left;overflow: hidden;">
+                <ul class="midButton" style="position: absolute;	"></ul>
+
+
+            </div>
+
+            <a class="right-button"></a>
+            <a class="rright-button" style="float: right;"></a>
+        </div>
+>>>>>>> lyfdev
             <input type="hidden" id="count" runat="server"  value=""/>
 
 	</div>
 	<script type="text/javascript"  src="./js/personal-center-init.js"></script></form>
+    <script>
+        var i = 0;
+        var page = Math.floor($("#count").val() / 6 + 1);;
+        for (i = 0; i < page; i++) {
+            $("<a>").attr("href", "MyActivity.aspx?page=" + page).text(i + 1).appendTo($(".midButton"));
+
+        }
+        if (page <= 6) {
+            $(".midButtonBox").css({ "width": page * 40 })
+            $(".left-button").css({ "margin-left": (w - 760 - 40 * (page + 2)) / 2 })
+        }
+        else {
+            $(".midButtonBox").css({ "width": 6 * 40 })
+            $(".left-button").css({ "margin-left": (w - 760 - 40 * (6 + 2)) / 2 })
+        }
+        function turnPage() {
+
+            var position = 0;
+            $(".lleft-button").on('click', function () {
+                position = 0;
+                $(".midButton").css({ "top": position })
+
+            })
+            $(".left-button").on('click', function () {
+                if (position != 0) {
+                    position += 40;
+                    $(".midButton").css({ "top": position })
+
+                }
+
+            })
+            $(".right-button").on('click', function () {
+                if (position != -40 * (Math.ceil(page / 6) - 1)) {
+                    position -= 40;
+                    $(".midButton").css({ "top": position })
+
+                }
+
+            })
+            $(".rright-button").on('click', function () {
+                position = -40 * (Math.ceil(page / 6) - 1);
+                $(".midButton").css({ "top": position })
+
+            })
+
+        }
+        turnPage();
+    </script>
 </body>
 </html>

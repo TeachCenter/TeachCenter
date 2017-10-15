@@ -118,18 +118,18 @@
             data: { "pageSize":9 ,"pageNumber":1 },
 
             success: function (data) {
-                page = Math.floor(data.length / 6 + 1);
-                for (i = 0; i < data.length; i++)
+                page = Math.floor(data[1] / 6 + 1);
+                for (i = 0; i < data[0].length; i++)
                 {
                     $("<span>").addClass("cut").appendTo($(".progect-content"));
-                    var projectBox=$("<a>").attr("href", "ProjectContent.aspx?id=" +data[i].id).addClass("project-box").addClass("clearfix").css({"display":"block","cursor":"pointer"}).appendTo($(".progect-content"));
+                    var projectBox = $("<a>").attr("href", "ProjectContent.aspx?id=" + data[0][i].id).addClass("project-box").addClass("clearfix").css({ "display": "block", "cursor": "pointer" }).appendTo($(".progect-content"));
                     var content = $("<div>").addClass("clearfix").appendTo(projectBox);
                     var h2Box = $("<div>").addClass("clearfix").appendTo(content);
-                    $("<h2>").addClass("red").text(data[i].title).appendTo(h2Box);
+                    $("<h2>").addClass("red").text(data[0][i].title).appendTo(h2Box);
                     var h3Box = $("<div>").addClass("clearfix").appendTo(content);
-                    $("<h3>").text("申报日期：" + data[i].submit_time).appendTo(h3Box);
-                    $("<h3>").text("负责人" + data[i].teacher_name).appendTo(h3Box);
-                    $("<h3>").text("申报单位：" + data[i].department).appendTo(h3Box);
+                    $("<h3>").text("申报日期：" + data[0][i].submit_time).appendTo(h3Box);
+                    $("<h3>").text("负责人" + data[0][i].teacher_name).appendTo(h3Box);
+                    $("<h3>").text("申报单位：" + data[0][i].department).appendTo(h3Box);
                 }
                 for (i = 0; i < page; i++) {
                     $("<a>").attr("href", "MyProject.html?pageSize=" + 10 + "&&pageNumber=" + (i + 1)).text(i + 1).appendTo($(".midButton"));

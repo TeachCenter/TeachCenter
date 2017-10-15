@@ -179,15 +179,24 @@ function log() {
     );
     $(".select").click(function () {
         var this_ = $(this);
-        
+        var i = 0;
+        var j = 0;
         $(".select-true").text(this_.text())
         //$(".lbSelected").val(this_.text())
         $("#lbSelected").val(this_.text())
         $("#lbSelected").val(this_.text());
-        $("#Selected").val($("#selectID").val());
+        for (i = 0; i < $(".select").length; i++)
+        {
+            
+            if ($(".select").eq(i).text() == this_.text())
+            {
+                j = i;
+            }
+        }
+        $("#Selected").val($("#rptSelect_selectID_" + j).val());
 
         console.log($("#lbSelected").val())
-        console.log($("#selectID").val())
+        console.log($("#rptSelect_selectID_" + j).val())
         console.log($("#Selected").val())
 
 
