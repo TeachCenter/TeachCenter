@@ -104,8 +104,8 @@
           	}
           	for(i=0;i<page;i++)
           	{
-          	    $("<a>").attr("href", "DevelopList.html?type=" + window.location.search.substr(6) + "&&page=" + (i + 1)).text(i + 1).appendTo($(".midButton"));
-          		
+          	    $("<a>").attr("href", "DevelopList.aspx?type=" + type + "&&page=" + (i + 1)).text(i + 1).appendTo($(".midButton"));
+
           	}
           	if (page < 6) {
           	    $(".midButtonBox").css({ "width": page * 40 })

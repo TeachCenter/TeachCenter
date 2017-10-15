@@ -47,7 +47,7 @@ public partial class Display_MasterPage : System.Web.UI.MasterPage
             if (Session["PngLogin"] != null)
             {
                 if (TextBox1.Value != Session["PngLogin"].ToString())
-                    JSHelper.AlertThenRedirect("验证码错误！", "main-index.aspx");
+                    JSHelper.ShowAlert("验证码错误！");
                 else
                     using (var db = new TeachingCenterEntities())
                     {
@@ -59,13 +59,13 @@ public partial class Display_MasterPage : System.Web.UI.MasterPage
                                 CookieHelper.SetCookie("TeacherNumber", txtID.Text, DateTime.Now.AddDays(30));
                                 CookieHelper.SetCookie("TeacherPwd", txtPwd.Text, DateTime.Now.AddDays(30));
                             }
-                            JSHelper.AlertThenRedirect("登陆成功！", "main-index.aspx");
+                            JSHelper.AlertThenRedirect("登陆成功！","main-index.aspx");
                             Session["TeacherNumber"] = id;
                             //Server.Transfer("Index.aspx");
                             //JSHelper.js("window.history.go(0);");
                         }
                         else
-                            JSHelper.AlertThenRedirect("密码错误！", "main-index.aspx");
+                            JSHelper.ShowAlert("密码错误！");
                     }
             }
 

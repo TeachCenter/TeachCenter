@@ -25,7 +25,7 @@
 			<div class="inform clearfix">
 				<div class="inform-header clearfix">
 			 		<h1>通知公告</h1>
-			 		<a class="more" href="">MORE >></a>
+			 		<a class="more" href="NoticeList.aspx?page=1">MORE >></a>
 			 	</div>
 		 		<ul class="notice">
 		 			
