@@ -28,11 +28,12 @@ public class Search_Handler : IHttpHandler {
         try
         {
             //string key = context.Request.QueryString["key"].ToString();
-            string key = "1";
+            string key = context.Request.Form["key"];
+            //string key = "ha";
             int page = 1;
             try
             {
-                page = Convert.ToInt32(context.Request.QueryString["page"].ToString());
+                page = Convert.ToInt32(context.Request.Form["page"]);
             }
             catch
             {
@@ -61,7 +62,7 @@ public class Search_Handler : IHttpHandler {
                               title = it.ActivitySummary_title
                           };
                 var de = from it in db.Develop
-                         where it.Develop_title.Contains(key) || it.Develop_content.Contains(key)
+                         where it.Develop_title.Contains( key) || it.Develop_content.Contains(key)
                          select new Article
                          {
                              id = it.Develop_id,
@@ -76,51 +77,55 @@ public class Search_Handler : IHttpHandler {
                           {
                               id = it.id,
                               content = it.body,
-                              href = "EducationSource.aspx?id=",
+                              href = "SrcContent.aspx?id=",
                               title = it.title,
                               times = it.publish_time
                           };
                 List<Article> article = new List<Article>();
-                foreach(var i in ac)
-                {
-                    Article ar = new Article();
-                    ar.id = i.id;
-                    ar.time = i.time;
-                    ar.title = i.title;
-                    ar.content = MyHtmlHelper.RemoveTags( context.Server.HtmlDecode( i.content));
-                    ar.href = i.href + i.id;
-                    article.Add(ar);
-                }
-                foreach (var i in asu)
-                {
-                    Article ar = new Article();
-                    ar.id = i.id;
-                    ar.time = i.time;
-                    ar.title = i.title;
-                    ar.content = MyHtmlHelper.RemoveTags( context.Server.HtmlDecode( i.content));
-                    ar.href = i.href + i.id;
-                    article.Add(ar);
-                }
-                foreach (var i in de)
-                {
-                    Article ar = new Article();
-                    ar.id = i.id;
-                    ar.time = i.time;
-                    ar.title = i.title;
-                    ar.content = MyHtmlHelper.RemoveTags(context.Server.HtmlDecode( i.content));
-                    ar.href = i.href + i.id;
-                    article.Add(ar);
-                }
-                foreach (var i in edu)
-                {
-                    Article ar = new Article();
-                    ar.id = i.id;
-                    ar.time = Convert.ToDateTime(i.time);
-                    ar.title = i.title;
-                    ar.content = MyHtmlHelper.RemoveTags( context.Server.HtmlDecode( i.content));
-                    ar.href = i.href + i.id;
-                    article.Add(ar);
-                }
+                //if(ac!=null)
+                    foreach(var i in ac)
+                    {
+                        Article ar = new Article();
+                        ar.id = i.id;
+                        ar.time = i.time;
+                        ar.title = i.title;
+                        ar.content = MyHtmlHelper.RemoveTags( context.Server.HtmlDecode( i.content));
+                        ar.href = i.href + i.id;
+                        article.Add(ar);
+                    }
+                //if(asu!=null)
+                    foreach (var i in asu)
+                    {
+                        Article ar = new Article();
+                        ar.id = i.id;
+                        ar.time = i.time;
+                        ar.title = i.title;
+                        ar.content = MyHtmlHelper.RemoveTags( context.Server.HtmlDecode( i.content));
+                        ar.href = i.href + i.id;
+                        article.Add(ar);
+                    }
+                //if(de!=null)
+                    foreach (var i in de)
+                    {
+                        Article ar = new Article();
+                        ar.id = i.id;
+                        ar.time = i.time;
+                        ar.title = i.title;
+                        ar.content = MyHtmlHelper.RemoveTags(context.Server.HtmlDecode( i.content));
+                        ar.href = i.href + i.id;
+                        article.Add(ar);
+                    }
+                //if(edu!=null)
+                    foreach (var i in edu)
+                    {
+                        Article ar = new Article();
+                        ar.id = i.id;
+                        ar.time = Convert.ToDateTime(i.time);
+                        ar.title = i.title;
+                        ar.content = MyHtmlHelper.RemoveTags( context.Server.HtmlDecode( i.content));
+                        ar.href = i.href + i.id;
+                        article.Add(ar);
+                    }
                 int count = article.Count;
 
                 article.Sort(SortList);

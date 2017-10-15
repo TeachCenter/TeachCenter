@@ -63,8 +63,7 @@
 
                 }
                 for (i = 0; i < page; i++) {
-                    $("<a>").attr("href", "ActivityList.aspx?type=" + window.location.search.substr(6) ).text(i + 1).appendTo($(".midButton"));
-               
+                    $("<a>").attr("href", "ActivityList.aspx?type=" + type + "&&page=" + (i + 1)).text(i + 1).appendTo($(".midButton"));
                 }
               
                 if (page <= 6) {

@@ -1,15 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Display/MasterPage.master" AutoEventWireup="true" CodeFile="Search.aspx.cs" Inherits="Display_Search" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Display/MasterPage.master" AutoEventWireup="true" CodeFile="NoticeList.aspx.cs" Inherits="Display_NoticeList" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    	<link rel="stylesheet" href="css/intro.css" />
+        	<link rel="stylesheet" href="css/intro.css" />
 	<link rel="stylesheet" href="css/progect.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div class="main">
+      <div class="main">
 
 			<div class="center" style="background-color: #FFFFFF;margin-bottom: 32px;">
-				<input class="Search search1" value="搜索结果"></input>
-                <a  class="search-button1" style="background-image:url(./images/search1.png);top: 14px;right: 18px;display: block;position: absolute;width: 30px; height: 30px;background-repeat: no-repeat;"></a>
+                <h1 style="margin-top:32px; display: block;text-align: center;width: 100%;line-height: 60px; height: 60px;font-size: 28px;">通知公告</h1>
 				<div class="passage-content1" ></div>
 				<div class="buttons clearfix">
             <a class="lleft-button"></a>
@@ -28,24 +27,26 @@
 		</div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
-    <script>
-	var page;
+        <script>
+    var a = window.location.href;
+    var s = a.indexOf("?");
+    var t = a.substring(s + 1);// t就是?后面的东西了 
+    var page = t.substr(5, t.length - 5);
+    //console.log(page)
 	var i=0;
 	$(document).ready(function () {
-	    $(".Search").val(window.location.search.substr(5))
-	    var searchwords = window.location.search.substr(5);
 		$.ajax({   
-          url: "./Ajax/Search_Handler.ashx",
+		    url: "./Ajax/Notice_Handler.ashx",
           type: 'POST',
           dataType: "JSON",
           async: true,
-          data: { "key": searchwords },
+          data: {  "page": page },
     
           success: function(data) {
           	page = Math.floor(data[0] / 6 + 1);
           	for(i=0;i<page;i++)
           	{
-          		$("<a>").attr("href","ActivityList.html?type="+window.location.search.substr(6)+"&&page="+(i+1)).text(i+1).appendTo($(".midButton"));
+          	    $("<a>").attr("href", "Notice.aspx?page=" + (i + 1)).text(i + 1).appendTo($(".midButton"));
           		
           	}
           	if(page<=6)
@@ -60,14 +61,12 @@
           	
           	for(i=0;i<data[1].length;i++)
           	{
-          	    var content = $("<div>").addClass("passage").appendTo($(".passage-content1"));
-          	    var replacetext = "<span style='color:" + "#D6000F" + ";'>" + searchwords + "</span>"
-          	    var objects = data[1][i].title.replace(searchwords, replacetext);
-          	    $("<h2>").html(objects).appendTo(content);
+          	    var content = $("<a>").attr("href", data[1][i].noticeHref).addClass("passage clearfix").appendTo($(".passage-content1"));
+          		$("<h2>").text(data[1][i].noticeTitle).appendTo(content);
           		var pContent=$("<div>").appendTo(content);
-          		$("<p>").text(data[1][i].content).appendTo(pContent);
-          		$("<h3>").text(" 发布时间："+data[1][i].time.substr(0,10)).appendTo(content);
-          		$("<a>").attr("href",data[1][i].href).text("查看文章").appendTo(content);
+          		$("<p>").text(data[1][i].noticeContent).appendTo(pContent);
+          		$("<h3>").text(" 发布时间：" + data[1][i].noticeTime.substr(0, 10)).appendTo(content);
+          		$("<a>").attr("href", data[1][i].noticeHref).text("查看通知").appendTo(content);
           	}
           	
           	
@@ -111,22 +110,8 @@
 		}
 		turnPage();
 		
-		$(".Search").on({
-		    focus: function () {
-		        $(".Search").val("");
-		    },
-		    blur: function () {
 
-		    }
-		})
-
-		$(".search-button1").click(function () {
-		    console.log('66');
-		    window.location.href = 'Search.aspx?key=' + $(".Search").val();
-
-		})
 	})
-		
-	</script>
+    </script>
 </asp:Content>
 

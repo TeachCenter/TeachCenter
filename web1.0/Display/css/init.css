@@ -100,7 +100,6 @@ ul li{
 }
 .center{
     width:1200px;
-    height: 100%;
     margin:0 auto;
     position: relative;
 }
@@ -259,6 +258,7 @@ ul li{
     outline:medium;
     color: #808080;
     margin-bottom: 6px;
+    box-sizing:content-box
 }
 
 .forget-password{

@@ -91,15 +91,24 @@
           	var j=0;
           	page=Math.floor(data[1]/6+1);
           	
-          	for(i=0;i<data[0].length;i++)
-          	{
-          		$("<a>").addClass("left-content-nav-content").attr("href",data[0][i].ActivityCategory_href).text(data[0][i].ActivityCategory_name).appendTo($(".left-content"));
+          	//for(i=0;i<data[0].length;i++)
+          	//{
+          	//	$("<a>").addClass("left-content-nav-content").attr("href",data[0][i].ActivityCategory_href).text(data[0][i].ActivityCategory_name).appendTo($(".left-content"));
           		
+              //}
+          	for (i = 0; i < data[0].length; i++) {
+          	    if (type == data[0][i].ActivityCategory_id) {
+          	        $("<a>").addClass("left-content-nav-content-select").attr("href", data[0][i].ActivityCategory_href).text(data[0][i].ActivityCategory_name).appendTo($(".left-content"));
+          	    }
+          	    else {
+
+          	        $("<a>").addClass("left-content-nav-content").attr("href", data[0][i].ActivityCategory_href).text(data[0][i].ActivityCategory_name).appendTo($(".left-content"));
+
+          	    }
           	}
           	for(i=0;i<page;i++)
           	{
-          		$("<a>").attr("href","ActivityList.html?type="+window.location.search.substr(6)+"&&page="+(i+1)).text(i+1).appendTo($(".midButton"));
-
+          		$("<a>").attr("href", "ActivitySummaryList.aspx?type=" + type + "&&page=" + (i + 1)).text(i + 1).appendTo($(".midButton"));
           	}
           	if (page < 6) {
           	    $(".midButtonBox").css({ "width": page * 40 })
