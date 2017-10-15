@@ -99,8 +99,10 @@
     
 	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
     <script>
-        var id = window.location.search.substr(4);
         var i = 0;
+        var str = window.location.search;
+        var pageSize = str.substr(str.indexOf("type") + 11, str.indexOf("&&") - 10);
+        var pageNumber = str.substr(str.indexOf("pageNumber") + 11);
         var page;
         var w;
         if (w > 1200) {
@@ -115,7 +117,7 @@
             url: "./Ajax/MyProject.ashx",
             dataType: "JSON",
             async: false,
-            data: { "pageSize":9 ,"pageNumber":1 },
+            data: { "pageSize": 9, "pageNumber": pageNumber },
 
             success: function (data) {
                 page = Math.floor(data[1] / 6 + 1);
