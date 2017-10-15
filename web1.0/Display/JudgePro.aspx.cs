@@ -11,6 +11,11 @@ public partial class Display_JudgePro : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Session["TeacherNumber"] = 1;
+
+        //判断是不是评审
+        if (!TeacherHelper.isJudge(Session["TeacherNumber"].ToString()))
+            liJudge.Visible = false;
+
         if (!IsPostBack)
         {
             int judge_id = 1;
