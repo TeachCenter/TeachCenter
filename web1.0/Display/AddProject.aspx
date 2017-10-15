@@ -59,12 +59,12 @@
         <div class="left-nav">
 		<img src="./images/logo-big.png" alt="">
 		<ul>
-			<li class="dif-li"><a href="Person-index.aspx">个人主页</a></li>
+			<li><a href="Person-index.aspx">个人主页</a></li>
 			<li><a href="EditInfo.aspx">修改信息</a></li>
-			<li><a href="MyProject.aspx">项目管理</a></li>
+			<li class="dif-li"><a href="MyProject.aspx?pageNumber=1">项目管理</a></li>
 			<li><a href="MyServiceList.aspx">服务管理</a></li>
 			<li><a href="MyActivityList.aspx">活动管理</a></li>
-			<li><a href="MyJudgePro.aspx">评审服务</a></li>
+			<li><a href="MyJudgePro.aspx?pageNumber=1">评审服务</a></li>
 		</ul>
 	</div>
            	<div class="right-content">
@@ -136,7 +136,7 @@
     <script >
         function ShowBrowse()  
         {  
-            var file1 = document.getElementById("ContentPlaceHolder1_FileUp");
+            var file1 = document.getElementById("FileUp");
             if(file1)  
             { 
                 file1.click();  
