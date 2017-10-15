@@ -9,7 +9,7 @@
 
 			<div class="center" style="background-color: #FFFFFF;margin-bottom: 32px;">
 				<input class="Search search1" value="搜索结果"></input>
-                <a  class="search-button" style="background-image:url(./images/search1.png);top: 14px;right: 18px;"></a>
+                <a  class="search-button1" style="background-image:url(./images/search1.png);top: 14px;right: 18px;display: block;position: absolute;width: 30px; height: 30px;background-repeat: no-repeat;"></a>
 				<div class="passage-content1" ></div>
 				<div class="buttons clearfix">
             <a class="lleft-button"></a>
@@ -32,13 +32,14 @@
 	var page;
 	var i=0;
 	$(document).ready(function () {
+	    $(".Search").val(window.location.search.substr(5))
 	    var searchwords = window.location.search.substr(5);
 		$.ajax({   
           url: "./Ajax/Search_Handler.ashx",
           type: 'POST',
           dataType: "JSON",
           async: true,
-          
+          data: { "key": searchwords },
     
           success: function(data) {
           	page = Math.floor(data[0] / 6 + 1);
@@ -119,7 +120,7 @@
 		    }
 		})
 
-		$(".search-button").click(function () {
+		$(".search-button1").click(function () {
 		    console.log('66');
 		    window.location.href = 'Search.aspx?key=' + $(".Search").val();
 

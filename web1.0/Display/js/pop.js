@@ -1,10 +1,10 @@
 
-$(".mask").css("height",$(html).height())
-$(".log-box-form").css("top", $(html).scrollTop() + ($(window).height() - parseInt($(".log-box-form").css("height"))) / 2)
-$(".sign-box-form").css("top", $(html).scrollTop() + ($(window).height() - parseInt($(".log-box-form").css("height"))) / 2)
+$(".mask").css("height", $(document).height())
+$(".log-box-form").css("top", $(document).scrollTop() + ($(window).height() - parseInt($(".log-box-form").css("height"))) / 2)
+$(".sign-box-form").css("top", $(document).scrollTop() + ($(window).height() - parseInt($(".log-box-form").css("height"))) / 2)
 $(window).scroll(function(){
-    $(".log-box-form").css("top", $(html).scrollTop() + ($(window).height() - parseInt($(".log-box-form").css("height"))) / 2)
-    $(".sign-box-form").css("top", $(html).scrollTop() + ($(window).height() - parseInt($(".log-box-form").css("height"))) / 2)
+    $(".log-box-form").css("top", $(document).scrollTop() + ($(window).height() - parseInt($(".log-box-form").css("height"))) / 2)
+    $(".sign-box-form").css("top", $(document).scrollTop() + ($(window).height() - parseInt($(".log-box-form").css("height"))) / 2)
 })
 $(".log").click(function(){
 	pop($(".log-box-form"),"left");

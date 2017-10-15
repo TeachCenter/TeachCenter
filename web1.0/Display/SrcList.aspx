@@ -7,7 +7,7 @@
 		<div class="main">
 			<div class="center clearfix">
 				<div class="content">
-					<h1>教学资源</h1>
+					<h1 class="title">教学资源</h1>
 					<div class="passage-content" style="height: 1340px;">
                         
 					</div>					

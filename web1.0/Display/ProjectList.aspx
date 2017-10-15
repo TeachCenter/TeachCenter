@@ -7,7 +7,7 @@
 		<div class="main">
 			<div class="center clearfix">
 				<div class="content">
-					<h1>项目列表</h1>
+					<h1 class="title">项目列表</h1>
 					<div class="passage-content" style="height: 1340px;"></div>
 					<!-- <div class="passage">
 						<h2>这里是文章标题</h2>

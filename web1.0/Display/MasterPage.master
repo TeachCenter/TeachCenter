@@ -48,9 +48,9 @@
 
 				<div class="goto">
 					<div class="center">
-						<a href="" class="logo"></a>
-						<input id="search" value="请输入关键字" type="text" class="search">
-						<a href="" class="search-button"></a>
+						<a href="main-index.aspx" class="logo"></a>
+						<input id="search" placeholder="请输入关键字" type="text" class="search">
+						<a  class="search-button"></a>
 					</div>
 				</div>
 				<div class="nav">
