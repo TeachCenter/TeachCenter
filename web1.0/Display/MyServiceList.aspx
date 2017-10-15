@@ -43,8 +43,7 @@
 		        </div>
             </ItemTemplate>
         </asp:Repeater>
-<<<<<<< HEAD
-=======
+
          <div class="buttons clearfix">
             <a class="lleft-button"></a>
 
@@ -58,7 +57,7 @@
             <a class="right-button"></a>
             <a class="rright-button" style="float: right;"></a>
         </div>
->>>>>>> lyfdev
+
             <input type="hidden" id="count" runat="server" value=""/>
 
 	</div>
