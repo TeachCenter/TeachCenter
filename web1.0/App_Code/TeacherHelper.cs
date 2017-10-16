@@ -48,7 +48,7 @@ public class TeacherHelper
         using (var db = new TeachingCenterEntities())
         {
             var teacher = from it in db.Teacher where it.number == number select it;
-            if (teacher.ToList().Count == 0)
+            if (teacher.Count() == 0)
                 return true;
             else
                 return false;

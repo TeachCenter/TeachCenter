@@ -77,11 +77,11 @@
 			
 			<dd>
 				<ul class="dropDown-menu menu radius box-shadow" style="width:100%; background-color:rgba(238,238,238,0.98);">
-                            <li><a data-title="教学发展添加" data-href="DevelopAdd.aspx" href="javascript:void(0)"><i class="Hui-iconfont">&#xe6d5;</i> 教学发展添加</a></li>
-                            <li><a data-title="添加项目" data-href="javascript:window.location.href=ProCategoryAdd.aspx;"  href="javascript:void(0)"><i class="Hui-iconfont">&#xe6d5;</i> 添加项目</a></li>
-                            <li><a data-title="添加活动" data-href="ActivityAdd.aspx" href="javascript:void(0)"><i class="Hui-iconfont">&#xe6d5;</i> 添加活动</a></li>
-                            <li><a data-title="添加活动总结" data-href="ActivitySummaryAdd.aspx"  href="javascript:void(0)"><i class="Hui-iconfont">&#xe616;</i> 添加活动总结</a></li>
-                            <li><a data-title="添加教学资源" data-href="EduSrcAdd.aspx" href="javascript:void(0)"><i class="Hui-iconfont">&#xe616;</i> 添加教学资源</a></li>
+                            <li><a data-title="教学发展添加" data-href="DevelopAdd.aspx" href="javascript:void(0)"><i class="Hui-iconfont">&#xe600;</i> 教学发展添加</a></li>
+                            <li><a data-title="添加项目" data-href="javascript:window.location.href=ProCategoryAdd.aspx;"  href="javascript:void(0)"><i class="Hui-iconfont">&#xe600;</i> 添加项目</a></li>
+                            <li><a data-title="添加活动" data-href="ActivityAdd.aspx" href="javascript:void(0)"><i class="Hui-iconfont">&#xe600;</i> 添加活动</a></li>
+                            <li><a data-title="添加活动总结" data-href="ActivitySummaryAdd.aspx"  href="javascript:void(0)"><i class="Hui-iconfont">&#xe600;</i> 添加活动总结</a></li>
+                            <li><a data-title="添加教学资源" data-href="EduSrcAdd.aspx" href="javascript:void(0)"><i class="Hui-iconfont">&#xe600;</i> 添加教学资源</a></li>
 			</ul>
 		</dd>
             </li>

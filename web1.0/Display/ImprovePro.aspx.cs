@@ -12,7 +12,7 @@ public partial class Display_ImprovePro : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session["TeacherNumber"] = 1;
+        //Session["TeacherNumber"] = 1;
         //判断是不是评审
         if (!TeacherHelper.isJudge(Session["TeacherNumber"].ToString()))
             liJudge.Visible = false;

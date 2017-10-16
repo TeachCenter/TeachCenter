@@ -53,7 +53,7 @@
                         <ItemTemplate>
 				            <tr class="text-c">
 					            <td><input type="checkbox" runat="server" id="isDelete"></td>					
-					            <td class="text-l"><u style="cursor:pointer" class="text-primary")" title="查看"><a href="ProCategoryContent.aspx?id=<%# Eval("id")%>" data-href="ProCategoryContent.aspx?id=<%# Eval("id")%>" target="_blank"><%# Eval("name")%></a></u></td>	
+					            <td class="text-l"><u style="cursor:pointer" class="text-primary")" title="查看"><a href="ProgectContent.html?id=<%# Eval("id")%>" target="_blank"><%# Eval("name")%></a></u></td>	
                                 <td><%# UeditorHelper.NoHTML(Server.HtmlDecode(Eval("project_content").ToString())) %><input type="hidden" runat="server" id="id" value=<%# Eval("id")%> /></td>
 					            <td><%# AdminHelper.judgeStage(Convert.ToInt32(Eval("stage")))%></td>
 					            <td><%# Eval("end_time") %></td>

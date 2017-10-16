@@ -58,7 +58,7 @@
             $(document).ready(function () {
                 var id = window.location.search.substr(4);
                 var content_id = $("#content_id").val();
-                $("<iframe>").addClass("pdf").attr("src", "pdfJs/generic/web/viewer1.html?id=" + content_id).appendTo("#divPdf");
+                $("<iframe>").addClass("pdf").attr("src", "pdfJs/generic/web/viewer.html?id=" + content_id).appendTo("#divPdf");
             })       
         </script>
         <div class="row cl">

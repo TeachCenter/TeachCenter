@@ -36,7 +36,7 @@ public class Notice_Handler : IHttpHandler
             var activity = (from it in db.Activity
                             where it.Activity_isdeleted == 0
                             orderby it.Activity_time descending
-                            select it).ToList().Take(8).Select(it =>
+                            select it).ToList().Take(6).Select(it =>
                             new
                             {
                                 noticeTitle = it.Activity_title,
@@ -46,7 +46,7 @@ public class Notice_Handler : IHttpHandler
             var sourse = (from it in db.EducateSource
                           where it.is_deleted == 0
                           orderby it.publish_time descending
-                          select it).ToList().Take(8).Select(
+                          select it).ToList().Take(6).Select(
             it => new Notice
             {
                 noticeTitle = it.title,
@@ -56,7 +56,7 @@ public class Notice_Handler : IHttpHandler
             var project = (from it in db.ProjectCategory
                            where it.is_deleted == 0
                            orderby it.publish_time descending
-                           select it).ToList().Take(8).Select(
+                           select it).ToList().Take(6).Select(
                            it => new Notice
                            {
                                noticeTitle = it.name,
@@ -83,14 +83,14 @@ public class Notice_Handler : IHttpHandler
             foreach (var i in project)
             {
                 Notice x = new Notice();
-                x.noticeHref = "ProjectContent.aspx?id=" + i.noticeHref;
+                x.noticeHref = "ProgectContent.aspx?id=" + i.noticeHref;
                 x.noticeTime = i.noticeTime;
                 x.noticeTitle = i.noticeTitle;
                 notice.Add(x);
             }
             notice.Sort(SortList);
             int count = notice.Count;
-            notice.Skip((page - 1) * 10).Take(10);
+            notice =  notice.Skip((page - 1) * 6).Take(6).ToList();
 
             ArrayList all = new ArrayList();
             all.Add(count);

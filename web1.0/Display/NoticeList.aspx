@@ -46,7 +46,7 @@
           	page = Math.floor(data[0] / 6 + 1);
           	for(i=0;i<page;i++)
           	{
-          	    $("<a>").attr("href", "Notice.aspx?page=" + (i + 1)).text(i + 1).appendTo($(".midButton"));
+          	    $("<a>").attr("href", "NoticeList.aspx?page=" + (i + 1)).text(i + 1).appendTo($(".midButton"));
           		
           	}
           	if(page<=6)

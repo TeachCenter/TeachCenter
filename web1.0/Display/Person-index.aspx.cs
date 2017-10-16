@@ -10,7 +10,7 @@ public partial class Display_Person_index : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session["TeacherNumber"] = 1;
+        //Session["TeacherNumber"] = 1;
 
         //判断是不是评审
         if (!TeacherHelper.isJudge(Session["TeacherNumber"].ToString()))
@@ -18,7 +18,7 @@ public partial class Display_Person_index : System.Web.UI.Page
 
         try
         {
-            int teacher_id = Convert.ToInt32(Session["TeacherNumber"].ToString());
+            int teacher_id = Convert.ToInt32(TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString()));
             using (var db = new TeachingCenterEntities())
             {
                 var teacher = (from it in db.Teacher where it.id == teacher_id select it).FirstOrDefault();
@@ -74,12 +74,28 @@ public partial class Display_Person_index : System.Web.UI.Page
 
     public int getJudgeNumber()
     {
-        int judge_id = Convert.ToInt32(Session["TeacherNumber"].ToString());
-        using (var db = new TeachingCenterEntities())
+        try
         {
-            var project = from it in db.ProjectJudge where it.judge_id == judge_id && it.is_pass == -1 select it;
-            return project.Count();
+            int judge_id = Convert.ToInt32(TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString()));
+            using (var db = new TeachingCenterEntities())
+            {
+                var project = from it in db.ProjectJudge where it.judge_id == judge_id && it.is_pass == -1 select it;
+                return project.Count();
+            }
+        }
+        catch
+        {
+            return 0;
         }
             
+    }
+
+    protected void lbtReturn_Click(object sender, EventArgs e)
+    {
+        //Session.setAtrrbiute("user", null);
+        Session.Remove("TeacherNumber");
+        //Session["TeacherNumber"]
+        //JSHelper.js("window.location.href='main-index.aspx';");
+        Server.Transfer("main-index.aspx");
     }
 }

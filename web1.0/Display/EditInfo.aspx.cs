@@ -19,36 +19,36 @@ public partial class Display_EditInfo : System.Web.UI.Page
             if (!TeacherHelper.isJudge(Session["TeacherNumber"].ToString()))
                 liJudge.Visible = false;
 
-            Session["TeacherNumber"] = 1;
-        if (!IsPostBack)
-        {
-            DataTable dt = DepartmentHelper.getDepartment();
-            rptSelect.DataSource = dt;
-            rptSelect.DataBind();
-
-            int teacher_id = 1;
-            if (Session["TeacherNumber"] != null)
-                teacher_id = Convert.ToInt32(Session["TeacherNumber"].ToString());
-            else
-                Response.Redirect("main-index.aspx");
-            using (var db = new TeachingCenterEntities())
+            //Session["TeacherNumber"] = 1;
+            if (!IsPostBack)
             {
-                var teacher = (from it in db.Teacher where it.id == teacher_id select it).FirstOrDefault();
-                txtName.Text = teacher.name;
-                txtNumber.Text = teacher.number;
-                txtEmail.Text = teacher.email;
-                txtPhone.Text = teacher.phone_number;
-                txtRank.Text = teacher.rank;
-                depart.Text = teacher.department;
-                lbType.Text = teacher.is_judge == 0 ? "教师" : "评委";
-                if (teacher.is_judge == 1)
-                    applyJudge.Visible = false;
-                HtmlInputHidden gender = FindControl("gender") as HtmlInputHidden;
-                gender.Value = teacher.gender.ToString();
-                HtmlInputHidden department = FindControl("lbSelected") as HtmlInputHidden;
-                department.Value = teacher.department;
+                DataTable dt = DepartmentHelper.getDepartment();
+                rptSelect.DataSource = dt;
+                rptSelect.DataBind();
+
+                int teacher_id = 1;
+                if (Session["TeacherNumber"] != null)
+                    teacher_id = Convert.ToInt32(TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString()));
+                else
+                    Response.Redirect("main-index.aspx");
+                using (var db = new TeachingCenterEntities())
+                {
+                    var teacher = (from it in db.Teacher where it.id == teacher_id select it).FirstOrDefault();
+                    txtName.Text = teacher.name;
+                    txtNumber.Text = teacher.number;
+                    txtEmail.Text = teacher.email;
+                    txtPhone.Text = teacher.phone_number;
+                    txtRank.Text = teacher.rank;
+                    depart.Text = teacher.department;
+                    lbType.Text = teacher.is_judge == 0 ? "教师" : "评委";
+                    if (teacher.is_judge == 1)
+                        applyJudge.Visible = false;
+                    HtmlInputHidden gender = FindControl("gender") as HtmlInputHidden;
+                    gender.Value = teacher.gender.ToString();
+                    HtmlInputHidden department = FindControl("lbSelected") as HtmlInputHidden;
+                    department.Value = teacher.department;
+                }
             }
-        }
         }
         catch
         {
