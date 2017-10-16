@@ -76,7 +76,7 @@
 	</div>
 	<div class="right-content">
 		
-        <div class="progect-content" style="height:950px;" >
+        <div class="progect-content hei"  >
             <div class="clearfix">
                 <h1>我的项目</h1>
                 <a href="AddProject.aspx" class="creat">+新建项目</a>

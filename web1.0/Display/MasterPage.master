@@ -40,6 +40,10 @@
 						</a>
 					</div>
                     <div id="divPerson" runat="server" visible="false" class="center">
+                        <a class="person">
+							注销
+						</a>
+						<span class="enter-line"></span>
 						<a class="person" target="_blank"  href="Person-index.aspx">
 							个人中心
 						</a>	

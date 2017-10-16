@@ -1,3 +1,23 @@
+if ($(".hei").height() < $(".p-box").height())
+{
+    $(".hei").css({ "height": $(".p-box").height() + 250 })
+   
+}
+timer = setTimeout(function () {
+    if ($(".content").height() < 600) {
+
+        $(".passage-content1").addClass("hei")
+
+    }
+    else {
+
+    }
+    if ($(".right-content").height() < 600) {
+        $(".passage-content").addClass("hei")
+
+
+    }
+},50);
 
 $(".mask").css("height", $(document).height())
 if (document.body.clientHeight >= document.documentElement.clientHeight) {
@@ -71,13 +91,16 @@ function turn(argument, direction, to) {
 function search() {
     $(".search").on({
         focus: function () {
-            $(".search").val("");
+            
         },
         blur: function () {
-            $(".search").val("请输入关键字");
+          
         }
     })
 }
+$(".search-button").click(function () {
+    window.location.href = "Search.aspx?key=" + $(".search").val();
+})
 function init() {
     $(".number").val("工号");
     $(".name").val("姓名");

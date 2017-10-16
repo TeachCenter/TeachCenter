@@ -12,7 +12,7 @@
 				</div>
 				<div class="right-content">
 					<h1 class="title-name"></h1>
-					<div class="passage-content" style="height: 1140px;"></div>
+					<div class="passage-content" ></div>
 					<!-- <div class="passage">
 						<h2>这里是文章标题</h2>
 						<div>
@@ -117,7 +117,7 @@
           	}
           	for(i=0;i<data[2].length;i++)
           	{
-          		var content= $("<div>").addClass("passage").appendTo($(".passage-content"));
+          	    var content = $("<a>").addClass("passage").addClass("clearfix").attr("href", (data[2][i].Develop_link == "" ? data[2][i].Develop_href + data[2][i].Develop_id : data[2][i].Develop_link)).appendTo($(".passage-content"));
           		$("<h2>").text(data[2][i].Develop_title).appendTo(content);
           		var pContent=$("<div>").appendTo(content);
           		$("<p>").text(data[2][i].Develop_content).appendTo(pContent);

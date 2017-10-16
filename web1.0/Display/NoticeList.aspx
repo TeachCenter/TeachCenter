@@ -7,9 +7,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
       <div class="main">
 
-			<div class="center" style="background-color: #FFFFFF;margin-bottom: 32px;">
+			<div class="center content" style="background-color: #FFFFFF;margin-bottom: 32px;">
                 <h1 style="margin-top:32px; display: block;text-align: center;width: 100%;line-height: 60px; height: 60px;font-size: 28px;">通知公告</h1>
-				<div class="passage-content1" ></div>
+				<div class="passage-content1 "  ></div>
 				<div class="buttons clearfix">
             <a class="lleft-button"></a>
 

@@ -13,7 +13,7 @@
 					<h2 class="publish"></h2>
                     <asp:LinkButton ID="lbtAdd" runat="server" OnClick="lbtAdd_Click" Text="添加活动" Class="add"></asp:LinkButton>
 					<div class="p-box">
-						
+
 					</div>
 				</div>
 			</div>

@@ -12,7 +12,7 @@
 				</div>
 				<div class="right-content">
 					<h1 class="title-name"></h1>
-					<div class="passage-content" style="height: 1140px;"></div>
+					<div class="passage-content" ></div>
 
 					<div class="buttons clearfix">
 						<a  class="lleft-button"></a>
@@ -75,7 +75,7 @@
                     $(".left-button").css({ "margin-left": (400 - 40 * (6 + 2)) / 2 })
                 }
                 for (i = 0; i < data[2].length; i++) {
-                    var content = $("<div>").addClass("passage").appendTo($(".passage-content"));
+                    var content = $("<a>").attr("href", (data[2][i].Activity_href + data[2][i].Activity_id)).addClass("passage").addClass("clearfix").appendTo($(".passage-content"));
                     $("<h2>").text(data[2][i].Activity_title).appendTo(content);
                     var pContent = $("<div>").appendTo(content);
                     $("<p>").text(data[2][i].Activity_content).appendTo(pContent);

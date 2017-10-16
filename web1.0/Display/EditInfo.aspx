@@ -19,7 +19,7 @@
         }                
     </style>
 </head>
-<body>
+<body class="clearfix">
 	<div class="left-nav">
 		<img src="./images/logo-big.png" alt="">
 		<ul>

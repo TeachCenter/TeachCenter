@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="css/personal-center-init.css">
 	<link rel="stylesheet" href="css/personal-center-progect.css">
 	<script type="text/javascript"  src="./js/jquery-3.1.1.min.js"></script>
+
 </head>
 <body><form runat="server">
 	<div class="left-nav">
@@ -22,6 +23,7 @@
 		</ul>
 	</div>
     	<div class="right-content">
+            <div class="progect-content">
 		<div class="clearfix">
 			<h1>我的服务</h1>
 			<a href="Service.aspx" class="creat">+新建服务</a>
@@ -43,7 +45,7 @@
 		        </div>
             </ItemTemplate>
         </asp:Repeater>
-
+        </div>
          <div class="buttons clearfix">
             <a class="lleft-button"></a>
 
