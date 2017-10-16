@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Word;
+using Aspose.Words;
 
 /// <summary>
 /// PdfHelper 的摘要说明
@@ -22,44 +22,59 @@ public class PdfHelper
     /// <summary>
     /// 调用WPS将Word转换为Pdf
     /// </summary>
-    public static string WordToPdfWithWPS(string pWordFile, string localPath)
+    //public static string WordToPdfWithWPS(string pWordFile, string localPath)
+    //{
+    //    // 生成同名pdf文件名称
+    //    int index = pWordFile.LastIndexOf(".");
+    //    string pSavePdf = pWordFile.Substring(0, index) + ".pdf";
+    //    string result = pSavePdf;
+
+    //    // 若pdf文件已存在则返回pdf文件名
+    //    if (File.Exists(System.Web.HttpContext.Current.Server.MapPath("~/BackStage/"+ pSavePdf)))
+    //        return result;
+
+    //    // 获取word文件和pdf文件的物理路径
+    //    pWordFile = localPath + "/BackStage/" + pWordFile;
+    //    pSavePdf = localPath + "/BackStage/" + pSavePdf;
+
+    //    // 将word文件转换为pdf文件
+    //    Word.ApplicationClass mWord = new Word.ApplicationClass();
+    //    object mMissing = Type.Missing;
+    //    try
+    //    {
+    //        object mFileName = pWordFile;
+    //        mWord.Visible = false;
+    //        Word.Document mDoc = mWord.Documents.Open(ref mFileName, ref mMissing, ref mMissing, ref mMissing, ref mMissing, ref mMissing, ref mMissing, ref mMissing, ref mMissing, ref mMissing);
+    //        mDoc.ExportAsFixedFormat(pSavePdf, Word.WdExportFormat.wdExportFormatPDF, false, Word.WdExportOptimizeFor.wdExportOptimizeForPrint, Word.WdExportRange.wdExportAllDocument, 0, 0, Word.WdExportItem.wdExportDocumentWithMarkup, false, false, Word.WdExportCreateBookmarks.wdExportCreateHeadingBookmarks, false, false, false, ref mMissing);
+    //        mDoc.Close(ref mMissing, ref mMissing, ref mMissing);
+    //        return result;
+    //    }
+    //    catch (Exception)
+    //    {
+    //        throw;
+    //    }
+    //    finally
+    //    {
+    //        mWord.Quit(ref mMissing, ref mMissing, ref mMissing);
+    //        GC.Collect();
+    //        GC.WaitForPendingFinalizers();
+    //        GC.Collect();
+    //        GC.WaitForPendingFinalizers();
+    //    }
+    //}
+
+    public static string WordToPdf(string pWordFile, string localPath)
     {
-        // 生成同名pdf文件名称
+        string result = pWordFile.Substring(0, pWordFile.LastIndexOf(".")) + ".pdf";
+        pWordFile = pWordFile.Replace("/", @"\");
+        pWordFile = localPath + @"\BackStage\" + pWordFile;
+        //读取doc文档
+        Document doc = new Document(pWordFile);
         int index = pWordFile.LastIndexOf(".");
         string pSavePdf = pWordFile.Substring(0, index) + ".pdf";
-        string result = pSavePdf;
-
-        // 若pdf文件已存在则返回pdf文件名
-        if (File.Exists(System.Web.HttpContext.Current.Server.MapPath("~/BackStage/"+ pSavePdf)))
-            return result;
-
-        // 获取word文件和pdf文件的物理路径
-        pWordFile = localPath + "/BackStage/" + pWordFile;
-        pSavePdf = localPath + "/BackStage/" + pSavePdf;
+        //保存为PDF文件，此处的SaveFormat支持很多种格式，如图片，epub,rtf 等等
+        doc.Save(pSavePdf, SaveFormat.Pdf);
         
-        // 将word文件转换为pdf文件
-        Word.ApplicationClass mWord = new Word.ApplicationClass();
-        object mMissing = Type.Missing;
-        try
-        {
-            object mFileName = pWordFile;
-            mWord.Visible = false;
-            Word.Document mDoc = mWord.Documents.Open(ref mFileName, ref mMissing, ref mMissing, ref mMissing, ref mMissing, ref mMissing, ref mMissing, ref mMissing, ref mMissing, ref mMissing);
-            mDoc.ExportAsFixedFormat(pSavePdf, Word.WdExportFormat.wdExportFormatPDF, false, Word.WdExportOptimizeFor.wdExportOptimizeForPrint, Word.WdExportRange.wdExportAllDocument, 0, 0, Word.WdExportItem.wdExportDocumentWithMarkup, false, false, Word.WdExportCreateBookmarks.wdExportCreateHeadingBookmarks, false, false, false, ref mMissing);
-            mDoc.Close(ref mMissing, ref mMissing, ref mMissing);
-            return result;
-        }
-        catch (Exception)
-        {
-            throw;
-        }
-        finally
-        {
-            mWord.Quit(ref mMissing, ref mMissing, ref mMissing);
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-        }
+        return result;
     }
 }

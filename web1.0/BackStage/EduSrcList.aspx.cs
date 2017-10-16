@@ -20,6 +20,7 @@ public partial class BackStage_EduSrcList : System.Web.UI.Page
                 {
                     // 绑定教学资源列表
                     var src = from it in db.EducateSource where it.is_deleted == 0 orderby it.publish_time descending select it;
+                    src = src.ThenByDescending(a => a.id);
                     ltSum.Text = src.Count().ToString();
                     TotalPage.Text = Math.Ceiling(src.Count() / 10.0).ToString();
                     currentPage.Text = "1";
