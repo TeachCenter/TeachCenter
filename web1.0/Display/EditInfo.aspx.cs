@@ -19,7 +19,6 @@ public partial class Display_EditInfo : System.Web.UI.Page
             if (!TeacherHelper.isJudge(Session["TeacherNumber"].ToString()))
                 liJudge.Visible = false;
 
-            Session["TeacherNumber"] = 1;
         if (!IsPostBack)
         {
             DataTable dt = DepartmentHelper.getDepartment();
@@ -28,7 +27,7 @@ public partial class Display_EditInfo : System.Web.UI.Page
 
             int teacher_id = 1;
             if (Session["TeacherNumber"] != null)
-                teacher_id = Convert.ToInt32(Session["TeacherNumber"].ToString());
+                teacher_id = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
             else
                 Response.Redirect("main-index.aspx");
             using (var db = new TeachingCenterEntities())
@@ -39,7 +38,10 @@ public partial class Display_EditInfo : System.Web.UI.Page
                 txtEmail.Text = teacher.email;
                 txtPhone.Text = teacher.phone_number;
                 txtRank.Text = teacher.rank;
-                depart.Text = teacher.department;
+                if (teacher.department != "")
+                    depart.Text = teacher.department;
+                else
+                    depart.Text = "请选择院系";
                 lbType.Text = teacher.is_judge == 0 ? "教师" : "评委";
                 if (teacher.is_judge == 1)
                     applyJudge.Visible = false;
@@ -58,7 +60,7 @@ public partial class Display_EditInfo : System.Web.UI.Page
 
     protected void applyJudge_Click(object sender, EventArgs e)
     {
-        int teacher_id = Convert.ToInt32(Session["TeacherNumber"].ToString());
+        int teacher_id = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
         using (var db = new TeachingCenterEntities())
         {
             var record = from it in db.JudgeApplication where it.teacher_id == teacher_id select it;
@@ -118,7 +120,7 @@ public partial class Display_EditInfo : System.Web.UI.Page
         {
             using (var db = new TeachingCenterEntities())
             {
-                int teacher_id = Convert.ToInt32(Session["TeacherNumber"].ToString());
+                int teacher_id = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
                 var teacher = (from it in db.Teacher where it.id == teacher_id select it).FirstOrDefault();
                 teacher.name = name;
                 teacher.gender = Convert.ToInt32(sex);

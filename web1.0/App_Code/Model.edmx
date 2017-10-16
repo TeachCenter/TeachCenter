@@ -4,16 +4,16 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TeachingCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="TeachingCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityType Name="Activity">
           <Key>
             <PropertyRef Name="Activity_id" />
           </Key>
           <Property Name="Activity_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Activity_title" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Activity_title" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Activity_time" Type="datetime" Nullable="false" />
           <Property Name="Activity_content" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Activity_place" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Activity_place" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="Activity_nowcount" Type="int" Nullable="false" />
           <Property Name="Activity_limitcount" Type="int" Nullable="false" />
           <Property Name="Activity_categoryid" Type="int" Nullable="false" />
@@ -497,8 +497,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
             <End Role="Service" EntitySet="Service" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TeachingCenterModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -507,10 +506,10 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
             <PropertyRef Name="Activity_id" />
           </Key>
           <Property Name="Activity_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Activity_title" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Activity_title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Activity_time" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Activity_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Activity_place" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Activity_place" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Activity_nowcount" Type="Int32" Nullable="false" />
           <Property Name="Activity_limitcount" Type="Int32" Nullable="false" />
           <Property Name="Activity_categoryid" Type="Int32" Nullable="false" />

@@ -8,7 +8,7 @@ using System.Collections;
 using System.Data;
 using System.Web.SessionState;
 
-public class MyProject : IHttpHandler {
+public class MyProject : IHttpHandler,IRequiresSessionState {
 
     public void ProcessRequest(HttpContext context)
     {
@@ -16,10 +16,10 @@ public class MyProject : IHttpHandler {
         string pageSize = context.Request["pageSize"];
         string pageIndex = context.Request["pageNumber"];
         int teacher_id = 1;
-        //if (HttpContext.Current.Session["TeacherNumber"] != null)
-        //    teacher_id = Convert.ToInt32(HttpContext.Current.Session["TeacherNumber"].ToString());
-        //else
-        //    HttpContext.Current.Response.Redirect("~/Display/main-index.aspx");
+        if (HttpContext.Current.Session["TeacherNumber"] != null)
+            teacher_id = TeacherHelper.getTeacherIDByNumber(HttpContext.Current.Session["TeacherNumber"].ToString());
+        else
+            HttpContext.Current.Response.Redirect("~/Display/main-index.aspx");
         if (string.IsNullOrEmpty(pageSize) || string.IsNullOrEmpty(pageIndex))
         {
             context.Response.Write("");
