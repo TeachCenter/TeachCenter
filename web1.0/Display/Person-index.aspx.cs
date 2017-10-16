@@ -10,15 +10,13 @@ public partial class Display_Person_index : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //Session["TeacherNumber"] = 1;
-
         //判断是不是评审
         if (!TeacherHelper.isJudge(Session["TeacherNumber"].ToString()))
             liJudge.Visible = false;
 
         try
         {
-            int teacher_id = Convert.ToInt32(TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString()));
+            int teacher_id = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
             using (var db = new TeachingCenterEntities())
             {
                 var teacher = (from it in db.Teacher where it.id == teacher_id select it).FirstOrDefault();

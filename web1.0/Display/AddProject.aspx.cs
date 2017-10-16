@@ -12,12 +12,11 @@ public partial class Display_AddProject : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session["TeacherNumber"] = 1;
         this.FileUp.Attributes.Add("onchange", "javascript:return Check_FilePath();");
         if (!IsPostBack)
         {
             if (Session["TeacherNumber"] == null)
-                Response.Redirect("Login.aspx");
+                Response.Redirect("main-index.aspx");
             else
             {              
                 if (!IsPostBack)
@@ -36,7 +35,7 @@ public partial class Display_AddProject : System.Web.UI.Page
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
         string name = txtName.Text;
-        int teacher_id = Convert.ToInt32(Session["TeacherNumber"].ToString());
+        int teacher_id = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
         string submit_time = DateTime.Now.ToString("yyyy-MM-dd");
         string fund = txtMoney.Text;
         string filePath = FileUp.PostedFile.FileName;
@@ -56,7 +55,7 @@ public partial class Display_AddProject : System.Web.UI.Page
                 Project project = new Project();
                 project.name = name;
                 project.category = Convert.ToInt32(category.Value);
-                project.teacher_id = Convert.ToInt32(Session["TeacherNumber"].ToString());
+                project.teacher_id = teacher_id;
                 project.submit_time = DateTime.Now.ToString("yyyy-MM-dd");
                 project.fund = fund;
                 project.is_deleted = 0;
@@ -73,7 +72,7 @@ public partial class Display_AddProject : System.Web.UI.Page
                 db.ProjectStage.Add(project_stage);
                 db.SaveChanges();
 
-                Response.Write("<script>alert('新建项目成功！');</script>");
+                Response.Write("<script>alert('新建项目成功！');location.href='MyProject.aspx?pageNumber=1';</script>");
             }
         }
 

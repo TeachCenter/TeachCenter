@@ -20,7 +20,7 @@ public partial class Display_ProjectContent : System.Web.UI.Page
             project_id = Convert.ToInt32(Request.QueryString["id"]);
         }
         else
-            Response.Redirect("main-index.html");
+            Response.Redirect("main-index.aspx");
         using (var db = new TeachingCenterEntities())
         {
             var projectinfo = (from it in db.ProjectInfo where it.project_id == project_id select it).FirstOrDefault();
@@ -56,11 +56,18 @@ public partial class Display_ProjectContent : System.Web.UI.Page
 
     public string getFileName()
     {
-        int project_id = Convert.ToInt32(Request.QueryString["id"]);
-        using (var db = new TeachingCenterEntities())
+        try
         {
-            var project_stage = (from it in db.ProjectStage where it.project_id == project_id select it).FirstOrDefault();
-            return project_stage.project_file;
+            int project_id = Convert.ToInt32(Request.QueryString["id"]);
+            using (var db = new TeachingCenterEntities())
+            {
+                var project_stage = (from it in db.ProjectStage where it.project_id == project_id select it).FirstOrDefault();
+                return project_stage.project_file;
+            }
+        }
+        catch
+        {
+            return "";
         }
     }
 }

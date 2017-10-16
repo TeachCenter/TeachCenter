@@ -12,7 +12,6 @@ public partial class Display_ImprovePro : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //Session["TeacherNumber"] = 1;
         //判断是不是评审
         if (!TeacherHelper.isJudge(Session["TeacherNumber"].ToString()))
             liJudge.Visible = false;
@@ -27,7 +26,7 @@ public partial class Display_ImprovePro : System.Web.UI.Page
         else
             Response.Redirect("main-index.aspx");
         if (Session["TeacherNumber"] == null)
-            Response.Redirect("Login.aspx");
+            Response.Redirect("main-index.aspx");
         else
         {
             this.FileUp.Attributes.Add("onchange", "javascript:return Check_FilePath();");

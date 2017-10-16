@@ -8,17 +8,17 @@ using System.Collections;
 using System.Data;
 using System.Web.SessionState;
 
-public class MyJudgePro : IHttpHandler {
+public class MyJudgePro : IHttpHandler,IRequiresSessionState {
 
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/plain";
         string pageSize = context.Request["pageSize"];
         string pageIndex = context.Request["pageNumber"];
         int judge_id = 1;
-        //if (HttpContext.Current.Session["TeacherNumber"] != null)
-        //    judge_id = Convert.ToInt32(HttpContext.Current.Session["TeacherNumber"].ToString());
-        //else
-        //    HttpContext.Current.Response.Redirect("~/Display/main-index.aspx");
+        if (HttpContext.Current.Session["TeacherNumber"] != null)
+            judge_id = TeacherHelper.getTeacherIDByNumber(HttpContext.Current.Session["TeacherNumber"].ToString());
+        else
+            HttpContext.Current.Response.Redirect("~/Display/main-index.aspx");
         if (string.IsNullOrEmpty(pageSize) || string.IsNullOrEmpty(pageIndex))
         {
             context.Response.Write("");

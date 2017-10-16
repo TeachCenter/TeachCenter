@@ -10,12 +10,11 @@ public partial class Display_JudgePro : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //Session["TeacherNumber"] = 1;
         if (!IsPostBack)
         {
             int judge_id = 1;
             if (Session["TeacherNumber"] != null)
-                judge_id = Convert.ToInt32(TeacherHelper.getTeacherIDByNumber( Session["TeacherNumber"].ToString()));
+                judge_id = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
             else
                 Response.Redirect("main-index.aspx");
             int project_id = 5;
@@ -52,7 +51,7 @@ public partial class Display_JudgePro : System.Web.UI.Page
     protected void lbtnSubmit_Click(object sender, EventArgs e)
     {
         string message = txtMessage.Text;
-        int judge_id = Convert.ToInt32(TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString()));
+        int judge_id = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
         int project_id = Convert.ToInt32(Request.QueryString["id"]);
         int stage = Convert.ToInt32(Request.QueryString["stage"]);
         int is_pass = 0;
