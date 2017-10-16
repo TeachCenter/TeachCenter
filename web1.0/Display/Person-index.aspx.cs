@@ -10,12 +10,12 @@ public partial class Display_Person_index : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //判断是不是评审
-        if (!TeacherHelper.isJudge(Session["TeacherNumber"].ToString()))
-            liJudge.Visible = false;
-
+        Session["TeacherNumber"] = 1;
         try
         {
+            //判断是不是评审
+            if (!TeacherHelper.isJudge(Session["TeacherNumber"].ToString()))
+                liJudge.Visible = false;
             int teacher_id = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
             using (var db = new TeachingCenterEntities())
             {
@@ -78,7 +78,16 @@ public partial class Display_Person_index : System.Web.UI.Page
             using (var db = new TeachingCenterEntities())
             {
                 var project = from it in db.ProjectJudge where it.judge_id == judge_id && it.is_pass == -1 select it;
-                return project.Count();
+                int number = project.Count();
+                foreach(ProjectJudge item in project)
+                {
+                    var category = (from it in db.ProjectCategory where it.id == item.category select it).FirstOrDefault();
+                    DateTime now = DateTime.Now;
+                    DateTime end = Convert.ToDateTime(category.judge_end_time);
+                    if (DateTime.Compare(now, end) < 0)
+                        number = number - 1;
+                }
+                return number;
             }
         }
         catch

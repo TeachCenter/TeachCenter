@@ -95,7 +95,7 @@
 				<h2 class="userType">用户类型: <asp:Label ID="lbType" runat="server"></asp:Label></h2>
                 <asp:LinkButton ID="applyJudge" runat="server" Text="申请成为评委>>" OnClick="applyJudge_Click" class="redA"></asp:LinkButton>
 			</div>
-            <asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" Text="提交项目" class="submit"></asp:LinkButton>
+            <asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" Text="确认修改" class="submit"></asp:LinkButton>
 	</form>
   </div>   
 	<script type="text/javascript"  src="./js/personal-center-changeInfo.js"></script>

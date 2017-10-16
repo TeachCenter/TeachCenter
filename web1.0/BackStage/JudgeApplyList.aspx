@@ -37,7 +37,6 @@
                         <th width="80">性别</th>
 					    <th width="240">院系</th>
 					    <th width="120">职称</th>
-                        <th width="">留言</th>
                         <th width="120">申请时间</th>
                         <th width="120">操作</th>
 				    </tr>
@@ -51,7 +50,6 @@
                                 <td><%# Convert.ToInt32(Eval("gender").ToString()) == 1?"男":"女" %></td>
 					            <td><%# Eval("department")%></td>
                                 <td><%# Eval("rank")%></td>
-                                <td><%# Eval("message")%></td>
 					            <td><%# Eval("submit_time") %></td>
                                 <td class="f-14 td-manage"><asp:LinkButton ID="lbtPass" runat="server" CssClass="ml-5" CommandName="Pass" CommandArgument='<%# Eval("id") %>' OnClientClick="return confirm('确定通过该教师的申请?')">通过<i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton></td>
 				            </tr>
