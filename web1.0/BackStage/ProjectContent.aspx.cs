@@ -93,7 +93,6 @@ public partial class BackStage_ProjectContent : System.Web.UI.Page
                     data.teacher_id = project.teacher_id;
                     data.judge_id = id;
                     var judge = db.Teacher.SingleOrDefault(a => a.id == id);
-                    data.judge_name = judge.name;
                     var project_stage = (from it in db.ProjectStage where it.project_id == project_id orderby it.stage descending select it).FirstOrDefault();
                     data.stage = project_stage.stage;
                     data.comment = "";

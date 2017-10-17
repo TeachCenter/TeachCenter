@@ -70,7 +70,7 @@ public partial class BackStage_ProjectJudge : System.Web.UI.Page
         foreach (ProjectJudge item in ls)
         {
             DataRow row = dt.NewRow();
-            row["评审姓名"] = item.judge_name;
+            row["评审姓名"] = TeacherHelper.getTeacherNameByID(item.judge_id);
             row["备注"] = item.comment.Length == 0?"无":item.comment;
             row["是否通过"] = item.is_pass == 1?"是":"否";
             dt.Rows.Add(row);

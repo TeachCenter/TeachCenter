@@ -33,7 +33,7 @@
                     <asp:Repeater ID="rptResult" runat="server">
                         <ItemTemplate>
 				            <tr class="text-c">				
-					            <td><%# Eval("judge_name") %></td>
+					            <td><%# TeacherHelper.getTeacherNameByID(Convert.ToInt32(Eval("judge_id").ToString())) %></td>
                                 <td><%# Eval("comment").ToString().Length == 0?"无":Eval("comment") %></td>
 					            <td><%# Convert.ToInt32(Eval("is_pass").ToString()) == 1?"是":"否"%></td>                              
 				            </tr>
