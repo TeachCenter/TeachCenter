@@ -96,11 +96,15 @@
 				<h2>项目文件:</h2>
 				<a class="redA" class="submit" href="../BackStage/<%= getFileName() %>"><asp:Label ID="lbFileName" runat="server"></asp:Label></a>
 			</div>
-			<div class="clearfix">
+            <div class="clearfix" id="divStage" runat="server" visible="false">
+				<h2>当前状态:</h2>
+                <asp:TextBox ID="txtStage" runat="server"></asp:TextBox>
+			</div>
+			<div class="clearfix" id="divMessage" runat="server">
 				<h2>评审意见:</h2>
                 <asp:TextBox ID="txtMessage" runat="server" TextMode="MultiLine" class="content"></asp:TextBox>
 			</div>
-            <div class="clearfix">
+            <div class="clearfix" id="divPass" runat="server">
 				<h2>是否通过:</h2>
                 <a  class="choice yes">是<asp:LinkButton ID="yes" runat="server"></asp:LinkButton></a>               
 				<a  class="choice no">否<asp:LinkButton ID="no" runat="server"></asp:LinkButton></a>

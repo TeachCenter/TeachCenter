@@ -44,6 +44,18 @@ public partial class Display_JudgePro : System.Web.UI.Page
                 Content.Text = Server.HtmlDecode(project_stage.project_content);
                 int index = project_stage.project_file.IndexOf("/");
                 lbFileName.Text = project_stage.project_file.Substring(index + 1);
+                var category = (from it in db.ProjectCategory where it.id == project.category select it).FirstOrDefault();
+                DateTime now = DateTime.Now;
+                DateTime end = Convert.ToDateTime(category.judge_end_time);
+                if (DateTime.Compare(now, end) > 0)
+                {
+                    divStage.Visible = true;
+                    txtStage.Text = "已超过评审时间";
+                    divMessage.Visible = false;
+                    divPass.Visible = false;
+                    lbtnSubmit.Visible = false;
+                }
+
             }
         }
     }

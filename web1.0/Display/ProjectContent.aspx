@@ -90,6 +90,10 @@
 				<h2>是否通过:</h2>
                 <asp:TextBox ID="txtReslut" runat="server" ReadOnly="true"></asp:TextBox>
 			</div>
+            <div class="clearfix" id="divOutofTime" runat="server" Visible="false">
+				<h2>当前状态:</h2>
+                <asp:TextBox ID="txtOutofTime" runat="server" ReadOnly="true"></asp:TextBox>
+			</div>
 		</form>
 	</div>
 	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
