@@ -23,26 +23,26 @@ public class Develop_Handler : IHttpHandler {
 
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/plain";
-            int category = 0;
-            try
-            {
-                category = Convert.ToInt32(context.Request.Form["category"]);
-            }
-            catch
-            {
+        int category = 0;
+        try
+        {
+            category = Convert.ToInt32(context.Request.Form["category"]);
+        }
+        catch
+        {
 
-            }
+        }
 
-            //int categoryid = 0,page = 1;
-            int page = 1;
-            try
-            {
-                page = Convert.ToInt32( context.Request.Form["page"]);
-            }
-            catch
-            {
+        //int categoryid = 0,page = 1;
+        int page = 1;
+        try
+        {
+            page = Convert.ToInt32( context.Request.Form["page"]);
+        }
+        catch
+        {
 
-            }
+        }
         using (var db = new TeachingCenterEntities())
         {
             var categorys = from it in db.DevelopCategory
@@ -52,7 +52,7 @@ public class Develop_Handler : IHttpHandler {
                                 DevelopyCategory_name = it.DevelopCategory_name,
                                 DevelopCategory_href = "DevelopList.aspx?type="
                             };
-
+            category = categorys.Count() > category ? category : 0;
             var dev = from it in db.Develop
                       where it.Develop_deleted == 0
                       orderby it.Develop_time descending

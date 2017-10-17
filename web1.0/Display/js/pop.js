@@ -1,9 +1,9 @@
-if ($(".hei").height() < $(".p-box").height())
-{
-    $(".hei").css({ "height": $(".p-box").height() + 250 })
-   
-}
+
 timer = setTimeout(function () {
+    if ($(".hei").height() < $(".p-box").height()) {
+        $(".hei").css({ "height": $(".p-box").height() + 250 })
+
+    }
     if ($(".content").height() < 600) {
 
         $(".passage-content1").addClass("hei")
@@ -17,7 +17,7 @@ timer = setTimeout(function () {
 
 
     }
-},50);
+}, 200);
 
 $(".mask").css("height", $(document).height())
 if (document.body.clientHeight >= document.documentElement.clientHeight) {
@@ -91,15 +91,15 @@ function turn(argument, direction, to) {
 function search() {
     $(".search").on({
         focus: function () {
-            
+
         },
         blur: function () {
-          
+
         }
     })
 }
 $(".search-button").click(function () {
-    window.location.href = "Search.aspx?key=" + $(".search").val();
+    window.location.href = "Search.aspx?page=1&&key=" + encodeURI($(".search").val());
 })
 function init() {
     $(".number").val("工号");

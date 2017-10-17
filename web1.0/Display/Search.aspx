@@ -32,20 +32,22 @@
 	var page;
 	var i=0;
 	$(document).ready(function () {
-	    $(".Search").val(window.location.search.substr(5))
-	    var searchwords = window.location.search.substr(5);
+	    var str = window.location.search;
+	    var hhhpage = str.substr(str.indexOf("page") + 5, str.indexOf("&&") - 6);
+
+	    $(".Search").val(decodeURI(window.location.search.substr(13)))
+	    var searchwords = decodeURI(window.location.search.substr(13));
 		$.ajax({   
           url: "./Ajax/Search_Handler.ashx",
           type: 'POST',
           dataType: "JSON",
           async: true,
-          data: { "key": searchwords },
-    
+          data: { "page":hhhpage,"key": searchwords },
           success: function(data) {
           	page = Math.floor(data[0] / 6 + 1);
           	for(i=0;i<page;i++)
           	{
-          	    $("<a>").attr("href", "Search.aspx?key=12" + window.location.search.substr(6) + "&&page=" + (i + 1)).text(i + 1).appendTo($(".midButton"));
+          	    $("<a>").attr("href", "Search_Handler.ashx?page=" + (i + 1) + "&&key=" + searchwords).text(i + 1).appendTo($(".midButton"));
           		
           	}
           	if(page<=6)
@@ -122,7 +124,7 @@
 
 		$(".search-button1").click(function () {
 		    console.log('66');
-		    window.location.href = 'Search.aspx?key=' + $(".Search").val();
+		    window.location.href = 'Search.aspx?page=1&&key=' + encodeURI($(".Search").val());
 
 		})
 	})

@@ -63,9 +63,9 @@ public class ActivityList : IHttpHandler {
             }
             catch
             {
-
+                
             }
-
+            categoryid = catacorys.Count() > categoryid ? categoryid : 0;
             //int categoryid = 0,page = 1;
             int page = 1;
             try

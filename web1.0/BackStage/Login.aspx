@@ -99,7 +99,7 @@
 	<script>
 		function log(){
 			var reg;
-			var flag1=[false,false,false];
+			var flag1=[false,false,true];
 			$(".number").on({
 				focus:function(){
 					if(!flag1[0]){
@@ -190,8 +190,8 @@
 				blur:function(){
 				   reg=/^[A-Za-z0-9]{7,7}$/;
 				   if(!reg.test($(".code").val())){
-				    $(".code-error").text("验证码错误");
-				    flag1[2]=false;
+				    //$(".code-error").text("验证码错误");
+				    //flag1[2]=false;
 				   }
 				   else{
 				   	flag1[2]=true;
