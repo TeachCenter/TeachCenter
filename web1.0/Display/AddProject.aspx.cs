@@ -12,24 +12,35 @@ public partial class Display_AddProject : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        this.FileUp.Attributes.Add("onchange", "javascript:return Check_FilePath();");
-        if (!IsPostBack)
+        try
         {
-            if (Session["TeacherNumber"] == null)
-                Response.Redirect("main-index.aspx");
-            else
-            {              
-                if (!IsPostBack)
+            //判断是不是评审
+            if (!TeacherHelper.isJudge(Session["TeacherNumber"].ToString()))
+                liJudge.Visible = false;
+            this.FileUp.Attributes.Add("onchange", "javascript:return Check_FilePath();");
+            if (!IsPostBack)
+            {
+                if (Session["TeacherNumber"] == null)
+                    Response.Redirect("main-index.aspx");
+                else
                 {
-                    using (var db = new TeachingCenterEntities())
+                    if (!IsPostBack)
                     {
-                        var category = from it in db.ProjectCategory where it.is_deleted == 0 select it;
-                        rptSelect.DataSource = category.ToList();
-                        rptSelect.DataBind();
+                        using (var db = new TeachingCenterEntities())
+                        {
+                            var category = from it in db.ProjectCategory where it.is_deleted == 0 select it;
+                            rptSelect.DataSource = category.ToList();
+                            rptSelect.DataBind();
+                        }
                     }
                 }
             }
-        }       
+        }
+        catch
+        {
+            JSHelper.AlertThenRedirect("请先登陆！", "main-index");
+        }
+      
     }
 
     protected void btnSubmit_Click(object sender, EventArgs e)
@@ -97,5 +108,10 @@ public partial class Display_AddProject : System.Web.UI.Page
             else
                 return false;
         }
+    }
+    protected void lbtReturn_Click(object sender, EventArgs e)
+    {
+        Session.Remove("TeacherNumber");
+        JSHelper.AlertThenRedirect("注销成功！", "main-index.aspx");
     }
 }

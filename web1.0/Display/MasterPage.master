@@ -40,6 +40,11 @@
 						</a>
 					</div>
                     <div id="divPerson" runat="server" visible="false" class="center">
+                        <%--<a class="person">
+							注销
+						</a>--%>
+                        <asp:LinkButton ID="lbtReturn" runat="server" Text="注销" CssClass="person" OnClick="lbtReturn_Click"></asp:LinkButton>
+						<span class="enter-line"></span>
 						<a class="person" target="_blank"  href="Person-index.aspx">
 							个人中心
 						</a>	

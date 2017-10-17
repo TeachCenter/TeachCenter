@@ -32,4 +32,14 @@ public class AdminHelper
         stage.Add(2, "结题");
         return stage[number];
     }
+
+    static public bool checkExit(string id)
+    {
+        using (var db = new TeachingCenterEntities())
+        {
+            //if()
+            var admin = from it in db.Admin where it.Admin_id == id select it;
+            return admin.Count() != 0 ? true : false;
+        }
+    }
 }

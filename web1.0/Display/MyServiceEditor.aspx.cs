@@ -11,6 +11,9 @@ public partial class Display_MyServiceEditor : System.Web.UI.Page
     {
         try
         {
+            //判断是不是评审
+            if (!TeacherHelper.isJudge(Session["TeacherNumber"].ToString()))
+                liJudge.Visible = false;
             int teacher = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
             if (!IsPostBack)
                 using (var db = new TeachingCenterEntities())
@@ -50,7 +53,7 @@ public partial class Display_MyServiceEditor : System.Web.UI.Page
                     ser.Service_phone = phone;
                     ser.Service_remarks = intro;
                     db.SaveChanges();
-                    JSHelper.AlertThenRedirect("修改成功！", "MyService.aspx");
+                    JSHelper.AlertThenRedirect("修改成功！", "MyServiceList.aspx");
                 }
             }
             catch
@@ -59,5 +62,10 @@ public partial class Display_MyServiceEditor : System.Web.UI.Page
             }
 
         }
+    }
+    protected void lbtReturn_Click(object sender, EventArgs e)
+    {
+        Session.Remove("TeacherNumber");
+        JSHelper.AlertThenRedirect("注销成功！", "main-index.aspx");
     }
 }

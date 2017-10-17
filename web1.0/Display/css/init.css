@@ -133,7 +133,7 @@ ul li{
 .enter-line{
     width: 1px;
     height:16px;
-    margin:13px  32px;
+    margin:13px  16px;
     background-color: #808080;
      float: right;
 }
@@ -258,7 +258,7 @@ ul li{
     outline:medium;
     color: #808080;
     margin-bottom: 6px;
-    box-sizing:content-box
+    box-sizing:content-box!important;
 }
 
 .forget-password{

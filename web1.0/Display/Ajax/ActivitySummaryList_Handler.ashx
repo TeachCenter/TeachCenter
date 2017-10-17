@@ -70,7 +70,7 @@ public class ActivitySummaryList : IHttpHandler {
                           ActivitySummary_href = "ActivitySummaryContent.aspx?id="
                       };
             int count = asu.Count();
-            asu = asu.Skip((page-1) * 5).Take(5);
+            asu = asu.Skip((page-1) * 6).Take(6);
             List<Asu> list = new List<Asu>();
             foreach(var it in asu)
             {

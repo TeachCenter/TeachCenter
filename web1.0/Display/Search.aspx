@@ -7,10 +7,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="main">
 
-			<div class="center" style="background-color: #FFFFFF;margin-bottom: 32px;">
+			<div class="center content" style="background-color: #FFFFFF;margin-bottom: 32px;">
 				<input class="Search search1" value="搜索结果"></input>
                 <a  class="search-button1" style="background-image:url(./images/search1.png);top: 14px;right: 18px;display: block;position: absolute;width: 30px; height: 30px;background-repeat: no-repeat;"></a>
-				<div class="passage-content1" ></div>
+				<div class="passage-content1 "  ></div>
 				<div class="buttons clearfix">
             <a class="lleft-button"></a>
 
@@ -45,7 +45,7 @@
           	page = Math.floor(data[0] / 6 + 1);
           	for(i=0;i<page;i++)
           	{
-          		$("<a>").attr("href","ActivityList.html?type="+window.location.search.substr(6)+"&&page="+(i+1)).text(i+1).appendTo($(".midButton"));
+          	    $("<a>").attr("href", "Search.aspx?key=12" + window.location.search.substr(6) + "&&page=" + (i + 1)).text(i + 1).appendTo($(".midButton"));
           		
           	}
           	if(page<=6)
@@ -60,7 +60,7 @@
           	
           	for(i=0;i<data[1].length;i++)
           	{
-          	    var content = $("<div>").addClass("passage").appendTo($(".passage-content1"));
+          	    var content = $("<a>").addClass("passage clearfix").attr("href", data[1][i].href).appendTo($(".passage-content1"));
           	    var replacetext = "<span style='color:" + "#D6000F" + ";'>" + searchwords + "</span>"
           	    var objects = data[1][i].title.replace(searchwords, replacetext);
           	    $("<h2>").html(objects).appendTo(content);

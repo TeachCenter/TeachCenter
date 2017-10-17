@@ -26,7 +26,7 @@ public class Develop_Handler : IHttpHandler {
             int category = 0;
             try
             {
-                category = Convert.ToInt32(context.Request.Form["ActivityCategory_id"]);
+                category = Convert.ToInt32(context.Request.Form["category"]);
             }
             catch
             {
@@ -85,7 +85,7 @@ public class Develop_Handler : IHttpHandler {
                       };
             }
             int count = dev.Count();
-            dev = dev.Skip((page-1) * 5).Take(5);
+            dev = dev.Skip((page-1) * 6).Take(6);
             List<Dev> list = new List<Dev>();
             foreach(var it in dev)
             {

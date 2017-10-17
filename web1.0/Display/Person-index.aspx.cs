@@ -15,6 +15,7 @@ public partial class Display_Person_index : System.Web.UI.Page
             //判断是不是评审
             if (!TeacherHelper.isJudge(Session["TeacherNumber"].ToString()))
                 liJudge.Visible = false;
+
             int teacher_id = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
             using (var db = new TeachingCenterEntities())
             {
@@ -54,10 +55,17 @@ public partial class Display_Person_index : System.Web.UI.Page
 
     public int getStage(int id)
     {
-        using (var db = new TeachingCenterEntities())
+        try
         {
-            var stage = (from it in db.ProjectStage where it.project_id == id orderby it.stage descending select it).FirstOrDefault();
-            return stage.stage;
+            using (var db = new TeachingCenterEntities())
+            {
+                var stage = (from it in db.ProjectStage where it.project_id == id orderby it.stage descending select it).FirstOrDefault();
+                return stage.stage;
+            }
+        }
+        catch
+        {
+            return 0;
         }
     }
 
@@ -98,10 +106,7 @@ public partial class Display_Person_index : System.Web.UI.Page
 
     protected void lbtReturn_Click(object sender, EventArgs e)
     {
-        //Session.setAtrrbiute("user", null);
         Session.Remove("TeacherNumber");
-        //Session["TeacherNumber"]
-        //JSHelper.js("window.location.href='main-index.aspx';");
-        Server.Transfer("main-index.aspx");
+        JSHelper.AlertThenRedirect("注销成功！", "main-index.aspx");
     }
 }

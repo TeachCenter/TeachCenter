@@ -62,9 +62,9 @@
         }
     </style>
 </head>
-<body>
+<body><form runat="server">
 	<div class="left-nav">
-		<img src="./images/logo-big.png" alt="">
+		<a class="clearfix" style="display:block;cursor:pointer;" href="main-index.aspx"><img src="./images/logo-big.png" alt=""></a>
 		<ul>
 			<li><a href="Person-index.aspx">个人主页</a></li>
 			<li><a href="EditInfo.aspx">修改信息</a></li>
@@ -72,7 +72,8 @@
 			<li><a href="MyServiceList.aspx">服务管理</a></li>
 			<li><a href="MyActivityList.aspx">活动管理</a></li>
 			<li id="liJudge" runat="server" class="dif-li"><a href="MyJudgePro.aspx?pageNumber=1">评审服务</a></li>
-		</ul>
+		    <li><asp:LinkButton ID="lbtReturn" OnClick="lbtReturn_Click" runat="server" Text="注销登录"></asp:LinkButton></li>
+        </ul>
 	</div>
 	<div class="right-content">
 		<div class="clearfix">
@@ -191,6 +192,6 @@
             }
             $(".left-button").css({ "margin-left": (w - 760 - 40 * (page + 2)) / 2 })
         })
-    </script>
+    </script></form>
 </body>
 </html>

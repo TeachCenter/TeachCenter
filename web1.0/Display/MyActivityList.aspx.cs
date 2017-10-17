@@ -12,6 +12,9 @@ public partial class Display_MyActivityList : System.Web.UI.Page
     {
         try
         {
+            //判断是不是评审
+            if (!TeacherHelper.isJudge(Session["TeacherNumber"].ToString()))
+                liJudge.Visible = false;
             int page = 1;
             try
             {
@@ -46,7 +49,11 @@ public partial class Display_MyActivityList : System.Web.UI.Page
             JSHelper.AlertThenRedirect("请先登录！", "main-index.aspx");
         }
     }
-
+    protected void lbtReturn_Click(object sender, EventArgs e)
+    {
+        Session.Remove("TeacherNumber");
+        JSHelper.AlertThenRedirect("注销成功！", "main-index.aspx");
+    }
     protected void rptActivity_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
         if (e.CommandName == "Delete")

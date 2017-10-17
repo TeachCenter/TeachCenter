@@ -8,10 +8,11 @@
 	<link rel="stylesheet" href="css/personal-center-init.css">
 	<link rel="stylesheet" href="css/personal-center-progect.css">
 	<script type="text/javascript"  src="./js/jquery-3.1.1.min.js"></script>
+
 </head>
 <body><form runat="server">
 	<div class="left-nav">
-		<img src="./images/logo-big.png" alt="">
+		<a class="clearfix" style="display:block;cursor:pointer;" href="main-index.aspx"><img src="./images/logo-big.png" alt=""></a>
 		<ul>
 			<li><a href="Person-index.aspx">个人主页</a></li>
 			<li><a href="EditInfo.aspx">修改信息</a></li>
@@ -19,9 +20,11 @@
 			<li><a class="dif-li" href="MyServiceList.aspx">服务管理</a></li>
 			<li><a href="MyActivityList.aspx">活动管理</a></li>
 			<li id="liJudge" runat="server"><a href="MyJudgePro.aspx?pageNumber=1">评审服务</a></li>
-		</ul>
+		    <li><asp:LinkButton ID="lbtReturn" OnClick="lbtReturn_Click" runat="server" Text="注销登录"></asp:LinkButton></li>
+        </ul>
 	</div>
     	<div class="right-content">
+            <div class="progect-content">
 		<div class="clearfix">
 			<h1>我的服务</h1>
 			<a href="Service.aspx" class="creat">+新建服务</a>
@@ -43,7 +46,7 @@
 		        </div>
             </ItemTemplate>
         </asp:Repeater>
-
+        </div>
          <div class="buttons clearfix">
             <a class="lleft-button"></a>
 
@@ -66,7 +69,7 @@
         var i = 0;
         var page = Math.floor($("#count").val() / 6 + 1);;
         for (i = 0; i < page; i++) {
-            $("<a>").attr("href", "MyService.aspx?page=" + page).text(i + 1).appendTo($(".midButton"));
+            $("<a>").attr("href", "MyServiceList.aspx?page=" + page).text(i + 1).appendTo($(".midButton"));
 
         }
         if (page <= 6) {

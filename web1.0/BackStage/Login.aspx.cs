@@ -29,7 +29,9 @@ public partial class BackStage_Login : System.Web.UI.Page
         string pwd = txtPwd.Text;
         if (id.Length == 0 || pwd.Length == 0)
             JSHelper.ShowAlert("输入不能为空！");
-        else if(Session["CheckCode"] != null)
+        else if (!AdminHelper.checkExit(id))
+            JSHelper.ShowAlert("账号不存在！");
+        else if (Session["CheckCode"] != null)
         {
             string checkcode = Session["CheckCode"].ToString();
             if (TextBox1.Text != checkcode)
@@ -51,7 +53,7 @@ public partial class BackStage_Login : System.Web.UI.Page
                         Server.Transfer("Index.aspx");
                     }
                     else
-                        JSHelper.ShowAlert("密码错误！");   
+                        JSHelper.ShowAlert("密码错误！");
                 }
             }
 

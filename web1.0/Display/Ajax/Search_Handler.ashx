@@ -132,7 +132,7 @@ public class Search_Handler : IHttpHandler {
                 //article =(List<Article>) article.Skip((page - 1) * 10).Take(10);
                 ArrayList all = new ArrayList();
                 all.Add(count);
-                all.Add(article.Skip((page - 1) * 10).Take(10));
+                all.Add(article.Skip((page - 1) * 6).Take(6));
                 string final = JsonConvert.SerializeObject(all);
                 context.Response.Write(final);
             }

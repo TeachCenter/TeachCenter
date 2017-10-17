@@ -15,8 +15,8 @@ public partial class Display_js_ActivityContent : System.Web.UI.Page
     protected void lbtAdd_Click(object sender, EventArgs e)
     {
 
-        try
-        {
+        //try
+        //{
             string alert;
             int teacher = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
             //int teacher = 1;
@@ -28,7 +28,7 @@ public partial class Display_js_ActivityContent : System.Web.UI.Page
             }
             catch
             {
-                id = 1;
+                id = 3;
             }
             using (var db = new TeachingCenterEntities())
             {
@@ -46,7 +46,7 @@ public partial class Display_js_ActivityContent : System.Web.UI.Page
                     else
                     {
                         ac.Activity_nowcount++;
-                        //db.SaveChanges();
+                        db.SaveChanges();
                         ActivityTeacher at = new ActivityTeacher();
                         at.activity_id = id;
                         at.teacher_id = teacher;
@@ -58,10 +58,10 @@ public partial class Display_js_ActivityContent : System.Web.UI.Page
                 }
             }
             JSHelper.ShowAlert(alert);
-        }
-        catch
-        {
-            JSHelper.ShowAlert("请先登录！");
-        }
+        //}
+        //catch
+        //{
+        //    JSHelper.ShowAlert("请先登录！");
+        //}
     }
 }
