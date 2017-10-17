@@ -111,7 +111,7 @@ public class ActivityList : IHttpHandler {
                 name = ActivityHelper.getCategoryName(categoryid);
             else
                 name = "全部活动";
-            ac = ac.Skip((page-1) * 5).Take(5);
+            ac = ac.Skip((page-1) * 6).Take(6);
             List<Ac> list = new List<Ac>();
             foreach(var i in ac)
             {

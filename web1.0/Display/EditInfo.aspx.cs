@@ -57,7 +57,11 @@ public partial class Display_EditInfo : System.Web.UI.Page
             JSHelper.AlertThenRedirect("请先登录！", "main-index.aspx");
         }
     }
-
+    protected void lbtReturn_Click(object sender, EventArgs e)
+    {
+        Session.Remove("TeacherNumber");
+        JSHelper.AlertThenRedirect("注销成功！", "main-index.aspx");
+    }
     protected void applyJudge_Click(object sender, EventArgs e)
     {
         int teacher_id = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());

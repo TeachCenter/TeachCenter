@@ -12,6 +12,9 @@ public partial class Display_MyServiceList : System.Web.UI.Page
     {
         try
         {
+            //判断是不是评审
+            if (!TeacherHelper.isJudge(Session["TeacherNumber"].ToString()))
+                liJudge.Visible = false;
             int page = 1;
             try
             {
@@ -58,5 +61,10 @@ public partial class Display_MyServiceList : System.Web.UI.Page
             LinkButton lbt = (LinkButton)e.Item.FindControl("ltEditor");
             lbt.Text = ServiceHelper.serviceChecked(Convert.ToInt32(lbt.Text)) ? "" : "编辑";
         }
+    }
+    protected void lbtReturn_Click(object sender, EventArgs e)
+    {
+        Session.Remove("TeacherNumber");
+        JSHelper.AlertThenRedirect("注销成功！", "main-index.aspx");
     }
 }

@@ -25,9 +25,10 @@
         }
     </style>
 </head>
-<body>
+<body><form runat="server">
 	<div class="left-nav">
-		<img src="./images/logo-big.png" alt="">
+		<a class="clearfix" style="display:block;cursor:pointer;" href="main-index.aspx"><img src="./images/logo-big.png" alt=""></a>
+		
 		<ul>
 			<li><a href="Person-index.aspx">个人主页</a></li>
 			<li><a href="EditInfo.aspx">修改信息</a></li>
@@ -35,14 +36,14 @@
 			<li><a href="MyServiceList.aspx">服务管理</a></li>
 			<li><a href="MyActivityList.aspx">活动管理</a></li>
 			<li id="liJudge" runat="server"><a href="MyJudgePro.aspx?pageNumber=1">评审服务</a></li>
-		</ul>
+		    <li><asp:LinkButton ID="lbtReturn" OnClick="lbtReturn_Click" runat="server" Text="注销登录"></asp:LinkButton></li>
+        </ul>
 	</div>
 	<div class="right-content">
 		<div class="clearfix">
 			<h1>项目信息</h1>
 		</div>
 		<span class="cut"></span>
-		<form action="" runat="server">
 			<div class="clearfix">
 				<h2>项目名称:</h2>
                 <asp:TextBox ID="txtName" runat="server" class="name" ReadOnly="true"></asp:TextBox>
@@ -90,7 +91,6 @@
 				<h2>是否通过:</h2>
                 <asp:TextBox ID="txtReslut" runat="server" ReadOnly="true"></asp:TextBox>
 			</div>
-		</form>
 	</div>
 	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
 	<script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script>
@@ -102,7 +102,7 @@
             w = $(window).width();
             $(".Content").css({ "width": w - 520 })
         })
-    </script>
+    </script></form>
 </body>
 </html>
 

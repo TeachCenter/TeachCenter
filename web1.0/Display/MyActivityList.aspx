@@ -11,7 +11,7 @@
 </head>
 <body><form runat="server">
 	<div class="left-nav">
-        <a class="clearfix" style="display:block;cursor:pointer;" href="#"><img src="./images/logo-big.png" alt=""></a>
+        <a class="clearfix" style="display:block;cursor:pointer;" href="main-index.aspx"><img src="./images/logo-big.png" alt=""></a>
 		<ul>
 			<li><a href="Person-index.aspx">个人主页</a></li>
 			<li><a href="EditInfo.aspx">修改信息</a></li>
@@ -19,7 +19,8 @@
 			<li><a href="MyServiceList.aspx">服务管理</a></li>
 			<li class="dif-li"><a href="MyActivityList.aspx">活动管理</a></li>
 			<li id="liJudge" runat="server"><a href="MyJudgePro.aspx?pageNumber=1">评审服务</a></li>
-		</ul>
+		    <li><asp:LinkButton ID="lbtReturn" OnClick="lbtReturn_Click" runat="server" Text="注销登录"></asp:LinkButton></li>
+        </ul>
 	</div>
     	<div class="right-content">
             <div class="progect-content">
@@ -67,7 +68,7 @@
         var i = 0;
         var page = Math.floor($("#count").val() / 6 + 1);;
         for (i = 0; i < page; i++) {
-            $("<a>").attr("href", "MyActivity.aspx?page=" + page).text(i + 1).appendTo($(".midButton"));
+            $("<a>").attr("href", "MyActivityList.aspx?page=" + page).text(i + 1).appendTo($(".midButton"));
 
         }
         if (page <= 6) {

@@ -114,4 +114,11 @@ public partial class Display_MasterPage : System.Web.UI.MasterPage
         }
 
     }
+
+    protected void lbtReturn_Click(object sender, EventArgs e)
+    {
+        Session.Remove("TeacherNumber");
+        JSHelper.AlertThenRedirect("注销成功！", "main-index.aspx");
+        //Server.Transfer("main-index.aspx");
+    }
 }

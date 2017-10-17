@@ -107,10 +107,7 @@ public partial class Display_Person_index : System.Web.UI.Page
 
     protected void lbtReturn_Click(object sender, EventArgs e)
     {
-        //Session.setAtrrbiute("user", null);
         Session.Remove("TeacherNumber");
-        //Session["TeacherNumber"]
-        //JSHelper.js("window.location.href='main-index.aspx';");
-        Server.Transfer("main-index.aspx");
+        JSHelper.AlertThenRedirect("注销成功！", "main-index.aspx");
     }
 }
