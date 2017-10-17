@@ -32,7 +32,7 @@
 						</div>
 						<div class="clearfix changeable">
 							<h2>联系方式:</h2>
-							<input class="same position" type="text" id="txtPhone" runat="server" />
+							<input class="same position" type="text" id="txtPhone" runat="server" maxlength="11" />
 							<p class="error position-error"></p>
 						</div>
 						<div class="clearfix changeable" >
