@@ -41,7 +41,7 @@
 		<span class="cut"></span>
 			<div class="clearfix">
 				<h2 class="name-h2">姓名:</h2>
-                <asp:TextBox ID="txtName" runat="server" class="same name"></asp:TextBox>
+                <asp:TextBox ID="txtName" runat="server" class="same name" Text="50"></asp:TextBox>
 				<p class="error name-error"></p>
 			</div>
 			<div class="clearfix">
@@ -54,22 +54,22 @@
 			</div>
 			<div class="clearfix">
 				<h2>工号:</h2>
-                <asp:TextBox ID="txtNumber" runat="server" class="same num"></asp:TextBox>
+                <asp:TextBox ID="txtNumber" runat="server" class="same num" MaxLength="20"></asp:TextBox>
 				<p class="error num-error"></p>
 			</div>
 			<div class="clearfix">
 				<h2>邮箱:</h2>
-				<asp:TextBox ID="txtEmail" runat="server" class="same email"></asp:TextBox>
+				<asp:TextBox ID="txtEmail" runat="server" class="same email" MaxLength="30"></asp:TextBox>
 				<p class="error email-error"></p>
 			</div>
 			<div class="clearfix">
 				<h2>手机:</h2>
-				<asp:TextBox ID="txtPhone" runat="server" class="same tel"></asp:TextBox>
+				<asp:TextBox ID="txtPhone" runat="server" class="same tel" MaxLength="11"></asp:TextBox>
 				<p class="error tel-error"></p>
 			</div>
 			<div class="clearfix">
 				<h2>职称:</h2>
-				<asp:TextBox ID="txtRank" runat="server" class="same position"></asp:TextBox>
+				<asp:TextBox ID="txtRank" runat="server" class="same position" MaxLength="10"></asp:TextBox>
 				<p class="error position-error"></p>
 			</div>
              <input type="hidden" id="lbSelected" runat="server"/>

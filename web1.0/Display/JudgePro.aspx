@@ -103,7 +103,7 @@
 			</div>
 			<div class="clearfix" id="divMessage" runat="server">
 				<h2>评审意见:</h2>
-                <asp:TextBox ID="txtMessage" runat="server" TextMode="MultiLine" class="content"></asp:TextBox>
+                <asp:TextBox ID="txtMessage" runat="server" TextMode="MultiLine" class="content" MaxLength="50"></asp:TextBox>
 			</div>
             <div class="clearfix" id="divPass" runat="server">
 				<h2>是否通过:</h2>
