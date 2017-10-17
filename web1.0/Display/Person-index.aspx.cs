@@ -10,7 +10,6 @@ public partial class Display_Person_index : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session["TeacherNumber"] = 1;
         try
         {
             //判断是不是评审
