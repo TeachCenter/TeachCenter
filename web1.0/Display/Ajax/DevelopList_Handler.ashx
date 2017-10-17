@@ -52,7 +52,7 @@ public class Develop_Handler : IHttpHandler {
                                 DevelopyCategory_name = it.DevelopCategory_name,
                                 DevelopCategory_href = "DevelopList.aspx?type="
                             };
-            category = categorys.Count() > category ? category : 0;
+            category = categorys.Count() >= category ? category : 0;
             var dev = from it in db.Develop
                       where it.Develop_deleted == 0
                       orderby it.Develop_time descending
