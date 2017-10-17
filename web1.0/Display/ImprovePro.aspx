@@ -114,7 +114,7 @@
 				<h2>上传文件:</h2>				
                 <asp:FileUpload ID="FileUp" runat="server" style="display:none" />  
                 <asp:Button id="btnBrowse" runat="server" OnClientClick="return ShowBrowse()" Text="选择文件" class="choose"/>
-                <h3 style="margin-top:0px;"><asp:TextBox ID="txtFileName" runat="server" value="支持pdf、doc、docx格式的文件"></asp:TextBox> </h3>                
+                <h3 style="margin-top:0px;"><asp:TextBox ID="txtFileName" runat="server" style="color:#D6000F" value="支持pdf、doc、docx格式的文件"></asp:TextBox> </h3>                
 			</div>
 			<asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" Text="完善项目" class="submit"></asp:LinkButton>
 		</form>
