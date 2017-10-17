@@ -32,11 +32,17 @@ public partial class Display_Person_index : System.Web.UI.Page
                 foreach(Project item in project)
                 {
                     var category = (from it in db.ProjectCategory where it.id == item.category select it).FirstOrDefault();
+                    DateTime now = DateTime.Now;
+                    DateTime end = Convert.ToDateTime(category.end_time);
                     int stage1 = category.stage;
                     var stage = (from it in db.ProjectStage where it.project_id == item.project_id orderby it.stage descending select it).FirstOrDefault();
                     int stage2 = stage.stage;
                     if (stage.stage < category.stage)
-                        proList.Add(item);
+                    {
+                        double a = DateTime.Compare(now, end);
+                        if (DateTime.Compare(now,end) <= 0)
+                            proList.Add(item);
+                    }
                 }
                 rptProject.DataSource = proList;
                 rptProject.DataBind();
@@ -91,7 +97,7 @@ public partial class Display_Person_index : System.Web.UI.Page
                     var category = (from it in db.ProjectCategory where it.id == item.category select it).FirstOrDefault();
                     DateTime now = DateTime.Now;
                     DateTime end = Convert.ToDateTime(category.judge_end_time);
-                    if (DateTime.Compare(now, end) < 0)
+                    if (DateTime.Compare(now, end) > 0)
                         number = number - 1;
                 }
                 return number;

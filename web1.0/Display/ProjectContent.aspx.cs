@@ -53,6 +53,14 @@ public partial class Display_ProjectContent : System.Web.UI.Page
                     txtReslut.Text = "否";
                 else
                     txtReslut.Text = "尚未评判结果";
+                var category = (from it in db.ProjectCategory where it.id == project.category select it).FirstOrDefault();
+                DateTime now = DateTime.Now;
+                DateTime end = Convert.ToDateTime(category.end_time);
+                if (DateTime.Compare(now, end) > 0)
+                {
+                    divOutofTime.Visible = true;
+                    txtOutofTime.Text = "已超过提交时间";
+                }
             }
         }
         catch
