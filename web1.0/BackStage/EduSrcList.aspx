@@ -33,7 +33,7 @@
 	    日期范围：
 		<asp:TextBox runat="server" Text="" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'logmax\')||\'%y-%M-%d\'}'})" ID="logmin" class="input-text Wdate" style="width:120px;"></asp:TextBox>
         <asp:TextBox runat="server" Text="" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'logmin\')}',maxDate:'%y-%M-%d' })" ID="logmax" class="input-text Wdate" style="width:120px;"></asp:TextBox>
-        <asp:TextBox ID="txtTitle" runat="server" placeholder=" 教学资源名称" style="width:250px" class="input-text"></asp:TextBox>
+        <asp:TextBox ID="txtTitle" runat="server" placeholder=" 教学资源名称" MaxLength="50" style="width:250px" class="input-text"></asp:TextBox>
         <asp:LinkButton ID="lbtSearch" runat="server" class="btn btn-success" OnClick="lbtSearch_Click"><i class="Hui-iconfont">&#xe665;</i> 搜资讯</asp:LinkButton>
 	</div>
 	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><asp:LinkButton ID="lbtDeleteMore" runat="server" class="btn btn-danger radius" OnClick="lbtDeleteMore_Click" OnClientClick="return confirm('确定删除?')"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</asp:LinkButton> <a class="btn btn-primary radius" data-title="添加教学资源" data-href="EduSrcAdd.aspx" onclick="Hui_admin_tab(this)" href="EduSrcAdd.aspx"><i class="Hui-iconfont">&#xe600;</i> 添加教学资源</a></span> <span class="r">共有数据：<strong><asp:Literal ID="ltSum" runat="server"></asp:Literal></strong> 条</span> </div>
@@ -55,7 +55,7 @@
 				            <tr class="text-c">
 					            <td><input type="checkbox" runat="server" id="isDelete"></td>					
 					            <td class="text-l"><u style="cursor:pointer" class="text-primary")" title="查看"><a href="/Display/SrcContent.aspx?id=<%# Eval("id")%>" target="_blank"><%# Eval("title") %></a></u></td>	
-                                <td><%# UeditorHelper.NoHTML(Eval("body").ToString()).Length>50 ? UeditorHelper.NoHTML(Eval("body").ToString()).Substring(0,50):UeditorHelper.NoHTML(Eval("body").ToString()) %></td>
+                                <td><%# UeditorHelper.NoHTML(Eval("body").ToString()).Length>20 ? UeditorHelper.NoHTML(Eval("body").ToString()).Substring(0,20):UeditorHelper.NoHTML(Eval("body").ToString()) %></td>
 					            <td><%# Eval("publish_time")%><input type="hidden" runat="server" id="id" value=<%# Eval("id")%> /></td>
 					            <td><%# Eval("view_times") %></td>
                                 <td class="f-14 td-manage"><asp:LinkButton ID="lbtDelete" runat="server" CssClass="ml-5" CommandName="Delete" CommandArgument='<%#Eval("id") %>' OnClientClick="return confirm('确定删除?')">删除<i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton></td>

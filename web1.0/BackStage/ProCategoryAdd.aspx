@@ -42,7 +42,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>项目类型名称：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<asp:TextBox ID="txtName" runat="server" CssClass="input-text"></asp:TextBox>
+				<asp:TextBox ID="txtName" runat="server" CssClass="input-text" MaxLength="50"></asp:TextBox>
 			</div>
 		</div>
         <div id="link" class="row cl">

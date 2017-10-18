@@ -19,28 +19,35 @@ public partial class Display_Person_index : System.Web.UI.Page
             int teacher_id = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
             using (var db = new TeachingCenterEntities())
             {
+                // 判断当前登录用户类型
                 var teacher = (from it in db.Teacher where it.id == teacher_id select it).FirstOrDefault();
                 lbName.Text = teacher.name;
                 lbType.Text = teacher.is_judge == 0 ? "教师" : "评审";
+
+                // 判断个人信息是否完善
                 HtmlInputHidden isCompleted = FindControl("isCompleted") as HtmlInputHidden;
                 if (teacher.gender == 5 || teacher.department == "" || teacher.rank == "")
                     isCompleted.Value = "0";
                 else
                     isCompleted.Value = "1";
-                var project = from it in db.Project where it.teacher_id == teacher_id select it;
+
+                // 获取当前登录教师的所有项目
+                var project = from it in db.Project where it.teacher_id == teacher_id && it.is_deleted == 0 select it;
                 List<Project> proList = new List<Project>();
                 foreach(Project item in project)
                 {
                     var category = (from it in db.ProjectCategory where it.id == item.category select it).FirstOrDefault();
-                    DateTime now = DateTime.Now;
-                    DateTime end = Convert.ToDateTime(category.end_time);
+                    //DateTime now = DateTime.Now;
+                    //DateTime end = Convert.ToDateTime(category.end_time);
+
+                    // 判断当前项目阶段是否落后于项目类型阶段
                     int stage1 = category.stage;
                     var stage = (from it in db.ProjectStage where it.project_id == item.project_id orderby it.stage descending select it).FirstOrDefault();
                     int stage2 = stage.stage;
-                    if (stage.stage < category.stage)
+                    if (stage.stage < category.stage && stage.is_pass != -2 && stage.is_pass != -1) // -2表示管理员未分配至评审，-1表示管理员未评判最终结果
                     {
-                        double a = DateTime.Compare(now, end);
-                        if (DateTime.Compare(now,end) <= 0)
+                        // 判断是否超时
+                        if (stage.is_pass != -100)
                             proList.Add(item);
                     }
                 }
@@ -59,6 +66,7 @@ public partial class Display_Person_index : System.Web.UI.Page
         }
     }
 
+    // 通过项目id获取项目当前所属阶段
     public int getStage(int id)
     {
         try
@@ -75,6 +83,7 @@ public partial class Display_Person_index : System.Web.UI.Page
         }
     }
 
+    // 获取不同阶段对应的数字字符
     public string getNumber(int stage)
     {
         if (stage == 0)
@@ -83,6 +92,7 @@ public partial class Display_Person_index : System.Web.UI.Page
             return "三";
     }
 
+    // 获取评审未评判的项目数量
     public int getJudgeNumber()
     {
         try
@@ -92,14 +102,14 @@ public partial class Display_Person_index : System.Web.UI.Page
             {
                 var project = from it in db.ProjectJudge where it.judge_id == judge_id && it.is_pass == -1 select it;
                 int number = project.Count();
-                foreach(ProjectJudge item in project)
-                {
-                    var category = (from it in db.ProjectCategory where it.id == item.category select it).FirstOrDefault();
-                    DateTime now = DateTime.Now;
-                    DateTime end = Convert.ToDateTime(category.judge_end_time);
-                    if (DateTime.Compare(now, end) > 0)
-                        number = number - 1;
-                }
+                //foreach(ProjectJudge item in project)
+                //{
+                //    var category = (from it in db.ProjectCategory where it.id == item.category select it).FirstOrDefault();
+                //    DateTime now = DateTime.Now;
+                //    DateTime end = Convert.ToDateTime(category.judge_end_time);
+                //    if (DateTime.Compare(now, end) > 0)
+                //        number = number - 1;
+                //}
                 return number;
             }
         }

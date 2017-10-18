@@ -12,9 +12,10 @@ public partial class Display_JudgePro : System.Web.UI.Page
     {
         try
         {
-            //判断是不是评审
+            //判断是不是评审           
             if (!TeacherHelper.isJudge(Session["TeacherNumber"].ToString()))
                 liJudge.Visible = false;
+
             int project_id = 1;
             int stage = 0;
             if (!IsPostBack)
@@ -23,10 +24,32 @@ public partial class Display_JudgePro : System.Web.UI.Page
                 {
                     project_id = Convert.ToInt32(Request.QueryString["id"]);
                     stage = Convert.ToInt32(Request.QueryString["stage"]);
-                }     
+                }            
                 else
                     Response.Redirect("main-index.aspx");
-                using (var db = new TeachingCenterEntities())
+
+            using (var db = new TeachingCenterEntities())
+            {
+                int judge_id = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
+                // 获取当前项目
+                var projectinfo = (from it in db.ProjectInfo where it.project_id == project_id select it).FirstOrDefault();
+                txtName.Text = projectinfo.name; // 项目名称
+                txtCategory.Text = projectinfo.category_name; // 项目类型
+                txtDuty.Text = projectinfo.teacher_name; // 项目负责人                 
+                DateTime time = Convert.ToDateTime(projectinfo.submit_time); // 项目年月日
+                txtYear.Text = time.Year.ToString();
+                txtMonth.Text = time.Month.ToString();
+                txtDay.Text = time.Day.ToString();
+                var project = (from it in db.Project where it.project_id == project_id select it).FirstOrDefault();
+                txtMoney.Text = project.fund; // 资助金额
+                string department = (from it in db.Teacher where it.id == project.teacher_id select it).FirstOrDefault().department;
+                txtDepartment.Text = department; // 院系
+                var project_stage = (from it in db.ProjectStage where it.project_id == project_id && it.stage == stage select it).FirstOrDefault();
+                Content.Text = Server.HtmlDecode(project_stage.project_content); // 项目内容
+                int index = project_stage.project_file.IndexOf("/");
+                lbFileName.Text = project_stage.project_file.Substring(index + 1); // 项目文件
+                var pro_judge = (from it in db.ProjectJudge where it.judge_id == judge_id && it.project_id == project_id && it.stage == stage select it).FirstOrDefault(); // 获取当前评审记录             
+                if (pro_judge.is_pass == -100) // 判断是否已经超时
                 {
                     var projectinfo = (from it in db.ProjectInfo where it.project_id == project_id select it).FirstOrDefault();
                     txtName.Text = projectinfo.name;
@@ -56,6 +79,7 @@ public partial class Display_JudgePro : System.Web.UI.Page
                         lbtnSubmit.Visible = false;
                     }
                 }
+            }
             }
         }
         catch
@@ -94,11 +118,18 @@ public partial class Display_JudgePro : System.Web.UI.Page
 
     public string getFileName()
     {
-        int project_id = Convert.ToInt32(Request.QueryString["id"]);
-        using (var db = new TeachingCenterEntities())
+        try
         {
-            var project_stage = (from it in db.ProjectStage where it.project_id == project_id select it).FirstOrDefault();
-            return project_stage.project_file;
-        }          
+            int project_id = Convert.ToInt32(Request.QueryString["id"]);
+            using (var db = new TeachingCenterEntities())
+            {
+                var project_stage = (from it in db.ProjectStage where it.project_id == project_id select it).FirstOrDefault();
+                return project_stage.project_file;
+            }
+        }
+        catch
+        {
+            return "";
+        }
     }
 }

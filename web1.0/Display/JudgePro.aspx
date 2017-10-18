@@ -115,6 +115,7 @@
 			<asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" class="submit" Text="提交评审结果"></asp:LinkButton>
             
 	</div>
+        
 	<script>
         var w = $(window).width();
         $(".Content").css({ "width": w - 520 })
