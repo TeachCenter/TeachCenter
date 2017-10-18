@@ -86,7 +86,7 @@ public partial class BackStage_ActivitySummaryEditor : System.Web.UI.Page
                     string filename = filepath.Substring(filepath.LastIndexOf("\\") + 1);
                     string serverpath = Server.MapPath("picture/") + filename;
                     fup.PostedFile.SaveAs(serverpath);
-                    serverpath = "picture/" + filename;
+                    serverpath =  filename;
                     lblInfo.Text = "上传成功！";
                     using (var db = new TeachingCenterEntities())
                     {

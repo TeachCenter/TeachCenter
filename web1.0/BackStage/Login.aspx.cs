@@ -11,14 +11,14 @@ public partial class BackStage_Login : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            string id = CookieHelper.GetCookieValue("AdminID");
-            string pwd = CookieHelper.GetCookieValue("AdminPwd");
-            if (id != null && pwd != null)
-            {
-                txtID.Text = id;
-                txtPwd.Attributes["value"] = pwd;
-                //cbxRemeberUser.Checked = true;
-            }
+            //string id = CookieHelper.GetCookieValue("AdminID");
+            //string pwd = CookieHelper.GetCookieValue("AdminPwd");
+            //if (id != null && pwd != null)
+            //{
+            //    txtID.Text = id;
+            //    txtPwd.Attributes["value"] = pwd;
+            //    //cbxRemeberUser.Checked = true;
+            //}
         }
         
     }

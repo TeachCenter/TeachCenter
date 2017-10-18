@@ -75,4 +75,67 @@ public partial class BackStage_DevelopEditor : System.Web.UI.Page
                 Server.Transfer("DevelopManage.aspx");
             }
     }
+
+    protected void btnFup_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            if (fup.PostedFile.FileName == "")
+            {
+                lblInfo.Text = "请选择文件！";
+            }
+            else
+            {
+                if (!IsAllowedExtension(fup))
+                {
+                    lblInfo.Text = "上传文件格式不正确！";
+                }
+                else
+                {
+                    string filepath = fup.PostedFile.FileName;
+                    string filename = filepath.Substring(filepath.LastIndexOf("\\") + 1);
+                    string serverpath = Server.MapPath("picture/") + filename;
+                    fup.PostedFile.SaveAs(serverpath);
+                    serverpath = filename;
+                    lblInfo.Text = "上传成功！";
+                    using (var db = new TeachingCenterEntities())
+                    {
+                        int id = Convert.ToInt32(Request.QueryString["id"]);
+                        Develop acsu = db.Develop.Single(a => a.Develop_id == id);
+                        acsu.Develop_path = serverpath;
+                        db.SaveChanges();
+                    }
+                    JSHelper.AlertThenRedirect("修改成功！", "DevelopManage.aspx");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            lblInfo.Text = "上传发生错误！原因是：" + ex.ToString();
+        }
+    }
+
+
+    private static bool IsAllowedExtension(FileUpload upfile)
+    {
+        string strOldFilePath = "";
+        string strExtension = "";
+        string[] arrExtension = { ".gif", ".jpg", ".bmp", ".png" };
+        if (upfile.PostedFile.FileName != string.Empty)
+        {
+            strOldFilePath = upfile.PostedFile.FileName;//获得文件的完整路径名 
+            strExtension = strOldFilePath.Substring(strOldFilePath.LastIndexOf("."));//获得文件的扩展名，如：.jpg 
+            for (int i = 0; i < arrExtension.Length; i++)
+            {
+                if (strExtension.Equals(arrExtension[i]))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
+
 }

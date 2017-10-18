@@ -54,7 +54,7 @@ public class IndexNotice_Handler : IHttpHandler {
                 Notice x = new Notice();
                 x.noticeHref ="ActivityContent.aspx?id=" + i.noticeHref;
                 x.noticeTime = i.noticeTime;
-                x.noticeTitle = i.noticeTitle;
+                x.noticeTitle = i.noticeTitle.Length>15?i.noticeTitle.Substring(0,15)+"...":i.noticeTitle;
                 notice.Add(x);
             }
             foreach(var i in sourse)
@@ -62,7 +62,7 @@ public class IndexNotice_Handler : IHttpHandler {
                 Notice x = new Notice();
                 x.noticeHref ="SrcContent.aspx?id=" + i.noticeHref;
                 x.noticeTime = i.noticeTime;
-                x.noticeTitle = i.noticeTitle;
+                x.noticeTitle = i.noticeTitle.Length>15?i.noticeTitle.Substring(0,15)+"...":i.noticeTitle;
                 notice.Add(x);
             }
             foreach(var i in project)
@@ -70,7 +70,7 @@ public class IndexNotice_Handler : IHttpHandler {
                 Notice x = new Notice();
                 x.noticeHref = "ProgectContent.aspx?id=" + i.noticeHref;
                 x.noticeTime = i.noticeTime;
-                x.noticeTitle = i.noticeTitle;
+                x.noticeTitle = i.noticeTitle.Length>15?i.noticeTitle.Substring(0,15)+"...":i.noticeTitle;
                 notice.Add(x);
             }
             notice.Sort(SortList);

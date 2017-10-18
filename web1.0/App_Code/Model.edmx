@@ -93,7 +93,7 @@
           <Property Name="publisher" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="publish_time" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="view_times" Type="int" Nullable="false" />
-          <Property Name="is_deleted" Type="int" />
+          <Property Name="is_deleted" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Introduction">
           <Key>
@@ -127,7 +127,7 @@
           <Property Name="category" Type="int" Nullable="false" />
           <Property Name="teacher_id" Type="int" Nullable="false" />
           <Property Name="submit_time" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="fund" Type="nchar" MaxLength="10" />
+          <Property Name="fund" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="is_deleted" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ProjectCategory">
@@ -142,7 +142,7 @@
           <Property Name="end_time" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="judge_end_time" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="is_deleted" Type="int" Nullable="false" />
-          <Property Name="publish_time" Type="nvarchar" MaxLength="50" />
+          <Property Name="publish_time" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="ProjectJudge">
           <Key>
@@ -163,8 +163,8 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="project_id" Type="int" Nullable="false" />
-          <Property Name="project_file" Type="nvarchar(max)" />
-          <Property Name="project_content" Type="nvarchar(max)" />
+          <Property Name="project_file" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="project_content" Type="nvarchar(max)" Nullable="false" />
           <Property Name="stage" Type="int" Nullable="false" />
           <Property Name="time" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="is_pass" Type="int" Nullable="false" />
@@ -625,7 +625,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="publisher" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="publish_time" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="view_times" Type="Int32" Nullable="false" />
-          <Property Name="is_deleted" Type="Int32" />
+          <Property Name="is_deleted" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Introduction">
           <Key>
@@ -660,7 +660,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="category" Type="Int32" Nullable="false" />
           <Property Name="teacher_id" Type="Int32" Nullable="false" />
           <Property Name="submit_time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="fund" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="fund" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="is_deleted" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ProjectCategory" Relationship="Self.FK_Project_ProjectCategory" FromRole="Project" ToRole="ProjectCategory" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_Project_Teacher" FromRole="Project" ToRole="Teacher" />
@@ -679,7 +679,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="end_time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="judge_end_time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="is_deleted" Type="Int32" Nullable="false" />
-          <Property Name="publish_time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="publish_time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Project" Relationship="Self.FK_Project_ProjectCategory" FromRole="ProjectCategory" ToRole="Project" />
         </EntityType>
         <EntityType Name="ProjectJudge">
@@ -702,8 +702,8 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="project_id" Type="Int32" Nullable="false" />
-          <Property Name="project_file" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="project_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="project_file" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="project_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="stage" Type="Int32" Nullable="false" />
           <Property Name="time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="is_pass" Type="Int32" Nullable="false" />

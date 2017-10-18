@@ -21,15 +21,15 @@ public partial class Display_MasterPage : System.Web.UI.MasterPage
         }
         if (!IsPostBack)
         {
-            string id = CookieHelper.GetCookieValue("TeacherNumber");
-            string pwd = CookieHelper.GetCookieValue("TeacherPwd");
-            if (id != null && pwd != null)
-            {
-                txtID.Text = id;
-                txtPwd.Attributes["value"] = pwd;
-                //cbxRemeberUser.Checked = true;
+            //string id = CookieHelper.GetCookieValue("TeacherNumber");
+            //string pwd = CookieHelper.GetCookieValue("TeacherPwd");
+            //if (id != null && pwd != null)
+            //{
+            //    txtID.Text = id;
+            //    txtPwd.Attributes["value"] = pwd;
+            //    //cbxRemeberUser.Checked = true;
 
-            }
+            //}
             
         }
     }

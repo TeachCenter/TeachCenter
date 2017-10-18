@@ -99,6 +99,20 @@
 				
 			</div>
 		</div>
+
+         <div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <asp:FileUpload ID="fup" runat="server" />
+                <asp:Label ID="lblInfo" runat="server"></asp:Label>
+			</div>
+		</div>
+
+        <div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <asp:Button ID="btnFup" runat="server" CssClass="btn btn-primary radius" OnClick="btnFup_Click" Text="修改封面" />
+				
+			</div>
+		</div>
         <script type="text/javascript">
             //判断标题不能为空
             $("#txtTitle").focusout(function () {

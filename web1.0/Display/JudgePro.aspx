@@ -40,6 +40,7 @@
     </style>
 </head>
 <body>
+    <form runat="server">
 	<div class="left-nav">
 		<a class="clearfix" style="display:block;cursor:pointer;" href="main-index.aspx"><img src="./images/logo-big.png" alt=""></a>
 		<ul>
@@ -53,7 +54,7 @@
         </ul>
 	</div>
 	<div class="right-content">
-        <form runat="server">
+        
 		<div class="clearfix">
 			<h1>项目信息</h1>
 		</div>
@@ -112,7 +113,7 @@
                 <input type="hidden" id="result" runat="server" value=""/>
 			</div>
 			<asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" class="submit" Text="提交评审结果"></asp:LinkButton>
-            </form>
+            
 	</div>
 	<script>
         var w = $(window).width();
@@ -135,5 +136,6 @@
     </script>
 	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
 	<script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script>
+        </form>
 </body>
 </html>

@@ -126,7 +126,7 @@ public partial class EducateSource
     public string publisher { get; set; }
     public string publish_time { get; set; }
     public int view_times { get; set; }
-    public Nullable<int> is_deleted { get; set; }
+    public int is_deleted { get; set; }
 }
 
 public partial class Introduction

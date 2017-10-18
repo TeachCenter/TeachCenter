@@ -33,7 +33,8 @@ public partial class Display_MyActivityList : System.Web.UI.Page
                 foreach (var i in at)
                 {
                     Activity activity = db.Activity.Single(a => a.Activity_id == i.activity_id);
-                    ac.Add(activity);
+                    if(activity.Activity_isdeleted == 0)
+                        ac.Add(activity);
                 }
                 HtmlInputHidden count = FindControl("count") as HtmlInputHidden;
                 count.Value = ac.Count().ToString();

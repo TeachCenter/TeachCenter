@@ -19,39 +19,42 @@ public partial class Display_JudgePro : System.Web.UI.Page
             int stage = 0;
             if (!IsPostBack)
             {
-                project_id = Convert.ToInt32(Request.QueryString["id"]);
-                stage = Convert.ToInt32(Request.QueryString["stage"]);
-            }
-            else
-                Response.Redirect("main-index.aspx");
-            using (var db = new TeachingCenterEntities())
-            {
-                var projectinfo = (from it in db.ProjectInfo where it.project_id == project_id select it).FirstOrDefault();
-                txtName.Text = projectinfo.name;
-                txtCategory.Text = projectinfo.category_name;
-                txtDuty.Text = projectinfo.teacher_name;
-                DateTime time = Convert.ToDateTime(projectinfo.submit_time);
-                txtYear.Text = time.Year.ToString();
-                txtMonth.Text = time.Month.ToString();
-                txtDay.Text = time.Day.ToString();
-                var project = (from it in db.Project where it.project_id == project_id select it).FirstOrDefault();
-                txtMoney.Text = project.fund;
-                string department = (from it in db.Teacher where it.id == project.teacher_id select it).FirstOrDefault().department;
-                txtDepartment.Text = department;
-                var project_stage = (from it in db.ProjectStage where it.project_id == project_id select it).FirstOrDefault();
-                Content.Text = Server.HtmlDecode(project_stage.project_content);
-                int index = project_stage.project_file.IndexOf("/");
-                lbFileName.Text = project_stage.project_file.Substring(index + 1);
-                var category = (from it in db.ProjectCategory where it.id == project.category select it).FirstOrDefault();
-                DateTime now = DateTime.Now;
-                DateTime end = Convert.ToDateTime(category.judge_end_time);
-                if (DateTime.Compare(now, end) > 0)
+                if(Request.QueryString["id"] != null && Request.QueryString["stage"] != null)
                 {
-                    divStage.Visible = true;
-                    txtStage.Text = "已超过评审时间";
-                    divMessage.Visible = false;
-                    divPass.Visible = false;
-                    lbtnSubmit.Visible = false;
+                    project_id = Convert.ToInt32(Request.QueryString["id"]);
+                    stage = Convert.ToInt32(Request.QueryString["stage"]);
+                }     
+                else
+                    Response.Redirect("main-index.aspx");
+                using (var db = new TeachingCenterEntities())
+                {
+                    var projectinfo = (from it in db.ProjectInfo where it.project_id == project_id select it).FirstOrDefault();
+                    txtName.Text = projectinfo.name;
+                    txtCategory.Text = projectinfo.category_name;
+                    txtDuty.Text = projectinfo.teacher_name;
+                    DateTime time = Convert.ToDateTime(projectinfo.submit_time);
+                    txtYear.Text = time.Year.ToString();
+                    txtMonth.Text = time.Month.ToString();
+                    txtDay.Text = time.Day.ToString();
+                    var project = (from it in db.Project where it.project_id == project_id select it).FirstOrDefault();
+                    txtMoney.Text = project.fund;
+                    string department = (from it in db.Teacher where it.id == project.teacher_id select it).FirstOrDefault().department;
+                    txtDepartment.Text = department;
+                    var project_stage = (from it in db.ProjectStage where it.project_id == project_id select it).FirstOrDefault();
+                    Content.Text = Server.HtmlDecode(project_stage.project_content);
+                    int index = project_stage.project_file.IndexOf("/");
+                    lbFileName.Text = project_stage.project_file.Substring(index + 1);
+                    var category = (from it in db.ProjectCategory where it.id == project.category select it).FirstOrDefault();
+                    DateTime now = DateTime.Now;
+                    DateTime end = Convert.ToDateTime(category.judge_end_time);
+                    if (DateTime.Compare(now, end) > 0)
+                    {
+                        divStage.Visible = true;
+                        txtStage.Text = "已超过评审时间";
+                        divMessage.Visible = false;
+                        divPass.Visible = false;
+                        lbtnSubmit.Visible = false;
+                    }
                 }
             }
         }
