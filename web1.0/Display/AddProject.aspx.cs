@@ -38,7 +38,7 @@ public partial class Display_AddProject : System.Web.UI.Page
         }
         catch
         {
-            JSHelper.AlertThenRedirect("请先登陆！", "main-index");
+            JSHelper.AlertThenRedirect("请先登陆！", "main-index.aspx");
         }
       
     }

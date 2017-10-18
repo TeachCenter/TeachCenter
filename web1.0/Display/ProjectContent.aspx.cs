@@ -41,7 +41,7 @@ public partial class Display_ProjectContent : System.Web.UI.Page
                 // 判断当前项目阶段
                 if (project_stage.stage == 0)
                     txtStage.Text = "初审";
-                else if (project_stage.stage == 0)
+                else if (project_stage.stage == 1)
                     txtStage.Text = "中期";
                 else
                     txtStage.Text = "结题";

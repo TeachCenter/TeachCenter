@@ -94,7 +94,9 @@ public partial class BackStage_ProCategoryContent : System.Web.UI.Page
                         var pro = (from it in db.ProjectStage where it.project_id == item.project_id orderby it.stage descending select it).FirstOrDefault();
                         // 若该项目当前阶段落后于项目类型的阶段，则设置为超时
                         if (pro.stage < category.stage)
-                            pro.is_pass = -100;
+                        {
+                            pro.is_pass = -100;                           
+                        }
 
                         // 遍历该项目分配至评审的所有记录
                         var judge = from it in db.ProjectJudge where it.project_id == item.project_id select it;
@@ -103,13 +105,16 @@ public partial class BackStage_ProCategoryContent : System.Web.UI.Page
                             foreach (var record in judge)
                             {
                                 // 若该记录当前阶段落后于项目类型的阶段，则设置为超时
-                                if (record.stage < category.stage)
+                                if (record.is_pass == -1)
+                                {
                                     record.is_pass = -100;
+                                }                                   
                             }
                         }
-                        db.SaveChanges();                        
                     }
+                    
                 }
+                db.SaveChanges();
             }
             return true;
         }
