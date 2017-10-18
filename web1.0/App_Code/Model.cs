@@ -75,7 +75,7 @@ public partial class Admin
     public string Admin_name { get; set; }
     public string Admin_emai { get; set; }
     public string Admin_phone { get; set; }
-    public System.DateTime Admin_birthday { get; set; }
+    public Nullable<System.DateTime> Admin_birthday { get; set; }
     public long Admin_emai_check { get; set; }
 }
 
@@ -211,7 +211,6 @@ public partial class ProjectJudge
     public int category { get; set; }
     public int teacher_id { get; set; }
     public int judge_id { get; set; }
-    public string judge_name { get; set; }
     public int stage { get; set; }
     public string comment { get; set; }
     public int is_pass { get; set; }

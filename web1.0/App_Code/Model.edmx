@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TeachingCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="TeachingCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityType Name="Activity">
           <Key>
             <PropertyRef Name="Activity_id" />
@@ -57,8 +57,8 @@
           <Property Name="Admin_pwd" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Admin_name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Admin_emai" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Admin_phone" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Admin_birthday" Type="date" Nullable="false" />
+          <Property Name="Admin_phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Admin_birthday" Type="date" />
           <Property Name="Admin_emai_check" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="Develop">
@@ -153,7 +153,6 @@
           <Property Name="category" Type="int" Nullable="false" />
           <Property Name="teacher_id" Type="int" Nullable="false" />
           <Property Name="judge_id" Type="int" Nullable="false" />
-          <Property Name="judge_name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="stage" Type="int" Nullable="false" />
           <Property Name="comment" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="is_pass" Type="int" Nullable="false" />
@@ -494,8 +493,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
             <End Role="Service" EntitySet="Service" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TeachingCenterModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -556,8 +554,8 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="Admin_pwd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Admin_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Admin_emai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Admin_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Admin_birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Admin_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Admin_birthday" Type="DateTime" Precision="0" />
           <Property Name="Admin_emai_check" Type="Int64" Nullable="false" />
         </EntityType>
         <EntityType Name="Develop">
@@ -660,7 +658,6 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="category" Type="Int32" Nullable="false" />
           <Property Name="teacher_id" Type="Int32" Nullable="false" />
           <Property Name="judge_id" Type="Int32" Nullable="false" />
-          <Property Name="judge_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="stage" Type="Int32" Nullable="false" />
           <Property Name="comment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="is_pass" Type="Int32" Nullable="false" />
@@ -1153,7 +1150,6 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
                 <ScalarProperty Name="category" ColumnName="category" />
                 <ScalarProperty Name="teacher_id" ColumnName="teacher_id" />
                 <ScalarProperty Name="judge_id" ColumnName="judge_id" />
-                <ScalarProperty Name="judge_name" ColumnName="judge_name" />
                 <ScalarProperty Name="stage" ColumnName="stage" />
                 <ScalarProperty Name="comment" ColumnName="comment" />
                 <ScalarProperty Name="is_pass" ColumnName="is_pass" />

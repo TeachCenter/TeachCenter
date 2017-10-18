@@ -49,6 +49,7 @@
     </style>
 </head>
 <body>
+    <form action="" runat="server">
 	<div class="left-nav">
 		<a class="clearfix" style="display:block;cursor:pointer;" href="main-index.aspx"><img src="./images/logo-big.png" alt=""></a>
 		<ul>
@@ -66,7 +67,7 @@
 			<h1>完善项目</h1>
 		</div>
 		<span class="cut"></span>
-		<form action="" runat="server">
+		
 			<div class="clearfix">
 				<h2>项目名称:</h2>
                 <asp:TextBox ID="txtName" runat="server" class="name" ReadOnly="true"></asp:TextBox>
@@ -117,7 +118,7 @@
                 <h3 style="margin-top:0px;"><asp:TextBox ID="txtFileName" runat="server" style="color:#D6000F" value="支持pdf、doc、docx格式的文件"></asp:TextBox> </h3>                
 			</div>
 			<asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" Text="完善项目" class="submit"></asp:LinkButton>
-		</form>
+		
 	</div>
     <script>
 	    $(document).ready(function() { 
@@ -153,5 +154,6 @@
 
          });
       </script>
+        </form>
 </body>
 </html>
