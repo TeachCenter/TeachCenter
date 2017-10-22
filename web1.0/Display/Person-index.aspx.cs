@@ -100,7 +100,7 @@ public partial class Display_Person_index : System.Web.UI.Page
             {
                 var project = from it in db.ProjectJudge where it.judge_id == judge_id && it.is_pass == -1 select it;
                 int number = project.Count();
-                foreach(ProjectJudge item in project)
+                foreach (ProjectJudge item in project)
                 {
                     var category = (from it in db.ProjectCategory where it.id == item.category select it).FirstOrDefault();
                     DateTime now = DateTime.Now;
