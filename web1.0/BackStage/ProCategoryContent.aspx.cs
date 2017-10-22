@@ -55,11 +55,19 @@ public partial class BackStage_ProCategoryContent : System.Web.UI.Page
             if(setIsPass())
             {
                 var category = db.ProjectCategory.SingleOrDefault(a => a.id == id);
-                category.stage += 1;
-                category.end_time = txtTime.Text;
-                category.judge_end_time = txtJudgeTime.Text;
-                db.SaveChanges();
-                Response.Write("<script>alert('开放成功！');location.href='ProCategoryList.aspx';</script>");
+                DateTime now = DateTime.Now;
+                if(DateTime.Compare(now, Convert.ToDateTime(category.end_time)) < 0)
+                    Response.Write("<script>alert('项目提交尚未结束，暂时无法开启下一阶段！');</script>");
+                else if(DateTime.Compare(now, Convert.ToDateTime(category.judge_end_time)) < 0)
+                    Response.Write("<script>alert('评审工作尚未结束，暂时无法开启下一阶段！');</script>");
+                else
+                {
+                    category.stage += 1;
+                    category.end_time = txtTime.Text;
+                    category.judge_end_time = txtJudgeTime.Text;
+                    db.SaveChanges();
+                    Response.Write("<script>alert('开放成功！');location.href='ProCategoryList.aspx';</script>");
+                }                
             }
             else
             {
@@ -93,7 +101,7 @@ public partial class BackStage_ProCategoryContent : System.Web.UI.Page
                         // 获取该项目当前的阶段
                         var pro = (from it in db.ProjectStage where it.project_id == item.project_id orderby it.stage descending select it).FirstOrDefault();
                         // 若该项目当前阶段落后于项目类型的阶段，则设置为超时
-                        if (pro.stage < category.stage)
+                        if (pro.stage < category.stage || pro.is_pass < 0)
                         {
                             pro.is_pass = -100;                           
                         }

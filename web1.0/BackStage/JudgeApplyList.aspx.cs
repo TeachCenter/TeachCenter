@@ -10,8 +10,8 @@ public partial class BackStage_JudgeApplyList : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        try
-        {
+        //try
+        //{
             string admin = Session["AdminID"].ToString();
             if (!IsPostBack)
             {
@@ -27,11 +27,11 @@ public partial class BackStage_JudgeApplyList : System.Web.UI.Page
                     Session["ds"] = teacher.ToList();
                 }
             }
-        }
-        catch
-        {
-            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
-        }
+        //}
+        //catch
+        //{
+        //    JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+        //}
     }
 
     protected void rptApplication_ItemCommand(object source, RepeaterCommandEventArgs e)

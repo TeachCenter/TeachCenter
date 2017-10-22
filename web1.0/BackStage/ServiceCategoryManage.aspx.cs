@@ -84,10 +84,18 @@ public partial class BackStage_ServiceCategoryManage : System.Web.UI.Page
             int id = Convert.ToInt32(e.CommandArgument.ToString());
             using (var db = new TeachingCenterEntities())
             {
-                ServiceCategory sc = db.ServiceCategory.Single(a => a.ServiceCategory_id == id);
-                db.ServiceCategory.Remove(sc);
-                db.SaveChanges();
-                JSHelper.AlertThenRedirect("删除成功！", "ServiceCategoryManage.aspx");
+                var list = from it in db.ServiceCategory select it;
+                if (list.Count() == 1)
+                    JSHelper.ShowAlert("已经是最后一个分类了！");
+                else
+                {
+                    ServiceCategory sc = db.ServiceCategory.Single(a => a.ServiceCategory_id == id);
+                    db.ServiceCategory.Remove(sc);
+                    db.SaveChanges();
+                    JSHelper.AlertThenRedirect("删除成功！", "ServiceCategoryManage.aspx");
+
+                }
+
             }
         }
         //修改分类
@@ -107,24 +115,41 @@ public partial class BackStage_ServiceCategoryManage : System.Web.UI.Page
     //批量删除
     protected void btnDelete_Click(object sender, EventArgs e)
     {
-        for (int i = 0; i < this.rptCategory.Items.Count; i++)
+        using (var db = new TeachingCenterEntities())
         {
-            CheckBox cbx = (CheckBox)rptCategory.Items[i].FindControl("chbCheck");
-            string name =((Literal) rptCategory.Items[i].FindControl("ltName")).Text;
-            if (cbx!=null)
-                if (cbx.Checked == true)
+            int count = 0;
+            for (int i = 0; i < this.rptCategory.Items.Count; i++)
+            {
+                CheckBox cbx = (CheckBox)rptCategory.Items[i].FindControl("chbCheck");
+                if (cbx != null)
+                    if (cbx.Checked == true)
+                        count++;
+            }
+            var list = from it in db.ServiceCategory select it;
+            if (list.Count() == count)
+                JSHelper.ShowAlert("已经是最后一个分类了！");
+            else
+            {
+                for (int i = 0; i < this.rptCategory.Items.Count; i++)
                 {
-                    using (var db = new TeachingCenterEntities())
-                    {
-                        
-                        ServiceCategory sc = db.ServiceCategory.Single(a => a.ServiceCategory_name == name);
-                        db.ServiceCategory.Remove(sc);
-                        db.SaveChanges();
-                        //JSHelper.AlertThenRedirect("删除成功！", "ServiceCategoryManage.aspx");
-                    }
+                    CheckBox cbx = (CheckBox)rptCategory.Items[i].FindControl("chbCheck");
+                    string name = ((Literal)rptCategory.Items[i].FindControl("ltName")).Text;
+                    if (cbx != null)
+                        if (cbx.Checked == true)
+                        {
+
+
+                            ServiceCategory sc = db.ServiceCategory.Single(a => a.ServiceCategory_name == name);
+                            db.ServiceCategory.Remove(sc);
+                            db.SaveChanges();
+                            //JSHelper.AlertThenRedirect("删除成功！", "ServiceCategoryManage.aspx");
+
+                        }
                 }
+                JSHelper.AlertThenRedirect("删除成功！", "ServiceCategoryManage.aspx");
+            }
+
         }
-        JSHelper.AlertThenRedirect("删除成功！", "ServiceCategoryManage.aspx");
     }
 
     //分页

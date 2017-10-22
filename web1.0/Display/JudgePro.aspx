@@ -112,8 +112,7 @@
 				<a  class="choice no">否<asp:LinkButton ID="no" runat="server"></asp:LinkButton></a>
                 <input type="hidden" id="result" runat="server" value=""/>
 			</div>
-			<asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" class="submit" Text="提交评审结果"></asp:LinkButton>
-            
+			<asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" class="submit" Text="提交评审结果" UseSubmitBehavior="false"></asp:LinkButton>
 	</div>
         
 	<script>

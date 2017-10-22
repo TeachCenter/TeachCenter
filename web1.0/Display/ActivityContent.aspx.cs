@@ -15,8 +15,8 @@ public partial class Display_js_ActivityContent : System.Web.UI.Page
     protected void lbtAdd_Click(object sender, EventArgs e)
     {
 
-        //try
-        //{
+        try
+        {
             string alert;
             int teacher = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
             //int teacher = 1;
@@ -58,10 +58,10 @@ public partial class Display_js_ActivityContent : System.Web.UI.Page
                 }
             }
             JSHelper.ShowAlert(alert);
-        //}
-        //catch
-        //{
-        //    JSHelper.ShowAlert("请先登录！");
-        //}
+        }
+        catch
+        {
+            JSHelper.ShowAlert("请先登录！");
+        }
     }
 }

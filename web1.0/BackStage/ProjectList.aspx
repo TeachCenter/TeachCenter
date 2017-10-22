@@ -37,7 +37,7 @@
         <asp:TextBox ID="txtName" runat="server" placeholder=" 项目名称" MaxLength="50" style="width:250px" class="input-text"></asp:TextBox>
         <asp:LinkButton ID="lbtSearch" runat="server" class="btn btn-success" OnClick="lbtSearch_Click"><i class="Hui-iconfont">&#xe665;</i> 搜资讯</asp:LinkButton>
 	</div>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><asp:LinkButton ID="lbtDeleteMore" runat="server" class="btn btn-danger radius" OnClick="lbtDeleteMore_Click" OnClientClick="return confirm('确定删除?')"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</asp:LinkButton> <a class="btn btn-primary radius" data-title="添加项目" data-href="ProjectAdd.aspx" onclick="Hui_admin_tab(this)" href="ProjectAdd.aspx"><i class="Hui-iconfont">&#xe600;</i> 添加项目</a></span> <span class="r">共有数据：<strong><asp:Literal ID="ltSum" runat="server"></asp:Literal></strong> 条</span> </div>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><asp:LinkButton ID="lbtDeleteMore" runat="server" class="btn btn-danger radius" OnClick="lbtDeleteMore_Click" OnClientClick="return confirm('确定删除?')"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</asp:LinkButton> <span class="r">共有数据：<strong><asp:Literal ID="ltSum" runat="server"></asp:Literal></strong> 条</span> </div>
         <div class="mt-20">
 		    <table class="table table-border table-bordered table-bg table-hover table-responsive">
 			    <thead>

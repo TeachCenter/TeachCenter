@@ -44,11 +44,9 @@ public partial class Display_Person_index : System.Web.UI.Page
                     int stage1 = category.stage;
                     var stage = (from it in db.ProjectStage where it.project_id == item.project_id orderby it.stage descending select it).FirstOrDefault();
                     int stage2 = stage.stage;
-                    if (stage.stage < category.stage && stage.is_pass != -2 && stage.is_pass != -1) // -2表示管理员未分配至评审，-1表示管理员未评判最终结果
+                    if (stage.stage < category.stage && stage.is_pass == 1) 
                     {
-                        // 判断是否超时
-                        if (stage.is_pass != -100)
-                            proList.Add(item);
+                        proList.Add(item);
                     }
                 }
                 rptProject.DataSource = proList;
@@ -102,14 +100,14 @@ public partial class Display_Person_index : System.Web.UI.Page
             {
                 var project = from it in db.ProjectJudge where it.judge_id == judge_id && it.is_pass == -1 select it;
                 int number = project.Count();
-                //foreach(ProjectJudge item in project)
-                //{
-                //    var category = (from it in db.ProjectCategory where it.id == item.category select it).FirstOrDefault();
-                //    DateTime now = DateTime.Now;
-                //    DateTime end = Convert.ToDateTime(category.judge_end_time);
-                //    if (DateTime.Compare(now, end) > 0)
-                //        number = number - 1;
-                //}
+                foreach(ProjectJudge item in project)
+                {
+                    var category = (from it in db.ProjectCategory where it.id == item.category select it).FirstOrDefault();
+                    DateTime now = DateTime.Now;
+                    DateTime end = Convert.ToDateTime(category.judge_end_time);
+                    if (DateTime.Compare(now, end) > 0)
+                        number = number - 1;
+                }
                 return number;
             }
         }
