@@ -21,13 +21,14 @@ public partial class BackStage_Welcome : System.Web.UI.Page
                     services.Visible = false;
 
                 int number = 0;
-                var apply = (from item in db.ProjectStage select item.project_id).Distinct();
-                foreach(var a in apply)
-                {
-                    var record = (from b in db.ProjectStage where b.project_id == a orderby b.stage descending select b).FirstOrDefault();
-                    if (record.is_pass == -2)
-                        number++;
-                }
+                var apply = from it in db.JudgeApplication select it;
+                //foreach(var a in apply)
+                //{
+                //    var record = (from b in db.ProjectStage where b.project_id == a orderby b.stage descending select b).FirstOrDefault();
+                //    if (record.is_pass == -2)
+                //        number++;
+                //}
+                number = apply.Count();
                 if (number == 0)
                     applys.Visible = false;
                 ltApply.Text = number.ToString();

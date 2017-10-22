@@ -74,7 +74,7 @@
           <Property Name="Develop_hit" Type="int" Nullable="false" />
           <Property Name="Develop_deleted" Type="bigint" Nullable="false" />
           <Property Name="Develop_category" Type="int" Nullable="false" />
-          <Property Name="Develop_path" Type="nvarchar" MaxLength="50" />
+          <Property Name="Develop_path" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="DevelopCategory">
           <Key>
@@ -572,7 +572,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="Develop_hit" Type="Int32" Nullable="false" />
           <Property Name="Develop_deleted" Type="Int64" Nullable="false" />
           <Property Name="Develop_category" Type="Int32" Nullable="false" />
-          <Property Name="Develop_path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Develop_path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="DevelopCategory" Relationship="Self.FK_Develop_DevelopCategory" FromRole="Develop" ToRole="DevelopCategory" />
         </EntityType>
         <EntityType Name="DevelopCategory">

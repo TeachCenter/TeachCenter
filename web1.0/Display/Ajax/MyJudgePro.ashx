@@ -51,19 +51,19 @@ public class MyJudgePro : IHttpHandler,IRequiresSessionState {
                 foreach(var item in project)
                 {
                     DataRow newRow = dt.NewRow();
-                    //var category = (from it in db.ProjectCategory where it.id == item.category select it).FirstOrDefault();
-                    //DateTime now = DateTime.Now;
-                    //DateTime end = Convert.ToDateTime(category.judge_end_time);
-                    //if((now - end).TotalDays < 7)
-                    //{
-                    newRow["id"] = item.project_id;
-                    newRow["title"] = getProName(item.project_id);
-                    newRow["submit_time"] = getProTime(item.project_id);
-                    newRow["teacher_name"] = getName(item.teacher_id);
-                    newRow["department"] = getDepartment(item.teacher_id);
-                    newRow["stage"] = item.stage;
-                    dt.Rows.Add(newRow);
-                    //}
+                    var category = (from it in db.ProjectCategory where it.id == item.category select it).FirstOrDefault();
+                    DateTime now = DateTime.Now;
+                    DateTime end = Convert.ToDateTime(category.judge_end_time);
+                    if (DateTime.Compare(now,end) <= 0)
+                    {
+                        newRow["id"] = item.project_id;
+                        newRow["title"] = getProName(item.project_id);
+                        newRow["submit_time"] = getProTime(item.project_id);
+                        newRow["teacher_name"] = getName(item.teacher_id);
+                        newRow["department"] = getDepartment(item.teacher_id);
+                        newRow["stage"] = item.stage;
+                        dt.Rows.Add(newRow);
+                    }
                 }
                 ArrayList all = new ArrayList();
                 all.Add(dt);

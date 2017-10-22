@@ -28,8 +28,16 @@ public partial class Display_AddProject : System.Web.UI.Page
                     {
                         using (var db = new TeachingCenterEntities())
                         {
+                            DateTime now = DateTime.Now;
                             var category = from it in db.ProjectCategory where it.is_deleted == 0 select it;
-                            rptSelect.DataSource = category.ToList();
+                            List<ProjectCategory> show = new List<ProjectCategory>();
+                            foreach(var item in category)
+                            {
+                                DateTime end = Convert.ToDateTime(item.end_time);
+                                if (DateTime.Compare(end, now) > 0)
+                                    show.Add(item);
+                            }
+                            rptSelect.DataSource = show;
                             rptSelect.DataBind();
                         }
                     }
