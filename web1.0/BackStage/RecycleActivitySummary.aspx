@@ -55,6 +55,7 @@
                     <th width="170">标题</th>
 					<th width="100">发布人</th>
 					<th width="120">发布时间</th>
+                    <th width="120">删除时间</th>
 					<th >内容</th>
                     <th width="80">状态</th>
 					<th width="120">操作</th>
@@ -71,6 +72,7 @@
 					        <td style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;"><a href='<%#"../Display/ActivitySummary.aspx?id="+ Eval("ActivitySummary_id") %>'><%# Eval("ActivitySummary_title") %></a></td>
 					        <td><%# Eval("ActivitySummary_author") %></td>
 					        <td><%# Eval("ActivitySummary_time") %></td>
+                            <td><%# Eval("ActivitySummary_deletedtime") %></td>
 					        <td class="td-status"><a href='<%#"../Display/ActivitySummary.aspx?id="+ Eval("ActivitySummary_id") %>'><asp:Literal ID="ltContent" runat="server" Text=<%# Eval("ActivitySummary_content") %>></asp:Literal></a></td>
 					        <td><span class="label label-danger radius">已删除</span></td>
                             <td class="f-14 td-manage">

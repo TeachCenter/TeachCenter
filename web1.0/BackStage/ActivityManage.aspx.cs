@@ -65,6 +65,7 @@ public partial class BackStage_ActivityManage : System.Web.UI.Page
             {
                 Activity service = db.Activity.Single(a => a.Activity_id == id);
                 service.Activity_isdeleted = 1;
+                service.Activity_deletedtime = DateTime.Now;
                 db.SaveChanges();
                 JSHelper.AlertThenRedirect("删除成功！", "ActivityManage.aspx");
             }
@@ -191,6 +192,7 @@ public partial class BackStage_ActivityManage : System.Web.UI.Page
                     {
                         Activity sc = db.Activity.Single(a => a.Activity_id == id);
                         sc.Activity_isdeleted = 1;
+                        sc.Activity_deletedtime = DateTime.Now;
                         db.SaveChanges();
                     }
                 }

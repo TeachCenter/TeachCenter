@@ -36,7 +36,8 @@ public partial class BackStage_RecycleActivitySummary : System.Web.UI.Page
                 ActivitySummary asu = db.ActivitySummary.Single(a => a.ActivitySummary_id == id);
                 
                 db.ActivitySummary.Remove(asu);
-                JSHelper.AlertThenRedirect("删除成功！", "ActivitySummaryManage.aspx");
+                db.SaveChanges();
+                JSHelper.AlertThenRedirect("删除成功！", "RecycleActivitySummary.aspx");
             }
         }
         if (e.CommandName == "Recycle")
@@ -45,8 +46,8 @@ public partial class BackStage_RecycleActivitySummary : System.Web.UI.Page
             using (var db = new TeachingCenterEntities())
             {
                 ActivitySummary asu = db.ActivitySummary.Single(a => a.ActivitySummary_id == id);
-                asu.ActivitySummary_isdeleted = 1;
-                
+                asu.ActivitySummary_isdeleted = 0;
+                db.SaveChanges();
                 JSHelper.AlertThenRedirect("恢复成功！", "ActivitySummaryManage.aspx");
             }
         }

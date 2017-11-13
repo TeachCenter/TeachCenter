@@ -8,7 +8,8 @@
 	<link rel="stylesheet" href="css/personal-center-init.css">
 	<link rel="stylesheet" href="css/personal-center-creatProgect.css">
 	<script type="text/javascript"  src="./js/jquery-3.1.1.min.js"></script>
-
+    <link rel="stylesheet" href="css/centerMobile.css" />
+    <script type="text/javascript"  src="./js/centerMobile.js"></script>
 </head>
 <body><form runat="server">
 	<div class="left-nav">

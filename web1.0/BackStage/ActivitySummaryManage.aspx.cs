@@ -35,6 +35,7 @@ public partial class BackStage_ActivitySummaryManage : System.Web.UI.Page
             {
                 ActivitySummary asu = db.ActivitySummary.Single(a => a.ActivitySummary_id == id);
                 asu.ActivitySummary_isdeleted = 1;
+                asu.ActivitySummary_deletedtime = DateTime.Now;
                 db.SaveChanges();
                 JSHelper.AlertThenRedirect("删除成功！", "ActivitySummaryManage.aspx");
             }
@@ -68,6 +69,7 @@ public partial class BackStage_ActivitySummaryManage : System.Web.UI.Page
                     {
                         ActivitySummary sc = db.ActivitySummary.Single(a => a.ActivitySummary_id == id);
                         sc.ActivitySummary_isdeleted = 1;
+                        sc.ActivitySummary_deletedtime = DateTime.Now;
                         db.SaveChanges();
                     }
                 }

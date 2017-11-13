@@ -62,6 +62,7 @@
                     <th width="120">标题</th>
 					<th width="80">发布人</th>
 					<th width="120">发布时间</th>
+                    <th width="120">删除时间</th>
 					<th >内容</th>
                     <th width="120">分类</th>
                     <th width="75">发布状态</th>
@@ -77,6 +78,8 @@
                             <td><%# Eval("Develop_title") %></td>
 					        <td><asp:Literal ID="ltTeacher" runat="server" Text=<%# Eval("Develop_author") %>></asp:Literal></td>
 					        <td><%# Eval("Develop_time") %></td>
+                            <td><%# Eval("Develop_deteledtime") %></td>
+                            
 					        <td class="td-status"><a href='<%#"../Display/Develop.aspx?id="+ Eval("Develop_id") %>'><asp:Literal ID="ltContent" runat="server" Text=<%# Eval("Develop_content") %>></asp:Literal></a></td>
                             <td><asp:Literal ID="ltCategory" runat="server" Text='<%# Eval("Develop_category") %>'></asp:Literal></td>
 					        <td class="td-status"><span class="label label-danger radius">已删除</span></td>

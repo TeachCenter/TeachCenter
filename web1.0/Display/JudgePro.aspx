@@ -38,6 +38,8 @@
         }   
 
     </style>
+    <link rel="stylesheet" href="css/centerMobile.css" />
+    <script type="text/javascript"  src="./js/centerMobile.js"></script>
 </head>
 <body>
     <form runat="server">
