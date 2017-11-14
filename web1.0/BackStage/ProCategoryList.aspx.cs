@@ -43,6 +43,7 @@ public partial class BackStage_ProCategoryList : System.Web.UI.Page
             {
                 var pro_category = db.ProjectCategory.SingleOrDefault(a => a.id == id);
                 pro_category.is_deleted = 1;
+                pro_category.deletedtime = DateTime.Now;
                 db.SaveChanges();
                 Response.Write("<script>alert('删除成功！');location.href='ProCategoryList.aspx';</script>");
             }
@@ -62,6 +63,7 @@ public partial class BackStage_ProCategoryList : System.Web.UI.Page
                 {
                     var pro_category = db.ProjectCategory.SingleOrDefault(a => a.id == project_id);
                     pro_category.is_deleted = 1;
+                    pro_category.deletedtime = DateTime.Now;
                     db.SaveChanges();
                 }
             }

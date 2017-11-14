@@ -28,6 +28,7 @@ public partial class Activity
     public long Activity_isdeleted { get; set; }
     public string Activity_author { get; set; }
     public int Activity_hit { get; set; }
+    public Nullable<System.DateTime> Activity_deletedtime { get; set; }
 
     public virtual ActivityCategory ActivityCategory { get; set; }
     public virtual ICollection<ActivityTeacher> ActivityTeacher { get; set; }
@@ -56,6 +57,7 @@ public partial class ActivitySummary
     public string ActivitySummary_author { get; set; }
     public string ActivitySummary_cover { get; set; }
     public int ActivitySummary_hit { get; set; }
+    public Nullable<System.DateTime> ActivitySummary_deletedtime { get; set; }
 }
 
 public partial class ActivityTeacher
@@ -101,6 +103,7 @@ public partial class Develop
     public long Develop_deleted { get; set; }
     public int Develop_category { get; set; }
     public string Develop_path { get; set; }
+    public Nullable<System.DateTime> Develop_deteledtime { get; set; }
 
     public virtual DevelopCategory DevelopCategory { get; set; }
 }
@@ -127,6 +130,7 @@ public partial class EducateSource
     public string publish_time { get; set; }
     public int view_times { get; set; }
     public int is_deleted { get; set; }
+    public Nullable<System.DateTime> deletedtime { get; set; }
 }
 
 public partial class Introduction
@@ -166,6 +170,7 @@ public partial class Project
     public string submit_time { get; set; }
     public string fund { get; set; }
     public int is_deleted { get; set; }
+    public Nullable<System.DateTime> deletedtime { get; set; }
 
     public virtual ProjectCategory ProjectCategory { get; set; }
     public virtual Teacher Teacher { get; set; }
@@ -189,6 +194,7 @@ public partial class ProjectCategory
     public string judge_end_time { get; set; }
     public int is_deleted { get; set; }
     public string publish_time { get; set; }
+    public Nullable<System.DateTime> deletedtime { get; set; }
 
     public virtual ICollection<Project> Project { get; set; }
 }
@@ -202,6 +208,7 @@ public partial class ProjectInfo
     public string submit_time { get; set; }
     public int category { get; set; }
     public int is_deleted { get; set; }
+    public Nullable<System.DateTime> deletedtime { get; set; }
 }
 
 public partial class ProjectJudge
@@ -243,6 +250,7 @@ public partial class Service
     public long Service_isdeleted { get; set; }
     public int Service_hit { get; set; }
     public string Service_author { get; set; }
+    public Nullable<System.DateTime> Service_deletedtime { get; set; }
 
     public virtual ServiceCategory ServiceCategory { get; set; }
     public virtual Teacher Teacher { get; set; }
@@ -259,15 +267,6 @@ public partial class ServiceCategory
     public string ServiceCategory_name { get; set; }
 
     public virtual ICollection<Service> Service { get; set; }
-}
-
-public partial class sysdiagrams
-{
-    public string name { get; set; }
-    public int principal_id { get; set; }
-    public int diagram_id { get; set; }
-    public Nullable<int> version { get; set; }
-    public byte[] definition { get; set; }
 }
 
 public partial class Teacher
@@ -295,19 +294,4 @@ public partial class Teacher
     public virtual ICollection<JudgeApplication> JudgeApplication { get; set; }
     public virtual ICollection<Project> Project { get; set; }
     public virtual ICollection<Service> Service { get; set; }
-}
-
-public partial class sp_helpdiagramdefinition_Result
-{
-    public Nullable<int> version { get; set; }
-    public byte[] definition { get; set; }
-}
-
-public partial class sp_helpdiagrams_Result
-{
-    public string Database { get; set; }
-    public string Name { get; set; }
-    public int ID { get; set; }
-    public string Owner { get; set; }
-    public int OwnerID { get; set; }
 }

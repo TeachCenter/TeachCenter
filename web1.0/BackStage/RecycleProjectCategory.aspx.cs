@@ -18,7 +18,7 @@ public partial class BackStage_RecycleProjectCategory : System.Web.UI.Page
                 using (var db = new TeachingCenterEntities())
                 {
                     // 绑定项目列表
-                    var pro_category = from it in db.ProjectCategory where it.is_deleted == 1 orderby it.end_time select it;
+                    var pro_category = from it in db.ProjectCategory where it.is_deleted == 1 orderby it.deletedtime descending select it;
                     ltSum.Text = pro_category.Count().ToString();
                     TotalPage.Text = Math.Ceiling(pro_category.Count() / 10.0).ToString();
                     currentPage.Text = "1";

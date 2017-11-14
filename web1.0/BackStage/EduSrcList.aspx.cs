@@ -46,6 +46,7 @@ public partial class BackStage_EduSrcList : System.Web.UI.Page
             {
                 var src = db.EducateSource.SingleOrDefault(a => a.id == id);
                 src.is_deleted = 1;
+                src.deletedtime = DateTime.Now;
                 db.SaveChanges();
                 Response.Write("<script>alert('删除成功！');location.href='EduSrcList.aspx';</script>");
             }
@@ -66,6 +67,7 @@ public partial class BackStage_EduSrcList : System.Web.UI.Page
                 {
                     var src = db.EducateSource.SingleOrDefault(a => a.id == src_id);
                     src.is_deleted = 1;
+                    src.deletedtime = DateTime.Now;
                     db.SaveChanges();
                 }
             }

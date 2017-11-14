@@ -88,6 +88,7 @@ public partial class BackStage_ServiceManage : System.Web.UI.Page
             {
                 Service service = db.Service.Single(a => a.Service_id == id);
                 service.Service_isdeleted = 1;
+                service.Service_deletedtime = DateTime.Now;
                 db.SaveChanges();
                 JSHelper.AlertThenRedirect("删除成功！", "ServiceManage.aspx");
             }
@@ -190,6 +191,7 @@ public partial class BackStage_ServiceManage : System.Web.UI.Page
                     {
                         Service sc = db.Service.Single(a => a.Service_id == id);
                         sc.Service_isdeleted = 1;
+                        sc.Service_deletedtime = DateTime.Now;
                         db.SaveChanges();
                     }
                 }

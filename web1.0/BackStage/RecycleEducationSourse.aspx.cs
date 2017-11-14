@@ -15,7 +15,7 @@ public partial class BackStage_RecycleEducationSourse : System.Web.UI.Page
             using (var db = new TeachingCenterEntities())
             {
                 // 绑定教学资源列表
-                var src = from it in db.EducateSource where it.is_deleted == 1 orderby it.publish_time descending select it;
+                var src = from it in db.EducateSource where it.is_deleted == 1 orderby it.deletedtime descending select it;
                 ltSum.Text = src.Count().ToString();
                 TotalPage.Text = Math.Ceiling(src.Count() / 10.0).ToString();
                 currentPage.Text = "1";

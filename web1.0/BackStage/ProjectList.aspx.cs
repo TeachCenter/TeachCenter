@@ -54,6 +54,7 @@ public partial class BackStage_ProjectList : System.Web.UI.Page
             {
                 var project = db.Project.SingleOrDefault(a => a.project_id == id);
                 project.is_deleted = 1;
+                project.deletedtime = DateTime.Now;
                 db.SaveChanges();
                 Response.Write("<script>alert('删除成功！');location.href='ProjectList.aspx';</script>");
             }
@@ -74,6 +75,7 @@ public partial class BackStage_ProjectList : System.Web.UI.Page
                 {
                     var project = db.Project.SingleOrDefault(a => a.project_id == project_id);
                     project.is_deleted = 1;
+                    project.deletedtime = DateTime.Now;
                     db.SaveChanges();                    
                 }
             }

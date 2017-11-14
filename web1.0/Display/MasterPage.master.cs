@@ -13,11 +13,15 @@ public partial class Display_MasterPage : System.Web.UI.MasterPage
         {
             divEnter.Visible = true;
             divPerson.Visible = false;
+            mobileLogin.Visible = true;
+            mobilePerson.Visible = false;
         }
         else
         {
             divPerson.Visible = true;
             divEnter.Visible = false;
+            mobileLogin.Visible = false;
+            mobilePerson.Visible = true;
         }
         if (!IsPostBack)
         {

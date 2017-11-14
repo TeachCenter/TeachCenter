@@ -49,6 +49,7 @@
                         <th width="200">内容</th>					    
 					    <th width="120">提交时间</th>
                         <th width="80">浏览数</th>
+                        <th width="120">删除时间</th>
                         <th width="120">操作</th>
 				    </tr>
 			    </thead>
@@ -58,9 +59,10 @@
 				            <tr class="text-c">
 					            <td><input type="checkbox" runat="server" id="isDelete"></td>					
 					            <td class="text-l"><u style="cursor:pointer" class="text-primary")" title="查看"><a href="EduSrcContent.aspx?id=<%# Eval("id")%>"><%# Eval("title") %></a></u></td>	
-                                <td><%# UeditorHelper.NoHTML(Eval("body").ToString()) %></td>
+                                <td><%# UeditorHelper.NoHTML(Eval("body").ToString()).Length <= 20?UeditorHelper.NoHTML(Eval("body").ToString()):UeditorHelper.NoHTML(Eval("body").ToString()).Substring(0,20) %></td>
 					            <td><%# Eval("publish_time")%><input type="hidden" runat="server" id="id" value=<%# Eval("id")%> /></td>
 					            <td><%# Eval("view_times") %></td>
+                                <td><%# Eval("deletedtime") %></td>
                                 <td class="f-14 td-manage">
                                      <asp:LinkButton  runat="server" CssClass="ml-5" CommandName="Recycle" CommandArgument='<%#Eval("id") %>' OnClientClick="return confirm('确定恢复?')">恢复</asp:LinkButton>
                                     <asp:LinkButton ID="lbtDelete" runat="server" CssClass="ml-5" CommandName="Delete" CommandArgument='<%#Eval("id") %>' OnClientClick="return confirm('确定彻底删除?')">删除</asp:LinkButton>

@@ -48,6 +48,7 @@
                         <th width="200">项目类型</th>
 					    <th width="80">提交者</th>
 					    <th width="120">提交时间</th>
+                        <th width="120">删除时间</th>
                         <th width="120">操作</th>
 				    </tr>
 			    </thead>
@@ -60,12 +61,14 @@
                                 <td><%# Eval("category_name") %></td>
 					            <td><%# Eval("teacher_name")%><input type="hidden" runat="server" id="id" value=<%# Eval("project_id")%> /></td>
 					            <td><%# Eval("submit_time") %></td>
+                                <td><%# Eval("deletedtime") %></td>
                                 <td class="f-14 td-manage">
                                     <asp:LinkButton ID="LinkButton1" runat="server" CssClass="ml-5" CommandName="Recycle" CommandArgument='<%#Eval("project_id") %>' OnClientClick="return confirm('确定恢复?')">恢复</asp:LinkButton>
 
                                     <asp:LinkButton ID="lbtDelete" runat="server" CssClass="ml-5" CommandName="Delete" CommandArgument='<%#Eval("project_id") %>' OnClientClick="return confirm('确定彻底删除?')">删除<i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton>
 
                                 </td>
+                                
 				            </tr>
                         </ItemTemplate>
                     </asp:Repeater>

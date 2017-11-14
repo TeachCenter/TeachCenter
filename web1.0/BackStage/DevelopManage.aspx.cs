@@ -114,6 +114,7 @@ public partial class BackStage_DevelopManage : System.Web.UI.Page
             {
                 Develop service = db.Develop.Single(a => a.Develop_id == id);
                 service.Develop_deleted = 1;
+                service.Develop_deteledtime = DateTime.Now;
                 db.SaveChanges();
                 JSHelper.AlertThenRedirect("删除成功！", "DevelopManage.aspx");
             }
@@ -216,6 +217,7 @@ public partial class BackStage_DevelopManage : System.Web.UI.Page
                     {
                         Develop sc = db.Develop.Single(a => a.Develop_id == id);
                         sc.Develop_deleted = 1;
+                        sc.Develop_deteledtime = DateTime.Now;
                         db.SaveChanges();
                     }
                 }

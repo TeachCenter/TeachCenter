@@ -44,6 +44,7 @@
 					    <th width="80">项目内容</th>
 					    <th width="120">当前阶段</th>
                         <th width="120">截止时间</th>
+                        <th width="120">删除时间</th>
                         <th width="120">操作</th>
 				    </tr>
 			    </thead>
@@ -56,11 +57,13 @@
                                 <td><%# UeditorHelper.NoHTML(Server.HtmlDecode(Eval("project_content").ToString())) %><input type="hidden" runat="server" id="id" value=<%# Eval("id")%> /></td>
 					            <td><%# AdminHelper.judgeStage(Convert.ToInt32(Eval("stage")))%></td>
 					            <td><%# Eval("end_time") %></td>
+                                <td><%# Eval("deletedtime") %></td>
                                 <td class="f-14 td-manage">
                                     <asp:LinkButton  runat="server" CssClass="ml-5" CommandName="Recycle" CommandArgument='<%# Eval("id")%>' OnClientClick="return confirm('确定恢复?')">恢复</asp:LinkButton>
                                     <asp:LinkButton   runat="server" CssClass="ml-5" CommandName="Delete" CommandArgument='<%# Eval("id")%>' OnClientClick="return confirm('确定删除?')">删除<i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton>
 
                                 </td>
+                                
 				            </tr>
                         </ItemTemplate>
                     </asp:Repeater>

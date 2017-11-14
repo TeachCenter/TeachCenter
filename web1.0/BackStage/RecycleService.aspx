@@ -58,6 +58,7 @@
 					<th width="80">序号</th>
 					<th width="80">申请人</th>
 					<th width="120">申请时间</th>
+                    <th width="120">删除时间</th>
 					<th width="100">联系方式</th>
 					<th >备注</th>
                     <th width="75">审核状态</th>
@@ -73,6 +74,7 @@
 					        <td><asp:Literal ID="ltNumber" runat="server"></asp:Literal></td>
 					        <td><asp:Literal ID="ltTeacher" runat="server" Text=<%# Eval("Service_teacher") %>></asp:Literal></td>
 					        <td><%# Eval("Service_time") %></td>
+                            <td><%# Eval("Service_deletedtime") %></td>
 					        <td><%# Eval("Service_phone") %></td>
 					        <td><%# Eval("Service_remarks") %></td>
 					        <td class="td-status"><span class='<%# Eval("Service_isdeal").ToString()=="0"?"label btn-default radius":"label label-success radius" %>'><%# Eval("Service_isdeal").ToString()=="0"?"未处理":"已处理" %></span></td>
