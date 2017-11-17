@@ -19,7 +19,7 @@
 			<div class="center clearfix">
 				<div class="content">
 					<h1 class="hhh">项目列表</h1>
-					<div class="passage-content" style="height: 1340px;"></div>
+					<div class="passage-content1 " ></div>
 					<!-- <div class="passage">
 						<h2>这里是文章标题</h2>
 						<div>
@@ -76,8 +76,6 @@
 					</div>
 				</div>
 			</div>
-            <ul class="mobileNavUl"><a class="mobileNavUlLi" href="main-index.aspx">首页</a><a class="mobileNavUlLi" href="Introduction.aspx">关于</a><a class="mobileNavUlLi" href="ProjectList.aspx?pageNumber=1">项目</a><a class="mobileNavUlLi" href="Service.aspx">服务</a><a class="mobileNavUlLi" href="SrcList.aspx?pageNumber=1">资源</a><a class="mobileNavUlLi" href="ActivityList.aspx?type=0&amp;&amp;page=1">活动</a><a class="mobileNavUlLi mobileNavUlLiLog">登陆</a></ul>
-
 		</div>
 	<script type="text/javascript"  src="./js/pop.js"></script>
 	<script>
@@ -112,7 +110,7 @@
           	}
           	for(i=0;i<data[0].length ;i++)
           	{
-          	    var content = $("<a>").attr("href", "ProgectContent.aspx?id=" + data[0][i].id).addClass("passage").addClass("clearfix").appendTo($(".passage-content"));
+          	    var content = $("<a>").attr("href", "ProgectContent.aspx?id=" + data[0][i].id).addClass("passage").addClass("clearfix").appendTo($(".passage-content1"));
           	    $("<h2>").text(data[0][i].title).appendTo(content);
           		var pContent=$("<div>").appendTo(content);
           		$("<p>").text(data[0][i].content).appendTo(pContent);
@@ -160,4 +158,5 @@
 	
 	   
 	</script>
+     <script type="text/javascript"  src="./js/mobile.js"></script>
 </asp:Content>

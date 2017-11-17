@@ -1,6 +1,6 @@
 * { padding: 0; margin: 0; border: 0; } 
 html {
-    background: none repeat scroll 0 0 #FFFFFF!important;
+    background: none repeat scroll 0 0 #f2f2f2!important;
     color: #000000;
     }
 body, div, dl, dt, dd, ul, ol, li, h2, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
@@ -106,7 +106,7 @@ ul li{
 .enter{
     width: 100%;
     height: 42px;
-    background-color: #000000;
+    background-color: #ffffff;
 }
 .person{
     
@@ -120,14 +120,14 @@ ul li{
     position: relative;
     width: 100%;
     height: 116px;
-    background-color: #132840;
+    background-color: #002957;
 }
 .log{
 
     cursor: pointer;
     height: 42px;
     line-height: 42px;
-    color: #FFFFFF;
+    color: #000000;
     float: right;
 }
 .enter-line{
@@ -162,7 +162,7 @@ ul li{
     padding-right: 30px;
     height: 32px;
     margin-top: 39px;
-    background-color:  #132840;
+    background-color:  #002957;
     outline:medium;
     color: #FFFFFF;
     border-bottom: 2px solid #FFFFFF;
@@ -199,7 +199,7 @@ ul li{
 .footer{
     width: 100%;
     height: 121px;
-    background-color: #132840;
+    background-color: #002957;
 
 }
 .footer p{
@@ -287,7 +287,7 @@ ul li{
     text-align: center;
     line-height: 60px;
     margin-left: 32px;
-    background-color: #132840;
+    background-color: #002957;
     color:#FFFFFF;
     font-size: 20px;
 }
@@ -309,7 +309,7 @@ ul li{
     text-align: center;
     line-height: 60px;
     margin-left: 32px;
-    background-color: #132840;
+    background-color: #002957;
     color:#FFFFFF;
     font-size: 20px;
 }
@@ -356,7 +356,55 @@ ul li{
 .hei {
     height:600px;
 }
+.main{
+    background-color: #f2f2f2;
+}
+.indexCenter{
+    background-color: #ffffff;
+}
+.content{
+    background-color: #ffffff;
+}
+.search::-webkit-input-placeholder{
+ color: #ffffff;
+}
+.search:-moz-placeholder{}{
+ color: #ffffff;
+}
+.search:-ms-input-placeholder{
+ color: #ffffff;
+}
 
+.search::-moz-placeholder {
+    color: #ffffff;
+}
+
+.teach-header,.work-header,.inform-header{
+    margin-bottom: 10px;
+    border-bottom: 2px solid  #cccccc;
+}
+.nav{
+    position: relative;
+}
+.leftLine{
+    width: 100%;
+    height: 6px;
+    position: absolute;
+    background-color: #cccccc;
+    display: block;
+    background-image: -webkit-linear-gradient(
+        to top,
+        rgba(229,229,229,1)0%,
+         rgba(229,229,229,0)100%);
+    background-image: -o-linear-gradient(
+        to top,
+        rgba(229,229,229,1)0%,
+         rgba(229,229,229,0)100%);
+    background-image: linear-gradient(
+        to top,
+        rgba(229,229,229,1)0%,
+         rgba(229,229,229,0)100%);
+}
 @media (min-width:0px) and (max-width:1200px)
 {
     body{

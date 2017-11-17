@@ -55,7 +55,7 @@
 	width: 600px;
 	display: block;
 	line-height: 60px;
-	background-color: #132840;
+	background-color: #002957;
 	text-align: center;
 	color: #FFFFFF;
 	height: 60px;
@@ -109,7 +109,7 @@
 	width: 140px!important;
 	background: #E6E6E6!important;
 }
-.error
+.choose
 {
 	display: block;
     width: 100%;
@@ -121,3 +121,4 @@
     padding-top: 8px;
     padding-bottom: 8px;
 }
+

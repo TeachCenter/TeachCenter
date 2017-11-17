@@ -8,7 +8,7 @@
 	line-height: 70px;
 	font-size: 28px;
 	color: white;
-	background-color: #132840;
+	background-color: #002957;
 	display: block;
 	text-align: center;
 	width: 100%;
@@ -127,7 +127,7 @@
 }
 .buttons{
 	margin-top: 32px;
-	margin-bottom: 64px;
+	padding-bottom: 64px;
 }
 .lleft-button{
 	border-width: 0px!important;

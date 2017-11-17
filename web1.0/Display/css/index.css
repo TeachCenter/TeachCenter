@@ -1,89 +1,76 @@
-#mySlide2 {
+#mySlide2{
     float: left;
     margin-right: 27px;
 }
-
-#mySlide3 {
+#mySlide3{
     float: left;
 }
-
-.teach {
+.teach{
     float: left;
-    width: 378px;
-    height: 396px;
-    margin-right: 27px;
+    width: 356px;
+     height: 396px;
+   margin-left:32px; 
+    margin-right: 32px;
 }
-
-.work {
+.work{
     float: left;
-    width: 378px;
-    margin-right: 27px;
-}
+    width: 356px;
 
-.teach .back {
-    display: none !important;
+    margin-right: 32px;
 }
-
-.teach .prev {
-    display: none !important;
+.teach .back{
+    display: none!important;
 }
-
-.inform {
+.teach .prev{
+    display: none!important;
+}
+.inform{
     float: left;
-    width: 379px;
+     width: 356px;
+
+    margin-right: 32px;}
+.work .back{
+    display: none!important;
+}
+.work .prev{
+    display: none!important;
 }
 
-.work .back {
-    display: none !important;
+#mySlide2 li{
+   width: 51px!important;
 }
-
-.work .prev {
-    display: none !important;
+#mySlide3 li{
+    width: 51px!important;
 }
-
-#mySlide2 li {
-    width: 51px !important;
+#mySlide2 ul{
+   bottom: 60px!important;
 }
-
-#mySlide3 li {
-    width: 51px !important;
+#mySlide3 ul{
+    bottom: 60px!important;
 }
-
-#mySlide2 ul {
-    bottom: 60px !important;
+#mySlide2 p:hover{
+   color: #D6000F!important;
+   text-decoration: underline;
 }
-
-#mySlide3 ul {
-    bottom: 60px !important;
-}
-
-#mySlide2 p:hover {
-    color: #D6000F !important;
-    text-decoration: underline;
-}
-
-#mySlide2 p {
+#mySlide2 p{
     font-size: 20px;
 }
-
-#mySlide3 p {
+#mySlide3 p{
     font-size: 20px;
 }
-
-    #mySlide3 p:hover {
-        color: #D6000F !important;
-        text-decoration: underline;
-    }
-
-.main h1 {
+#mySlide3 p:hover{
+   color: #D6000F!important;
+   text-decoration: underline;
+}
+.main h1{
     font-size: 24px;
-    color: #132840;
+    color: #002957;
     float: left;
     margin-top: 47px;
     margin-bottom: 15px;
 }
-
-.more {
+.more
+{
     color: #808080;
     display: block;
     float: right;
@@ -91,16 +78,13 @@
     margin-top: 58px;
     font-size: 16px;
 }
-
-    .more:hover {
-        text-decoration: underline;
-    }
-
-.inform ul {
+.more:hover{
+    text-decoration: underline;
+}
+.inform ul{
     margin-top: 10px;
 }
-
-.inform li {
+.inform li{
     background-image: url(../images/dot.png);
     background-repeat: no-repeat;
     background-position: 5px 17.5px;
@@ -108,8 +92,8 @@
     line-height: 40px;
     width: 300px;
 }
+.inform li a:hover{
+    color: #D6000F!important;
+   text-decoration: underline;
+}
 
-    .inform li a:hover {
-        color: #D6000F !important;
-        text-decoration: underline;
-    }

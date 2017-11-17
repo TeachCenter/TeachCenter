@@ -12,6 +12,7 @@
         
         }(document, window));
  $(function(){
+    
  	 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 
    var navFlag = false;
@@ -155,7 +156,7 @@
     });
     $(".add").css({
         "font-size": 0.24 + "rem",
-        "top":1.5+"rem",
+        "top":1.35+"rem",
         "left":6+"rem"
 
     });
@@ -270,7 +271,7 @@
 
  		})
      $(".turn-right").css({
-        "margin-top":0.95+"rem",
+        "margin-top":0.6+"rem",
         "margin-right":0
      })
      $(".log-box").css({"width":5+"rem"})
@@ -282,7 +283,7 @@
     $(".center").css("width",7.5+"rem");
     $("#mySlide1").css("width",7.5+"rem");
      $(".log-box-form").css({"width":5.4+"rem",
-        "height":6+"rem",
+        "height":5.2+"rem",
         "margin-left":-2.7+"rem","z-index":"21"
     });
      $(".sign-box-form").css({"width":6+"rem",
@@ -292,11 +293,12 @@
      $(".sign-box-form input").css({"width":4.8+"rem",
 
  	});
+     $("#img").css({"margin-left":0.69+"rem"})
 
      
      $(".log-submit").css({"width":4.8+"rem",
 "font-size":0.24+"rem",
-"margin-top":2.4+"rem"
+"margin-top":1.7+"rem"
     });
      $(".log-box-form input").css({"width":4.17+"rem",
 "font-size":0.24+"rem"
@@ -421,6 +423,10 @@
         "text-align":"center"
 
     });
+         $(".pdf").css({
+        "width":6+"rem",
+        "left":0.85+"rem"
+     });
          if ($(".hei").height() < $(".p-box").height()) {
         $(".hei").css({ "height": $(".p-box").height() + 250 })
 

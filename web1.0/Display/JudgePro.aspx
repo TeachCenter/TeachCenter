@@ -38,13 +38,10 @@
         }   
 
     </style>
-    <link rel="stylesheet" href="css/centerMobile.css" />
-    <script type="text/javascript"  src="./js/centerMobile.js"></script>
 </head>
 <body>
-    <form runat="server">
 	<div class="left-nav">
-		<a class="clearfix" style="display:block;cursor:pointer;" href="main-index.aspx"><img src="./images/logo-big.png" alt=""></a>
+		<img src="./images/logo-big.png" alt="">
 		<ul>
 			<li><a href="Person-index.aspx">个人主页</a></li>
 			<li><a href="EditInfo.aspx">修改信息</a></li>
@@ -52,11 +49,10 @@
 			<li><a href="MyServiceList.aspx">服务管理</a></li>
 			<li><a href="MyActivityList.aspx">活动管理</a></li>
 			<li class="dif-li" id="liJudge" runat="server"><a href="MyJudgePro.aspx?pageNumber=1">评审服务</a></li>
-		    <li><asp:LinkButton ID="lbtReturn" OnClick="lbtReturn_Click" runat="server" Text="注销登录"></asp:LinkButton></li>
-        </ul>
+		</ul>
 	</div>
 	<div class="right-content">
-        
+        <form runat="server">
 		<div class="clearfix">
 			<h1>项目信息</h1>
 		</div>
@@ -100,23 +96,19 @@
 				<h2>项目文件:</h2>
 				<a class="redA" class="submit" href="../BackStage/<%= getFileName() %>"><asp:Label ID="lbFileName" runat="server"></asp:Label></a>
 			</div>
-            <div class="clearfix" id="divStage" runat="server" visible="false">
-				<h2>当前状态:</h2>
-                <asp:TextBox ID="txtStage" runat="server"></asp:TextBox>
-			</div>
-			<div class="clearfix" id="divMessage" runat="server">
+			<div class="clearfix">
 				<h2>评审意见:</h2>
-                <asp:TextBox ID="txtMessage" runat="server" TextMode="MultiLine" class="content" MaxLength="50"></asp:TextBox>
+                <asp:TextBox ID="txtMessage" runat="server" TextMode="MultiLine" class="content"></asp:TextBox>
 			</div>
-            <div class="clearfix" id="divPass" runat="server">
+            <div class="clearfix">
 				<h2>是否通过:</h2>
                 <a  class="choice yes">是<asp:LinkButton ID="yes" runat="server"></asp:LinkButton></a>               
 				<a  class="choice no">否<asp:LinkButton ID="no" runat="server"></asp:LinkButton></a>
                 <input type="hidden" id="result" runat="server" value=""/>
 			</div>
-			<asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" class="submit" Text="提交评审结果" UseSubmitBehavior="false"></asp:LinkButton>
+			<asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" class="submit" Text="提交评审结果"></asp:LinkButton>
+            </form>
 	</div>
-        
 	<script>
         var w = $(window).width();
         $(".Content").css({ "width": w - 520 })
@@ -136,8 +128,8 @@
             $("#result").val("0");
         })
     </script>
+      <script type="text/javascript"  src="./js/centerMobile.js"></script>
 	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
 	<script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script>
-        </form>
 </body>
 </html>

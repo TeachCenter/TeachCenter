@@ -47,13 +47,10 @@
         }
 
     </style>
-    <link rel="stylesheet" href="css/centerMobile.css" />
-    <script type="text/javascript"  src="./js/centerMobile.js"></script>
 </head>
 <body>
-    <form action="" runat="server">
 	<div class="left-nav">
-		<a class="clearfix" style="display:block;cursor:pointer;" href="main-index.aspx"><img src="./images/logo-big.png" alt=""></a>
+		<img src="./images/logo-big.png" alt="">
 		<ul>
 			<li><a href="Person-index.aspx">个人主页</a></li>
 			<li><a href="EditInfo.aspx">修改信息</a></li>
@@ -61,15 +58,14 @@
 			<li><a href="MyServiceList.aspx">服务管理</a></li>
 			<li><a href="MyActivityList.aspx">活动管理</a></li>
 			<li id="liJudge" runat="server"><a href="MyJudgePro.aspx?pageNumber=1">评审服务</a></li>
-		    <li><asp:LinkButton ID="lbtReturn" OnClick="lbtReturn_Click" runat="server" Text="注销登录"></asp:LinkButton></li>
-        </ul>
+		</ul>
 	</div>
 	<div class="right-content">
 		<div class="clearfix">
 			<h1>完善项目</h1>
 		</div>
 		<span class="cut"></span>
-		
+		<form action="" runat="server">
 			<div class="clearfix">
 				<h2>项目名称:</h2>
                 <asp:TextBox ID="txtName" runat="server" class="name" ReadOnly="true"></asp:TextBox>
@@ -117,10 +113,10 @@
 				<h2>上传文件:</h2>				
                 <asp:FileUpload ID="FileUp" runat="server" style="display:none" />  
                 <asp:Button id="btnBrowse" runat="server" OnClientClick="return ShowBrowse()" Text="选择文件" class="choose"/>
-                <h3 style="margin-top:0px;"><asp:TextBox ID="txtFileName" runat="server" style="color:#D6000F" value="支持pdf、doc、docx格式的文件"></asp:TextBox> </h3>                
+                <h3 style="margin-top:0px;"><asp:TextBox ID="txtFileName" runat="server" value="支持pdf、doc、docx格式的文件"></asp:TextBox> </h3>                
 			</div>
 			<asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" Text="完善项目" class="submit"></asp:LinkButton>
-		
+		</form>
 	</div>
     <script>
 	    $(document).ready(function() { 
@@ -156,6 +152,6 @@
 
          });
       </script>
-        </form>
+      <script type="text/javascript"  src="./js/centerMobile.js"></script>
 </body>
 </html>

@@ -24,8 +24,6 @@
             <a class="rright-button" style="float: right;"></a>
         </div>
 			</div>
-          <ul class="mobileNavUl"><a class="mobileNavUlLi" href="main-index.aspx">首页</a><a class="mobileNavUlLi" href="Introduction.aspx">关于</a><a class="mobileNavUlLi" href="ProjectList.aspx?pageNumber=1">项目</a><a class="mobileNavUlLi" href="Service.aspx">服务</a><a class="mobileNavUlLi" href="SrcList.aspx?pageNumber=1">资源</a><a class="mobileNavUlLi" href="ActivityList.aspx?type=0&amp;&amp;page=1">活动</a><a class="mobileNavUlLi mobileNavUlLiLog">登陆</a></ul>
-
 		</div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
@@ -114,6 +112,104 @@
 		
 
 	})
+	var navFlag = false;
+	$(".header").children().css({
+	    "display": 'none'
+	});
+	$("<div>").addClass('mobileHeader').text('教学支持中心').appendTo($(".header"))
+
+	$("<a>").addClass('mobileNav').appendTo($(".mobileHeader"))
+	$("<ul>").addClass('mobileNavUl').appendTo($(".main"))
+	$("<a>").addClass('mobileNavUlLi').text('首页').appendTo($(".mobileNavUl"))
+	$("<a>").addClass('mobileNavUlLi').text('关于').appendTo($(".mobileNavUl"))
+	$("<a>").addClass('mobileNavUlLi').text('项目').appendTo($(".mobileNavUl"))
+	$("<a>").addClass('mobileNavUlLi').text('资源').appendTo($(".mobileNavUl"))
+	$("<a>").addClass('mobileNavUlLi').text('登陆').appendTo($(".mobileNavUl"))
+	$("<a>").addClass('mobileSearch').appendTo($(".mobileHeader"))
+	$("#mySlide1").css({
+	    "height": 4.2 + "rem"
+	});
+	$(".teach").css({
+	    "width": 90 + "%",
+	    "height": 6 + "rem",
+	    "margin-left": 5 + "%"
+	});
+	$("#mySlide2").css({
+	    "width": 100 + "%",
+	    "height": 5.5 + "rem",
+
+	});
+
+	$(".work").css({
+	    "width": 90 + "%",
+	    "height": 6 + "rem",
+	    "margin-left": 5 + "%"
+	});
+	$("#mySlide3").css({
+	    "width": 100 + "%",
+	    "height": 5.5 + "rem",
+	});
+
+	$(".inform").css({
+	    "width": 90 + "%",
+	    "height": 5.5 + "rem",
+	    "margin-left": 5 + "%"
+	});
+
+	$(".main h1").css({
+	    "font-size": 0.4 + "rem"
+
+	});
+	$(".more").css({
+	    "font-size": 0.32 + "rem"
+
+	});
+
+	$("body").css({
+	    "font-size": 0.32 + "rem"
+
+	});
+	$(".footer").css({
+	    "height": 1.5 + "rem",
+	    "font-size": 0.24 + "rem"
+
+	});
+	$(".mobileNav").click(function () {
+
+	    if (navFlag == false) {
+	        console.log("666")
+	        navFlag = true;
+	        $(".mobileNavUl").css({
+	            "display": "block"
+	        });
+
+	    }
+	    else {
+	        navFlag = false;
+	        $(".mobileNavUl").css({
+	            "display": "none"
+	        });
+	    }
+	});
+
+	timer = setTimeout(function () {
+	    $("#mySlide2 img").css({
+	        "height": 4 + "rem"
+	    });
+	    $("#mySlide3 img").css({
+	        "height": 4 + "rem"
+	    });
+	    $("#mySlide2 p").css({
+	        "font-size": 0.32 + "rem"
+	    });
+	    $("#mySlide3 p").css({
+	        "font-size": 0.32 + "rem"
+	    });
+	    $(".inform li").css({
+	        "width": 90 + "%"
+	    });
+	}, 400);
     </script>
+     <script type="text/javascript"  src="./js/mobile.js"></script>
 </asp:Content>
 

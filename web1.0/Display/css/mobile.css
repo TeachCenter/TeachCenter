@@ -5,7 +5,7 @@
 	font-size: 0.32rem;
 	text-align: center;
 	padding-left: 1.32rem;
-	background-color: #132840;
+	background-color: #002957;
 	color: #FFFFFF;
 	position: relative;
 
@@ -23,18 +23,18 @@
 
 
 }
-.mobileNav {
-    position: relative;
-    float: right;
-    display: none;
-    width: 0.34rem;
-    height: 0.34rem;
-    margin-top: 0.28rem;
-    margin-right: 0.32rem;
-    background-image: url(../images/mobileNav.png);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    display: block;
+.mobileNav{
+	
+	position: relative;
+	float: right;
+	display: block;
+	width: 0.34rem;
+	height: 0.34rem;
+	margin-top: 0.28rem;
+	margin-right: 0.32rem;
+	background-image: url(../images/mobileNav.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 }
 .mobileNavUl{
 	margin-left:-3.2rem;

@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Document</title>
 	<link rel="stylesheet" href="css/personal-center-init.css" />
+    <link rel="stylesheet" href="css/centerMobile.css">
 	<script type="text/javascript"  src="./js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript"  src="./js/personal-center-init.js"></script>
     <link rel="stylesheet" href="css/personal-center-creatProgect.css">
@@ -52,22 +53,18 @@
 
            
     </style>
-    <link rel="stylesheet" href="css/centerMobile.css" />
-    <script type="text/javascript"  src="./js/centerMobile.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
         <div class="left-nav">
-		<a class="clearfix" style="display:block;cursor:pointer;" href="main-index.aspx"><img src="./images/logo-big.png" alt=""></a>
+		<img src="./images/logo-big.png" alt="">
 		<ul>
 			<li><a href="Person-index.aspx">个人主页</a></li>
 			<li><a href="EditInfo.aspx">修改信息</a></li>
 			<li class="dif-li"><a href="MyProject.aspx?pageNumber=1">项目管理</a></li>
 			<li><a href="MyServiceList.aspx">服务管理</a></li>
 			<li><a href="MyActivityList.aspx">活动管理</a></li>
-            <li id="liJudge" runat="server"><a href="MyJudgePro.aspx?pageNumber=1">评审服务</a></li>
-		   
 			<li><a href="MyJudgePro.aspx?pageNumber=1">评审服务</a></li>
 		</ul>
 	</div>
@@ -78,7 +75,7 @@
 		<span class="cut"></span>
 			<div class="clearfix">
 				<h2 class="name-h2">项目名称:</h2>
-                <asp:TextBox ID="txtName" runat="server" class="name" MaxLength="50"></asp:TextBox>
+                <asp:TextBox ID="txtName" runat="server" class="name" ></asp:TextBox>
 				<p class="name-error"></p>
 			</div>
              <input type="hidden"  id="Selected" runat="server" class="Selected" value="" />
@@ -108,7 +105,7 @@
 			</div>
 			<div class="clearfix">
 				<h2>资助额度:</h2>
-                <asp:TextBox ID="txtMoney" runat="server" class="money" MaxLength="15"></asp:TextBox>
+                <asp:TextBox ID="txtMoney" runat="server" class="money"></asp:TextBox>
 				<p class="money-error"></p>
 			</div>
 			<div class="clearfix">
@@ -130,7 +127,7 @@
 				<h2>上传文件:</h2>				
                 <asp:FileUpload ID="FileUp" runat="server" style="display:none" />  
                 <asp:Button id="btnBrowse" runat="server" OnClientClick="return ShowBrowse()" Text="选择文件" class="choose"/>
-                <h3 style="margin-top:0px;"><asp:TextBox ID="txtFileName" runat="server" value="支持pdf、doc、docx格式的文件" style="color:#D6000F"></asp:TextBox> </h3>
+                <h3 style="margin-top:0px;"><asp:TextBox ID="txtFileName" runat="server" value="支持pdf、doc、docx格式的文件"></asp:TextBox> </h3>
                  
 			</div>
             <asp:LinkButton ID="btnSubmit" runat="server" Text="提交项目" class="submit" OnClick="btnSubmit_Click" />
@@ -162,6 +159,7 @@
       </script>
     </div>
     </form>
+     <script type="text/javascript"  src="./js/centerMobile.js"></script>
 </body>
 </html>
 

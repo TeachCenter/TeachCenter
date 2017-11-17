@@ -17,7 +17,7 @@ timer = setTimeout(function () {
 
 
     }
-}, 200);
+},200);
 
 $(".mask").css("height", $(document).height())
 if (document.body.clientHeight >= document.documentElement.clientHeight) {
@@ -44,6 +44,7 @@ $(window).scroll(function () {
 $(".log").click(function () {
     pop($(".log-box-form"), "left");
 })
+
 $(".sign").click(function () {
     pop($(".sign-box-form"), "right");
 })
@@ -91,10 +92,10 @@ function turn(argument, direction, to) {
 function search() {
     $(".search").on({
         focus: function () {
-
+            
         },
         blur: function () {
-
+          
         }
     })
 }
