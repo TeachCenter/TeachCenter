@@ -78,8 +78,16 @@
         "font-size": 0.32 + "rem"
 
     });
-    
-    
+    $(".brief-intro-box").css({
+        "margin": 0 
+
+    });
+    $(".main").css({
+        "background-color":"#FFFFFF"
+    })
+    $("html").css({
+        "background-color":"#FFFFFF"
+    })
     $(".hhh").css({
         "font-size": 0.32 + "rem"
 
@@ -458,7 +466,7 @@
 	          	    $(".left-button").css({ "margin-left": (520 - 40 * (6 + 2)) / 2 })
 	          	}
 	          	
-    }, 400);
+    }, 200);
     timer1 = setTimeout(function () {
         $("#mySlide2 img").css({
             "height": 4 + "rem"
@@ -472,7 +480,7 @@
          $("#mySlide3 a").css({
             "height": 4 + "rem"
         });
-    }, 1000);
+    }, 200);
 
     
 }
@@ -484,7 +492,7 @@ else{
         $("#mySlide3 img").css({
             "height": 214 + "px"
         });
-    }, 400);
+    }, 200);
     
     $(".pcNav").css({
         "display": 'block'

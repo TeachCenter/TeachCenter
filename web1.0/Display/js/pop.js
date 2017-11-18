@@ -1,35 +1,34 @@
 
-timer = setTimeout(function () {
+var timer=setTimeout(function () {
     if ($(".hei").height() < $(".p-box").height()) {
         $(".hei").css({ "height": $(".p-box").height() + 250 })
-
+         
     }
+   
     if ($(".content").height() < 600) {
-
         $(".passage-content1").addClass("hei")
-
-    }
-    else {
-
+         timerFlag=true;
     }
     if ($(".right-content").height() < 600) {
         $(".passage-content").addClass("hei")
-
-
+        timerFlag=true;
     }
+
+    
 },200);
 
+
+
+
 $(".mask").css("height", $(document).height())
-if (document.body.clientHeight >= document.documentElement.clientHeight) {
-    $(".log-box-form").css("top", $(document).scrollTop() + (document.documentElement.clientHeight - parseInt($(".log-box-form").css("height"))) / 2)
-    $(".sign-box-form").css("top", $(document).scrollTop() + (document.documentElement.clientHeight - parseInt($(".log-box-form").css("height"))) / 2)
-}
-else {
-    $(".log-box-form").css("top", $(document).scrollTop() + (document.body.clientHeight - parseInt($(".log-box-form").css("height"))) / 2)
-    $(".sign-box-form").css("top", $(document).scrollTop() + (document.body.clientHeight - parseInt($(".log-box-form").css("height"))) / 2)
-}
-
-
+    if (document.body.clientHeight >= document.documentElement.clientHeight) {
+        $(".log-box-form").css("top", $(document).scrollTop() + (document.documentElement.clientHeight - parseInt($(".log-box-form").css("height"))) / 2)
+        $(".sign-box-form").css("top", $(document).scrollTop() + (document.documentElement.clientHeight - parseInt($(".log-box-form").css("height"))) / 2)
+    }
+    else {
+        $(".log-box-form").css("top", $(document).scrollTop() + (document.body.clientHeight - parseInt($(".log-box-form").css("height"))) / 2)
+        $(".sign-box-form").css("top", $(document).scrollTop() + (document.body.clientHeight - parseInt($(".log-box-form").css("height"))) / 2)
+    }
 
 $(window).scroll(function () {
     if (document.body.clientHeight >= document.documentElement.clientHeight) {
