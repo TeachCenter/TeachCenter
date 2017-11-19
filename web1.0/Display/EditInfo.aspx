@@ -21,7 +21,7 @@
     </style>
 </head>
 <body class="clearfix">
-	<div class="left-nav">
+	<div class="left-nav" style="height:937px">
 		<img src="./images/logo-big.png" alt="">
 		<ul>
 			<li><a href="Person-index.aspx">个人主页</a></li>

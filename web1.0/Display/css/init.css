@@ -1,6 +1,6 @@
 * { padding: 0; margin: 0; border: 0; } 
 html {
-    background: none repeat scroll 0 0 #f2f2f2!important;
+    background: none repeat scroll 0 0 #f2f2f2;
     color: #000000;
     }
 body, div, dl, dt, dd, ul, ol, li, h2, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
@@ -113,7 +113,7 @@ ul li{
     cursor: pointer;
     height: 42px;
     line-height: 42px;
-    color: #FFFFFF;
+    color: #000000;
     float: right;
 }
 .goto{
@@ -251,7 +251,7 @@ ul li{
 .gray-box{
     width: 327px;
     height: 60px;
-    margin-left: 32px;
+    margin-left: 24px;
     padding-left:30px;
     padding-right: 30px; 
     background-color: #E6E6E6;

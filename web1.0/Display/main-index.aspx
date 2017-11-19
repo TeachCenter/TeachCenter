@@ -89,17 +89,7 @@
 
       }); 
    
-  
-   var arr1=[//模拟ajax请求的数据
-        {imgurl:"images/1.png",href:"#",text:"这里大概文章标题长度50字符这里大概文章 标题长度50"},
-        {imgurl:"images/1.png",href:"#",text:"这里大概文章标题长度50字符这里大概文章 标题长度50"},
-        {imgurl:"images/1.png",href:"#",text:"这里大概文章标题长度50字符这里大概文章 标题长度50"}
-    ];
-  
-   
-    $(function(){
-        $("#mySlide3").mySlide(arr1,3000);
-    })
+ 
     
 </script>
 

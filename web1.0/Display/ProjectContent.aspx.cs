@@ -55,8 +55,8 @@ public partial class Display_ProjectContent : System.Web.UI.Page
                     txtReslut.Text = "否";
                 else if (project_stage.is_pass == -100)
                 {
-                    divOutofTime.Visible = true;
-                    txtOutofTime.Text = "已超过提交时间";
+                    //divOutofTime.Visible = true;
+                    //txtOutofTime.Text = "已超过提交时间";
                 }
                 else
                     txtReslut.Text = "尚未评判结果";          

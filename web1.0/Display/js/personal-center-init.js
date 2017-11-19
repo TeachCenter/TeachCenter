@@ -19,7 +19,7 @@ timer = setTimeout(function () {
         $(".progect-content").addClass("hei");
         console.log("666")
     }
-}, 400);
+}, 200);
 
 
 $(".right-content").css({"width":w-285})

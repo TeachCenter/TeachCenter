@@ -51,10 +51,10 @@ public partial class Display_JudgePro : System.Web.UI.Page
                 var pro_judge = (from it in db.ProjectJudge where it.judge_id == judge_id && it.project_id == project_id && it.stage == stage select it).FirstOrDefault(); // 获取当前评审记录             
                 if (pro_judge.is_pass == -100) // 判断是否已经超时
                 {
-                    divStage.Visible = true;
-                    txtStage.Text = "已超过评审时间";
-                    divMessage.Visible = false;
-                    divPass.Visible = false;
+                    //divStage.Visible = true;
+                    //txtStage.Text = "已超过评审时间";
+                   // divMessage.Visible = false;
+                    //divPass.Visible = false;
                     lbtnSubmit.Visible = false;
                 }
             }

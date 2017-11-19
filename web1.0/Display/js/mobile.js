@@ -78,8 +78,16 @@
         "font-size": 0.32 + "rem"
 
     });
-    
-    
+    $(".brief-intro-box").css({
+        "margin": 0 
+
+    });
+    $(".main").css({
+        "background-color":"#FFFFFF"
+    })
+    $("html").css({
+        "background-color":"#FFFFFF"
+    })
     $(".hhh").css({
         "font-size": 0.32 + "rem"
 
@@ -266,10 +274,11 @@
      	"z-index":"20",
      	"font-size":0.24+"rem",
      	"width":7.5+"rem",
-     	"background":"transparent"
+     	"height":100+"%"
 
 
  		})
+     $(".mask").css("height", $(document).height())
      $(".turn-right").css({
         "margin-top":0.6+"rem",
         "margin-right":0
@@ -290,7 +299,8 @@
         "height":5.2+"rem",
      	"margin-left":-3+"rem","z-index":"21"
  	});
-     $(".sign-box-form input").css({"width":4.8+"rem",
+     $(".sign-box-form input").css({"width":2+"rem","font-size":0.24+"rem"
+
 
  	});
      $("#img").css({"margin-left":0.69+"rem"})
@@ -448,7 +458,7 @@
         "height":16+"rem"
 
 
-    });
+        });
 	      if (0<page < 6) {
 	          	    $(".midButtonBox").css({ "width": page * 40 })
 	          	    $(".left-button").css({ "margin-left": (520 - 40 * (page + 2)) / 2 })
@@ -458,21 +468,25 @@
 	          	    $(".left-button").css({ "margin-left": (520 - 40 * (6 + 2)) / 2 })
 	          	}
 	          	
-    }, 400);
+    }, 200);
     timer1 = setTimeout(function () {
         $("#mySlide2 img").css({
-            "height": 4 + "rem"
+            "height": 4 + "rem",
+            "width":7+"rem"
         });
         $("#mySlide2 a").css({
-            "height": 4 + "rem"
+            "height": 4 + "rem",
+            "width":7+"rem"
         });
         $("#mySlide3 img").css({
-            "height": 4 + "rem"
+            "height": 4 + "rem",
+            "width":7+"rem"
         });
          $("#mySlide3 a").css({
-            "height": 4 + "rem"
+            "height": 4 + "rem",
+            "width":7+"rem"
         });
-    }, 1000);
+    }, 200);
 
     
 }
@@ -484,7 +498,7 @@ else{
         $("#mySlide3 img").css({
             "height": 214 + "px"
         });
-    }, 400);
+    }, 200);
     
     $(".pcNav").css({
         "display": 'block'
