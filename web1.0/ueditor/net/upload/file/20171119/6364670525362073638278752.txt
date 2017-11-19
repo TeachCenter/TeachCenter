@@ -1,0 +1,6 @@
+登陆后把登陆按钮换成个人中心
+主站的加    <link rel="stylesheet" href="css/mobile.css" />
+<script type="text/javascript"  src="./js/mobile.js"></script>
+个人中心加
+<link rel="stylesheet" href="css/centerMobile.css">
+ <script type="text/javascript"  src="./js/centerMobile.js"></script>

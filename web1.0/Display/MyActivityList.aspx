@@ -68,7 +68,7 @@
         var i = 0;
         var page = Math.floor($("#count").val() / 6 + 1);;
         for (i = 0; i < page; i++) {
-            $("<a>").attr("href", "MyActivity.aspx?page=" + page).text(i + 1).appendTo($(".midButton"));
+            $("<a>").attr("href", "MyActivityList.aspx?page=" + page).text(i + 1).appendTo($(".midButton"));
 
         }
         if (page <= 6) {
