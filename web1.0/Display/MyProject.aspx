@@ -96,8 +96,7 @@
             <a class="right-button"></a>
             <a class="rright-button" style="float: right;"></a>
         </div>
-	</div>
-    
+	</div>   
 	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
     <script>
         var i = 0;

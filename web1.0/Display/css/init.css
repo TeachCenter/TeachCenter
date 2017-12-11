@@ -407,6 +407,9 @@ ul li{
 }
 @media (min-width:0px) and (max-width:1200px)
 {
+    html{
+        width: 1200px;
+    }
     body{
         width: 1200px;
     }

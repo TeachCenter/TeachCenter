@@ -4,8 +4,8 @@
     <link rel="stylesheet" href="css/intro.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div class="main">
-			<div class="center hei">
+    <div class="main clearfix">
+			<div class="center">
 				<div class="brief-intro-box">
 					<h1 class="brief-intro"></h1>
 					<span class="brief-intro-line"></span>
@@ -43,6 +43,6 @@
 	})
 		
 	</script>
-     <script type="text/javascript"  src="./js/mobile.js"></script>
+  
 </asp:Content>
 

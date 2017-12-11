@@ -110,6 +110,6 @@
 	})
 		
 	</script>
-     <script type="text/javascript"  src="./js/mobile.js"></script>
+     
 </asp:Content>
 
