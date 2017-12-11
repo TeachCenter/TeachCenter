@@ -31,23 +31,12 @@ public partial class Display_Service : System.Web.UI.Page
                 rptCategory.DataBind();
             }
             ltTeacher.Value = TeacherHelper.getTeacherNameByNumber(teacher);
-            if (Session["TeacherNumber"] == null)
-            {
-                mobileLogin.Visible = true;
-                mobilePerson.Visible = false;
-            }
-            else
-            {
-                mobileLogin.Visible = false;
-                mobilePerson.Visible = true;
-            }
         }
         catch
         {
             JSHelper.ShowAlert("请先登陆！" );
             JSHelper.js("window.history.go(-1);");
         }
-
 
     }
 
