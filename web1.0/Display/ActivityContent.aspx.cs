@@ -9,6 +9,16 @@ public partial class Display_js_ActivityContent : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["TeacherNumber"] == null)
+        {
+            mobileLogin.Visible = true;
+            mobilePerson.Visible = false;
+        }
+        else
+        {
+            mobileLogin.Visible = false;
+            mobilePerson.Visible = true;
+        }
 
     }
 

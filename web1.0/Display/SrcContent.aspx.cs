@@ -20,7 +20,18 @@ public partial class Display_SrcContent : System.Web.UI.Page
                 src.view_times += 1;
                 db.SaveChanges();
             }
+            if (Session["TeacherNumber"] == null)
+            {
+                mobileLogin.Visible = true;
+                mobilePerson.Visible = false;
+            }
+            else
+            {
+                mobileLogin.Visible = false;
+                mobilePerson.Visible = true;
+            }
         }
+
         
     }
 }
