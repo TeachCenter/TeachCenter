@@ -108,6 +108,18 @@
              else {
                  $(".female").css({ "background-color": "#FFFFFF" })
              }
+             $(".error").css({
+                 "margin-top": 0.2 + "rem",
+                 "font-size": 0.24 + "rem"
+
+             });
+             if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                 $(".name-error").css({
+                     "margin-top": 0.40 + "rem",
+                     "font-size": 0.24 + "rem"
+
+                 });
+             }
          })
     </script>	
       <script type="text/javascript"  src="./js/centerMobile.js"></script>

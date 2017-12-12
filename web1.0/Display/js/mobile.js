@@ -80,6 +80,11 @@
         "font-size": 0.32 + "rem"
 
     });
+    $("html").css({
+        "width": 7.5 + "rem",
+
+
+    });
     $(".brief-intro-box").css({
         "margin": 0 
 
@@ -457,7 +462,12 @@
         "height":16+"rem"
 
 
-        });
+	     });
+	     $("html").css({
+	         "width": 7.5 + "rem",
+
+
+	     });
 	      if (0<page < 6) {
 	          	    $(".midButtonBox").css({ "width": page * 40 })
 	          	    $(".left-button").css({ "margin-left": (520 - 40 * (page + 2)) / 2 })
@@ -471,19 +481,19 @@
     timer1 = setTimeout(function () {
         $("#mySlide2 img").css({
             "height": 4 + "rem",
-            "width":7+"rem"
+            "width":6.75+"rem"
         });
         $("#mySlide2 a").css({
             "height": 4 + "rem",
-            "width":7+"rem"
+            "width":6.75+"rem"
         });
         $("#mySlide3 img").css({
             "height": 4 + "rem",
-            "width":7+"rem"
+            "width":6.75+"rem"
         });
          $("#mySlide3 a").css({
             "height": 4 + "rem",
-            "width":7+"rem"
+            "width":6.75+"rem"
         });
     }, 200);
 

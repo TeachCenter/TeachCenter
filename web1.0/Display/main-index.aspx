@@ -8,7 +8,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="main clearfix">
         <span class="leftLine"></span>
-			<div id="mySlide1" style="width: 1200px; height: 380px; margin-left: auto; margin-right: auto;"></div>
+			<div id="mySlide1" style="width: 1200px; height: 450px; margin-left: auto; margin-right: auto;"></div>
 			<div class="center clearfix indexCenter">
 			<div class="teach ">
 			 	<div class="teach-header clearfix">

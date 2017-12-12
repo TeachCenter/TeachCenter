@@ -40,7 +40,8 @@
  	 $("body").css({
         "font-size": 0.32 + "rem"
 
-    });
+ 	 });
+ 	
  	 $(".right-content h1").css({
         "font-size": 0.32 + "rem"
 
@@ -79,7 +80,7 @@ $(".mobileNav").click(function () {
             });
         }
 });
-$(".mobileNavUl").css({ "margin-top": 107 + "px" })
+$(".mobileNavUl").css({ "margin-top": 107 + "px" ,"z-index":1000})
   $(".lleft-button").css({
 "margin-left":1+"rem"
  	});
@@ -97,7 +98,15 @@ $(".submit").css({
         "width":7.5+"rem",
         "margin-top":0
 
-    });
+   });
+   $("html").css({
+       "width": 7.5 + "rem",
+     
+
+   });
+   $("#txtFileName").css({
+       "padding-left":0
+   })
    $(".hei").css({
         "height":13+"rem"
 
@@ -117,8 +126,12 @@ $(".submit").css({
         "width":6+"rem",
         "left":0.85+"rem"
      });
-        console.log($(".pdf"))
-        
+       
+        $("html").css({
+            "width": 7.5 + "rem",
+
+
+        });
 
     }, 1000);
    
@@ -135,8 +148,13 @@ $(".submit").css({
        $(".right-content").css({
         "width":7.5+"rem"
 
-    });
+       });
+       $(".right-content p").css({
+           "font-size": 0.24 + "rem"
 
+       });
+      
+       
       $(".right-content h2").css({"width":"auto"}) 
       $("#edui1").css({"left":170}) 
       

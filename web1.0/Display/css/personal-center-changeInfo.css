@@ -126,4 +126,12 @@
     padding-top: 8px;
     padding-bottom: 8px;
 }
-
+.error {
+    float:left;
+        margin-top: 22px;
+    padding-left: 10px;
+    color:#D6000F;
+}
+.name-error {
+    margin-top:47px;
+}

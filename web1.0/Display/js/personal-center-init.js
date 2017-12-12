@@ -17,7 +17,7 @@ timer = setTimeout(function () {
     if ($(".progect-content").height() < 600) {
 
         $(".progect-content").addClass("hei");
-        console.log("666")
+     
     }
 }, 200);
 

@@ -162,6 +162,14 @@
                 $(".search-button").click();
             }
         })
+        $(".search1").keydown(function () {
+            if (event.keyCode == 13) {
+                event.returnValue = false;
+                event.cancel = true;
+
+                $(".search-button1").click();
+            }
+        })
         $(".gray-box").keydown(function () {
             if (event.keyCode == 13) {
                 event.returnValue = false;
