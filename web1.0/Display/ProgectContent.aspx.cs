@@ -11,5 +11,15 @@ public partial class Display_ProgectContent : System.Web.UI.Page
     {
         if (Request.QueryString["id"] == null)
             Response.Redirect("main-index.aspx");
+        if (Session["TeacherNumber"] == null)
+        {
+            mobileLogin.Visible = true;
+            mobilePerson.Visible = false;
+        }
+        else
+        {
+            mobileLogin.Visible = false;
+            mobilePerson.Visible = true;
+        }
     }
 }

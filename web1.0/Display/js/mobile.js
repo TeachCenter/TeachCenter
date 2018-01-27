@@ -1,18 +1,21 @@
- !(function(doc, win) {
-            var docEle = doc.documentElement,//获取html元素
-                event = "onorientationchange" in window ? "orientationchange" : "resize",//判断是屏幕旋转还是resize;
-                fn = function() {
-                    var width = docEle.clientWidth;
-                    width && (docEle.style.fontSize = 100  * (width / 750) + "px");//设置html的fontSize，随着event的改变而改变。
-                    	
-                };
-            
-            win.addEventListener(event, fn, false);
-            doc.addEventListener("DOMContentLoaded", fn, false);
-        
-        }(document, window));
+!(function (doc, win) {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        var docEle = doc.documentElement,//获取html元素
+            event = "onorientationchange" in window ? "orientationchange" : "resize",//判断是屏幕旋转还是resize;
+            fn = function () {
+                var width = docEle.clientWidth;
+                width && (docEle.style.fontSize = 100 * (width / 750) + "px");//设置html的fontSize，随着event的改变而改变。
+
+            };
+
+        win.addEventListener(event, fn, false);
+        doc.addEventListener("DOMContentLoaded", fn, false);
+
+    } }(document, window));
  $(function(){
- 	 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    
+     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+         
 
    var navFlag = false;
    
@@ -77,8 +80,21 @@
         "font-size": 0.32 + "rem"
 
     });
-    
-    
+    $("html").css({
+        "width": 7.5 + "rem",
+
+
+    });
+    $(".brief-intro-box").css({
+        "margin": 0 
+
+    });
+    $(".main").css({
+        "background-color":"#FFFFFF"
+    })
+    $("html").css({
+        "background-color":"#FFFFFF"
+    })
     $(".hhh").css({
         "font-size": 0.32 + "rem"
 
@@ -155,7 +171,7 @@
     });
     $(".add").css({
         "font-size": 0.24 + "rem",
-        "top":1.5+"rem",
+        "top":1.35+"rem",
         "left":6+"rem"
 
     });
@@ -181,10 +197,7 @@
         "font-size": 0.24 + "rem"
 
     }); 
-    $("body").css({
-        "font-size": 0.32 + "rem"
 
-    });
     $(".footer").css({
         "height":2 + "rem",
         "font-size": 0.24 + "rem"
@@ -265,12 +278,13 @@
      	"z-index":"20",
      	"font-size":0.24+"rem",
      	"width":7.5+"rem",
-     	"background":"transparent"
+     	"height":100+"%"
 
 
  		})
+     $(".mask").css("height", $(document).height())
      $(".turn-right").css({
-        "margin-top":0.95+"rem",
+        "margin-top":0.6+"rem",
         "margin-right":0
      })
      $(".log-box").css({"width":5+"rem"})
@@ -282,21 +296,23 @@
     $(".center").css("width",7.5+"rem");
     $("#mySlide1").css("width",7.5+"rem");
      $(".log-box-form").css({"width":5.4+"rem",
-        "height":6+"rem",
+        "height":5.2+"rem",
         "margin-left":-2.7+"rem","z-index":"21"
     });
      $(".sign-box-form").css({"width":6+"rem",
         "height":5.2+"rem",
      	"margin-left":-3+"rem","z-index":"21"
  	});
-     $(".sign-box-form input").css({"width":4.8+"rem",
+     $(".sign-box-form input").css({"width":2+"rem","font-size":0.24+"rem"
+
 
  	});
+     $("#img").css({"margin-left":0.69+"rem"})
 
      
      $(".log-submit").css({"width":4.8+"rem",
 "font-size":0.24+"rem",
-"margin-top":2.4+"rem"
+"margin-top":1.7+"rem"
     });
      $(".log-box-form input").css({"width":4.17+"rem",
 "font-size":0.24+"rem"
@@ -421,6 +437,10 @@
         "text-align":"center"
 
     });
+         $(".pdf").css({
+        "width":6+"rem",
+        "left":0.85+"rem"
+     });
          if ($(".hei").height() < $(".p-box").height()) {
         $(".hei").css({ "height": $(".p-box").height() + 250 })
 
@@ -442,7 +462,12 @@
         "height":16+"rem"
 
 
-    });
+	     });
+	     $("html").css({
+	         "width": 7.5 + "rem",
+
+
+	     });
 	      if (0<page < 6) {
 	          	    $(".midButtonBox").css({ "width": page * 40 })
 	          	    $(".left-button").css({ "margin-left": (520 - 40 * (page + 2)) / 2 })
@@ -452,21 +477,25 @@
 	          	    $(".left-button").css({ "margin-left": (520 - 40 * (6 + 2)) / 2 })
 	          	}
 	          	
-    }, 400);
+    }, 200);
     timer1 = setTimeout(function () {
         $("#mySlide2 img").css({
-            "height": 4 + "rem"
+            "height": 4 + "rem",
+            "width":6.75+"rem"
         });
         $("#mySlide2 a").css({
-            "height": 4 + "rem"
+            "height": 4 + "rem",
+            "width":6.75+"rem"
         });
         $("#mySlide3 img").css({
-            "height": 4 + "rem"
+            "height": 4 + "rem",
+            "width":6.75+"rem"
         });
          $("#mySlide3 a").css({
-            "height": 4 + "rem"
+            "height": 4 + "rem",
+            "width":6.75+"rem"
         });
-    }, 1000);
+    }, 200);
 
     
 }
@@ -478,7 +507,7 @@ else{
         $("#mySlide3 img").css({
             "height": 214 + "px"
         });
-    }, 400);
+    }, 200);
     
     $(".pcNav").css({
         "display": 'block'

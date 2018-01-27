@@ -1,36 +1,66 @@
 
-timer = setTimeout(function () {
+var timer=setTimeout(function () {
     if ($(".hei").height() < $(".p-box").height()) {
         $(".hei").css({ "height": $(".p-box").height() + 250 })
-
+         
     }
+   
     if ($(".content").height() < 600) {
-
         $(".passage-content1").addClass("hei")
-
-    }
-    else {
-
+         timerFlag=true;
     }
     if ($(".right-content").height() < 600) {
         $(".passage-content").addClass("hei")
-
-
+        timerFlag=true;
     }
-}, 200);
+    if ($(".p-box").height() < 600) {
+        $(".p-box").addClass("hei")
+        timerFlag = true;
+    }
+    
+},200);
+var timer1=setTimeout(function () {
+    if ($(".hei").height() < $(".p-box").height()) {
+        $(".hei").css({ "height": $(".p-box").height() + 250 })
+         
+    }
 
-$(".mask").css("height", $(document).height())
-if (document.body.clientHeight >= document.documentElement.clientHeight) {
-    $(".log-box-form").css("top", $(document).scrollTop() + (document.documentElement.clientHeight - parseInt($(".log-box-form").css("height"))) / 2)
-    $(".sign-box-form").css("top", $(document).scrollTop() + (document.documentElement.clientHeight - parseInt($(".log-box-form").css("height"))) / 2)
-}
-else {
-    $(".log-box-form").css("top", $(document).scrollTop() + (document.body.clientHeight - parseInt($(".log-box-form").css("height"))) / 2)
-    $(".sign-box-form").css("top", $(document).scrollTop() + (document.body.clientHeight - parseInt($(".log-box-form").css("height"))) / 2)
-}
+    if ($(".content").height() < 600) {
+        $(".passage-content1").addClass("hei")
+         timerFlag=true;
+    }
+    if ($(".right-content").height() < 600) {
+        $(".passage-content").addClass("hei")
+        timerFlag=true;
+    }
+    if ($(".p-box").height() < 600) {
+        $(".p-box").addClass("hei")
+        timerFlag = true;
+    }
+
+    
+},200);
 
 
+var time = setTimeout(function () {
+    $(".mask").css("height", $(document).height())
 
+    if (document.body.clientHeight >= document.documentElement.clientHeight) {
+        $(".log-box-form").css("top", $(document).scrollTop() + (document.documentElement.clientHeight - parseInt($(".log-box-form").css("height"))) / 2)
+        $(".sign-box-form").css("top", $(document).scrollTop() + (document.documentElement.clientHeight - parseInt($(".log-box-form").css("height"))) / 2)
+    }
+    else {
+        $(".log-box-form").css("top", $(document).scrollTop() + (document.body.clientHeight - parseInt($(".log-box-form").css("height"))) / 2)
+        $(".sign-box-form").css("top", $(document).scrollTop() + (document.body.clientHeight - parseInt($(".log-box-form").css("height"))) / 2)
+    }
+    $(".mask").css({ "width": $(document).width() })
+    $(".leftLine").css({ "width": $(document).width() })
+
+}, 200)
+$(window).resize(function () {
+    $(".mask").css({ "width": $(document).width() })
+    $(".leftLine").css({ "width": $(document).width() })
+})
 $(window).scroll(function () {
     if (document.body.clientHeight >= document.documentElement.clientHeight) {
         $(".log-box-form").css("top", $(document).scrollTop() + (document.documentElement.clientHeight - parseInt($(".log-box-form").css("height"))) / 2)
@@ -44,6 +74,7 @@ $(window).scroll(function () {
 $(".log").click(function () {
     pop($(".log-box-form"), "left");
 })
+
 $(".sign").click(function () {
     pop($(".sign-box-form"), "right");
 })
@@ -72,7 +103,7 @@ function shut() {
 function turn(argument, direction, to) {
     if (direction == "right") {
         argument.animate({ "left": -150 + "%" }, 500, function () {
-
+            argument.css("display", "none");
         });
         to.css("display", "block");
         to.animate({ "left": 50 + "%" }, 500)
@@ -80,7 +111,7 @@ function turn(argument, direction, to) {
     }
     else if (direction == "left") {
         argument.animate({ "left": 150 + "%" }, 500, function () {
-
+            argument.css("display", "none");
         });
         to.css("display", "block");
         to.animate({ "left": 50 + "%" }, 500)
@@ -91,10 +122,10 @@ function turn(argument, direction, to) {
 function search() {
     $(".search").on({
         focus: function () {
-
+            
         },
         blur: function () {
-
+          
         }
     })
 }

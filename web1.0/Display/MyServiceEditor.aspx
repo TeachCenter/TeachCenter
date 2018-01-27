@@ -8,12 +8,11 @@
 	<link rel="stylesheet" href="css/personal-center-init.css">
 	<link rel="stylesheet" href="css/personal-center-creatProgect.css">
 	<script type="text/javascript"  src="./js/jquery-3.1.1.min.js"></script>
-    <link rel="stylesheet" href="css/centerMobile.css" />
-    <script type="text/javascript"  src="./js/centerMobile.js"></script>
+
 </head>
 <body><form runat="server">
 	<div class="left-nav">
-		<a class="clearfix" style="display:block;cursor:pointer;" href="main-index.aspx"><img src="./images/logo-big.png" alt=""></a>
+		<img src="./images/logo-big.png" alt="">
 		<ul>
 			<li><a href="Person-index.aspx">个人主页</a></li>
 			<li><a href="EditInfo.aspx">修改信息</a></li>
@@ -21,8 +20,7 @@
 			<li class="dif-li"><a href="MyServiceList.aspx">服务管理</a></li>
 			<li><a href="MyActivityList.aspx">活动管理</a></li>
 			<li id="liJudge" runat="server"><a href="MyJudgePro.aspx?pageNumber=1">评审服务</a></li>
-		    <li><asp:LinkButton ID="lbtReturn" OnClick="lbtReturn_Click" runat="server" Text="注销登录"></asp:LinkButton></li>
-        </ul>
+		</ul>
 	</div>
     	<div class="right-content">
 		<div class="clearfix">
@@ -61,5 +59,6 @@
 	</div>
 	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
 	<script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script></form>
+     <script type="text/javascript"  src="./js/centerMobile.js"></script>
 </body>
 </html>
