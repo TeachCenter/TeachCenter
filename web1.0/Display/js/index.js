@@ -100,7 +100,7 @@
             ele.find("span>img").css({
                 "position":"absolute",
                 "width":"100%",
-                "height":"auto",
+                "height":"100%",
                 "z-index":"10",
                 "left":"0px"
             

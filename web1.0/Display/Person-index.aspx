@@ -7,13 +7,12 @@
 	<title>Document</title>
 	<link rel="stylesheet" href="css/personal-center-init.css">
 	<link rel="stylesheet" href="css/personal-center-index.css">
+  <link rel="stylesheet" href="css/centerMobile.css">
 	<script type="text/javascript"  src="./js/jquery-3.1.1.min.js"></script>
-    <link rel="stylesheet" href="css/centerMobile.css" />
-    <script type="text/javascript"  src="./js/centerMobile.js"></script>
 </head>
 <body><form runat="server">
 	<div class="left-nav">
-		<a class="clearfix" style="display:block;cursor:pointer;" href="main-index.aspx"><img src="./images/logo-big.png" alt=""></a>
+		<img src="./images/logo-big.png" alt="">
 		<ul>
 			<li class="dif-li"><a href="Person-index.aspx">个人主页</a></li>
 			<li><a href="EditInfo.aspx">修改信息</a></li>
@@ -43,12 +42,8 @@
 		<div class="clearfix">
             <asp:Repeater ID="rptProject" runat="server">
                 <ItemTemplate>
-                    <div class="clearfix">
                     <h2>您的《<%#Eval("name") %>》第<%# getNumber(getStage(Convert.ToInt32(Eval("project_id").ToString()))) %>阶段尚未提交，</h2>
 			        <a href="ImprovePro.aspx?id=<%#Eval("project_id") %>&&stage=<%# getStage(Convert.ToInt32(Eval("project_id").ToString())) %>">前去提交>></a>
-                    <span class="cut"></span>
-                    </div>
-                    
                 </ItemTemplate>
             </asp:Repeater>			
 		</div>
@@ -63,6 +58,8 @@
         {
             $(".completed").css({ "display": "none" });
         }
-    </script></form>
+    </script>
+     <script type="text/javascript"  src="./js/centerMobile.js"></script>
+      </form>
 </body>
 </html>

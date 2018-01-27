@@ -1,0 +1,19 @@
+.right-content h2{
+	display: block;
+	float: left;
+	color: #4D4D4D;
+	font-size: 20px;
+	margin: 20px 0px 20px 32px;
+}
+.right-content a{
+	display: block;
+	float: left;
+	color: #D6000F;
+	font-size: 20px;
+	margin: 20px 0px 20px 32px;
+	text-decoration: underline;
+}
+.right-content  div span{
+	color: #D6000F;
+	background-color: white!important;
+}

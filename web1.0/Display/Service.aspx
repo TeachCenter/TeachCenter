@@ -32,7 +32,7 @@
 						</div>
 						<div class="clearfix changeable">
 							<h2>联系方式:</h2>
-							<input class="same position" type="text" id="txtPhone" runat="server" maxlength="11" />
+							<input class="same position" type="text" id="txtPhone" runat="server" />
 							<p class="error position-error"></p>
 						</div>
 						<div class="clearfix changeable" >
@@ -46,9 +46,8 @@
 
 				</div>
 			</div>
-        <ul class="mobileNavUl"><a class="mobileNavUlLi" href="main-index.aspx">首页</a><a class="mobileNavUlLi" href="Introduction.aspx">关于</a><a class="mobileNavUlLi" href="ProjectList.aspx?pageNumber=1">项目</a><a class="mobileNavUlLi" href="Service.aspx">服务</a><a class="mobileNavUlLi" href="SrcList.aspx?pageNumber=1">资源</a><a class="mobileNavUlLi" href="ActivityList.aspx?type=0&amp;&amp;page=1">活动</a><a class="mobileNavUlLi mobileNavUlLiLog">登陆</a></ul>
-
-		</div>
+                <ul class="mobileNavUl"><a class="mobileNavUlLi" href="main-index.aspx">首页</a><a class="mobileNavUlLi" href="Introduction.aspx">关于</a><a class="mobileNavUlLi" href="ProjectList.aspx?pageNumber=1">项目</a><a class="mobileNavUlLi" href="Service.aspx">服务</a><a class="mobileNavUlLi" href="SrcList.aspx?pageNumber=1">资源</a><a class="mobileNavUlLi" href="ActivityList.aspx?type=0&amp;&amp;page=1">活动</a><a id="mobilePerson" runat="server" class="mobileNavUlLi" href="Person-index.aspx">个人中心</a><a id="mobileLogin" runat="server" class="mobileNavUlLi mobileNavUlLiLog">登陆</a></ul>
+</div>
     
     <script>
         
@@ -56,6 +55,7 @@
             $(".cover").css({ "display": "none" })
         }, 500);
     </script>
+     <script type="text/javascript"  src="./js/mobile.js"></script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
 </asp:Content>

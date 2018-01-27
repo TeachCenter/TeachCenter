@@ -55,5 +55,6 @@
     </div>
     </div>
     </form>
+      <script type="text/javascript"  src="./js/centerMobile.js"></script>
 </body>
 </html>

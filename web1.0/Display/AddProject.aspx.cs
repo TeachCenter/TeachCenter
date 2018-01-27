@@ -16,7 +16,7 @@ public partial class Display_AddProject : System.Web.UI.Page
         {
             //判断是不是评审
             if (!TeacherHelper.isJudge(Session["TeacherNumber"].ToString()))
-                liJudge.Visible = false;
+                //liJudge.Visible = false;
             this.FileUp.Attributes.Add("onchange", "javascript:return Check_FilePath();");
             if (!IsPostBack)
             {
