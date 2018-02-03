@@ -43,7 +43,7 @@
 				    <tr class="text-c">
 					    <th width="25"><input type="checkbox" runat="server" id="isDeleteMore"></th>
 					    <th width="300">标题</th>
-                        <th width="200">内容</th>					    
+                        <th width="200">内容摘要</th>					    
 					    <th width="120">提交时间</th>
                         <th width="80">浏览数</th>
                         <th width="120">操作</th>
@@ -55,7 +55,8 @@
 				            <tr class="text-c">
 					            <td><input type="checkbox" runat="server" id="isDelete"></td>					
 					            <td class="text-l"><u style="cursor:pointer" class="text-primary")" title="查看"><a href="/Display/SrcContent.aspx?id=<%# Eval("id")%>" target="_blank"><%# Eval("title") %></a></u></td>	
-                                <td><%# UeditorHelper.NoHTML(Eval("body").ToString()).Length>20 ? UeditorHelper.NoHTML(Eval("body").ToString()).Substring(0,20):UeditorHelper.NoHTML(Eval("body").ToString()) %></td>
+                                <td><%# Eval("summary").ToString().Length > 40?Eval("summary").ToString().Substring(0,40):Eval("summary").ToString()%></td>
+                                <%--<td><%# UeditorHelper.NoHTML(Eval("body").ToString()).Length>20 ? UeditorHelper.NoHTML(Eval("body").ToString()).Substring(0,20):UeditorHelper.NoHTML(Eval("body").ToString()) %></td>--%>
 					            <td><%# Eval("publish_time")%><input type="hidden" runat="server" id="id" value=<%# Eval("id")%> /></td>
 					            <td><%# Eval("view_times") %></td>
                                 <td class="f-14 td-manage"><asp:LinkButton ID="lbtDelete" runat="server" CssClass="ml-5" CommandName="Delete" CommandArgument='<%#Eval("id") %>' OnClientClick="return confirm('确定删除?')">删除<i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton></td>

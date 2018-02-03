@@ -16,9 +16,12 @@ public partial class BackStage_EduSrcAdd : System.Web.UI.Page
     protected void btnSub_Click(object sender, EventArgs e)
     {
         string title = txtTitle.Text;
+        string summary = txtSummary.Text;
         string body = UeditorHelper.Change(myEditor11.InnerHtml);
         if(title.Length == 0)
             Response.Write("<script>alert('标题不能为空！');</script>");
+        else if (summary.Length == 0)
+            Response.Write("<script>alert('内容摘要不能为空！');</script>");
         else if(body.Length == 0)
             Response.Write("<script>alert('文章内容不能为空！');</script>");
         else
@@ -32,6 +35,7 @@ public partial class BackStage_EduSrcAdd : System.Web.UI.Page
                 src.publish_time = DateTime.Now.ToString("yyyy-MM-dd");
                 src.view_times = 0;
                 src.is_deleted = 0;
+                src.summary = summary;
                 db.EducateSource.Add(src);
                 db.SaveChanges();
                 Response.Write("<script>alert('提交成功！');location.href='EduSrcList.aspx';</script>");

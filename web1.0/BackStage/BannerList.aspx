@@ -23,18 +23,20 @@
 <body><form id="form1" runat="server">
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 轮播图管理 <span class="c-gray en">&gt;</span> 轮播图列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><asp:LinkButton ID="lbtDeleteMore" runat="server" class="btn btn-danger radius" OnClick="lbtDeleteMore_Click" OnClientClick="return confirm('确定删除?')"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</asp:LinkButton> <asp:LinkButton ID="lbtAdd" runat="server" CssClass="btn btn-primary radius" OnClick="lbtAdd_Click" ><i class="Hui-iconfont">&#xe6e2;</i> 添加轮播图</asp:LinkButton>  <span class="r">共有数据：<strong><asp:Literal ID="ltSum" runat="server"></asp:Literal></strong> 条</span> </div>
-    <asp:Panel id="panelUpload" runat="server" visible="false">
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><asp:LinkButton ID="lbtDeleteMore" runat="server" class="btn btn-danger radius" OnClick="lbtDeleteMore_Click" OnClientClick="return confirm('确定删除?')"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</asp:LinkButton> <asp:LinkButton ID="lbtAdd" runat="server" CssClass="btn btn-primary radius" PostBackUrl="~/BackStage/BannerAdd.aspx" ><i class="Hui-iconfont">&#xe6e2;</i> 添加轮播图</asp:LinkButton>  <span class="r">共有数据：<strong><asp:Literal ID="ltSum" runat="server"></asp:Literal></strong> 条</span> </div>
+    <%--<asp:Panel id="panelUpload" runat="server" visible="false">
         <asp:FileUpload ID="myFileUpload" runat="server" CssClass="input-text" style="border:none;" />
         <asp:Button ID="btnSub" runat="server" CssClass="btn btn-primary radius" OnClick="btnSub_Click" Text="提交" />
-    </asp:Panel>  
+    </asp:Panel>  --%>
     <div class="mt-20">
 		    <table class="table table-border table-bordered table-bg table-hover table-responsive">
 			    <thead>
 				    <tr class="text-c">
 					    <th width="25"><input type="checkbox" runat="server" id="isDelete"></th>
 					    <th style="width:100px">图片</th>
-                        <th width="200">当前状态</th>
+                        <th width="200">标题</th>
+                        <th width="120">链接</th>
+                        <th width="120">当前状态</th>
                         <th width="120">删除</th>
                         <th width="120">置顶</th>
 				    </tr>
@@ -45,6 +47,8 @@
 				            <tr class="text-c">
 					            <td><input type="checkbox" runat="server" id="isDelete"></td>					
 					            <td style="width:100px"><a href="javascript:;" onClick="picture_edit('图库编辑','picture-show.html','10001')"><img width="100" class="picture-thumb" src=<%#Eval("Picture_path") %>></a></td>
+                                <td><%# Eval("Picture_title") %></td>
+                                <td><%# Eval("Picture_link") %></td>
 					            <td><%# judgeDisplay(Convert.ToInt32(Eval("Picture_id").ToString())) == true?"展示中":"未展示"%><input type="hidden" runat="server" id="id" value=<%# Eval("Picture_id")%> /></td>
                                 <td class="f-14 td-manage"><asp:LinkButton ID="lbtDelete" runat="server" CssClass="ml-5" CommandName="Delete" CommandArgument='<%#Eval("Picture_id") %>' OnClientClick="return confirm('确定删除?')">删除<i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton></td>
                                 <td class="f-14 td-manage"><asp:LinkButton ID="lbtOnTop" runat="server" CssClass="ml-5" CommandName="OnTop" CommandArgument='<%#Eval("Picture_id") %>' >置顶</asp:LinkButton></td>

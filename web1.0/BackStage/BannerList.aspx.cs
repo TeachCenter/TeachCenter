@@ -86,54 +86,7 @@ public partial class BackStage_BannerList : System.Web.UI.Page
         Response.Write("<script>alert('删除成功！');location.href='BannerList.aspx';</script>");
     }
 
-    protected void lbtAdd_Click(object sender, EventArgs e)
-    {
-        panelUpload.Visible = true;
-    }
-
-    protected bool UpLoadFile()
-    {
-        string FullName = myFileUpload.PostedFile.FileName;
-        if (FullName == "")
-            return false;
-        else
-        {
-            FileInfo file = new FileInfo(FullName);
-            string name = file.Name;
-            string type = file.Extension;
-            if (type == ".jpg" || type == ".png" || type == ".bmp")
-            {
-                string SavePath = Server.MapPath("~\\BackStage\\picture");
-                this.myFileUpload.PostedFile.SaveAs(SavePath + "\\" + name);
-                return true;
-            }
-            else
-                return false;
-        }
-    }
-
-    protected void btnSub_Click(object sender, EventArgs e)
-    {
-        string picture_path = myFileUpload.PostedFile.FileName;
-        if (UpLoadFile() == false)
-            Response.Write("<script>alert('请选择正确的文件！');</script>");
-        else
-        {
-            using (var db = new TeachingCenterEntities())
-            {
-                Picture picture = new Picture();
-                picture.Picture_path = "picture/" + picture_path;
-                picture.is_top = 0;
-                db.Picture.Add(picture);
-                db.SaveChanges();
-                var banner = db.Picture.SingleOrDefault(a => a.Picture_id == picture.Picture_id);
-                int max = Convert.ToInt32((from it in db.Picture orderby it.is_top descending select it.is_top).FirstOrDefault());
-                banner.is_top = max + 1;
-                db.SaveChanges();
-                Response.Write("<script>alert('添加成功！');location.href='BannerList.aspx';</script>");
-            }
-        }
-    }
+    
 
     protected void Prev_Click(object sender, EventArgs e)
     {
