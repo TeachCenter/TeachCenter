@@ -131,6 +131,7 @@ public partial class EducateSource
     public int view_times { get; set; }
     public int is_deleted { get; set; }
     public Nullable<System.DateTime> deletedtime { get; set; }
+    public string summary { get; set; }
 }
 
 public partial class Introduction
@@ -151,6 +152,8 @@ public partial class JudgeApplication
 public partial class Picture
 {
     public int Picture_id { get; set; }
+    public string Picture_title { get; set; }
+    public string Picture_link { get; set; }
     public string Picture_path { get; set; }
     public int is_top { get; set; }
 }
@@ -195,6 +198,7 @@ public partial class ProjectCategory
     public int is_deleted { get; set; }
     public string publish_time { get; set; }
     public Nullable<System.DateTime> deletedtime { get; set; }
+    public string summary { get; set; }
 
     public virtual ICollection<Project> Project { get; set; }
 }

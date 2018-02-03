@@ -34,7 +34,9 @@ public class EduSrcHandler : IHttpHandler {
                               it.publisher,
                               it.publish_time,
                               it.view_times,
-                              it.is_deleted
+                              it.is_deleted,
+                              it.summary
+
                           };
                 int count = src.Count();
                 src = src.Take(size * index).Skip(size * (index - 1));
@@ -46,6 +48,7 @@ public class EduSrcHandler : IHttpHandler {
                 dt.Columns.Add("publish_time");
                 dt.Columns.Add("view_times");
                 dt.Columns.Add("is_deleted");
+                dt.Columns.Add("summary");
                 foreach(var item in src)
                 {
                     DataRow newRow = dt.NewRow();
@@ -56,6 +59,7 @@ public class EduSrcHandler : IHttpHandler {
                     newRow["publish_time"] = item.publish_time;
                     newRow["view_times"] = item.view_times;
                     newRow["is_deleted"] = item.is_deleted;
+                    newRow["summary"] = item.summary;
                     dt.Rows.Add(newRow);
                 }
                 ArrayList all = new ArrayList();

@@ -42,8 +42,11 @@ public partial class BackStage_ProCategoryAdd : System.Web.UI.Page
         string project_content = UeditorHelper.Change(myEditor11.InnerHtml);
         string time = txtTime.Text;
         string judge_time = txtJudgeTime.Text;
+        string summary = txtSummary.Text;
         if (name.Length == 0)
             Response.Write("<script>alert('项目类型名称不能为空！');</script>");
+        else if (summary.Length == 0)
+            Response.Write("<script>alert('内容摘要不能为空！');</script>");
         else if (UpLoadFile() == false)
             Response.Write("<script>alert('请选择正确的文件！');</script>");
         else if(time == "" || judge_time == "")
@@ -60,7 +63,8 @@ public partial class BackStage_ProCategoryAdd : System.Web.UI.Page
                 pro_category.end_time = time;
                 pro_category.judge_end_time = judge_time;
                 pro_category.is_deleted = 0;
-                pro_category.publish_time = DateTime.Now.ToString("yyyy-MM-dd"); 
+                pro_category.publish_time = DateTime.Now.ToString("yyyy-MM-dd");
+                pro_category.summary = summary;
                 db.ProjectCategory.Add(pro_category);
                 db.SaveChanges();
                 Response.Write("<script>alert('提交成功！');location.href='ProCategoryList.aspx';</script>");

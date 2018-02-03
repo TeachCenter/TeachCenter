@@ -34,6 +34,7 @@ public class ProListHandler : IHttpHandler {
                                        project_content = it.project_content,
                                        publisher = "系统管理员",
                                        publish_time = it.publish_time,
+                                       summary = it.summary,
                                    };
                 int count = pro_category.Count();
                 pro_category = pro_category.Take(size * index).Skip(size * (index - 1));
@@ -43,6 +44,7 @@ public class ProListHandler : IHttpHandler {
                 dt.Columns.Add("content");
                 dt.Columns.Add("publisher");
                 dt.Columns.Add("publish_time");
+                dt.Columns.Add("summary");
                 foreach(var item in pro_category)
                 {
                     DataRow newRow = dt.NewRow();
@@ -51,6 +53,7 @@ public class ProListHandler : IHttpHandler {
                     newRow["content"] = UeditorHelper.NoHTML(item.project_content);
                     newRow["publisher"] = item.publisher;
                     newRow["publish_time"] = item.publish_time;
+                    newRow["summary"] = item.summary;
                     dt.Rows.Add(newRow);
                 }
                 ArrayList all = new ArrayList();

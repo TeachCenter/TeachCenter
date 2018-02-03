@@ -41,8 +41,8 @@
 			    <thead>
 				    <tr class="text-c">
 					    <th width="25"><input type="checkbox" runat="server" id="isDeleteMore"></th>
-					    <th width="300">项目类型名称</th>
-					    <th width="80">项目内容</th>
+					    <th width="200">项目类型名称</th>
+					    <th width="120">内容摘要</th>
 					    <th width="120">当前阶段</th>
                         <th width="120">截止时间</th>
                         <th width="120">操作</th>
@@ -54,7 +54,8 @@
 				            <tr class="text-c">
 					            <td><input type="checkbox" runat="server" id="isDelete"></td>					
 					            <td class="text-l"><u style="cursor:pointer" class="text-primary")" title="查看"><a href="ProCategoryContent.aspx?id=<%# Eval("id")%>"><%# Eval("name")%></a></u></td>	
-                                <td><%# UeditorHelper.NoHTML(Server.HtmlDecode(Eval("project_content").ToString())) %><input type="hidden" runat="server" id="id" value=<%# Eval("id")%> /></td>
+                                <td><%# Eval("summary").ToString().Length > 35?Eval("summary").ToString().Substring(0,35):Eval("summary").ToString()%></td>
+                                <%--<td><%# UeditorHelper.NoHTML(Server.HtmlDecode(Eval("project_content").ToString())) %><input type="hidden" runat="server" id="id" value=<%# Eval("id")%> /></td>--%>
 					            <td><%# AdminHelper.judgeStage(Convert.ToInt32(Eval("stage")))%></td>
 					            <td><%# Eval("end_time") %></td>
                                 <td class="f-14 td-manage"><asp:LinkButton ID="lbtDelete" runat="server" CssClass="ml-5" CommandName="Delete" CommandArgument='<%# Eval("id")%>' OnClientClick="return confirm('确定删除?')">删除<i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton></td>

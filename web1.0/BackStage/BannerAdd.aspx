@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ProCategoryAdd.aspx.cs" Inherits="BackStage_ProCategoryAdd" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="BannerAdd.aspx.cs" Inherits="BackStage_BannerAdd" %>
 
 <!DOCTYPE html>
 
@@ -32,7 +32,7 @@
             //    alert("666");
         });
     </script>
-<title>添加项目类型</title>
+<title>添加轮播图片</title>
 <meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
 <meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
 </head>
@@ -40,49 +40,21 @@
 <article class="page-container">
 	<form runat="server" class="form form-horizontal">
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>项目类型名称：</label>
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>轮播图标题：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<asp:TextBox ID="txtName" runat="server" CssClass="input-text" MaxLength="50"></asp:TextBox>
+				<asp:TextBox ID="txtTitle" runat="server" CssClass="input-text" MaxLength="50"></asp:TextBox>
+			</div>
+		</div>
+        <div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>跳转链接：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<asp:TextBox ID="txtLink" runat="server" CssClass="input-text" MaxLength="50"></asp:TextBox>
 			</div>
 		</div>
         <div id="link" class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>项目文件：</label>
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>上传图片：</label>
 			<div class="formControls col-xs-8 col-sm-9">
                 <asp:FileUpload ID="myFileUpload" runat="server" CssClass="input-text" />
-			</div>
-		</div>
-        <div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>内容摘要：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<asp:TextBox ID="txtSummary" runat="server" CssClass="input-text" MaxLength="200"></asp:TextBox>
-			</div>
-		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">项目内容：</label>
-			<div class="formControls col-xs-8 col-sm-9"> 
-				<textarea id="myEditor11" name="myEditor11" runat="server" onblur="setUeditor()" style="width: 1030px; height: 250px;"></textarea>
-                <script type="text/javascript">
-                    var editor = new baidu.editor.ui.Editor();
-                    editor.render("<%=myEditor11.ClientID%>");
-                </script>
-                <script type="text/javascript">
-                     function setUeditor() {
-                     var myEditor11 = document.getElementById("myEditor11");
-                     myEditor11.value = editor.getContent();//把得到的值给textarea
-                     }
-                 </script>
-			</div>
-		</div>
-        <div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>初审截止时间：</label>
-			<div class="formControls col-xs-8 col-sm-9"> 
-                <asp:TextBox runat="server" Text="" onfocus="WdatePicker({})" ID="txtTime" class="input-text Wdate" style="width:120px;"></asp:TextBox>
-			</div>
-		</div>
-        <div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>评审截止时间：</label>
-			<div class="formControls col-xs-8 col-sm-9"> 
-                <asp:TextBox runat="server" Text="" onfocus="WdatePicker({})" ID="txtJudgeTime" class="input-text Wdate" style="width:120px;"></asp:TextBox>
 			</div>
 		</div>
 		<div class="row cl">
@@ -301,3 +273,4 @@ $(function(){
 <!--/请在上方写此页面业务相关的脚本-->
 </body>
 </html>
+
