@@ -23,7 +23,7 @@
 			 		<a class="more" href="DevelopList.aspx?type=0&&page=1">更多 >></a>
                      <span class="bottomLine"></span>
 			 	</div>
-				<div id="mySlide2" style="width: 342px; height: 360px; "></div>
+				<div id="mySlide2" style="width: 342px; height: 340px; "></div>
 			</div>
 			<div class="work">
 				<div class="work-header clearfix">
@@ -31,7 +31,7 @@
 			 		<a class="more" href="ActivitySummaryList.aspx?page=1">更多 >></a>
                     <span class="bottomLine"></span>
 			 	</div>
-				<div id="mySlide3" style="width: 342px; height: 360px; "></div>
+				<div id="mySlide3" style="width: 342px; height: 340px; "></div>
 
 			</div>
 			<div class="inform clearfix">
