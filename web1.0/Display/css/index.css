@@ -1,22 +1,27 @@
 #mySlide2{
     float: left;
-    margin-right: 27px;
+    margin-left: 16px;
 }
 #mySlide3{
+    margin-left: 16px;
     float: left;
 }
 .teach{
+    background-color: #ffffff;
     float: left;
-    width: 356px;
-     height: 396px;
-   margin-left:32px; 
+    width: 376px;
+   
     margin-right: 32px;
+    height: 100%;
+    border:1px solid #E5E9EF;
 }
 .work{
+    background-color: #ffffff;
     float: left;
-    width: 356px;
-
+    width: 376px;
     margin-right: 32px;
+    height: 100%;
+    border:1px solid #E5E9EF;
 }
 .teach .back{
     display: none!important;
@@ -25,10 +30,12 @@
     display: none!important;
 }
 .inform{
+    background-color: #ffffff;
     float: left;
-     width: 356px;
-
-    margin-right: 32px;}
+     width: 376px;
+     height: 431px;
+     border:1px solid #E5E9EF;
+ }
 .work .back{
     display: none!important;
 }
@@ -43,10 +50,10 @@
     width: 51px!important;
 }
 #mySlide2 ul{
-   bottom: 60px!important;
+   bottom: 40px!important;
 }
 #mySlide3 ul{
-    bottom: 60px!important;
+    bottom: 40px!important;
 }
 #mySlide2 p:hover{
    color: #D6000F!important;
@@ -59,23 +66,23 @@
     font-size: 20px;
 }
 #mySlide3 p:hover{
+
    color: #D6000F!important;
    text-decoration: underline;
 }
 .main h1{
+    font-weight: bold;
     font-size: 24px;
-    color: #002957;
+    color: #4D4D4D;
     float: left;
-    margin-top: 47px;
-    margin-bottom: 15px;
+    margin:16px 0px 16px 16px;
 }
 .more
 {
     color: #808080;
     display: block;
     float: right;
-    margin-bottom: 12px;
-    margin-top: 58px;
+    margin:25px 16px 12px 0px;
     font-size: 16px;
 }
 .more:hover{
@@ -85,12 +92,14 @@
     margin-top: 10px;
 }
 .inform li{
+    font-size: 19px;
+    margin-left: 16px;
     background-image: url(../images/dot.png);
     background-repeat: no-repeat;
     background-position: 5px 17.5px;
     padding-left: 15px;
     line-height: 40px;
-    width: 300px;
+    width: 330px;
 }
 .inform li a:hover{
     color: #D6000F!important;

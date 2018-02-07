@@ -53,7 +53,7 @@ legend {
     color: #000000;
     }
 body {
-    font: 16px/1.231 'DengXian-Regular','微软雅黑',arial,helvetica,sans-serif;
+    font: 16px/1.231 'DengXian','微软雅黑',arial,helvetica,sans-serif;
     }
 select, input, button, textarea {
     font: 99% arial,helvetica,clean,sans-serif;
@@ -62,7 +62,7 @@ table {
     font-size: inherit;
     }
 pre, code, kbd, samp, tt {
-    font-family: 'DengXian-Regular','微软雅黑',arial,helvetica,sans-serif;;
+    font-family: 'DengXian','微软雅黑',arial,helvetica,sans-serif;;
     line-height: 100%;
     }
 a {
@@ -106,14 +106,14 @@ ul li{
 .enter{
     width: 100%;
     height: 42px;
-    background-color: #ffffff;
+    background-color: #000000;
 }
 .person{
     
     cursor: pointer;
     height: 42px;
     line-height: 42px;
-    color: #000000;
+    color: #FFFFFF;
     float: right;
 }
 .goto{
@@ -121,13 +121,14 @@ ul li{
     width: 100%;
     height: 116px;
     background-color: #002957;
+    background-image:url(../images/header-bac.png);
 }
 .log{
 
     cursor: pointer;
     height: 42px;
     line-height: 42px;
-    color: #000000;
+    color: #FFFFFF;
     float: right;
 }
 .enter-line{
@@ -149,11 +150,11 @@ ul li{
     cursor: pointer;
 
     margin-top: 12px;
-    width: 410px;
+    width: 528px;
     height: 92px;
     display: block;
     float: left;
-    background-image: url(../images/logo.png);
+    background-image: url(../images/logo-new.png);
 }
 .search{
     padding-left: 8px;
@@ -162,7 +163,7 @@ ul li{
     padding-right: 30px;
     height: 32px;
     margin-top: 39px;
-    background-color:  #002957;
+    background-color:  transparent;
     outline:medium;
     color: #FFFFFF;
     border-bottom: 2px solid #FFFFFF;
@@ -174,14 +175,14 @@ ul li{
     position: absolute;
     width: 30px;
     height: 30px;
-    background-image: url(../images/search.png);
+    background-image: url(../images/search-new.png);
     background-repeat: no-repeat;
 }
 .nav{
     
     width: 100%;
     height: 51px;
-    background-color: #E6E6E6;
+    background-color: #FFFFFF;
 }
 .nav a{
     cursor: pointer;
@@ -360,7 +361,8 @@ ul li{
     background-color: #f2f2f2;
 }
 .indexCenter{
-    background-color: #ffffff;
+    margin-top: 16px;
+    margin-bottom:32px;
 }
 .content{
     background-color: #ffffff;
@@ -381,7 +383,7 @@ ul li{
 
 .teach-header,.work-header,.inform-header{
     margin-bottom: 10px;
-    border-bottom: 2px solid  #cccccc;
+    border-bottom: 1px solid  #E5E9EF;
 }
 .nav{
     position: relative;
@@ -389,6 +391,7 @@ ul li{
 .leftLine{
     width: 100%;
     height: 6px;
+    bottom: 0px;
     position: absolute;
     background-color: #cccccc;
     display: block;
@@ -412,6 +415,10 @@ ul li{
     }
     body{
         width: 1200px;
+    }
+    .leftLine
+    {
+        width: 1200px!important;
     }
 
 }

@@ -1923,7 +1923,7 @@ html[dir='rtl'] #documentPropertiesOverlay .row > * {
   }
   #sidebarContent {
     top: 32px;
-    background-color: hsla(0,0%,0%,.7);
+    background-color: hsla(0,0%,100%,.7);
   }
 
   html[dir='ltr'] #outerContainer.sidebarOpen > #mainContainer {
