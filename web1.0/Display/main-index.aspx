@@ -86,7 +86,8 @@
           	$("#mySlide3").mySlide(activityArr,3000);
           	for(i=0;i<data[3].length;i++)
           	{
-          		 var row = $("<li>").appendTo($(".notice"));
+          	    var row = $("<li>").appendTo($(".notice"));
+          	    $("<span>").addClass("time").text( data[3][i].noticeTime.substr(0, 4) + " " + data[3][i].noticeTime.substr(5, 5)).appendTo(row)
           		 $("<a>").attr("href",data[3][i].noticeHref).text(data[3][i].noticeTitle).appendTo(row);
           		
           	}

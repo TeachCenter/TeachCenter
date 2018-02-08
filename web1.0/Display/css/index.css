@@ -93,18 +93,42 @@
 .inform ul{
     margin-top: 10px;
 }
+.time{
+     text-align: center;
+
+    display: block;
+    padding: 4PX;
+    line-height: 25px;
+    float: left;
+    height: 50px;
+    width: 50px;
+    color: white;
+    background-color:rgba(0,41,87,0.2);
+}
 .inform li{
-    font-size: 19px;
+   
+    display: block;
+    float: left;
+    font-size: 17px;
     margin-left: 16px;
-    background-image: url(../images/dot.png);
     background-repeat: no-repeat;
     background-position: 5px 17.5px;
     padding-left: 15px;
     line-height: 40px;
     width: 330px;
+    padding: 3px 0px 3px 0px;
 }
-.inform li a:hover{
-    color: #D6000F!important;
-   text-decoration: underline;
+.inform li a{
+    display: block;
+    padding-top: 6px;
+    font-size: 19px;
+    color: #4D4D4D;
+    padding-left: 68px;
+    line-height: 25px;
 }
-
+.inform li:hover a{
+    color: #002957;
+}
+.inform li:hover span{
+    background-color: rgba(0,41,87,1);
+}
