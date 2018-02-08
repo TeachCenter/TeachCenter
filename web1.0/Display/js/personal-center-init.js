@@ -22,8 +22,8 @@ timer = setTimeout(function () {
 }, 200);
 
 
-$(".right-content").css({"width":w-285})
-$(".cut").css({ "width": w - 244 })
+$(".right-content").css({"width":w-317})
+$(".cut").css({ "width": w - 246})
 $("#ContentPlaceHolder1_txtFileName").css({ "width": w - 800 })
 $("#txtFileName").css({ "width": w - 800 })
  

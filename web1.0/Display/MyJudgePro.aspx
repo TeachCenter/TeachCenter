@@ -119,7 +119,15 @@
             data: { "pageSize": 9, "pageNumber": pageNumber },
 
             success: function (data) {
-                page = Math.floor(data[1] / 6 + 1);
+                if (data[1] % 9== 0) {
+                    page = data[1] / 9;
+                }
+                else {
+                    page = Math.floor(data[1] / 9 + 1);
+                }
+                if (page == 0) {
+                    page = 1;
+                }
                 for (i = 0; i < data[0].length; i++)
                 {
                     $("<span>").addClass("cut").appendTo($(".progect-content"));

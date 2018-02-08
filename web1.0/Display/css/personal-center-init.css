@@ -94,7 +94,7 @@ ul li{
 }
 .cut{
     display: block;
-    background-color: #CCCCCC;
+    background-color: #CCCCCC!important;
     margin:0 auto;
     height: 2px;
 }
@@ -260,6 +260,17 @@ ul li{
 .hei {
     height:600px;
 }
+.necessary{
+    color: #D6000F!important;
+    margin-top: 18px!important;
+    font-size: 19px!important;
+}
+.necessary-top{
+    margin-top: 43px!important;
+    color: #D6000F!important;
+    font-size: 19px!important;
+}
+
 @media (min-width:0px) and (max-width:1200px)
 {
     body{

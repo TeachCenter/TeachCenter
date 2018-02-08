@@ -76,7 +76,9 @@
 			<div class="clearfix">
 				<h2 class="name-h2">项目名称:</h2>
                 <asp:TextBox ID="txtName" runat="server" class="name" ></asp:TextBox>
+                <h3 class="necessary-top">*必填</h3>
 				<p class="name-error"></p>
+                
 			</div>
              <input type="hidden"  id="Selected" runat="server" class="Selected" value="" />
 			<div class="clearfix" style="position:relative;">
@@ -99,13 +101,17 @@
                               
                             </ItemTemplate>
                         </asp:Repeater>
-					 </ul>						
+					 </ul>		
+                  		
 				</ul>
+                  <h3 class="necessary">*必填</h3>	
 				<p class="error organization-error"></p>
+                
 			</div>
 			<div class="clearfix">
 				<h2>资助额度:</h2>
                 <asp:TextBox ID="txtMoney" runat="server" class="money"></asp:TextBox>
+                <h3 class="necessary">*必填</h3>
 				<p class="money-error"></p>
 			</div>
 			<div class="clearfix">
@@ -128,7 +134,7 @@
                 <asp:FileUpload ID="FileUp" runat="server" style="display:none" />  
                 <asp:Button id="btnBrowse" runat="server" OnClientClick="return ShowBrowse()" Text="选择文件" class="choose"/>
                 <h3 style="margin-top:0px;"><asp:TextBox ID="txtFileName" runat="server" value="支持pdf、doc、docx格式的文件"></asp:TextBox> </h3>
-                 
+                 <h3 class="necessary">*必填</h3>
 			</div>
             <asp:LinkButton ID="btnSubmit" runat="server" Text="提交项目" class="submit" OnClick="btnSubmit_Click" />
 	</div>
