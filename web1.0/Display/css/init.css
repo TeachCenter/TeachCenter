@@ -408,6 +408,13 @@ ul li{
         rgba(229,229,229,1)0%,
          rgba(229,229,229,0)100%);
 }
+.necessary{
+    display: block;
+    float: left;
+    color: #D6000F;
+    margin-top: 21px;
+    margin-left: 16px;
+}
 @media (min-width:0px) and (max-width:1200px)
 {
     html{

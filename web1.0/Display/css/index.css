@@ -42,7 +42,9 @@
 .work .prev{
     display: none!important;
 }
-
+#mySlide1 ul{
+  display: none;
+}
 #mySlide2 li{
    width: 51px!important;
 }

@@ -67,7 +67,7 @@
           	
           	for(i=0;i<data[0].length;i++)
           	{
-          	    topArr.push({"imgurl":("../Backstage/" +data[0][i].Picture_path),href:"#"})
+          	    topArr.push({ "imgurl": ("../Backstage/" + data[0][i].Picture_path), href:( data[0][i].Picture_link+'?id='+data[0][i].Picture_id) })
           		
           	}
           	$("#mySlide1").mySlide(topArr,3000);
