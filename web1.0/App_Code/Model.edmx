@@ -21,6 +21,7 @@
           <Property Name="Activity_author" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Activity_hit" Type="int" Nullable="false" />
           <Property Name="Activity_deletedtime" Type="datetime" />
+          <Property Name="Activity_summary" Type="nvarchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityType Name="ActivityCategory">
           <Key>
@@ -42,6 +43,7 @@
           <Property Name="ActivitySummary_cover" Type="nvarchar(max)" Nullable="false" />
           <Property Name="ActivitySummary_hit" Type="int" Nullable="false" />
           <Property Name="ActivitySummary_deletedtime" Type="datetime" />
+          <Property Name="ActivitySummary_summary" Type="nvarchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityType Name="ActivityTeacher">
           <Key>
@@ -78,6 +80,7 @@
           <Property Name="Develop_category" Type="int" Nullable="false" />
           <Property Name="Develop_path" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Develop_deteledtime" Type="datetime" />
+          <Property Name="Develop_summary" Type="nvarchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityType Name="DevelopCategory">
           <Key>
@@ -517,6 +520,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="Activity_author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Activity_hit" Type="Int32" Nullable="false" />
           <Property Name="Activity_deletedtime" Type="DateTime" Precision="3" />
+          <Property Name="Activity_summary" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="ActivityCategory" Relationship="Self.FK_Activity_ActivityCategory" FromRole="Activity" ToRole="ActivityCategory" />
           <NavigationProperty Name="ActivityTeacher" Relationship="Self.FK_ActivityTeacher_Activity" FromRole="Activity" ToRole="ActivityTeacher" />
         </EntityType>
@@ -541,6 +545,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="ActivitySummary_cover" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ActivitySummary_hit" Type="Int32" Nullable="false" />
           <Property Name="ActivitySummary_deletedtime" Type="DateTime" Precision="3" />
+          <Property Name="ActivitySummary_summary" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="ActivityTeacher">
           <Key>
@@ -579,6 +584,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="Develop_category" Type="Int32" Nullable="false" />
           <Property Name="Develop_path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Develop_deteledtime" Type="DateTime" Precision="3" />
+          <Property Name="Develop_summary" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="DevelopCategory" Relationship="Self.FK_Develop_DevelopCategory" FromRole="Develop" ToRole="DevelopCategory" />
         </EntityType>
         <EntityType Name="DevelopCategory">
@@ -1011,6 +1017,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
                 <ScalarProperty Name="Activity_author" ColumnName="Activity_author" />
                 <ScalarProperty Name="Activity_hit" ColumnName="Activity_hit" />
                 <ScalarProperty Name="Activity_deletedtime" ColumnName="Activity_deletedtime" />
+                <ScalarProperty Name="Activity_summary" ColumnName="Activity_summary" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1034,6 +1041,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
                 <ScalarProperty Name="ActivitySummary_cover" ColumnName="ActivitySummary_cover" />
                 <ScalarProperty Name="ActivitySummary_hit" ColumnName="ActivitySummary_hit" />
                 <ScalarProperty Name="ActivitySummary_deletedtime" ColumnName="ActivitySummary_deletedtime" />
+                <ScalarProperty Name="ActivitySummary_summary" ColumnName="ActivitySummary_summary" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1073,6 +1081,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
                 <ScalarProperty Name="Develop_category" ColumnName="Develop_category" />
                 <ScalarProperty Name="Develop_path" ColumnName="Develop_path" />
                 <ScalarProperty Name="Develop_deteledtime" ColumnName="Develop_deteledtime" />
+                <ScalarProperty Name="Develop_summary" ColumnName="Develop_summary" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

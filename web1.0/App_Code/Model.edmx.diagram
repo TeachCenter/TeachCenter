@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4b56990d9c964193a53bd55825646bb2" Name="Diagram1">
-        <EntityTypeShape EntityType="TeachingCenterModel.Activity" Width="1.5" PointX="0.75" PointY="12.375" IsExpanded="true" />
+      <Diagram DiagramId="1a73df46afc14f07adcfea32e062ebe1" Name="Diagram1">
+        <EntityTypeShape EntityType="TeachingCenterModel.Activity" Width="1.5" PointX="0.75" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachingCenterModel.ActivityCategory" Width="1.5" PointX="1.5" PointY="17.375" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachingCenterModel.ActivitySummary" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachingCenterModel.ActivityTeacher" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
