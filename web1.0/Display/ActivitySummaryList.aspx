@@ -91,8 +91,15 @@
           success: function(data) {
           	var i=0;
           	var j=0;
-          	page=Math.floor(data[1]/6+1);
-          	
+          	if (data[1] % 6 == 0) {
+          	    page = data[1] / 6;
+          	}
+          	else {
+          	    page = Math.floor(data[1] / 6 + 1);
+          	}
+          	if (page == 0) {
+          	    page = 1;
+          	}
           	//for(i=0;i<data[0].length;i++)
           	//{
           	//	$("<a>").addClass("left-content-nav-content").attr("href",data[0][i].ActivityCategory_href).text(data[0][i].ActivityCategory_name).appendTo($(".left-content"));

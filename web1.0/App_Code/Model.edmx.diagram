@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4b56990d9c964193a53bd55825646bb2" Name="Diagram1">
-        <EntityTypeShape EntityType="TeachingCenterModel.Activity" Width="1.5" PointX="0.75" PointY="12.375" IsExpanded="true" />
+      <Diagram DiagramId="dfb01c1eef0b4852be61359594b50a82" Name="Diagram1">
+        <EntityTypeShape EntityType="TeachingCenterModel.Activity" Width="1.5" PointX="0.75" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachingCenterModel.ActivityCategory" Width="1.5" PointX="1.5" PointY="17.375" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachingCenterModel.ActivitySummary" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachingCenterModel.ActivityTeacher" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
@@ -13,9 +13,10 @@
         <EntityTypeShape EntityType="TeachingCenterModel.Develop" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachingCenterModel.DevelopCategory" Width="1.5" PointX="5.75" PointY="1.875" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachingCenterModel.EducateSource" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachingCenterModel.Introduction" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.FriendsLink" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.Introduction" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachingCenterModel.JudgeApplication" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachingCenterModel.Picture" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.Picture" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachingCenterModel.Project" Width="1.5" PointX="6" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachingCenterModel.ProjectCategory" Width="1.5" PointX="3.75" PointY="13.625" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachingCenterModel.ProjectJudge" Width="1.5" PointX="8.25" PointY="6.25" IsExpanded="true" />
@@ -23,8 +24,8 @@
         <EntityTypeShape EntityType="TeachingCenterModel.Service" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachingCenterModel.ServiceCategory" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachingCenterModel.Teacher" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachingCenterModel.ApplicationInfo" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachingCenterModel.ProjectInfo" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.ApplicationInfo" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.ProjectInfo" Width="1.5" PointX="12.75" PointY="6.75" IsExpanded="true" />
         <AssociationConnector Association="TeachingCenterModel.FK_Activity_ActivityCategory" ManuallyRouted="false" />
         <AssociationConnector Association="TeachingCenterModel.FK_ActivityTeacher_Activity" ManuallyRouted="false" />
         <AssociationConnector Association="TeachingCenterModel.FK_ActivityTeacher_Teacher" ManuallyRouted="false" />

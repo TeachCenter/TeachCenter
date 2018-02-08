@@ -39,7 +39,15 @@
           
     
           success: function(data) {
-          	page = Math.floor(data[0] / 6 + 1);
+              if (data[0] % 6 == 0) {
+                  page = data[0] / 6;
+              }
+              else {
+                  page = Math.floor(data[0] / 6 + 1);
+              }
+              if (page == 0) {
+                  page = 1;
+              }
           	for(i=0;i<page;i++)
           	{
           	    $("<a>").attr("href", "Notice.aspx?page=" + (i + 1)).text(i + 1).appendTo($(".midButton"));

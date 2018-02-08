@@ -42,6 +42,7 @@
 				<h2 class="name-h2">姓名:</h2>
                 <asp:TextBox ID="txtName" runat="server" class="same name"></asp:TextBox>
 				<p class="error name-error"></p>
+                <h3 class="necessary-top">*必填</h3>
 			</div>
 			<div class="clearfix">
 				<h2>性别:</h2>
@@ -50,26 +51,32 @@
 				<a  class="sex female">女<asp:LinkButton ID="woman" runat="server" OnClick="woman_Click"></asp:LinkButton></a>
                 <input type="hidden" id="gender" runat="server" value=""/>
 				<p class="error sex-error"></p>
+                <h3 class="necessary">*必填</h3>
 			</div>
 			<div class="clearfix">
 				<h2>工号:</h2>
                 <asp:TextBox ID="txtNumber" runat="server" class="same num"></asp:TextBox>
 				<p class="error num-error"></p>
+                <h3 class="necessary">*必填</h3>
 			</div>
 			<div class="clearfix">
 				<h2>邮箱:</h2>
 				<asp:TextBox ID="txtEmail" runat="server" class="same email"></asp:TextBox>
 				<p class="error email-error"></p>
+                <h3 class="necessary">*必填</h3>
 			</div>
 			<div class="clearfix">
 				<h2>手机:</h2>
 				<asp:TextBox ID="txtPhone" runat="server" class="same tel"></asp:TextBox>
 				<p class="error tel-error"></p>
+                <h3 class="necessary">*必填</h3>
 			</div>
 			<div class="clearfix">
 				<h2>职称:</h2>
 				<asp:TextBox ID="txtRank" runat="server" class="same position"></asp:TextBox>
 				<p class="error position-error"></p>
+                <h3 class="necessary">*必填</h3>
+
 			</div>
              <input type="hidden" id="lbSelected" runat="server"/>
 			<div class="clearfix" style="position:relative;">
@@ -90,13 +97,14 @@
 					 </ul>				
 				</ul>
 				<p class="error organization-error"></p>
+                <h3 class="necessary">*必填</h3>
 			</div>
 			<span class="cut"></span>
 			<div  class="clearfix">
 				<h2 class="userType">用户类型: <asp:Label ID="lbType" runat="server"></asp:Label></h2>
                 <asp:LinkButton ID="applyJudge" runat="server" Text="申请成为评委>>" OnClick="applyJudge_Click" class="redA"></asp:LinkButton>
 			</div>
-            <asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" Text="提交项目" class="submit"></asp:LinkButton>
+            <asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" Text="确认修改" class="submit"></asp:LinkButton>
 	</form>
   </div>   
 	<script type="text/javascript"  src="./js/personal-center-changeInfo.js"></script>

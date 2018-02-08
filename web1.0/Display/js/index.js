@@ -73,11 +73,11 @@
                 "cursor":"pointer",
                 "display":"block",
                 "position":"absolute",
-                "width":"120px",
-                "height":"100%",
+                "width":"68px",
+                "height":"68px",
                 "z-index":"10",
-                "left":"0px",
-                "top":"0px"
+                "left":"22px",
+                "top":"156px"
             }).hover(function(){
                ele.find(".back>img").attr("src", "images/l-hover.png")
             },function(){
@@ -87,11 +87,11 @@
                 "cursor":"pointer",
                 "display":"block",
                 "position":"absolute",
-                "width":"120px",
-                "height":"100%",
+                "width":"68px",
+                "height":"68px",
                 "z-index":"11",
-                "right":"0px",
-                "top":"0px"
+                "right":"22px",
+                "top":"156px"
             }).hover(function(){
                ele.find(".prev>img").attr("src", "images/r-hover.png")
             },function(){
@@ -99,10 +99,9 @@
             });
             ele.find("span>img").css({
                 "position":"absolute",
-                "width":"100%",
-                "height":"100%",
                 "z-index":"10",
-                "left":"0px"
+                "left":"10px",
+                "top":"10px"
             
             });
             ele.find("ul").css({

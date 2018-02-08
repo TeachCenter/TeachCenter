@@ -67,7 +67,17 @@
 	<script type="text/javascript"  src="./js/personal-center-init.js"></script></form>
     <script>
         var i = 0;
-        var page = Math.floor($("#count").val() / 6 + 1);;
+        if ($("#count").val() % 9 == 0) {
+            page = $("#count").val() / 9;
+        }
+        else {
+            page = Math.floor($("#count").val() / 9 + 1);
+        }
+        if ($("#count").val() == 0) {
+            page = 1;
+
+        }
+        console.log(page)
         for (i = 0; i < page; i++) {
             $("<a>").attr("href", "MyServiceList.aspx?page=" + page).text(i + 1).appendTo($(".midButton"));
 

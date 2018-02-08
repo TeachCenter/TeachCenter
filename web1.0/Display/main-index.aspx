@@ -3,34 +3,41 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/mobile.css" />
-
+    <style>
+        .pcNav .leftLine {
+            bottom:-6px;
+        }
+        .main .leftLine {
+            bottom:inherit;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="main clearfix">
         <span class="leftLine"></span>
-			<div id="mySlide1" style="width: 1200px; height: 450px; margin-left: auto; margin-right: auto;"></div>
+			<div id="mySlide1" style="width: 1200px; height: 380px; margin-left: auto; margin-right: auto;"></div>
 			<div class="center clearfix indexCenter">
 			<div class="teach ">
 			 	<div class="teach-header clearfix">
 			 		<h1>教学发展</h1>
-			 		<a class="more" href="DevelopList.aspx?type=0&&page=1">MORE >></a>
+			 		<a class="more" href="DevelopList.aspx?type=0&&page=1">更多 >></a>
                      <span class="bottomLine"></span>
 			 	</div>
-				<div id="mySlide2" style="width: 358px; height: 395px; "></div>
+				<div id="mySlide2" style="width: 342px; height: 340px; "></div>
 			</div>
 			<div class="work">
 				<div class="work-header clearfix">
 			 		<h1>工作动态</h1>
-			 		<a class="more" href="ActivitySummaryList.aspx?page=1">MORE >></a>
+			 		<a class="more" href="ActivitySummaryList.aspx?page=1">更多 >></a>
                     <span class="bottomLine"></span>
 			 	</div>
-				<div id="mySlide3" style="width: 358px; height: 395px; "></div>
+				<div id="mySlide3" style="width: 342px; height: 340px; "></div>
 
 			</div>
 			<div class="inform clearfix">
 				<div class="inform-header clearfix">
 			 		<h1>通知公告</h1>
-			 		<a class="more" href="NoticeList.aspx?page=1">MORE >></a>
+			 		<a class="more" href="NoticeList.aspx?page=1">更多 >></a>
                     <span class="bottomLine"></span>
 			 	</div>
 		 		<ul class="notice">
@@ -60,7 +67,7 @@
           	
           	for(i=0;i<data[0].length;i++)
           	{
-          	    topArr.push({"imgurl":("../Backstage/" +data[0][i].Picture_path),href:"#"})
+          	    topArr.push({ "imgurl": ("../Backstage/" + data[0][i].Picture_path), href:( data[0][i].Picture_link+'?id='+data[0][i].Picture_id) })
           		
           	}
           	$("#mySlide1").mySlide(topArr,3000);
@@ -79,7 +86,8 @@
           	$("#mySlide3").mySlide(activityArr,3000);
           	for(i=0;i<data[3].length;i++)
           	{
-          		 var row = $("<li>").appendTo($(".notice"));
+          	    var row = $("<li>").appendTo($(".notice"));
+          	    $("<span>").addClass("time").text( data[3][i].noticeTime.substr(0, 4) + " " + data[3][i].noticeTime.substr(5, 5)).appendTo(row)
           		 $("<a>").attr("href",data[3][i].noticeHref).text(data[3][i].noticeTitle).appendTo(row);
           		
           	}

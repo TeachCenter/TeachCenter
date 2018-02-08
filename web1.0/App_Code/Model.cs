@@ -29,6 +29,7 @@ public partial class Activity
     public string Activity_author { get; set; }
     public int Activity_hit { get; set; }
     public Nullable<System.DateTime> Activity_deletedtime { get; set; }
+    public string Activity_summary { get; set; }
 
     public virtual ActivityCategory ActivityCategory { get; set; }
     public virtual ICollection<ActivityTeacher> ActivityTeacher { get; set; }
@@ -58,6 +59,7 @@ public partial class ActivitySummary
     public string ActivitySummary_cover { get; set; }
     public int ActivitySummary_hit { get; set; }
     public Nullable<System.DateTime> ActivitySummary_deletedtime { get; set; }
+    public string ActivitySummary_summary { get; set; }
 }
 
 public partial class ActivityTeacher
@@ -104,6 +106,7 @@ public partial class Develop
     public int Develop_category { get; set; }
     public string Develop_path { get; set; }
     public Nullable<System.DateTime> Develop_deteledtime { get; set; }
+    public string Develop_summary { get; set; }
 
     public virtual DevelopCategory DevelopCategory { get; set; }
 }
@@ -134,6 +137,14 @@ public partial class EducateSource
     public string summary { get; set; }
 }
 
+public partial class FriendsLink
+{
+    public int id { get; set; }
+    public string title { get; set; }
+    public string link { get; set; }
+    public int orders { get; set; }
+}
+
 public partial class Introduction
 {
     public int Introduction_id { get; set; }
@@ -156,6 +167,7 @@ public partial class Picture
     public string Picture_link { get; set; }
     public string Picture_path { get; set; }
     public int is_top { get; set; }
+    public string Picture_summary { get; set; }
 }
 
 public partial class Project

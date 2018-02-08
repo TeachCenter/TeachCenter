@@ -42,7 +42,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>标题：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<asp:TextBox ID="txtTitle" runat="server" CssClass="input-text" MaxLength ="50"></asp:TextBox>
+				<asp:TextBox ID="txtTitle" runat="server" CssClass="input-text" MaxLength ="26"></asp:TextBox>
 			</div>
 		</div>
         <div class="row cl">

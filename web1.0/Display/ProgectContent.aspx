@@ -43,7 +43,7 @@
 
             success: function (data) {
                 $(".brief-intro").text(data.title)
-                $(".publish").text("发布时间：" + data.publish_time + "  结束时间：" + data.end_time).appendTo($(".p-box"))
+                $(".publish").text("发布时间：" + data.publish_time + "  结束时间：" + data.end_time).appendTo($(".brief-intro-boxx"))
                 $(data.body).appendTo($(".url-box"))
 
             }

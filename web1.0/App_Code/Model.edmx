@@ -21,6 +21,7 @@
           <Property Name="Activity_author" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Activity_hit" Type="int" Nullable="false" />
           <Property Name="Activity_deletedtime" Type="datetime" />
+          <Property Name="Activity_summary" Type="nvarchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityType Name="ActivityCategory">
           <Key>
@@ -42,6 +43,7 @@
           <Property Name="ActivitySummary_cover" Type="nvarchar(max)" Nullable="false" />
           <Property Name="ActivitySummary_hit" Type="int" Nullable="false" />
           <Property Name="ActivitySummary_deletedtime" Type="datetime" />
+          <Property Name="ActivitySummary_summary" Type="nvarchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityType Name="ActivityTeacher">
           <Key>
@@ -78,6 +80,7 @@
           <Property Name="Develop_category" Type="int" Nullable="false" />
           <Property Name="Develop_path" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Develop_deteledtime" Type="datetime" />
+          <Property Name="Develop_summary" Type="nvarchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityType Name="DevelopCategory">
           <Key>
@@ -99,6 +102,15 @@
           <Property Name="is_deleted" Type="int" Nullable="false" />
           <Property Name="deletedtime" Type="datetime" />
           <Property Name="summary" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FriendsLink">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="link" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="orders" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Introduction">
           <Key>
@@ -124,6 +136,7 @@
           <Property Name="Picture_link" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="Picture_path" Type="nvarchar(max)" Nullable="false" />
           <Property Name="is_top" Type="int" Nullable="false" />
+          <Property Name="Picture_summary" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
@@ -419,6 +432,7 @@
           <EntitySet Name="Develop" EntityType="Self.Develop" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DevelopCategory" EntityType="Self.DevelopCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EducateSource" EntityType="Self.EducateSource" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FriendsLink" EntityType="Self.FriendsLink" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Introduction" EntityType="Self.Introduction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JudgeApplication" EntityType="Self.JudgeApplication" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Picture" EntityType="Self.Picture" Schema="dbo" store:Type="Tables" />
@@ -517,6 +531,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="Activity_author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Activity_hit" Type="Int32" Nullable="false" />
           <Property Name="Activity_deletedtime" Type="DateTime" Precision="3" />
+          <Property Name="Activity_summary" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="ActivityCategory" Relationship="Self.FK_Activity_ActivityCategory" FromRole="Activity" ToRole="ActivityCategory" />
           <NavigationProperty Name="ActivityTeacher" Relationship="Self.FK_ActivityTeacher_Activity" FromRole="Activity" ToRole="ActivityTeacher" />
         </EntityType>
@@ -541,6 +556,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="ActivitySummary_cover" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ActivitySummary_hit" Type="Int32" Nullable="false" />
           <Property Name="ActivitySummary_deletedtime" Type="DateTime" Precision="3" />
+          <Property Name="ActivitySummary_summary" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="ActivityTeacher">
           <Key>
@@ -579,6 +595,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="Develop_category" Type="Int32" Nullable="false" />
           <Property Name="Develop_path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Develop_deteledtime" Type="DateTime" Precision="3" />
+          <Property Name="Develop_summary" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="DevelopCategory" Relationship="Self.FK_Develop_DevelopCategory" FromRole="Develop" ToRole="DevelopCategory" />
         </EntityType>
         <EntityType Name="DevelopCategory">
@@ -602,6 +619,15 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="is_deleted" Type="Int32" Nullable="false" />
           <Property Name="deletedtime" Type="DateTime" Precision="3" />
           <Property Name="summary" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FriendsLink">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="link" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="orders" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Introduction">
           <Key>
@@ -628,6 +654,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="Picture_link" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Picture_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="is_top" Type="Int32" Nullable="false" />
+          <Property Name="Picture_summary" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
@@ -933,6 +960,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <EntitySet Name="Develop" EntityType="Self.Develop" />
           <EntitySet Name="DevelopCategory" EntityType="Self.DevelopCategory" />
           <EntitySet Name="EducateSource" EntityType="Self.EducateSource" />
+          <EntitySet Name="FriendsLink" EntityType="Self.FriendsLink" />
           <EntitySet Name="Introduction" EntityType="Self.Introduction" />
           <EntitySet Name="JudgeApplication" EntityType="Self.JudgeApplication" />
           <EntitySet Name="Picture" EntityType="Self.Picture" />
@@ -1011,6 +1039,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
                 <ScalarProperty Name="Activity_author" ColumnName="Activity_author" />
                 <ScalarProperty Name="Activity_hit" ColumnName="Activity_hit" />
                 <ScalarProperty Name="Activity_deletedtime" ColumnName="Activity_deletedtime" />
+                <ScalarProperty Name="Activity_summary" ColumnName="Activity_summary" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1034,6 +1063,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
                 <ScalarProperty Name="ActivitySummary_cover" ColumnName="ActivitySummary_cover" />
                 <ScalarProperty Name="ActivitySummary_hit" ColumnName="ActivitySummary_hit" />
                 <ScalarProperty Name="ActivitySummary_deletedtime" ColumnName="ActivitySummary_deletedtime" />
+                <ScalarProperty Name="ActivitySummary_summary" ColumnName="ActivitySummary_summary" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1073,6 +1103,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
                 <ScalarProperty Name="Develop_category" ColumnName="Develop_category" />
                 <ScalarProperty Name="Develop_path" ColumnName="Develop_path" />
                 <ScalarProperty Name="Develop_deteledtime" ColumnName="Develop_deteledtime" />
+                <ScalarProperty Name="Develop_summary" ColumnName="Develop_summary" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1096,6 +1127,16 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
                 <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
                 <ScalarProperty Name="deletedtime" ColumnName="deletedtime" />
                 <ScalarProperty Name="summary" ColumnName="summary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FriendsLink">
+            <EntityTypeMapping TypeName="TeachingCenterModel.FriendsLink">
+              <MappingFragment StoreEntitySet="FriendsLink">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="orders" ColumnName="orders" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1124,6 +1165,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
                 <ScalarProperty Name="Picture_link" ColumnName="Picture_link" />
                 <ScalarProperty Name="Picture_path" ColumnName="Picture_path" />
                 <ScalarProperty Name="is_top" ColumnName="is_top" />
+                <ScalarProperty Name="Picture_summary" ColumnName="Picture_summary" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
