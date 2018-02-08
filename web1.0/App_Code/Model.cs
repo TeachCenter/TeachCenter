@@ -137,6 +137,14 @@ public partial class EducateSource
     public string summary { get; set; }
 }
 
+public partial class FriendsLink
+{
+    public int id { get; set; }
+    public string title { get; set; }
+    public string link { get; set; }
+    public int orders { get; set; }
+}
+
 public partial class Introduction
 {
     public int Introduction_id { get; set; }
@@ -159,6 +167,7 @@ public partial class Picture
     public string Picture_link { get; set; }
     public string Picture_path { get; set; }
     public int is_top { get; set; }
+    public string Picture_summary { get; set; }
 }
 
 public partial class Project

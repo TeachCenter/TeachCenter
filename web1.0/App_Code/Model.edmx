@@ -103,6 +103,15 @@
           <Property Name="deletedtime" Type="datetime" />
           <Property Name="summary" Type="nvarchar" MaxLength="200" Nullable="false" />
         </EntityType>
+        <EntityType Name="FriendsLink">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="link" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="orders" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Introduction">
           <Key>
             <PropertyRef Name="Introduction_id" />
@@ -127,6 +136,7 @@
           <Property Name="Picture_link" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="Picture_path" Type="nvarchar(max)" Nullable="false" />
           <Property Name="is_top" Type="int" Nullable="false" />
+          <Property Name="Picture_summary" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
@@ -422,6 +432,7 @@
           <EntitySet Name="Develop" EntityType="Self.Develop" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DevelopCategory" EntityType="Self.DevelopCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EducateSource" EntityType="Self.EducateSource" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FriendsLink" EntityType="Self.FriendsLink" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Introduction" EntityType="Self.Introduction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JudgeApplication" EntityType="Self.JudgeApplication" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Picture" EntityType="Self.Picture" Schema="dbo" store:Type="Tables" />
@@ -609,6 +620,15 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="deletedtime" Type="DateTime" Precision="3" />
           <Property Name="summary" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
+        <EntityType Name="FriendsLink">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="link" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="orders" Type="Int32" Nullable="false" />
+        </EntityType>
         <EntityType Name="Introduction">
           <Key>
             <PropertyRef Name="Introduction_id" />
@@ -634,6 +654,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="Picture_link" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Picture_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="is_top" Type="Int32" Nullable="false" />
+          <Property Name="Picture_summary" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
@@ -939,6 +960,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <EntitySet Name="Develop" EntityType="Self.Develop" />
           <EntitySet Name="DevelopCategory" EntityType="Self.DevelopCategory" />
           <EntitySet Name="EducateSource" EntityType="Self.EducateSource" />
+          <EntitySet Name="FriendsLink" EntityType="Self.FriendsLink" />
           <EntitySet Name="Introduction" EntityType="Self.Introduction" />
           <EntitySet Name="JudgeApplication" EntityType="Self.JudgeApplication" />
           <EntitySet Name="Picture" EntityType="Self.Picture" />
@@ -1108,6 +1130,16 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="FriendsLink">
+            <EntityTypeMapping TypeName="TeachingCenterModel.FriendsLink">
+              <MappingFragment StoreEntitySet="FriendsLink">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="orders" ColumnName="orders" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Introduction">
             <EntityTypeMapping TypeName="TeachingCenterModel.Introduction">
               <MappingFragment StoreEntitySet="Introduction">
@@ -1133,6 +1165,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
                 <ScalarProperty Name="Picture_link" ColumnName="Picture_link" />
                 <ScalarProperty Name="Picture_path" ColumnName="Picture_path" />
                 <ScalarProperty Name="is_top" ColumnName="is_top" />
+                <ScalarProperty Name="Picture_summary" ColumnName="Picture_summary" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

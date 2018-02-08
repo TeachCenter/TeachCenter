@@ -35,6 +35,7 @@
 					    <th width="25"><input type="checkbox" runat="server" id="isDelete"></th>
 					    <th style="width:100px">图片</th>
                         <th width="200">标题</th>
+                        <th width="120">摘要</th>
                         <th width="120">链接</th>
                         <th width="120">当前状态</th>
                         <th width="120">删除</th>
@@ -48,6 +49,7 @@
 					            <td><input type="checkbox" runat="server" id="isDelete"></td>					
 					            <td style="width:100px"><a href="javascript:;" onClick="picture_edit('图库编辑','picture-show.html','10001')"><img width="100" class="picture-thumb" src=<%#Eval("Picture_path") %>></a></td>
                                 <td><%# Eval("Picture_title") %></td>
+                                <td><%# Eval("Picture_summary").ToString().Length > 35? Eval("Picture_summary").ToString().Substring(0,35):Eval("Picture_summary") %></td>
                                 <td><%# Eval("Picture_link") %></td>
 					            <td><%# judgeDisplay(Convert.ToInt32(Eval("Picture_id").ToString())) == true?"展示中":"未展示"%><input type="hidden" runat="server" id="id" value=<%# Eval("Picture_id")%> /></td>
                                 <td class="f-14 td-manage"><asp:LinkButton ID="lbtDelete" runat="server" CssClass="ml-5" CommandName="Delete" CommandArgument='<%#Eval("Picture_id") %>' OnClientClick="return confirm('确定删除?')">删除<i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton></td>

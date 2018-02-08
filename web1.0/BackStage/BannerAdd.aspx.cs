@@ -45,7 +45,8 @@ public partial class BackStage_BannerAdd : System.Web.UI.Page
             {
                 String title = txtTitle.Text;
                 String link = txtLink.Text;
-                if(title.Length == 0 || link.Length == 0)
+                String summary = txtSummary.Text;
+                if(title.Length == 0 || link.Length == 0 || summary.Length == 0)
                     Response.Write("<script>alert('输入不能为空！');</script>");
                 else
                 {
@@ -54,6 +55,7 @@ public partial class BackStage_BannerAdd : System.Web.UI.Page
                     picture.Picture_link = link;
                     picture.Picture_path = "picture/" + picture_path;
                     picture.is_top = 0;
+                    picture.Picture_summary = summary;
                     db.Picture.Add(picture);
                     db.SaveChanges();
                     var banner = db.Picture.SingleOrDefault(a => a.Picture_id == picture.Picture_id);
