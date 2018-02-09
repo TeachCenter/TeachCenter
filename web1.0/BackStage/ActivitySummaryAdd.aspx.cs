@@ -23,7 +23,10 @@ public partial class BackStage_ActivitySummaryAdd : System.Web.UI.Page
     {
         string title = txtTitle.Text;
         string content = myEditor11.InnerHtml;
+        string summary = TextBox1.Text;
         if (title.Length == 0 || content.Length == 0)
+            JSHelper.ShowAlert("输入不能为空！");
+        else if (summary.Length == 0)
             JSHelper.ShowAlert("输入不能为空！");
         else
         {
@@ -54,6 +57,7 @@ public partial class BackStage_ActivitySummaryAdd : System.Web.UI.Page
                             acsu.ActivitySummary_title = title;
                             acsu.ActivitySummary_content = content;
                             acsu.ActivitySummary_time = DateTime.Now;
+                            acsu.ActivitySummary_summary = summary;
                             acsu.ActivitySummary_cover = serverpath;
                             if (dropAuthor.SelectedValue == "0")
                                 acsu.ActivitySummary_author = AdminHelper.getNameByID(Session["AdminID"].ToString());

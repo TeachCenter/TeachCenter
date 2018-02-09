@@ -54,7 +54,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章标题：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<asp:TextBox ID="txtTitle" runat="server" CssClass="input-text"></asp:TextBox>
+				<asp:TextBox MaxLength="26" ID="txtTitle" runat="server" CssClass="input-text"></asp:TextBox>
 			</div>
 		</div>
 		<div class="row cl">
@@ -78,7 +78,7 @@
 			<label class="form-label col-xs-4 col-sm-2">使用外部链接：</label>
 			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
 				<div class="check-box">
-					<%--<input type="checkbox" id="checkbox-moban">--%>
+					
                     <asp:CheckBox ID="cbxLink" runat="server" />
 					<label for="checkbox-moban">&nbsp;</label>
 				</div>
@@ -98,6 +98,12 @@
                     <asp:Label ID="lblInfo" runat="server"></asp:Label>
 			    </div>
                 
+			</div>
+		</div>
+        <div class="row cl link">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章摘要：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+                <asp:TextBox ID="TextBox1" TextMode="MultiLine" MaxLength="200" style="height: 119px; margin: 0px; width: 1033px;resize:none;" runat="server" CssClass="input-text"></asp:TextBox>
 			</div>
 		</div>
 		<div class="row cl content">

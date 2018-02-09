@@ -85,7 +85,7 @@ public class IndexNotice_Handler : IHttpHandler {
                            ActivitySummary_id = it.ActivitySummary_id,
                            ActivitySummary_cover = it.ActivitySummary_cover,
                            ActivitySummary_title = it.ActivitySummary_title,
-                           ActivitySummary_href = "ActivitySummaryContent.aspx?id=" 
+                           ActivitySummary_href = "ActivitySummaryContent.aspx?id="
                        }).ToList().Take(3);
             //banner
             var intro = (from it in db.Picture orderby it.is_top descending select it).ToList().Take(4);
@@ -99,33 +99,45 @@ public class IndexNotice_Handler : IHttpHandler {
                            Develop_title = it.Develop_title,
                            Develop_path = it.Develop_path,
                            Develop_href = it.Develop_link==""? "":it.Develop_link
-                   }).ToList().Take(3);
+                       }).ToList().Take(3);
 
+            //友情链接
+            var link1 = (from it in db.FriendsLink where it.orders == 1 select it).ToList();
+            var link2 = (from it in db.FriendsLink where it.orders == 2 select it).ToList();
+            var link3 = (from it in db.FriendsLink where it.orders == 3 select it).ToList();
+            var link4 = (from it in db.FriendsLink where it.orders == 4 select it).ToList();
 
-        ArrayList all = new ArrayList();
-        all.Add(intro);
-        all.Add(dev);
-        all.Add(asu);
-        all.Add(notice.Take(8));
-        string final = JsonConvert.SerializeObject(all);
-        context.Response.Write(final);
+            ArrayList link = new ArrayList();
+            link.Add(link1);
+            link.Add(link2);
+            link.Add(link3);
+            link.Add(link4);
 
+            ArrayList all = new ArrayList();
+            all.Add(intro);
+            all.Add(dev);
+            all.Add(asu);
+            all.Add(notice.Take(5));
+            all.Add(link);
+            string final = JsonConvert.SerializeObject(all);
+            context.Response.Write(final);
+
+        }
     }
-}
-private int SortList(Notice a,Notice b)
-{
-    if (a.noticeTime < b.noticeTime)
-        return 1;
-    else if (a.noticeTime == b.noticeTime)
-        return 0;
-    else
-        return -1;
-}
-
-public bool IsReusable {
-    get {
-        return false;
+    private int SortList(Notice a,Notice b)
+    {
+        if (a.noticeTime < b.noticeTime)
+            return 1;
+        else if (a.noticeTime == b.noticeTime)
+            return 0;
+        else
+            return -1;
     }
-}
+
+    public bool IsReusable {
+        get {
+            return false;
+        }
+    }
 
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ActivityCatagoryManage.aspx.cs" Inherits="BackStage_ActivityCatagoryManage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FriendsLink.aspx.cs" Inherits="BackStage_FriendsLink" %>
 
 <!DOCTYPE HTML>
 <html>
@@ -29,10 +29,10 @@
         }
 </style>
 
-<title>活动分类管理</title>
+<title>友情链接管理</title>
 </head>
 <body><form id="form1" runat="server">
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>活动分类管理<span class="c-gray en">&gt;</span>活动分类管理<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>首页管理<span class="c-gray en">&gt;</span>友情链接管理<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
 
 	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l">
@@ -45,7 +45,8 @@
 				<tr class="text-c">
 					<th width="25"><input type="checkbox" name="" value=""></th>
 					<th width="80">序号</th>
-					<th width="300">活动分类名称</th>
+					<th width="300">友情链接</th>
+                    <th width="80">列数</th>
 					<th width="120">操作</th>
 				</tr>
 			</thead>
@@ -55,10 +56,11 @@
                         <tr class="text-c">
 					        <td><asp:CheckBox  ID="chbCheck" runat="server" /></td>
 					        <td><asp:Literal runat="server" ID="ltNumber" Text=""></asp:Literal></td>
-                            <td><asp:Literal ID="ltName" runat="server" Text=<%# Eval("ActivityCategory_name") %>></asp:Literal></td>
-					        <td class="f-14 td-manage"> 
-                              <asp:LinkButton runat="server" CssClass="ml-5" CommandName="Editor" CommandArgument='<%# Eval("ActivityCategory_id") %>'><i class="Hui-iconfont">&#xe6df;</i></asp:LinkButton>
-                              <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Delete" CommandArgument='<%#Eval("ActivityCategory_id") %>' OnClientClick="return confirm('确定删除?')"><i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton>
+                            <td><a href=<%# Eval("link") %>><asp:Literal ID="ltName" runat="server" Text=<%# Eval("title") %>></asp:Literal></a><asp:Label ID="lbItemID" runat="server" Text=<%#Eval("id") %> Visible="false"></asp:Label></td>
+					        <td><%# Eval("orders") %></td>
+                            <td class="f-14 td-manage"> 
+                              <asp:LinkButton runat="server" CssClass="ml-5" CommandName="Editor" CommandArgument='<%# Eval("id") %>'><i class="Hui-iconfont">&#xe6df;</i></asp:LinkButton>
+                              <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Delete" CommandArgument='<%#Eval("id") %>' OnClientClick="return confirm('确定删除?')"><i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton>
                             </td>
 				        </tr>
                     </ItemTemplate>
@@ -78,14 +80,22 @@
     <br />
     <div id="divAdd" runat="server" visible="false" style="width:500px;margin:0 auto;margin-top:70px">
         
-            分类名称:  <asp:TextBox ID="txtCategory"  CssClass="input-text" Width="200" runat="server"></asp:TextBox>
+            友情链接名称:  <asp:TextBox ID="txtCategory"  CssClass="input-text" Width="200" runat="server"></asp:TextBox>
+            <br />
+            友情链接地址:  <asp:TextBox ID="txtLink" CssClass="input-text" Width="200" runat="server"></asp:TextBox>
+            <br />
+            第  <asp:TextBox ID="txtOrder" CssClass="input-text" Width="100" runat="server"></asp:TextBox> 列
             <asp:Button ID="btnSubAdd" runat="server" OnClick="btnSubAdd_Click"  CssClass="btn btn-primary radius" Text="添加分类" />
     </div>
     <br />
     <br />
     <div id="divEditor" runat="server" visible="false" style="width:500px;margin:0 auto;margin-top:70px">
             <asp:Label ID="lbID" runat="server" Visible="false"></asp:Label>
-            分类名称:  <asp:TextBox ID="txtChange" runat="server" CssClass="input-text" Width="200"></asp:TextBox>
+             友情链接名称:  <asp:TextBox ID="txtChangeTitle"  CssClass="input-text" Width="200" runat="server"></asp:TextBox>
+            <br />
+            友情链接地址:  <asp:TextBox ID="txtChangeLink" CssClass="input-text" Width="200" runat="server"></asp:TextBox>
+            <br />
+            第  <asp:TextBox ID="txtChangeOrder" CssClass="input-text" Width="100" runat="server"></asp:TextBox> 列
             <asp:Button ID="btnChange" runat="server" OnClick="btnChange_Click"  CssClass="btn btn-primary radius" Text="修改分类" />
     </div>
 </div>
@@ -101,7 +111,8 @@
 <script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
 <script type="text/javascript">
 
-    function del() {
+function del()
+    {
         return confirm('删除分类后改分类的文章也会删除,确认删除?');
     }
 

@@ -39,7 +39,10 @@ public partial class BackStage_ActivityAdd : System.Web.UI.Page
         string count = txtLimit.Text;
         string category = dropCategory.SelectedValue;
         string content = myEditor11.InnerHtml;
+        string summary = TextBox1.Text;
         if (title.Length == 0 || date.Length == 0  || place.Length == 0 || count.Length == 0 || content.Length == 0)
+            JSHelper.ShowAlert("输入不能为空！");
+        else if (summary.Length == 0)
             JSHelper.ShowAlert("输入不能为空！");
         else
         {
@@ -57,7 +60,7 @@ public partial class BackStage_ActivityAdd : System.Web.UI.Page
 
                     ac.Activity_title = title;
                     DateTime dt = Convert.ToDateTime(date);
-                    
+                    ac.Activity_summary = summary;
                     ac.Activity_time = dt;
                     ac.Activity_content = content;
                     ac.Activity_place = place;

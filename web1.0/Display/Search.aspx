@@ -59,7 +59,7 @@
               console.log(page)
           	for(i=0;i<page;i++)
           	{
-          	    $("<a>").attr("href", "Search_Handler.ashx?page=" + (i + 1) + "&&key=" + searchwords).text(i + 1).appendTo($(".midButton"));
+          	    $("<a>").attr("href", "Search.aspx?page=" + (i + 1) + "&&key=" + searchwords).text(i + 1).appendTo($(".midButton"));
           		
           	}
           	if(page<=6)

@@ -5,6 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="dfb01c1eef0b4852be61359594b50a82" Name="Diagram1">
+
         <EntityTypeShape EntityType="TeachingCenterModel.Activity" Width="1.5" PointX="0.75" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachingCenterModel.ActivityCategory" Width="1.5" PointX="1.5" PointY="17.375" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachingCenterModel.ActivitySummary" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />

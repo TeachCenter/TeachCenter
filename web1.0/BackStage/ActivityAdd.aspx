@@ -36,7 +36,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>活动标题：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<asp:TextBox ID="txtTitle" runat="server" CssClass="input-text"></asp:TextBox>
+				<asp:TextBox ID="txtTitle" MaxLength="26" runat="server" CssClass="input-text"></asp:TextBox>
 			</div>
 		</div>
         <div class="row cl">
@@ -72,6 +72,12 @@
 			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
                 <asp:DropDownList runat="server" ID="dropCategory" CssClass="select">
                 </asp:DropDownList></span>
+			</div>
+		</div>
+        <div class="row cl link">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章摘要：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+                <asp:TextBox ID="TextBox1" TextMode="MultiLine" MaxLength="200" style="height: 119px; margin: 0px; width: 1033px;resize:none;" runat="server" CssClass="input-text"></asp:TextBox>
 			</div>
 		</div>
 		<div class="row cl">

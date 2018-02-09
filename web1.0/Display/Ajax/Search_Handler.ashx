@@ -46,7 +46,7 @@ public class Search_Handler : IHttpHandler {
                             select new Article
                             {
                                 id = it.Activity_id,
-                                content = it.Activity_content,
+                                content = it.Activity_summary,
                                 href = "ActivityContent.aspx?id=",
                                 time = it.Activity_time,
                                 title = it.Activity_title,
@@ -56,7 +56,7 @@ public class Search_Handler : IHttpHandler {
                           select new Article
                           {
                               id = it.ActivitySummary_id,
-                              content = it.ActivitySummary_content,
+                              content = it.ActivitySummary_summary,
                               href = "ActivitySummaryContent.aspx?id=",
                               time = it.ActivitySummary_time,
                               title = it.ActivitySummary_title
@@ -66,7 +66,7 @@ public class Search_Handler : IHttpHandler {
                          select new Article
                          {
                              id = it.Develop_id,
-                             content = it.Develop_content,
+                             content = it.Develop_summary,
                              href = "DevelopContent.aspx?id=",
                              time = it.Develop_time,
                              title = it.Develop_title
@@ -76,7 +76,7 @@ public class Search_Handler : IHttpHandler {
                           select new Article
                           {
                               id = it.id,
-                              content = it.body,
+                              content = it.summary,
                               href = "SrcContent.aspx?id=",
                               title = it.title,
                               times = it.publish_time

@@ -83,7 +83,7 @@ public class ActivityList : IHttpHandler {
                        {
                            Activity_id = it.Activity_id,
                            Activity_title = it.Activity_title,
-                           Activity_content = it.Activity_content,
+                           Activity_content = it.Activity_summary,
                            Activity_author = it.Activity_author,
                            Activity_hit = it.Activity_hit,
                            Activity_times = it.Activity_time,

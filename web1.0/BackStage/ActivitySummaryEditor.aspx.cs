@@ -18,7 +18,9 @@ public partial class BackStage_ActivitySummaryEditor : System.Web.UI.Page
                 int id = Convert.ToInt32(Request.QueryString["id"]);
                 using (var db = new TeachingCenterEntities())
                 {
+                    
                     ActivitySummary asu = db.ActivitySummary.Single(a => a.ActivitySummary_id == id);
+                    TextBox1.Text = asu.ActivitySummary_summary;
                     txtTitle.Text = asu.ActivitySummary_title;
                     myEditor11.InnerText = Server.HtmlDecode(asu.ActivitySummary_content);
                 }
@@ -37,7 +39,10 @@ public partial class BackStage_ActivitySummaryEditor : System.Web.UI.Page
     {
         string title = txtTitle.Text;
         string content = myEditor11.InnerHtml;
+        string summary = TextBox1.Text;
         if (title.Length == 0 || content.Length == 0)
+            JSHelper.ShowAlert("输入不能为空！");
+        else if (summary.Length == 0)
             JSHelper.ShowAlert("输入不能为空！");
         else
         {
@@ -49,6 +54,7 @@ public partial class BackStage_ActivitySummaryEditor : System.Web.UI.Page
                     ActivitySummary acsu = db.ActivitySummary.Single(a => a.ActivitySummary_id == id);
                     acsu.ActivitySummary_title = title;
                     acsu.ActivitySummary_content = content;
+                    acsu.ActivitySummary_summary = summary;
                     if (dropAuthor.SelectedValue == "0")
                         acsu.ActivitySummary_author = AdminHelper.getNameByID(Session["AdminID"].ToString());
                     else if (dropAuthor.SelectedValue == "1")

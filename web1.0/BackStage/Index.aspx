@@ -86,10 +86,11 @@
 	</dl>
         
 		<dl id="menu-picture">
-			<dt><i class="Hui-iconfont">&#xe613;</i>滚动图片管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dt><i class="Hui-iconfont">&#xe613;</i>首页管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
 					<li><a data-href="BannerList.aspx" data-title="滚动图片管理" href="javascript:void(0)">滚动图片管理</a></li>
+                    <li><a data-href="FriendsLink.aspx" data-title="友情链接管理" href="javascript:void(0)">友情链接管理</a></li>
 			</ul>
 		</dd>
 	</dl>

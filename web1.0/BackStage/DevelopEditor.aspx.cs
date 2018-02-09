@@ -23,9 +23,10 @@ public partial class BackStage_DevelopEditor : System.Web.UI.Page
                 dropCategory.DataTextField = "DevelopCategory_name";
 
                 dropCategory.DataBind();
-
+                
                 Develop dev = db.Develop.Single(a => a.Develop_id == id);
                 txtTitle.Text = dev.Develop_title;
+                TextBox1.Text = dev.Develop_summary;
                 txtLink.Text = dev.Develop_link;
                 myEditor11.InnerHtml = Server.HtmlDecode(dev.Develop_content);
             }
@@ -43,11 +44,14 @@ public partial class BackStage_DevelopEditor : System.Web.UI.Page
         string title = txtTitle.Text;
         string link = txtLink.Text;
         string content = myEditor11.InnerHtml;
+        string summary = TextBox1.Text;
         if (title.Length == 0)
             JSHelper.ShowAlert("输入不能为空！");
         else if (cbxLink.Checked && link.Length == 0)
             JSHelper.ShowAlert("输入不能为空！");
         else if (!cbxLink.Checked && content.Length == 0)
+            JSHelper.ShowAlert("输入不能为空！");
+        else if (summary.Length == 0)
             JSHelper.ShowAlert("输入不能为空！");
         else
             using (var db = new TeachingCenterEntities())
@@ -65,6 +69,7 @@ public partial class BackStage_DevelopEditor : System.Web.UI.Page
                 dev.Develop_time = DateTime.Now;
                 dev.Develop_content = content;
                 dev.Develop_link = link;
+                dev.Develop_summary = summary;
                 dev.Develop_category = DevelopHelper.getCategoryId(dropCategory.SelectedValue);
                 dev.Develop_hit = 0;
                 dev.Develop_deleted = 0;

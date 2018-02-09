@@ -63,7 +63,7 @@ public class ActivitySummaryList : IHttpHandler {
                       {
                           ActivitySummary_id = it.ActivitySummary_id,
                           ActivitySummary_title = it.ActivitySummary_title,
-                          ActivitySummary_content = it.ActivitySummary_content,
+                          ActivitySummary_content = it.ActivitySummary_summary,
                           ActivitySummary_author = it.ActivitySummary_author,
                           ActivitySummary_times = it.ActivitySummary_time,
                           ActivitySummary_hit = it.ActivitySummary_hit,

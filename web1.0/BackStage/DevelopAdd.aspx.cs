@@ -35,11 +35,14 @@ public partial class BackStage_DevelopAdd : System.Web.UI.Page
         string title = txtTitle.Text;
         string link = txtLink.Text;
         string content = myEditor11.InnerHtml;
+        string summary = TextBox1.Text;
         if (title.Length == 0)
             JSHelper.ShowAlert("输入不能为空！");
         else if (cbxLink.Checked && link.Length == 0)
             JSHelper.ShowAlert("输入不能为空！");
         else if (!cbxLink.Checked && content.Length == 0)
+            JSHelper.ShowAlert("输入不能为空！");
+        else if (summary.Length == 0)
             JSHelper.ShowAlert("输入不能为空！");
         else
         {
@@ -77,6 +80,7 @@ public partial class BackStage_DevelopAdd : System.Web.UI.Page
                                 dev.Develop_author = "未知";
                             dev.Develop_time = DateTime.Now;
                             dev.Develop_content = content;
+                            dev.Develop_summary = summary;
                             dev.Develop_link = link;
                             dev.Develop_category = DevelopHelper.getCategoryId(dropCategory.SelectedValue);
                             dev.Develop_hit = 0;

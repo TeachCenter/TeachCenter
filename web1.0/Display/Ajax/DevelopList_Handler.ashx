@@ -60,7 +60,7 @@ public class Develop_Handler : IHttpHandler {
                       {
                           Develop_id = it.Develop_id,
                           Develop_title = it.Develop_title,
-                          Develop_content = it.Develop_content,
+                          Develop_content = it.Develop_summary,
                           Develop_author = it.Develop_author,
                           Develop_hit = it.Develop_hit,
                           Develop_link = it.Develop_link,
