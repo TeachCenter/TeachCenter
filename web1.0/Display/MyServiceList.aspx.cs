@@ -34,7 +34,7 @@ public partial class Display_MyServiceList : System.Web.UI.Page
                                 select it;
                 HtmlInputHidden count = FindControl("count") as HtmlInputHidden;
                 count.Value = myService.Count().ToString();
-                rptService.DataSource = myService.ToList().Skip((page-1)*5).Take(9);
+                rptService.DataSource = myService.ToList().Skip((page-1)*9).Take(9);
                 rptService.DataBind();
                 
             }

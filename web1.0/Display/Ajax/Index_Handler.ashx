@@ -23,7 +23,7 @@ public class IndexNotice_Handler : IHttpHandler {
             //通知公告
             var activity = (from it in db.Activity
                             where it.Activity_isdeleted == 0
-                            orderby it.Activity_time descending select it).ToList().Take(8).Select( it=>
+                            orderby it.Activity_time descending select it).ToList().Take(5).Select( it=>
                             new
                             {
                                 noticeTitle = it.Activity_title,
@@ -32,7 +32,7 @@ public class IndexNotice_Handler : IHttpHandler {
                             });
             var sourse = (from it in db.EducateSource
                           where it.is_deleted == 0
-                          orderby it.publish_time descending select it).ToList().Take(8).Select(
+                          orderby it.publish_time descending select it).ToList().Take(5).Select(
                           it=> new Notice
                           {
                               noticeTitle = it.title,
@@ -41,7 +41,7 @@ public class IndexNotice_Handler : IHttpHandler {
                           });
             var project = (from it in db.ProjectCategory
                            where it.is_deleted == 0
-                           orderby it.publish_time descending select it).ToList().Take(8).Select(
+                           orderby it.publish_time descending select it).ToList().Take(5).Select(
                            it=> new Notice
                            {
                                noticeTitle = it.name,
@@ -54,7 +54,7 @@ public class IndexNotice_Handler : IHttpHandler {
                 Notice x = new Notice();
                 x.noticeHref ="ActivityContent.aspx?id=" + i.noticeHref;
                 x.noticeTime = i.noticeTime;
-                x.noticeTitle = i.noticeTitle.Length>15?i.noticeTitle.Substring(0,15)+"...":i.noticeTitle;
+                x.noticeTitle = i.noticeTitle;
                 notice.Add(x);
             }
             foreach(var i in sourse)
@@ -62,7 +62,7 @@ public class IndexNotice_Handler : IHttpHandler {
                 Notice x = new Notice();
                 x.noticeHref ="SrcContent.aspx?id=" + i.noticeHref;
                 x.noticeTime = i.noticeTime;
-                x.noticeTitle = i.noticeTitle.Length>15?i.noticeTitle.Substring(0,15)+"...":i.noticeTitle;
+                x.noticeTitle = i.noticeTitle;
                 notice.Add(x);
             }
             foreach(var i in project)
@@ -70,7 +70,7 @@ public class IndexNotice_Handler : IHttpHandler {
                 Notice x = new Notice();
                 x.noticeHref = "ProgectContent.aspx?id=" + i.noticeHref;
                 x.noticeTime = i.noticeTime;
-                x.noticeTitle = i.noticeTitle.Length>15?i.noticeTitle.Substring(0,15)+"...":i.noticeTitle;
+                x.noticeTitle = i.noticeTitle;
                 notice.Add(x);
             }
             notice.Sort(SortList);

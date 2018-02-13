@@ -38,7 +38,7 @@ public partial class Display_MyActivityList : System.Web.UI.Page
                 }
                 HtmlInputHidden count = FindControl("count") as HtmlInputHidden;
                 count.Value = ac.Count().ToString();
-                rptActivity.DataSource = ac.Skip((page-1)*5).Take(5);
+                rptActivity.DataSource = ac.Skip((page-1)*9).Take(9);
                 rptActivity.DataBind();
                 //判断是不是评审
                 if (!TeacherHelper.isJudge(Session["TeacherNumber"].ToString()))
