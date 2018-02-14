@@ -29,9 +29,10 @@
 			<h1>我的服务</h1>
 			<a href="Service.aspx" class="creat">+新建服务</a>
 		</div>
+                <span class="cut"></span>
         <asp:Repeater ID="rptService" runat="server" OnItemDataBound="rptService_ItemDataBound">
             <ItemTemplate>
-                <span class="cut"></span>
+                
 		        <div class="clearfix">
 			        <div class="clearfix">
 				        <h2><asp:Literal ID="ltCategory" runat="server" Text='<%# Eval("Service_category") %>'></asp:Literal></h2>
@@ -42,8 +43,10 @@
 				        <h3>备注：<%# Eval("Service_remarks") %></h3>
                         <h3>处理状态：<asp:Literal ID="ltDeal" runat="server" Text='<%# Eval("Service_isdeal") %>'></asp:Literal></h3>
 			            <h3><asp:LinkButton ID="ltEditor" runat="server" Text='<%# Eval("Service_id") %>' PostBackUrl='<%# "MyServiceEditor.aspx?id="+Eval("Service_id") %>' ></asp:LinkButton></h3>
+                        
                     </div>
 		        </div>
+                <span class="cut"></span>
             </ItemTemplate>
         </asp:Repeater>
         </div>
@@ -64,7 +67,8 @@
             <input type="hidden" id="count" runat="server" value=""/>
 
 	</div>
-	<script type="text/javascript"  src="./js/personal-center-init.js"></script></form>
+    </form>
+	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
     <script>
         var i = 0;
         if ($("#count").val() % 9 == 0) {
@@ -79,7 +83,7 @@
         }
         console.log(page)
         for (i = 0; i < page; i++) {
-            $("<a>").attr("href", "MyServiceList.aspx?page=" + page).text(i + 1).appendTo($(".midButton"));
+            $("<a>").attr("href", "MyServiceList.aspx?page=" + (i + 1)).text(i + 1).appendTo($(".midButton"));
 
         }
         if (page <= 6) {
@@ -122,6 +126,15 @@
 
         }
         turnPage();
+        $(window).resize(function () {
+            if (w > 1200) {
+                w = $(window).width();
+            }
+            else {
+                w = 1200;
+            }
+            $(".left-button").css({ "margin-left": (w - 760 - 40 * (page + 2)) / 2 })
+        })
     </script>
      <script type="text/javascript"  src="./js/centerMobile.js"></script>
   

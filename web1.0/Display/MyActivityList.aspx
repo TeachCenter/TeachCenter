@@ -27,10 +27,12 @@
 		<div class="clearfix">
 			<h1>我的活动</h1>
 			<a href="" class="creat" style="background-color:rgba(0, 0, 0, 0);"></a>
+            
 		</div>
+                <span class="cut"></span>
         <asp:Repeater ID="rptActivity" runat="server" OnItemCommand="rptActivity_ItemCommand" OnItemDataBound="rptActivity_ItemDataBound">
             <ItemTemplate>
-                <span class="cut"></span>
+                
 		        <div class="clearfix">
 			        <div class="clearfix">
 				        <h2><%# Eval("Activity_title") %></h2>
@@ -43,6 +45,7 @@
 				        <h3><a href='<%#"ActivityContent.aspx?id="+ Eval("Activity_id") %>'>查看活动详情 >></a></h3>
 			        </div>
 		       </div>
+                <span class="cut"></span>
             </ItemTemplate>
         </asp:Repeater>
     </div>
@@ -120,6 +123,15 @@
 
         }
         turnPage();
+        $(window).resize(function () {
+            if (w > 1200) {
+                w = $(window).width();
+            }
+            else {
+                w = 1200;
+            }
+            $(".left-button").css({ "margin-left": (w - 760 - 40 * (page + 2)) / 2 })
+        })
     </script>
       <script type="text/javascript"  src="./js/centerMobile.js"></script>
 </body>

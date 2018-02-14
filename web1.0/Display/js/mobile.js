@@ -157,7 +157,10 @@
         "font-size": 0.16 + "rem"
 
     });
-    
+    $(".leftLine").css({
+        "display": "none"
+
+    });
 
     
     
@@ -207,6 +210,19 @@
      $(".left-content").css({
         "width":100+"%",
         "margin-top":0
+
+    })
+     $(".brief-intro-line").css({
+        "width":100+"%"
+
+    })
+    $(".p-box").css({
+        "display":"inline"
+
+    })
+     $(".brief-intro-box").css({
+        "display":"block",
+        "padding":"0 0.32rem 0 0.32rem"
 
     })
      $(".left-content-nav").css({

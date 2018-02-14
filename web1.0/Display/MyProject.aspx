@@ -82,6 +82,7 @@
                 <h1>我的项目</h1>
                 <a href="AddProject.aspx" class="creat">+新建项目</a>
             </div>
+            <span class="cut"></span>
         </div>
         <div class="buttons clearfix">
             <a class="lleft-button"></a>
@@ -134,7 +135,7 @@
                 }
                 for (i = 0; i < data[0].length; i++)
                 {
-                    $("<span>").addClass("cut").appendTo($(".progect-content"));
+                   
                     var projectBox = $("<a>").attr("href", "ProjectContent.aspx?id=" + data[0][i].id).addClass("project-box").addClass("clearfix").css({ "display": "block", "cursor": "pointer" }).appendTo($(".progect-content"));
                     var content = $("<div>").addClass("clearfix").appendTo(projectBox);
                     var h2Box = $("<div>").addClass("clearfix").appendTo(content);
@@ -143,6 +144,8 @@
                     $("<h3>").text("申报日期：" + data[0][i].submit_time).appendTo(h3Box);
                     $("<h3>").text("负责人" + data[0][i].teacher_name).appendTo(h3Box);
                     $("<h3>").text("申报单位：" + data[0][i].department).appendTo(h3Box);
+                    $("<span>").addClass("cut").appendTo($(".progect-content"));
+
                 }
                 for (i = 0; i < page; i++) {
                     $("<a>").attr("href", "MyProject.aspx?pageSize=" + 10 + "&&pageNumber=" + (i + 1)).text(i + 1).appendTo($(".midButton"));

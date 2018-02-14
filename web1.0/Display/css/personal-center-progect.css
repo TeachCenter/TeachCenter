@@ -27,7 +27,7 @@
 }
 .right-content  div span{
 	color: #D6000F;
-	background-color: white!important;
+	background-color: white;
 }
 .project-box:hover .project-box h1 {
     color:rgb(214, 0, 15);

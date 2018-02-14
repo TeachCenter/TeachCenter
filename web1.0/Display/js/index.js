@@ -11,7 +11,11 @@
                 html+='<a href="javascript:void(0)"><img src="'+arr[arrlen-1].imgurl+'" alt="img"/></a>';
             }
             $.each(arr,function(n,obj){
-                if(obj.imgurl!=undefined&&obj.href!=undefined&&obj.text!=undefined){
+                if(obj.imgurl!=undefined&&obj.href!=undefined&&obj.text!=undefined&&obj.title!=undefined)
+                {
+                     html+='<a href="'+obj.href+'"><img src="'+obj.imgurl+'" alt="img"/><div class="summaryBox"><h2>'+obj.title+'</h2><p>'+obj.text+'</p></div></a>';
+                }
+                else if(obj.imgurl!=undefined&&obj.href!=undefined&&obj.text!=undefined){
                     html+='<a href="'+obj.href+'"><img src="'+obj.imgurl+'" alt="img"/><p>'+obj.text+'</p></a>';
                 }else if(obj.imgurl!=undefined&&obj.href!=undefined){
                     html+='<a href="'+obj.href+'"><img src="'+obj.imgurl+'" alt="img"/></a>';
@@ -48,7 +52,8 @@
                 "display":"block",
                 "float":"left",
                 "width":myW+"px",
-                "height":myH+"px"
+                "height":myH+"px",
+                "cursor":"pointer"
             });
             ele.find(".sl_content img").css({
                 "display":"block",
