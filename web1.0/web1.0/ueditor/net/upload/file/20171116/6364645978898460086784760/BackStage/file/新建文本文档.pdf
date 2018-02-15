@@ -1,0 +1,21 @@
+1.显示当前分支：
+
+git branch
+输入上述命令可以显示出分支，*所在的分支为当前分支。
+
+2.新建分支：
+
+git branch new_branch
+new_branch为新建分支的名称，注意该名称不能包含空格，如new-branch，new_branch都是有效分支名称，但是new branch不是。
+
+3.切换分支：
+
+git checkout branchName
+branchName为要切换分支的名称。这样可以在不干扰主分支的情况下继续操作。
+
+4.合并分支：
+
+git merge branchName
+
+15166636089
+15966943215

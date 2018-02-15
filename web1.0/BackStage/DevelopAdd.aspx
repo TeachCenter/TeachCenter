@@ -20,16 +20,28 @@
 <link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
-
     <script src="jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="manage.js" type="text/javascript"></script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.all.min.js"> </script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/lang/zh-cn/zh-cn.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            //$("#link").css("display", "none");
-            //if ($("#checkbox-moban").is(':checked'))
-            //    alert("666");
+            var flag = false;
+            $(".iCheck-helper").click(function () {
+                if (flag == false) {
+                    $(".content").css({ "display": "none" })
+                    $(".link").css({ "display": "block" })
+                    flag = true;
+                }
+                else{
+                    $(".content").css({ "display": "block" })
+                    $(".link").css({ "display": "none" })
+                    flag = false;
+                }
+               
+            });
+            
         });
     </script>
 <title>新增教学发展</title>
@@ -42,7 +54,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章标题：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<asp:TextBox ID="txtTitle" runat="server" CssClass="input-text"></asp:TextBox>
+				<asp:TextBox MaxLength="26" ID="txtTitle" runat="server" CssClass="input-text"></asp:TextBox>
 			</div>
 		</div>
 		<div class="row cl">
@@ -55,23 +67,46 @@
                 </asp:DropDownList></span>
 				</div>
 		</div>
+         <div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>活动类型：</label>
+			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+                <asp:DropDownList runat="server" ID="dropCategory" CssClass="select">
+                </asp:DropDownList></span>
+			</div>
+		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">使用外部链接：</label>
 			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
 				<div class="check-box">
-					<%--<input type="checkbox" id="checkbox-moban">--%>
+					
                     <asp:CheckBox ID="cbxLink" runat="server" />
 					<label for="checkbox-moban">&nbsp;</label>
 				</div>
 			</div>
 		</div>
-		<div id="link" class="row cl">
+		<div id="link" class="row cl link" style="display:none;">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章链接：</label>
 			<div class="formControls col-xs-8 col-sm-9">
                 <asp:TextBox ID="txtLink" runat="server" CssClass="input-text"></asp:TextBox>
 			</div>
 		</div>
-		<div class="row cl">
+       <div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <label class="form-label col-xs-4 col-sm-2"  style="position: absolute;margin-left: -179px;"><span class="c-red">*</span>上传封面：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <asp:FileUpload ID="fup" runat="server" />
+                    <asp:Label ID="lblInfo" runat="server"></asp:Label>
+			    </div>
+                
+			</div>
+		</div>
+        <div class="row cl link">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章摘要：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+                <asp:TextBox ID="TextBox1" TextMode="MultiLine" MaxLength="200" style="height: 119px; margin: 0px; width: 1033px;resize:none;" runat="server" CssClass="input-text"></asp:TextBox>
+			</div>
+		</div>
+		<div class="row cl content">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章内容：</label>
 			<div class="formControls col-xs-8 col-sm-9"> 
 				<textarea id="myEditor11" name="myEditor11" runat="server" onblur="setUeditor()" style="width: 1030px; height: 250px;"></textarea>
@@ -107,17 +142,7 @@
                     $("#btnSub").attr("disabled", false);
                 }
             });
-            //判断是否使用外部链接
-            //$("#cbxLink").change(function () {
-            //    var check = $("#cbxLink");
-            //    alert("44");
-            //    if (check.is(':checked'))
-            //        alert("55");
-            //    else
-            //        alert("66");
-            //});
-            
-                //
+
         </script>
 	</form>
 </article>
@@ -139,167 +164,14 @@
 <script type="text/javascript" src="lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
 <script type="text/javascript">
     
-$(function(){
-	$('.skin-minimal input').iCheck({
-		checkboxClass: 'icheckbox-blue',
-		radioClass: 'iradio-blue',
-		increaseArea: '20%'
-	});
+    $(function(){
+        $('.skin-minimal input').iCheck({
+            checkboxClass: 'icheckbox-blue',
+            radioClass: 'iradio-blue',
+            increaseArea: '20%'
+        });
 	
-	//表单验证
-	$("#form-article-add").validate({
-		rules:{
-			articletitle:{
-				required:true,
-			},
-			articletitle2:{
-				required:true,
-			},
-			articlecolumn:{
-				required:true,
-			},
-			articletype:{
-				required:true,
-			},
-			articlesort:{
-				required:true,
-			},
-			keywords:{
-				required:true,
-			},
-			abstract:{
-				required:true,
-			},
-			author:{
-				required:true,
-			},
-			sources:{
-				required:true,
-			},
-			allowcomments:{
-				required:true,
-			},
-			commentdatemin:{
-				required:true,
-			},
-			commentdatemax:{
-				required:true,
-			},
-
-		},
-		onkeyup:false,
-		focusCleanup:true,
-		success:"valid",
-		submitHandler:function(form){
-			//$(form).ajaxSubmit();
-			var index = parent.layer.getFrameIndex(window.name);
-			//parent.$('.btn-refresh').click();
-			parent.layer.close(index);
-		}
-	});
-	
-	$list = $("#fileList"),
-	$btn = $("#btn-star"),
-	state = "pending",
-	uploader;
-
-	var uploader = WebUploader.create({
-		auto: true,
-		swf: 'lib/webuploader/0.1.5/Uploader.swf',
-	
-		// 文件接收服务端。
-		server: 'fileupload.php',
-	
-		// 选择文件的按钮。可选。
-		// 内部根据当前运行是创建，可能是input元素，也可能是flash.
-		pick: '#filePicker',
-	
-		// 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
-		resize: false,
-		// 只允许选择图片文件。
-		accept: {
-			title: 'Images',
-			extensions: 'gif,jpg,jpeg,bmp,png',
-			mimeTypes: 'image/*'
-		}
-	});
-	uploader.on( 'fileQueued', function( file ) {
-		var $li = $(
-			'<div id="' + file.id + '" class="item">' +
-				'<div class="pic-box"><img></div>'+
-				'<div class="info">' + file.name + '</div>' +
-				'<p class="state">等待上传...</p>'+
-			'</div>'
-		),
-		$img = $li.find('img');
-		$list.append( $li );
-	
-		// 创建缩略图
-		// 如果为非图片文件，可以不用调用此方法。
-		// thumbnailWidth x thumbnailHeight 为 100 x 100
-		uploader.makeThumb( file, function( error, src ) {
-			if ( error ) {
-				$img.replaceWith('<span>不能预览</span>');
-				return;
-			}
-	
-			$img.attr( 'src', src );
-		}, thumbnailWidth, thumbnailHeight );
-	});
-	// 文件上传过程中创建进度条实时显示。
-	uploader.on( 'uploadProgress', function( file, percentage ) {
-		var $li = $( '#'+file.id ),
-			$percent = $li.find('.progress-box .sr-only');
-	
-		// 避免重复创建
-		if ( !$percent.length ) {
-			$percent = $('<div class="progress-box"><span class="progress-bar radius"><span class="sr-only" style="width:0%"></span></span></div>').appendTo( $li ).find('.sr-only');
-		}
-		$li.find(".state").text("上传中");
-		$percent.css( 'width', percentage * 100 + '%' );
-	});
-	
-	// 文件上传成功，给item添加成功class, 用样式标记上传成功。
-	uploader.on( 'uploadSuccess', function( file ) {
-		$( '#'+file.id ).addClass('upload-state-success').find(".state").text("已上传");
-	});
-	
-	// 文件上传失败，显示上传出错。
-	uploader.on( 'uploadError', function( file ) {
-		$( '#'+file.id ).addClass('upload-state-error').find(".state").text("上传出错");
-	});
-	
-	// 完成上传完了，成功或者失败，先删除进度条。
-	uploader.on( 'uploadComplete', function( file ) {
-		$( '#'+file.id ).find('.progress-box').fadeOut();
-	});
-	uploader.on('all', function (type) {
-        if (type === 'startUpload') {
-            state = 'uploading';
-        } else if (type === 'stopUpload') {
-            state = 'paused';
-        } else if (type === 'uploadFinished') {
-            state = 'done';
-        }
-
-        if (state === 'uploading') {
-            $btn.text('暂停上传');
-        } else {
-            $btn.text('开始上传');
-        }
-    });
-
-    $btn.on('click', function () {
-        if (state === 'uploading') {
-            uploader.stop();
-        } else {
-            uploader.upload();
-        }
-    });
-	
-	var ue = UE.getEditor('editor');
-	
-});
+    })
 </script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>
