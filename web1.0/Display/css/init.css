@@ -426,12 +426,16 @@ ul li{
 .linkBox li{
     width: 100%;
     height: 25px;
-    line-height: 25px;
+    line-height: 30px;
     text-align:center;
 }
 .linkBox li a{
     font-size: 16px;
         color: white;
+        cursor:pointer;
+}
+.linkBox li a:hover{
+   text-decoration:underline;
 }
 @media (min-width:0px) and (max-width:1200px)
 {
