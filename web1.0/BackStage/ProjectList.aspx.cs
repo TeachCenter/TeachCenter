@@ -185,7 +185,7 @@ public partial class BackStage_ProjectList : System.Web.UI.Page
             row["提交时间"] = item.submit_time;
             dt.Rows.Add(row);
         }
-        ExcleHelper.ExportDataGrid(dt, "application/ms-excel", "项目列表.xlsx");
+        ExcleHelper.ExportDataGrid(dt, "application/ms-excel", "项目列表.xls");
     }
 
     protected void Prev_Click(object sender, EventArgs e)

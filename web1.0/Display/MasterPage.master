@@ -88,6 +88,20 @@
         </asp:ContentPlaceHolder>
 		<div class="footer">
 			<div class="footer-infor-box">
+                <ul class=" center clearfix">
+                    <ul class="linkBox linkBoxL">
+                        
+                    </ul>
+                    <ul class="linkBox linkBoxM1">
+                        
+                    </ul>
+                    <ul class="linkBox linkBoxM2">
+                        
+                    </ul>
+                    <ul class="linkBox linkBoxR">
+                        
+                    </ul>
+                </ul>
 				<p>校址：青岛市崂山区松岭路238号 ·邮编：266100 ·电话：0532-66782193 ·Email：jxdd@ouc.edu.cn </p>
 				<p class="Copyright">Copyright © 2004-2008 Ocean University of China. All rights reserved.</p>
 			</div>
@@ -182,6 +196,122 @@
                 $("#ltbLogin").click();
             }
         })
+        $("#txtID").keydown(function () {
+            if (event.keyCode == 13) {
+                event.returnValue = false;
+                event.cancel = true;
+
+                $(".log-submit").click();
+            }
+        })
+        $("#TextBox1").keydown(function () {
+            if (event.keyCode == 13) {
+                event.returnValue = false;
+                event.cancel = true;
+
+                $(".log-submit").click();
+            }
+        })
+        $("#txtPwd").keydown(function () {
+            if (event.keyCode == 13) {
+                event.returnValue = false;
+                event.cancel = true;
+
+                $(".log-submit").click();
+            }
+        })
+        $("#txtName").keydown(function () {
+            if (event.keyCode == 13) {
+                event.returnValue = false;
+                event.cancel = true;
+
+                $(".sign-submit").click();
+            }
+        })
+        $("#txtNumber").keydown(function () {
+            if (event.keyCode == 13) {
+                event.returnValue = false;
+                event.cancel = true;
+
+                $(".sign-submit").click();
+            }
+        })
+        $("#txtNewPwd").keydown(function () {
+            if (event.keyCode == 13) {
+                event.returnValue = false;
+                event.cancel = true;
+
+                $(".sign-submit").click();
+            }
+        })
+        $("#txtPhone").keydown(function () {
+            if (event.keyCode == 13) {
+                event.returnValue = false;
+                event.cancel = true;
+
+                $(".sign-submit").click();
+            }
+        })
+        $("#txtCheckPwd").keydown(function () {
+            if (event.keyCode == 13) {
+                event.returnValue = false;
+                event.cancel = true;
+
+                $(".sign-submit").click();
+            }
+        })
+        $("#txtEmail").keydown(function () {
+            if (event.keyCode == 13) {
+                event.returnValue = false;
+                event.cancel = true;
+
+                $(".sign-submit").click();
+            }
+        })
+    </script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "./Ajax/Index_Handler.ashx",
+                dataType: "JSON",
+                async: true,
+
+                success: function (data) {
+                   
+                     
+                    for (i = 0; i < data[4][0].length; i++)
+                        {
+                            var row = $("<li>").appendTo($(".linkBoxL"));
+                            $("<a>").attr("href", data[4][0][i].link).text(data[4][0][i].title).appendTo(row);
+                        }
+                    for (i = 0; i < data[4][1].length; i++){
+                            var row = $("<li>").appendTo($(".linkBoxM1"));
+                            $("<a>").attr("href", data[4][1][i].link).text(data[4][1][i].title).appendTo(row);
+                        }
+                    for (i = 0; i < data[4][2].length; i++){
+                            var row = $("<li>").appendTo($(".linkBoxM2"));
+                            $("<a>").attr("href", data[4][2][i].link).text(data[4][2][i].title).appendTo(row);
+                        }
+                    for (i = 0; i < data[4][3].length; i++){
+                            var row = $("<li>").appendTo($(".linkBoxR"));
+                            $("<a>").attr("href", data[4][3][i].link).text(data[4][3][i].title).appendTo(row);
+                        }
+                        
+                        
+
+                    }
+
+
+
+
+
+
+             
+            })
+
+
+            }); 
     </script>
        <asp:ContentPlaceHolder id="ContentPlaceHolder2" runat="server">
         

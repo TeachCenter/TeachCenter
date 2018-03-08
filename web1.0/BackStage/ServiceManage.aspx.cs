@@ -272,7 +272,7 @@ public partial class BackStage_ServiceManage : System.Web.UI.Page
                 dt.Rows.Add(row);
             }
         }
-        ExcleHelper.ExportDataGrid(dt, "application/ms-excel", "教师服务申请.xlsx");
+        ExcleHelper.ExportDataGrid(dt, "application/ms-excel", "教师服务申请.xls");
 
 
     }

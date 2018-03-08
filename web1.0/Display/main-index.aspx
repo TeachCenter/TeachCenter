@@ -105,6 +105,14 @@
     
 	<script type="text/javascript"  src="./js/index.js"></script>
      <script type="text/javascript"  src="./js/mobile.js"></script>
+    <script>
+        $("#mySlide1 img").css({
+            height:214+"px"
+        })
+        $("#mySlide2 img").css({
+            height: 214 + "px"
+        })
+    </script>
    
 </asp:Content>
 
