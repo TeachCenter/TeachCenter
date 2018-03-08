@@ -55,11 +55,9 @@ public class ActivityHelper
             {
                 list += TeacherHelper.getTeacherNameByID(i.teacher_id) + " , ";
             }
-<<<<<<< HEAD
+
             return list.Length == 0 ? "无" : list.Substring(0, list.Length - 2);
-=======
-            return list.Substring(0, list.Length - 2);
->>>>>>> 72a1af7670b21fccecce449d03c5ef151a5b9770
+
         }
     }
 }
