@@ -43,7 +43,6 @@
 			<h1>项目信息</h1>
 		</div>
 		<span class="cut"></span>
-		
 			<div class="clearfix">
 				<h2>项目名称:</h2>
                 <asp:TextBox ID="txtName" runat="server" class="name" ReadOnly="true"></asp:TextBox>
@@ -91,8 +90,13 @@
 				<h2>是否通过:</h2>
                 <asp:TextBox ID="txtReslut" runat="server" ReadOnly="true"></asp:TextBox>
 			</div>
+<<<<<<< HEAD
 		
 	</div></form>
+=======
+		</form>
+	</div>
+>>>>>>> 72a1af7670b21fccecce449d03c5ef151a5b9770
 	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
 	<script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script>
     <script>

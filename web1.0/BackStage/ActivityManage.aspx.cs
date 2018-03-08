@@ -268,7 +268,11 @@ public partial class BackStage_ActivityManage : System.Web.UI.Page
             foreach (var i in acsu)
             {
                 DataRow row = dt.NewRow();
+<<<<<<< HEAD
                 
+=======
+
+>>>>>>> 72a1af7670b21fccecce449d03c5ef151a5b9770
                 row["序号"] = count.ToString();
                 row["标题"] = i.Activity_title;
                 row["活动地点"] = i.Activity_place;
@@ -277,10 +281,18 @@ public partial class BackStage_ActivityManage : System.Web.UI.Page
                 row["人数"] = i.Activity_nowcount.ToString() + " / " + i.Activity_limitcount.ToString();
                 row["活动类型"] = ActivityHelper.getCategoryName(i.Activity_categoryid);
                 row["参与名单"] = ActivityHelper.getTeacherList(i.Activity_id);
+<<<<<<< HEAD
                 count++;
                 dt.Rows.Add(row);
             }
         }
         ExcleHelper.ExportDataGrid(dt, "application/ms-excel", "活动信息.xls");
+=======
+                
+                dt.Rows.Add(row);
+            }
+        }
+        ExcleHelper.ExportDataGrid(dt, "application/ms-excel", "活动信息.xlsx");
+>>>>>>> 72a1af7670b21fccecce449d03c5ef151a5b9770
     }
 }
