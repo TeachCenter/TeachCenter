@@ -63,7 +63,7 @@
         }
     </style>
 </head>
-<body>
+<body><form runat="server">
 	<div class="left-nav">
 		<img src="./images/logo-big.png" alt="">
 		<ul>
@@ -202,6 +202,7 @@
             $(".left-button").css({ "margin-left": (w - 760 - 40 * (page + 2)) / 2 })
         })
     </script>
-      <script type="text/javascript"  src="./js/centerMobile.js"></script>
+      <script type="text/javascript"  src="./js/centerMobile.js"></script></form>
+
 </body>
 </html>

@@ -63,7 +63,7 @@
         }
     </style>
 </head>
-<body>
+<body><form runat="server">
 	<div class="left-nav">
 		<img src="./images/logo-big.png" alt="">
 		<ul>
@@ -209,6 +209,6 @@
         })
     </script>
 
-     <script type="text/javascript"  src="./js/centerMobile.js"></script>
+     <script type="text/javascript"  src="./js/centerMobile.js"></script></form>
 </body>
 </html>
