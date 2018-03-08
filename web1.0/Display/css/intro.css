@@ -4,6 +4,7 @@
     background-color: #FFFFFF;
     margin-top: 32px;
     margin-bottom: 64px;
+    height:1000px;
 }
 .brief-intro{
     font-size: 28px;
@@ -44,6 +45,7 @@
     background-color: white;
     width: 1134px;
     margin: 0 auto;
+
      padding: 32px 32px 0px 32px;
  
 }

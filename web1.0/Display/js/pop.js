@@ -1,45 +1,4 @@
 
-var timer=setTimeout(function () {
-    if ($(".hei").height() < $(".p-box").height()) {
-        $(".hei").css({ "height": $(".p-box").height() + 250 })
-         
-    }
-   
-    if ($(".content").height() < 600) {
-        $(".passage-content1").addClass("hei")
-         timerFlag=true;
-    }
-    if ($(".right-content").height() < 600) {
-        $(".passage-content").addClass("hei")
-        timerFlag=true;
-    }
-    if ($(".p-box").height() < 600) {
-        $(".p-box").addClass("hei")
-        timerFlag = true;
-    }
-    
-},200);
-var timer1=setTimeout(function () {
-    if ($(".hei").height() < $(".p-box").height()) {
-        $(".hei").css({ "height": $(".p-box").height() + 250 })
-         
-    }
-
-    if ($(".content").height() < 600) {
-        $(".passage-content1").addClass("hei")
-         timerFlag=true;
-    }
-    if ($(".right-content").height() < 600) {
-        $(".passage-content").addClass("hei")
-        timerFlag=true;
-    }
-    if ($(".p-box").height() < 600) {
-        $(".p-box").addClass("hei")
-        timerFlag = true;
-    }
-
-    
-},200);
 
 
 var time = setTimeout(function () {
