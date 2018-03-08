@@ -25,7 +25,7 @@
         }
     </style>
 </head>
-<body>
+<body><form  runat="server">
 	<div class="left-nav">
 		<img src="./images/logo-big.png" alt="">
 		<ul>
@@ -43,7 +43,7 @@
 			<h1>项目信息</h1>
 		</div>
 		<span class="cut"></span>
-		<form action="" runat="server">
+		
 			<div class="clearfix">
 				<h2>项目名称:</h2>
                 <asp:TextBox ID="txtName" runat="server" class="name" ReadOnly="true"></asp:TextBox>
@@ -91,8 +91,8 @@
 				<h2>是否通过:</h2>
                 <asp:TextBox ID="txtReslut" runat="server" ReadOnly="true"></asp:TextBox>
 			</div>
-		</form>
-	</div>
+		
+	</div></form>
 	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
 	<script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script>
     <script>

@@ -21,6 +21,7 @@
     </style>
 </head>
 <body class="clearfix">
+    <form runat="server">
 	<div class="left-nav" style="height:937px">
 		<img src="./images/logo-big.png" alt="">
 		<ul>
@@ -34,7 +35,7 @@
 		</ul>
 	</div>
 	<div class="right-content">
-        <form runat="server">
+        
 		<div class="clearfix">
 			<h1>修改信息</h1>
 		</div>
@@ -106,8 +107,9 @@
                 <asp:LinkButton ID="applyJudge" runat="server" Text="申请成为评委>>" OnClick="applyJudge_Click" class="redA"></asp:LinkButton>
 			</div>
             <asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" Text="确认修改" class="submit"></asp:LinkButton>
-	</form>
-  </div>   
+	
+  </div>  
+        </form>
 	<script type="text/javascript"  src="./js/personal-center-changeInfo.js"></script>
      <script>
          $(document).ready(function () {
