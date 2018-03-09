@@ -86,6 +86,7 @@
 	text-overflow:ellipsis;
 	overflow: hidden;
 	margin-left: 32px;
+	margin-right: 32px;
 	width: 1136px;
 	height: 74px;
 
@@ -93,8 +94,9 @@
 .passage p{
 	color: #808080;
 	font-size: 20px;
+	line-height: 34px;
 	text-align: justify;
-    text-justify: inter-ideograph;
+    text-justify: inter-ideograph!important;
 }
 .passage h3{
 	color: #808080;

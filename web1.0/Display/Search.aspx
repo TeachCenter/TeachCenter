@@ -6,10 +6,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="main">
-
-			<div class="center content" style="background-color: #FFFFFF;margin-bottom: 32px;">
+        <span class="leftLine"></span>
+        <div class="center">
+			<div class=" content" style="background-color: #FFFFFF;margin-bottom: 32px;">
 				<input class="Search search1" value="搜索结果"></input>
-                <a  class="search-button1" style="background-image:url(./images/search1.png);top: 14px;right: 18px;display: block;position: absolute;width: 30px; height: 30px;background-repeat: no-repeat;"></a>
+                <a  class="search-button1" style="background-image:url(./images/search1.png);top: 42px;right: 18px;display: block;position: absolute;width: 30px; height: 30px;background-repeat: no-repeat;"></a>
 				<div class="passage-content1 "  ></div>
 				<div class="buttons clearfix">
             <a class="lleft-button"></a>
@@ -25,6 +26,7 @@
             <a class="rright-button" style="float: right;"></a>
         </div>
 			</div>
+            </divc>
                 <ul class="mobileNavUl"><a class="mobileNavUlLi" href="main-index.aspx">首页</a><a class="mobileNavUlLi" href="Introduction.aspx">关于</a><a class="mobileNavUlLi" href="ProjectList.aspx?pageNumber=1">项目</a><a class="mobileNavUlLi" href="Service.aspx">服务</a><a class="mobileNavUlLi" href="SrcList.aspx?pageNumber=1">资源</a><a class="mobileNavUlLi" href="ActivityList.aspx?type=0&amp;&amp;page=1">活动</a><a id="mobilePerson" runat="server" class="mobileNavUlLi" href="Person-index.aspx">个人中心</a><a id="mobileLogin" runat="server" class="mobileNavUlLi mobileNavUlLiLog">登陆</a></ul>
 
 		</div>
@@ -55,8 +57,7 @@
               if (page == 0) {
                   page = 1;
               }
-              console.log(data[0])
-              console.log(page)
+             
           	for(i=0;i<page;i++)
           	{
           	    $("<a>").attr("href", "Search.aspx?page=" + (i + 1) + "&&key=" + searchwords).text(i + 1).appendTo($(".midButton"));

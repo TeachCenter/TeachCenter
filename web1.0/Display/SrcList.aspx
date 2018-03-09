@@ -16,7 +16,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 		<div class="main">
-
+            <span class="leftLine"></span>
 			<div class="center clearfix">
 				<div class="content ">
 					<h1 class="hhh">教学资源</h1>

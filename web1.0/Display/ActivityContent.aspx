@@ -7,6 +7,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     	<div class="main">
+            <span class="leftLine"></span>
 			<div class="center">
 				<div class="brief-intro-box">
 					<h1 class="brief-intro"></h1>

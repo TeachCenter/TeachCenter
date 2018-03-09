@@ -10,17 +10,16 @@
     background-color: #ffffff;
     float: left;
     width: 376px;
-   
+   height:413px;
     margin-right: 32px;
-    height: 100%;
     border:1px solid #E5E9EF;
 }
 .work{
     background-color: #ffffff;
     float: left;
     width: 376px;
+     height:413px;
     margin-right: 32px;
-    height: 100%;
     border:1px solid #E5E9EF;
 }
 .teach .back{
@@ -52,10 +51,10 @@
     width: 51px!important;
 }
 #mySlide2 ul{
-   bottom: 40px!important;
+   bottom:12px!important;
 }
 #mySlide3 ul{
-    bottom: 24px!important;
+    bottom: 12px!important;
 }
 #mySlide2 p:hover{
    color: #D6000F!important;

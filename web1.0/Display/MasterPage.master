@@ -200,8 +200,14 @@
             if (event.keyCode == 13) {
                 event.returnValue = false;
                 event.cancel = true;
-
+                console.log("666");
                 $(".log-submit").click();
+            }
+            else if (event.keyCode ==9) {
+                event.returnValue = false;
+                event.cancel = true;
+                console.log("777");
+                $("#TextBox1").click();
             }
         })
         $("#TextBox1").keydown(function () {

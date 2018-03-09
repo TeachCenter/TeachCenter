@@ -7,6 +7,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="cover" style="left:0;top:0;position:absolute; width:100%;height:1400px;;background-color:#FFFFFF;z-index:20;"></div>
     <div class="main">
+        <span class="leftLine"></span>
 			<div class="center clearfix">
 				<div class="left-content">
 					<a class="left-content-nav">服务</a>

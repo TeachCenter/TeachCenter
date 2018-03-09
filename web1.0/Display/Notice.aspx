@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="main">
-
+        <span class="leftLine"></span>
 			<div class="center content" style="background-color: #FFFFFF;margin-bottom: 32px;">
                 <h1 style="margin-top:32px; display: block;text-align: center;width: 100%;line-height: 60px; height: 60px;font-size: 28px;">通知公告</h1>
 				<div class="passage-content1" ></div>

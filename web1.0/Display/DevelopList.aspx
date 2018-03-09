@@ -5,6 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="main">
+        <span class="leftLine"></span>
 			<div class="center clearfix">
 				<div class="left-content">
 					<a class="left-content-nav">教学发展</a>

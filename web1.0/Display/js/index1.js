@@ -31,7 +31,7 @@
                 html+='<a href="javascript:void(0)"><img src="'+arr[0].imgurl+'" alt="img"/></a></div><ul>';
             }
             $.each(arr,function(n,obj){
-                html+='<li></li>'
+                html+='<li><a></a></li>'
             });
             html+='</ul><span class="prev"><img src="images/r.png" alt="img"/></span>';
             ele.html(html);
@@ -52,7 +52,7 @@
                 "display":"block",
                 "float":"left",
                 "width":myW+"px",
-                "height":myH+"px",
+                "height":270+"px",
                 "cursor":"pointer"
             });
             ele.find(".sl_content img").css({
@@ -63,7 +63,7 @@
             ele.find("p").css({
                 "position":"absolute",
                 "width":"100%",
-                "height":"81px",
+                "height":"75px",
                 "box-sizing":"border-box",
                 "margin":"0px",
                 "color":"#4D4D4D",
@@ -120,16 +120,21 @@
                 ele.find("ul li").css({
 	                "list-style":"none",
 	                "float":"left",
-	                "width":"80px",
-	                "height":"5px",
+	                "width":"100px",
+	                "height":"6px",
 	                "background":"rgba(214,0,15,0.2)",
 	                "text-align":"center",
 	                "line-height":"18px",
 	                "font-size":"10px",
 	                "color":"white",
-	                "margin":"3.5px",
-                	"cursor":"pointer"
-            	});
+	                "margin": "5px",
+	                "margin-top": "20px",
+	                "cursor": "pointer",
+	                "border-top": "12px solid white",
+	                "border-bottom": "12px solid white",
+                    "background-clip":"padding-box"
+                });
+
 	            ele.find("ul li:eq(0)").css({
 	                "background":"rgba(214,0,15,1)"
 	            });

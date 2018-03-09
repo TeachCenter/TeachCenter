@@ -14,6 +14,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
         <div class="main">
+            <span class="leftLine"></span>
             <div class="center clearfix ">
                
                     <div class="brief-intro-box" style="height:1350px;">
