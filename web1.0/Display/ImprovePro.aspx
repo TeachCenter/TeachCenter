@@ -49,6 +49,7 @@
     </style>
 </head>
 <body>
+	<form action="" runat="server">
 	<div class="left-nav">
 		<img src="./images/logo-big.png" alt="">
 		<ul>
@@ -66,7 +67,7 @@
 			<h1>完善项目</h1>
 		</div>
 		<span class="cut"></span>
-		<form action="" runat="server">
+		
 			<div class="clearfix">
 				<h2>项目名称:</h2>
                 <asp:TextBox ID="txtName" runat="server" class="name" ReadOnly="true"></asp:TextBox>
