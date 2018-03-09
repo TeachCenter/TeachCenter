@@ -7,6 +7,7 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
 /// <summary>
 /// ExcleHelper 的摘要说明
 /// </summary>
@@ -118,6 +119,7 @@ public class ExcleHelper
         contextResponse.WriteFile(fi.FullName);
         contextResponse.Flush();
         contextResponse.End();
+
 
     }
 }

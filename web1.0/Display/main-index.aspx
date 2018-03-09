@@ -76,14 +76,14 @@
           	    developArr.push({ "imgurl":("../Backstage/picture/" + data[1][i].Develop_path), "href": data[1][i].Develop_href == "" ? "DevelopContent.aspx?id=" + data[1][i].Develop_id : data[1][i].Develop_href, "text": data[1][i].Develop_title })
           		
           	}
-          	$("#mySlide2").mySlide(developArr,3000);
+          	$("#mySlide2").mySlide1(developArr,3000);
           	for(i=0;i<data[2].length;i++)
           	{
           	    activityArr.push({ "imgurl": "../Backstage/picture/" + data[2][i].ActivitySummary_cover, "href": (data[2][i].ActivitySummary_href + data[2][i].ActivitySummary_id), "text": data[2][i].ActivitySummary_title })
           	    
           		
           	}
-          	$("#mySlide3").mySlide(activityArr,3000);
+          	$("#mySlide3").mySlide1(activityArr,3000);
           	for(i=0;i<data[3].length;i++)
           	{
           	    var row = $("<li>").appendTo($(".notice"));
@@ -104,6 +104,7 @@
 
     
 	<script type="text/javascript"  src="./js/index.js"></script>
+    <script type="text/javascript"  src="./js/index1.js"></script>
      <script type="text/javascript"  src="./js/mobile.js"></script>
     <script>
         $("#mySlide1 img").css({

@@ -190,7 +190,9 @@ public partial class BackStage_ProjectList : System.Web.UI.Page
             dt.Rows.Add(row);
             count++;
         }
+
         ExcleHelper.ExportDataGrid(dt, "application/ms-excel", "项目列表.xls");
+
     }
 
     protected void Prev_Click(object sender, EventArgs e)
