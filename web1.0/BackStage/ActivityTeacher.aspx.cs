@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -29,13 +30,21 @@ public partial class BackStage_ActivityTeacher : System.Web.UI.Page
         int id = Convert.ToInt16(Request.QueryString["id"]);
         using (var db = new TeachingCenterEntities())
         {
-            var catagory = from it in db.ActivityTeacher where it.activity_id == id select it;
+            //var catagory = from it in db.ActivityTeacher where it.activity_id == id select it;
+            List<ActivityTeacher> at = db.ActivityTeacher.Where(a => a.activity_id == id).ToList();
+            List<Teacher> teacher = new List<Teacher>();
+            foreach (ActivityTeacher i in at)
+            {
+                Teacher t = db.Teacher.SingleOrDefault(a => a.id == i.teacher_id);
+                teacher.Add(t);
+            }
 
-            rptCategory.DataSource = catagory.ToList();
+
+            rptCategory.DataSource = teacher.ToList();
 
             rptCategory.DataBind();
 
-            ltCount.Text = catagory.Count().ToString();
+            ltCount.Text = teacher.Count().ToString();
 
             PagedDataSource pds = new PagedDataSource();
 
@@ -43,7 +52,7 @@ public partial class BackStage_ActivityTeacher : System.Web.UI.Page
 
             pds.PageSize = 5;
 
-            pds.DataSource = catagory.ToList();
+            pds.DataSource = teacher.ToList();
 
             pds.CurrentPageIndex = currentPage - 1;
 
@@ -86,8 +95,51 @@ public partial class BackStage_ActivityTeacher : System.Web.UI.Page
         {
             Literal ltCount = (Literal)e.Item.FindControl("ltNumber");
             ltCount.Text = (e.Item.ItemIndex + 1).ToString();
-            ltCount = (Literal)e.Item.FindControl("ltName");
-            ltCount.Text = TeacherHelper.getTeacherNameByID(Convert.ToInt16(ltCount.Text));
+            //ltCount = (Literal)e.Item.FindControl("ltName");
+            //ltCount.Text = TeacherHelper.getTeacherNameByID(Convert.ToInt16(ltCount.Text));
+        }
+    }
+
+    protected void btnExcel_Click(object sender, EventArgs e)
+    {
+        DataTable dt = new DataTable();
+        int id = Convert.ToInt16(Request.QueryString["id"]);
+        using (var db  = new TeachingCenterEntities())
+        {
+            List<ActivityTeacher> at = db.ActivityTeacher.Where(a => a.activity_id == id).ToList();
+            List<Teacher> teacher = new List<Teacher>();
+            foreach (ActivityTeacher i in at)
+            {
+                Teacher t = db.Teacher.SingleOrDefault(a => a.id == i.teacher_id);
+                teacher.Add(t);
+            }
+            DataColumn dc1 = new DataColumn("序号", System.Type.GetType("System.String"));
+            DataColumn dc2 = new DataColumn("教师工号", System.Type.GetType("System.String"));
+            DataColumn dc3 = new DataColumn("教师姓名", System.Type.GetType("System.String"));
+            DataColumn dc4 = new DataColumn("教师电话号码", System.Type.GetType("System.String"));
+            DataColumn dc5 = new DataColumn("教师邮箱", System.Type.GetType("System.String"));
+
+            dt.Columns.Add(dc1);
+            dt.Columns.Add(dc2);
+            dt.Columns.Add(dc3);
+            dt.Columns.Add(dc4);
+            dt.Columns.Add(dc5);
+
+            int count = 1;
+            foreach (var i in teacher)
+            {
+                DataRow row = dt.NewRow();
+
+                row["序号"] = count.ToString();
+                row["教师工号"] = i.number;
+                row["教师姓名"] = i.name;
+                row["教师电话号码"] = i.phone_number;
+                row["教师邮箱"] = i.email;
+
+                count++;
+                dt.Rows.Add(row);
+            }
+            ExcleHelper.ExportDataGrid(dt, "application/ms-excel", "活动名单.xls");
         }
     }
 }

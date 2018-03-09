@@ -20,7 +20,7 @@
 			<div class="center clearfix">
 				<div class="content ">
 					<h1 class="hhh">教学资源</h1>
-					<div class="passage-content1  " >
+					<div id="hhhs" class="passage-content1  " >
                         
 					</div>					
 					<div class="buttons clearfix">
@@ -85,7 +85,7 @@
           	
           	for (i = 0; i < data[0].length ; i++)
           	{
-          	    var content = $("<a>").attr("href", "SrcContent.aspx?id=" + data[0][i].id).addClass("passage").addClass("clearfix").appendTo($(".passage-content"));
+          	    var content = $("<a>").attr("href", "SrcContent.aspx?id=" + data[0][i].id).addClass("passage").addClass("clearfix").appendTo($("#hhhs"));
           	    $("<h2>").text(data[0][i].title).appendTo(content);
           		var pContent=$("<div>").appendTo(content);
           		$("<p>").text(data[0][i].body).appendTo(pContent);

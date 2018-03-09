@@ -44,6 +44,8 @@ public partial class BackStage_FriendsLink : System.Web.UI.Page
         string order = (txtOrder.Text);
         if (title.Length == 0 || link.Length == 0 || order.Length == 0)
             JSHelper.ShowAlert("输入不能为空！");
+        else if(Convert.ToInt16(order) >4 || Convert.ToInt16(order)<=0)
+            JSHelper.ShowAlert("请正确输入列数！");
         else
             using (var db = new TeachingCenterEntities())
             {
@@ -66,6 +68,8 @@ public partial class BackStage_FriendsLink : System.Web.UI.Page
         string order = (txtChangeOrder.Text);
         if (title.Length == 0 || link.Length == 0 || order.Length == 0)
             JSHelper.ShowAlert("输入不能为空！");
+        else if (Convert.ToInt16(order) > 4 || Convert.ToInt16(order) <= 0)
+            JSHelper.ShowAlert("请正确输入列数！");
         else
             using (var db = new TeachingCenterEntities())
             {

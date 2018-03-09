@@ -21,6 +21,8 @@ public partial class Display_MyJudgePro : System.Web.UI.Page
         }
 
     }
+
+
     protected void lbtReturn_Click(object sender, EventArgs e)
     {
         Session.Remove("TeacherNumber");

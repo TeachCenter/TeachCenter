@@ -168,22 +168,27 @@ public partial class BackStage_ProjectList : System.Web.UI.Page
         if (Session["ds"] != null)
             ls = (List<ProjectInfo>)Session["ds"];
         DataTable dt = new DataTable();
-        DataColumn dc1 = new DataColumn("项目名称", System.Type.GetType("System.String"));
-        DataColumn dc2 = new DataColumn("项目类型", System.Type.GetType("System.String"));
-        DataColumn dc3 = new DataColumn("提交者", System.Type.GetType("System.String"));
-        DataColumn dc4 = new DataColumn("提交时间", System.Type.GetType("System.String"));
+        DataColumn dc1 = new DataColumn("序号", System.Type.GetType("System.String"));
+        DataColumn dc2 = new DataColumn("项目名称", System.Type.GetType("System.String"));
+        DataColumn dc3 = new DataColumn("项目类型", System.Type.GetType("System.String"));
+        DataColumn dc4 = new DataColumn("提交者", System.Type.GetType("System.String"));
+        DataColumn dc5 = new DataColumn("提交时间", System.Type.GetType("System.String"));
         dt.Columns.Add(dc1);
         dt.Columns.Add(dc2);
         dt.Columns.Add(dc3);
         dt.Columns.Add(dc4);
-        foreach(ProjectInfo item in ls)
+        dt.Columns.Add(dc5);
+        int count = 1;
+        foreach (ProjectInfo item in ls)
         {
             DataRow row = dt.NewRow();
+            row["序号"] = count.ToString();
             row["项目名称"] = item.name;
             row["项目类型"] = item.category_name;
             row["提交者"] = item.teacher_name;
             row["提交时间"] = item.submit_time;
             dt.Rows.Add(row);
+            count++;
         }
         ExcleHelper.ExportDataGrid(dt, "application/ms-excel", "项目列表.xls");
     }

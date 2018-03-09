@@ -43,6 +43,7 @@
 			    <thead>
 				    <tr class="text-c">
 					    <th width="25"><input type="checkbox" runat="server" id="isDelete"></th>
+                        <th width="50">序号</th>
 					    <th width="300">项目名称</th>
                         <th width="200">项目类型</th>
 					    <th width="80">提交者</th>
@@ -54,7 +55,8 @@
                     <asp:Repeater ID="rptProject" runat="server" OnItemCommand="rptProject_ItemCommand">
                         <ItemTemplate>
 				            <tr class="text-c">
-					            <td><input type="checkbox" runat="server" id="isDelete"></td>					
+					            <td><input type="checkbox" runat="server" id="isDelete"></td>		
+                                <td><%# Container.ItemIndex + 1 %></td>			
 					            <td class="text-l"><u style="cursor:pointer" class="text-primary")" title="查看"><a href="ProjectContent.aspx?id=<%# Eval("project_id")%>"><%# Eval("name") %></a></u></td>	
                                 <td><%# Eval("category_name") %></td>
 					            <td><%# Eval("teacher_name")%><input type="hidden" runat="server" id="id" value=<%# Eval("project_id")%> /></td>

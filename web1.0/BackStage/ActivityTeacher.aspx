@@ -41,7 +41,10 @@
 			<thead>
 				<tr class="text-c">
 					<th width="80">序号</th>
-					<th width="300">参加活动的老师</th>
+					<th width="200">教师工号</th>
+                    <th width="200">教师名称</th>
+                    <th width="300">电话号码</th>
+                    <th width="300">联络邮箱</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -49,7 +52,10 @@
                     <ItemTemplate>
                         <tr class="text-c">
 					        <td><asp:Literal runat="server" ID="ltNumber" Text=""></asp:Literal></td>
-                            <td><asp:Literal ID="ltName" runat="server" Text=<%# Eval("teacher_id") %>></asp:Literal></td>
+                            <td><%# Eval("number") %></td>
+                            <td><%# Eval("name") %></td>
+                            <td><%# Eval("phone_number") %></td>
+                            <td><%# Eval("email") %></td>
 				        </tr>
                     </ItemTemplate>
                 </asp:Repeater>
@@ -62,6 +68,8 @@
                     <asp:Literal ID="ltNow" runat="server" Text="1"></asp:Literal>/
                     <asp:Literal ID="ltTotal" runat="server"></asp:Literal>
 				    <asp:Button ID="btnNext" runat="server" Text="下一页" OnClick="btnNext_Click" CssClass="btn btn-primary radius" />
+                    <p style="margin-top:20px"> <asp:Button ID="btnExcel" runat="server" Text="导出Excel" OnClick="btnExcel_Click" CssClass="btn btn-primary radius" />
+                   </p>
                 </div>
 	</div>
 
