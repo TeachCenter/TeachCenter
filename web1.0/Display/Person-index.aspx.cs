@@ -44,7 +44,7 @@ public partial class Display_Person_index : System.Web.UI.Page
                     int stage1 = category.stage;
                     var stage = (from it in db.ProjectStage where it.project_id == item.project_id orderby it.stage descending select it).FirstOrDefault();
                     int stage2 = stage.stage;
-                    if (stage.stage < category.stage && stage.is_pass == 1) 
+                    if (stage.stage < category.stage && stage.is_pass == 1 && DateTime.Compare(Convert.ToDateTime(category.end_time), DateTime.Now) > 0) 
                     {
                         proList.Add(item);
                     }
