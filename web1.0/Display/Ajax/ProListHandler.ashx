@@ -44,16 +44,14 @@ public class ProListHandler : IHttpHandler {
                 dt.Columns.Add("content");
                 dt.Columns.Add("publisher");
                 dt.Columns.Add("publish_time");
-                dt.Columns.Add("summary");
                 foreach(var item in pro_category)
                 {
                     DataRow newRow = dt.NewRow();
                     newRow["id"] = item.id;
                     newRow["title"] = item.title;
-                    newRow["content"] = UeditorHelper.NoHTML(item.project_content);
+                    newRow["content"] = item.summary;
                     newRow["publisher"] = item.publisher;
                     newRow["publish_time"] = item.publish_time;
-                    newRow["summary"] = item.summary;
                     dt.Rows.Add(newRow);
                 }
                 ArrayList all = new ArrayList();
