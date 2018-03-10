@@ -29,6 +29,7 @@ public partial class BackStage_ProjectContent : System.Web.UI.Page
                 status.Add(-1, "未评判结果");
                 status.Add(1, "已通过当前阶段");
                 status.Add(0, "未通过");
+                status.Add(-100, "已过期");
                 using (var db = new TeachingCenterEntities())
                 {
                     var project = db.ProjectInfo.SingleOrDefault(a => a.project_id == id);

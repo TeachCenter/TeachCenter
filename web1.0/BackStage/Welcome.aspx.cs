@@ -32,6 +32,18 @@ public partial class BackStage_Welcome : System.Web.UI.Page
                 if (number == 0)
                     applys.Visible = false;
                 ltApply.Text = number.ToString();
+
+                int p_number = 0;
+                var project = from it in db.Project where it.is_deleted == 0 select it;
+                foreach(var item in project)
+                {
+                    var project_stage = (from it in db.ProjectStage where it.project_id == item.project_id orderby it.stage descending select it).FirstOrDefault();
+                    if (project_stage.is_pass == -1 || project_stage.is_pass == -2)
+                        p_number++;
+                }
+                if (p_number == 0)
+                    projects.Visible = false;
+                ltProject.Text = p_number.ToString();
                 Admin admin = db.Admin.Single(a => a.Admin_id == teacher);
                 if (admin.Admin_emai_check == 0)
                     email.Visible = true;

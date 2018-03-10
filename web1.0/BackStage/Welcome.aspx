@@ -38,6 +38,7 @@
     <div></div>
     <p id="services" runat="server">当前有<asp:Label ID="ltServese" runat="server"></asp:Label>条<span>服务申请</span>尚未处理<a href="ServiceManage.aspx">前去处理>></a></p>
     <p id="applys" runat="server">当前有<asp:Label ID="ltApply" runat="server"></asp:Label>条<span>评审申请</span>尚未处理<a href="JudgeApplyList.aspx">前去处理>></a></p>
+    <p id="projects" runat="server">当前有<asp:Label ID="ltProject" runat="server"></asp:Label>条<span>项目申请</span>尚未处理<a href="ProjectList.aspx">前去处理>></a></p>
 </div>
 
 <script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 

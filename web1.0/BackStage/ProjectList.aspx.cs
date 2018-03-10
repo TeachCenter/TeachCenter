@@ -190,9 +190,7 @@ public partial class BackStage_ProjectList : System.Web.UI.Page
             dt.Rows.Add(row);
             count++;
         }
-
         ExcleHelper.ExportDataGrid(dt, "application/ms-excel", "项目列表.xls");
-
     }
 
     protected void Prev_Click(object sender, EventArgs e)
@@ -263,6 +261,30 @@ public partial class BackStage_ProjectList : System.Web.UI.Page
         currentPage.Text = page.ToString();
         rptProject.DataSource = ls.Skip(10 * (page - 1)).Take(10);
         rptProject.DataBind();
+    }
+
+    public string getStage(string id)
+    {
+        try
+        {
+            using (var db = new TeachingCenterEntities())
+            {
+                int project_id = Convert.ToInt32(id);
+                var stage = (from it in db.ProjectStage where it.project_id == project_id orderby it.stage descending select it).FirstOrDefault();
+                Dictionary<int, string> status = new Dictionary<int, string>();
+                status.Add(-2, "未分配至评审");
+                status.Add(-1, "未评判结果");
+                status.Add(1, "已通过当前阶段");
+                status.Add(0, "未通过");
+                status.Add(-100, "已过期");
+                string statu = status[stage.is_pass];
+                return statu;
+            }              
+        }
+        catch
+        {
+            return "";
+        }
     }
 
 }

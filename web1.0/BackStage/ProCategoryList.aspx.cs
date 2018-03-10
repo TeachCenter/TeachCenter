@@ -18,7 +18,7 @@ public partial class BackStage_ProCategoryList : System.Web.UI.Page
                 using (var db = new TeachingCenterEntities())
                 {
                     // 绑定项目列表
-                    var pro_category = from it in db.ProjectCategory where it.is_deleted == 0 orderby it.end_time select it;
+                    var pro_category = from it in db.ProjectCategory where it.is_deleted == 0 orderby it.end_time descending select it;
                     ltSum.Text = pro_category.Count().ToString();
                     TotalPage.Text = Math.Ceiling(pro_category.Count() / 10.0).ToString();
                     currentPage.Text = "1";

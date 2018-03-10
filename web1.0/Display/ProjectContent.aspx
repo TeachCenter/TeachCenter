@@ -90,13 +90,10 @@
 				<h2>是否通过:</h2>
                 <asp:TextBox ID="txtReslut" runat="server" ReadOnly="true"></asp:TextBox>
 			</div>
-<<<<<<< HEAD
+
 		
 	</div></form>
-=======
-		</form>
-	</div>
->>>>>>> 72a1af7670b21fccecce449d03c5ef151a5b9770
+
 	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
 	<script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script>
     <script>

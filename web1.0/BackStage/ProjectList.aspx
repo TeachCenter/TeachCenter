@@ -47,12 +47,13 @@
 					    <th width="300">项目名称</th>
                         <th width="200">项目类型</th>
 					    <th width="80">提交者</th>
+                        <th width="80">当前状态</th>
 					    <th width="120">提交时间</th>
                         <th width="120">操作</th>
 				    </tr>
 			    </thead>
 			    <tbody>
-                    <asp:Repeater ID="rptProject" runat="server" OnItemCommand="rptProject_ItemCommand">
+                    <asp:Repeater ID="rptProject" runat="server" OnItemCommand="rptProject_ItemCommand" >
                         <ItemTemplate>
 				            <tr class="text-c">
 					            <td><input type="checkbox" runat="server" id="isDelete"></td>		
@@ -60,6 +61,7 @@
 					            <td class="text-l"><u style="cursor:pointer" class="text-primary")" title="查看"><a href="ProjectContent.aspx?id=<%# Eval("project_id")%>"><%# Eval("name") %></a></u></td>	
                                 <td><%# Eval("category_name") %></td>
 					            <td><%# Eval("teacher_name")%><input type="hidden" runat="server" id="id" value=<%# Eval("project_id")%> /></td>
+                                <td><%# getStage(Eval("project_id").ToString()) %></td>
 					            <td><%# Eval("submit_time") %></td>
                                 <td class="f-14 td-manage"><asp:LinkButton ID="lbtDelete" runat="server" CssClass="ml-5" CommandName="Delete" CommandArgument='<%#Eval("project_id") %>' OnClientClick="return confirm('确定删除?')">删除<i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton></td>
 				            </tr>

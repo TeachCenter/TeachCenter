@@ -72,7 +72,7 @@
 </head>
 <body>
     <form runat="server">
-	<div class="content">
+	<div class="content" style="width:100%">
 		<div class="header" style="height: 50px;width: 100%;background-color: #000000;">
 			<h1 style="color: #FFFFFF;margin-left: 32px;font-size:20px;line-height: 50px; ">教学支持中心后台</h1>
 		</div>
