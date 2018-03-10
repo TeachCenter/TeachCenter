@@ -48,18 +48,16 @@ public class EduSrcHandler : IHttpHandler {
                 dt.Columns.Add("publish_time");
                 dt.Columns.Add("view_times");
                 dt.Columns.Add("is_deleted");
-                dt.Columns.Add("summary");
                 foreach(var item in src)
                 {
                     DataRow newRow = dt.NewRow();
                     newRow["id"] = item.id;
                     newRow["title"] = item.title;
-                    newRow["body"] = UeditorHelper.NoHTML(item.body);
+                    newRow["body"] = item.summary;
                     newRow["publisher"] = item.publisher;
                     newRow["publish_time"] = item.publish_time;
                     newRow["view_times"] = item.view_times;
                     newRow["is_deleted"] = item.is_deleted;
-                    newRow["summary"] = item.summary;
                     dt.Rows.Add(newRow);
                 }
                 ArrayList all = new ArrayList();
