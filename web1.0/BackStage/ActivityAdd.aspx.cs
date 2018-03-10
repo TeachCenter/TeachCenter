@@ -61,7 +61,8 @@ public partial class BackStage_ActivityAdd : System.Web.UI.Page
                     ac.Activity_title = title;
                     DateTime dt = Convert.ToDateTime(date);
                     ac.Activity_summary = summary;
-                    ac.Activity_time = dt;
+                    ac.Activity_time = DateTime.Now;
+                    ac.Activity_hold_time = dt;
                     ac.Activity_content = content;
                     ac.Activity_place = place;
                     ac.Activity_limitcount = Convert.ToInt32(count);

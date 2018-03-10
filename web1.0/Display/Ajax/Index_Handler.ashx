@@ -101,24 +101,14 @@ public class IndexNotice_Handler : IHttpHandler {
                            Develop_href = it.Develop_link==""? "":it.Develop_link
                        }).ToList().Take(3);
 
-            //友情链接
-            var link1 = (from it in db.FriendsLink where it.orders == 1 select it).ToList();
-            var link2 = (from it in db.FriendsLink where it.orders == 2 select it).ToList();
-            var link3 = (from it in db.FriendsLink where it.orders == 3 select it).ToList();
-            var link4 = (from it in db.FriendsLink where it.orders == 4 select it).ToList();
-
-            ArrayList link = new ArrayList();
-            link.Add(link1);
-            link.Add(link2);
-            link.Add(link3);
-            link.Add(link4);
+            
 
             ArrayList all = new ArrayList();
             all.Add(intro);
             all.Add(dev);
             all.Add(asu);
             all.Add(notice.Take(5));
-            all.Add(link);
+            //all.Add(link);
             string final = JsonConvert.SerializeObject(all);
             context.Response.Write(final);
 

@@ -45,7 +45,7 @@ public partial class Display_js_ActivityContent : System.Web.UI.Page
                 Activity ac = db.Activity.Single(a => a.Activity_id == id);
                 if (ac.Activity_nowcount >= ac.Activity_limitcount)
                     alert = "操作失败，人数已达到上限。";
-                else if (ac.Activity_time < DateTime.Now)
+                else if (ac.Activity_hold_time < DateTime.Now)
                     alert = "该活动已结束！";
                 else
                 {

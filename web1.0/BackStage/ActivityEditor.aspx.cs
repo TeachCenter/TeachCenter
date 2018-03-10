@@ -75,7 +75,7 @@ public partial class BackStage_ActivityEditor : System.Web.UI.Page
 
                     ac.Activity_title = title;
                     DateTime dt = Convert.ToDateTime(date);
-                    ac.Activity_time = dt;
+                    ac.Activity_hold_time = dt;
                     ac.Activity_summary = summary;
                     ac.Activity_content = content;
                     ac.Activity_place = place;

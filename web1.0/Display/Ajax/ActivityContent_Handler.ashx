@@ -47,7 +47,7 @@ public class ActivityContent : IHttpHandler {
                          Activity_title = it.Activity_title,
                          Activity_content = it.Activity_content,
                          Activity_author = it.Activity_author,
-                         Activity_times = it.Activity_time,
+                         Activity_times = it.Activity_hold_time,
                          Activity_place = it.Activity_place,
                          Activity_nowcount = it.Activity_nowcount,
                          Activity_limitcount = it.Activity_limitcount,

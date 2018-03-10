@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TeachingCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="TeachingCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityType Name="Activity">
           <Key>
             <PropertyRef Name="Activity_id" />
@@ -22,6 +22,7 @@
           <Property Name="Activity_hit" Type="int" Nullable="false" />
           <Property Name="Activity_deletedtime" Type="datetime" />
           <Property Name="Activity_summary" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Activity_hold_time" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="ActivityCategory">
           <Key>
@@ -510,8 +511,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
             <End Role="Service" EntitySet="Service" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TeachingCenterModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -534,6 +534,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="Activity_summary" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="ActivityCategory" Relationship="Self.FK_Activity_ActivityCategory" FromRole="Activity" ToRole="ActivityCategory" />
           <NavigationProperty Name="ActivityTeacher" Relationship="Self.FK_ActivityTeacher_Activity" FromRole="Activity" ToRole="ActivityTeacher" />
+          <Property Name="Activity_hold_time" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="ActivityCategory">
           <Key>
@@ -1027,6 +1028,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <EntitySetMapping Name="Activity">
             <EntityTypeMapping TypeName="TeachingCenterModel.Activity">
               <MappingFragment StoreEntitySet="Activity">
+                <ScalarProperty Name="Activity_hold_time" ColumnName="Activity_hold_time" />
                 <ScalarProperty Name="Activity_id" ColumnName="Activity_id" />
                 <ScalarProperty Name="Activity_title" ColumnName="Activity_title" />
                 <ScalarProperty Name="Activity_time" ColumnName="Activity_time" />

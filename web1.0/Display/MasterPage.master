@@ -279,29 +279,29 @@
         $(document).ready(function () {
             $.ajax({
                 type: "GET",
-                url: "./Ajax/Index_Handler.ashx",
+                url: "./Ajax/Handler.ashx",
                 dataType: "JSON",
                 async: true,
 
                 success: function (data) {
                    
                      
-                    for (i = 0; i < data[4][0].length; i++)
+                    for (i = 0; i < data[0].length; i++)
                         {
                             var row = $("<li>").appendTo($(".linkBoxL"));
-                            $("<a>").attr("href", data[4][0][i].link).text(data[4][0][i].title).appendTo(row);
+                            $("<a>").attr("href", data[0][i].link).text(data[0][i].title).appendTo(row);
                         }
-                    for (i = 0; i < data[4][1].length; i++){
+                    for (i = 0; i < data[1].length; i++){
                             var row = $("<li>").appendTo($(".linkBoxM1"));
-                            $("<a>").attr("href", data[4][1][i].link).text(data[4][1][i].title).appendTo(row);
+                            $("<a>").attr("href", data[1][i].link).text(data[1][i].title).appendTo(row);
                         }
-                    for (i = 0; i < data[4][2].length; i++){
+                    for (i = 0; i < data[2].length; i++){
                             var row = $("<li>").appendTo($(".linkBoxM2"));
-                            $("<a>").attr("href", data[4][2][i].link).text(data[4][2][i].title).appendTo(row);
+                            $("<a>").attr("href", data[2][i].link).text(data[2][i].title).appendTo(row);
                         }
-                    for (i = 0; i < data[4][3].length; i++){
+                    for (i = 0; i < data[3].length; i++){
                             var row = $("<li>").appendTo($(".linkBoxR"));
-                            $("<a>").attr("href", data[4][3][i].link).text(data[4][3][i].title).appendTo(row);
+                            $("<a>").attr("href", data[3][i].link).text(data[3][i].title).appendTo(row);
                         }
                         
                         
