@@ -39,24 +39,7 @@
 
 
       }); 
-		$(".add").on(click,function(){
-			$.ajax({ 
-	             
-	          url: "./Ajax/ActivityAdd_Handler.ashx",
-	          dataType: "JSON",
-	          async: true,
-	          type: "POST", 
-	           data: { "Activity_id": 1 },
-	    
-	          success: function(data) {
-	          	alert("添加成功")
-	                    
-	          }
-
-
-	      });
-
-		})
+		
 
 	})
 		

@@ -140,7 +140,7 @@
             <asp:LinkButton ID="btnSubmit" runat="server" Text="提交项目" class="submit" OnClick="btnSubmit_Click" />
 	</div>
     <script type="text/javascript"  src="./js/personal-center-init.js"></script>
-    <script type="text/javascript"  src="./js/personal-center-changeInfo.js"></script>
+    <script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script>
     <script >
         function ShowBrowse()  
         {  
