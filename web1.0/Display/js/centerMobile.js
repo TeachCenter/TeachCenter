@@ -58,6 +58,15 @@
         "padding-left":1+"rem"
 
     });
+   $(".delete").css({
+        "display": "none"
+
+    })
+    $(".creatl").css({
+        "display": "none"
+
+    })
+   
  	 $(".userType").css({
  	 	"font-size":0.2+"rem"
  	 })

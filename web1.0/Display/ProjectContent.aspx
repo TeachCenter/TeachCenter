@@ -7,6 +7,7 @@
 	<title>Document</title>
 	<link rel="stylesheet" href="css/personal-center-init.css">
 	<link rel="stylesheet" href="css/personal-center-checkProgect.css">
+    <link rel="stylesheet" href="css/centerMobile.css">
 	<script type="text/javascript"  src="./js/jquery-3.1.1.min.js"></script>
     <style>
         .Content {

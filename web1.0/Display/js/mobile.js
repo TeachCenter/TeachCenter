@@ -31,7 +31,7 @@
     });
     $(".teach").css({
         "width": 90 + "%",
-        "height": 6 + "rem",
+        "height":  6.5+ "rem",
         "margin-left": 5 + "%"
     });
     $("#mySlide2").css({
@@ -42,7 +42,7 @@
    
     $(".work").css({
         "width": 90 + "%",
-        "height": 6 + "rem",
+        "height": 6.5 + "rem",
         "margin-left": 5 + "%"
     });
     $("#mySlide3").css({
@@ -107,6 +107,10 @@
         "margin-left":5+"%"
 
     });
+    $(".notice li").css({
+        "margin":0.1+ "rem"
+
+    })
     $(".redA").css({
         "font-size": 0.4 + "rem"
 
@@ -174,7 +178,7 @@
     });
     $(".add").css({
         "font-size": 0.24 + "rem",
-        "top":1.35+"rem",
+        "top":2.5+"rem",
         "left":6+"rem"
 
     });
@@ -206,7 +210,7 @@
         "font-size": 0.24 + "rem"
 
     });
-
+    
      $(".left-content").css({
         "width":100+"%",
         "margin-top":0
@@ -245,6 +249,12 @@
 
 
     });
+       $(".brief-intro-boxl").css({
+        "height":12+"rem"
+
+
+    });
+       
        $(".passage-content1").css({
         "height":"auto"
 
@@ -273,7 +283,7 @@
     $(".mobileNav").click(function () {
         
         if (navFlag == false) {
-            console.log("666")
+      
             navFlag = true;
             $(".mobileNavUl").css({
                 "display": "block"
@@ -492,8 +502,23 @@
          
          
          
-         
-         
+         $(".time").css({
+        "width":0.6+ "rem",
+        "height":0.6+"rem",
+        "font-size":0.20+"rem",
+        "line-height":0.3+"rem"
+
+    })
+          $(".notice li").css({
+        "margin":0.17+ "rem"
+
+    })
+           $(".notice li a").css({
+        "font-size":0.24+ "rem",
+        "padding-left":0.8+"rem"
+
+    })
+        
         
 	$(".left-content-nav-content-select").css({
         "font-size": 0.24 + "rem",
@@ -553,19 +578,31 @@
     timer1 = setTimeout(function () {
         $("#mySlide2 img").css({
             "height": 4 + "rem",
-            "width":6.75+"rem"
+            "width":6.5+"rem"
         });
         $("#mySlide2 a").css({
             "height": 4 + "rem",
-            "width":6.75+"rem"
+            
         });
         $("#mySlide3 img").css({
             "height": 4 + "rem",
-            "width":6.75+"rem"
+            "width":6.5+"rem"
         });
          $("#mySlide3 a").css({
             "height": 4 + "rem",
-            "width":6.75+"rem"
+            
+        });
+         $("#mySlide2 a p").css({
+            "width":6.5+"rem",
+            "height":1+"rem",
+            "font-size":0.26+"rem"
+            
+        });
+         $("#mySlide3 a p").css({
+            "width":6.5+"rem",
+            "height":1+"rem",
+            "font-size":0.26+"rem"
+            
         });
     }, 200);
 
