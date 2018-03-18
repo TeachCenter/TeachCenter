@@ -233,6 +233,11 @@
 
 
     });
+        $(".brief-intro-box").css({
+        "height":"auto"
+
+
+    });
      
     $(".mobileNav").click(function () {
         

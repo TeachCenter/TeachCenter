@@ -240,6 +240,22 @@
         "display":"none"
 
     });
+       $(".brief-intro-box").css({
+        "height":"auto"
+
+
+    });
+       $(".passage-content1").css({
+        "height":"auto"
+
+
+    });
+       $(".content").css({
+        "width":7.5+"rem"
+
+
+    });
+       
 
       $(".title-name").css({
   "display":"none"
@@ -389,13 +405,13 @@
         })
     	$(".right-content .passage div").css({
         "width": "auto",
-        "height":1.48+"rem",
+        "height":1.56+"rem",
         "margin-right":32+"px"
 
     });
     	$(".passage div").css({
         "width": "auto",
-        "height":1.48+"rem",
+        "height":1.56+"rem",
         "margin-right":32+"px"
 
     });
@@ -421,7 +437,7 @@
             "width": 90 + "%"
         });
          $(".passage").css({
-        "height":2.9+"rem"
+        "height":3.2+"rem"
 
 
     	});
@@ -437,6 +453,46 @@
         "font-size": 0.24 + "rem"
 
          });
+         $(".linkBox li a").css({
+        "font-size": 0.22 + "rem",
+        "margin-top":0.1+"rem",
+        "margin-bottom":0.1+"rem",
+
+
+         });
+         $(".right-content").css({
+        "height":"auto"
+
+
+        });
+         $(".passage-content").css({
+        "height":"auto"
+
+
+        });
+         $(".passage h3").css({
+        "margin-left":0.24+"rem"
+
+
+        });
+         $(".passage a").css({
+        "margin-top":0.22+"rem"
+
+
+        });
+          $(".necessary").css({
+        "font-size":0.24+"rem"
+
+
+        });
+          $(".mobileNavUll").css({
+    "top":0.9+"rem"
+   })
+         
+         
+         
+         
+         
          
         
 	$(".left-content-nav-content-select").css({

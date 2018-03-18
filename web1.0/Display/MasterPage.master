@@ -76,7 +76,7 @@
 			</div>
 		</div>
     <div class="mobileHeader">教学支持中心<a class="mobileNav"></a><a class="mobileSearch" href="Search.aspx"></a></div>
-    <ul class="mobileNavUl"><a class="mobileNavUlLi" href="main-index.aspx">首页</a><a class="mobileNavUlLi" href="Introduction.aspx">关于</a><a class="mobileNavUlLi" href="ProjectList.aspx?pageNumber=1">项目</a><a class="mobileNavUlLi" href="Service.aspx">服务</a><a class="mobileNavUlLi" href="SrcList.aspx?pageNumber=1">资源</a>
+    <ul class="mobileNavUll mobileNavUl"><a class="mobileNavUlLi" href="main-index.aspx">首页</a><a class="mobileNavUlLi" href="Introduction.aspx">关于</a><a class="mobileNavUlLi" href="ProjectList.aspx?pageNumber=1">项目</a><a class="mobileNavUlLi" href="Service.aspx">服务</a><a class="mobileNavUlLi" href="SrcList.aspx?pageNumber=1">资源</a>
         
         <a class="mobileNavUlLi" href="ActivityList.aspx?type=0&amp;&amp;page=1">活动</a>
 

@@ -61,7 +61,19 @@
  	 $(".userType").css({
  	 	"font-size":0.2+"rem"
  	 })
+   $("#txtName").css({
+    "width":4+"rem"
+   })
+    $(".necessary-top").css({
+    "font-size":0.22+"rem"
+   })
+    $(".necessary").css({
+    "font-size":0.22+"rem"
+   })
+   
+    
       
+   
  	 var navFlag =false;
 $(".mobileNav").click(function () {
         
@@ -81,6 +93,7 @@ $(".mobileNav").click(function () {
         }
 });
 $(".mobileNavUl").css({ "margin-top": 107 + "px" ,"z-index":1000})
+  
   $(".lleft-button").css({
 "margin-left":1+"rem"
  	});
@@ -166,6 +179,7 @@ $(".submit").css({
 
 
     });
+      
     }
 if (0<page < 6) {
 	          	    $(".midButtonBox").css({ "width": page * 40 })
