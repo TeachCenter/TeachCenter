@@ -37,7 +37,7 @@
 						</a>
 						<span class="enter-line"></span>
 						<a class="log">
-							您好，请登陆
+							您好，请登录
 						</a>
 					</div>
                     <div id="divPerson" runat="server" visible="false" class="center">
@@ -81,7 +81,7 @@
         <a class="mobileNavUlLi" href="ActivityList.aspx?type=0&amp;&amp;page=1">活动</a>
 
         <a class="mobileNavUlLi" id="mobilePerson" runat="server" href="Person-index.aspx">个人中心</a>
-        <a runat="server" id="mobileLogin" class="mobileNavUlLi mobileNavUlLiLog">登陆</a></ul>
+        <a runat="server" id="mobileLogin" class="mobileNavUlLi mobileNavUlLiLog">登录</a></ul>
         </div>
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         
@@ -109,15 +109,15 @@
 		<div class="mask"></div>
 		<div class="log-box-form clearfix">
 			<div class="log-box">
-				<h1>登陆</h1>
+				<h1>登录</h1>
 				<%--<input type="text" value="工号" class="number gray-box">--%>
-                <asp:TextBox ID="txtID" runat="server" CssClass="number gray-box"></asp:TextBox>
+                <asp:TextBox ID="txtID" placeholder="工号：" runat="server" CssClass="number gray-box"></asp:TextBox>
 				<p class="number-error error"></p>
-				<input type="text" value="密码" class="show-password gray-box">
+				<input type="text" placeholder="密码：" class="show-password gray-box">
 				<%--<input type="password" class="hide-password gray-box">--%>
-                <asp:TextBox ID="txtPwd" runat="server" TextMode="Password" CssClass="hide-password gray-box"></asp:TextBox>
+                <asp:TextBox ID="txtPwd" placeholder="密码：" runat="server" TextMode="Password" CssClass="hide-password gray-box"></asp:TextBox>
 				<p class="password-error error"></p>
-				<input runat="server" id="TextBox1" type="text" placeholder="验证码" class="gray-box code" style="width: 176px;float: left;" />
+				<input runat="server" id="TextBox1" type="text" placeholder="验证码：" class="gray-box code" style="width: 176px;float: left;" />
                 <img src="png.aspx" id="img" onclick="f_refreshtype()" style="float:left;margin-left:72px;display:block;width:80px;height:60px;" />
                 <%--<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>--%>
                 
@@ -127,7 +127,7 @@
                 <%--<a href="" class="forget-password">忘记密码？</a>--%>
 				<a  class="turn-right">立即注册</a>
 				<%--<a class="">立即登录</a>--%>
-                <asp:LinkButton ID="ltbLogin" runat="server" Text="立即登陆" CssClass="log-submit sign-submit1" OnClick="ltbLogin_Click"></asp:LinkButton>
+                <asp:LinkButton ID="ltbLogin" runat="server" Text="立即登录" CssClass="log-submit sign-submit1" OnClick="ltbLogin_Click"></asp:LinkButton>
 			</div>
 		</div>
 		<div  class="sign-box-form clearfix">
@@ -137,11 +137,11 @@
 					<%--<input type="text" value="姓名" class="name gray-box">--%>
                     <asp:TextBox ID="txtName" runat="server" CssClass="name gray-box"></asp:TextBox>
 					<p class="name-error error"></p>
-					<input type="text" runat="server" value="密码" class="show-sign-box-password gray-box" />
+					<input type="text" runat="server" value="密码：" class="show-sign-box-password gray-box" />
                     <asp:TextBox ID="txtNewPwd" runat="server" TextMode="Password" CssClass="hide-sign-box-password gray-box"></asp:TextBox>
                     <%--<input type="password" class="hide-sign-box-password gray-box" />--%>
 					<p class="sign-box-password-error error"></p>
-					<input runat="server" value="确认密码" type="text" class="show-sign-box-verify-password gray-box" />
+					<input runat="server" value="确认密码：" type="text" class="show-sign-box-verify-password gray-box" />
                     <asp:TextBox ID="txtCheckPwd" TextMode="Password" runat="server" CssClass="hide-sign-box-verify-password gray-box"></asp:TextBox>
                     <%--<input type="password"  class="hide-sign-box-verify-password gray-box" />--%>
 					<p class="sign-box-verify-password-error error"></p>
@@ -157,7 +157,7 @@
                     <asp:TextBox ID="txtEmail" runat="server" CssClass="email gray-box"></asp:TextBox>
 					<p class="email-error error"></p>
 				</div>
-				<a  class="turn-left">登陆已有账号</a>
+				<a  class="turn-left">登录已有账号</a>
 				<%--<a class="sign-submit">立即注册</a>--%>
                 <asp:LinkButton ID="lbtRegister" runat="server" Text="立即注册" CssClass="sign-submit sign-submit2" OnClick="lbtRegister_Click"></asp:LinkButton>
 			</div>
@@ -166,12 +166,12 @@
 	
 	<script type="text/javascript"  src="./js/pop.js"></script>
     <script type="text/javascript">
-        $("#txtName").attr("placeholder", "姓名");
-        $("#txtNumber").attr("placeholder", "工号");
-        $("#txtPhone").attr("placeholder", "手机");
-        $("#txtEmail").attr("placeholder", "电子邮箱");
-        $("#txtNewPwd").attr("placeholder", "密码");
-        $("#txtCheckPwd").attr("placeholder", "确认密码");
+        $("#txtName").attr("placeholder", "姓名：");
+        $("#txtNumber").attr("placeholder", "工号：");
+        $("#txtPhone").attr("placeholder", "手机：");
+        $("#txtEmail").attr("placeholder", "电子邮箱：");
+        $("#txtNewPwd").attr("placeholder", "密码：");
+        $("#txtCheckPwd").attr("placeholder", "确认密码：");
         $(".search").keydown(function () {
             if (event.keyCode == 13) {
                 event.returnValue = false;

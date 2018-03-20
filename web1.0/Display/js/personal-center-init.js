@@ -26,7 +26,7 @@ $(".right-content").css({"width":w-317})
 $(".cut").css({ "width": w - 246})
 $("#ContentPlaceHolder1_txtFileName").css({ "width": w - 800 })
 $("#txtFileName").css({ "width": w - 800 })
- 
+
 $(window).resize(function(){
     w = $(window).width();
     if ($(window).width() > 1200) {

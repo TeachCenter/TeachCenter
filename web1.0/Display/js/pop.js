@@ -92,11 +92,11 @@ $(".search-button").click(function () {
     window.location.href = "Search.aspx?page=1&&key=" + encodeURI($(".search").val());
 })
 function init() {
-    $(".number").val("工号");
-    $(".name").val("姓名");
-    $(".sign-box-number").val("工号");
-    $(".sign-box-phone").val("手机");
-    $(".email").val("电子邮箱");
+    $(".number").val("工号：");
+    $(".name").val("姓名：");
+    $(".sign-box-number").val("工号：");
+    $(".sign-box-phone").val("手机：");
+    $(".email").val("电子邮箱：");
     $(".error").text("");
     $(".show-password").css({ "display": "block" });
     $(".show-sign-box-password").css({ "display": "block" });
@@ -112,7 +112,7 @@ function log() {
     $(".number").on({
         focus: function () {
             if (!flag1[0]) {
-                if ($(".number").val() == "工号") {
+                if ($(".number").val() == "工号：") {
                     $(".number").val("");
 
                 }
@@ -166,7 +166,7 @@ function sign() {
     $(".name").on({
         focus: function () {
             if (!flag2[0]) {
-                if ($(".name").val() == "姓名") {
+                if ($(".name").val() == "姓名：") {
                     $(".name").val("");
 
                 }
@@ -249,7 +249,7 @@ function sign() {
     $(".sign-box-number").on({
         focus: function () {
             if (!flag2[3]) {
-                if ($(".sign-box-number").val() == "工号") {
+                if ($(".sign-box-number").val() == "工号：") {
                     $(".sign-box-number").val("");
 
                 }
@@ -270,7 +270,7 @@ function sign() {
     $(".sign-box-phone").on({
         focus: function () {
             if (!flag2[4]) {
-                if ($(".sign-box-phone").val() == "手机") {
+                if ($(".sign-box-phone").val() == "手机：") {
                     $(".sign-box-phone").val("");
 
                 }
@@ -292,7 +292,7 @@ function sign() {
     $(".email").on({
         focus: function () {
             if (!flag2[5]) {
-                if ($(".email").val() == "电子邮箱") {
+                if ($(".email").val() == "电子邮箱：") {
                     $(".email").val("");
 
                 }

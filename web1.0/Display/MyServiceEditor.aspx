@@ -13,7 +13,7 @@
 </head>
 <body><form runat="server">
 	<div class="left-nav">
-		<img src="./images/logo-big.png" alt="">
+		<a class="aaa" href="./main-index.aspx"></a>
 		<ul>
 			<li><a href="Person-index.aspx">个人主页</a></li>
 			<li><a href="EditInfo.aspx">修改信息</a></li>
