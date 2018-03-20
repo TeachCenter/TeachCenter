@@ -7,12 +7,13 @@
 	<title>Document</title>
 	<link rel="stylesheet" href="css/personal-center-init.css">
 	<link rel="stylesheet" href="css/personal-center-creatProgect.css">
+    <link rel="stylesheet" href="css/centerMobile.css">
 	<script type="text/javascript"  src="./js/jquery-3.1.1.min.js"></script>
 
 </head>
 <body><form runat="server">
 	<div class="left-nav">
-		<img src="./images/logo-big.png" alt="">
+		<a class="aaa" href="./main-index.aspx"></a>
 		<ul>
 			<li><a href="Person-index.aspx">个人主页</a></li>
 			<li><a href="EditInfo.aspx">修改信息</a></li>

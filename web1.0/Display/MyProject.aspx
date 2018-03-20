@@ -65,7 +65,7 @@
 </head>
 <body><form runat="server">
 	<div class="left-nav">
-		<img src="./images/logo-big.png" alt="">
+		<a class="aaa" href="./main-index.aspx"></a>
 		<ul>
 			<li><a href="Person-index.aspx">个人主页</a></li>
 			<li><a href="EditInfo.aspx">修改信息</a></li>
@@ -81,7 +81,7 @@
         <div class="progect-content"  >
             <div class="clearfix">
                 <h1>我的项目</h1>
-                <a href="AddProject.aspx" class="creat">+新建项目</a>
+                <a href="AddProject.aspx" class="creat creatl">+新建项目</a>
             </div>
             <span class="cut"></span>
         </div>

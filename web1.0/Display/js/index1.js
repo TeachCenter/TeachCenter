@@ -4,31 +4,31 @@
             var ele=$(this),myW=parseInt($(this).css("width")),myH=parseInt($(this).css("height")),arrlen=arr.length;
             var html='<span class="back"><img src="images/l.png" alt="img"/></span><div class="sl_content">';
             if(arr[arrlen-1].imgurl!=undefined&&arr[arrlen-1].href!=undefined&&arr[arrlen-1].text!=undefined){
-                html+='<a href="'+arr[arrlen-1].href+'"><img src="'+arr[arrlen-1].imgurl+'" alt="img"/></a>';
+                html += '<a href="' + arr[arrlen - 1].href + '"  target="_blank"><img src="' + arr[arrlen - 1].imgurl + '" alt="img"/></a>';
             }else if(arr[arrlen-1].imgurl!=undefined&&arr[arrlen-1].href!=undefined){
-                html+='<a href="'+arr[arrlen-1].href+'"><img src="'+arr[arrlen-1].imgurl+'" alt="img"/></a>';
+                html += '<a href="' + arr[arrlen - 1].href + '"  target="_blank"><img src="' + arr[arrlen - 1].imgurl + '" alt="img"/></a>';
             }else{
-                html+='<a href="javascript:void(0)"><img src="'+arr[arrlen-1].imgurl+'" alt="img"/></a>';
+                html += '<a href="javascript:void(0)"  target="_blank"><img src="' + arr[arrlen - 1].imgurl + '" alt="img"/></a>';
             }
             $.each(arr,function(n,obj){
                 if(obj.imgurl!=undefined&&obj.href!=undefined&&obj.text!=undefined&&obj.title!=undefined)
                 {
-                     html+='<a href="'+obj.href+'"><img src="'+obj.imgurl+'" alt="img"/><div class="summaryBox"><h2>'+obj.title+'</h2><p>'+obj.text+'</p></div></a>';
+                    html += '<a href="' + obj.href + '"  target="_blank"><img src="' + obj.imgurl + '" alt="img"/><div class="summaryBox"><h2>' + obj.title + '</h2><p>' + obj.text + '</p></div></a>';
                 }
                 else if(obj.imgurl!=undefined&&obj.href!=undefined&&obj.text!=undefined){
-                    html+='<a href="'+obj.href+'"><img src="'+obj.imgurl+'" alt="img"/><p>'+obj.text+'</p></a>';
+                    html += '<a href="' + obj.href + '"  target="_blank"><img src="' + obj.imgurl + '" alt="img"/><p>' + obj.text + '</p></a>';
                 }else if(obj.imgurl!=undefined&&obj.href!=undefined){
-                    html+='<a href="'+obj.href+'"><img src="'+obj.imgurl+'" alt="img"/></a>';
+                    html += '<a href="' + obj.href + '"  target="_blank"><img src="' + obj.imgurl + '" alt="img"/></a>';
                 }else{
-                    html+='<a href="javascript:void(0)"><img src="'+obj.imgurl+'" alt="img"/></a>';
+                    html += '<a href="javascript:void(0)"  target="_blank"><img src="' + obj.imgurl + '" alt="img"/></a>';
                 }
             });
             if(arr[0].imgurl!=undefined&&arr[0].href!=undefined&&arr[0].text!=undefined){
-                html+='<a href="'+arr[0].href+'"><img src="'+arr[0].imgurl+'" alt="img"/><p>'+arr[0].text+'</p></a></div><ul>';
+                html += '<a href="' + arr[0].href + '"  target="_blank"><img src="' + arr[0].imgurl + '" alt="img"/><p>' + arr[0].text + '</p></a></div><ul>';
             }else if(arr[0].imgurl!=undefined&&arr[0].href!=undefined){
-                html+='<a href="'+arr[0].href+'"><img src="'+arr[0].imgurl+'" alt="img"/></a></div><ul>';
+                html += '<a href="' + arr[0].href + '"  target="_blank"><img src="' + arr[0].imgurl + '" alt="img"/></a></div><ul>';
             }else{
-                html+='<a href="javascript:void(0)"><img src="'+arr[0].imgurl+'" alt="img"/></a></div><ul>';
+                html += '<a href="javascript:void(0)"  target="_blank"><img src="' + arr[0].imgurl + '" alt="img"/></a></div><ul>';
             }
             $.each(arr,function(n,obj){
                 html+='<li><a></a></li>'

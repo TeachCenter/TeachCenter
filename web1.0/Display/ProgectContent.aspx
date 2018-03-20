@@ -17,7 +17,7 @@
             <span class="leftLine"></span>
             <div class="center clearfix ">
                
-                    <div class="brief-intro-box" style="height:1350px;">
+                    <div class="brief-intro-box brief-intro-boxl" style="height:1350px;">
 
                         <h1 class="brief-intro"></h1>
                         <span class="brief-intro-line"></span>

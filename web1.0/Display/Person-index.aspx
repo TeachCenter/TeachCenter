@@ -12,7 +12,7 @@
 </head>
 <body><form runat="server">
 	<div class="left-nav">
-		<img src="./images/logo-big.png" alt="">
+		<a class="aaa" href="./main-index.aspx"></a>
 		<ul>
 			<li class="dif-li"><a href="Person-index.aspx">个人主页</a></li>
 			<li><a href="EditInfo.aspx">修改信息</a></li>
@@ -43,7 +43,7 @@
             <asp:Repeater ID="rptProject" runat="server">
                 <ItemTemplate>
                     <h2>您的《<%#Eval("name") %>》第<%# getNumber(getStage(Convert.ToInt32(Eval("project_id").ToString()))) %>阶段尚未提交，</h2>
-			        <a href="ImprovePro.aspx?id=<%#Eval("project_id") %>&&stage=<%# getStage(Convert.ToInt32(Eval("project_id").ToString())) %>">前去提交>></a>
+			        <a class="delete" href="ImprovePro.aspx?id=<%#Eval("project_id") %>&&stage=<%# getStage(Convert.ToInt32(Eval("project_id").ToString())) %>">前去提交>></a>
                 </ItemTemplate>
             </asp:Repeater>			
 		</div>
