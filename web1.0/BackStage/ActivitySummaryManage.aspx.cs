@@ -37,7 +37,8 @@ public partial class BackStage_ActivitySummaryManage : System.Web.UI.Page
                 asu.ActivitySummary_isdeleted = 1;
                 asu.ActivitySummary_deletedtime = DateTime.Now;
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("删除成功！", "ActivitySummaryManage.aspx");
+                //JSHelper.AlertThenRedirect("删除成功！", "ActivitySummaryManage.aspx");
+                Server.Transfer("ActivitySummaryManage.aspx");
             }
         }
     }

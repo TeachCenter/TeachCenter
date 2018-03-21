@@ -87,7 +87,8 @@ public partial class BackStage_RecycleDevelop : System.Web.UI.Page
                 Develop service = db.Develop.Single(a => a.Develop_id == id);
                 db.Develop.Remove(service);
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("删除成功！", "RecycleDevelop.aspx");
+                //JSHelper.AlertThenRedirect("删除成功！", "RecycleDevelop.aspx");
+                Server.Transfer("RecycleDevelop.aspx");
             }
         }
         if (e.CommandName == "Recycle")
@@ -203,7 +204,8 @@ public partial class BackStage_RecycleDevelop : System.Web.UI.Page
                     }
                 }
         }
-        JSHelper.AlertThenRedirect("删除成功！", "RecycleDevelop.aspx");
+        Server.Transfer("RecycleDevelop.aspx");
+        //JSHelper.AlertThenRedirect("删除成功！", "RecycleDevelop.aspx");
     }
 
     protected void ltbSearch_Click(object sender, EventArgs e)

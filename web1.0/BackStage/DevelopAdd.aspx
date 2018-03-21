@@ -82,6 +82,8 @@
                     <asp:CheckBox ID="cbxLink" runat="server" />
 					<label for="checkbox-moban">&nbsp;</label>
 				</div>
+                
+                
 			</div>
 		</div>
 		<div id="link" class="row cl link" style="display:none;">

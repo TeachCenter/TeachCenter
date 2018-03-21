@@ -84,7 +84,8 @@ public partial class BackStage_RecycleActivitySummary : System.Web.UI.Page
                     }
                 }
         }
-        JSHelper.AlertThenRedirect("删除成功！", "ActivitySummaryManage.aspx");
+        //        JSHelper.AlertThenRedirect("删除成功！", "ActivitySummaryManage.aspx");
+        Server.Transfer("ActivitySummaryManage.aspx");
     }
 
 
@@ -173,6 +174,7 @@ public partial class BackStage_RecycleActivitySummary : System.Web.UI.Page
                     }
                 }
         }
-        JSHelper.AlertThenRedirect("恢复成功！", "RecycleActivitySummary.aspx");
+        //JSHelper.AlertThenRedirect("恢复成功！", "RecycleActivitySummary.aspx");
+        Server.Transfer("ActivitySummaryManage.aspx");
     }
 }

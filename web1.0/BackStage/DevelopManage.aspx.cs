@@ -116,7 +116,8 @@ public partial class BackStage_DevelopManage : System.Web.UI.Page
                 service.Develop_deleted = 1;
                 service.Develop_deteledtime = DateTime.Now;
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("删除成功！", "DevelopManage.aspx");
+                //JSHelper.AlertThenRedirect("删除成功！", "DevelopManage.aspx");
+                Server.Transfer("DevelopManage.aspx");
             }
         }
     }
@@ -222,7 +223,8 @@ public partial class BackStage_DevelopManage : System.Web.UI.Page
                     }
                 }
         }
-        JSHelper.AlertThenRedirect("删除成功！", "DevelopManage.aspx");
+        //JSHelper.AlertThenRedirect("删除成功！", "DevelopManage.aspx");
+        Server.Transfer("DevelopManage.aspx");
     }
 
     protected void ltbSearch_Click(object sender, EventArgs e)
