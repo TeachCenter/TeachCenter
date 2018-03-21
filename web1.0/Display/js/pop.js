@@ -46,6 +46,9 @@ $(".turn-left").click(function () {
 $(".mask").click(function () {
     shut();
 })
+$(".shut").click(function () {
+    shut();
+})
 function pop(argument, position) {
     $(".mask").css("display", "block")
     argument.css("left", 50 + "%");
@@ -111,6 +114,10 @@ function log() {
     var flag1 = [false, false];
     $(".number").on({
         focus: function () {
+            if ($(".number").val().length == 7)
+            {
+                $(".show-password").focus();
+            }
             if (!flag1[0]) {
                 if ($(".number").val() == "工号：") {
                     $(".number").val("");

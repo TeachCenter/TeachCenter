@@ -150,7 +150,7 @@ ul li{
     cursor: pointer;
 
     margin-top: 12px;
-    width: 528px;
+    width: 545px;
     height: 92px;
     display: block;
     float: left;
@@ -449,6 +449,15 @@ position: relative;
 }
 .linkBox li a:hover{
    text-decoration:underline;
+}
+.shut {
+    display:block;
+    width:15px;
+    height:15px;
+    position:absolute;
+    top:30px;
+    right:30px;
+    background-image:url(../images/cha.png)
 }
 @media (min-width:0px) and (max-width:1200px)
 {

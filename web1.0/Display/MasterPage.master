@@ -109,6 +109,7 @@
 		<div class="mask"></div>
 		<div class="log-box-form clearfix">
 			<div class="log-box">
+                <a href="" class="shut"></a>
 				<h1>登录</h1>
 				<%--<input type="text" value="工号" class="number gray-box">--%>
                 <asp:TextBox ID="txtID" placeholder="工号：" runat="server" CssClass="number gray-box"></asp:TextBox>
@@ -132,6 +133,7 @@
 		</div>
 		<div  class="sign-box-form clearfix">
 			<div class="sign-box">
+                <a href="" class="shut"></a>
 				<h1>注册</h1>
 				<div class="left-box">
 					<%--<input type="text" value="姓名" class="name gray-box">--%>
