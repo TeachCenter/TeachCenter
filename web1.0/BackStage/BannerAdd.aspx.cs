@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -46,8 +46,10 @@ public partial class BackStage_BannerAdd : System.Web.UI.Page
                 String title = txtTitle.Text;
                 String link = txtLink.Text;
                 String summary = txtSummary.Text;
-                if(title.Length == 0 || link.Length == 0 || summary.Length == 0)
-                    Response.Write("<script>alert('输入不能为空！');</script>");
+                if (link.Length == 0)
+                    link = "";
+                if (title.Length == 0 || summary.Length == 0)
+                    Response.Write("<script>alert('输入不能为空！');</script>");               
                 else
                 {
                     Picture picture = new Picture();
