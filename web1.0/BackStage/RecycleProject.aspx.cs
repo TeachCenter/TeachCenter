@@ -68,7 +68,8 @@ public partial class BackStage_RecycleProject : System.Web.UI.Page
                 var project = db.Project.SingleOrDefault(a => a.project_id == id);
                 db.Project.Remove(project);
                 db.SaveChanges();
-                Response.Write("<script>alert('删除成功！');location.href='RecycleProject.aspx';</script>");
+                //Response.Write("<script>alert('删除成功！');location.href='RecycleProject.aspx';</script>");
+                Server.Transfer("RecycleProject.aspx");
             }
         }
     }
@@ -91,7 +92,8 @@ public partial class BackStage_RecycleProject : System.Web.UI.Page
                 }
             }
         }
-        Response.Write("<script>alert('删除成功！');location.href='RecycleProject.aspx';</script>");
+        //Response.Write("<script>alert('删除成功！');location.href='RecycleProject.aspx';</script>");
+        Server.Transfer("RecycleProject.aspx");
     }
 
     // 下拉选择分类切换列表内容

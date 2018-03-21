@@ -85,9 +85,10 @@ public partial class BackStage_RecycleService : System.Web.UI.Page
             using (var db = new TeachingCenterEntities())
             {
                 Service service = db.Service.Single(a => a.Service_id == id);
-                service.Service_isdeleted = 1;
+                db.Service.Remove(service);
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("删除成功！", "ServiceManage.aspx");
+                //JSHelper.AlertThenRedirect("删除成功！", "ServiceManage.aspx");
+                Server.Transfer("RecycleService.aspx");
             }
         }
         //修改分类
@@ -121,10 +122,10 @@ public partial class BackStage_RecycleService : System.Web.UI.Page
             if (dropCategory.SelectedValue != "全部分类")
             {
                 int category = ServiceHelper.getCategoryID(dropCategory.SelectedValue);
-                service = db.Service.Where(a => a.Service_isdeleted == 0 && a.Service_category == category && a.Service_time >= min && a.Service_time < max).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
+                service = db.Service.Where(a => a.Service_isdeleted == 1 && a.Service_category == category && a.Service_time >= min && a.Service_time < max).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
             }
             else
-                service = db.Service.Where(a => a.Service_isdeleted == 0 && a.Service_time >= min && a.Service_time < max).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
+                service = db.Service.Where(a => a.Service_isdeleted == 1 && a.Service_time >= min && a.Service_time < max).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
 
 
 
@@ -187,12 +188,14 @@ public partial class BackStage_RecycleService : System.Web.UI.Page
                     using (var db = new TeachingCenterEntities())
                     {
                         Service sc = db.Service.Single(a => a.Service_id == id);
-                        sc.Service_isdeleted = 1;
+                        db.Service.Remove(sc);
                         db.SaveChanges();
                     }
                 }
         }
-        JSHelper.AlertThenRedirect("删除成功！", "ServiceManage.aspx");
+        //        JSHelper.AlertThenRedirect("删除成功！", "ServiceManage.aspx");
+
+        Server.Transfer("RecycleService.aspx");
     }
     //批量处理
     protected void lbtSet_Click(object sender, EventArgs e)
@@ -222,6 +225,21 @@ public partial class BackStage_RecycleService : System.Web.UI.Page
 
     protected void ltbRecycle_Click(object sender, EventArgs e)
     {
-
+        for (int i = 0; i < this.rptService.Items.Count; i++)
+        {
+            CheckBox cbx = (CheckBox)rptService.Items[i].FindControl("checkbox");
+            int id = Convert.ToInt32(((Label)rptService.Items[i].FindControl("lbID")).Text);
+            if (cbx != null)
+                if (cbx.Checked == true)
+                {
+                    using (var db = new TeachingCenterEntities())
+                    {
+                        Service sc = db.Service.Single(a => a.Service_id == id);
+                        sc.Service_isdeleted = 0;
+                        db.SaveChanges();
+                    }
+                }
+        }
+        JSHelper.AlertThenRedirect("恢复成功！", "ServiceManage.aspx");
     }
 }

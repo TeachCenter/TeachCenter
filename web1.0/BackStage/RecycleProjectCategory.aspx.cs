@@ -55,7 +55,8 @@ public partial class BackStage_RecycleProjectCategory : System.Web.UI.Page
                 var pro_category = db.ProjectCategory.SingleOrDefault(a => a.id == id);
                 db.ProjectCategory.Remove(pro_category);
                 db.SaveChanges();
-                Response.Write("<script>alert('删除成功！');location.href='RecycleProjectCategory.aspx';</script>");
+                //Response.Write("<script>alert('删除成功！');location.href='RecycleProjectCategory.aspx';</script>");
+                Server.Transfer("RecycleProjectCategory.aspx");
             }
         }
     }
@@ -77,7 +78,8 @@ public partial class BackStage_RecycleProjectCategory : System.Web.UI.Page
                 }
             }
         }
-        Response.Write("<script>alert('删除成功！');location.href='RecycleProjectCategory.aspx';</script>");
+        //        Response.Write("<script>alert('删除成功！');location.href='RecycleProjectCategory.aspx';</script>");
+        Server.Transfer("RecycleProjectCategory.aspx");
     }
 
     protected void lbtSearch_Click(object sender, EventArgs e)

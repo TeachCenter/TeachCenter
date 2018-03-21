@@ -37,7 +37,8 @@ public partial class BackStage_RecycleEducationSourse : System.Web.UI.Page
                 var src = db.EducateSource.SingleOrDefault(a => a.id == id);
                 db.EducateSource.Remove(src);
                 db.SaveChanges();
-                Response.Write("<script>alert('删除成功！');location.href='RecycleEducationSourse.aspx';</script>");
+                //Response.Write("<script>alert('删除成功！');location.href='RecycleEducationSourse.aspx';</script>");
+                Server.Transfer("RecycleEducationSourse.aspx");
             }
         }
         if (e.CommandName == "Recycle")
@@ -48,7 +49,7 @@ public partial class BackStage_RecycleEducationSourse : System.Web.UI.Page
                 var src = db.EducateSource.SingleOrDefault(a => a.id == id);
                 src.is_deleted = 0;
                 db.SaveChanges();
-                Response.Write("<script>alert('删除成功！');location.href='RecycleEducationSourse.aspx';</script>");
+                Response.Write("<script>alert('恢复成功！');location.href='RecycleEducationSourse.aspx';</script>");
             }
         }
     }
@@ -71,7 +72,8 @@ public partial class BackStage_RecycleEducationSourse : System.Web.UI.Page
                 }
             }
         }
-        Response.Write("<script>alert('删除成功！');location.href='RecycleEducationSourse.aspx';</script>");
+        //Response.Write("<script>alert('删除成功！');location.href='RecycleEducationSourse.aspx';</script>");
+        Server.Transfer("RecycleEducationSourse.aspx");
     }
 
     protected void lbtSearch_Click(object sender, EventArgs e)

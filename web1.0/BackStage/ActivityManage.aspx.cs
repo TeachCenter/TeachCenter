@@ -67,7 +67,8 @@ public partial class BackStage_ActivityManage : System.Web.UI.Page
                 service.Activity_isdeleted = 1;
                 service.Activity_deletedtime = DateTime.Now;
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("删除成功！", "ActivityManage.aspx");
+                //JSHelper.AlertThenRedirect("删除成功！", "ActivityManage.aspx");
+                Server.Transfer("ActivityManage.aspx");
             }
         }
     }
@@ -197,7 +198,8 @@ public partial class BackStage_ActivityManage : System.Web.UI.Page
                     }
                 }
         }
-        JSHelper.AlertThenRedirect("删除成功！", "ActivityManage.aspx");
+        //JSHelper.AlertThenRedirect("删除成功！", "ActivityManage.aspx");
+        Server.Transfer("ActivityManage.aspx");
     }
 
     protected void ltbSearch_Click(object sender, EventArgs e)

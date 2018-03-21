@@ -65,7 +65,8 @@ public partial class BackStage_RecycleActivity : System.Web.UI.Page
                 Activity service = db.Activity.Single(a => a.Activity_id == id);
                 db.Activity.Remove(service);
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("删除成功！", "RecycleActivity.aspx");
+                //JSHelper.AlertThenRedirect("删除成功！", "RecycleActivity.aspx");
+                Server.Transfer("RecycleActivity.aspx");
             }
         }
         //恢复
@@ -206,7 +207,8 @@ public partial class BackStage_RecycleActivity : System.Web.UI.Page
                     }
                 }
         }
-        JSHelper.AlertThenRedirect("删除成功！", "RecycleActivity.aspx");
+        Server.Transfer("RecycleActivity.aspx");
+//        JSHelper.AlertThenRedirect("删除成功！", "RecycleActivity.aspx");
     }
 
     protected void ltbSearch_Click(object sender, EventArgs e)
