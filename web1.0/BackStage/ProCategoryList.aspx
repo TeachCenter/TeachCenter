@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ProCategoryList.aspx.cs" Inherits="BackStage_ProCategoryList" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ProCategoryList.aspx.cs" Inherits="BackStage_ProCategoryList" %>
 
 <!DOCTYPE HTML>
 <html>
@@ -53,7 +53,7 @@
                         <ItemTemplate>
 				            <tr class="text-c">
 					            <td><input type="checkbox" runat="server" id="isDelete"></td>					
-					            <td class="text-l"><u style="cursor:pointer" class="text-primary")" title="查看"><a href="ProCategoryContent.aspx?id=<%# Eval("id")%>"><%# Eval("name")%></a></u></td>	
+					            <td class="text-l"><u style="cursor:pointer" class="text-primary")" title="查看"><a href="ProCategoryContent.aspx?id=<%# Eval("id")%>"><%# Eval("name")%></a></u><input type="hidden" runat="server" id="id" value=<%# Eval("id")%> /></td>	
                                 <td><%# Eval("summary").ToString().Length > 35?Eval("summary").ToString().Substring(0,35):Eval("summary").ToString()%></td>
                                 <%--<td><%# UeditorHelper.NoHTML(Server.HtmlDecode(Eval("project_content").ToString())) %><input type="hidden" runat="server" id="id" value=<%# Eval("id")%> /></td>--%>
 					            <td><%# AdminHelper.judgeStage(Convert.ToInt32(Eval("stage")))%></td>
