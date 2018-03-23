@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TeachingCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+      <Schema Namespace="TeachingCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityType Name="Activity">
           <Key>
             <PropertyRef Name="Activity_id" />
@@ -133,10 +133,10 @@
             <PropertyRef Name="Picture_id" />
           </Key>
           <Property Name="Picture_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Picture_path" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="is_top" Type="int" Nullable="false" />
           <Property Name="Picture_title" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Picture_link" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Picture_path" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="is_top" Type="int" Nullable="false" />
           <Property Name="Picture_summary" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Project">
@@ -512,7 +512,8 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
             <End Role="Service" EntitySet="Service" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TeachingCenterModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -533,9 +534,9 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="Activity_hit" Type="Int32" Nullable="false" />
           <Property Name="Activity_deletedtime" Type="DateTime" Precision="3" />
           <Property Name="Activity_summary" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Activity_hold_time" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="ActivityCategory" Relationship="Self.FK_Activity_ActivityCategory" FromRole="Activity" ToRole="ActivityCategory" />
           <NavigationProperty Name="ActivityTeacher" Relationship="Self.FK_ActivityTeacher_Activity" FromRole="Activity" ToRole="ActivityTeacher" />
-          <Property Name="Activity_hold_time" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="ActivityCategory">
           <Key>
@@ -652,10 +653,10 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
             <PropertyRef Name="Picture_id" />
           </Key>
           <Property Name="Picture_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Picture_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="is_top" Type="Int32" Nullable="false" />
           <Property Name="Picture_title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Picture_link" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Picture_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="is_top" Type="Int32" Nullable="false" />
           <Property Name="Picture_summary" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="Project">
@@ -734,9 +735,9 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="Service_hit" Type="Int32" Nullable="false" />
           <Property Name="Service_author" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
           <Property Name="Service_deletedtime" Type="DateTime" Precision="3" />
+          <Property Name="Service_reply" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ServiceCategory" Relationship="Self.FK_Service_ServiceCategory" FromRole="Service" ToRole="ServiceCategory" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_Service_Teacher" FromRole="Service" ToRole="Teacher" />
-          <Property Name="Service_reply" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ServiceCategory">
           <Key>
@@ -1030,7 +1031,6 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <EntitySetMapping Name="Activity">
             <EntityTypeMapping TypeName="TeachingCenterModel.Activity">
               <MappingFragment StoreEntitySet="Activity">
-                <ScalarProperty Name="Activity_hold_time" ColumnName="Activity_hold_time" />
                 <ScalarProperty Name="Activity_id" ColumnName="Activity_id" />
                 <ScalarProperty Name="Activity_title" ColumnName="Activity_title" />
                 <ScalarProperty Name="Activity_time" ColumnName="Activity_time" />
@@ -1044,6 +1044,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
                 <ScalarProperty Name="Activity_hit" ColumnName="Activity_hit" />
                 <ScalarProperty Name="Activity_deletedtime" ColumnName="Activity_deletedtime" />
                 <ScalarProperty Name="Activity_summary" ColumnName="Activity_summary" />
+                <ScalarProperty Name="Activity_hold_time" ColumnName="Activity_hold_time" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1165,10 +1166,10 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
             <EntityTypeMapping TypeName="TeachingCenterModel.Picture">
               <MappingFragment StoreEntitySet="Picture">
                 <ScalarProperty Name="Picture_id" ColumnName="Picture_id" />
-                <ScalarProperty Name="Picture_path" ColumnName="Picture_path" />
-                <ScalarProperty Name="is_top" ColumnName="is_top" />
                 <ScalarProperty Name="Picture_title" ColumnName="Picture_title" />
                 <ScalarProperty Name="Picture_link" ColumnName="Picture_link" />
+                <ScalarProperty Name="Picture_path" ColumnName="Picture_path" />
+                <ScalarProperty Name="is_top" ColumnName="is_top" />
                 <ScalarProperty Name="Picture_summary" ColumnName="Picture_summary" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1234,7 +1235,6 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <EntitySetMapping Name="Service">
             <EntityTypeMapping TypeName="TeachingCenterModel.Service">
               <MappingFragment StoreEntitySet="Service">
-                <ScalarProperty Name="Service_reply" ColumnName="Service_reply" />
                 <ScalarProperty Name="Service_id" ColumnName="Service_id" />
                 <ScalarProperty Name="Service_teacher" ColumnName="Service_teacher" />
                 <ScalarProperty Name="Service_time" ColumnName="Service_time" />
@@ -1246,6 +1246,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
                 <ScalarProperty Name="Service_hit" ColumnName="Service_hit" />
                 <ScalarProperty Name="Service_author" ColumnName="Service_author" />
                 <ScalarProperty Name="Service_deletedtime" ColumnName="Service_deletedtime" />
+                <ScalarProperty Name="Service_reply" ColumnName="Service_reply" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

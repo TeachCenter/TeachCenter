@@ -51,7 +51,7 @@
 					            <td><%# Eval("department")%></td>
                                 <td><%# Eval("rank")%></td>
 					            <td><%# Eval("submit_time") %></td>
-                                <td class="f-14 td-manage"><asp:LinkButton ID="lbtPass" runat="server" CssClass="ml-5" CommandName="Pass" CommandArgument='<%# Eval("id") %>' OnClientClick="return confirm('确定通过该教师的申请?')">通过<i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton></td>
+                                <td class="f-14 td-manage"><asp:LinkButton ID="lbtPass" runat="server" CssClass="ml-5" CommandName="Pass" CommandArgument='<%# Eval("id") %>' OnClientClick="return confirm('确定通过该教师的申请?')">通过</asp:LinkButton></td>
 				            </tr>
                         </ItemTemplate>
                     </asp:Repeater>

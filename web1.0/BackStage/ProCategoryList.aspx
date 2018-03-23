@@ -45,7 +45,8 @@
 					    <th width="120">内容摘要</th>
 					    <th width="120">当前阶段</th>
                         <th width="120">截止时间</th>
-                        <th width="120">操作</th>
+                        <th width="120">删除</th>
+                        <th width="120">编辑</th>
 				    </tr>
 			    </thead>
 			    <tbody>
@@ -59,6 +60,7 @@
 					            <td><%# AdminHelper.judgeStage(Convert.ToInt32(Eval("stage")))%></td>
 					            <td><%# Eval("end_time") %></td>
                                 <td class="f-14 td-manage"><asp:LinkButton ID="lbtDelete" runat="server" CssClass="ml-5" CommandName="Delete" CommandArgument='<%# Eval("id")%>' OnClientClick="return confirm('确定删除?')">删除<i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton></td>
+                                <td class="f-14 td-manage"><a style="text-decoration:none" class="ml-5" href='<%#"ProCategoryEdit.aspx?id="+ Eval("id") %>' title="编辑">编辑</a></td>
 				            </tr>
                         </ItemTemplate>
                     </asp:Repeater>

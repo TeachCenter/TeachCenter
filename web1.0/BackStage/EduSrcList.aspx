@@ -46,7 +46,8 @@
                         <th width="200">内容摘要</th>					    
 					    <th width="120">提交时间</th>
                         <th width="80">浏览数</th>
-                        <th width="120">操作</th>
+                        <th width="120">删除</th>
+                        <th width="120">编辑</th>
 				    </tr>
 			    </thead>
 			    <tbody>
@@ -60,6 +61,7 @@
 					            <td><%# Eval("publish_time")%><input type="hidden" runat="server" id="id" value=<%# Eval("id")%> /></td>
 					            <td><%# Eval("view_times") %></td>
                                 <td class="f-14 td-manage"><asp:LinkButton ID="lbtDelete" runat="server" CssClass="ml-5" CommandName="Delete" CommandArgument='<%#Eval("id") %>' OnClientClick="return confirm('确定删除?')">删除<i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton></td>
+                                <td class="f-14 td-manage"><a style="text-decoration:none" class="ml-5" href='<%#"EduSrcEdit.aspx?id="+ Eval("id") %>' title="编辑">编辑</a></td>
 				            </tr>
                         </ItemTemplate>
                     </asp:Repeater>

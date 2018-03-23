@@ -17,7 +17,6 @@
 <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
-    <%--hhh--%>
 <title>首页轮播图列表</title>
 </head>
 <body><form id="form1" runat="server">
@@ -40,6 +39,7 @@
                         <th width="120">当前状态</th>
                         <th width="120">删除</th>
                         <th width="120">置顶</th>
+                        <th width="120">编辑</th>
 				    </tr>
 			    </thead>
 			    <tbody>
@@ -54,6 +54,7 @@
 					            <td><%# judgeDisplay(Convert.ToInt32(Eval("Picture_id").ToString())) == true?"展示中":"未展示"%><input type="hidden" runat="server" id="id" value=<%# Eval("Picture_id")%> /></td>
                                 <td class="f-14 td-manage"><asp:LinkButton ID="lbtDelete" runat="server" CssClass="ml-5" CommandName="Delete" CommandArgument='<%#Eval("Picture_id") %>' OnClientClick="return confirm('确定删除?')">删除<i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton></td>
                                 <td class="f-14 td-manage"><asp:LinkButton ID="lbtOnTop" runat="server" CssClass="ml-5" CommandName="OnTop" CommandArgument='<%#Eval("Picture_id") %>' >置顶</asp:LinkButton></td>
+                                <td class="f-14 td-manage"><a style="text-decoration:none" class="ml-5" href='<%#"BannerEdit.aspx?id="+ Eval("Picture_id") %>' title="编辑">编辑</a></td>
 				            </tr>
                         </ItemTemplate>
                     </asp:Repeater>
