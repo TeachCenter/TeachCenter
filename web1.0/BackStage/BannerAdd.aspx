@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="BannerAdd.aspx.cs" Inherits="BackStage_BannerAdd" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="BannerAdd.aspx.cs" Inherits="BackStage_BannerAdd" %>
 
 <!DOCTYPE html>
 

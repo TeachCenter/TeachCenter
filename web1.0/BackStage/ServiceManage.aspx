@@ -75,7 +75,7 @@
 					        <td class="td-status"><span class='<%# Eval("Service_isdeal").ToString()=="0"?"label label-danger radius":"label label-success radius" %>'><%# Eval("Service_isdeal").ToString()=="0"?"未处理":"已处理" %></span></td>
 					        <td class="f-14 td-manage">
                                 <asp:Label ID="lbID" Visible="false" runat="server" Text=<%# Eval("Service_id") %>></asp:Label>
-                                <asp:LinkButton runat="server" CommandName="Set" CommandArgument='<%# Eval("Service_id") %>' Text="处理"></asp:LinkButton>
+                                <asp:LinkButton ID="lbtSet" runat="server" CommandName="Set" CommandArgument='<%# Eval("Service_id") %>' Text='<%# Eval("Service_isdeal") %>'></asp:LinkButton>
                                 <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Delete" CommandArgument='<%#Eval("Service_id") %>' OnClientClick="return confirm('确定删除?')"><i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton>
                             </tr>
                     </ItemTemplate>
@@ -91,6 +91,13 @@
 				    <asp:Button ID="btnNext" runat="server" Text="下一页" OnClick="btnNext_Click" CssClass="btn btn-primary radius" />
                     <asp:Button ID="btnExport" runat="server" Text="导出Excel" OnClick="btnExport_Click" CssClass="btn btn-primary radius" style="margin-top: 15px;"  />
                 </div>
+            <div id="divReply" runat="server" visible="false" style="width:500px;margin:0 auto;margin-top:150px">
+            <asp:Label ID="lbReplyID" runat="server" Visible="false"></asp:Label>
+
+            服务回复:  <asp:TextBox ID="txtReply" runat="server" CssClass="input-text"></asp:TextBox>
+            <asp:Button ID="btnChange" runat="server" OnClick="btnChange_Click"  CssClass="btn btn-primary radius" style ="margin-top:30px" Text="处理申请" />
+    </div>
+        
 	</div>
 </div>
 <!--_footer 作为公共模版分离出去-->

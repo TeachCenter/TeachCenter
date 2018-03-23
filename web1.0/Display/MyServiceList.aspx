@@ -28,7 +28,10 @@
             <div class="progect-content">
 		<div class="clearfix">
 			<h1>我的服务</h1>
+            <asp:LinkButton ID="lbtExport" runat="server" OnClick="lbtExport_Click" CssClass="creat" Text="导出服务"></asp:LinkButton>
 			<a href="Service.aspx" class="creat">+新建服务</a>
+            
+
 		</div>
                 <span class="cut"></span>
         <asp:Repeater ID="rptService" runat="server" OnItemDataBound="rptService_ItemDataBound">
@@ -43,6 +46,7 @@
 				        <h3>联系方式：<%# Eval("Service_phone") %></h3>
 				        <h3>备注：<%# Eval("Service_remarks") %></h3>
                         <h3>处理状态：<asp:Literal ID="ltDeal" runat="server" Text='<%# Eval("Service_isdeal") %>'></asp:Literal></h3>
+                        <h3><asp:Panel ID="panel" runat="server">管理员回复：<asp:Label ID="lbReply" runat="server" Text=<%# Eval("Service_reply") %>></asp:Label></asp:Panel></h3>
 			            <h3><asp:LinkButton ID="ltEditor" runat="server" Text='<%# Eval("Service_id") %>' PostBackUrl='<%# "MyServiceEditor.aspx?id="+Eval("Service_id") %>' ></asp:LinkButton></h3>
                         
                     </div>

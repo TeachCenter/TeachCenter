@@ -73,8 +73,12 @@ public partial class BackStage_ServiceManage : System.Web.UI.Page
             {
                 literal.Text = "";
             }
-            //绑定是否审核
-            //if()
+            LinkButton lbt = (LinkButton)e.Item.FindControl("lbtSet");
+            if (lbt.Text.ToString() == "0")
+                lbt.Enabled = true;
+            else
+                lbt.Enabled = false;
+            lbt.Text = "处理";
         }
     }
 
@@ -97,14 +101,16 @@ public partial class BackStage_ServiceManage : System.Web.UI.Page
         if (e.CommandName == "Set")
         {
             int id = Convert.ToInt32(e.CommandArgument.ToString());
-            using (var db = new TeachingCenterEntities())
-            {
-                Service sc = db.Service.Single(a => a.Service_id == id);
-                sc.Service_isdeal = 1;
-                db.SaveChanges();
-                JSHelper.AlertThenRedirect("处理成功！", "ServiceManage.aspx");
-                //.Text = sc.ServiceCategory_name;
-            }
+            lbReplyID.Text = id.ToString();
+            divReply.Visible = true;
+            //using (var db = new TeachingCenterEntities())
+            //{
+            //    Service sc = db.Service.Single(a => a.Service_id == id);
+            //    //sc.Service_isdeal = 1;
+            //    db.SaveChanges();
+            //    JSHelper.AlertThenRedirect("处理成功！", "ServiceManage.aspx");
+            //    //.Text = sc.ServiceCategory_name;
+            //}
         }
     }
 
@@ -277,5 +283,19 @@ public partial class BackStage_ServiceManage : System.Web.UI.Page
 
 
 
+    }
+
+    protected void btnChange_Click(object sender, EventArgs e)
+    {
+
+        int id = Convert.ToInt16(lbReplyID.Text);
+        using(var db = new TeachingCenterEntities())
+        {
+            Service sc = db.Service.Single(a => a.Service_id == id);
+            sc.Service_isdeal = 1;
+            sc.Service_reply = txtReply.Text;
+            db.SaveChanges();
+            JSHelper.AlertThenRedirect("处理成功！", "ServiceManage.aspx");
+        }
     }
 }

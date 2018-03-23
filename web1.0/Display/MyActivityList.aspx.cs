@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -92,4 +93,59 @@ public partial class Display_MyActivityList : System.Web.UI.Page
     }
 
 
+
+    protected void lbtExport_Click(object sender, EventArgs e)
+    {
+        DataTable dt = new DataTable();
+        
+        using (var db = new TeachingCenterEntities())
+        {
+            DateTime now = DateTime.Now;
+            DateTime last = now.AddYears(-1);
+
+            int teacher = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
+            //int teacher = 1;
+            var at = from it in db.ActivityTeacher where it.teacher_id == teacher select it;
+            List<Activity> ac = new List<Activity>();
+            foreach (var i in at)
+            {
+                Activity activity = db.Activity.Single(a => a.Activity_id == i.activity_id && a.Activity_hold_time >= last && a.Activity_hold_time <= now);
+                if (activity.Activity_isdeleted == 0)
+                    ac.Add(activity);
+            }
+
+            
+            DataColumn dc1 = new DataColumn("序号", System.Type.GetType("System.String"));
+            DataColumn dc5 = new DataColumn("活动类型", System.Type.GetType("System.String"));
+            DataColumn dc2 = new DataColumn("活动名称", System.Type.GetType("System.String"));
+            DataColumn dc3 = new DataColumn("活动地点", System.Type.GetType("System.String"));
+            DataColumn dc4 = new DataColumn("活动时间", System.Type.GetType("System.DateTime"));
+
+
+            dt.Columns.Add(dc1);
+            dt.Columns.Add(dc5);
+            dt.Columns.Add(dc2);
+            dt.Columns.Add(dc3);
+            dt.Columns.Add(dc4);
+
+
+            int count = 1;
+            foreach (var i in ac)
+            {
+                DataRow row = dt.NewRow();
+
+                row["序号"] = count.ToString();
+                row["活动类型"] = ActivityHelper.getCategoryName(i.Activity_categoryid);
+                row["活动名称"] = i.Activity_title;
+                row["活动地点"] = i.Activity_place;
+                row["活动时间"] = i.Activity_hold_time;
+                dt.Rows.Add(row);
+            }
+        }
+
+        ExcleHelper.ExportDataGrid(dt, "application/ms-excel", "我的活动.xls");
+
+
+
+    }
 }

@@ -27,8 +27,8 @@
             <div class="progect-content">
 		<div class="clearfix">
 			<h1>我的活动</h1>
-			<a href="" class="creat" style="background-color:rgba(0, 0, 0, 0);"></a>
-            
+			<%--<a href="" class="creat" style="background-color:rgba(0, 0, 0, 0);"></a>--%>
+            <asp:LinkButton ID="lbtExport" runat="server" OnClick="lbtExport_Click" CssClass="creat" Text="导出活动"></asp:LinkButton>
 		</div>
                 <span class="cut"></span>
         <asp:Repeater ID="rptActivity" runat="server" OnItemCommand="rptActivity_ItemCommand" OnItemDataBound="rptActivity_ItemDataBound">
@@ -39,7 +39,7 @@
 				        <h2><%# Eval("Activity_title") %></h2>
 			        </div>
 			        <div class="clearfix">
-				        <h3>活动日期：<%# Eval("Activity_time") %></h3>
+				        <h3>活动日期：<%# Eval("Activity_hold_time") %></h3>
 				        <h3>活动地点：<asp:Literal ID="ltDeal" runat="server" Text='<%# Eval("Activity_place") %>'></asp:Literal></h3>
                         <h3><asp:LinkButton ID="lbtDelete" runat="server" CssClass="text-decoration:none" CommandName="Delete" CommandArgument='<%#Eval("Activity_id") %>' OnClientClick="return confirm('确定取消?')" Text='<%# Eval("Activity_id") %>'></asp:LinkButton>
                             </h3>

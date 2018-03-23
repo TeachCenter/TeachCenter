@@ -482,6 +482,8 @@ public partial class Service
 
     public Nullable<System.DateTime> Service_deletedtime { get; set; }
 
+    public string Service_reply { get; set; }
+
 
 
     public virtual ServiceCategory ServiceCategory { get; set; }

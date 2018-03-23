@@ -208,6 +208,7 @@
           <Property Name="Service_hit" Type="int" Nullable="false" />
           <Property Name="Service_author" Type="nchar" MaxLength="20" />
           <Property Name="Service_deletedtime" Type="datetime" />
+          <Property Name="Service_reply" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ServiceCategory">
           <Key>
@@ -735,6 +736,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="Service_deletedtime" Type="DateTime" Precision="3" />
           <NavigationProperty Name="ServiceCategory" Relationship="Self.FK_Service_ServiceCategory" FromRole="Service" ToRole="ServiceCategory" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_Service_Teacher" FromRole="Service" ToRole="Teacher" />
+          <Property Name="Service_reply" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ServiceCategory">
           <Key>
@@ -1232,6 +1234,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <EntitySetMapping Name="Service">
             <EntityTypeMapping TypeName="TeachingCenterModel.Service">
               <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="Service_reply" ColumnName="Service_reply" />
                 <ScalarProperty Name="Service_id" ColumnName="Service_id" />
                 <ScalarProperty Name="Service_teacher" ColumnName="Service_teacher" />
                 <ScalarProperty Name="Service_time" ColumnName="Service_time" />
