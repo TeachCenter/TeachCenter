@@ -46,7 +46,6 @@ public class MailHelper
         string rad = Convert.ToString(Random.Next(x, x * 10));
         string massage = "您的随机验证码是" + rad + "。";
         Sendemails(Massage, email, "找回密码", massage);
-        return rad;
-        
+        return rad;      
     }
 }

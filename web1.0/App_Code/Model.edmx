@@ -128,6 +128,15 @@
           <Property Name="teacher_id" Type="int" Nullable="false" />
           <Property Name="submit_time" Type="nchar" MaxLength="10" Nullable="false" />
         </EntityType>
+        <EntityType Name="PasswordCode">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="teacher_number" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="code" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="send_time" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Picture">
           <Key>
             <PropertyRef Name="Picture_id" />
@@ -437,6 +446,7 @@
           <EntitySet Name="FriendsLink" EntityType="Self.FriendsLink" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Introduction" EntityType="Self.Introduction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JudgeApplication" EntityType="Self.JudgeApplication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PasswordCode" EntityType="Self.PasswordCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Picture" EntityType="Self.Picture" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProjectCategory" EntityType="Self.ProjectCategory" Schema="dbo" store:Type="Tables" />
@@ -647,6 +657,15 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="teacher_id" Type="Int32" Nullable="false" />
           <Property Name="submit_time" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_JudgeApplication_Teacher" FromRole="JudgeApplication" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="PasswordCode">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="teacher_number" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="send_time" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="Picture">
           <Key>
@@ -967,6 +986,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <EntitySet Name="FriendsLink" EntityType="Self.FriendsLink" />
           <EntitySet Name="Introduction" EntityType="Self.Introduction" />
           <EntitySet Name="JudgeApplication" EntityType="Self.JudgeApplication" />
+          <EntitySet Name="PasswordCode" EntityType="Self.PasswordCode" />
           <EntitySet Name="Picture" EntityType="Self.Picture" />
           <EntitySet Name="Project" EntityType="Self.Project" />
           <EntitySet Name="ProjectCategory" EntityType="Self.ProjectCategory" />
@@ -1159,6 +1179,16 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="teacher_id" ColumnName="teacher_id" />
                 <ScalarProperty Name="submit_time" ColumnName="submit_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PasswordCode">
+            <EntityTypeMapping TypeName="TeachingCenterModel.PasswordCode">
+              <MappingFragment StoreEntitySet="PasswordCode">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="teacher_number" ColumnName="teacher_number" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="send_time" ColumnName="send_time" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

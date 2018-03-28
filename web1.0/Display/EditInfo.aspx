@@ -107,6 +107,7 @@
 			<div  class="clearfix">
 				<h2 class="userType">用户类型: <asp:Label ID="lbType" runat="server"></asp:Label></h2>
                 <asp:LinkButton ID="applyJudge" runat="server" Text="申请成为评委>>" OnClick="applyJudge_Click" class="redA"></asp:LinkButton>
+                <asp:LinkButton ID="EditPwd" runat="server" Text="修改密码>>" PostBackUrl="EditPwd.aspx" class="redA"></asp:LinkButton>
 			</div>
             <asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" Text="确认修改" class="submit"></asp:LinkButton>
 
