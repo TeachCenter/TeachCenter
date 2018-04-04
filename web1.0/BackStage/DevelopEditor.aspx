@@ -46,13 +46,9 @@
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>发布者：</label>
-			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-                <asp:DropDownList runat="server" ID="dropAuthor" CssClass="select">
-                    <asp:ListItem Value="0" >本人</asp:ListItem>
-                    <asp:ListItem Value="1">匿名</asp:ListItem>
-                    <asp:ListItem Value="2">未知</asp:ListItem>
-                </asp:DropDownList></span>
-				</div>
+			<div class="formControls col-xs-8 col-sm-9">
+				<asp:TextBox MaxLength="26" ID="txtAuthor" runat="server" CssClass="input-text"></asp:TextBox>
+			</div>
 		</div>
          <div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>活动类型：</label>
@@ -83,7 +79,7 @@
                 <asp:TextBox ID="TextBox1" TextMode="MultiLine" MaxLength="200" style="height: 119px; margin: 0px; width: 1033px;resize:none;" runat="server" CssClass="input-text"></asp:TextBox>
 			</div>
 		</div>
-		<div class="row cl">
+		<div id="hhh" class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章内容：</label>
 			<div class="formControls col-xs-8 col-sm-9"> 
 				<textarea id="myEditor11" name="myEditor11" runat="server" onblur="setUeditor()" style="width: 1030px; height: 250px;"></textarea>
@@ -174,6 +170,10 @@
 	
     })
 </script>
+    <script type="text/javascript">
+        if ($("#txtLink").val().length != 0)
+            $("#hhh").css("display", "none");
+    </script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>
 </html>

@@ -108,7 +108,7 @@
 		</div>
 		<div class="mask"></div>
 		<div class="log-box-form clearfix">
-			<div class="log-box">
+			<div class="log-box" >
                 <a href="" class="shut"></a>
 				<h1>登录</h1>
 				<%--<input type="text" value="工号" class="number gray-box">--%>
@@ -125,10 +125,20 @@
 				<p class="code-error error" style="float: left;"></p>
                 <%--<asp:CheckBox ID="cbxRemeberUser" runat="server" Text="记住用户名" ForeColor="gray"/>--%>
                 
-                <%--<a href="" class="forget-password">忘记密码？</a>--%>
+               <a href="#" class="forget-password">忘记密码？</a>
 				<a  class="turn-right">立即注册</a>
 				<%--<a class="">立即登录</a>--%>
                 <asp:LinkButton ID="ltbLogin" runat="server" Text="立即登录" CssClass="log-submit sign-submit1" OnClick="ltbLogin_Click"></asp:LinkButton>
+			</div>
+            <div class="find" style="display:none">
+                <a href="" class="shut"></a>
+				<h1>找回密码</h1>
+				<%--<input type="text" value="工号" class="number gray-box">--%>
+                <input type="text" class="gray-box" name="name"   placeholder="账号：" />
+				<input type="text" placeholder="验证码：" class="gray-box code" style="width: 176px;float: left;margin-top:32px" />
+                <a class="getcode" href="#">获取验证码</a>            
+               <a  class="return-log">返回登录</a>
+                <a class="code-submit">提交</a>
 			</div>
 		</div>
 		<div  class="sign-box-form clearfix">
@@ -160,6 +170,7 @@
 					<p class="email-error error"></p>
 				</div>
 				<a  class="turn-left">登录已有账号</a>
+                
 				<%--<a class="sign-submit">立即注册</a>--%>
                 <asp:LinkButton ID="lbtRegister" runat="server" Text="立即注册" CssClass="sign-submit sign-submit2" OnClick="lbtRegister_Click"></asp:LinkButton>
 			</div>
@@ -325,6 +336,20 @@
         
         </asp:ContentPlaceHolder>
         <script type="text/javascript"  src="./js/mobile.js"></script>
+    <script>
+        $(".forget-password").click(function () {
+
+            $(".log-box").css({ "display": "none" })
+            $(".find").css({ "display": "block" })
+           
+        })
+        $(".return-log").click(function () {
+            $(".find").css({ "display": "none" })
+            $(".log-box").css({ "display": "block" })
+            
+
+        })
+    </script>
   <%--</div> --%> </form>
 </body>
 </html>

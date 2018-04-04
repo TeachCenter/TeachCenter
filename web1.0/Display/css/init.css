@@ -245,12 +245,35 @@ ul li{
     margin-left: -435px;
     display: none;
 }
-.log-box h1,.sign-box h1{
+.log-box h1,.sign-box h1,.find h1{
     color: #4D4D4D;
     text-align: center;
     padding-top: 37px;
     font-size: 28px;
     padding-bottom: 32px;
+}
+.getcode{
+    float: right;
+    cursor: pointer;
+    margin: 34px 32px 0px 0px;
+    width: 100px;
+    color: #808080;
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+}
+.code-submit{
+    cursor: pointer;
+    display: block;
+    width: 387px;
+    height: 60px;
+    margin-top: 332px;
+    text-align: center;
+    line-height: 60px;
+    margin-left: 32px;
+    background-color: #002957;
+    color: #FFFFFF;
+    font-size: 20px;
 }
 .gray-box{
     width: 327px;
@@ -265,10 +288,11 @@ ul li{
     box-sizing:content-box!important;
 }
 
-.forget-password{
-    margin-left: 32px;
-    float: left;
-    margin-top: 200px;
+.forget-password,.return-log{
+       position: absolute;
+    left: 32px;
+    bottom: 131px;
+    margin-top: 70px;
     color: #D6000F;
 }
 .turn-right{
