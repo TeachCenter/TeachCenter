@@ -34,6 +34,7 @@ public partial class TeachingCenterEntities : DbContext
     public DbSet<FriendsLink> FriendsLink { get; set; }
     public DbSet<Introduction> Introduction { get; set; }
     public DbSet<JudgeApplication> JudgeApplication { get; set; }
+    public DbSet<PasswordCode> PasswordCode { get; set; }
     public DbSet<Picture> Picture { get; set; }
     public DbSet<Project> Project { get; set; }
     public DbSet<ProjectCategory> ProjectCategory { get; set; }

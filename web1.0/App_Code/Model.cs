@@ -161,6 +161,14 @@ public partial class JudgeApplication
     public virtual Teacher Teacher { get; set; }
 }
 
+public partial class PasswordCode
+{
+    public int id { get; set; }
+    public string teacher_number { get; set; }
+    public string code { get; set; }
+    public System.DateTime send_time { get; set; }
+}
+
 public partial class Picture
 {
     public int Picture_id { get; set; }
