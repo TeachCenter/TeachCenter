@@ -134,11 +134,15 @@
                 <a href="" class="shut"></a>
 				<h1>找回密码</h1>
 				<%--<input type="text" value="工号" class="number gray-box">--%>
-                <input type="text" class="gray-box" name="name"   placeholder="账号：" />
-				<input type="text" placeholder="验证码：" class="gray-box code" style="width: 176px;float: left;margin-top:32px" />
-                <a class="getcode" href="#">获取验证码</a>            
+                <%--<input runat="server" id="inputNumber" type="text" class="gray-box" name="name"   placeholder="账号：" />--%>
+                <asp:TextBox ID="inputNumber" CssClass="gray-box" runat="server"></asp:TextBox>
+				<%--<input type="text" runat="server" id="inputCode" placeholder="验证码：" class="gray-box code" style="width: 176px;float: left;margin-top:32px" />--%>
+                <asp:TextBox ID="inputCode" runat="server" CssClass="gray-box code" style="width: 176px;float: left;margin-top:32px" ></asp:TextBox>
+                <a id="getcodeaaa" class="getcode" href="#">获取验证码</a>          
+                <%--<asp:LinkButton ID="GetCode" runat="server" OnClick="GetCode_Click" CssClass="getcode" Text="获取验证码"></asp:LinkButton>--%>
                <a  class="return-log">返回登录</a>
-                <a class="code-submit">提交</a>
+                <%--<a class="code-submit">提交</a>--%>
+                <asp:LinkButton ID="codesubmit" Text="提交" runat="server" CssClass="code-submit" OnClick="codesubmit_Click"></asp:LinkButton>
 			</div>
 		</div>
 		<div  class="sign-box-form clearfix">
@@ -316,16 +320,7 @@
                             var row = $("<li>").appendTo($(".linkBoxR"));
                             $("<a>").attr("href", data[3][i].link).text(data[3][i].title).appendTo(row);
                         }
-                        
-                        
-
                     }
-
-
-
-
-
-
              
             })
 
@@ -337,18 +332,33 @@
         </asp:ContentPlaceHolder>
         <script type="text/javascript"  src="./js/mobile.js"></script>
     <script>
+        $("#getcodeaaa").click(function () {
+            var inputNumber = $("#inputNumber").val();
+            $.ajax({
+                type: "POST",
+                url: "./Ajax/PassCode.ashx",
+                data: { "inputNumber": inputNumber },
+                success: function (data) {
+                    alert(data);
+                }
+            })
+        });
         $(".forget-password").click(function () {
 
             $(".log-box").css({ "display": "none" })
             $(".find").css({ "display": "block" })
-           
-        })
+
+        });
         $(".return-log").click(function () {
             $(".find").css({ "display": "none" })
             $(".log-box").css({ "display": "block" })
-            
 
-        })
+
+        });
+        
+       
+        $("#inputNumber").attr("placeholder", "账号:");
+        $("#inputCode").attr("placeholder", "密码:");
     </script>
   <%--</div> --%> </form>
 </body>

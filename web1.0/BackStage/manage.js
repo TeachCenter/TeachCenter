@@ -13,7 +13,7 @@ $(document).ready(function () {
          else {
              $("#btnSub").attr("disabled", false);
          }
-     });
+    });
     $("[id^=txt]").focus(function () {
          if ($(this).val() == "输入不能为空") {
              $(this).val("");

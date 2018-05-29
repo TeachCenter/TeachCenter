@@ -139,6 +139,9 @@
                     txtTitle.css("color", "#333");
                     $("#btnSub").attr("disabled", false);
                 }
+                if (txtTitle.val() == "输入不能为空") {
+                    txtTitle.val() = "";
+                }
             });
 
         </script>

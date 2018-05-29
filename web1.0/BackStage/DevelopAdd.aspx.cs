@@ -9,23 +9,26 @@ public partial class BackStage_DevelopAdd : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        try
+        if (!IsPostBack)
         {
-            string teacher = Session["AdminID"].ToString();
-            using (var db = new TeachingCenterEntities())
+            try
             {
-                var cate = from it in db.DevelopCategory select it;
+                string teacher = Session["AdminID"].ToString();
+                using (var db = new TeachingCenterEntities())
+                {
+                    var cate = from it in db.DevelopCategory select it;
 
-                dropCategory.DataSource = cate.ToList();
+                    dropCategory.DataSource = cate.ToList();
 
-                dropCategory.DataTextField = "DevelopCategory_name";
+                    dropCategory.DataTextField = "DevelopCategory_name";
 
-                dropCategory.DataBind();
+                    dropCategory.DataBind();
+                }
             }
-        }
-        catch
-        {
-            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+            catch
+            {
+                JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+            }
         }
 
     }

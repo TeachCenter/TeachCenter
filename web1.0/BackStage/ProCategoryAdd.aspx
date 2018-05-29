@@ -298,6 +298,7 @@ $(function(){
 	
 });
 </script>
+    <script type="text/javascript" src="manage.js"></script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>
 </html>

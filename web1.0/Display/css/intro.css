@@ -57,6 +57,9 @@
     text-align: justify;
     text-justify: inter-ideograph;
 }
+.p-box img {
+    max-width: 100%;
+}
 .p-box pre{
     overflow: hidden;
     font-size: 20px;

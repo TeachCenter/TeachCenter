@@ -26,9 +26,27 @@
     <script type="text/javascript" charset="utf-8" src="../ueditor/lang/zh-cn/zh-cn.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            //$("#link").css("display", "none");
-            //if ($("#checkbox-moban").is(':checked'))
-            //    alert("666");
+
+            var flag = false;
+            if ($("#txtLink").val() == "") {
+                $(".content").css({ "display": "block" })
+                $("#link").css({ "display": "none" })
+                flag = false;
+            }
+            $(".iCheck-helper").click(function () {
+                if (flag == false) {
+                    $(".content").css({ "display": "none" })
+                    $("#link").css({ "display": "block" })
+                    flag = true;
+                }
+                else{
+                    $(".content").css({ "display": "block" })
+                    $("#link").css({ "display": "none" })
+                    flag = false;
+                }
+               
+            });
+            
         });
     </script>
 <title>教学发展编辑</title>
@@ -38,7 +56,7 @@
 <body>
 <article class="page-container">
 	<form runat="server" class="form form-horizontal">
-		<div class="row cl">
+            <div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章标题：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<asp:TextBox ID="txtTitle" runat="server" CssClass="input-text" MaxLength="26"></asp:TextBox>
@@ -67,7 +85,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="link" class="row cl">
+		<div id="link" class="row cl" runat="server">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章链接：</label>
 			<div class="formControls col-xs-8 col-sm-9">
                 <asp:TextBox ID="txtLink" runat="server" CssClass="input-text"></asp:TextBox>
