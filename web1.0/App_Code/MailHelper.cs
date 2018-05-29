@@ -30,8 +30,8 @@ public class MailHelper
 
         //指定发送邮件的服务器地址或IP 
         //指定发送邮件端口
-        SmtpClient sc = new SmtpClient("smtp.163.com", 25);
-        sc.Credentials = new System.Net.NetworkCredential("m18039746604_1@163.com", "18960660325gxy1"); //指定登录服务器的用户名和密码  
+        SmtpClient sc = new SmtpClient("smtp.126.com", 25);
+        sc.Credentials = new System.Net.NetworkCredential("teachingcenter@126.com", "teaching123"); //指定登录服务器的用户名和密码  
 
 
         sc.Send(message);       //发送邮件                              
@@ -40,7 +40,7 @@ public class MailHelper
 
     static public string Random_check(string email)
     {
-        string Massage = "m18039746604_1@163.com";
+        string Massage = "teachingcenter@126.com";
         Int16 x = 1000;
         Random Random = new System.Random();
         string rad = Convert.ToString(Random.Next(x, x * 10));

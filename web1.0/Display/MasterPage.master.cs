@@ -117,7 +117,7 @@ public partial class Display_MasterPage : System.Web.UI.MasterPage
                 }
             
         }
-
+        
     }
 
     /*protected void lbtReturn_Click(object sender, EventArgs e)
@@ -196,4 +196,68 @@ public partial class Display_MasterPage : System.Web.UI.MasterPage
             }
         }
     }*/
+
+    //protected void GetCode_Click(object sender, EventArgs e)
+    //{
+    //    string number = inputNumber.Value;
+    //    if (number.Length == 0)
+    //        JSHelper.ShowAlert("请输入工号！");
+    //    else if (TeacherHelper.checkNumber(number))
+    //        JSHelper.ShowAlert("工号不存在！");
+    //    else
+    //    {
+    //        using (var db = new TeachingCenterEntities())
+    //        {
+    //            string email = (from it in db.Teacher where it.number == number select it.email).ToString();
+    //            if ((from it in db.PasswordCode where it.teacher_number == number select it).Any())
+    //            {
+    //                PasswordCode pwdcode = (from it in db.PasswordCode where it.teacher_number == number select it).FirstOrDefault();
+    //                string code = MailHelper.Random_check(email);
+    //                pwdcode.code = code;
+    //                pwdcode.send_time = DateTime.Now;
+    //                db.SaveChanges();
+    //            }
+    //            else
+    //            {
+    //                string code = MailHelper.Random_check(email);
+    //                PasswordCode pwdcode = new PasswordCode();
+    //                pwdcode.teacher_number = number;
+    //                pwdcode.code = code;
+    //                pwdcode.send_time = DateTime.Now;
+    //                db.PasswordCode.Add(pwdcode);
+    //                db.SaveChanges();
+    //            }
+    //            JSHelper.ShowAlert("验证码发送成功，请至邮箱查收！");
+    //        }
+    //    }
+    
+
+    protected void codesubmit_Click(object sender, EventArgs e)
+    {
+        string number = inputNumber.Text;
+        string code = inputCode.Text;
+        DateTime time = DateTime.Now;
+        if (number.Length == 0 || code.Length == 0)
+            JSHelper.ShowAlert("输入不能为空！");
+        else if (TeacherHelper.checkNumber(number))
+            JSHelper.ShowAlert("工号不存在！");
+        else
+        {
+            using (var db = new TeachingCenterEntities())
+            {
+                var pwdcode = (from it in db.PasswordCode where it.teacher_number == number && it.code == code select it).FirstOrDefault();
+                DateTime send_time = pwdcode.send_time;
+                if ((time - send_time).TotalMinutes > 15)
+                    JSHelper.ShowAlert("验证码已超时，请重新获取验证码！");
+                else
+                {
+                    var teacher = (from it in db.Teacher where it.number == number select it).FirstOrDefault();
+                    teacher.password = PwdHelper.MD5("ouc123");
+                    db.PasswordCode.Remove(pwdcode);
+                    db.SaveChanges();
+                    JSHelper.AlertThenRedirect("重置密码成功，您的新密码为ouc123！", "main-index.aspx");
+                }
+            }
+        }
+    }
 }

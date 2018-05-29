@@ -164,39 +164,7 @@
             });
             //下面开始定义功能函数
             var timer,myl=-myW;
-            start();
-            function start(){//开始轮播
-                timer=setInterval(function(){
-                    ele.find(".sl_content").stop().animate({"margin-left":myl+"px"},speed*0.2>600?600:speed*0.2,function(){
-                        if(myl<=-(myW*(arrlen+1))){
-                            ele.find(".sl_content").css("margin-left",-myW+"px");
-                            myl=-myW;
-                        }
-                        var tli=(-myl/myW);
-                        if(tli>=arrlen){
-                            tli=arrlen;
-                        }
-                        if(arr[0].imgurl!=undefined&&arr[0].href!=undefined&&arr[0].text!=undefined){
-			                ele.find("ul li").css({
-                            "background":"rgba(214,0,15,0.2)"
-	                        });
-	                        ele.find("ul li:eq("+(tli-1)+")").css({
-	                           "background":"rgba(214,0,15,1)"
-	                        });
-			            }
-			            else if(arr[0].imgurl!=undefined&&arr[0].href!=undefined){
-			                ele.find("ul li").css({
-                            "background":"rgba(255,255,255,0.3)"
-	                        });
-	                        ele.find("ul li:eq("+(tli-1)+")").css({
-	                            "background":"rgba(255,255,255,0.7)"
-	                        });
-			            }
-                       
-                        myl-=myW;
-                    });
-                },speed);
-            }
+     
             ele.hover(function(){//悬浮功能
                 clearInterval(timer);
                 

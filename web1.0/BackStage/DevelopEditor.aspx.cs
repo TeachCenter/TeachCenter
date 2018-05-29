@@ -9,34 +9,38 @@ public partial class BackStage_DevelopEditor : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        int id = 1;
-        try
+        if (!IsPostBack)
         {
-            string teacher = Session["AdminID"].ToString();
-            id = Convert.ToInt32(Request.QueryString["id"].ToString());
-            using (var db = new TeachingCenterEntities())
+            int id = 1;
+            try
             {
-                var cate = from it in db.DevelopCategory select it;
+                string teacher = Session["AdminID"].ToString();
+                id = Convert.ToInt32(Request.QueryString["id"].ToString());
+                using (var db = new TeachingCenterEntities())
+                {
+                    var cate = from it in db.DevelopCategory select it;
 
-                dropCategory.DataSource = cate.ToList();
+                    dropCategory.DataSource = cate.ToList();
 
-                dropCategory.DataTextField = "DevelopCategory_name";
+                    dropCategory.DataTextField = "DevelopCategory_name";
 
-                dropCategory.DataBind();
-                
-                Develop dev = db.Develop.Single(a => a.Develop_id == id);
-                txtTitle.Text = dev.Develop_title;
-                TextBox1.Text = dev.Develop_summary;
-                txtLink.Text = dev.Develop_link;
-                myEditor11.InnerHtml = Server.HtmlDecode(dev.Develop_content);
+                    dropCategory.DataBind();
+
+                    Develop dev = db.Develop.Single(a => a.Develop_id == id);
+                    txtTitle.Text = dev.Develop_title;
+                    TextBox1.Text = dev.Develop_summary;
+                    txtLink.Text = dev.Develop_link;
+                    txtAuthor.Text = dev.Develop_author;
+                    myEditor11.InnerHtml = Server.HtmlDecode(dev.Develop_content);
+                }
             }
-        }
-        catch
-        {
-            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
-        }
+            catch
+            {
+                JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+            }
 
 
+        }
     }
 
     protected void btnSub_Click(object sender, EventArgs e)
@@ -45,7 +49,8 @@ public partial class BackStage_DevelopEditor : System.Web.UI.Page
         string link = txtLink.Text;
         string content = myEditor11.InnerHtml;
         string summary = TextBox1.Text;
-        if (title.Length == 0)
+        string arthor = txtAuthor.Text;
+        if (title.Length == 0 || arthor.Length == 0)
             JSHelper.ShowAlert("输入不能为空！");
         else if (cbxLink.Checked && link.Length == 0)
             JSHelper.ShowAlert("输入不能为空！");
@@ -54,31 +59,59 @@ public partial class BackStage_DevelopEditor : System.Web.UI.Page
         else if (summary.Length == 0)
             JSHelper.ShowAlert("输入不能为空！");
         else
-            using (var db = new TeachingCenterEntities())
+        {
+
+            int id = 1;
+            try
             {
-                if (!cbxLink.Checked)
-                    link = "";
-                Develop dev = new Develop();
-                dev.Develop_title = title;
-                if (dropAuthor.SelectedValue == "0")
-                    dev.Develop_author = AdminHelper.getNameByID(Session["AdminID"].ToString());
-                else if (dropAuthor.SelectedValue == "1")
-                    dev.Develop_author = "匿名";
-                else
-                    dev.Develop_author = "未知";
-                dev.Develop_time = DateTime.Now;
-                dev.Develop_content = content;
-                dev.Develop_link = link;
-                dev.Develop_summary = summary;
-                dev.Develop_category = DevelopHelper.getCategoryId(dropCategory.SelectedValue);
-                dev.Develop_hit = 0;
-                dev.Develop_deleted = 0;
-                db.Develop.Add(dev);
-                db.SaveChanges();
-                JSHelper.ShowAlert("修改成功！");
-                //JSHelper.Redirect("DevelopManage.aspx");
-                Server.Transfer("DevelopManage.aspx");
+                string teacher = Session["AdminID"].ToString();
+                id = Convert.ToInt32(Request.QueryString["id"].ToString());
+                //using (var db = new TeachingCenterEntities())
+                //{
+                //    var cate = from it in db.DevelopCategory select it;
+
+                //    dropCategory.DataSource = cate.ToList();
+
+                //    dropCategory.DataTextField = "DevelopCategory_name";
+
+                //    dropCategory.DataBind();
+
+                //    Develop dev = db.Develop.Single(a => a.Develop_id == id);
+                //    txtTitle.Text = dev.Develop_title;
+                //    TextBox1.Text = dev.Develop_summary;
+                //    txtLink.Text = dev.Develop_link;
+                //    txtAuthor.Text = dev.Develop_author;
+                //    myEditor11.InnerHtml = Server.HtmlDecode(dev.Develop_content);
+                //}
+
+
+                using (var db = new TeachingCenterEntities())
+                {
+                    Develop dev = db.Develop.Single(a => a.Develop_id == id);
+
+                    dev.Develop_title = title;
+                    dev.Develop_author = arthor;
+                    dev.Develop_time = DateTime.Now;
+                    dev.Develop_content = content;
+                    dev.Develop_link = link;
+                    if (!cbxLink.Checked)
+                        link = "";
+                    dev.Develop_summary = summary;
+                    dev.Develop_category = DevelopHelper.getCategoryId(dropCategory.SelectedValue);
+                    dev.Develop_hit = 0;
+                    dev.Develop_deleted = 0;
+                    //db.Develop.Add(dev);
+                    db.SaveChanges();
+                    JSHelper.ShowAlert("修改成功！");
+                    //JSHelper.Redirect("DevelopManage.aspx");
+                    Server.Transfer("DevelopManage.aspx");
+                }
             }
+            catch
+            {
+
+            }
+        }
     }
 
     protected void btnFup_Click(object sender, EventArgs e)

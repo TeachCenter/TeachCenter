@@ -59,13 +59,9 @@
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>发布者：</label>
-			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-                <asp:DropDownList runat="server" ID="dropAuthor" CssClass="select">
-                    <asp:ListItem Value="0" >本人</asp:ListItem>
-                    <asp:ListItem Value="1">匿名</asp:ListItem>
-                    <asp:ListItem Value="2">未知</asp:ListItem>
-                </asp:DropDownList></span>
-				</div>
+			<div class="formControls col-xs-8 col-sm-9">
+				<asp:TextBox MaxLength="26" ID="txtAuthor" runat="server" CssClass="input-text"></asp:TextBox>
+			</div>
 		</div>
          <div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>活动类型：</label>
@@ -142,6 +138,9 @@
                 else {
                     txtTitle.css("color", "#333");
                     $("#btnSub").attr("disabled", false);
+                }
+                if (txtTitle.val() == "输入不能为空") {
+                    txtTitle.val() = "";
                 }
             });
 

@@ -354,8 +354,17 @@
      
      $(".log-submit").css({"width":4.8+"rem",
 "font-size":0.24+"rem",
-"margin-top":1.7+"rem"
+"margin-top":1.65+"rem"
     });
+     $(".code-submit").css({"width":4.8+"rem",
+"font-size":0.24+"rem",
+"margin-top":2.7+"rem"
+    });
+      $(".forget-password").css({"width":4.8+"rem",
+"font-size":0.22+"rem",
+"top":3.3+"rem"
+    });
+     
      $(".log-box-form input").css({"width":4.17+"rem",
 "font-size":0.24+"rem"
  	});
@@ -366,6 +375,9 @@
      $(".turn-right").css({
 "font-size":0.24+"rem"
  	});
+     $(".return-log").css({
+        "top":3.3+"rem"
+    });
       $(".turn-right").click(function(){
       	$(".log-box-form").css({"display":"none"})
       })
@@ -425,6 +437,17 @@
         "margin-right":32+"px"
 
     });
+        
+        $(".code").css({
+            "width": 2.66+ "rem"
+        });
+        $(".getcode").css({
+             "width": 1.2 + "rem",
+            "font-size": 0.22+ "rem"
+        });
+        $(".return-log").css({
+            "font-size": 0.22+ "rem"
+        });
         $("#mySlide2 img").css({
             "height": 4 + "rem"
         });
