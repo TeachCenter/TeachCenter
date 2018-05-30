@@ -55,7 +55,8 @@ public partial class BackStage_FriendsLink : System.Web.UI.Page
                 cate.orders = Convert.ToInt16(order);
                 db.FriendsLink.Add(cate);
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("添加成功！", "FriendsLink.aspx");
+                Server.Transfer("FriendsLink.aspx");
+                //JSHelper.AlertThenRedirect("添加成功！", "FriendsLink.aspx");
             }
     }
 
@@ -79,7 +80,8 @@ public partial class BackStage_FriendsLink : System.Web.UI.Page
                 cate.link = link;
                 cate.orders = Convert.ToInt16(order);
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("修改成功！", "FriendsLink.aspx");
+                Server.Transfer("FriendsLink.aspx");
+                //JSHelper.AlertThenRedirect("修改成功！", "FriendsLink.aspx");
             }
     }
 
@@ -95,8 +97,8 @@ public partial class BackStage_FriendsLink : System.Web.UI.Page
                  FriendsLink sc = db.FriendsLink.Single(a => a.id == id);
                  db.FriendsLink.Remove(sc);
                  db.SaveChanges();
-                 JSHelper.AlertThenRedirect("删除成功！", "FriendsLink.aspx");
-               
+                 //JSHelper.AlertThenRedirect("删除成功！", "FriendsLink.aspx");
+                Server.Transfer("FriendsLink.aspx");
 
             }
         }
@@ -149,7 +151,8 @@ public partial class BackStage_FriendsLink : System.Web.UI.Page
 
                         }
                 }
-                JSHelper.AlertThenRedirect("删除成功！", "FriendsLink.aspx");
+                Server.Transfer("FriendsLink.aspx");
+//                JSHelper.AlertThenRedirect("删除成功！", "FriendsLink.aspx");
             }
 
         }

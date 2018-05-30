@@ -46,7 +46,8 @@ public partial class BackStage_BannerList : System.Web.UI.Page
                 var banner = db.Picture.SingleOrDefault(a => a.Picture_id == id);
                 db.Picture.Remove(banner);
                 db.SaveChanges();
-                Response.Write("<script>alert('删除成功！');location.href='BannerList.aspx';</script>");
+                Server.Transfer("BannerList.aspx");
+                //Response.Write("<script>alert('删除成功！');location.href='BannerList.aspx';</script>");
             }
         }
 
@@ -60,7 +61,8 @@ public partial class BackStage_BannerList : System.Web.UI.Page
                 int max = Convert.ToInt32((from it in db.Picture orderby it.is_top descending select it.is_top).FirstOrDefault());
                 banner.is_top = max + 1;
                 db.SaveChanges();
-                Response.Write("<script>alert('置顶成功！');location.href='BannerList.aspx';</script>");
+                Server.Transfer("BannerList.aspx");
+                //Response.Write("<script>alert('置顶成功！');location.href='BannerList.aspx';</script>");
             }
         }
     }
@@ -83,7 +85,8 @@ public partial class BackStage_BannerList : System.Web.UI.Page
                 }
             }
         }
-        Response.Write("<script>alert('删除成功！');location.href='BannerList.aspx';</script>");
+        Server.Transfer("BannerList.aspx");
+//        Response.Write("<script>alert('删除成功！');location.href='BannerList.aspx';</script>");
     }
 
     

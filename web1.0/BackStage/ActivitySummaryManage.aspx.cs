@@ -75,7 +75,8 @@ public partial class BackStage_ActivitySummaryManage : System.Web.UI.Page
                     }
                 }
         }
-        JSHelper.AlertThenRedirect("删除成功！", "ActivitySummaryManage.aspx");
+        Server.Transfer("ActivitySummaryManage.aspx");
+        //JSHelper.AlertThenRedirect("删除成功！", "ActivitySummaryManage.aspx");
     }
 
 

@@ -45,7 +45,8 @@ public partial class BackStage_ProCategoryList : System.Web.UI.Page
                 pro_category.is_deleted = 1;
                 pro_category.deletedtime = DateTime.Now;
                 db.SaveChanges();
-                Response.Write("<script>alert('删除成功！');location.href='ProCategoryList.aspx';</script>");
+                Server.Transfer("ProCategoryList.aspx");
+                //Response.Write("<script>alert('删除成功！');location.href='ProCategoryList.aspx';</script>");
             }
         }
     }
@@ -68,7 +69,8 @@ public partial class BackStage_ProCategoryList : System.Web.UI.Page
                 }
             }
         }
-        Response.Write("<script>alert('删除成功！');location.href='ProCategoryList.aspx';</script>");
+        Server.Transfer("ProCategoryList.aspx");
+        //Response.Write("<script>alert('删除成功！');location.href='ProCategoryList.aspx';</script>");
     }
 
     protected void lbtSearch_Click(object sender, EventArgs e)

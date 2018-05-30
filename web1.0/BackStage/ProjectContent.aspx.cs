@@ -103,7 +103,8 @@ public partial class BackStage_ProjectContent : System.Web.UI.Page
                     var update = db.ProjectStage.SingleOrDefault(a => a.project_id == project_id && a.stage == data.stage);
                     update.is_pass = -1;
                     db.SaveChanges();
-                    Response.Write("<script>alert('已成功分配给评审！');location.href='ProjectList.aspx';</script>");
+                    Server.Transfer("ProjectList.aspx");
+                    //Response.Write("<script>alert('已成功分配给评审！');location.href='ProjectList.aspx';</script>");
                 }
             }
         }

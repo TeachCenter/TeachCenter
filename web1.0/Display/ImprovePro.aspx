@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>个人中心</title>
 	<link rel="stylesheet" href="css/personal-center-init.css">
 	<link rel="stylesheet" href="css/personal-center-checkProgect.css">
 	<script type="text/javascript"  src="./js/jquery-3.1.1.min.js"></script>

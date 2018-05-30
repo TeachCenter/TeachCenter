@@ -78,7 +78,8 @@ public partial class BackStage_RecycleActivity : System.Web.UI.Page
                 Activity service = db.Activity.Single(a => a.Activity_id == id);
                 service.Activity_isdeleted = 0;
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("恢复成功！", "RecycleActivity.aspx");
+                //JSHelper.AlertThenRedirect("恢复成功！", "RecycleActivity.aspx");
+                Server.Transfer("RecycleActivity.aspx");
             }
         }
     }
@@ -233,6 +234,7 @@ public partial class BackStage_RecycleActivity : System.Web.UI.Page
                     }
                 }
         }
-        JSHelper.AlertThenRedirect("恢复成功！", "RecycleActivity.aspx");
+        Server.Transfer("RecycleActivity.aspx");
+        //JSHelper.AlertThenRedirect("恢复成功！", "RecycleActivity.aspx");
     }
 }

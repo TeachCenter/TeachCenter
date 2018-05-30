@@ -57,7 +57,8 @@ public partial class BackStage_RecycleProject : System.Web.UI.Page
                 var project = db.Project.SingleOrDefault(a => a.project_id == id);
                 project.is_deleted = 0;
                 db.SaveChanges();
-                Response.Write("<script>alert('恢复成功！');location.href='RecycleProject.aspx';</script>");
+                Server.Transfer("RecycleProject.aspx");
+                //Response.Write("<script>alert('恢复成功！');location.href='RecycleProject.aspx';</script>");
             }
         }
         if (e.CommandName == "Delete")
@@ -264,6 +265,7 @@ public partial class BackStage_RecycleProject : System.Web.UI.Page
                 }
             }
         }
-        Response.Write("<script>alert('恢复成功！');location.href='RecycleProject.aspx';</script>");
+        Server.Transfer("RecycleProject.aspx");
+//        Response.Write("<script>alert('恢复成功！');location.href='RecycleProject.aspx';</script>");
     }
 }

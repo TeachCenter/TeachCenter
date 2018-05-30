@@ -83,7 +83,8 @@ public partial class Display_ImprovePro : System.Web.UI.Page
                 newStage.is_pass = -2;
                 db.ProjectStage.Add(newStage);
                 db.SaveChanges();
-                Response.Write("<script>alert('完善项目成功！');location.href='MyProject.aspx?pageNumber=1';</script>");
+                Server.Transfer("MyProject.aspx?pageNumber=1");
+                //Response.Write("<script>alert('完善项目成功！');location.href='MyProject.aspx?pageNumber=1';</script>");
             }
         }
     }

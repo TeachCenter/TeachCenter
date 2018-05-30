@@ -100,7 +100,8 @@ public partial class BackStage_RecycleService : System.Web.UI.Page
                 Service sc = db.Service.Single(a => a.Service_id == id);
                 sc.Service_isdeal = 1;
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("处理成功！", "ServiceManage.aspx");
+                Server.Transfer("RecycleService.aspx");
+                //JSHelper.AlertThenRedirect("处理成功！", "ServiceManage.aspx");
                 //.Text = sc.ServiceCategory_name;
             }
         }
@@ -215,7 +216,8 @@ public partial class BackStage_RecycleService : System.Web.UI.Page
                     }
                 }
         }
-        JSHelper.AlertThenRedirect("处理成功！", "ServiceManage.aspx");
+        Server.Transfer("RecycleService.aspx");
+        //JSHelper.AlertThenRedirect("处理成功！", "ServiceManage.aspx");
     }
 
     protected void ltbSearch_Click(object sender, EventArgs e)
@@ -240,6 +242,7 @@ public partial class BackStage_RecycleService : System.Web.UI.Page
                     }
                 }
         }
-        JSHelper.AlertThenRedirect("恢复成功！", "ServiceManage.aspx");
+        Server.Transfer("RecycleService.aspx");
+        //JSHelper.AlertThenRedirect("恢复成功！", "ServiceManage.aspx");
     }
 }

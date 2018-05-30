@@ -49,7 +49,8 @@ public partial class BackStage_RecycleEducationSourse : System.Web.UI.Page
                 var src = db.EducateSource.SingleOrDefault(a => a.id == id);
                 src.is_deleted = 0;
                 db.SaveChanges();
-                Response.Write("<script>alert('恢复成功！');location.href='RecycleEducationSourse.aspx';</script>");
+                Server.Transfer("RecycleEducationSourse.aspx");
+                //Response.Write("<script>alert('恢复成功！');location.href='RecycleEducationSourse.aspx';</script>");
             }
         }
     }
@@ -214,7 +215,8 @@ public partial class BackStage_RecycleEducationSourse : System.Web.UI.Page
                 }
             }
         }
-        Response.Write("<script>alert('恢复成功！');location.href='RecycleEducationSourse.aspx';</script>");
+        Server.Transfer("RecycleEducationSourse.aspx");
+        //Response.Write("<script>alert('恢复成功！');location.href='RecycleEducationSourse.aspx';</script>");
 
     }
 }

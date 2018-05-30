@@ -67,7 +67,8 @@ public partial class BackStage_ProCategoryAdd : System.Web.UI.Page
                 pro_category.summary = summary;
                 db.ProjectCategory.Add(pro_category);
                 db.SaveChanges();
-                Response.Write("<script>alert('提交成功！');location.href='ProCategoryList.aspx';</script>");
+                //Response.Write("<script>alert('提交成功！');location.href='ProCategoryList.aspx';</script>");
+                Server.Transfer("ProCategoryList.aspx");
             }
         }
     }

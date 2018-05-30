@@ -52,7 +52,8 @@ public partial class BackStage_ActivityCatagoryManage : System.Web.UI.Page
                 cate.ActivityCategory_name = category;
                 db.ActivityCategory.Add(cate);
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("添加成功！", "ActivityCatagoryManage.aspx");
+                Server.Transfer("ActivityCatagoryManage.aspx");
+                //JSHelper.AlertThenRedirect("添加成功！", "ActivityCatagoryManage.aspx");
                 //Server.Transfer("ActivityCatagoryManage.aspx");
             }
     }
@@ -72,7 +73,8 @@ public partial class BackStage_ActivityCatagoryManage : System.Web.UI.Page
                 ActivityCategory sc = db.ActivityCategory.Single(a => a.ActivityCategory_id == id);
                 sc.ActivityCategory_name = txtChange.Text;
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("修改成功！", "ActivityCatagoryManage.aspx");
+                Server.Transfer("ActivityCatagoryManage.aspx");
+//                JSHelper.AlertThenRedirect("修改成功！", "ActivityCatagoryManage.aspx");
             }
     }
 

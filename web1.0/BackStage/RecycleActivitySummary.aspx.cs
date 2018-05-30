@@ -37,7 +37,8 @@ public partial class BackStage_RecycleActivitySummary : System.Web.UI.Page
                 
                 db.ActivitySummary.Remove(asu);
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("删除成功！", "RecycleActivitySummary.aspx");
+                Server.Transfer("RecycleActivitySummary.aspx");
+                //JSHelper.AlertThenRedirect("删除成功！", "RecycleActivitySummary.aspx");
             }
         }
         if (e.CommandName == "Recycle")
@@ -48,7 +49,8 @@ public partial class BackStage_RecycleActivitySummary : System.Web.UI.Page
                 ActivitySummary asu = db.ActivitySummary.Single(a => a.ActivitySummary_id == id);
                 asu.ActivitySummary_isdeleted = 0;
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("恢复成功！", "ActivitySummaryManage.aspx");
+                Server.Transfer("RecycleActivitySummary.aspx");
+                //JSHelper.AlertThenRedirect("恢复成功！", "ActivitySummaryManage.aspx");
             }
         }
     }

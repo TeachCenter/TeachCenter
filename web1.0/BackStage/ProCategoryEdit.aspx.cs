@@ -92,7 +92,8 @@ public partial class BackStage_ProCategoryEdit : System.Web.UI.Page
                 pro_category.judge_end_time = judge_time;
                 pro_category.summary = summary;
                 db.SaveChanges();
-                Response.Write("<script>alert('修改成功！');location.href='ProCategoryList.aspx';</script>");
+                Server.Transfer("ProCategoryList.aspx");
+                //Response.Write("<script>alert('修改成功！');location.href='ProCategoryList.aspx';</script>");
             }
         }
     }

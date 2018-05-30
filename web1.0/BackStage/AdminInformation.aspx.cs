@@ -50,7 +50,8 @@ public partial class BackStage_AdminInformation : System.Web.UI.Page
                 admin.Admin_emai = email;
                 admin.Admin_emai_check = 0;
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("修改成功！", "AdminInformation.aspx");
+                Server.Transfer("AdminInformation.aspx");
+                //JSHelper.AlertThenRedirect("修改成功！", "AdminInformation.aspx");
             }
         }
     }
@@ -86,7 +87,8 @@ public partial class BackStage_AdminInformation : System.Web.UI.Page
             {
                 admin.Admin_emai_check = 1;
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("验证成功！", "AdminInformation.aspx");
+                Server.Transfer("AdminInformation.aspx");
+                //JSHelper.AlertThenRedirect("验证成功！", "AdminInformation.aspx");
             }
                 
          }
@@ -141,7 +143,8 @@ public partial class BackStage_AdminInformation : System.Web.UI.Page
             Admin admin = db.Admin.Single(a => a.Admin_id == teacher);
             admin.Admin_pwd = PwdHelper.MD5(txtNewPwd.Text);
             db.SaveChanges();
-            JSHelper.AlertThenRedirect("修改成功！", "AdminInformation.aspx");
+            Server.Transfer("AdminInformation.aspx");
+            //JSHelper.AlertThenRedirect("修改成功！", "AdminInformation.aspx");
         }
     }
 

@@ -48,7 +48,8 @@ public partial class Display_EditPwd : System.Web.UI.Page
             {
                 teacher.password = PwdHelper.MD5(newpwd);
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("修改成功！", "EditInfo.aspx");
+                Server.Transfer("EditInfo.aspx");
+                //JSHelper.AlertThenRedirect("修改成功！", "EditInfo.aspx");
             }
         }
     }

@@ -66,7 +66,8 @@ public partial class BackStage_ProCategoryContent : System.Web.UI.Page
                     category.end_time = txtTime.Text;
                     category.judge_end_time = txtJudgeTime.Text;
                     db.SaveChanges();
-                    Response.Write("<script>alert('开放成功！');location.href='ProCategoryList.aspx';</script>");
+                    //Response.Write("<script>alert('开放成功！');location.href='ProCategoryList.aspx';</script>");
+                    Server.Transfer("ProCategoryList.aspx");
                 }                
             }
             else

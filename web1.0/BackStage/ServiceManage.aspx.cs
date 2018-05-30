@@ -63,6 +63,7 @@ public partial class BackStage_ServiceManage : System.Web.UI.Page
             //绑定序号
             Literal literal = (Literal)e.Item.FindControl("ltNumber");
             literal.Text = (e.Item.ItemIndex + 1).ToString();
+            Label lb = (Label)e.Item.FindControl("lbCate");
             //绑定申请人
             try
             {
@@ -72,6 +73,14 @@ public partial class BackStage_ServiceManage : System.Web.UI.Page
             catch
             {
                 literal.Text = "";
+            }
+            try
+            {
+                lb.Text =ServiceHelper.getCategoryName(Convert.ToInt32(lb.Text));
+            }
+            catch
+            {
+                lb.Text = "";
             }
             LinkButton lbt = (LinkButton)e.Item.FindControl("lbtSet");
             if (lbt.Text.ToString() == "0")
@@ -94,7 +103,8 @@ public partial class BackStage_ServiceManage : System.Web.UI.Page
                 service.Service_isdeleted = 1;
                 service.Service_deletedtime = DateTime.Now;
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("删除成功！", "ServiceManage.aspx");
+                //JSHelper.AlertThenRedirect("删除成功！", "ServiceManage.aspx");
+                Server.Transfer("ServiceManage.aspx");
             }
         }
         //修改分类
@@ -202,7 +212,8 @@ public partial class BackStage_ServiceManage : System.Web.UI.Page
                     }
                 }
         }
-        JSHelper.AlertThenRedirect("删除成功！", "ServiceManage.aspx");
+        Server.Transfer("ServiceManage.aspx");
+        //JSHelper.AlertThenRedirect("删除成功！", "ServiceManage.aspx");
     }
     //批量处理
     protected void lbtSet_Click(object sender, EventArgs e)
@@ -222,7 +233,8 @@ public partial class BackStage_ServiceManage : System.Web.UI.Page
                     }
                 }
         }
-        JSHelper.AlertThenRedirect("处理成功！", "ServiceManage.aspx");
+        Server.Transfer("ServiceManage.aspx");
+        //JSHelper.AlertThenRedirect("处理成功！", "ServiceManage.aspx");
     }
 
     protected void ltbSearch_Click(object sender, EventArgs e)
@@ -295,7 +307,8 @@ public partial class BackStage_ServiceManage : System.Web.UI.Page
             sc.Service_isdeal = 1;
             sc.Service_reply = txtReply.Text;
             db.SaveChanges();
-            JSHelper.AlertThenRedirect("处理成功！", "ServiceManage.aspx");
+            Server.Transfer("ServiceManage.aspx");
+//            JSHelper.AlertThenRedirect("处理成功！", "ServiceManage.aspx");
         }
     }
 }

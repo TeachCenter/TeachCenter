@@ -38,7 +38,8 @@ public partial class BackStage_EduSrcAdd : System.Web.UI.Page
                 src.summary = summary;
                 db.EducateSource.Add(src);
                 db.SaveChanges();
-                Response.Write("<script>alert('提交成功！');location.href='EduSrcList.aspx';</script>");
+                Server.Transfer("EduSrcList.aspx");
+                //                Response.Write("<script>alert('提交成功！');location.href='EduSrcList.aspx';</script>");
             }
         }
     }

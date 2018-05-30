@@ -102,7 +102,7 @@ public partial class BackStage_DevelopEditor : System.Web.UI.Page
                     dev.Develop_deleted = 0;
                     //db.Develop.Add(dev);
                     db.SaveChanges();
-                    JSHelper.ShowAlert("修改成功！");
+                    //JSHelper.ShowAlert("修改成功！");
                     //JSHelper.Redirect("DevelopManage.aspx");
                     Server.Transfer("DevelopManage.aspx");
                 }
@@ -143,7 +143,8 @@ public partial class BackStage_DevelopEditor : System.Web.UI.Page
                         acsu.Develop_path = serverpath;
                         db.SaveChanges();
                     }
-                    JSHelper.AlertThenRedirect("修改成功！", "DevelopManage.aspx");
+                    Server.Transfer("DevelopManage.aspx");
+//                    JSHelper.AlertThenRedirect("修改成功！", "DevelopManage.aspx");
                 }
             }
         }

@@ -89,7 +89,8 @@ public partial class Display_JudgePro : System.Web.UI.Page
                 record.comment = message;
                 record.is_pass = is_pass;
                 db.SaveChanges();
-                Response.Write("<script>alert('提交评审结果成功！');location.href='MyJudgePro.aspx';</script>");
+                Server.Transfer("'MyJudgePro.aspx");
+                //Response.Write("<script>alert('提交评审结果成功！');location.href='MyJudgePro.aspx';</script>");
             }
         }
     }

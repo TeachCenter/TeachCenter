@@ -51,7 +51,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>登陆</title>
 	<link rel="stylesheet" href="../Display/css/init.css">
 
 	<script type="text/javascript"  src="jquery-3.2.1.min.js"></script>
