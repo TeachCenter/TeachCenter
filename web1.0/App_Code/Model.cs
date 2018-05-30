@@ -172,10 +172,10 @@ public partial class PasswordCode
 public partial class Picture
 {
     public int Picture_id { get; set; }
-    public string Picture_title { get; set; }
-    public string Picture_link { get; set; }
     public string Picture_path { get; set; }
     public int is_top { get; set; }
+    public string Picture_title { get; set; }
+    public string Picture_link { get; set; }
     public string Picture_summary { get; set; }
 }
 

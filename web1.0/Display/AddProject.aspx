@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Document</title>
+    <title>添加项目</title>
 	<link rel="stylesheet" href="css/personal-center-init.css" />
     <link rel="stylesheet" href="css/centerMobile.css">
 	<script type="text/javascript"  src="./js/jquery-3.1.1.min.js"></script>

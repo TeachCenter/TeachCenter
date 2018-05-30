@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>修改信息</title>
 	<link rel="stylesheet" href="css/personal-center-init.css" />
 	<script type="text/javascript"  src="./js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript"  src="./js/personal-center-init.js"></script>
@@ -75,10 +75,23 @@
 				<p class="error tel-error"></p>
                 <h3 class="necessary">*必填</h3>
 			</div>
-			<div class="clearfix">
+            <input type="hidden" id="lbSelectedRank" runat="server"/>
+			<div class="clearfix" style="position:relative;">
 				<h2>职称:</h2>
-				<asp:TextBox ID="txtRank" runat="server" class="same position"></asp:TextBox>
-				<p class="error position-error"></p>
+				<div class="aA1" style="width:30px;height:50px;position:absolute;left: 623px;top: 8px;background-color:#E6E6E6;z-index:10;"> <img src="./images/bottom.png" alt="Alternate Text" style="position:absolute;top:23px;" /></div>
+				<ul class="down1 clearfix" style="width:500px;">                                    
+                     <li class="select-true1" style="position:relative">
+                         <asp:Label ID="rank" runat="server"></asp:Label>
+                     </li>
+                     <ul class="select-box ohaha1 clearfix">
+                         <asp:Repeater ID="rptRank" runat="server">
+                            <ItemTemplate>
+                                <li class="select1  select1 ixixi"><asp:Label ID="lbSelectRank" runat="server" Text='<%#Eval("rank") %>'></asp:Label></li>
+                            </ItemTemplate>
+                        </asp:Repeater>
+					 </ul>				
+				</ul>
+				<p class="error organization-error"></p>
                 <h3 class="necessary">*必填</h3>
 
 			</div>
@@ -92,7 +105,7 @@
                      <li class="select-true" style="position:relative">
                          <asp:Label ID="depart" runat="server"></asp:Label>
                      </li>
-                     <ul class="select-box clearfix">
+                     <ul class="select-box ohaha clearfix">
                          <asp:Repeater ID="rptSelect" runat="server">
                             <ItemTemplate>
                                 <li class="select select"><asp:Label ID="lbSelect" runat="server" Text='<%#Eval("department") %>'></asp:Label></li>

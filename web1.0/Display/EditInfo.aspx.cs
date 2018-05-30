@@ -25,6 +25,10 @@ public partial class Display_EditInfo : System.Web.UI.Page
                 rptSelect.DataSource = dt;
                 rptSelect.DataBind();
 
+                DataTable dt_rank = RankHelper.getRank();
+                rptRank.DataSource = dt_rank;
+                rptRank.DataBind();
+
                 int teacher_id = 1;
                 if (Session["TeacherNumber"] != null)
                     teacher_id = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
@@ -37,11 +41,14 @@ public partial class Display_EditInfo : System.Web.UI.Page
                     txtNumber.Text = teacher.number;
                     txtEmail.Text = teacher.email;
                     txtPhone.Text = teacher.phone_number;
-                    txtRank.Text = teacher.rank;
                     if (teacher.department != "")
                         depart.Text = teacher.department;
                     else
                         depart.Text = "请选择院系";
+                    if (teacher.rank != "")
+                        rank.Text = teacher.rank;
+                    else
+                        rank.Text = "请选择职称";
                     lbType.Text = teacher.is_judge == 0 ? "教师" : "评委";
                     if (teacher.is_judge == 1)
                         applyJudge.Visible = false;
@@ -49,6 +56,8 @@ public partial class Display_EditInfo : System.Web.UI.Page
                     gender.Value = teacher.gender.ToString();
                     HtmlInputHidden department = FindControl("lbSelected") as HtmlInputHidden;
                     department.Value = teacher.department;
+                    HtmlInputHidden rank_ = FindControl("lbSelectedRank") as HtmlInputHidden;
+                    rank_.Value = teacher.rank;
                 }
             }
         }
@@ -100,11 +109,12 @@ public partial class Display_EditInfo : System.Web.UI.Page
         string name = txtName.Text;
         HtmlInputHidden gender = FindControl("gender") as HtmlInputHidden;
         HtmlInputHidden depart = FindControl("lbSelected") as HtmlInputHidden;
+        HtmlInputHidden rank_ = FindControl("lbSelectedRank") as HtmlInputHidden;
         string sex = gender.Value;
         string number = txtNumber.Text;
         string email = txtEmail.Text;
         string phone = txtPhone.Text;
-        string rank = txtRank.Text;
+        string rank = rank_.Value;
         string department = depart.Value;
         if(name.Length == 0)
             Response.Write("<script>alert('姓名不能为空！');</script>");
@@ -116,7 +126,7 @@ public partial class Display_EditInfo : System.Web.UI.Page
             Response.Write("<script>alert('邮箱不能为空！');</script>");
         else if (phone.Length == 0)
             Response.Write("<script>alert('手机不能为空！');</script>");
-        else if (rank.Length == 0)
+        else if (rank == "")
             Response.Write("<script>alert('职称不能为空！');</script>");
         else if (department == "")
             Response.Write("<script>alert('院系不能为空！');</script>");

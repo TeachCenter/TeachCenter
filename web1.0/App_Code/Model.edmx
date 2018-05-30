@@ -142,10 +142,10 @@
             <PropertyRef Name="Picture_id" />
           </Key>
           <Property Name="Picture_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Picture_title" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Picture_link" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="Picture_path" Type="nvarchar(max)" Nullable="false" />
           <Property Name="is_top" Type="int" Nullable="false" />
+          <Property Name="Picture_title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Picture_link" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="Picture_summary" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Project">
@@ -672,10 +672,10 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
             <PropertyRef Name="Picture_id" />
           </Key>
           <Property Name="Picture_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Picture_title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Picture_link" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Picture_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="is_top" Type="Int32" Nullable="false" />
+          <Property Name="Picture_title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Picture_link" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Picture_summary" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="Project">
@@ -1196,10 +1196,10 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
             <EntityTypeMapping TypeName="TeachingCenterModel.Picture">
               <MappingFragment StoreEntitySet="Picture">
                 <ScalarProperty Name="Picture_id" ColumnName="Picture_id" />
-                <ScalarProperty Name="Picture_title" ColumnName="Picture_title" />
-                <ScalarProperty Name="Picture_link" ColumnName="Picture_link" />
                 <ScalarProperty Name="Picture_path" ColumnName="Picture_path" />
                 <ScalarProperty Name="is_top" ColumnName="is_top" />
+                <ScalarProperty Name="Picture_title" ColumnName="Picture_title" />
+                <ScalarProperty Name="Picture_link" ColumnName="Picture_link" />
                 <ScalarProperty Name="Picture_summary" ColumnName="Picture_summary" />
               </MappingFragment>
             </EntityTypeMapping>

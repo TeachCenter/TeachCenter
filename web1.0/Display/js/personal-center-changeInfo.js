@@ -9,8 +9,9 @@ function log() {
         $(".female").css({ "background-color": "#E6E6E6" })
     }
     var reg;
-    var flag = [false, false, false, false, false, false, false];
+    var flag = [false, false, false, false, false, false, false, false];
     var flagUpDown = false;
+    var flagUpDown1 = false;
     $(".name").on({
         focus: function () {
             if (!flag[0]) {
@@ -110,16 +111,17 @@ function log() {
     })
     $(".down").click(function () {
         console.log("666")
+
         if ((!$(this).is(':animated'))) {
             if (flagUpDown == false) {
                 $(".aA").css({ "display": "none" })
-                $(".select-box").css({ "display": "block" })
+                $(".ohaha").css({ "display": "block" })
                 $(this).animate({ "height": 200 }, 400)
                 flagUpDown = true;
             }
             else {
                 $(".aA").css({ "display": "block" })
-                $(".select-box").css({ "display": "none" })
+                $(".ohaha").css({ "display": "none" })
                 $(this).animate({ "height": 50 }, 400)
 
 
@@ -129,17 +131,18 @@ function log() {
 
 
     })
+  
     $(".aA").click(function () {
         if ((!$(".down").is(':animated'))) {
             if (flagUpDown == false) {
                 $(".aA").css({ "display": "none" })
-                $(".select-box").css({ "display": "block" })
+                $(".ohaha").css({ "display": "block" })
                 $(".down").animate({ "height": 200 }, 400)
                 flagUpDown = true;
             }
             else {
                 $(".aA").css({ "display": "block" })
-                $(".select-box").css({ "display": "none" })
+                $(".ohaha").css({ "display": "none" })
                 $(".down").animate({ "height": 50 }, 400)
 
                 flagUpDown = false;
@@ -193,6 +196,7 @@ function log() {
                 j = i;
             }
         }
+
         $("#Selected").val($("#rptSelect_selectID_" + j).val());
 
         console.log($("#lbSelected").val())
@@ -202,6 +206,68 @@ function log() {
 
         flag[6] = true;
     })
+    $(".ixixi").click(function () {
+        var this_ = $(this);
+        var i = 0;
+        var j = 0;
+        $(".select-true1").text(this_.text())
+        //$(".lbSelected").val(this_.text())
+        $("#lbSelectedRank").val(this_.text())
+        $("#lbSelectedRank").val(this_.text());
+        for (i = 0; i < $(".ixixi").length; i++) {
 
+            if ($(".ixixi").eq(i).text() == this_.text()) {
+                j = i;
+            }
+        }
+
+        $("#SelectedRank").val($("#rptSelectRank_selectID_" + j).val());
+
+        console.log($("#lbSelected").val())
+        console.log($("#rptSelect_selectID_" + j).val())
+        console.log($("#Selected").val())
+
+
+        flag[7] = true;
+    });
+
+    $(".down1").click(function () {
+        console.log("666")
+        if ((!$(this).is(':animated'))) {
+            if (flagUpDown1 == false) {
+                $(".aA1").css({ "display": "none" })
+                $(".ohaha1").css({ "display": "block" })
+                $(this).animate({ "height": 200 }, 400)
+                flagUpDown1 = true;
+            }
+            else {
+                $(".aA1").css({ "display": "block" })
+                $(".ohaha1").css({ "display": "none" })
+                $(this).animate({ "height": 50 }, 400)
+
+
+                flagUpDown1 = false;
+            }
+        }
+    })
+    $(".aA1").click(function () {
+        if ((!$(".down1").is(':animated'))) {
+            if (flagUpDown1 == false) {
+                $(".aA1").css({ "display": "none" })
+                $(".ohaha1").css({ "display": "block" })
+                $(".down1").animate({ "height": 200 }, 400)
+                flagUpDown1 = true;
+            }
+            else {
+                $(".aA1").css({ "display": "block" })
+                $(".ohaha1").css({ "display": "none" })
+                $(".down1").animate({ "height": 50 }, 400)
+
+                flagUpDown1 = false;
+            }
+        }
+
+
+    })
 }
 log();

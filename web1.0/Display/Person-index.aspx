@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>个人主页</title>
 	<link rel="stylesheet" href="css/personal-center-init.css">
 	<link rel="stylesheet" href="css/personal-center-index.css">
   <link rel="stylesheet" href="css/centerMobile.css">

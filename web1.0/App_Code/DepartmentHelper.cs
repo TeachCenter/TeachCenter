@@ -62,6 +62,10 @@ public class DepartmentHelper
         newRow20["department"] = "基础教学中心";
         DataRow newRow21 = dt.NewRow();
         newRow21["department"] = "马克思主义学院";
+        DataRow newRow22 = dt.NewRow();
+        newRow22["department"] = "机关部处";
+        DataRow newRow23 = dt.NewRow();
+        newRow23["department"] = "其他";
         dt.Rows.Add(newRow1);
         dt.Rows.Add(newRow2);
         dt.Rows.Add(newRow3);
@@ -83,6 +87,8 @@ public class DepartmentHelper
         dt.Rows.Add(newRow19);
         dt.Rows.Add(newRow20);
         dt.Rows.Add(newRow21);
+        dt.Rows.Add(newRow22);
+        dt.Rows.Add(newRow23);
         return dt;
     }
 }
