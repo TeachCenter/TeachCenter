@@ -63,7 +63,8 @@ public partial class BackStage_ActivitySummaryEditor : System.Web.UI.Page
                         acsu.ActivitySummary_author = "未知";
 
                     db.SaveChanges();
-                    JSHelper.AlertThenRedirect("修改成功！", "ActivitySummaryManage.aspx");
+                    Server.Transfer("ActivitySummaryManage.aspx");
+                    //JSHelper.AlertThenRedirect("修改成功！", "ActivitySummaryManage.aspx");
                 }
             }
             catch 
@@ -101,7 +102,8 @@ public partial class BackStage_ActivitySummaryEditor : System.Web.UI.Page
                         acsu.ActivitySummary_cover = serverpath;
                         db.SaveChanges();
                     }
-                    JSHelper.AlertThenRedirect("修改成功！", "ActivitySummaryManage.aspx");
+                    Server.Transfer("ActivitySummaryManage.aspx");
+                    //JSHelper.AlertThenRedirect("修改成功！", "ActivitySummaryManage.aspx");
                 }
             }
         }

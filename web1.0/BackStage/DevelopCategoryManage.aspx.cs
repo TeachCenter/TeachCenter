@@ -54,7 +54,8 @@ public partial class BackStage_DevelopCategoryManage : System.Web.UI.Page
                 cate.DevelopCategory_name = category;
                 db.DevelopCategory.Add(cate);
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("添加成功！", "DevelopCategoryManage.aspx");
+                Server.Transfer("DevelopCategoryManage.aspx");
+                //                JSHelper.AlertThenRedirect("添加成功！", "DevelopCategoryManage.aspx");
             }
     }
 
@@ -94,7 +95,8 @@ public partial class BackStage_DevelopCategoryManage : System.Web.UI.Page
                     DevelopCategory sc = db.DevelopCategory.Single(a => a.DevelopCategory_id == id);
                     db.DevelopCategory.Remove(sc);
                     db.SaveChanges();
-                    JSHelper.AlertThenRedirect("删除成功！", "DevelopCategoryManage.aspx");
+                    Server.Transfer("DevelopCategoryManage.aspx");
+//                    JSHelper.AlertThenRedirect("删除成功！", "DevelopCategoryManage.aspx");
                 }
 
             }

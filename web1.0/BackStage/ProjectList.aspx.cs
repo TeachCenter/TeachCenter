@@ -56,7 +56,8 @@ public partial class BackStage_ProjectList : System.Web.UI.Page
                 project.is_deleted = 1;
                 project.deletedtime = DateTime.Now;
                 db.SaveChanges();
-                Response.Write("<script>alert('删除成功！');location.href='ProjectList.aspx';</script>");
+                //Response.Write("<script>alert('删除成功！');location.href='ProjectList.aspx';</script>");
+                Server.Transfer("ProjectList.aspx");
             }
         }
     }

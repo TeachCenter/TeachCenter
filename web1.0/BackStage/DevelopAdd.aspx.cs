@@ -87,7 +87,7 @@ public partial class BackStage_DevelopAdd : System.Web.UI.Page
                             dev.Develop_deleted = 0;
                             db.Develop.Add(dev);
                             db.SaveChanges();
-                            JSHelper.ShowAlert("发布成功！");
+                            //JSHelper.ShowAlert("发布成功！");
                             //JSHelper.Redirect("DevelopManage.aspx");
                             Server.Transfer("DevelopManage.aspx");
                         }

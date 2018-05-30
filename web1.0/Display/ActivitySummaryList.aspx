@@ -132,7 +132,8 @@
           	for(i=0;i<data[2].length;i++)
           	{
           	    var content = $("<a>").addClass("passage").addClass("clearfix").attr("href", (data[2][i].ActivitySummary_href + data[2][i].ActivitySummary_id)).appendTo($(".passage-content"));
-          		$("<h2>").text(data[2][i].ActivitySummary_title).appendTo(content);
+          	    //data[2][i].ActivitySummary_title.indexOf("举办")
+          	    $("<h2>").text(data[2][i].ActivitySummary_title).appendTo(content);
           		var pContent=$("<div>").appendTo(content);
           		$("<p>").text(data[2][i].ActivitySummary_content).appendTo(pContent);
           		$("<h3>").text("发布人："+data[2][i].ActivitySummary_author+" 发布时间："+data[2][i].ActivitySummary_time+" 浏览次数："+data[2][i].ActivitySummary_hit).appendTo(content);

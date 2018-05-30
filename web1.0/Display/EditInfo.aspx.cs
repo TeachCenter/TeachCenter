@@ -134,7 +134,8 @@ public partial class Display_EditInfo : System.Web.UI.Page
                 teacher.department = department;
                 teacher.rank = rank;
                 db.SaveChanges();
-                Response.Write("<script>alert('修改成功！');location.href='EditInfo.aspx';</script>");
+                Server.Transfer("EditInfo.aspx");
+                //Response.Write("<script>alert('修改成功！');location.href='EditInfo.aspx';</script>");
             }
         }       
     }

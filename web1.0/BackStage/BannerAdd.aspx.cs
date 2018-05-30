@@ -64,7 +64,8 @@ public partial class BackStage_BannerAdd : System.Web.UI.Page
                     int max = Convert.ToInt32((from it in db.Picture orderby it.is_top descending select it.is_top).FirstOrDefault());
                     banner.is_top = max + 1;
                     db.SaveChanges();
-                    Response.Write("<script>alert('添加成功！');location.href='BannerList.aspx';</script>");
+                    Server.Transfer("BannerList.aspx");
+                    //Response.Write("<script>alert('添加成功！');location.href='BannerList.aspx';</script>");
                 }               
             }
         }

@@ -90,8 +90,8 @@ public partial class Display_AddProject : System.Web.UI.Page
                 project_stage.is_pass = -2;
                 db.ProjectStage.Add(project_stage);
                 db.SaveChanges();
-
-                Response.Write("<script>alert('新建项目成功！');location.href='MyProject.aspx?pageNumber=1';</script>");
+                Server.Transfer("MyProject.aspx?pageNumber=1");
+                //Response.Write("<script>alert('新建项目成功！');location.href='MyProject.aspx?pageNumber=1';</script>");
             }
         }
 

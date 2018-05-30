@@ -53,7 +53,8 @@ public partial class BackStage_ServiceCategoryManage : System.Web.UI.Page
                 cate.ServiceCategory_name = category;
                 db.ServiceCategory.Add(cate);
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("添加成功！", "ServiceCategoryManage.aspx");
+                //JSHelper.AlertThenRedirect("添加成功！", "ServiceCategoryManage.aspx");
+                Server.Transfer("ServiceCategoryManage.aspx");
             }
     }
 
@@ -72,7 +73,8 @@ public partial class BackStage_ServiceCategoryManage : System.Web.UI.Page
                 ServiceCategory sc = db.ServiceCategory.Single(a => a.ServiceCategory_id == id);
                 sc.ServiceCategory_name = txtChange.Text;
                 db.SaveChanges();
-                JSHelper.AlertThenRedirect("修改成功！", "ServiceCategoryManage.aspx");
+                //JSHelper.AlertThenRedirect("修改成功！", "ServiceCategoryManage.aspx");
+                Server.Transfer("ServiceCategoryManage.aspx");
             }
     }
 
@@ -92,8 +94,8 @@ public partial class BackStage_ServiceCategoryManage : System.Web.UI.Page
                     ServiceCategory sc = db.ServiceCategory.Single(a => a.ServiceCategory_id == id);
                     db.ServiceCategory.Remove(sc);
                     db.SaveChanges();
-                    JSHelper.AlertThenRedirect("删除成功！", "ServiceCategoryManage.aspx");
-
+                    //JSHelper.AlertThenRedirect("删除成功！", "ServiceCategoryManage.aspx");
+                    Server.Transfer("ServiceCategoryManage.aspx");
                 }
 
             }
@@ -146,7 +148,8 @@ public partial class BackStage_ServiceCategoryManage : System.Web.UI.Page
 
                         }
                 }
-                JSHelper.AlertThenRedirect("删除成功！", "ServiceCategoryManage.aspx");
+                //JSHelper.AlertThenRedirect("删除成功！", "ServiceCategoryManage.aspx");
+                Server.Transfer("ServiceCategoryManage.aspx");
             }
 
         }

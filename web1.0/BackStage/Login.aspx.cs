@@ -48,7 +48,7 @@ public partial class BackStage_Login : System.Web.UI.Page
                         //    CookieHelper.SetCookie("AdminID", txtID.Text, DateTime.Now.AddDays(30));
                         //    CookieHelper.SetCookie("AdminPwd", txtPwd.Text, DateTime.Now.AddDays(30));
                         //}
-                        JSHelper.ShowAlert("登陆成功");
+                        //JSHelper.ShowAlert("登陆成功");
                         Session["AdminID"] = id;
                         Server.Transfer("Index.aspx");
                     }

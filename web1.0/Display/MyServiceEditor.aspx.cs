@@ -53,7 +53,8 @@ public partial class Display_MyServiceEditor : System.Web.UI.Page
                     ser.Service_phone = phone;
                     ser.Service_remarks = intro;
                     db.SaveChanges();
-                    JSHelper.AlertThenRedirect("修改成功！", "MyServiceList.aspx");
+                    Server.Transfer("'MyServiceList.aspx");
+                    //JSHelper.AlertThenRedirect("修改成功！", "MyServiceList.aspx");
                 }
             }
             catch

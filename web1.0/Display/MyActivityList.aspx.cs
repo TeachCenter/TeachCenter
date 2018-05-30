@@ -71,7 +71,7 @@ public partial class Display_MyActivityList : System.Web.UI.Page
 
                 ac.Activity_nowcount--;
                 db.SaveChanges();
-                JSHelper.ShowAlert("取消成功！");
+                //JSHelper.ShowAlert("取消成功！");
                 JSHelper.js("window.location.reload();");
             }
         }
