@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <link rel="stylesheet" href="css/progect-pdf.css">
     <link rel="stylesheet" href="css/intro.css">
-     
+    
     <script>
         $(document).ready(function () {
             var id = window.location.search.substr(4);
@@ -17,15 +17,15 @@
             <span class="leftLine"></span>
             <div class="center clearfix ">
                
-                    <div class="brief-intro-box brief-intro-boxl" style="height:1350px;">
+                    <div class="brief-intro-box brief-intro-boxl">
 
                         <h1 class="brief-intro"></h1>
                         <span class="brief-intro-line"></span>
                         <h2 class="publish"></h2>
                         <div class="p-box">
-
+                            <div class="url-box-box"></div>
                         </div>
-                        <div class="url-box" style="position:absolute;top:1220px;left:140px;" ></div>
+                        
                     </div>
                 
             </div>
@@ -45,7 +45,7 @@
             success: function (data) {
                 $(".brief-intro").text(data.title)
                 $(".publish").text("发布时间：" + data.publish_time + "  结束时间：" + data.end_time).appendTo($(".brief-intro-boxx"))
-                $(data.body).appendTo($(".url-box"))
+                $(data.body).appendTo($(".url-box-box"))
 
             }
 
@@ -63,6 +63,7 @@
         $(document).ready(function () {
             var id = window.location.search.substr(4);
             $("<iframe>").addClass("pdf").attr("src", "pdfJs/generic/web/viewer.html?id=" + id).appendTo($(".content"));
+//            $("<iframe>").addClass("pdf").attr("src", "pdfJs/generic/web/viewer.html?id=" + id).insertBefore($(".content"));
         })
 
     </script>
