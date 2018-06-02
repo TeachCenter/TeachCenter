@@ -11,7 +11,28 @@ public partial class BackStage_ProCategoryAdd : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         if(Session["AdminID"].ToString() == null)
-            JSHelper.AlertThenRedirect("请先登录！", "Login.aspx");
+            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+        if (!IsPostBack)
+        {
+            try
+            {
+                string teacher = Session["AdminID"].ToString();
+                using (var db = new TeachingCenterEntities())
+                {
+                    var cate = from it in db.ProCatCategory select it;
+
+                    dropCategory.DataSource = cate.ToList();
+
+                    dropCategory.DataTextField = "ProCatCategory_name";
+
+                    dropCategory.DataBind();
+                }
+            }
+            catch
+            {
+                JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+            }
+        }
     }
 
     protected bool UpLoadFile()
@@ -57,6 +78,7 @@ public partial class BackStage_ProCategoryAdd : System.Web.UI.Page
             {
                 ProjectCategory pro_category = new ProjectCategory();
                 pro_category.name = name;
+                pro_category.category = getId(dropCategory.SelectedValue);
                 pro_category.project_file = "file/" + project_file;
                 pro_category.project_content = project_content;
                 pro_category.stage = 0;
@@ -70,6 +92,15 @@ public partial class BackStage_ProCategoryAdd : System.Web.UI.Page
                 //Response.Write("<script>alert('提交成功！');location.href='ProCategoryList.aspx';</script>");
                 Server.Transfer("ProCategoryList.aspx");
             }
+        }
+    }
+
+    public static int getId(string name)
+    {
+        using (var db = new TeachingCenterEntities())
+        {
+            ProCatCategory pc = db.ProCatCategory.Single(a => a.ProCatCategory_name == name);
+            return pc.ProCatCategory_id;
         }
     }
 }

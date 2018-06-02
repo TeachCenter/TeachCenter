@@ -136,6 +136,9 @@ public partial class EducateSource
     public int is_deleted { get; set; }
     public Nullable<System.DateTime> deletedtime { get; set; }
     public string summary { get; set; }
+    public int category { get; set; }
+
+    public virtual SourceCategory SourceCategory { get; set; }
 }
 
 public partial class FriendsLink
@@ -179,6 +182,19 @@ public partial class Picture
     public string Picture_summary { get; set; }
 }
 
+public partial class ProCatCategory
+{
+    public ProCatCategory()
+    {
+        this.ProjectCategory = new HashSet<ProjectCategory>();
+    }
+
+    public int ProCatCategory_id { get; set; }
+    public string ProCatCategory_name { get; set; }
+
+    public virtual ICollection<ProjectCategory> ProjectCategory { get; set; }
+}
+
 public partial class Project
 {
     public Project()
@@ -220,7 +236,9 @@ public partial class ProjectCategory
     public string publish_time { get; set; }
     public Nullable<System.DateTime> deletedtime { get; set; }
     public string summary { get; set; }
+    public int category { get; set; }
 
+    public virtual ProCatCategory ProCatCategory { get; set; }
     public virtual ICollection<Project> Project { get; set; }
 }
 
@@ -293,6 +311,28 @@ public partial class ServiceCategory
     public string ServiceCategory_name { get; set; }
 
     public virtual ICollection<Service> Service { get; set; }
+}
+
+public partial class SourceCategory
+{
+    public SourceCategory()
+    {
+        this.EducateSource = new HashSet<EducateSource>();
+    }
+
+    public int SourceCategory_id { get; set; }
+    public string SourceCategory_name { get; set; }
+
+    public virtual ICollection<EducateSource> EducateSource { get; set; }
+}
+
+public partial class sysdiagrams
+{
+    public string name { get; set; }
+    public int principal_id { get; set; }
+    public int diagram_id { get; set; }
+    public Nullable<int> version { get; set; }
+    public byte[] definition { get; set; }
 }
 
 public partial class Teacher

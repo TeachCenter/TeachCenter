@@ -59,7 +59,10 @@ public partial class Display_ProjectContent : System.Web.UI.Page
                     //txtOutofTime.Text = "已超过提交时间";
                 }
                 else
-                    txtReslut.Text = "尚未评判结果";          
+                {
+                    txtReslut.Text = "尚未评判结果";
+                    btnEdit.Visible = true;
+                }                        
             }
         }
         catch
@@ -88,5 +91,11 @@ public partial class Display_ProjectContent : System.Web.UI.Page
     {
         Session.Remove("TeacherNumber");
         JSHelper.AlertThenRedirect("注销成功！", "main-index.aspx");
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        int id = Convert.ToInt32(Request.QueryString["id"]);
+        Response.Write("<script>location.href='EditProject.aspx?id=" + id + "';</script>");
     }
 }

@@ -42,11 +42,13 @@
 				    <tr class="text-c">
 					    <th width="25"><input type="checkbox" runat="server" id="isDeleteMore"></th>
 					    <th width="200">项目类型名称</th>
+                        <th width="120">分类名称</th>
 					    <th width="120">内容摘要</th>
 					    <th width="120">当前阶段</th>
                         <th width="120">截止时间</th>
                         <th width="120">删除</th>
                         <th width="120">编辑</th>
+                        <th width="120">开放下一阶段</th>
 				    </tr>
 			    </thead>
 			    <tbody>
@@ -55,12 +57,14 @@
 				            <tr class="text-c">
 					            <td><input type="checkbox" runat="server" id="isDelete"></td>					
 					            <td class="text-l"><u style="cursor:pointer" class="text-primary")" title="查看"><a href="ProCategoryContent.aspx?id=<%# Eval("id")%>"><%# Eval("name")%></a></u><input type="hidden" runat="server" id="id" value=<%# Eval("id")%> /></td>	
+                                <td><%# getCategoryName(Convert.ToInt32(Eval("category"))) %></td>
                                 <td><%# Eval("summary").ToString().Length > 35?Eval("summary").ToString().Substring(0,35):Eval("summary").ToString()%></td>
                                 <%--<td><%# UeditorHelper.NoHTML(Server.HtmlDecode(Eval("project_content").ToString())) %><input type="hidden" runat="server" id="id" value=<%# Eval("id")%> /></td>--%>
 					            <td><%# AdminHelper.judgeStage(Convert.ToInt32(Eval("stage")))%></td>
 					            <td><%# Eval("end_time") %></td>
                                 <td class="f-14 td-manage"><asp:LinkButton ID="lbtDelete" runat="server" CssClass="ml-5" CommandName="Delete" CommandArgument='<%# Eval("id")%>' OnClientClick="return confirm('确定删除?')">删除<i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton></td>
                                 <td class="f-14 td-manage"><a style="text-decoration:none" class="ml-5" href='<%#"ProCategoryEdit.aspx?id="+ Eval("id") %>' title="编辑">编辑</a></td>
+                                <td class="f-14 td-manage"><asp:LinkButton ID="lbtOpen" runat="server" CssClass="ml-5" CommandName="open" CommandArgument='<%# Eval("id")%>'>开放下一阶段</asp:LinkButton></td>
 				            </tr>
                         </ItemTemplate>
                     </asp:Repeater>
@@ -77,6 +81,13 @@
 				转 <asp:TextBox ID="turnTopage" runat ="server" MaxLength ="5" onkeyup="this.value=this.value.replace(/\D/g,'')" style="width:30px" class="input-text"></asp:TextBox>
                 <asp:LinkButton ID ="Jump" runat ="server" Text ="Go" onclick="Jump_Click" CssClass="btn btn-primary radius"></asp:LinkButton>                                       
 			</div>
+
+            <asp:Panel ID="plOpen" runat ="server" Visible="false">
+            <input type="hidden" id="pro_id" runat="server" value=""/>
+            截止时间：<asp:TextBox runat="server" Text="" onfocus="WdatePicker({})" ID="txtTime" class="input-text Wdate" style="width:120px;"></asp:TextBox><br />
+            评审截止时间：<asp:TextBox runat="server" Text="" onfocus="WdatePicker({})" ID="txtJudgeTime" class="input-text Wdate" style="width:120px;"></asp:TextBox>
+            <asp:Button ID="btnSubmit" runat="server" Text="确认开放" OnClick="btnSubmit_Click" CssClass="btn btn-primary radius" style="margin-top:15px;"/>
+        </asp:Panel>
 </div>
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 

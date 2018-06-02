@@ -48,6 +48,12 @@
 			</div>
 		</div>
         <div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">分类名称：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+                <asp:Literal ID="lbCategory" runat="server" ></asp:Literal> 
+			</div>
+		</div>
+        <div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">项目类型文件：</label>
             <div id="divPdf" class="formControls col-xs-8 col-sm-9"> 
                 <asp:Literal ID="Literal1" runat="server" ></asp:Literal> 
@@ -79,12 +85,12 @@
                 <asp:Literal ID="lbTime" runat="server" ></asp:Literal> 
 			</div>
 		</div>
-        <asp:Button ID="btnOpen" runat="server" OnClick="btnOpen_Click" CssClass="btn btn-primary radius" style="margin-top:15px;"/>
+       <%-- <asp:Button ID="btnOpen" runat="server" OnClick="btnOpen_Click" CssClass="btn btn-primary radius" style="margin-top:15px;"/>
         <asp:Panel ID="plOpen" runat ="server" Visible="false">
             截止时间：<asp:TextBox runat="server" Text="" onfocus="WdatePicker({})" ID="txtTime" class="input-text Wdate" style="width:120px;"></asp:TextBox><br />
             评审截止时间：<asp:TextBox runat="server" Text="" onfocus="WdatePicker({})" ID="txtJudgeTime" class="input-text Wdate" style="width:120px;"></asp:TextBox>
             <asp:Button ID="btnSubmit" runat="server" Text="确认开放" OnClick="btnSubmit_Click" CssClass="btn btn-primary radius" style="margin-top:15px;"/>
-        </asp:Panel>
+        </asp:Panel>--%>
         <script type="text/javascript">
             //判断标题不能为空
             $("#txtTitle").focusout(function () {

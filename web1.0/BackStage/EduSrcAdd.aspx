@@ -46,6 +46,13 @@
 			</div>
 		</div>
         <div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>类型：</label>
+			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+                <asp:DropDownList runat="server" ID="dropCategory" CssClass="select">
+                </asp:DropDownList></span>
+			</div>
+		</div>
+        <div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>内容摘要：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<asp:TextBox ID="txtSummary" runat="server" CssClass="input-text" MaxLength="100"></asp:TextBox>

@@ -128,6 +128,7 @@
 					<li><a data-href="ProCategoryList.aspx" data-title="项目分类管理" href="javascript:void(0)">项目分类管理</a></li>
                     <li><a data-href="ProCategoryAdd.aspx" data-title="添加项目分类" href="javascript:void(0)">添加项目分类</a></li>
                     <li><a data-href="ProjectList.aspx" data-title="项目管理" href="javascript:void(0)">项目管理</a></li>
+                    <li><a data-href="ProCatManage.aspx" data-title="项目类型分类管理" href="javascript:;">项目类型分类管理</a></li>
                    <%-- <li><a data-href="ProjectJudge.aspx" data-title="评审结果" href="javascript:void(0)">评审结果</a></li>
                     --%>
                 
@@ -152,6 +153,7 @@
 				<ul>
 					<li><a data-href="EduSrcList.aspx" data-title="教学资源管理" href="javascript:;">教学资源管理</a></li>
 					<li><a data-href="EduSrcAdd.aspx" data-title="添加教学资源" href="javascript:;">添加教学资源</a></li>
+                    <li><a data-href="SrcCatManage.aspx" data-title="教学资源分类管理" href="javascript:;">教学资源分类管理</a></li>
 					
 			</ul>
 		</dd>

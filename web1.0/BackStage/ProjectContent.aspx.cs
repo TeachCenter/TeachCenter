@@ -45,15 +45,15 @@ public partial class BackStage_ProjectContent : System.Web.UI.Page
                     lbContent.Text = Server.HtmlDecode(project_stage.project_content);
                     string fund = (from it in db.Project where it.project_id == id select it).FirstOrDefault().fund;
                     lbFund.Text = fund;
-                    if (now_status == -2)
-                        btnDeliver.Visible = true;
-                    if (now_status == -1)
-                        btnJudge.Visible = true;
+                    //if (now_status == -2)
+                    //    btnDeliver.Visible = true;
+                    //if (now_status == -1)
+                    //    btnJudge.Visible = true;
 
                     // 绑定评审列表
-                    var judge = from it in db.Teacher where it.is_judge == 1 select it;
-                    rptJudge.DataSource = judge.ToList();
-                    rptJudge.DataBind();
+                    //var judge = from it in db.Teacher where it.is_judge == 1 select it;
+                    //rptJudge.DataSource = judge.ToList();
+                    //rptJudge.DataBind();
                 }
             }
         }
@@ -65,50 +65,50 @@ public partial class BackStage_ProjectContent : System.Web.UI.Page
 
     protected void btnDeliver_Click(object sender, EventArgs e)
     {
-        Judge.Visible = true;
+        //Judge.Visible = true;
     }
 
-    protected void btnCheck_Click(object sender, EventArgs e)
-    {
-        int project_id = 0;
-        if (Request.QueryString["id"] != null)
-            project_id = Convert.ToInt32(Request.QueryString["id"]);
-        Dictionary<string, int> stage = new Dictionary<string, int>();
-        stage.Add("初审",0);
-        stage.Add("中期",1);
-        stage.Add( "结题",2);
-        int stage_number = Convert.ToInt32(stage[lbStage.Text]);
-        using (var db = new TeachingCenterEntities())
-        {
-            foreach (RepeaterItem item in rptJudge.Items)
-            {
-                HtmlInputCheckBox isDelete = item.FindControl("isDelete") as HtmlInputCheckBox;
-                HtmlInputHidden judge_id = item.FindControl("id") as HtmlInputHidden;
-                int id = Convert.ToInt32(judge_id.Value);
-                if (isDelete.Checked == true)
-                {
-                    ProjectJudge data = new ProjectJudge();
-                    var project = db.Project.SingleOrDefault(a => a.project_id == project_id);
-                    data.project_id = project_id;
-                    data.category = project.category;
-                    data.teacher_id = project.teacher_id;
-                    data.judge_id = id;
-                    var judge = db.Teacher.SingleOrDefault(a => a.id == id);
-                    var project_stage = (from it in db.ProjectStage where it.project_id == project_id orderby it.stage descending select it).FirstOrDefault();
-                    data.stage = project_stage.stage;
-                    data.comment = "";
-                    data.is_pass = -1;
-                    db.ProjectJudge.Add(data);
-                    db.SaveChanges();
-                    var update = db.ProjectStage.SingleOrDefault(a => a.project_id == project_id && a.stage == data.stage);
-                    update.is_pass = -1;
-                    db.SaveChanges();
-                    Server.Transfer("ProjectList.aspx");
-                    //Response.Write("<script>alert('已成功分配给评审！');location.href='ProjectList.aspx';</script>");
-                }
-            }
-        }
-    }
+    //protected void btnCheck_Click(object sender, EventArgs e)
+    //{
+    //    int project_id = 0;
+    //    if (Request.QueryString["id"] != null)
+    //        project_id = Convert.ToInt32(Request.QueryString["id"]);
+    //    Dictionary<string, int> stage = new Dictionary<string, int>();
+    //    stage.Add("初审",0);
+    //    stage.Add("中期",1);
+    //    stage.Add( "结题",2);
+    //    int stage_number = Convert.ToInt32(stage[lbStage.Text]);
+    //    using (var db = new TeachingCenterEntities())
+    //    {
+    //        foreach (RepeaterItem item in rptJudge.Items)
+    //        {
+    //            HtmlInputCheckBox isDelete = item.FindControl("isDelete") as HtmlInputCheckBox;
+    //            HtmlInputHidden judge_id = item.FindControl("id") as HtmlInputHidden;
+    //            int id = Convert.ToInt32(judge_id.Value);
+    //            if (isDelete.Checked == true)
+    //            {
+    //                ProjectJudge data = new ProjectJudge();
+    //                var project = db.Project.SingleOrDefault(a => a.project_id == project_id);
+    //                data.project_id = project_id;
+    //                data.category = project.category;
+    //                data.teacher_id = project.teacher_id;
+    //                data.judge_id = id;
+    //                var judge = db.Teacher.SingleOrDefault(a => a.id == id);
+    //                var project_stage = (from it in db.ProjectStage where it.project_id == project_id orderby it.stage descending select it).FirstOrDefault();
+    //                data.stage = project_stage.stage;
+    //                data.comment = "";
+    //                data.is_pass = -1;
+    //                db.ProjectJudge.Add(data);
+    //                db.SaveChanges();
+    //                var update = db.ProjectStage.SingleOrDefault(a => a.project_id == project_id && a.stage == data.stage);
+    //                update.is_pass = -1;
+    //                db.SaveChanges();
+    //                Server.Transfer("ProjectList.aspx");
+    //                //Response.Write("<script>alert('已成功分配给评审！');location.href='ProjectList.aspx';</script>");
+    //            }
+    //        }
+    //    }
+    //}
 
     protected void btnJudge_Click(object sender, EventArgs e)
     {

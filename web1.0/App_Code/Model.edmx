@@ -103,6 +103,7 @@
           <Property Name="is_deleted" Type="int" Nullable="false" />
           <Property Name="deletedtime" Type="datetime" />
           <Property Name="summary" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="category" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="FriendsLink">
           <Key>
@@ -148,6 +149,13 @@
           <Property Name="Picture_link" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="Picture_summary" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <EntityType Name="ProCatCategory">
+          <Key>
+            <PropertyRef Name="ProCatCategory_id" />
+          </Key>
+          <Property Name="ProCatCategory_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProCatCategory_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Project">
           <Key>
             <PropertyRef Name="project_id" />
@@ -176,6 +184,7 @@
           <Property Name="publish_time" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="deletedtime" Type="datetime" />
           <Property Name="summary" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="category" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ProjectJudge">
           <Key>
@@ -225,6 +234,23 @@
           </Key>
           <Property Name="ServiceCategory_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ServiceCategory_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SourceCategory">
+          <Key>
+            <PropertyRef Name="SourceCategory_id" />
+          </Key>
+          <Property Name="SourceCategory_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SourceCategory_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Teacher">
           <Key>
@@ -336,6 +362,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EducateSource_SourceCategory">
+          <End Role="SourceCategory" Type="Self.SourceCategory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EducateSource" Type="Self.EducateSource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SourceCategory">
+              <PropertyRef Name="SourceCategory_id" />
+            </Principal>
+            <Dependent Role="EducateSource">
+              <PropertyRef Name="category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_JudgeApplication_Teacher">
           <End Role="Teacher" Type="Self.Teacher" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -375,6 +415,20 @@
             </Principal>
             <Dependent Role="Project">
               <PropertyRef Name="teacher_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectCategory_ProCatCategory">
+          <End Role="ProCatCategory" Type="Self.ProCatCategory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProjectCategory" Type="Self.ProjectCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProCatCategory">
+              <PropertyRef Name="ProCatCategory_id" />
+            </Principal>
+            <Dependent Role="ProjectCategory">
+              <PropertyRef Name="category" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -448,12 +502,15 @@
           <EntitySet Name="JudgeApplication" EntityType="Self.JudgeApplication" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PasswordCode" EntityType="Self.PasswordCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Picture" EntityType="Self.Picture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProCatCategory" EntityType="Self.ProCatCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProjectCategory" EntityType="Self.ProjectCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProjectJudge" EntityType="Self.ProjectJudge" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProjectStage" EntityType="Self.ProjectStage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServiceCategory" EntityType="Self.ServiceCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SourceCategory" EntityType="Self.SourceCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicationInfo" EntityType="Self.ApplicationInfo" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -493,6 +550,10 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
             <End Role="DevelopCategory" EntitySet="DevelopCategory" />
             <End Role="Develop" EntitySet="Develop" />
           </AssociationSet>
+          <AssociationSet Name="FK_EducateSource_SourceCategory" Association="Self.FK_EducateSource_SourceCategory">
+            <End Role="SourceCategory" EntitySet="SourceCategory" />
+            <End Role="EducateSource" EntitySet="EducateSource" />
+          </AssociationSet>
           <AssociationSet Name="FK_JudgeApplication_Teacher" Association="Self.FK_JudgeApplication_Teacher">
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="JudgeApplication" EntitySet="JudgeApplication" />
@@ -504,6 +565,10 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <AssociationSet Name="FK_Project_Teacher" Association="Self.FK_Project_Teacher">
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectCategory_ProCatCategory" Association="Self.FK_ProjectCategory_ProCatCategory">
+            <End Role="ProCatCategory" EntitySet="ProCatCategory" />
+            <End Role="ProjectCategory" EntitySet="ProjectCategory" />
           </AssociationSet>
           <AssociationSet Name="FK_ProjectJudge_Project" Association="Self.FK_ProjectJudge_Project">
             <End Role="Project" EntitySet="Project" />
@@ -632,6 +697,8 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="is_deleted" Type="Int32" Nullable="false" />
           <Property Name="deletedtime" Type="DateTime" Precision="3" />
           <Property Name="summary" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="category" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SourceCategory" Relationship="Self.FK_EducateSource_SourceCategory" FromRole="EducateSource" ToRole="SourceCategory" />
         </EntityType>
         <EntityType Name="FriendsLink">
           <Key>
@@ -678,6 +745,14 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="Picture_link" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Picture_summary" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
+        <EntityType Name="ProCatCategory">
+          <Key>
+            <PropertyRef Name="ProCatCategory_id" />
+          </Key>
+          <Property Name="ProCatCategory_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProCatCategory_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ProjectCategory" Relationship="Self.FK_ProjectCategory_ProCatCategory" FromRole="ProCatCategory" ToRole="ProjectCategory" />
+        </EntityType>
         <EntityType Name="Project">
           <Key>
             <PropertyRef Name="project_id" />
@@ -710,6 +785,8 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="publish_time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="deletedtime" Type="DateTime" Precision="3" />
           <Property Name="summary" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="category" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ProCatCategory" Relationship="Self.FK_ProjectCategory_ProCatCategory" FromRole="ProjectCategory" ToRole="ProCatCategory" />
           <NavigationProperty Name="Project" Relationship="Self.FK_Project_ProjectCategory" FromRole="ProjectCategory" ToRole="Project" />
         </EntityType>
         <EntityType Name="ProjectJudge">
@@ -765,6 +842,24 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <Property Name="ServiceCategory_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ServiceCategory_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Service" Relationship="Self.FK_Service_ServiceCategory" FromRole="ServiceCategory" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="SourceCategory">
+          <Key>
+            <PropertyRef Name="SourceCategory_id" />
+          </Key>
+          <Property Name="SourceCategory_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SourceCategory_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="EducateSource" Relationship="Self.FK_EducateSource_SourceCategory" FromRole="SourceCategory" ToRole="EducateSource" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Teacher">
           <Key>
@@ -876,6 +971,20 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EducateSource_SourceCategory">
+          <End Role="SourceCategory" Type="Self.SourceCategory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EducateSource" Type="Self.EducateSource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SourceCategory">
+              <PropertyRef Name="SourceCategory_id" />
+            </Principal>
+            <Dependent Role="EducateSource">
+              <PropertyRef Name="category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_JudgeApplication_Teacher">
           <End Role="Teacher" Type="Self.Teacher" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -887,6 +996,20 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
             </Principal>
             <Dependent Role="JudgeApplication">
               <PropertyRef Name="teacher_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectCategory_ProCatCategory">
+          <End Role="ProCatCategory" Type="Self.ProCatCategory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProjectCategory" Type="Self.ProjectCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProCatCategory">
+              <PropertyRef Name="ProCatCategory_id" />
+            </Principal>
+            <Dependent Role="ProjectCategory">
+              <PropertyRef Name="category" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -988,12 +1111,15 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
           <EntitySet Name="JudgeApplication" EntityType="Self.JudgeApplication" />
           <EntitySet Name="PasswordCode" EntityType="Self.PasswordCode" />
           <EntitySet Name="Picture" EntityType="Self.Picture" />
+          <EntitySet Name="ProCatCategory" EntityType="Self.ProCatCategory" />
           <EntitySet Name="Project" EntityType="Self.Project" />
           <EntitySet Name="ProjectCategory" EntityType="Self.ProjectCategory" />
           <EntitySet Name="ProjectJudge" EntityType="Self.ProjectJudge" />
           <EntitySet Name="ProjectStage" EntityType="Self.ProjectStage" />
           <EntitySet Name="Service" EntityType="Self.Service" />
           <EntitySet Name="ServiceCategory" EntityType="Self.ServiceCategory" />
+          <EntitySet Name="SourceCategory" EntityType="Self.SourceCategory" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" />
           <EntitySet Name="ApplicationInfo" EntityType="Self.ApplicationInfo" />
           <EntitySet Name="ProjectInfo" EntityType="Self.ProjectInfo" />
@@ -1013,9 +1139,17 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
             <End Role="DevelopCategory" EntitySet="DevelopCategory" />
             <End Role="Develop" EntitySet="Develop" />
           </AssociationSet>
+          <AssociationSet Name="FK_EducateSource_SourceCategory" Association="Self.FK_EducateSource_SourceCategory">
+            <End Role="SourceCategory" EntitySet="SourceCategory" />
+            <End Role="EducateSource" EntitySet="EducateSource" />
+          </AssociationSet>
           <AssociationSet Name="FK_JudgeApplication_Teacher" Association="Self.FK_JudgeApplication_Teacher">
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="JudgeApplication" EntitySet="JudgeApplication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectCategory_ProCatCategory" Association="Self.FK_ProjectCategory_ProCatCategory">
+            <End Role="ProCatCategory" EntitySet="ProCatCategory" />
+            <End Role="ProjectCategory" EntitySet="ProjectCategory" />
           </AssociationSet>
           <AssociationSet Name="FK_Project_ProjectCategory" Association="Self.FK_Project_ProjectCategory">
             <End Role="ProjectCategory" EntitySet="ProjectCategory" />
@@ -1152,6 +1286,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
                 <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
                 <ScalarProperty Name="deletedtime" ColumnName="deletedtime" />
                 <ScalarProperty Name="summary" ColumnName="summary" />
+                <ScalarProperty Name="category" ColumnName="category" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1204,6 +1339,14 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ProCatCategory">
+            <EntityTypeMapping TypeName="TeachingCenterModel.ProCatCategory">
+              <MappingFragment StoreEntitySet="ProCatCategory">
+                <ScalarProperty Name="ProCatCategory_id" ColumnName="ProCatCategory_id" />
+                <ScalarProperty Name="ProCatCategory_name" ColumnName="ProCatCategory_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Project">
             <EntityTypeMapping TypeName="TeachingCenterModel.Project">
               <MappingFragment StoreEntitySet="Project">
@@ -1232,6 +1375,7 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
                 <ScalarProperty Name="publish_time" ColumnName="publish_time" />
                 <ScalarProperty Name="deletedtime" ColumnName="deletedtime" />
                 <ScalarProperty Name="summary" ColumnName="summary" />
+                <ScalarProperty Name="category" ColumnName="category" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1285,6 +1429,25 @@ FROM [dbo].[ProjectInfo] AS [ProjectInfo]</DefiningQuery>
               <MappingFragment StoreEntitySet="ServiceCategory">
                 <ScalarProperty Name="ServiceCategory_id" ColumnName="ServiceCategory_id" />
                 <ScalarProperty Name="ServiceCategory_name" ColumnName="ServiceCategory_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SourceCategory">
+            <EntityTypeMapping TypeName="TeachingCenterModel.SourceCategory">
+              <MappingFragment StoreEntitySet="SourceCategory">
+                <ScalarProperty Name="SourceCategory_id" ColumnName="SourceCategory_id" />
+                <ScalarProperty Name="SourceCategory_name" ColumnName="SourceCategory_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TeachingCenterModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

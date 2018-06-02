@@ -36,12 +36,15 @@ public partial class TeachingCenterEntities : DbContext
     public DbSet<JudgeApplication> JudgeApplication { get; set; }
     public DbSet<PasswordCode> PasswordCode { get; set; }
     public DbSet<Picture> Picture { get; set; }
+    public DbSet<ProCatCategory> ProCatCategory { get; set; }
     public DbSet<Project> Project { get; set; }
     public DbSet<ProjectCategory> ProjectCategory { get; set; }
     public DbSet<ProjectJudge> ProjectJudge { get; set; }
     public DbSet<ProjectStage> ProjectStage { get; set; }
     public DbSet<Service> Service { get; set; }
     public DbSet<ServiceCategory> ServiceCategory { get; set; }
+    public DbSet<SourceCategory> SourceCategory { get; set; }
+    public DbSet<sysdiagrams> sysdiagrams { get; set; }
     public DbSet<Teacher> Teacher { get; set; }
     public DbSet<ApplicationInfo> ApplicationInfo { get; set; }
     public DbSet<ProjectInfo> ProjectInfo { get; set; }

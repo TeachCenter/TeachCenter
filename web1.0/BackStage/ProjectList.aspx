@@ -49,7 +49,8 @@
 					    <th width="80">提交者</th>
                         <th width="80">当前状态</th>
 					    <th width="120">提交时间</th>
-                        <th width="120">操作</th>
+                        <th width="120">删除</th>
+                        <th width="120">处理</th>
 				    </tr>
 			    </thead>
 			    <tbody>
@@ -64,6 +65,7 @@
                                 <td><%# getStage(Eval("project_id").ToString()) %></td>
 					            <td><%# Eval("submit_time") %></td>
                                 <td class="f-14 td-manage"><asp:LinkButton ID="lbtDelete" runat="server" CssClass="ml-5" CommandName="Delete" CommandArgument='<%#Eval("project_id") %>' OnClientClick="return confirm('确定删除?')">删除<i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton></td>
+                                <td class="f-14 td-manage"><asp:LinkButton ID="lbtDiliver" runat="server" CssClass="ml-5" CommandName="Diliver" CommandArgument='<%#Eval("project_id") %>' >处理</asp:LinkButton></td>
 				            </tr>
                         </ItemTemplate>
                     </asp:Repeater>
@@ -81,6 +83,29 @@
                 <asp:LinkButton ID ="Jump" runat ="server" Text ="Go" onclick="Jump_Click" CssClass="btn btn-primary radius"></asp:LinkButton>                                       
 			</div>
             <asp:Button ID="btnExport" runat="server" Text="导出Excel" OnClick="btnExport_Click" CssClass="btn btn-primary radius" style="margin-top: 15px;"  />
+
+            <asp:Panel ID="Judge" Visible ="false" runat="server" style="width:1200px;">
+            <input type="hidden" runat="server" id="pro_id" value="" />
+            <table class="table table-border table-bordered table-bg table-hover table-responsive">
+			    <thead>
+				    <tr class="text-c">
+					    <th width="25"> </th>
+					    <th width="300">评委姓名</th>
+				    </tr>
+			    </thead>
+			    <tbody>
+                    <asp:Repeater ID="rptJudge" runat="server">
+                        <ItemTemplate>
+				            <tr class="text-c">
+					            <td><input type="checkbox" runat="server" id="isDeleted" ></td>					
+					            <td><%# Eval("name")%><input type="hidden" runat="server" id="id" value=<%# Eval("id")%> /></td>
+				            </tr>
+                        </ItemTemplate>
+                    </asp:Repeater>
+			    </tbody>
+		    </table>
+            <asp:Button ID="btnCheck" runat="server" Text="确认分配" OnClientClick="return confirm('确定将该项目分配给选中的评审?')" OnClick="btnCheck_Click" CssClass="btn btn-primary radius" style="margin-top:15px;"/>
+        </asp:Panel>
 </div>
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 

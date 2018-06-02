@@ -97,13 +97,13 @@
                 <asp:Literal ID="lbContent" runat="server" ></asp:Literal> 
 			</div>
 		</div>
-		<div class="row cl">
+		<%--<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
                 <asp:Button ID="btnDeliver" runat="server" CssClass="btn btn-primary radius" OnClick="btnDeliver_Click" Text="分配评审" Visible="false" style="margin-bottom:15px;" />
                 <asp:Button ID="btnJudge" runat="server" CssClass="btn btn-primary radius" OnClick="btnJudge_Click" Text="评判结果" Visible="false" style="margin-bottom:15px;" />			
 			</div>
-		</div>
-        <asp:Panel ID="Judge" runat="server" Visible="false" style="width:1200px;">
+		</div>--%>
+        <%--<asp:Panel ID="Judge" runat="server" Visible="false" style="width:1200px;">
             <table class="table table-border table-bordered table-bg table-hover table-responsive">
 			    <thead>
 				    <tr class="text-c">
@@ -123,7 +123,7 @@
 			    </tbody>
 		    </table>
             <asp:Button ID="btnCheck" runat="server" Text="确认分配" OnClientClick="return confirm('确定将该项目分配给选中的评审?')" OnClick="btnCheck_Click" CssClass="btn btn-primary radius" style="margin-top:15px;"/>
-        </asp:Panel>
+        </asp:Panel>--%>
         <script type="text/javascript">
             //判断标题不能为空
             $("#txtTitle").focusout(function () {

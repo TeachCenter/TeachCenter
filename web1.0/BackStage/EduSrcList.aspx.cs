@@ -195,4 +195,13 @@ public partial class BackStage_EduSrcList : System.Web.UI.Page
         rptSource.DataSource = ls.Skip(10 * (page - 1)).Take(10);
         rptSource.DataBind();
     }
+
+    public static string getCategoryName(int id)
+    {
+        using (var db = new TeachingCenterEntities())
+        {
+            SourceCategory sc = db.SourceCategory.Single(a => a.SourceCategory_id == id);
+            return sc.SourceCategory_name;
+        }
+    }
 }
