@@ -102,15 +102,14 @@
                     //$("<h3>").text("发布人：" + data[2][i].Activity_author + " 发布时间：" + data[2][i].Activity_time.substr(0, 10) + " 浏览次数：" + data[2][i].Activity_hit).appendTo(content);
                     //$("<a>").attr("href", (data[2][i].Activity_href + data[2][i].Activity_id)).text("查看文章").appendTo(content);
                     let item = `
-                        <img src="images/1231.png">
-                        <div>
+
 	                                <h2>${data[2][i].Activity_title}</h2>
 	                                <div>
 		                                <p>${data[2][i].Activity_content}</p>
 	                                </div>
 	                                <h3>发布人：${data[2][i].Activity_author} 发布时间：${data[2][i].Activity_time.substr(0, 10)}  浏览次数：${ data[2][i].Activity_hit}</h3>
 	                                <a href=${(data[2][i].Activity_href +data[2][i].Activity_id)}>查看文章</a>
-                        </div>
+                        
                                `;
                     content.html(item);
                 }
