@@ -62,6 +62,7 @@
                     <th width="120">活动地点</th>
                     <th width="80">当前人数</th>
                     <th width="80">限制人数</th>
+                    <th width="80">查看名单</th>
                     <th width="120">活动类型</th>
 					<th >内容</th>
 					<th width="120">操作</th>
@@ -81,6 +82,7 @@
                             <td><%# Eval("Activity_place") %></td>
                             <td><a href='<%# "ActivityTeacher.aspx?id="+ Eval("Activity_id")  %>'><%# Eval("Activity_nowcount") %></a></td>
                             <td><%# Eval("Activity_limitcount") %></td>
+                            <td><a href='<%# "ActivityTeacher.aspx?id="+ Eval("Activity_id")  %>'>查看名单</a></td>
                             <td><asp:Literal ID="ltCategory" runat="server" Text='<%# Eval("Activity_categoryid") %>'></asp:Literal></td>
 					        <td class="td-status"><a href='<%#"../Display/ActivityContent.aspx?id="+ Eval("Activity_id") %>' target="_blank"><asp:Literal ID="ltContent" runat="server" Text=<%# Eval("Activity_content") %>></asp:Literal></a></td>
 					        <td class="f-14 td-manage">

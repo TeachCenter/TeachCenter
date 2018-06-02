@@ -62,7 +62,7 @@ public partial class Display_JudgePro : System.Web.UI.Page
         }
         catch
         {
-            JSHelper.AlertThenRedirect("请先登陆！", "main-index.aspx");
+            JSHelper.AlertThenRedirect("请先登录！", "main-index.aspx");
         }
     }
     protected void lbtReturn_Click(object sender, EventArgs e)
@@ -89,7 +89,7 @@ public partial class Display_JudgePro : System.Web.UI.Page
                 record.comment = message;
                 record.is_pass = is_pass;
                 db.SaveChanges();
-                Server.Transfer("'MyJudgePro.aspx");
+                Server.Transfer("MyJudgePro.aspx");
                 //Response.Write("<script>alert('提交评审结果成功！');location.href='MyJudgePro.aspx';</script>");
             }
         }

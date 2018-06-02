@@ -72,7 +72,7 @@
 					        <td><asp:Literal ID="ltTeacher" runat="server" Text=<%# Eval("Service_teacher") %>></asp:Literal></td>
 					        <td><%# Eval("Service_time") %></td>
 					        <td><%# Eval("Service_phone") %></td>
-                            <td><asp:Label ID="lbCate"  runat="server" Text=<%# Eval("Service_id") %>></asp:Label>
+                            <td><asp:Label ID="lbCate"  runat="server" Text=<%# Eval("Service_category") %>></asp:Label>
                                 </td>
 					        <td><%# Eval("Service_remarks") %></td>
 					        <td class="td-status"><span class='<%# Eval("Service_isdeal").ToString()=="0"?"label label-danger radius":"label label-success radius" %>'><%# Eval("Service_isdeal").ToString()=="0"?"未处理":"已处理" %></span></td>

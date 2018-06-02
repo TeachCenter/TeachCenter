@@ -15,7 +15,7 @@ public partial class BackStage_ActivitySummaryAdd : System.Web.UI.Page
         }
         catch
         {
-            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+            JSHelper.AlertThenRedirect("请先登录！", "Login.aspx");
         }
     }
 
@@ -67,8 +67,8 @@ public partial class BackStage_ActivitySummaryAdd : System.Web.UI.Page
                                 acsu.ActivitySummary_author = "未知";
                             db.ActivitySummary.Add(acsu);
                             db.SaveChanges();
-                            //JSHelper.AlertThenRedirect("发布成功！", "ActivitySummaryManage.aspx");
-                            Server.Transfer("ActivitySummaryManage.aspx");
+                            JSHelper.AlertThenRedirect("发布成功！", "ActivitySummaryManage.aspx");
+                            //Server.Transfer("ActivitySummaryManage.aspx");
                         }
                     }
                 }

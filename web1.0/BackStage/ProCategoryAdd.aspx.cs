@@ -11,7 +11,7 @@ public partial class BackStage_ProCategoryAdd : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         if(Session["AdminID"].ToString() == null)
-            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+            JSHelper.AlertThenRedirect("请先登录！", "Login.aspx");
     }
 
     protected bool UpLoadFile()

@@ -31,7 +31,7 @@
 </head>
 <body><form runat="server">
 <div class="page-container style-admin">
-    <p class="f-20 text-success" style="font-size:30px">欢迎登陆， <span class="f-14"></span><asp:Literal ID="ltName" runat="server"></asp:Literal></p>
+    <p class="f-20 text-success" style="font-size:30px">欢迎登录， <span class="f-14"></span><asp:Literal ID="ltName" runat="server"></asp:Literal></p>
     <div></div>
     <p>用户类型：管理员</p>
     <p id="email" runat="server">您的邮箱尚未验证！<a href="AdminInformation.aspx">前去验证>></a></p>

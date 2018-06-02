@@ -322,5 +322,34 @@ function sign() {
 
 }
 search();
-log();
-sign();
+var explorer = navigator.userAgent;
+var userAgent = navigator.userAgent;
+if (window.ActiveXObject || "ActiveXObject" in window || userAgent.indexOf("Edge") > -1) {
+
+    $(".show-password").on({
+        focus: function () {
+            $(".show-password").css({ "display": "none" })
+            $(".hide-password").css({ "display": "block" })
+            if (!flag1[1]) {
+                $(".password-error").text("");
+            }
+        }
+    })
+    $(".hide-password").on({
+        focus: function () {
+            if (!flag1[1]) {
+                $(".password-error").text("");
+            }
+        },
+        blur: function () {
+           
+        }
+    })
+}
+else {
+    log();
+    sign();
+}
+
+
+

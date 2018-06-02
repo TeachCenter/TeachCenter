@@ -1,12 +1,13 @@
 
 function log() {
     if ($("#gender").val() == 0) {
-        $(".male").css({ "background-color": "#E6E6E6" })
-        $(".female").css({ "background-color": "#FFFFFF" })
-    }
-    if ($("#gender").val() == 1) {
         $(".male").css({ "background-color": "#FFFFFF" })
         $(".female").css({ "background-color": "#E6E6E6" })
+    }
+    if ($("#gender").val() == 1) {
+        $(".male").css({ "background-color": "#E6E6E6" })
+        $(".female").css({ "background-color": "#FFFFFF" })
+      
     }
     var reg;
     var flag = [false, false, false, false, false, false, false, false];
@@ -44,6 +45,7 @@ function log() {
         $("#gender").val("0");
         $(this).css({ "background-color": "#FFFFFF" })
         $(".male").css({ "background-color": "#E6E6E6" })
+       
         flag[1] = true;
         
         console.log($("#gender").val())
@@ -131,18 +133,27 @@ function log() {
 
 
     })
+    
+   
   
+    $(".down").css({ "overflow-y": "hidden" })
+    $(".down1").css({ "overflow-y": "hidden" })
     $(".aA").click(function () {
         if ((!$(".down").is(':animated'))) {
             if (flagUpDown == false) {
                 $(".aA").css({ "display": "none" })
                 $(".ohaha").css({ "display": "block" })
+                $(".down").css({ "overflow-y": "auto" })
+                $(".down1").css({ "overflow-y": "auto" })
                 $(".down").animate({ "height": 200 }, 400)
                 flagUpDown = true;
             }
             else {
                 $(".aA").css({ "display": "block" })
                 $(".ohaha").css({ "display": "none" })
+                $(".select-box").css({ "display": "none" })
+                $(".down").css({ "overflow-y": "hidden" })
+                $(".down1").css({ "overflow-y": "hidden" })
                 $(".down").animate({ "height": 50 }, 400)
 
                 flagUpDown = false;

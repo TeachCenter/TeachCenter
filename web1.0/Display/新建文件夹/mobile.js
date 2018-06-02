@@ -32,7 +32,7 @@
     $("<a>").addClass('mobileNavUlLi').text('资源').attr("href", "SrcList.aspx?pageNumber=1").appendTo($(".mobileNavUl"))
      $("<a>").addClass('mobileNavUlLi').text('活动').attr("href", "ActivityList.aspx?type=0&&page=1").appendTo($(".mobileNavUl"))
     
-    $("<a>").addClass('mobileNavUlLi').addClass('mobileNavUlLiLog').text('登陆').appendTo($(".mobileNavUl"))
+     $("<a>").addClass('mobileNavUlLi').addClass('mobileNavUlLiLog').text('登录').appendTo($(".mobileNavUl"))
    
     $("#mySlide1").css({
         "height": 4.2 + "rem"

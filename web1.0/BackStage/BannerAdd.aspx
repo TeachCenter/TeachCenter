@@ -65,10 +65,21 @@
 		</div>
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-                <asp:Button ID="btnSub" runat="server" CssClass="btn btn-primary radius" OnClick="btnSub_Click" Text="提交" />				
+                <asp:Button ID="btnSub" runat="server" CssClass="btn btn-primary radius" OnClick="btnSub_Click" Text="提交" />		
+                <asp:Label ID="lbStatus" runat="server" Text="" style="color:red;margin-left:60px" ></asp:Label>	
 			</div>
 		</div>
         <script type="text/javascript">
+            $("#btnSub").click(function () {
+                if ($("#myFileUpload")[0].size > 10)
+                {
+                    alert("上传文件不能大于10M！");
+                    return false;
+                }
+                
+                $("#lbStatus")[0].innerHTML = "正在上传中...";
+            });
+            
             //判断标题不能为空
             $("#txtTitle").focusout(function () {
                 var txtTitle = $("#txtTitle");

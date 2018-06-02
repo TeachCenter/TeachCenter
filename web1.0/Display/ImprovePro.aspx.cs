@@ -55,7 +55,7 @@ public partial class Display_ImprovePro : System.Web.UI.Page
         }
         catch
         {
-            JSHelper.AlertThenRedirect("请先登陆！", "main-index.aspx");
+            JSHelper.AlertThenRedirect("请先登录！", "main-index.aspx");
         }
     }
     protected void lbtReturn_Click(object sender, EventArgs e)

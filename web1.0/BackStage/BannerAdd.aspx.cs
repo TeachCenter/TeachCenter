@@ -49,7 +49,7 @@ public partial class BackStage_BannerAdd : System.Web.UI.Page
                 if (link.Length == 0)
                     link = "";
                 if (title.Length == 0 || summary.Length == 0)
-                    Response.Write("<script>alert('输入不能为空！');</script>");               
+                    Response.Write("<script>alert('输入不能为空！');</script>");
                 else
                 {
                     Picture picture = new Picture();
@@ -66,7 +66,7 @@ public partial class BackStage_BannerAdd : System.Web.UI.Page
                     db.SaveChanges();
                     Server.Transfer("BannerList.aspx");
                     //Response.Write("<script>alert('添加成功！');location.href='BannerList.aspx';</script>");
-                }               
+                }
             }
         }
     }

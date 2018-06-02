@@ -46,7 +46,7 @@ public class ActivityAdd_Handler : IHttpHandler {
         }
         catch (Exception e)
         {
-            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx" + e.Message);
+            JSHelper.AlertThenRedirect("请先登录！", "Login.aspx" + e.Message);
         }
     }
 

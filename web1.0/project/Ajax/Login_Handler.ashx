@@ -30,7 +30,7 @@ public class Login_Handler : IHttpHandler, IRequiresSessionState   {
                         CookieHelper.SetCookie("TeacherNumber", id, DateTime.Now.AddDays(30));
                         CookieHelper.SetCookie("TeacherPwd", pwd, DateTime.Now.AddDays(30));
                     }
-                    JSHelper.ShowAlert("登陆成功");
+                    JSHelper.ShowAlert("登录成功");
                     context.Session["TeacherNumber"] = id;
                     //context.Server.Transfer("Index.aspx");
                 }

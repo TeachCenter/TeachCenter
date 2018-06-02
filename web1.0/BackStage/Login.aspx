@@ -51,7 +51,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>登陆</title>
+	<title>登录</title>
 	<link rel="stylesheet" href="../Display/css/init.css">
 
 	<script type="text/javascript"  src="jquery-3.2.1.min.js"></script>
@@ -79,7 +79,7 @@
 		<div class="main" style="position: relative;">
 			<img src="./picture/log.png" style="display: block; width: 100%;height: 900px;" alt="">
 			<div class="log-box" style="position: absolute; left: 50%;top: 50%;background-color: #FFFFFF;margin-left: -225px;margin-top: -335px;">
-				<h1>登陆</h1>
+				<h1>登录</h1>
 				<%--<input type="text" id="txtID" runat="server" placeholder="工号" class="number gray-box" style="margin-right: 32px;">--%>
                 <asp:TextBox ID="txtID" runat="server" placeholder="工号" class="number gray-box" style="margin-right: 32px;"></asp:TextBox>
 				<p class="number-error error"></p>
