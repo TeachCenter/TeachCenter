@@ -74,7 +74,7 @@
 			</div>
 		</div>
         <div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>初审截止时间：</label>
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>提交截止时间：</label>
 			<div class="formControls col-xs-8 col-sm-9"> 
                 <asp:TextBox runat="server" Text="" onfocus="WdatePicker({})" ID="txtTime" class="input-text Wdate" style="width:120px;"></asp:TextBox>
 			</div>

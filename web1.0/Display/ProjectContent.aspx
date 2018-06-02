@@ -91,6 +91,7 @@
 				<h2>是否通过:</h2>
                 <asp:TextBox ID="txtReslut" runat="server" ReadOnly="true"></asp:TextBox>
 			</div>
+            <asp:LinkButton ID="btnEdit" runat="server" Text="修改项目" Visible="false" class="submit" OnClick="btnEdit_Click" />
 
 		
 	</div></form>

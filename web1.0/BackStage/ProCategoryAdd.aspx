@@ -45,6 +45,13 @@
 				<asp:TextBox ID="txtName" runat="server" CssClass="input-text" MaxLength="26"></asp:TextBox>
 			</div>
 		</div>
+        <div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>项目类型分类：</label>
+			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+                <asp:DropDownList runat="server" ID="dropCategory" CssClass="select">
+                </asp:DropDownList></span>
+			</div>
+		</div>
         <div id="link" class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>项目文件：</label>
 			<div class="formControls col-xs-8 col-sm-9">

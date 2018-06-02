@@ -11,6 +11,19 @@ public partial class BackStage_EduSrcAdd : System.Web.UI.Page
     {
         if(Session["AdminID"].ToString() == null)
             JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+        if (!IsPostBack)
+        {
+            using (var db = new TeachingCenterEntities())
+            {
+                var cate = from it in db.SourceCategory select it;
+
+                dropCategory.DataSource = cate.ToList();
+
+                dropCategory.DataTextField = "SourceCategory_name";
+
+                dropCategory.DataBind();
+            }
+        }            
     }
 
     protected void btnSub_Click(object sender, EventArgs e)
@@ -30,6 +43,8 @@ public partial class BackStage_EduSrcAdd : System.Web.UI.Page
             {
                 EducateSource src = new EducateSource();
                 src.title = title;
+                string cat = dropCategory.SelectedValue;
+                src.category = getId(cat);
                 src.body = body;
                 src.publisher = "系统管理员";
                 src.publish_time = DateTime.Now.ToString("yyyy-MM-dd");
@@ -41,6 +56,15 @@ public partial class BackStage_EduSrcAdd : System.Web.UI.Page
                 Server.Transfer("EduSrcList.aspx");
                 //                Response.Write("<script>alert('提交成功！');location.href='EduSrcList.aspx';</script>");
             }
+        }
+    }
+
+    public static int getId(string name)
+    {
+        using (var db = new TeachingCenterEntities())
+        {
+            SourceCategory sc = db.SourceCategory.Single(a => a.SourceCategory_name == name);
+            return sc.SourceCategory_id;
         }
     }
 }
