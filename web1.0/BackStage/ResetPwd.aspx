@@ -29,7 +29,7 @@
 <div class="page-container" style="width: 1000px;position: absolute;right:0;margin-top:115px;">
     <div>
         <span class="form-label col-xs-4 col-sm-2" style="width:180px;">请输入教师工号:</span>
-        <asp:TextBox ID="txtNumber" CssClass="input-text" style="width:250px;" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtNumber" CssClass="input-text" style="width:250px;" runat="server" MaxLength="10"></asp:TextBox>
         <asp:Button ID="btnSub" runat="server" Text="搜索" style="margin-left:20px;" CssClass="btn btn-primary radius" OnClick="btnSub_Click" />
     </div>
     

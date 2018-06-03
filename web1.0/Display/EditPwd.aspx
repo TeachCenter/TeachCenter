@@ -44,17 +44,17 @@
 		<span class="cut"></span>
 			<div class="clearfix">
 				<h2 class="name-h2">原密码:</h2>
-                <asp:TextBox ID="txtOld" runat="server" class="same name" TextMode="Password"></asp:TextBox>
+                <asp:TextBox ID="txtOld" runat="server" class="same name" TextMode="Password" MaxLength="50"></asp:TextBox>
                 <h3 class="necessary-top">*必填</h3>
 			</div>
 			<div class="clearfix">
 				<h2>新密码:</h2>
-                <asp:TextBox ID="txtNew" runat="server" class="same num" TextMode="Password"></asp:TextBox>
+                <asp:TextBox ID="txtNew" runat="server" class="same num" TextMode="Password" MaxLength="50"></asp:TextBox>
                 <h3 class="necessary">*必填</h3>
 			</div>
 			<div class="clearfix">
 				<h2>确认密码:</h2>
-				<asp:TextBox ID="txtCheck" runat="server" class="same email" TextMode="Password"></asp:TextBox>
+				<asp:TextBox ID="txtCheck" runat="server" class="same email" TextMode="Password" MaxLength="50"></asp:TextBox>
                 <h3 class="necessary">*必填</h3>
 			</div>
             <asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" Text="确认修改" class="submit"></asp:LinkButton>

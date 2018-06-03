@@ -76,7 +76,7 @@
 		<span class="cut"></span>
 			<div class="clearfix">
 				<h2 class="name-h2">项目名称:</h2>
-                <asp:TextBox ID="txtName" runat="server" class="name" ></asp:TextBox>
+                <asp:TextBox ID="txtName" runat="server" class="name" MaxLength="50"></asp:TextBox>
                 <h3 class="necessary-top">*必填</h3>
 				<p class="name-error"></p>
                 

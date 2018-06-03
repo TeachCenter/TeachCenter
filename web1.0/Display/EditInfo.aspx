@@ -59,7 +59,7 @@
 			</div>
 			<div class="clearfix">
 				<h2>工号:</h2>
-                <asp:TextBox ID="txtNumber" MaxLength="7" runat="server" class="same num"></asp:TextBox>
+                <asp:TextBox ID="txtNumber" runat="server" class="same num" MaxLength="7" ReadOnly="true"></asp:TextBox>
 				<p class="error num-error"></p>
                 <h3 class="necessary">*必填</h3>
 			</div>

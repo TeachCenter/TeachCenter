@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using System.Text.RegularExpressions;
 
 public partial class Display_EditProject : System.Web.UI.Page
 {
@@ -51,13 +52,16 @@ public partial class Display_EditProject : System.Web.UI.Page
         string name = txtName.Text;
         int teacher_id = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
         string fund = txtMoney.Text;
+        Regex numRegex = new Regex(@"^\d+$");
         string filePath = FileUp.PostedFile.FileName;
         if (name.Length == 0)
             Response.Write("<script>alert('项目名称不能为空！');</script>");
         else if (fund.Length == 0)
             Response.Write("<script>alert('资助金额不能为空！');</script>");
+        else if (!numRegex.IsMatch(fund))
+            Response.Write("<script>alert('请输入正确的资助金额！');</script>");
         //else if (UpLoadFile() == false)
-            //Response.Write("<script>alert('请上传项目文件！');</script>");
+        //Response.Write("<script>alert('请上传项目文件！');</script>");
         else
         {
             using (var db = new TeachingCenterEntities())

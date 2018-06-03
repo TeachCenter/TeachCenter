@@ -78,14 +78,14 @@
     <br />
     <div id="divAdd" runat="server" visible="false" style="width:500px;margin:0 auto;margin-top:70px">
         
-            分类名称:  <asp:TextBox ID="txtCategory"  CssClass="input-text" Width="200" runat="server"></asp:TextBox>
+            分类名称:  <asp:TextBox ID="txtCategory"  CssClass="input-text" Width="200" runat="server" MaxLength="50"></asp:TextBox>
             <asp:Button ID="btnSubAdd" runat="server" OnClick="btnSubAdd_Click"  CssClass="btn btn-primary radius" Text="添加分类" />
     </div>
     <br />
     <br />
     <div id="divEditor" runat="server" visible="false" style="width:500px;margin:0 auto;margin-top:70px">
             <asp:Label ID="lbID" runat="server" Visible="false"></asp:Label>
-            分类名称:  <asp:TextBox ID="txtChange" runat="server" CssClass="input-text" Width="200"></asp:TextBox>
+            分类名称:  <asp:TextBox ID="txtChange" runat="server" CssClass="input-text" Width="200" MaxLength="50"></asp:TextBox>
             <asp:Button ID="btnChange" runat="server" OnClick="btnChange_Click"  CssClass="btn btn-primary radius" Text="修改分类" />
     </div>
 </div>

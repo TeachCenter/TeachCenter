@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 using System.Data;
+using System.Text.RegularExpressions;
 
 public partial class Display_EditInfo : System.Web.UI.Page
 {
@@ -111,6 +112,7 @@ public partial class Display_EditInfo : System.Web.UI.Page
         HtmlInputHidden depart = FindControl("lbSelected") as HtmlInputHidden;
         HtmlInputHidden rank_ = FindControl("lbSelectedRank") as HtmlInputHidden;
         string sex = gender.Value;
+        Regex numRegex = new Regex(@"^\d+$");
         string number = txtNumber.Text;
         string email = txtEmail.Text;
         string phone = txtPhone.Text;
@@ -122,6 +124,8 @@ public partial class Display_EditInfo : System.Web.UI.Page
             Response.Write("<script>alert('请选择性别！');</script>");
         else if(number.Length == 0)
             Response.Write("<script>alert('工号不能为空！');</script>");
+        else if(!numRegex.IsMatch(number))
+            Response.Write("<script>alert('请输入正确的工号！');</script>");
         else if (email.Length == 0)
             Response.Write("<script>alert('邮箱不能为空！');</script>");
         else if (phone.Length == 0)
@@ -139,7 +143,7 @@ public partial class Display_EditInfo : System.Web.UI.Page
                 teacher.name = name;
                 teacher.gender = Convert.ToInt32(sex);
                 teacher.email = email;
-                teacher.number = number;
+                //teacher.number = number;
                 teacher.phone_number = phone;
                 teacher.department = department;
                 teacher.rank = rank;

@@ -33,7 +33,7 @@
 						</div>
 						<div class="clearfix changeable">
 							<h2>联系方式:</h2>
-							<input class="same position" type="text" id="txtPhone" runat="server" />
+							<input class="same position" type="text" id="txtPhone" runat="server" maxlength="15"/>
 							<p class="error position-error"></p>
                             <h3 class="necessary">*必填</h3>
 						</div>
