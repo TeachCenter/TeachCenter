@@ -63,10 +63,10 @@ public partial class BackStage_BannerEdit : System.Web.UI.Page
     {
         string picture_path = UpLoadFile();
         int id = Convert.ToInt32(Request.QueryString["id"].ToString());
-        if (UpLoadFile() == "")
-            Response.Write("<script>alert('请选择正确的文件！');</script>");
-        else
-        {
+        //if (UpLoadFile() == "")
+        //    Response.Write("<script>alert('请选择正确的文件！');</script>");
+        //else
+        //{
             using (var db = new TeachingCenterEntities())
             {
                 String title = txtTitle.Text;
@@ -95,6 +95,6 @@ public partial class BackStage_BannerEdit : System.Web.UI.Page
                     //Response.Write("<script>alert('修改成功！');location.href='BannerList.aspx';</script>");
                 }
             }
-        }
+        //}
     }
 }
