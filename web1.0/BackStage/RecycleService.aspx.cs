@@ -123,10 +123,10 @@ public partial class BackStage_RecycleService : System.Web.UI.Page
             if (dropCategory.SelectedValue != "全部分类")
             {
                 int category = ServiceHelper.getCategoryID(dropCategory.SelectedValue);
-                service = db.Service.Where(a => a.Service_isdeleted == 1 && a.Service_category == category && a.Service_time >= min && a.Service_time < max).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
+                service = db.Service.Where(a => a.Service_isdeleted == 1 && a.Service_category == category && a.Service_time >= min && a.Service_time <= max).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
             }
             else
-                service = db.Service.Where(a => a.Service_isdeleted == 1 && a.Service_time >= min && a.Service_time < max).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
+                service = db.Service.Where(a => a.Service_isdeleted == 1 && a.Service_time >= min && a.Service_time <= max).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
 
 
 

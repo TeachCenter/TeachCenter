@@ -95,9 +95,9 @@ public partial class BackStage_ActivitySummaryManage : System.Web.UI.Page
             if (logmax.Value != "")
                 max = Convert.ToDateTime(logmax.Value).AddDays(1);
             if(txtSearch.Text == "")
-                acsu = db.ActivitySummary.Where(a => a.ActivitySummary_isdeleted == 0 && a.ActivitySummary_time < max && a.ActivitySummary_time >= min).OrderByDescending(a => a.ActivitySummary_time).ToList();
+                acsu = db.ActivitySummary.Where(a => a.ActivitySummary_isdeleted == 0 && a.ActivitySummary_time <= max && a.ActivitySummary_time >= min).OrderByDescending(a => a.ActivitySummary_time).ToList();
             else
-                acsu = db.ActivitySummary.Where(a => a.ActivitySummary_isdeleted == 0 && a.ActivitySummary_time < max && a.ActivitySummary_time >= min && a.ActivitySummary_title.Contains(txtSearch.Text)).OrderByDescending(a => a.ActivitySummary_time).ToList();
+                acsu = db.ActivitySummary.Where(a => a.ActivitySummary_isdeleted == 0 && a.ActivitySummary_time <= max && a.ActivitySummary_time >= min && a.ActivitySummary_title.Contains(txtSearch.Text)).OrderByDescending(a => a.ActivitySummary_time).ToList();
             ltCount.Text = acsu.Count().ToString();
 
             PagedDataSource pds = new PagedDataSource();
