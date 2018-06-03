@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b110d92d9b974ec0b7900ae9662428f2" Name="Diagram1">
+      <Diagram DiagramId="b0976a3d05934f268ba88889582b5c49" Name="Diagram1">
         <EntityTypeShape EntityType="TeachingCenterModel.Activity" Width="1.5" PointX="0.75" PointY="14.625" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachingCenterModel.ActivityCategory" Width="1.5" PointX="1.5" PointY="19.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachingCenterModel.ActivitySummary" Width="1.5" PointX="10.75" PointY="8" IsExpanded="true" />
@@ -26,10 +26,9 @@
         <EntityTypeShape EntityType="TeachingCenterModel.Service" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachingCenterModel.ServiceCategory" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachingCenterModel.SourceCategory" Width="1.5" PointX="5.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachingCenterModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="16" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachingCenterModel.Teacher" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachingCenterModel.ApplicationInfo" Width="1.5" PointX="6.75" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachingCenterModel.ProjectInfo" Width="1.5" PointX="8.75" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.ApplicationInfo" Width="1.5" PointX="4.75" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachingCenterModel.ProjectInfo" Width="1.5" PointX="6.75" PointY="16" IsExpanded="true" />
         <AssociationConnector Association="TeachingCenterModel.FK_Activity_ActivityCategory" ManuallyRouted="false" />
         <AssociationConnector Association="TeachingCenterModel.FK_ActivityTeacher_Activity" ManuallyRouted="false" />
         <AssociationConnector Association="TeachingCenterModel.FK_ActivityTeacher_Teacher" ManuallyRouted="false" />

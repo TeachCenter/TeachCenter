@@ -325,7 +325,7 @@ search();
 var explorer = navigator.userAgent;
 var userAgent = navigator.userAgent;
 if (window.ActiveXObject || "ActiveXObject" in window || userAgent.indexOf("Edge") > -1) {
-
+    var flag1 = [false, false];
     $(".show-password").on({
         focus: function () {
             $(".show-password").css({ "display": "none" })
