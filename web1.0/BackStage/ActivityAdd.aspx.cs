@@ -72,8 +72,9 @@ public partial class BackStage_ActivityAdd : System.Web.UI.Page
                     ac.Activity_categoryid = ActivityHelper.getCategoryId(category);
                     db.Activity.Add(ac);
                     db.SaveChanges();
-                    Server.Transfer("ActivityManage.aspx");
-//                    JSHelper.AlertThenRedirect("发布成功！", "ActivityManage.aspx");
+                    
+//                    Server.Transfer("ActivityManage.aspx");
+                 JSHelper.AlertThenRedirect("发布成功！", "ActivityManage.aspx");
                 }
             }
             catch

@@ -27,7 +27,7 @@ public partial class BackStage_BannerEdit : System.Web.UI.Page
                     var banner = (from it in db.Picture where it.Picture_id == id select it).FirstOrDefault();
                     txtTitle.Text = banner.Picture_title;
                     txtSummary.Text = banner.Picture_summary;
-                    txtLink.Text = banner.Picture_link;
+                    txxtLink.Text = banner.Picture_link;
                     imgBanner.ImageUrl = banner.Picture_path;
                 }
             }
@@ -70,7 +70,7 @@ public partial class BackStage_BannerEdit : System.Web.UI.Page
             using (var db = new TeachingCenterEntities())
             {
                 String title = txtTitle.Text;
-                String link = txtLink.Text;
+                String link = txxtLink.Text;
                 String summary = txtSummary.Text;
                 if (link.Length == 0)
                     link = "";

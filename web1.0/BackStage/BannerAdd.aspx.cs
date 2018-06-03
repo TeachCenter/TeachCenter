@@ -37,6 +37,7 @@ public partial class BackStage_BannerAdd : System.Web.UI.Page
     protected void btnSub_Click(object sender, EventArgs e)
     {
         string picture_path = myFileUpload.PostedFile.FileName;
+        picture_path = picture_path.Split('\\')[picture_path.Split('\\').Length - 1];
         if (UpLoadFile() == false)
             Response.Write("<script>alert('请选择正确的文件！');</script>");
         else
@@ -44,7 +45,7 @@ public partial class BackStage_BannerAdd : System.Web.UI.Page
             using (var db = new TeachingCenterEntities())
             {
                 String title = txtTitle.Text;
-                String link = txtLink.Text;
+                String link = txxtLink.Text;
                 String summary = txtSummary.Text;
                 if (link.Length == 0)
                     link = "";

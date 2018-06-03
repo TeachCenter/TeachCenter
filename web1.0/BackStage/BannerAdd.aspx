@@ -54,7 +54,7 @@
         <div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">跳转链接：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<asp:TextBox ID="txtLink" runat="server" CssClass="input-text" MaxLength="50"></asp:TextBox>
+				<asp:TextBox ID="txxtLink" runat="server" CssClass="input-text" MaxLength="50"></asp:TextBox>
 			</div>
 		</div>
         <div id="link" class="row cl">
@@ -71,7 +71,7 @@
 		</div>
         <script type="text/javascript">
             $("#btnSub").click(function () {
-                if ($("#myFileUpload")[0].size > 10)
+                if ($("#myFileUpload")[0].files[0].size > 10 * 1024*1024)
                 {
                     alert("上传文件不能大于10M！");
                     return false;
@@ -287,6 +287,7 @@ $(function(){
 	
 });
 </script>
+<script src="manage.js" type="text/javascript"></script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>
 </html>

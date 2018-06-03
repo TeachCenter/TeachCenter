@@ -3,8 +3,6 @@ $(document).ready(function () {
     $("#txtSearch").attr("placeholder", " 搜标题");
 
     $("[id^=txt]").focusout(function () {
-         
-         
          if ($(this).val().length == 0) {
              $(this).val("输入不能为空");
              $(this).css("color", "red");
