@@ -35,7 +35,7 @@ $(window).resize(function(){
     else {
         w = 1200;
     }
-	$(".right-content").css({"width":w-285})
+	$(".right-content").css({"width":w-317})
 	$(".cut").css({ "width": w - 244 })
 	$("#ContentPlaceHolder1_txtFileName").css({ "width": w - 800 })
 	$("#txtFileName").css({ "width": w - 800 })

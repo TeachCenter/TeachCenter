@@ -91,9 +91,9 @@ public partial class BackStage_ActivityManage : System.Web.UI.Page
                 literal.Text = "";
             }
             //绑定内容
-            literal = (Literal)e.Item.FindControl("ltContent");
-            string content = MyHtmlHelper.RemoveTags(Server.HtmlDecode(literal.Text));
-            literal.Text = content.Length > 20 ? content.Substring(0, 20) + "..." : content;
+            //literal = (Literal)e.Item.FindControl("ltContent");
+            //string content = MyHtmlHelper.RemoveTags(Server.HtmlDecode(literal.Text));
+            //literal.Text = content.Length > 20 ? content.Substring(0, 20) + "..." : content;
         }
     }
     //分页

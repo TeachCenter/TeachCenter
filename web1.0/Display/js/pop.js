@@ -84,10 +84,10 @@ function turn(argument, direction, to) {
 function search() {
     $(".search").on({
         focus: function () {
-            
+
         },
         blur: function () {
-          
+
         }
     })
 }
@@ -114,8 +114,7 @@ function log() {
     var flag1 = [false, false];
     $(".number").on({
         focus: function () {
-            if ($(".number").val().length == 7)
-            {
+            if ($(".number").val().length == 7) {
                 $(".show-password").focus();
             }
             if (!flag1[0]) {
@@ -140,8 +139,11 @@ function log() {
     })
     $(".show-password").on({
         focus: function () {
+            $(".show-password").click();
+            $(".hide-password").css({ "display": "block" });
+            $(".hide-password").focus();
             $(".show-password").css({ "display": "none" })
-            $(".hide-password").css({ "display": "block" })
+            
             if (!flag1[1]) {
                 $(".password-error").text("");
             }
@@ -193,8 +195,10 @@ function sign() {
     })
     $(".show-sign-box-password").on({
         focus: function () {
-            $(".show-sign-box-password").css({ "display": "none" })
             $(".hide-sign-box-password").css({ "display": "block" })
+            $(".hide-sign-box-password").focus();
+            $(".show-sign-box-password").css({ "display": "none" })
+           
             if (!flag2[1]) {
                 $(".sign-box-password-error").text("");
             }
@@ -224,6 +228,8 @@ function sign() {
 
     $(".show-sign-box-verify-password").on({
         focus: function () {
+            $(".hide-sign-box-verify-password").css({ "display": "block" })
+            $(".hide-sign-box-verify-password").focus();
             $(".show-sign-box-verify-password").css({ "display": "none" })
             $(".hide-sign-box-verify-password").css({ "display": "block" })
             if (!flag2[2]) {
@@ -325,24 +331,84 @@ search();
 var explorer = navigator.userAgent;
 var userAgent = navigator.userAgent;
 if (window.ActiveXObject || "ActiveXObject" in window || userAgent.indexOf("Edge") > -1) {
-    var flag1 = [false, false];
-    $(".show-password").on({
+    $(".number").on({
         focus: function () {
-            $(".show-password").css({ "display": "none" })
-            $(".hide-password").css({ "display": "block" })
-            if (!flag1[1]) {
-                $(".password-error").text("");
+            if ($(".number").val().length == 7) {
+                $(".show-password").focus();
+            }
+
+            if ($(".number").val() == "工号：") {
+                $(".number").val("");
+
             }
         }
     })
-    $(".hide-password").on({
+    $(".show-password").on({
         focus: function () {
-            if (!flag1[1]) {
-                $(".password-error").text("");
+            $(".show-password").click();
+            $(".hide-password").css({ "display": "block" })
+            $(".hide-password").focus();
+            $(".show-password").css({ "display": "none" })
+            
+          
+
+        }
+    })
+
+    $(".name").on({
+        focus: function () {
+
+            if ($(".name").val() == "姓名：") {
+                $(".name").val("");
+
             }
-        },
-        blur: function () {
-           
+        }
+    })
+    $(".show-sign-box-password").on({
+        focus: function () {
+            $(".hide-sign-box-password").css({ "display": "block" })
+            $(".hide-sign-box-password").focus();
+            $(".show-sign-box-password").css({ "display": "none" })
+            
+
+        }
+    })
+    $(".show-sign-box-verify-password").on({
+        focus: function () {
+            $(".hide-sign-box-verify-password").css({ "display": "block" })
+            $(".hide-sign-box-verify-password").focus();
+            $(".show-sign-box-verify-password").css({ "display": "none" })
+            
+        }
+    })
+
+    $(".sign-box-number").on({
+        focus: function () {
+
+            if ($(".sign-box-number").val() == "工号：") {
+                $(".sign-box-number").val("");
+
+            }
+
+        }
+    })
+    $(".sign-box-phone").on({
+        focus: function () {
+
+            if ($(".sign-box-phone").val() == "手机：") {
+                $(".sign-box-phone").val("");
+
+            }
+        }
+    })
+    $(".email").on({
+        focus: function () {
+
+            if ($(".email").val() == "电子邮箱：") {
+                $(".email").val("");
+
+            }
+
         }
     })
 }
@@ -353,3 +419,4 @@ else {
 
 
 
+$(".show-password").on("click", function () { console.log("888") });

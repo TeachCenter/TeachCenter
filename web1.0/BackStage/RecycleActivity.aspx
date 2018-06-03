@@ -65,7 +65,7 @@
                     <th width="80">当前状态</th>
                     <th width="120">活动类型</th>
                     <th width="120">删除时间</th>
-					<th >内容</th>
+			
 					<th width="120">操作</th>
 				</tr>
 			</thead>
@@ -86,7 +86,7 @@
                             <td><span class="label label-danger radius">已删除</span></td>
                             <td><asp:Literal ID="ltCategory" runat="server" Text='<%# Eval("Activity_categoryid") %>'></asp:Literal></td>
                             <td><%# Eval("Activity_deletedtime") %></td>
-					        <td class="td-status"><a href='<%#"../Display/Activity.aspx?id="+ Eval("Activity_id") %>'><asp:Literal ID="ltContent" runat="server" Text=<%# Eval("Activity_content") %>></asp:Literal></a></td>
+		<asp:Literal ID="ltContent" runat="server" Text=<%# Eval("Activity_content") %> Visible="false"></asp:Literal>
 					        <td class="f-14 td-manage">
                                 <asp:Label ID="lbID" Visible="false" runat="server" Text=<%# Eval("Activity_id") %>></asp:Label>
                                   <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Recycle" CommandArgument='<%#Eval("Activity_id") %>' OnClientClick="return confirm('确定恢复?')">恢复</asp:LinkButton>

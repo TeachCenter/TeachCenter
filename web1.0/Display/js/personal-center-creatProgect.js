@@ -20,7 +20,7 @@ else {
 
 
         })
-$(".name").css({ "width": w - 800 })
+$(".name").css({ "width": w - 700 })
 $(".content").css({"width":w-600})
 $(".submit").css({"width":w-444})
 $(window).resize(function(){
@@ -31,7 +31,7 @@ $(window).resize(function(){
     else {
         w = 1200;
     }
-	$(".name").css({"width":w-600})
+	$(".name").css({"width":w-700})
 	$(".content").css({"width":w-600})
 	$(".submit").css({"width":w-444})
 })

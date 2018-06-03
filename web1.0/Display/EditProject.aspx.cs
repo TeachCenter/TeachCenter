@@ -72,7 +72,7 @@ public partial class Display_EditProject : System.Web.UI.Page
                 project_stage.project_content = UeditorHelper.Change(myEditor11.InnerHtml);
                 if (UpLoadFile() == true)
                 {
-                    project_stage.project_file = "file/" + FileUp.PostedFile.FileName;
+                    project_stage.project_file = "file/" + FileUp.PostedFile.FileName.Split('\\')[FileUp.PostedFile.FileName.Split('\\').Length - 1];
                 }
                 db.SaveChanges();
                 Response.Redirect("MyProject.aspx?pageNumber=1");                
