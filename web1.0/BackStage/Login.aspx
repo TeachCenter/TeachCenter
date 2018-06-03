@@ -51,7 +51,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>登陆</title>
+	<title>登录</title>
 	<link rel="stylesheet" href="../Display/css/init.css">
 
 	<script type="text/javascript"  src="jquery-3.2.1.min.js"></script>
@@ -72,14 +72,14 @@
 </head>
 <body>
     <form runat="server">
-	<div class="content" style="width:100%">
+	<div class="content" style="width:100%;margin-top:0">
 		<div class="header" style="height: 50px;width: 100%;background-color: #000000;">
 			<h1 style="color: #FFFFFF;margin-left: 32px;font-size:20px;line-height: 50px; ">教学支持中心后台</h1>
 		</div>
-		<div class="main" style="position: relative;">
+		<div class="main" style="position: relative;margin-bottom: 0">
 			<img src="./picture/log.png" style="display: block; width: 100%;height: 900px;" alt="">
 			<div class="log-box" style="position: absolute; left: 50%;top: 50%;background-color: #FFFFFF;margin-left: -225px;margin-top: -335px;">
-				<h1>登陆</h1>
+				<h1>登录</h1>
 				<%--<input type="text" id="txtID" runat="server" placeholder="工号" class="number gray-box" style="margin-right: 32px;">--%>
                 <asp:TextBox ID="txtID" runat="server" placeholder="工号" class="number gray-box" style="margin-right: 32px;"></asp:TextBox>
 				<p class="number-error error"></p>

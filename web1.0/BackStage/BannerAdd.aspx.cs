@@ -13,11 +13,11 @@ public partial class BackStage_BannerAdd : System.Web.UI.Page
 
     }
 
-    protected bool UpLoadFile()
+    protected string UpLoadFile()
     {
         string FullName = myFileUpload.PostedFile.FileName;
         if (FullName == "")
-            return false;
+            return "";
         else
         {
             FileInfo file = new FileInfo(FullName);
@@ -27,17 +27,17 @@ public partial class BackStage_BannerAdd : System.Web.UI.Page
             {
                 string SavePath = Server.MapPath("~\\BackStage\\picture");
                 this.myFileUpload.PostedFile.SaveAs(SavePath + "\\" + name);
-                return true;
+                return name;
             }
             else
-                return false;
+                return "";
         }
     }
 
     protected void btnSub_Click(object sender, EventArgs e)
     {
-        string picture_path = myFileUpload.PostedFile.FileName;
-        if (UpLoadFile() == false)
+        string picture_path = UpLoadFile();
+        if (UpLoadFile() == "")
             Response.Write("<script>alert('请选择正确的文件！');</script>");
         else
         {
@@ -49,7 +49,7 @@ public partial class BackStage_BannerAdd : System.Web.UI.Page
                 if (link.Length == 0)
                     link = "";
                 if (title.Length == 0 || summary.Length == 0)
-                    Response.Write("<script>alert('输入不能为空！');</script>");               
+                    Response.Write("<script>alert('输入不能为空！');</script>");
                 else
                 {
                     Picture picture = new Picture();
@@ -66,7 +66,7 @@ public partial class BackStage_BannerAdd : System.Web.UI.Page
                     db.SaveChanges();
                     Server.Transfer("BannerList.aspx");
                     //Response.Write("<script>alert('添加成功！');location.href='BannerList.aspx';</script>");
-                }               
+                }
             }
         }
     }

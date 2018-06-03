@@ -46,7 +46,7 @@ public partial class Display_MyServiceList : System.Web.UI.Page
         }
         catch
         {
-            JSHelper.AlertThenRedirect("请先登陆！", "main-index.aspx");
+            JSHelper.AlertThenRedirect("请先登录！", "main-index.aspx");
         }
     }
 

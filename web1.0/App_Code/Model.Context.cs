@@ -44,7 +44,6 @@ public partial class TeachingCenterEntities : DbContext
     public DbSet<Service> Service { get; set; }
     public DbSet<ServiceCategory> ServiceCategory { get; set; }
     public DbSet<SourceCategory> SourceCategory { get; set; }
-    public DbSet<sysdiagrams> sysdiagrams { get; set; }
     public DbSet<Teacher> Teacher { get; set; }
     public DbSet<ApplicationInfo> ApplicationInfo { get; set; }
     public DbSet<ProjectInfo> ProjectInfo { get; set; }

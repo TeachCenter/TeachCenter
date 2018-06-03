@@ -17,7 +17,7 @@ public partial class BackStage_FriendsLink : System.Web.UI.Page
         }
         catch
         {
-            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+            JSHelper.AlertThenRedirect("请先登录！", "Login.aspx");
         }
 
     }

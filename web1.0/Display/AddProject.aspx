@@ -99,7 +99,7 @@
                                     <asp:Label ID="lbSelect" runat="server" Text='<%#Eval("name") %>'></asp:Label>
                                     
                                 </li>
-                              
+  
                             </ItemTemplate>
                         </asp:Repeater>
 					 </ul>		
@@ -131,10 +131,10 @@
 				<p></p>
 			</div>
 			<div class="clearfix">
-				<h2>上传文件:</h2>				
+				<h2>项目申请:</h2>				
                 <asp:FileUpload ID="FileUp" runat="server" style="display:none" />  
                 <asp:Button id="btnBrowse" runat="server" OnClientClick="return ShowBrowse()" Text="选择文件" class="choose"/>
-                <h3 style="margin-top:0px;"><asp:TextBox ID="txtFileName" runat="server" value="支持pdf、doc、docx格式的文件" ReadOnly="true"></asp:TextBox> </h3>
+                <h3 style="margin-top:0px;"><asp:TextBox ID="txtFileName" ReadOnly="true" runat="server" value="支持pdf、doc、docx格式的文件"></asp:TextBox> </h3>
                  <h3 class="necessary">*必填</h3>
 			</div>
             <asp:LinkButton ID="btnSubmit" runat="server" Text="提交项目" class="submit" OnClick="btnSubmit_Click" />

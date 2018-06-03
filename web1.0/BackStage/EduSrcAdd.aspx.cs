@@ -9,8 +9,15 @@ public partial class BackStage_EduSrcAdd : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(Session["AdminID"].ToString() == null)
-            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+        try
+        {
+            if (Session["AdminID"].ToString() == null);
+        }
+        catch
+        {
+            JSHelper.AlertThenRedirect("请先登录！", "Login.aspx");
+        }
+           
         if (!IsPostBack)
         {
             using (var db = new TeachingCenterEntities())

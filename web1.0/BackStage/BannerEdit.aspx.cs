@@ -11,7 +11,7 @@ public partial class BackStage_BannerEdit : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["AdminID"].ToString() == null)
-            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+            JSHelper.AlertThenRedirect("请先登录！", "Login.aspx");
         int id = 1;
         try
         {
@@ -38,11 +38,11 @@ public partial class BackStage_BannerEdit : System.Web.UI.Page
         }        
     }
 
-    protected int UpLoadFile()
+    protected string UpLoadFile()
     {
         string FullName = myFileUpload.PostedFile.FileName;
         if (FullName == "")
-            return -1;
+            return "";
         else
         {
             FileInfo file = new FileInfo(FullName);
@@ -52,18 +52,18 @@ public partial class BackStage_BannerEdit : System.Web.UI.Page
             {
                 string SavePath = Server.MapPath("~\\BackStage\\picture");
                 this.myFileUpload.PostedFile.SaveAs(SavePath + "\\" + name);
-                return 1;
+                return name;
             }
             else
-                return 0;
+                return "";
         }
     }
 
     protected void btnSub_Click(object sender, EventArgs e)
     {
-        string picture_path = myFileUpload.PostedFile.FileName;
+        string picture_path = UpLoadFile();
         int id = Convert.ToInt32(Request.QueryString["id"].ToString());
-        if (UpLoadFile() == 0)
+        if (UpLoadFile() == "")
             Response.Write("<script>alert('请选择正确的文件！');</script>");
         else
         {

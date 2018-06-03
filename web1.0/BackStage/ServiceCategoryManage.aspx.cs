@@ -19,7 +19,7 @@ public partial class BackStage_ServiceCategoryManage : System.Web.UI.Page
         }
         catch
         {
-            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+            JSHelper.AlertThenRedirect("请先登录！", "Login.aspx");
         }
 
     }
@@ -129,7 +129,7 @@ public partial class BackStage_ServiceCategoryManage : System.Web.UI.Page
             }
             var list = from it in db.ServiceCategory select it;
             if (list.Count() == count)
-                JSHelper.ShowAlert("已经是最后一个分类了！");
+                JSHelper.ShowAlert("请至少保留一个分类了！");
             else
             {
                 for (int i = 0; i < this.rptCategory.Items.Count; i++)

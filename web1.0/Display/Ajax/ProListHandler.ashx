@@ -49,7 +49,7 @@ public class ProListHandler : IHttpHandler {
             int categoryid = 0;
             try
             {
-                categoryid = Convert.ToInt32(context.Request.Form["ProCatCategory_id"]);
+                categoryid = Convert.ToInt32(context.Request.Form["type"]);
             }
             catch
             {

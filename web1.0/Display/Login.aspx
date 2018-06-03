@@ -51,7 +51,7 @@
         请输入验证码：<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
         <img src="png.aspx" id="img" onclick="f_refreshtype()" /><br /><br />
         <asp:CheckBox ID="cbxRemeberUser" runat="server" Text="记住用户名" ForeColor="gray"/>
-        <asp:Button ID="btnSub" Text="登陆" OnClick="btnSub_Click" runat="server" />
+        <asp:Button ID="btnSub" Text="登录" OnClick="btnSub_Click" runat="server" />
     </div>
     </div>
     </form>

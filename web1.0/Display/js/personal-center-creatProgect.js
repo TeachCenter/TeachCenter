@@ -5,7 +5,22 @@ if ($(window).width() > 1200) {
 else {
     w = 1200;
 }
-$(".name").css({ "width": w - 600 })
+  $(".down").css({ "overflow-y": "hidden" })
+        $(".aA").click(function () {
+            if ((!$(".down").is(':animated'))) {
+                if (flagUpDown == false) {
+                    $(".down").css({ "overflow-y": "auto" })
+                    flagUpDown = true;
+                }
+                else {
+                    $(".down").css({ "overflow-y": "hidden" })
+                    flagUpDown = false;
+                }
+            }
+
+
+        })
+$(".name").css({ "width": w - 800 })
 $(".content").css({"width":w-600})
 $(".submit").css({"width":w-444})
 $(window).resize(function(){

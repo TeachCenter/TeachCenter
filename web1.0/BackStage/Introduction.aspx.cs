@@ -27,7 +27,7 @@ public partial class BackStage_Introduction : System.Web.UI.Page
         }
         catch
         {
-            JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+            JSHelper.AlertThenRedirect("请先登录！", "Login.aspx");
         }
 
 
@@ -53,6 +53,7 @@ public partial class BackStage_Introduction : System.Web.UI.Page
             btnChange.Visible = true;
             myEditor11.Visible = false;
             btnSub.Visible = false;
+            Server.Transfer("Introduction.aspx");
         }
     }
 

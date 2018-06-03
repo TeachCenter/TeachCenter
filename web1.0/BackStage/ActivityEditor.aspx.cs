@@ -38,7 +38,7 @@ public partial class BackStage_ActivityEditor : System.Web.UI.Page
             }
             catch
             {
-                JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+                JSHelper.AlertThenRedirect("请先登录！", "Login.aspx");
             }
 
         }
@@ -65,26 +65,36 @@ public partial class BackStage_ActivityEditor : System.Web.UI.Page
                 int id = Convert.ToInt32(Request.QueryString["id"].ToString());
                 using (var db = new TeachingCenterEntities())
                 {
-                    Activity ac = db.Activity.Single(a => a.Activity_id == id);
-                    if (dropAuthor.SelectedValue == "0")
-                        ac.Activity_author = AdminHelper.getNameByID(Session["AdminID"].ToString());
-                    else if (dropAuthor.SelectedValue == "1")
-                        ac.Activity_author = "匿名";
-                    else
-                        ac.Activity_author = "未知";
 
-                    ac.Activity_title = title;
-                    DateTime dt = Convert.ToDateTime(date);
-                    ac.Activity_hold_time = dt;
-                    ac.Activity_summary = summary;
-                    ac.Activity_content = content;
-                    ac.Activity_place = place;
-                    ac.Activity_limitcount = Convert.ToInt32(count);
-                    ac.Activity_categoryid = ActivityHelper.getCategoryId(category);
-                    
-                    db.SaveChanges();
-                    Server.Transfer("ActivityManage.aspx");
-                    //JSHelper.AlertThenRedirect("修改成功！", "ActivityManage.aspx");
+
+
+                    Activity ac = db.Activity.Single(a => a.Activity_id == id);
+
+                    if (ac.Activity_nowcount > Convert.ToInt32(count))
+                        JSHelper.ShowAlert("限制人数不可小于当前已参加人数！");
+                    else
+                    {
+                        if (dropAuthor.SelectedValue == "0")
+                            ac.Activity_author = AdminHelper.getNameByID(Session["AdminID"].ToString());
+                        else if (dropAuthor.SelectedValue == "1")
+                            ac.Activity_author = "匿名";
+                        else
+                            ac.Activity_author = "未知";
+
+                        ac.Activity_title = title;
+                        DateTime dt = Convert.ToDateTime(date);
+                        ac.Activity_hold_time = dt;
+                        ac.Activity_summary = summary;
+                        ac.Activity_content = content;
+                        ac.Activity_place = place;
+                        ac.Activity_limitcount = Convert.ToInt32(count);
+                        ac.Activity_categoryid = ActivityHelper.getCategoryId(category);
+
+                        db.SaveChanges();
+                        //Server.Transfer("ActivityManage.aspx");
+                        JSHelper.AlertThenRedirect("修改成功！", "ActivityManage.aspx");
+                    }
+
                 }
             }
             catch

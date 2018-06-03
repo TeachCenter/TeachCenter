@@ -44,7 +44,7 @@ public partial class Display_Service : System.Web.UI.Page
         }
         catch
         {
-            JSHelper.ShowAlert("请先登陆！" );
+            JSHelper.ShowAlert("请先登录！");
             JSHelper.js("window.history.go(-1);");
         }
 

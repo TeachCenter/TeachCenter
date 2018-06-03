@@ -27,7 +27,7 @@ public partial class BackStage_DevelopAdd : System.Web.UI.Page
             }
             catch
             {
-                JSHelper.AlertThenRedirect("请先登陆！", "Login.aspx");
+                JSHelper.AlertThenRedirect("请先登录！", "Login.aspx");
             }
         }
 
@@ -68,7 +68,7 @@ public partial class BackStage_DevelopAdd : System.Web.UI.Page
                         string filename = filepath.Substring(filepath.LastIndexOf("\\") + 1);
                         string serverpath = Server.MapPath("picture/") + filename;
                         fup.PostedFile.SaveAs(serverpath);
-                        serverpath = "picture/" + filename;
+                        serverpath = filename;
                         lblInfo.Text = "上传成功！";
                         using (var db = new TeachingCenterEntities())
                         {
@@ -83,7 +83,7 @@ public partial class BackStage_DevelopAdd : System.Web.UI.Page
                             dev.Develop_link = link;
                             dev.Develop_category = DevelopHelper.getCategoryId(dropCategory.SelectedValue);
                             dev.Develop_hit = 0;
-                            dev.Develop_path = filepath;
+                            dev.Develop_path = serverpath;
                             dev.Develop_deleted = 0;
                             db.Develop.Add(dev);
                             db.SaveChanges();
@@ -109,7 +109,7 @@ public partial class BackStage_DevelopAdd : System.Web.UI.Page
         if (upfile.PostedFile.FileName != string.Empty)
         {
             strOldFilePath = upfile.PostedFile.FileName;//获得文件的完整路径名 
-            strExtension = strOldFilePath.Substring(strOldFilePath.LastIndexOf("."));//获得文件的扩展名，如：.jpg 
+            strExtension = strOldFilePath.Substring(strOldFilePath.LastIndexOf(".")).ToLower();//获得文件的扩展名，如：.jpg 
             for (int i = 0; i < arrExtension.Length; i++)
             {
                 if (strExtension.Equals(arrExtension[i]))
