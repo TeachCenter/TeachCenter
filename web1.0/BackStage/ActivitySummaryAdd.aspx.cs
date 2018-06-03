@@ -90,7 +90,7 @@ public partial class BackStage_ActivitySummaryAdd : System.Web.UI.Page
         if (upfile.PostedFile.FileName != string.Empty)
         {
             strOldFilePath = upfile.PostedFile.FileName;//获得文件的完整路径名 
-            strExtension = strOldFilePath.Substring(strOldFilePath.LastIndexOf("."));//获得文件的扩展名，如：.jpg 
+            strExtension = strOldFilePath.Substring(strOldFilePath.LastIndexOf(".")).ToLower();//获得文件的扩展名，如：.jpg 
             for (int i = 0; i < arrExtension.Length; i++)
             {
                 if (strExtension.Equals(arrExtension[i]))

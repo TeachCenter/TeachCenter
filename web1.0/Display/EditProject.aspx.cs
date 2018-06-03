@@ -75,8 +75,7 @@ public partial class Display_EditProject : System.Web.UI.Page
                     project_stage.project_file = "file/" + FileUp.PostedFile.FileName;
                 }
                 db.SaveChanges();
-                                
-                Response.Write("<script>location.href='MyProject.aspx?pageNumber=1';</script>");
+                Response.Redirect("MyProject.aspx?pageNumber=1");                
             }
         }
 

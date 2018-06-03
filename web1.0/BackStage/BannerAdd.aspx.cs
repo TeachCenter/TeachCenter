@@ -13,11 +13,11 @@ public partial class BackStage_BannerAdd : System.Web.UI.Page
 
     }
 
-    protected bool UpLoadFile()
+    protected string UpLoadFile()
     {
         string FullName = myFileUpload.PostedFile.FileName;
         if (FullName == "")
-            return false;
+            return "";
         else
         {
             FileInfo file = new FileInfo(FullName);
@@ -27,25 +27,24 @@ public partial class BackStage_BannerAdd : System.Web.UI.Page
             {
                 string SavePath = Server.MapPath("~\\BackStage\\picture");
                 this.myFileUpload.PostedFile.SaveAs(SavePath + "\\" + name);
-                return true;
+                return name;
             }
             else
-                return false;
+                return "";
         }
     }
 
     protected void btnSub_Click(object sender, EventArgs e)
     {
-        string picture_path = myFileUpload.PostedFile.FileName;
-        picture_path = picture_path.Split('\\')[picture_path.Split('\\').Length - 1];
-        if (UpLoadFile() == false)
+        string picture_path = UpLoadFile();
+        if (UpLoadFile() == "")
             Response.Write("<script>alert('请选择正确的文件！');</script>");
         else
         {
             using (var db = new TeachingCenterEntities())
             {
                 String title = txtTitle.Text;
-                String link = txxtLink.Text;
+                String link = txtLink.Text;
                 String summary = txtSummary.Text;
                 if (link.Length == 0)
                     link = "";

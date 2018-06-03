@@ -53,14 +53,14 @@ public partial class Display_ProjectContent : System.Web.UI.Page
                     txtReslut.Text = "是";
                 else if (project_stage.is_pass == 0)
                     txtReslut.Text = "否";
-                else if (project_stage.is_pass == -100)
-                {
-                    //divOutofTime.Visible = true;
-                    //txtOutofTime.Text = "已超过提交时间";
-                }
+                //else if (project_stage.is_pass == -100)
+                //{
+                //    divOutofTime.Visible = true;
+                //    txtOutofTime.Text = "已超过提交时间";
+                //}
                 else
                 {
-                    txtReslut.Text = "尚未评判结果";
+                    txtReslut.Text = "评判结果待定";
                     btnEdit.Visible = true;
                 }                        
             }

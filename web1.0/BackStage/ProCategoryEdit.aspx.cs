@@ -39,11 +39,11 @@ public partial class BackStage_ProCategoryEdit : System.Web.UI.Page
         }
     }
 
-    protected int UpLoadFile()
+    protected string UpLoadFile()
     {
         string FullName = myFileUpload.PostedFile.FileName;
         if (FullName == "")
-            return -1;
+            return "";
         else
         {
             FileInfo file = new FileInfo(FullName);
@@ -53,10 +53,10 @@ public partial class BackStage_ProCategoryEdit : System.Web.UI.Page
             {
                 string SavePath = Server.MapPath("~\\BackStage\\file");
                 this.myFileUpload.PostedFile.SaveAs(SavePath + "\\" + name);
-                return 1;
+                return name;
             }
             else
-                return 0;
+                return "wrong";
         }
     }
 
@@ -64,7 +64,7 @@ public partial class BackStage_ProCategoryEdit : System.Web.UI.Page
     {
         int id = Convert.ToInt32(Request.QueryString["id"].ToString());
         string name = txtName.Text;
-        string project_file = myFileUpload.PostedFile.FileName;
+        string project_file = UpLoadFile();
         string project_content = UeditorHelper.Change(myEditor11.InnerHtml);
         string time = txtTime.Text;
         string judge_time = txtJudgeTime.Text;
@@ -73,7 +73,7 @@ public partial class BackStage_ProCategoryEdit : System.Web.UI.Page
             Response.Write("<script>alert('项目类型名称不能为空！');</script>");
         else if (summary.Length == 0)
             Response.Write("<script>alert('内容摘要不能为空！');</script>");
-        else if (UpLoadFile() == 0)
+        else if (UpLoadFile() == "wrong")
             Response.Write("<script>alert('请选择正确的文件！');</script>");
         else if (time == "" || judge_time == "")
             Response.Write("<script>alert('截止时间不能为空！');</script>");

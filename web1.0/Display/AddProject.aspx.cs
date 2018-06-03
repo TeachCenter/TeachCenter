@@ -29,7 +29,7 @@ public partial class Display_AddProject : System.Web.UI.Page
                         using (var db = new TeachingCenterEntities())
                         {
                             DateTime now = DateTime.Now;
-                            var category = from it in db.ProjectCategory where it.is_deleted == 0 select it;
+                            var category = from it in db.ProjectCategory where it.is_deleted == 0 && it.stage == 0 select it;
                             List<ProjectCategory> show = new List<ProjectCategory>();
                             foreach(var item in category)
                             {
@@ -65,8 +65,8 @@ public partial class Display_AddProject : System.Web.UI.Page
             Response.Write("<script>alert('项目名称不能为空！');</script>");
         else if (fund.Length == 0)
             Response.Write("<script>alert('资助金额不能为空！');</script>");
-        else if (UpLoadFile() == false)
-            Response.Write("<script>alert('请上传项目文件！');</script>");
+        else if (UpLoadFile() == "wrong")
+            Response.Write("<script>alert('请上传正确的项目文件！');</script>");
         else
         {
             using (var db = new TeachingCenterEntities())
@@ -83,7 +83,7 @@ public partial class Display_AddProject : System.Web.UI.Page
 
                 ProjectStage project_stage = new ProjectStage();
                 project_stage.project_id = project.project_id;
-                project_stage.project_file = "file/" + FileUp.PostedFile.FileName;
+                project_stage.project_file = "file/" + UpLoadFile();
                 project_stage.project_content = UeditorHelper.Change(myEditor11.InnerHtml);
                 project_stage.stage = 0;
                 project_stage.time = DateTime.Now.ToString("yyyy-MM-dd");
@@ -97,11 +97,11 @@ public partial class Display_AddProject : System.Web.UI.Page
 
     }
 
-    protected bool UpLoadFile()
+    protected string UpLoadFile()
     {
         string FullName = FileUp.PostedFile.FileName;
         if (FullName == "")
-            return false;
+            return "";
         else
         {
             FileInfo file = new FileInfo(FullName);
@@ -111,10 +111,10 @@ public partial class Display_AddProject : System.Web.UI.Page
             {
                 string SavePath = Server.MapPath("~\\BackStage\\file");
                 this.FileUp.PostedFile.SaveAs(SavePath + "\\" + name);
-                return true;
+                return name;
             }
             else
-                return false;
+                return "wrong";
         }
     }
     protected void lbtReturn_Click(object sender, EventArgs e)

@@ -53,6 +53,7 @@ public partial class BackStage_Introduction : System.Web.UI.Page
             btnChange.Visible = true;
             myEditor11.Visible = false;
             btnSub.Visible = false;
+            Server.Transfer("Introduction.aspx");
         }
     }
 
