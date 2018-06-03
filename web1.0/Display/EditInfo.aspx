@@ -44,7 +44,7 @@
 		<span class="cut"></span>
 			<div class="clearfix">
 				<h2 class="name-h2">姓名:</h2>
-                <asp:TextBox ID="txtName" runat="server" class="same name"></asp:TextBox>
+                <asp:TextBox ID="txtName" runat="server" class="same name" MaxLength="45"></asp:TextBox>
 				<p class="error name-error"></p>
                 <h3 class="necessary-top">*必填</h3>
 			</div>
@@ -59,19 +59,19 @@
 			</div>
 			<div class="clearfix">
 				<h2>工号:</h2>
-                <asp:TextBox ID="txtNumber" runat="server" class="same num"></asp:TextBox>
+                <asp:TextBox ID="txtNumber" runat="server" class="same num" MaxLength="10" ReadOnly="true"></asp:TextBox>
 				<p class="error num-error"></p>
                 <h3 class="necessary">*必填</h3>
 			</div>
 			<div class="clearfix">
 				<h2>邮箱:</h2>
-				<asp:TextBox ID="txtEmail" runat="server" class="same email"></asp:TextBox>
+				<asp:TextBox ID="txtEmail" runat="server" class="same email" MaxLength="30"></asp:TextBox>
 				<p class="error email-error"></p>
                 <h3 class="necessary">*必填</h3>
 			</div>
 			<div class="clearfix">
 				<h2>手机:</h2>
-				<asp:TextBox ID="txtPhone" runat="server" class="same tel"></asp:TextBox>
+				<asp:TextBox ID="txtPhone" runat="server" class="same tel" MaxLength="15"></asp:TextBox>
 				<p class="error tel-error"></p>
                 <h3 class="necessary">*必填</h3>
 			</div>

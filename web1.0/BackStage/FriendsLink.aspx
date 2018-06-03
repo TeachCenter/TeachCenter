@@ -82,9 +82,9 @@
         
             友情链接名称:  <asp:TextBox ID="txtCategory" MaxLength="10"  CssClass="input-text" Width="200" runat="server"></asp:TextBox>
             <br />
-            友情链接地址:  <asp:TextBox ID="txtLink" CssClass="input-text" Width="200" runat="server"></asp:TextBox>
+            友情链接地址:  <asp:TextBox ID="txtLink" CssClass="input-text" Width="200" runat="server" MaxLength="100"></asp:TextBox>
             <br />
-            第  <asp:TextBox ID="txtOrder" onkeyup="this.value=this.value.replace(/\D/g,'')" CssClass="input-text" Width="100" runat="server"></asp:TextBox> 列
+            第  <asp:TextBox ID="txtOrder" onkeyup="this.value=this.value.replace(/\D/g,'')" CssClass="input-text" Width="100" runat="server" MaxLength="2"></asp:TextBox> 列
             <asp:Button ID="btnSubAdd" runat="server" OnClick="btnSubAdd_Click"  CssClass="btn btn-primary radius" Text="添加分类" />
     </div>
     <br />

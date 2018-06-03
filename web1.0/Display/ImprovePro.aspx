@@ -70,7 +70,7 @@
 		
 			<div class="clearfix">
 				<h2>项目名称:</h2>
-                <asp:TextBox ID="txtName" runat="server" class="name" ReadOnly="true"></asp:TextBox>
+                <asp:TextBox ID="txtName" runat="server" class="name" ReadOnly="true" ></asp:TextBox>
 			</div>
 			<div class="clearfix">
 				<h2>项目类型:</h2>

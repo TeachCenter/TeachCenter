@@ -76,7 +76,7 @@
 		<span class="cut"></span>
 			<div class="clearfix">
 				<h2 class="name-h2">项目名称:</h2>
-                <asp:TextBox ID="txtName" runat="server" class="name" ></asp:TextBox>
+                <asp:TextBox ID="txtName" runat="server" class="name" MaxLength="50"></asp:TextBox>
                 <h3 class="necessary-top">*必填</h3>
 				<p class="name-error"></p>
                 
@@ -84,7 +84,7 @@
              <input type="hidden"  id="Selected" runat="server" class="Selected" value="" />
 			<div class="clearfix">
 				<h2>资助额度:</h2>
-                <asp:TextBox ID="txtMoney" runat="server" class="money"></asp:TextBox>
+                <asp:TextBox ID="txtMoney" runat="server" class="money" MaxLength="10"></asp:TextBox>
                 <h3 class="necessary">*必填</h3>
 				<p class="money-error"></p>
 			</div>

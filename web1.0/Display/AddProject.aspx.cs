@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 using System.Data;
 using System.IO;
+using System.Text.RegularExpressions;
 
 public partial class Display_AddProject : System.Web.UI.Page
 {
@@ -57,6 +58,7 @@ public partial class Display_AddProject : System.Web.UI.Page
         int teacher_id = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
         string submit_time = DateTime.Now.ToString("yyyy-MM-dd");
         string fund = txtMoney.Text;
+        Regex numRegex = new Regex(@"^\d+$");
         string filePath = FileUp.PostedFile.FileName;
         HtmlInputHidden category = FindControl("Selected") as HtmlInputHidden;
         if (category.Value == "")
@@ -65,6 +67,8 @@ public partial class Display_AddProject : System.Web.UI.Page
             Response.Write("<script>alert('项目名称不能为空！');</script>");
         else if (fund.Length == 0)
             Response.Write("<script>alert('资助金额不能为空！');</script>");
+        else if (!numRegex.IsMatch(fund))
+            Response.Write("<script>alert('请输入正确的资助金额！');</script>");
         else if (UpLoadFile() == "wrong")
             Response.Write("<script>alert('请上传正确的项目文件！');</script>");
         else

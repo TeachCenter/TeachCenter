@@ -45,7 +45,7 @@
 			</div>
 			<div class="clearfix">
 				<h2>联系方式:</h2>
-				<input id="txtPhone" runat="server" class="same position" type="text" value="副教授">
+				<input id="txtPhone" runat="server" class="same position" type="text" value="副教授" maxlength="15">
 				<p class="error position-error"></p>
 			</div>
 
