@@ -84,7 +84,7 @@
              <input type="hidden"  id="Selected" runat="server" class="Selected" value="" />
 			<div class="clearfix">
 				<h2>资助额度:</h2>
-                <asp:TextBox ID="txtMoney" runat="server" class="money"></asp:TextBox>
+                <asp:TextBox ID="txtMoney" runat="server" class="money" MaxLength="10"></asp:TextBox>
                 <h3 class="necessary">*必填</h3>
 				<p class="money-error"></p>
 			</div>

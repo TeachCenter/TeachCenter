@@ -52,8 +52,11 @@ function log(){
 			}
 		},
 		blur:function(){
-		   if($(".name").val()==""){
-		    $(".name-error").text("未填写项目名称");
+		    if ($(".name").val() == "") {
+		        if (window.ActiveXObject || "ActiveXObject" in window || navigator.userAgent.indexOf("Edge") > -1) {
+		            return;
+		        }
+		        $(".name-error").text("未填写项目名称");
 		    flag[0]=false;
 		   }
 		   else{
@@ -74,7 +77,10 @@ function log(){
 		},
 		blur:function(){
 		    reg=/^[\u4e00-\u9fa5]{2,20}$/;
-		   if(!reg.test($(".duty").val())){
+		    if (!reg.test($(".duty").val())) {
+		        if (window.ActiveXObject || "ActiveXObject" in window || navigator.userAgent.indexOf("Edge") > -1) {
+		            return;
+		        }
 		    $(".duty-error").text("请输入正确的负责人姓名");
 		    flag[2]=false;
 		   }
@@ -139,7 +145,10 @@ function log(){
 		},
 		blur:function(){
 		   reg=/^20[0-9][0-9]$/;
-		   if(!reg.test($(".year").val())){
+		   if (!reg.test($(".year").val())) {
+		       if (window.ActiveXObject || "ActiveXObject" in window || navigator.userAgent.indexOf("Edge") > -1) {
+		           return;
+		       }
 		    $(".year-error").text("请输入正确的年/月/日");
 		    flag[4]=false;
 		   }
@@ -155,7 +164,10 @@ function log(){
 		blur:function(){
 		   reg=/^1[0-2]$/;
 		   var reg2=/^[1-9]$/
-		   if(!reg.test($(".month").val())&&!reg2.test($(".month").val())){
+		   if (!reg.test($(".month").val()) && !reg2.test($(".month").val())) {
+		       if (window.ActiveXObject || "ActiveXObject" in window || navigator.userAgent.indexOf("Edge") > -1) {
+		           return;
+		       }
 		    $(".year-error").text("请输入正确的年/月/日");
 		    flag[5]=false;
 		   }
@@ -172,7 +184,10 @@ function log(){
 		   reg=/^[1-2][0-9]$/;
 		   var reg2=/^[1-9]$/;
 		   var reg3=/^3[0-1]$/;
-		   if(!reg.test($(".day").val())&&!reg2.test($(".day").val())&&!reg3.test($(".day").val())){
+		   if (!reg.test($(".day").val()) && !reg2.test($(".day").val()) && !reg3.test($(".day").val())) {
+		       if (window.ActiveXObject || "ActiveXObject" in window || navigator.userAgent.indexOf("Edge") > -1) {
+		           return;
+		       }
 		    $(".year-error").text("请输入正确的年/月/日");
 		    flag[6]=false;
 		   }
@@ -194,7 +209,10 @@ function log(){
 		},
 		blur:function(){
 		   reg=/^[0-9]*$/;
-		   if(!reg.test($(".money").val())){
+		   if (!reg.test($(".money").val().replace(/\s+/g, ""))) {
+		       if (window.ActiveXObject || "ActiveXObject" in window || navigator.userAgent.indexOf("Edge") > -1) {
+		           return;
+		       }
 		    $(".money-error").text("请输入正确的项目资金");
 		    flag[7]=false;
 		   }
@@ -229,9 +247,27 @@ function log(){
         flag[6] = true;
     })
 
+	  $("#btnSubmit").click(function () {
+	      if ($(".money").val().replace(/\s+/g, "") > 9999999999) {
+	          if (window.ActiveXObject || "ActiveXObject" in window || navigator.userAgent.indexOf("Edge") > -1) {
+	              return;
+	          }
+	          alert("输入金额过大!");
+	          return false;
+	      }
+	          
+	      else {
+	          if (isNaN(Number($(".money").val().replace(/\s+/g, "")))) {
+	              if (window.ActiveXObject || "ActiveXObject" in window || navigator.userAgent.indexOf("Edge") > -1) {
+	                  //alert("请正确输入金额");
+	              }
+	              return false;
+    	       }
+	      }
 
+	  });
 
-	
+	  $(".money").val($(".money").val().replace(/\s+/g, ""));
 }
 log();
 

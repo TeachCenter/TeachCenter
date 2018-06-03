@@ -1,5 +1,14 @@
 
 function log() {
+    $("#lbtnSubmit").click(function () {
+        $(".error").each(function(){
+            if ($(this).text() != "") {
+                return false;
+            }
+                
+        });
+    });
+
     if ($("#gender").val() == 0) {
         $(".male").css({ "background-color": "#FFFFFF" })
         $(".female").css({ "background-color": "#E6E6E6" })
@@ -25,6 +34,9 @@ function log() {
         blur: function () {
             reg = /^[\u4e00-\u9fa5]{2,10}$/;
             if (!reg.test($(".name").val())) {
+                if (window.ActiveXObject || "ActiveXObject" in window || navigator.userAgent.indexOf("Edge") > -1) {
+                    return;
+                }
                 $(".name-error").text("请填写正确的姓名");
                 flag[0] = false;
             }
@@ -63,6 +75,9 @@ function log() {
         blur: function () {
             reg = /^[A-Za-z0-9]{7,7}$/;
             if (!reg.test($(".num").val())) {
+                if (window.ActiveXObject || "ActiveXObject" in window || navigator.userAgent.indexOf("Edge") > -1) {
+                    return;
+                }
                 $(".num-error").text("请输入正确的工号");
                 flag[2] = false;
             }
@@ -77,12 +92,18 @@ function log() {
                 if ($(this).val() == "sfhaui@ouc.edu.cn") {
                     $(this).val("")
                 }
+                if (window.ActiveXObject || "ActiveXObject" in window || navigator.userAgent.indexOf("Edge") > -1) {
+                    return;
+                }
                 $(".email-error").text("");
             }
         },
         blur: function () {
             reg = /^\w+([\.\-]\w+)*\@\w+([\.\-]\w+)*\.\w+$/;
             if (!reg.test($(".email").val())) {
+                if (window.ActiveXObject || "ActiveXObject" in window || navigator.userAgent.indexOf("Edge") > -1) {
+                    return;
+                }
                 $(".email-error").text("请输入正确的邮箱地址");
                 flag[3] = false;
             }
@@ -103,6 +124,9 @@ function log() {
         blur: function () {
             reg = /^1[34578]\d{9}$/;
             if (!reg.test($(".tel").val())) {
+                if (window.ActiveXObject || "ActiveXObject" in window || navigator.userAgent.indexOf("Edge") > -1) {
+                    return;
+                }
                 $(".tel-error").text("请输入正确的手机号码");
                 flag[4] = false;
             }
@@ -168,12 +192,18 @@ function log() {
                 if ($(this).val() == "副教授") {
                     $(this).val("")
                 }
+                if (window.ActiveXObject || "ActiveXObject" in window || navigator.userAgent.indexOf("Edge") > -1) {
+                    return;
+                }
                 $(".position-error").text("");
             }
         },
         blur: function () {
             reg = /^[\u4e00-\u9fa5]{2,10}$/;
             if (!reg.test($(".position").val())) {
+                if (window.ActiveXObject || "ActiveXObject" in window || navigator.userAgent.indexOf("Edge") > -1) {
+                    return;
+                }
                 $(".position-error").text("请输入正确的职称");
                 flag[5] = false;
             }
