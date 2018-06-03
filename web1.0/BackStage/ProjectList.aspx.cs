@@ -125,6 +125,7 @@ public partial class BackStage_ProjectList : System.Web.UI.Page
             Session["ds"] = project.ToList();
         }
         Session["category"] = category;
+        Judge.Visible = false;
     }
 
     protected void lbtSearch_Click(object sender, EventArgs e)
@@ -184,7 +185,8 @@ public partial class BackStage_ProjectList : System.Web.UI.Page
                     Response.Write("<script>alert('搜索无结果！');location.href='ProjectList.aspx';</script>");
                 }
             }
-        }       
+        }
+        Judge.Visible = false;
     }
 
     protected void btnCheck_Click(object sender, EventArgs e)

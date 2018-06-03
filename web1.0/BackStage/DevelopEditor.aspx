@@ -189,8 +189,10 @@
     })
 </script>
     <script type="text/javascript">
-        if ($("#txtLink").val().length != 0)
+        if ($("#txtLink").val().length != 0) {
             $("#hhh").css("display", "none");
+        }
+            
     </script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>
