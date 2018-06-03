@@ -69,6 +69,8 @@ public partial class Display_AddProject : System.Web.UI.Page
             Response.Write("<script>alert('资助金额不能为空！');</script>");
         else if (!numRegex.IsMatch(fund))
             Response.Write("<script>alert('请输入正确的资助金额！');</script>");
+        else if (filePath.Length == 0)
+            Response.Write("<script>alert('项目申请不能为空！');</script>");
         else if (UpLoadFile() == "wrong")
             Response.Write("<script>alert('请上传正确的项目文件！');</script>");
         else

@@ -128,20 +128,20 @@ public partial class BackStage_RecycleActivity : System.Web.UI.Page
                 if (dropCategory.SelectedValue != "全部分类")
                 {
                     int category = ActivityHelper.getCategoryId(dropCategory.SelectedValue);
-                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 1 && a.Activity_categoryid == category && a.Activity_time >= min && a.Activity_time < max).OrderByDescending(a => a.Activity_time).ToList();
+                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 1 && a.Activity_categoryid == category && a.Activity_time >= min && a.Activity_time <= max).OrderByDescending(a => a.Activity_time).ToList();
                 }
                 else
-                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 1 && a.Activity_time >= min && a.Activity_time < max).OrderByDescending(a => a.Activity_time).ToList();
+                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 1 && a.Activity_time >= min && a.Activity_time <= max).OrderByDescending(a => a.Activity_time).ToList();
             }
             else
             {
                 if (dropCategory.SelectedValue != "全部分类")
                 {
                     int category = ActivityHelper.getCategoryId(dropCategory.SelectedValue);
-                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 1 && a.Activity_categoryid == category && a.Activity_time >= min && a.Activity_time < max && a.Activity_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Activity_time).ToList();
+                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 1 && a.Activity_categoryid == category && a.Activity_time >= min && a.Activity_time <= max && a.Activity_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Activity_time).ToList();
                 }
                 else
-                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 1 && a.Activity_time >= min && a.Activity_time < max && a.Activity_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Activity_time).ToList();
+                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 1 && a.Activity_time >= min && a.Activity_time <= max && a.Activity_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Activity_time).ToList();
 
             }
 

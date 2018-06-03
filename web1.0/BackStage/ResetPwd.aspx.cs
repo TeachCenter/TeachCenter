@@ -47,8 +47,8 @@ public partial class BackStage_ResetPwd : System.Web.UI.Page
             Teacher te = db.Teacher.Single(a => a.number == number);
             te.password = PwdHelper.MD5("ouc" + number);
             db.SaveChanges();
-            Server.Transfer("ResetPwd.aspx");
-            //JSHelper.AlertThenRedirect("重置成功！", "ResetPwd.aspx");
+            //Server.Transfer("ResetPwd.aspx");
+            JSHelper.AlertThenRedirect("重置成功,重置密码为ouc+教师工号！", "ResetPwd.aspx");
         }
     }
 }

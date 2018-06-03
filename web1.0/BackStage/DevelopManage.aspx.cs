@@ -141,7 +141,7 @@ public partial class BackStage_DevelopManage : System.Web.UI.Page
                 if (dropCategory.SelectedValue != "全部分类")
                 {
                     int category = DevelopHelper.getCategoryId(dropCategory.SelectedValue);
-                    service = db.Develop.Where(a => a.Develop_deleted == 0 && a.Develop_category == category && a.Develop_time >= min && a.Develop_time < max).OrderByDescending(a => a.Develop_time).ToList();
+                    service = db.Develop.Where(a => a.Develop_deleted == 0 && a.Develop_category == category && a.Develop_time >= min && a.Develop_time <= max).OrderByDescending(a => a.Develop_time).ToList();
                 }
                 else
                     service = db.Develop.Where(a => a.Develop_deleted == 0 && a.Develop_time >= min && a.Develop_time < max).OrderByDescending(a => a.Develop_time).ToList();
@@ -151,7 +151,7 @@ public partial class BackStage_DevelopManage : System.Web.UI.Page
                 if (dropCategory.SelectedValue != "全部分类")
                 {
                     int category = DevelopHelper.getCategoryId(dropCategory.SelectedValue);
-                    service = db.Develop.Where(a => a.Develop_deleted == 0 && a.Develop_category == category && a.Develop_time >= min && a.Develop_time < max && a.Develop_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Develop_time).ToList();
+                    service = db.Develop.Where(a => a.Develop_deleted == 0 && a.Develop_category == category && a.Develop_time >= min && a.Develop_time <= max && a.Develop_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Develop_time).ToList();
                 }
                 else
                     service = db.Develop.Where(a => a.Develop_deleted == 0 && a.Develop_time >= min && a.Develop_time < max && a.Develop_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Develop_time).ToList();

@@ -44,7 +44,7 @@ public partial class BackStage_BannerAdd : System.Web.UI.Page
             using (var db = new TeachingCenterEntities())
             {
                 String title = txtTitle.Text;
-                String link = txtLink.Text;
+                String link = txxtLink.Text;
                 String summary = txtSummary.Text;
                 if (link.Length == 0)
                     link = "";

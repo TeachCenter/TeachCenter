@@ -68,16 +68,16 @@
                             
 					        <td><asp:CheckBox ID="checkbox" runat="server" /></td>
 					        <td><asp:Literal ID="ltNumber" runat="server"></asp:Literal></td>
-					        <td><img width="85px" src='<%# Eval("ActivitySummary_cover") %>' /></td>
-					        <td style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;"><a href='<%#"../Display/ActivitySummary.aspx?id="+ Eval("ActivitySummary_id") %>'><%# Eval("ActivitySummary_title") %></a></td>
+					        <td><img width="85px" src='<%#"../BackStage/" + Eval("ActivitySummary_cover") %>' /></td>
+					        <td style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;"><%# Eval("ActivitySummary_title") %></td>
 					        <td><%# Eval("ActivitySummary_author") %></td>
 					        <td><%# Eval("ActivitySummary_time") %></td>
                             <td><%# Eval("ActivitySummary_deletedtime") %></td>
-					        <td class="td-status"><a href='<%#"../Display/ActivitySummary.aspx?id="+ Eval("ActivitySummary_id") %>'><asp:Literal ID="ltContent" runat="server" Text=<%# Eval("ActivitySummary_content") %>></asp:Literal></a></td>
+					        <td class="td-status"><asp:Literal ID="ltContent" runat="server" Text=<%# Eval("ActivitySummary_content") %>></asp:Literal></td>
 					        <td><span class="label label-danger radius">已删除</span></td>
                             <td class="f-14 td-manage">
                                 <asp:Label ID="lbID" Visible="false" runat="server" Text=<%# Eval("ActivitySummary_id") %>></asp:Label>
-                                  <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Recycle" CommandArgument='<%#Eval("ActivitySummary_id") %>' OnClientClick="return confirm('确认恢复?')">恢复</asp:LinkButton>
+                                <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Recycle" CommandArgument='<%#Eval("ActivitySummary_id") %>' OnClientClick="return confirm('确认恢复?')">恢复</asp:LinkButton>
                                 <asp:LinkButton runat="server" CssClass="text-decoration:none" CommandName="Delete" CommandArgument='<%#Eval("ActivitySummary_id") %>' OnClientClick="return confirm('确定彻底删除?')"><i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton>
                             </tr>
                     </ItemTemplate>

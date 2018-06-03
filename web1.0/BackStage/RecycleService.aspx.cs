@@ -92,13 +92,13 @@ public partial class BackStage_RecycleService : System.Web.UI.Page
             }
         }
         //修改分类
-        if (e.CommandName == "Set")
+        if (e.CommandName == "Recycle")
         {
             int id = Convert.ToInt32(e.CommandArgument.ToString());
             using (var db = new TeachingCenterEntities())
             {
                 Service sc = db.Service.Single(a => a.Service_id == id);
-                sc.Service_isdeal = 1;
+                sc.Service_isdeleted = 0;
                 db.SaveChanges();
                 Server.Transfer("RecycleService.aspx");
                 //JSHelper.AlertThenRedirect("处理成功！", "ServiceManage.aspx");
@@ -123,10 +123,10 @@ public partial class BackStage_RecycleService : System.Web.UI.Page
             if (dropCategory.SelectedValue != "全部分类")
             {
                 int category = ServiceHelper.getCategoryID(dropCategory.SelectedValue);
-                service = db.Service.Where(a => a.Service_isdeleted == 1 && a.Service_category == category && a.Service_time >= min && a.Service_time < max).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
+                service = db.Service.Where(a => a.Service_isdeleted == 1 && a.Service_category == category && a.Service_time >= min && a.Service_time <= max).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
             }
             else
-                service = db.Service.Where(a => a.Service_isdeleted == 1 && a.Service_time >= min && a.Service_time < max).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
+                service = db.Service.Where(a => a.Service_isdeleted == 1 && a.Service_time >= min && a.Service_time <= max).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
 
 
 
@@ -211,7 +211,7 @@ public partial class BackStage_RecycleService : System.Web.UI.Page
                     using (var db = new TeachingCenterEntities())
                     {
                         Service sc = db.Service.Single(a => a.Service_id == id);
-                        sc.Service_isdeal = 1;
+                        sc.Service_isdeleted = 0;
                         db.SaveChanges();
                     }
                 }

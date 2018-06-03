@@ -29,9 +29,14 @@
 
             var flag = false;
             if ($("#txtLink").val() == "") {
-                $(".content").css({ "display": "block" })
-                $("#link").css({ "display": "none" })
+                $(".content").css({ "display": "block" });
+                $("#link").css({ "display": "none" });
+               
+
                 flag = false;
+            }
+            else {
+                $(".icheckbox-blue").addClass("checked");
             }
             $(".iCheck-helper").click(function () {
                 if (flag == false) {
@@ -97,7 +102,7 @@
                 <asp:TextBox ID="TextBox1" TextMode="MultiLine" MaxLength="200" style="height: 119px; margin: 0px; width: 1033px;resize:none;" runat="server" CssClass="input-text"></asp:TextBox>
 			</div>
 		</div>
-		<div id="hhh" class="row cl">
+		<div id="hhh" class="row cl content">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章内容：</label>
 			<div class="formControls col-xs-8 col-sm-9"> 
 				<textarea id="myEditor11" name="myEditor11" runat="server" onblur="setUeditor()" style="width: 1030px; height: 250px;"></textarea>
@@ -147,17 +152,6 @@
                     $("#btnSub").attr("disabled", false);
                 }
             });
-            //判断是否使用外部链接
-            //$("#cbxLink").change(function () {
-            //    var check = $("#cbxLink");
-            //    alert("44");
-            //    if (check.is(':checked'))
-            //        alert("55");
-            //    else
-            //        alert("66");
-            //});
-            
-                //
         </script>
 	</form>
 </article>
@@ -189,10 +183,10 @@
     })
 </script>
     <script type="text/javascript">
+
         if ($("#txtLink").val().length != 0) {
             $("#hhh").css("display", "none");
         }
-            
     </script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>

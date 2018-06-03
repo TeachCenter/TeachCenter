@@ -258,10 +258,10 @@ public partial class BackStage_ServiceManage : System.Web.UI.Page
             if (dropCategory.SelectedValue != "全部分类")
             {
                 int category = ServiceHelper.getCategoryID(dropCategory.SelectedValue);
-                service = db.Service.Where(a => a.Service_isdeleted == 0 && a.Service_category == category && a.Service_time >= min && a.Service_time < max).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
+                service = db.Service.Where(a => a.Service_isdeleted == 0 && a.Service_category == category && a.Service_time >= min && a.Service_time <= max).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
             }
             else
-                service = db.Service.Where(a => a.Service_isdeleted == 0 && a.Service_time >= min && a.Service_time < max).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
+                service = db.Service.Where(a => a.Service_isdeleted == 0 && a.Service_time >= min && a.Service_time <= max).OrderBy(a => a.Service_isdeal).ThenByDescending(a => a.Service_time).ToList();
 
             DataColumn dc1 = new DataColumn("序号", System.Type.GetType("System.String"));
             DataColumn dc2 = new DataColumn("申请人", System.Type.GetType("System.String"));

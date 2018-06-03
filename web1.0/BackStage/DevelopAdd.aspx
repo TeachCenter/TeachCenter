@@ -30,12 +30,12 @@
             var flag = false;
             $(".iCheck-helper").click(function () {
                 if (flag == false) {
-                    $(".content").css({ "display": "none" })
+                    $("#contentt").css({ "display": "none" })
                     $(".link").css({ "display": "block" })
                     flag = true;
                 }
                 else{
-                    $(".content").css({ "display": "block" })
+                    $("#contentt").css({ "display": "block" })
                     $(".link").css({ "display": "none" })
                     flag = false;
                 }
@@ -104,7 +104,7 @@
                 <asp:TextBox ID="TextBox1" TextMode="MultiLine" MaxLength="200" style="height: 119px; margin: 0px; width: 1033px;resize:none;" runat="server" CssClass="input-text"></asp:TextBox>
 			</div>
 		</div>
-		<div class="row cl content">
+		<div id="contentt" class="row cl content">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章内容：</label>
 			<div class="formControls col-xs-8 col-sm-9"> 
 				<textarea id="myEditor11" name="myEditor11" runat="server" onblur="setUeditor()" style="width: 1030px; height: 250px;"></textarea>
@@ -143,7 +143,13 @@
                     txtTitle.val() = "";
                 }
             });
-
+            $("#btnSub").click(function () {
+                if ($("#fup")[0].files[0].size > 5 * 1024 * 1024) {
+                    alert("上传文件不能大于5M！");
+                    return false;
+                }
+                $("#lblInfo")[0].innerHTML = "正在上传中...";
+            });
         </script>
 	</form>
 </article>

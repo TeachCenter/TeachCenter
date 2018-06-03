@@ -109,7 +109,13 @@
 <script type="text/javascript" src="lib/ueditor/1.4.3/ueditor.all.min.js"> </script> 
 <script type="text/javascript" src="lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
 <script type="text/javascript">
-    
+    $("#btnSub").click(function () {
+        if ($("#fup")[0].files[0].size > 5 * 1024 * 1024) {
+            alert("上传文件不能大于5M！");
+            return false;
+        }
+        $("#lblInfo")[0].innerHTML = "正在上传中...";
+    });
     $(function(){
         $('.skin-minimal input').iCheck({
             checkboxClass: 'icheckbox-blue',

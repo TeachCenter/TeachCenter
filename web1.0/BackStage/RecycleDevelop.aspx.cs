@@ -124,10 +124,10 @@ public partial class BackStage_RecycleDevelop : System.Web.UI.Page
                 if (dropCategory.SelectedValue != "全部分类")
                 {
                     int category = DevelopHelper.getCategoryId(dropCategory.SelectedValue);
-                    service = db.Develop.Where(a => a.Develop_deleted == 1 && a.Develop_category == category && a.Develop_time >= min && a.Develop_time < max).OrderByDescending(a => a.Develop_time).ToList();
+                    service = db.Develop.Where(a => a.Develop_deleted == 1 && a.Develop_category == category && a.Develop_time >= min && a.Develop_time <= max).OrderByDescending(a => a.Develop_time).ToList();
                 }
                 else
-                    service = db.Develop.Where(a => a.Develop_deleted == 1 && a.Develop_time >= min && a.Develop_time < max).OrderByDescending(a => a.Develop_time).ToList();
+                    service = db.Develop.Where(a => a.Develop_deleted == 1 && a.Develop_time >= min && a.Develop_time <= max).OrderByDescending(a => a.Develop_time).ToList();
             }
             else
             {
