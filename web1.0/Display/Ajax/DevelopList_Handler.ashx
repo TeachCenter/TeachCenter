@@ -24,17 +24,19 @@ public class Develop_Handler : IHttpHandler {
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/plain";
         int category = 0;
+		int abc = 0;
         try
         {
             category = Convert.ToInt32(context.Request.Form["category"]);
         }
         catch
         {
-
+			abc = -1;
         }
-
+		abc = category;
         //int categoryid = 0,page = 1;
         int page = 1;
+		
         try
         {
             page = Convert.ToInt32( context.Request.Form["page"]);
@@ -52,7 +54,7 @@ public class Develop_Handler : IHttpHandler {
                                 DevelopyCategory_name = it.DevelopCategory_name,
                                 DevelopCategory_href = "DevelopList.aspx?type="
                             };
-            category = categorys.Count() >= category ? category : 0;
+            
             var dev = from it in db.Develop
                       where it.Develop_deleted == 0
                       orderby it.Develop_time descending
@@ -67,8 +69,11 @@ public class Develop_Handler : IHttpHandler {
                           Develop_href = it.Develop_link=="" ? "DevelopContent.aspx?id=" : it.Develop_link,
                           Devlop_times = it.Develop_time
                       };
+					  
             if (category != 0)
             {
+			
+				abc = 1;
                 dev = from it in db.Develop
                       where it.Develop_deleted == 0 && it.Develop_category == category
                       orderby it.Develop_time descending
@@ -110,6 +115,9 @@ public class Develop_Handler : IHttpHandler {
             all.Add(count);
             all.Add(list);
             all.Add(name);
+			all.Add(abc);
+			all.Add(context.Request.Form["category"]);
+			all.Add(category);
             string final = JsonConvert.SerializeObject(all);
             context.Response.Write(final);
         }

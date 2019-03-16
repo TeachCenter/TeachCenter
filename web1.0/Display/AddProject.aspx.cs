@@ -29,6 +29,11 @@ public partial class Display_AddProject : System.Web.UI.Page
                     {
                         using (var db = new TeachingCenterEntities())
                         {
+                            int teacher_id = TeacherHelper.getTeacherIDByNumber(Session["TeacherNumber"].ToString());
+                            var teacher = (from it in db.Teacher where it.id == teacher_id select it).FirstOrDefault();
+                            if(teacher.department == "")
+                                JSHelper.AlertThenRedirect("请先完善个人单位！", "Person-index.aspx");
+
                             DateTime now = DateTime.Now;
                             var category = from it in db.ProjectCategory where it.is_deleted == 0 && it.stage == 0 select it;
                             List<ProjectCategory> show = new List<ProjectCategory>();
@@ -70,7 +75,7 @@ public partial class Display_AddProject : System.Web.UI.Page
         else if (!numRegex.IsMatch(fund))
             Response.Write("<script>alert('请输入正确的资助金额！');</script>");
         else if (filePath.Length == 0)
-            Response.Write("<script>alert('项目申请不能为空！');</script>");
+            Response.Write("<script>alert('申请文档不能为空！');</script>");
         else if (UpLoadFile() == "wrong")
             Response.Write("<script>alert('请上传正确的项目文件！');</script>");
         else

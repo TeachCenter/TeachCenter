@@ -9,7 +9,7 @@ public partial class BackStage_EduSrcEdit : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["AdminID"].ToString() == null)
+        if (Session["AdminID"] == null)
             JSHelper.AlertThenRedirect("请先登录！", "Login.aspx");
         int id = 1;
         try
@@ -25,6 +25,7 @@ public partial class BackStage_EduSrcEdit : System.Web.UI.Page
                 {
                     var src = (from it in db.EducateSource where it.id == id select it).FirstOrDefault();
                     txtTitle.Text = src.title;
+                    pushlishTime.Value = src.publish_time;
                     txtSummary.Text = src.summary;
                     myEditor11.InnerHtml = Server.HtmlDecode(src.body);
                 }
@@ -55,6 +56,7 @@ public partial class BackStage_EduSrcEdit : System.Web.UI.Page
                 var src = (from it in db.EducateSource where it.id == id select it).FirstOrDefault();
                 src.title = title;
                 src.body = body;
+                src.publish_time = pushlishTime.Value;
                 src.summary = summary;
                 db.SaveChanges();
                 Response.Write("<script>alert('修改成功！');location.href='EduSrcList.aspx';</script>");

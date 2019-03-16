@@ -60,15 +60,8 @@ public class TeacherHelper
     {
         using (var db = new TeachingCenterEntities())
         {
-            try
-            {
-                Teacher t = db.Teacher.Single(a => a.number == number);
-                return t.is_judge == 0 ? false : true;
-            }
-            catch
-            {
-                return false;
-            }
+            Teacher t = db.Teacher.Single(a => a.number == number);
+            return t.is_judge == 0 ? false : true;
         }
     }
 }

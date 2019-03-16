@@ -101,7 +101,7 @@
         <div class="row cl link">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章摘要：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-                <asp:TextBox ID="TextBox1" TextMode="MultiLine" MaxLength="200" style="height: 119px; margin: 0px; width: 1033px;resize:none;" runat="server" CssClass="input-text"></asp:TextBox>
+                <asp:TextBox ID="TextBox1" TextMode="MultiLine" MaxLength="100" style="height: 119px; margin: 0px; width: 1033px;resize:none;" runat="server" CssClass="input-text"></asp:TextBox>
 			</div>
 		</div>
 		<div id="contentt" class="row cl content">

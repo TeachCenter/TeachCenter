@@ -47,17 +47,20 @@ function log() {
     })
     $(".male").click(function () {
         $("#gender").val("1");
-        $(this).css({ "background-color": "#FFFFFF" })
-        $(".female").css({ "background-color": "#E6E6E6" })
+        //$(this).css({ "background-color": "#FFFFFF" })
+        //$(".female").css({ "background-color": "#E6E6E6" })
+		$(this).css({ "background-color": "#E6E6E6" })
+        $(".female").css({ "background-color": "#FFFFFF" })
         flag[1] = true;
         
         console.log($("#gender").val())
     })
     $(".female").click(function () {
         $("#gender").val("0");
-        $(this).css({ "background-color": "#FFFFFF" })
-        $(".male").css({ "background-color": "#E6E6E6" })
-       
+        //$(this).css({ "background-color": "#FFFFFF" })
+        //$(".male").css({ "background-color": "#E6E6E6" })
+		$(this).css({ "background-color": "#E6E6E6" })
+        $(".male").css({ "background-color": "#FFFFFF" })
         flag[1] = true;
         
         console.log($("#gender").val())

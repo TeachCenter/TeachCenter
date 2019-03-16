@@ -1,7 +1,9 @@
 (function (window, $) {
     $.fn.extend({
         mySlide1: function (arr, speed) {
+			if(arr.length != 0){
             var ele = $(this), myW = parseInt($(this).css("width")), myH = parseInt($(this).css("height")), arrlen = arr.length;
+			//var myH = 1200;
             var html = '<span class="back"><img src="images/l.png" alt="img"/></span><div class="sl_content">';
             if (arr[arrlen - 1].imgurl != undefined && arr[arrlen - 1].href != undefined && arr[arrlen - 1].text != undefined) {
                 html += '<a href="' + arr[arrlen - 1].href + '"  target="_blank"><img src="' + arr[arrlen - 1].imgurl + '" alt="img"/></a>';
@@ -272,6 +274,8 @@
                     myl -= myW;
                 });
             })
-        }
-    })
+			}
+		}
+		
+		})
 })(window, jQuery);

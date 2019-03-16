@@ -22,6 +22,7 @@ public partial class BackStage_ActivitySummaryEditor : System.Web.UI.Page
                     ActivitySummary asu = db.ActivitySummary.Single(a => a.ActivitySummary_id == id);
                     TextBox1.Text = asu.ActivitySummary_summary;
                     txtTitle.Text = asu.ActivitySummary_title;
+                    pushlishTime.Value = asu.ActivitySummary_time.ToString();
                     myEditor11.InnerText = Server.HtmlDecode(asu.ActivitySummary_content);
                 }
             }
@@ -61,7 +62,7 @@ public partial class BackStage_ActivitySummaryEditor : System.Web.UI.Page
                         acsu.ActivitySummary_author = "匿名";
                     else
                         acsu.ActivitySummary_author = "未知";
-
+                    acsu.ActivitySummary_time = Convert.ToDateTime(pushlishTime.Value);
                     db.SaveChanges();
                     Server.Transfer("ActivitySummaryManage.aspx");
                     //JSHelper.AlertThenRedirect("修改成功！", "ActivitySummaryManage.aspx");

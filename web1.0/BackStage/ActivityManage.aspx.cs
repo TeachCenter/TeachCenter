@@ -117,20 +117,20 @@ public partial class BackStage_ActivityManage : System.Web.UI.Page
                 if (dropCategory.SelectedValue != "全部分类")
                 {
                     int category = ActivityHelper.getCategoryId(dropCategory.SelectedValue);
-                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_categoryid == category && a.Activity_time >= min && a.Activity_time < max).OrderByDescending(a => a.Activity_time).ToList();
+                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_categoryid == category && a.Activity_hold_time >= min && a.Activity_hold_time < max).OrderByDescending(a => a.Activity_hold_time).ToList();
                 }
                 else
-                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_time >= min && a.Activity_time <= max).OrderByDescending(a => a.Activity_time).ToList();
+                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_hold_time >= min && a.Activity_hold_time <= max).OrderByDescending(a => a.Activity_hold_time).ToList();
             }
             else
             {
                 if (dropCategory.SelectedValue != "全部分类")
                 {
                     int category = ActivityHelper.getCategoryId(dropCategory.SelectedValue);
-                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_categoryid == category && a.Activity_time >= min && a.Activity_time < max && a.Activity_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Activity_time).ToList();
+                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_categoryid == category && a.Activity_hold_time >= min && a.Activity_hold_time < max && a.Activity_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Activity_hold_time).ToList();
                 }
                 else
-                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_time >= min && a.Activity_time <= max && a.Activity_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Activity_time).ToList();
+                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_hold_time >= min && a.Activity_hold_time <= max && a.Activity_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Activity_hold_time).ToList();
 
             }
 
@@ -227,20 +227,20 @@ public partial class BackStage_ActivityManage : System.Web.UI.Page
                 if (dropCategory.SelectedValue != "全部分类")
                 {
                     int category = ActivityHelper.getCategoryId(dropCategory.SelectedValue);
-                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_categoryid == category && a.Activity_time >= min && a.Activity_time < max).OrderByDescending(a => a.Activity_time).ToList();
+                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_categoryid == category && a.Activity_hold_time >= min && a.Activity_hold_time < max).OrderByDescending(a => a.Activity_hold_time).ToList();
                 }
                 else
-                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_time >= min && a.Activity_time < max).OrderByDescending(a => a.Activity_time).ToList();
+                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_hold_time >= min && a.Activity_hold_time < max).OrderByDescending(a => a.Activity_hold_time).ToList();
             }
             else
             {
                 if (dropCategory.SelectedValue != "全部分类")
                 {
                     int category = ActivityHelper.getCategoryId(dropCategory.SelectedValue);
-                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_categoryid == category && a.Activity_time >= min && a.Activity_time < max && a.Activity_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Activity_time).ToList();
+                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_categoryid == category && a.Activity_hold_time >= min && a.Activity_hold_time < max && a.Activity_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Activity_hold_time).ToList();
                 }
                 else
-                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_time >= min && a.Activity_time < max && a.Activity_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Activity_time).ToList();
+                    acsu = db.Activity.Where(a => a.Activity_isdeleted == 0 && a.Activity_hold_time >= min && a.Activity_hold_time < max && a.Activity_title.Contains(txtSearch.Text)).OrderByDescending(a => a.Activity_hold_time).ToList();
 
             }
 
@@ -274,7 +274,7 @@ public partial class BackStage_ActivityManage : System.Web.UI.Page
                 row["标题"] = i.Activity_title;
                 row["活动地点"] = i.Activity_place;
                 row["发布人"] = i.Activity_author;
-                row["活动时间"] = i.Activity_time.ToString();
+                row["活动时间"] = i.Activity_hold_time.ToString();
                 row["人数"] = i.Activity_nowcount.ToString() + " / " + i.Activity_limitcount.ToString();
                 row["活动类型"] = ActivityHelper.getCategoryName(i.Activity_categoryid);
                 row["参与名单"] = ActivityHelper.getTeacherList(i.Activity_id);

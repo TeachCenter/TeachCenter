@@ -24,8 +24,8 @@ public partial class BackStage_ActivityEditor : System.Web.UI.Page
                     txtPlace.Text = ac.Activity_place;
                     TextBox1.Text = ac.Activity_summary;
                     myEditor11.InnerHtml = Server.HtmlDecode(ac.Activity_content);
-                    logmin.Value = ac.Activity_time.Date.ToString();
-
+                    logmin.Value = ac.Activity_hold_time.ToString();
+                    pushlishTime.Value = ac.Activity_time.ToString();
 
                     var cate = from it in db.ActivityCategory select it;
 
@@ -54,7 +54,7 @@ public partial class BackStage_ActivityEditor : System.Web.UI.Page
         string category = dropCategory.SelectedValue;
         string content = myEditor11.InnerHtml;
         string summary = TextBox1.Text;
-        if (title.Length == 0 || date.Length == 0 || place.Length == 0 || count.Length == 0 || content.Length == 0)
+        if (title.Length == 0 || date.Length == 0 || place.Length == 0 || count.Length == 0 || content.Length == 0 || pushlishTime.Value.Length == 0)
             JSHelper.ShowAlert("输入不能为空！");
         else if (summary.Length == 0)
             JSHelper.ShowAlert("输入不能为空！");
@@ -89,7 +89,7 @@ public partial class BackStage_ActivityEditor : System.Web.UI.Page
                         ac.Activity_place = place;
                         ac.Activity_limitcount = Convert.ToInt32(count);
                         ac.Activity_categoryid = ActivityHelper.getCategoryId(category);
-
+                        ac.Activity_time = Convert.ToDateTime( pushlishTime.Value.ToString());
                         db.SaveChanges();
                         //Server.Transfer("ActivityManage.aspx");
                         JSHelper.AlertThenRedirect("修改成功！", "ActivityManage.aspx");

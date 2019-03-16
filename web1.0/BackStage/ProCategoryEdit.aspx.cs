@@ -27,6 +27,7 @@ public partial class BackStage_ProCategoryEdit : System.Web.UI.Page
                     var pro = (from it in db.ProjectCategory where it.id == id select it).FirstOrDefault();
                     txtName.Text = pro.name;
                     txtSummary.Text = pro.summary;
+                    pushlishTime.Value = pro.publish_time;
                     myEditor11.InnerHtml = Server.HtmlDecode(pro.project_content);
                     txtTime.Text = pro.end_time;
                     txtJudgeTime.Text = pro.judge_end_time;
@@ -89,7 +90,9 @@ public partial class BackStage_ProCategoryEdit : System.Web.UI.Page
                 }
                 pro_category.project_content = project_content;
                 pro_category.end_time = time;
+                pro_category.publish_time = pushlishTime.Value;
                 pro_category.judge_end_time = judge_time;
+               
                 pro_category.summary = summary;
                 db.SaveChanges();
                 Server.Transfer("ProCategoryList.aspx");

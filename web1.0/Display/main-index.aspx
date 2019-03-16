@@ -4,6 +4,9 @@
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/mobile.css" />
     <style>
+		.bannercontainer{
+			    background: #a51c30;
+		}
         .pcNav .leftLine {
             bottom:-6px;
         }
@@ -14,8 +17,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="main clearfix">
-        <span class="leftLine"></span>
-			<div id="mySlide1" style="width: 1200px; height: 380px; margin-left: auto; margin-right: auto;"></div>
+        <!--<span class="leftLine"></span>-->
+			        <div class="bannercontainer">
+            <div id="mySlide1" style="width: 1200px; height: 520px; margin-left: auto; margin-right: auto;"></div>
+        </div>
 			<div class="center clearfix indexCenter">
 			<div class="teach ">
 			 	<div class="teach-header clearfix">
@@ -108,12 +113,14 @@
     <script type="text/javascript"  src="./js/index1.js"></script>
      <script type="text/javascript"  src="./js/mobile.js"></script>
     <script>
-        $("#mySlide1 img").css({
-            height:214+"px"
+        $("#mySlide1 sl_content img").css({
+            height:520+"px"
         })
-        $("#mySlide2 img").css({
-            height: 214 + "px"
+
+        $("#mySlide2  sl_content  img").css({
+            height: 520 + "px"
         })
+
     </script>
    
 </asp:Content>

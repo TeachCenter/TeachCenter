@@ -272,7 +272,8 @@ function log(){
 log();
 
 function Check_FilePath() {
-    var FilePath = document.getElementById("FileUp");
-    var FileNewName = document.getElementById("txtFileName");
-    FileNewName.value = FilePath.value;
+    //var FilePath = document.getElementById("FileUp");
+    //var FileNewName = document.getElementById("txtFileName");
+    //FileNewName.value = $("#FileUp")[0].files[0].name;
+    //$("#txtFileName").val($("#FileUp")[0].files[0].name);
 }

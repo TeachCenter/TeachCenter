@@ -54,7 +54,8 @@ public partial class BackStage_RecycleProjectCategory : System.Web.UI.Page
             using (var db = new TeachingCenterEntities())
             {
                 var pro_category = db.ProjectCategory.SingleOrDefault(a => a.id == id);
-                db.ProjectCategory.Remove(pro_category);
+                //db.ProjectCategory.Remove(pro_category);
+                pro_category.is_deleted = 100;
                 db.SaveChanges();
                 //Response.Write("<script>alert('删除成功！');location.href='RecycleProjectCategory.aspx';</script>");
                 Server.Transfer("RecycleProjectCategory.aspx");
@@ -74,7 +75,8 @@ public partial class BackStage_RecycleProjectCategory : System.Web.UI.Page
                 using (var db = new TeachingCenterEntities())
                 {
                     var pro_category = db.ProjectCategory.SingleOrDefault(a => a.id == project_id);
-                    db.ProjectCategory.Remove(pro_category);
+                    //db.ProjectCategory.Remove(pro_category);
+                    pro_category.is_deleted = 100;
                     db.SaveChanges();
                 }
             }

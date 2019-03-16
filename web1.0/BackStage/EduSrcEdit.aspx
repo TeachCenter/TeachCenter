@@ -45,6 +45,12 @@
 				<asp:TextBox ID="txtTitle" runat="server" CssClass="input-text" MaxLength ="26"></asp:TextBox>
 			</div>
 		</div>
+                        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>发布时间：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" id="pushlishTime" runat="server" class="input-text" onclick="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+            </div>
+        </div>
         <div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>内容摘要：</label>
 			<div class="formControls col-xs-8 col-sm-9">

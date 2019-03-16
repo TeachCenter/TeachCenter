@@ -89,6 +89,13 @@
 				<p class="money-error"></p>
 			</div>
 			<div class="clearfix">
+				<h2>申请文档:</h2>				
+                <asp:FileUpload ID="FileUp" runat="server" style="display:none" />  
+                <asp:Button id="btnBrowse" runat="server" OnClientClick="return ShowBrowse();" Text="选择文件" class="choose"/>
+                <h3 style="margin-top:0px;"><asp:TextBox ID="txtFileName" runat="server" value="支持pdf、doc、docx格式的文件"></asp:TextBox> </h3>
+                 <h3 class="necessary">*必填</h3>
+			</div>
+			<div class="clearfix">
 				<h2>项目内容:</h2>
                 <textarea id="myEditor11" name="myEditor11" runat="server" onblur="setUeditor()" style="width:100px;"></textarea>
                 <script type="text/javascript">
@@ -107,20 +114,29 @@
 				<h2>项目文件:</h2>
 				<a class="redA" class="submit" href="../BackStage/<%= getFileName() %>"><asp:Label ID="lbFileName" runat="server"></asp:Label></a>
 			</div>
-			<div class="clearfix">
-				<h2>上传文件:</h2>				
-                <asp:FileUpload ID="FileUp" runat="server" style="display:none" />  
-                <asp:Button id="btnBrowse" runat="server" OnClientClick="return ShowBrowse()" Text="选择文件" class="choose"/>
-                <h3 style="margin-top:0px;"><asp:TextBox ID="txtFileName" runat="server" value="支持pdf、doc、docx格式的文件"></asp:TextBox> </h3>
-                 <h3 class="necessary">*必填</h3>
-			</div>
+			
             <asp:LinkButton ID="btnSubmit" runat="server" Text="确认修改" class="submit" OnClick="btnSubmit_Click" />
 	</div>
     <script type="text/javascript"  src="./js/personal-center-init.js"></script>
     <script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script>
     <script >
+        var xxx = 0;
+        $("#btnBrowse").click(function () {
+            //$("#txtFileName").val($("#FileUp")[0].files[0].name);
+            xxx = 0;
+            var i = setInterval(function () {
+                xxx++;
+                if (xxx != 20) {
+                    $("#txtFileName").val($("#FileUp")[0].files[0].name);
+                }
+                else {
+                    clearInterval(i);
+                }
+            }, 500);
+        });
         function ShowBrowse()  
         {  
+			//$("#FileUp").val($("#FileUp")[0].files[0].name);
             var file1 = document.getElementById("FileUp");
             if(file1)  
             { 

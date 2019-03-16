@@ -22,7 +22,7 @@
                         <h1 class="brief-intro"></h1>
                         <span class="brief-intro-line"></span>
                         <h2 class="publish"></h2>
-                        <div class="p-box">
+                        <div class="p-box" style='min-height:1158px'>
                             <div class="url-box-box"></div>
                         </div>
                         

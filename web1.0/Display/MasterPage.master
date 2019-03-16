@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="Display_MasterPage" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true"  CodeFile="MasterPage.master.cs" Inherits="Display_MasterPage" %>
 
 <!DOCTYPE html>
 
@@ -61,18 +61,18 @@
 				<div class="nav">
 					<div class="center">
 						<a href="main-index.aspx">首页</a>
-						<a href="Introduction.aspx">关于</a>
-						<a href="ProjectList.aspx?pageNumber=1">项目</a>
-						<a href="Service.aspx">服务</a>
-						<a href="SrcList.aspx?pageNumber=1">资源</a>
-						<a href="ActivityList.aspx?type=0&&page=1">活动</a>
+						<a href="Introduction.aspx">中心简介</a>
+						<a href="ProjectList.aspx?pageNumber=1">项目概览</a>
+						<a href="Service.aspx">咨询评价</a>
+						<a href="SrcList.aspx?pageNumber=1">发展资源</a>
+						<a href="ActivityList.aspx?type=0&&page=1">研讨活动</a>
 
 					</div>
 
                     
 
 				</div>
-				<span class="leftLine"></span>
+				<!--<span class="leftLine"></span>-->
 			</div>
 		</div>
     <div class="mobileHeader">教学支持中心<a class="mobileNav"></a><a class="mobileSearch" href="Search.aspx"></a></div>
@@ -102,8 +102,9 @@
                         
                     </ul>
                 </ul>
-				<p>校址：青岛市崂山区松岭路238号 ·邮编：266100 ·电话：0532-66782193 ·Email：jxdd@ouc.edu.cn </p>
+				<p>校址：青岛市崂山区松岭路238号 ·邮编：266100 ·电话：0532-66782193 ·Email：cetl@ouc.edu.cn </p>
 				<p class="Copyright">Copyright © 2004-2008 Ocean University of China. All rights reserved.</p>
+				<p>   </p>
 			</div>
 		</div>
 		<div class="mask"></div>

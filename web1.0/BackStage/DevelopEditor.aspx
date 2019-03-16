@@ -31,12 +31,11 @@
             if ($("#txtLink").val() == "") {
                 $(".content").css({ "display": "block" });
                 $("#link").css({ "display": "none" });
-               
-
                 flag = false;
             }
             else {
-                $(".icheckbox-blue").addClass("checked");
+                //$(".icheckbox-blue").addClass("checked");
+                $("#cbxLink").click();
             }
             $(".iCheck-helper").click(function () {
                 if (flag == false) {
@@ -80,13 +79,19 @@
                 </asp:DropDownList></span>
 			</div>
 		</div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>发布时间：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" id="pushlishTime" runat="server" class="input-text" onclick="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+            </div>
+        </div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">使用外部链接：</label>
 			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
 				<div class="check-box">
 					<%--<input type="checkbox" id="checkbox-moban">--%>
                     <asp:CheckBox ID="cbxLink" runat="server" />
-					<label for="checkbox-moban">&nbsp;</label>
+					<label for="checkbox-moban" style="color:red">&nbsp;*注意勾选外部链接</label>
 				</div>
 			</div>
 		</div>

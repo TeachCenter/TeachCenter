@@ -70,7 +70,7 @@
 		
 			<div class="clearfix">
 				<h2>项目名称:</h2>
-                <asp:TextBox ID="txtName" runat="server" class="name" ReadOnly="true" ></asp:TextBox>
+                <asp:TextBox ID="txtName" runat="server" class="name" ReadOnly="true"></asp:TextBox>
 			</div>
 			<div class="clearfix">
 				<h2>项目类型:</h2>
@@ -130,16 +130,31 @@
 	    });
     </script>
     <script language="javascript" type="text/javascript">
+        var xxx = 0;
+        $("#btnBrowse").click(function () {
+            //$("#txtFileName").val($("#FileUp")[0].files[0].name);
+            xxx = 0;
+            var i = setInterval(function () {
+                xxx++;
+                if (xxx != 20) {
+                    $("#txtFileName").val($("#FileUp")[0].files[0].name);
+                }
+                else {
+                    clearInterval(i);
+                }
+            }, 500);
+        });
         function ShowBrowse()  
         {  
-            var file1=document.getElementById("FileUp");  
+			    //$("#FileUp").val($("#FileUp")[0].files[0].name);
+            var file1 = document.getElementById("FileUp");
             if(file1)  
             { 
                 file1.click();  
                 var isie = (document.all) ? true : false; //判断是IE内核还是Mozilla 
                 return isie; //火狐浏览器加return false才会在选择文件后将文件名带回到textbox,IE如果返回false上传时要点击两次按钮才触发
             }  
-        }   
+        } 
      </script>
 	<script type="text/javascript"  src="./js/personal-center-init.js"></script>
 	<script type="text/javascript"  src="./js/personal-center-creatProgect.js"></script>

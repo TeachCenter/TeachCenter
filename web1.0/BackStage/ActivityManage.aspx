@@ -78,7 +78,7 @@
 					        
 					        <td style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;"><a href='<%#"../Display/ActivityContent.aspx?id="+ Eval("Activity_id") %>' target="_blank"><%# Eval("Activity_title") %></a></td>
 					        <td><%# Eval("Activity_author") %></td>
-					        <td><%# Eval("Activity_time") %></td>
+					        <td><%# Eval("Activity_hold_time") %></td>
                             <td><%# Eval("Activity_place") %></td>
                             <td><a href='<%# "ActivityTeacher.aspx?id="+ Eval("Activity_id")  %>'><%# Eval("Activity_nowcount") %></a></td>
                             <td><%# Eval("Activity_limitcount") %></td>

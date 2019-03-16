@@ -68,6 +68,10 @@
 				<h2>项目类型:</h2>
                 <asp:TextBox ID="txtCategory" runat="server" class="type" ReadOnly="true"></asp:TextBox>
 			</div>
+            <div class="clearfix">
+				<h2>当前阶段:</h2>
+                <asp:TextBox ID="txtStage" runat="server" ReadOnly="true"></asp:TextBox>
+			</div>
 			<div class="clearfix">
 				<h2>负责人:</h2>
                 <asp:TextBox ID="txtDuty" runat="server" class="duty" ReadOnly="true"></asp:TextBox>
@@ -103,13 +107,20 @@
 				<h2>评审意见:</h2>
                 <asp:TextBox ID="txtMessage" runat="server" TextMode="MultiLine" class="content"></asp:TextBox>
 			</div>
-            <div class="clearfix">
-				<h2>是否通过:</h2>
-                <a  class="choice yes">是<asp:LinkButton ID="yes" runat="server"></asp:LinkButton></a>               
-				<a  class="choice no">否<asp:LinkButton ID="no" runat="server"></asp:LinkButton></a>
-                <input type="hidden" id="result" runat="server" value=""/>
+            <span id="judge1" runat="server">
+                <div class="clearfix" >
+				    <h2>是否通过:</h2>
+                    <a  class="choice yes">是<asp:LinkButton ID="yes" runat="server"></asp:LinkButton></a>               
+				    <a  class="choice no">否<asp:LinkButton ID="no" runat="server"></asp:LinkButton></a>
+                    <input type="hidden" id="result" runat="server" value=""/>                   
+			    </div>
+                <asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" class="submit" Text="提交评审结果"></asp:LinkButton>
+            </span>
+            <div class="clearfix" id="judge2" runat="server" >
+				<h2>个人意见:</h2>
+                <asp:TextBox ID="txtReslut" runat="server" ReadOnly="true"></asp:TextBox>
 			</div>
-			<asp:LinkButton ID="lbtnSubmit" runat="server" OnClick="lbtnSubmit_Click" class="submit" Text="提交评审结果"></asp:LinkButton>
+			
 	</div>
 	<script>
         var w = $(window).width();
@@ -120,13 +131,13 @@
             $(".Content").css({ "width": w - 520 })
         })
         $(".yes").click(function () {
-            $(this).css({ "background-color": "#FFFFFF" })
-            $(".no").css({ "background-color": "#E6E6E6" })
+            $(this).css({ "background-color": "#E6E6E6" })
+            $(".no").css({ "background-color": "#FFFFFF" })
             $("#result").val("1");
         })
         $(".no").click(function () {
-            $(this).css({ "background-color": "#FFFFFF" })
-            $(".yes").css({ "background-color": "#E6E6E6" })
+            $(this).css({ "background-color": "#E6E6E6" })
+            $(".yes").css({ "background-color": "#FFFFFF" })
             $("#result").val("0");
         })
     </script>

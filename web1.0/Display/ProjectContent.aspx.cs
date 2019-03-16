@@ -48,20 +48,25 @@ public partial class Display_ProjectContent : System.Web.UI.Page
                 Content.Text = Server.HtmlDecode(project_stage.project_content); // 项目内容
                 int index = project_stage.project_file.IndexOf("/");
                 lbFileName.Text = project_stage.project_file.Substring(index + 1); // 项目文件
+                var category = (from it in db.ProjectCategory where it.id == project.category select it).FirstOrDefault();
+                DateTime now = DateTime.Now;
+                DateTime end = Convert.ToDateTime(category.end_time);
+                if (DateTime.Compare(now, end) <= 0)
+                    btnEdit.Visible = true;
+                else
+                    btnEdit.Visible = false;
                 // 判断当前项目状态（是否通过及是否超时）
                 if (project_stage.is_pass == 1)
                     txtReslut.Text = "是";
                 else if (project_stage.is_pass == 0)
                     txtReslut.Text = "否";
-                //else if (project_stage.is_pass == -100)
-                //{
-                //    divOutofTime.Visible = true;
-                //    txtOutofTime.Text = "已超过提交时间";
-                //}
+                else if (project_stage.is_pass == -100)
+                {
+                    txtReslut.Text = "超时或管理员未评判";
+                }
                 else
                 {
-                    txtReslut.Text = "评判结果待定";
-                    btnEdit.Visible = true;
+                    txtReslut.Text = "评判结果待定";                    
                 }                        
             }
         }

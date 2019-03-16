@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 
 public partial class BackStage_DevelopEditor : System.Web.UI.Page
 {
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -31,6 +32,7 @@ public partial class BackStage_DevelopEditor : System.Web.UI.Page
                     TextBox1.Text = dev.Develop_summary;
                     txtLink.Text = dev.Develop_link;
                     txtAuthor.Text = dev.Develop_author;
+                    pushlishTime.Value = dev.Develop_time.ToString();
                     myEditor11.InnerHtml = Server.HtmlDecode(dev.Develop_content);
                 }
             }
@@ -100,6 +102,7 @@ public partial class BackStage_DevelopEditor : System.Web.UI.Page
                     dev.Develop_category = DevelopHelper.getCategoryId(dropCategory.SelectedValue);
                     dev.Develop_hit = 0;
                     dev.Develop_deleted = 0;
+                    dev.Develop_time =Convert.ToDateTime( pushlishTime.Value.ToString());
                     //db.Develop.Add(dev);
                     db.SaveChanges();
                     //JSHelper.ShowAlert("修改成功！");

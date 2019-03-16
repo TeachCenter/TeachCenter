@@ -50,7 +50,7 @@
                         <th width="80">当前状态</th>
 					    <th width="120">提交时间</th>
                         <th width="120">删除</th>
-                        <th width="120">分配评审</th>
+                        <th width="120">分配/通过</th>
 				    </tr>
 			    </thead>
 			    <tbody>
@@ -65,7 +65,7 @@
                                 <td><%# getStage(Eval("project_id").ToString()) %></td>
 					            <td><%# Eval("submit_time") %></td>
                                 <td class="f-14 td-manage"><asp:LinkButton ID="lbtDelete" runat="server" CssClass="ml-5" CommandName="Delete" CommandArgument='<%#Eval("project_id") %>' OnClientClick="return confirm('确定删除?')">删除<i class="Hui-iconfont">&#xe6e2;</i></asp:LinkButton></td>
-                                <td class="f-14 td-manage"><asp:LinkButton ID="lbtDiliver" runat="server" CssClass="ml-5" CommandName="Diliver" CommandArgument='<%#Eval("project_id") %>' >分配评审</asp:LinkButton></td>
+                                <td class="f-14 td-manage"><asp:LinkButton ID="lbtDiliver" runat="server" CssClass="ml-5" CommandName="Diliver" CommandArgument='<%#Eval("project_id") %>' >分配/通过</asp:LinkButton></td>
 				            </tr>
                         </ItemTemplate>
                     </asp:Repeater>
